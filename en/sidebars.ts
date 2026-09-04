@@ -56,7 +56,6 @@ const sidebars: SidebarsConfig = {
             'get-started/build-integration-api',
             'get-started/build-event-driven-integration',
             'get-started/build-file-driven-integration',
-            'get-started/prebuilt-integrations',
           ],
         },
       ],
@@ -179,11 +178,12 @@ const sidebars: SidebarsConfig = {
                   items: [
                     'develop/integration-artifacts/file/high-availability-and-coordination',
                     'develop/integration-artifacts/file/dependency-and-trigger-conditions',
-                    'develop/integration-artifacts/file/streaming-large-files',
                     'develop/integration-artifacts/file/csv-fault-tolerance',
                   ],
                 },
+                'develop/integration-artifacts/file/smb',
                 'develop/integration-artifacts/file/local-files',
+                'develop/integration-artifacts/file/azure-files'
               ],
             },
             {
@@ -239,8 +239,11 @@ const sidebars: SidebarsConfig = {
             'develop/transform/json',
             'develop/transform/xml',
             'develop/transform/csv-flat-file',
+            'develop/transform/xlsx',
             'develop/transform/edi',
             'develop/transform/pdf',
+            'develop/transform/freemarker',
+            'develop/transform/zip',
             'develop/transform/yaml-toml'
           ],
         },
@@ -459,7 +462,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'AWS Redshift Data',
-          link: { type: 'doc', id: 'connectors/catalog/database/aws.redshiftdata/aws-redshift-data-connector-overview' },
+          link: { type: 'doc', id: 'connectors/catalog/database/aws.redshiftdata/connector-overview' },
           items: [
             'connectors/catalog/database/aws.redshiftdata/setup-guide',
             'connectors/catalog/database/aws.redshiftdata/actions',
@@ -469,10 +472,10 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'AWS S3',
-          link: { type: 'doc', id: 'connectors/catalog/storage-file/aws.s3/aws-s3-connector-overview' },
+          link: { type: 'doc', id: 'connectors/catalog/storage-file/aws.s3/overview' },
           items: [
             'connectors/catalog/storage-file/aws.s3/setup-guide',
-            'connectors/catalog/storage-file/aws.s3/actions',
+            'connectors/catalog/storage-file/aws.s3/action-reference',
             'connectors/catalog/storage-file/aws.s3/example',
           ],
         },
@@ -499,11 +502,11 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'AWS SQS',
-          link: { type: 'doc', id: 'connectors/catalog/messaging/aws.sqs/aws-sqs-connector-overview' },
+          link: { type: 'doc', id: 'connectors/catalog/messaging/aws.sqs/overview' },
           items: [
             'connectors/catalog/messaging/aws.sqs/setup-guide',
-            'connectors/catalog/messaging/aws.sqs/actions',
-            'connectors/catalog/messaging/aws.sqs/triggers',
+            'connectors/catalog/messaging/aws.sqs/action-reference',
+            'connectors/catalog/messaging/aws.sqs/trigger-reference',
             'connectors/catalog/messaging/aws.sqs/example',
           ],
         },
@@ -525,6 +528,17 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/ai-ml/azure.ai.search.index/setup-guide',
             'connectors/catalog/ai-ml/azure.ai.search.index/actions',
             'connectors/catalog/ai-ml/azure.ai.search.index/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Azure Files',
+          link: { type: 'doc', id: 'connectors/catalog/storage-file/azure.storage.files/overview' },
+          items: [
+            'connectors/catalog/storage-file/azure.storage.files/setup-guide',
+            'connectors/catalog/storage-file/azure.storage.files/action-reference',
+            'connectors/catalog/storage-file/azure.storage.files/trigger-reference',
+            'connectors/catalog/storage-file/azure.storage.files/example',
           ],
         },
         {
@@ -1048,6 +1062,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'HubSpot Events Completions',
+          link: { type: 'doc', id: 'connectors/catalog/crm-sales/hubspot.events.completions/overview' },
+          items: [
+            'connectors/catalog/crm-sales/hubspot.events.completions/setup-guide',
+            'connectors/catalog/crm-sales/hubspot.events.completions/action-reference',
+            'connectors/catalog/crm-sales/hubspot.events.completions/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'HubSpot Marketing Campaigns',
           link: { type: 'doc', id: 'connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot-marketing-campaigns' },
           items: [
@@ -1207,306 +1231,6 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Budget',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.budget/microsoft-dynamics-365-finance-budget-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.budget/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.budget/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.budget/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Cash Management',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.cashmanagement/microsoft-dynamics-365-finance-cash-management-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.cashmanagement/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.cashmanagement/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.cashmanagement/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Core',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.core/microsoft-dynamics-365-finance-core-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.core/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.core/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.core/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Core Organization',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.coreorg/microsoft-dynamics-365-finance-core-organization-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.coreorg/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.coreorg/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.coreorg/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Customer',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.customer/microsoft-dynamics-365-finance-customer-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customer/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customer/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customer/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Customer Account',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.customeraccount/microsoft-dynamics-365-finance-customer-account-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customeraccount/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customeraccount/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customeraccount/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Customer Main',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.customermain/microsoft-dynamics-365-finance-customer-main-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customermain/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customermain/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.customermain/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Document',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.document/microsoft-dynamics-365-finance-document-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.document/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.document/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.document/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Expense',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.expense/microsoft-dynamics-365-finance-expense-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.expense/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.expense/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.expense/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Fiscal',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.fiscal/microsoft-dynamics-365-finance-fiscal-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fiscal/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fiscal/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fiscal/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Fixed Asset',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.fixedasset/microsoft-dynamics-365-finance-fixed-asset-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fixedasset/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fixedasset/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.fixedasset/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance HR Development',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.hrdev/microsoft-dynamics-365-finance-hr-development-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hrdev/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hrdev/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hrdev/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Human Resources',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.hr/microsoft-dynamics-365-finance-human-resources-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hr/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hr/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.hr/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Journal Entry',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.journalentry/microsoft-dynamics-365-finance-journal-entry-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.journalentry/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.journalentry/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.journalentry/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Ledger',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.ledger/microsoft-dynamics-365-finance-ledger-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.ledger/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.ledger/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.ledger/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Main Account',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.mainaccount/microsoft-dynamics-365-finance-main-account-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.mainaccount/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.mainaccount/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.mainaccount/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Payment',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.payment/microsoft-dynamics-365-finance-payment-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.payment/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.payment/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.payment/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Procurement',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.procurement/microsoft-dynamics-365-finance-procurement-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.procurement/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.procurement/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.procurement/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Project',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.project/microsoft-dynamics-365-finance-project-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.project/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.project/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.project/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Receivable',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.receivable/microsoft-dynamics-365-finance-receivable-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.receivable/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.receivable/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.receivable/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance System',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.system/microsoft-dynamics-365-finance-system-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.system/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.system/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.system/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance System Config',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.sysconfig/microsoft-dynamics-365-finance-system-config-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.sysconfig/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.sysconfig/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.sysconfig/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Tax',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.tax/microsoft-dynamics-365-finance-tax-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.tax/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.tax/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.tax/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Tax Region',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.taxregion/microsoft-dynamics-365-finance-tax-region-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.taxregion/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.taxregion/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.taxregion/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Trade',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.trade/microsoft-dynamics-365-finance-trade-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.trade/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.trade/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.trade/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Users',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.users/microsoft-dynamics-365-finance-users-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.users/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.users/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.users/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Vendor',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendor/microsoft-dynamics-365-finance-vendor-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendor/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendor/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendor/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Vendor Extended',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorextended/microsoft-dynamics-365-finance-vendor-extended-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorextended/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorextended/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorextended/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Vendor Payment',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorpayment/microsoft-dynamics-365-finance-vendor-payment-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorpayment/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorpayment/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.vendorpayment/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Dynamics 365 Finance Workflow',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/microsoft.dynamics365.finance.workflow/microsoft-dynamics-365-finance-workflow-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.workflow/setup-guide',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.workflow/actions',
-            'connectors/catalog/erp-business/microsoft.dynamics365.finance.workflow/example',
-          ],
-        },
-        {
-          type: 'category',
           label: 'Microsoft OneDrive',
           link: { type: 'doc', id: 'connectors/catalog/storage-file/microsoft.onedrive/microsoft-onedrive-connector-overview' },
           items: [
@@ -1656,6 +1380,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/database/oracledb/setup-guide',
             'connectors/catalog/database/oracledb/actions',
+            'connectors/catalog/database/oracledb/triggers',
             'connectors/catalog/database/oracledb/example',
           ],
         },
@@ -1920,6 +1645,7 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/erp-business/sap.jco/setup-guide',
             'connectors/catalog/erp-business/sap.jco/action-reference',
             'connectors/catalog/erp-business/sap.jco/trigger-reference',
+            'connectors/catalog/erp-business/sap.jco/example',
           ],
         },
         {
@@ -1989,16 +1715,6 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/setup-guide',
             'connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/actions',
             'connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'SAP Sales Pricing Condition Record',
-          link: { type: 'doc', id: 'connectors/catalog/erp-business/sap.s4hana.api_slspricingconditionrecord_srv/sap-sales-pricing-condition-record-connector-overview' },
-          items: [
-            'connectors/catalog/erp-business/sap.s4hana.api_slspricingconditionrecord_srv/setup-guide',
-            'connectors/catalog/erp-business/sap.s4hana.api_slspricingconditionrecord_srv/actions',
-            'connectors/catalog/erp-business/sap.s4hana.api_slspricingconditionrecord_srv/example',
           ],
         },
         {
@@ -2105,6 +1821,17 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SMB',
+          link: { type: 'doc', id: 'connectors/catalog/storage-file/smb/overview' },
+          items: [
+            'connectors/catalog/storage-file/smb/setup-guide',
+            'connectors/catalog/storage-file/smb/action-reference',
+            'connectors/catalog/storage-file/smb/trigger-reference',
+            'connectors/catalog/storage-file/smb/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Snowflake',
           link: { type: 'doc', id: 'connectors/catalog/database/snowflake/connector-overview' },
           items: [
@@ -2122,6 +1849,17 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/messaging/solace/actions',
             'connectors/catalog/messaging/solace/triggers',
             'connectors/catalog/messaging/solace/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Solace (JMS)',
+          link: { type: 'doc', id: 'connectors/catalog/messaging/solace.jms/connector-overview' },
+          items: [
+            'connectors/catalog/messaging/solace.jms/setup-guide',
+            'connectors/catalog/messaging/solace.jms/actions',
+            'connectors/catalog/messaging/solace.jms/triggers',
+            'connectors/catalog/messaging/solace.jms/example',
           ],
         },
         {
@@ -2381,6 +2119,7 @@ const sidebars: SidebarsConfig = {
           label: 'How to Guides',
           items: [
             'guides/howtoguides/sap-b1-low-stock-purchase-automation',
+            'guides/howtoguides/s3-events-via-sqs-listener',
           ],
         },
         // Migration Guides
@@ -2639,10 +2378,10 @@ const sidebars: SidebarsConfig = {
             {
               type: 'category',
               label: 'Private Data Plane',
-              link: { type: 'doc', id: 'manage/cloud/private-date-plane/overview' },
+              link: { type: 'doc', id: 'manage/cloud/private-data-plane/overview' },
               items: [
-                'manage/cloud/private-date-plane/management-models',
-                'manage/cloud/private-date-plane/security-levels',
+                'manage/cloud/private-data-plane/management-models',
+                'manage/cloud/private-data-plane/security-levels',
               ],
             },
           ],
@@ -2757,6 +2496,7 @@ const sidebars: SidebarsConfig = {
             'reference/data-formats/protocol-buffers',
             'reference/data-formats/toml',
             'reference/data-formats/xml',
+            'reference/data-formats/xlsx',
             'reference/data-formats/yaml',
           ],
         },
