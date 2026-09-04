@@ -39,7 +39,7 @@ export default function ConnectorCatalog({ connectors, categories }: Props) {
 
   const resultCount = filtered.length;
 
-  const catalogBase = useBaseUrl('/connectors/catalog/');
+  const catalogBase = useBaseUrl('/catalog/');
 
   return (
     <div className={styles.catalog}>

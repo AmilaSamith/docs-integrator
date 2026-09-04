@@ -5,6 +5,12 @@ import * as path from 'path';
  * Scans a connector directory for a versions.json file and returns hidden
  * sidebar entries for all versioned pages (non-latest versions).
  *
+ * `connectorPath` is always the full physical path relative to `docs/`
+ * (e.g. 'connectors/catalog/communication/twilio'), since this site's docs
+ * plugin is scoped to `path: 'docs/connectors'`. The leading `connectors/`
+ * segment is stripped from the emitted sidebar `id`s, which must be
+ * relative to that scoped root, not the physical `docs/` directory.
+ *
  * Usage in the sidebar:
  *   ...connectorVersionedDocs('connectors/catalog/communication/twilio')
  */
@@ -12,6 +18,7 @@ export function connectorVersionedDocs(connectorPath: string) {
   const docsDir = path.resolve(__dirname, '../../docs');
   const connectorDir = path.join(docsDir, connectorPath);
   const versionsFile = path.join(connectorDir, 'versions.json');
+  const idPath = connectorPath.replace(/^connectors\//, '');
 
   if (!fs.existsSync(versionsFile)) return [];
 
@@ -29,7 +36,7 @@ export function connectorVersionedDocs(connectorPath: string) {
       if (shared.includes(slug)) continue;
       items.push({
         type: 'doc',
-        id: `${connectorPath}/${version}/${slug}`,
+        id: `${idPath}/${version}/${slug}`,
         className: 'hidden',
       });
     }

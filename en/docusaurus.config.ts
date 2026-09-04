@@ -3,8 +3,8 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
-  tagline: 'Build integrations with low-code simplicity and pro-code power',
+  title: 'WSO2 Connectors',
+  tagline: 'Pre-built connectors for the WSO2 Integration Platform',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -60,9 +60,10 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: 'docs/connectors',
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/wso2/docs-integrator/tree/main/en/',
+          editUrl: 'https://github.com/wso2/docs-integrator/tree/wso2-connectors/en/',
           showLastUpdateTime: true,
         },
         blog: false,
@@ -107,30 +108,11 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Get started',
+          title: 'Connectors',
           items: [
-            { label: 'Overview', to: '/get-started/introduction' },
-            { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/get-started/build-automation' },
-          ],
-        },
-        {
-          title: 'Develop',
-          items: [
-            { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
-            { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/develop/test/built-in-try-it-tool' },
-            { label: 'Connectors', to: '/connectors/overview' },
-            { label: 'AI Integrations', to: '/genai/overview' },
-          ],
-        },
-        {
-          title: 'Deploy',
-          items: [
-            { label: 'Docker and Kubernetes', to: '/deploy/self-hosted/containerized-deployment' },
-            { label: 'CI/CD', to: '/deploy-operate/cicd/github-actions' },
-            { label: 'Observe', to: '/deploy-operate/observe/observability-overview' },
-            { label: 'Secure', to: '/deploy-operate/secure/authentication' },
+            { label: 'Overview', to: '/overview' },
+            { label: 'Catalog', to: '/catalog' },
+            { label: 'Build your own', to: '/build-your-own/build-own' },
           ],
         },
         {
