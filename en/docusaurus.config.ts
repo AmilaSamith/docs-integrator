@@ -43,7 +43,6 @@ const config: Config = {
   },
 
   plugins: [
-    './src/plugins/connector-versions',
     './plugins/docusaurus-plugin-markdown-export',
     './src/plugins/expose-sidebars',
   ],
