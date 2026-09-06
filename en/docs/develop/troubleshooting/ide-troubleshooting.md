@@ -54,4 +54,4 @@ If the Ballerina channel doesn't show any error, still file the issue. Include t
 
 - [Errors and stack traces](errors-and-stack-traces.md) - interpret the error text you captured from the Ballerina output channel.
 - [Logging](logging.md) - add log statements once the IDE is working again to trace what the integration does at runtime.
-- [Editor debugging](../debugging/editor.md) - set breakpoints and step through the integration after the IDE issue is resolved.
+- [Editor debugging](../../editor/debugging/editor.md) - set breakpoints and step through the integration after the IDE issue is resolved.

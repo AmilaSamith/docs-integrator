@@ -1,24 +1,21 @@
 ---
-title: "Manage"
-description: "Overview of the options available for managing deployed WSO2 Integrator integrations."
-keywords: [wso2 integrator, manage, control plane, integration control plane, wso2 cloud]
+title: "WSO2 Cloud - Integration Platform"
+description: "Manage integrations deployed to WSO2 Cloud - Integration Platform, including lifecycle operations, CI/CD, configuration, observability, and access control."
+keywords: [wso2 integrator, wso2 cloud, integration platform, manage, overview]
 ---
 
-# Manage
+# WSO2 Cloud - Integration Platform
 
-Once your integrations are deployed, you need a control plane to monitor their runtime state, manage their lifecycle, and control access. WSO2 Integrator supports two control planes: **WSO2 Cloud - Integration Platform** and the **Integration Control Plane (ICP)**.
+WSO2 Cloud - Integration Platform is a managed cloud environment for running integrations developed with WSO2 Integrator. Once you push an integration to the cloud, the console gives you full control over how it runs: you can track build and deployment status, promote integrations across environments, configure runtime values and security, monitor logs and metrics, and control who has access, all without managing infrastructure.
 
-The right choice depends on whether you want a fully managed service or full control over your own infrastructure. See [Choosing a control plane](./choosing-a-control-plane.md) to compare them and pick the one that fits your requirements.
+## Management areas
 
-## In this section
-
-| | Description |
+| Area | Description |
 |---|---|
-| [WSO2 Cloud - Integration Platform](./cloud/overview.md) | A fully managed SaaS control plane. Deploy integrations, configure environments, monitor with built-in observability, and control access, without managing any infrastructure. |
-| [Integration Control Plane (ICP)](./icp/integration-control-plane.md) | A self-hosted management server for on-premises, private cloud, or air-gapped deployments. Connects to your WSO2 Integrator runtimes and provides a centralized dashboard and API. |
-
-## What's next
-
-- [Choosing a control plane](./choosing-a-control-plane.md) — compare WSO2 Cloud and ICP to find the right fit
-- [WSO2 Cloud - Integration Platform](./cloud/overview.md) — fully managed control plane overview
-- [Integration Control Plane (ICP)](./icp/integration-control-plane.md) — self-hosted control plane overview
+| [Integrations](./integrations.md) | View build and deployment status, and manage the integration lifecycle, including redeployment, schedules, and stopping. |
+| [Projects](./projects.md) | Create, view, edit, and remove projects within your organization. |
+| [CI/CD](./cicd/overview.md) | Connect a Git repository so that every commit triggers a build and deployment automatically. Configure deployment pipelines to control how integrations move from development to production. |
+| [Environments](./environments/overview.md) | Promote integrations across environments with optional approval gates. Override configuration values at each stage without changing integration code. |
+| [Configurations](./configurations/overview.md) | Set runtime values and secrets, control endpoint visibility and security, configure build behavior, and tune autoscaling per environment. |
+| [Observability](./observability/overview.md) | Monitor request throughput, latencies, and resource usage. Search and filter runtime logs, and configure anomaly detection alerts. |
+| [Users and access](./users-and-access/overview.md) | Manage user groups and roles, control access at the organization or project level, and configure enterprise login with an external identity provider. |

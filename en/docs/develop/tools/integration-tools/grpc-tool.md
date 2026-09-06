@@ -360,4 +360,4 @@ bal grpc --input <proto-file> [options]
 
 - [OpenAPI Tool](openapi-tool.md) — Generate REST services and clients
 - [WSDL Tool](wsdl-tool.md) — Generate SOAP clients from WSDL files
-- [Error Handling](../../understand-ide/editors/flow-diagram-editor/error-handling.md) — Handle gRPC errors and deadlines
+- [Error Handling](../../../editor/editors/flow-diagram-editor/error-handling.md) — Handle gRPC errors and deadlines

@@ -44,7 +44,7 @@ By default, the **Create within a project** checkbox is enabled. In this mode, W
 3. Select the directory using **Browse**.
 4. Click **Create Integration**.
 
-WSO2 Integrator generates the project structure and opens the [project view](../understand-ide/views/project-view.md). The file structure for a project contains a root `Ballerina.toml` and a subdirectory for each integration package:
+WSO2 Integrator generates the project structure and opens the [project view](../../editor/views/project-view.md). The file structure for a project contains a root `Ballerina.toml` and a subdirectory for each integration package:
 
 ```
 project-name/
@@ -75,7 +75,7 @@ Uncheck the **Create within a project** checkbox to create a single integration 
 3. Select the directory using **Browse**.
 4. Click **Create Integration**.
 
-WSO2 Integrator generates the integration files and opens the [integration view](../understand-ide/views/integration-view.md). The file structure for a standalone integration contains the Ballerina source files directly:
+WSO2 Integrator generates the integration files and opens the [integration view](../../editor/views/integration-view.md). The file structure for a standalone integration contains the Ballerina source files directly:
 
 ```
 integration-name/
@@ -124,5 +124,5 @@ The integration is generated as a Ballerina package. Use these fields to specify
 
 - [Open an existing integration](open-existing-integration.md) — Work with projects already on disk
 - [Explore sample integrations](explore-sample-integrations.md) — Browse and learn from built-in examples
-- [Project view](../understand-ide/views/project-view.md) — Manage multi-package workspaces
+- [Project view](../../editor/views/project-view.md) — Manage multi-package workspaces
 - [Integration artifacts](../integration-artifacts/integration-artifacts.md) — Understand the artifact types you can create

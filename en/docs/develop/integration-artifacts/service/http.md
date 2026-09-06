@@ -653,4 +653,4 @@ service / on new http:Listener(9090) {
 
 - [Connections](../supporting/connections.md) — configure HTTP client connections to call external services
 - [Data Mapper](../supporting/data-mapper/data-mapper.md) — transform request/response payloads between formats
-- [Try It for HTTP](../../test/try-it-http.md) — send requests to your HTTP service from the built-in Try It panel
+- [Try It for HTTP](../../../test/try-it-http.md) — send requests to your HTTP service from the built-in Try It panel

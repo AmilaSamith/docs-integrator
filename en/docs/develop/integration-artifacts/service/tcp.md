@@ -358,4 +358,4 @@ service class TcpConnectionService {
 - [HTTP service](http.md) — build REST endpoints for request/response integrations
 - [WebSocket service](websocket.md) — handle full-duplex connections over HTTP upgrade
 - [Connections](../supporting/connections.md) — configure TCP client connections to call external services
-- [Mocking](../../test/mocking.md) — replace TCP clients with controlled stubs in tests
+- [Mocking](../../../test/mocking.md) — replace TCP clients with controlled stubs in tests

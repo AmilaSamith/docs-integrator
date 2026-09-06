@@ -19,13 +19,13 @@ The pattern is implemented by placing a filtering construct at the point where t
 
 ## Predicate-based filtering
 
-Use predicate-based filtering with [if/else statements](../../develop/understand-ide/editors/flow-diagram-editor/control.md#if) when each message carries the fields needed for a single boolean decision, such as priority, source, header, or status. The accepted path contains the forwarding or processing action. The rejected path does nothing or handles the rejection separately.
+Use predicate-based filtering with [if/else statements](../../editor/editors/flow-diagram-editor/control.md#if) when each message carries the fields needed for a single boolean decision, such as priority, source, header, or status. The accepted path contains the forwarding or processing action. The rejected path does nothing or handles the rejection separately.
 
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Open the flow and [add a step](../../develop/understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
-2. Add an [If node](../../develop/understand-ide/editors/flow-diagram-editor/control.md#if) at the point where the message has enough data for the decision.
+1. Open the flow and [add a step](../../editor/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
+2. Add an [If node](../../editor/editors/flow-diagram-editor/control.md#if) at the point where the message has enough data for the decision.
 3. Set the condition to `message.priority == HIGH_PRIORITY`.
 4. Add the accepted action inside the matching branch.
 5. Leave the other branch empty when unmatched messages should be discarded.
@@ -76,7 +76,7 @@ Use collection-level filtering with [query expressions](../../reference/language
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Open the flow and [add a step](../../develop/understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
+1. Open the flow and [add a step](../../editor/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
 2. Add a [Map Data or Declare Variable step](../../reference/language/query-expressions.md).
 3. Set the output type to the accepted collection type, such as `Message[]`.
 4. Enter a query expression with a `where` clause for the filter predicate.

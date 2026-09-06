@@ -60,7 +60,7 @@ An [automation](../../develop/integration-artifacts/automation.md#creating-an-au
 1. Create a new integration named `LowStockPurchaseAutomation` in a project named `sap-b1-low-stock-automation`.
 2. Add an **Automation** artifact to the integration.
 
-You land in the [flow editor](../../develop/understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md) with a single **Start** node, the entry point the scheduler will call.
+You land in the [flow editor](../../editor/editors/flow-diagram-editor/flow-diagram-editor.md) with a single **Start** node, the entry point the scheduler will call.
 
 <ThemedImage
     alt="Create Integration dialog with the integration name LowStockPurchaseAutomation and project name sap-b1-low-stock-automation filled in"
@@ -105,7 +105,7 @@ The **Current Server** field identifies the SAP HANA or SQL Server instance behi
     | Password | Your SAP Business One **Password** |
 
     :::tip Best practice
-    Don't hardcode credentials into the connection. Click each field and select **Configurables** in the [Expression editor](../../develop/understand-ide/editors/expression-editor.md)'s helper pane, then click **New Configurable** and set up a configurable, so the value is supplied at runtime instead of stored in the flow.
+    Don't hardcode credentials into the connection. Click each field and select **Configurables** in the [Expression editor](../../editor/editors/expression-editor.md)'s helper pane, then click **New Configurable** and set up a configurable, so the value is supplied at runtime instead of stored in the flow.
     :::
 
     <ThemedImage
@@ -146,7 +146,7 @@ Your operation should match the checkpoint below.
 
 Exit early when there is nothing to reorder, so an empty run stays cheap and quiet.
 
-1. Add a [**Declare Variable**](../../develop/understand-ide/editors/flow-diagram-editor/statement.md#declare-variable) node after **List Items** that assigns `lowStockResult.value ?: []` to a variable named `lowStockItems` (type `Item[]`).
+1. Add a [**Declare Variable**](../../editor/editors/flow-diagram-editor/statement.md#declare-variable) node after **List Items** that assigns `lowStockResult.value ?: []` to a variable named `lowStockItems` (type `Item[]`).
 
     <ThemedImage
         alt="Declare Variable panel creating lowStockItems with type inventory:Item[] and expression lowStockResult.value ?: []"
@@ -156,9 +156,9 @@ Exit early when there is nothing to reorder, so an empty run stays cheap and qui
         }}
     />
 
-2. Add an [**If**](../../develop/understand-ide/editors/flow-diagram-editor/control.md#if) node after it with the condition `lowStockItems.length() == 0`.
+2. Add an [**If**](../../editor/editors/flow-diagram-editor/control.md#if) node after it with the condition `lowStockItems.length() == 0`.
 3. Inside the branch, add a **Log Info** node with the message `"No low-stock items to reorder."`
-4. After the log, add a [**Return**](../../develop/understand-ide/editors/flow-diagram-editor/control.md#return) node with no value.
+4. After the log, add a [**Return**](../../editor/editors/flow-diagram-editor/control.md#return) node with no value.
 
 Your flow should now branch and return early when nothing is low.
 
@@ -190,12 +190,12 @@ To reach your mail server, add an [**Email Smtp**](../../connectors/catalog/buil
 
 ### Build the loop
 
-1. Add a [**Foreach**](../../develop/understand-ide/editors/flow-diagram-editor/control.md#foreach) node after the **If**, looping over `lowStockItems` with the item variable `lowStockItem` (type `Item`).
+1. Add a [**Foreach**](../../editor/editors/flow-diagram-editor/control.md#foreach) node after the **If**, looping over `lowStockItems` with the item variable `lowStockItem` (type `Item`).
 2. Inside the loop, add the `purchasingClient` **Create Purchase Requests** operation, and set **Result** to `purchaseRequest`. Configure the following fields on the **Document** record:
 
     | Field | Value |
     | --- | --- |
-    | DocumentLines | For **ItemCode**, open the field's [Expression editor](../../develop/understand-ide/editors/expression-editor.md) and select `lowStockItem` → `ItemCode` from the **Variables** list in the helper pane. Set **Quantity** to `50`. |
+    | DocumentLines | For **ItemCode**, open the field's [Expression editor](../../editor/editors/expression-editor.md) and select `lowStockItem` → `ItemCode` from the **Variables** list in the helper pane. Set **Quantity** to `50`. |
     | RequesterEmail | A valid email address, for example `"requester@example.com"` |
     | RequriedDate | A required-by date, for example `"2026-07-13"` |
     | BPL_IDAssignedToInvoice | Required only when your company has multiple branches (Business Places) enabled; the `BPLID` of a branch your user is authorized for |
@@ -253,7 +253,7 @@ The loop now raises a purchase request for each low-stock item, emails procureme
 
 ## Step 6: Log a summary
 
-After the **Foreach** node, add a final [**Log Info**](../../develop/understand-ide/editors/flow-diagram-editor/logging.md#log-info) node with the message `"Done - reordered low-stock items"`.
+After the **Foreach** node, add a final [**Log Info**](../../editor/editors/flow-diagram-editor/logging.md#log-info) node with the message `"Done - reordered low-stock items"`.
 
 Your flow is complete: it reads the low-stock items, exits early when there are none, raises a purchase request and notifies procurement for each one, and reports a summary.
 
@@ -382,5 +382,5 @@ The `inventory:Client` and `purchasing:Client` are generated when you add the co
 
 Now that the automation works, you can take it further:
 
-- **Deploy and schedule it.** Ship it to [WSO2 Cloud](../../deploy/cloud/overview.md), a [Docker container](../../deploy/self-hosted/containerized-deployment.md#docker-deployment), [Kubernetes](../../deploy/self-hosted/containerized-deployment.md#kubernetes-deployment), or a [virtual machine](../../deploy/self-hosted/vm-deployment.md), then schedule periodic runs there (a `cron` entry, a Kubernetes `CronJob`, a host scheduler, or the WSO2 Integration Platform).
+- **Deploy and schedule it.** Ship it to [WSO2 Cloud](../../deploy/cloud/overview.md), a [Docker container](../../deploy/containerized-deployment.md#docker-deployment), [Kubernetes](../../deploy/containerized-deployment.md#kubernetes-deployment), or a [virtual machine](../../deploy/vm-deployment.md), then schedule periodic runs there (a `cron` entry, a Kubernetes `CronJob`, a host scheduler, or the WSO2 Integration Platform).
 - **Richen the notification.** The [Email connector](../../connectors/catalog/built-in/email/email.md) also supports HTML bodies, CC/BCC, and attachments, so procurement's plain note can become a formatted daily digest listing every item raised in that run.

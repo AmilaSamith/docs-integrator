@@ -15,7 +15,7 @@ If your code still lives on your machine, you're in **Develop**. Once you push i
 :::
 
 :::info AI split
-Tools that help **you** code faster (Copilot, AI test generation, AI-assisted data mapping) live here. Building **AI-powered** integrations (agents, RAG, MCP) belongs in [GenAI](../genai/overview.md).
+Tools that help **you** code faster (Copilot, AI test generation, AI-assisted data mapping) live here. Building **AI-powered** integrations (agents, RAG, MCP) belongs in [GenAI](ai/overview.md).
 :::
 
 ## Create and organize
@@ -23,14 +23,14 @@ Tools that help **you** code faster (Copilot, AI test generation, AI-assisted da
 | | |
 |---|---|
 | **[Create integrations](create-integrations/create-a-new-integration.md)** | Start new projects from the WSO2 Integrator IDE or `bal new`, explore samples, build libraries, or migrate from MuleSoft, TIBCO, and WSO2 MI |
-| **[Understand the IDE](understand-ide/understand-ide.md)** | Get to know the Integrator app, its views, and its editors |
+| **[Understand the IDE](../editor/index.md)** | Get to know the Integrator app, its views, and its editors |
 
 ## Build
 
 | | |
 |---|---|
 | **[Integration artifacts](integration-artifacts/integration-artifacts.md)** | Automations, services (HTTP, GraphQL, gRPC, TCP, WebSub), event handlers (Kafka, RabbitMQ, MQTT, Salesforce, GitHub), file handlers, and supporting artifacts |
-| **[Design integration logic](understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md)** | Visual designer, connections, control flow, error handling, expressions, query expressions, and Ballerina pro-code |
+| **[Design integration logic](../editor/editors/flow-diagram-editor/flow-diagram-editor.md)** | Visual designer, connections, control flow, error handling, expressions, query expressions, and Ballerina pro-code |
 | **[Transform](integration-artifacts/supporting/data-mapper/data-mapper.md)** | Visual Data Mapper together with JSON, XML, CSV, EDI, and YAML/TOML processing |
 
 ## Try, test, and debug
@@ -38,7 +38,7 @@ Tools that help **you** code faster (Copilot, AI test generation, AI-assisted da
 | | |
 |---|---|
 | **[Try and test](test/built-in-try-it-tool.md)** | Built-in Try-It tool, unit testing, data-driven tests, mocking, code coverage, and AI-generated test cases |
-| **[Debug](debugging/editor.md)** | Editor debugging, remote debugging, strand dumps, and performance profiling |
+| **[Debug](../editor/debugging/editor.md)** | Editor debugging, remote debugging, strand dumps, and performance profiling |
 
 ## Tools
 
@@ -52,5 +52,5 @@ Tools that help **you** code faster (Copilot, AI test generation, AI-assisted da
 ## What's next
 
 - [Create a new integration](create-integrations/create-a-new-integration.md) — Start a project in the WSO2 Integrator IDE or from the CLI
-- [Design integration logic](understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md) — Wire up the flow between request and response
+- [Design integration logic](../editor/editors/flow-diagram-editor/flow-diagram-editor.md) — Wire up the flow between request and response
 - [Deploy and operate](../deploy/overview.md) — Ship your integration once it's ready

@@ -9,9 +9,9 @@ import TabItem from '@theme/TabItem';
 
 # Logging
 
-Logs are the everyday tool for tracing what an integration did and diagnosing what went wrong. Reach for them when you want a persistent record across runs, when the issue only reproduces in a long-running deployment, or when [editor debugging](../debugging/editor.md) is too heavyweight for the question you have.
+Logs are the everyday tool for tracing what an integration did and diagnosing what went wrong. Reach for them when you want a persistent record across runs, when the issue only reproduces in a long-running deployment, or when [editor debugging](../../editor/debugging/editor.md) is too heavyweight for the question you have.
 
-WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Error**, and **Debug**. For the field-by-field reference of the Log nodes, see [Logging in the flow diagram editor](../understand-ide/editors/flow-diagram-editor/logging.md). For runtime configuration (log level, output format, file rotation, aggregation), see [Logging & structured logs](/deploy-operate/observe/logging-overview).
+WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Error**, and **Debug**. For the field-by-field reference of the Log nodes, see [Logging in the flow diagram editor](../../editor/editors/flow-diagram-editor/logging.md). For runtime configuration (log level, output format, file rotation, aggregation), see [Logging & structured logs](/operate/logging-overview).
 
 ## Add a log statement
 
@@ -24,7 +24,7 @@ WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Err
 
 ![Log Info form with Msg field](/img/develop/flow-design-elements/log-info-form.png)
 
-See [Logging in the flow diagram editor](../understand-ide/editors/flow-diagram-editor/logging.md) for the full node and form reference.
+See [Logging in the flow diagram editor](../../editor/editors/flow-diagram-editor/logging.md) for the full node and form reference.
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -142,7 +142,7 @@ level = "DEBUG"
 </TabItem>
 </Tabs>
 
-For module-specific levels, file rotation, and the JSON output format, see [Logging & structured logs](/deploy-operate/observe/logging-overview).
+For module-specific levels, file rotation, and the JSON output format, see [Logging & structured logs](/operate/logging-overview).
 
 ## Reuse context across calls with child loggers
 
@@ -154,7 +154,7 @@ log:Logger requestLogger = check rootLogger.withContext(userId = userId, request
 requestLogger.printInfo("User permissions validated successfully");
 ```
 
-Each entry includes `requestId` automatically. The visual designer reaches the same functions through the **Show more functions** entry on the node panel. See [Show more functions](../understand-ide/editors/flow-diagram-editor/show-more-functions.md).
+Each entry includes `requestId` automatically. The visual designer reaches the same functions through the **Show more functions** entry on the node panel. See [Show more functions](../../editor/editors/flow-diagram-editor/show-more-functions.md).
 
 ## Custom loggers
 
@@ -221,7 +221,7 @@ Ballerina libraries emit their own logs at the module level. The most common one
 accessLogConfig.console = true
 ```
 
-Other modules (such as `ballerina/sql` or `ballerina/grpc`) emit logs under their own module names. To raise or lower their verbosity independently of your integration code, configure module-specific levels as described in [Logging & structured logs](/deploy-operate/observe/logging-overview).
+Other modules (such as `ballerina/sql` or `ballerina/grpc`) emit logs under their own module names. To raise or lower their verbosity independently of your integration code, configure module-specific levels as described in [Logging & structured logs](/operate/logging-overview).
 
 ## What's next
 

@@ -124,7 +124,7 @@ For the complete list of available connectors, see the [Connector Catalog](../..
 
 ## What's next
 
-- [Connections in the flow diagram editor](../../understand-ide/editors/flow-diagram-editor/connections.md) — Use connections to invoke actions inside a flow.
+- [Connections in the flow diagram editor](../../../editor/editors/flow-diagram-editor/connections.md) — Use connections to invoke actions inside a flow.
 - [Types](./types.md) — Define shared data structures used by your connections.
 - [Configurations](./configurations.md) — Externalize values such as endpoints and credentials.
 - [Functions](./functions.md) — Encapsulate reusable logic in Ballerina functions.

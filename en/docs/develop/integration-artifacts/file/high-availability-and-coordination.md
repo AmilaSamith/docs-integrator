@@ -160,4 +160,4 @@ The coordination database sits on the file-processing data path: its availabilit
 ## What's next
 
 - [FTP / SFTP](ftp-sftp.md) — service, listener, and file-handler reference
-- [Scaling and high availability](../../../deploy-operate/deploy/scaling-high-availability.md) — deployment-level scaling and HA strategies
+- [Scaling and high availability](../../../deploy/scaling-high-availability.md) — deployment-level scaling and HA strategies
