@@ -103,9 +103,9 @@ const config: Config = {
         {
           title: 'Get started',
           items: [
-            { label: 'Overview', to: '/get-started/introduction' },
+            { label: 'Overview', to: '/platform-overview' },
             { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/get-started/build-automation' },
+            { label: 'Quick starts', to: '/develop/how-to/build-automation' },
           ],
         },
         {
@@ -113,18 +113,16 @@ const config: Config = {
           items: [
             { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
             { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/develop/test/built-in-try-it-tool' },
-            { label: 'Connectors', to: '/connectors/overview' },
-            { label: 'AI Integrations', to: '/genai/overview' },
+            { label: 'Test', to: '/test/built-in-try-it-tool' },
+            { label: 'AI Integrations', to: '/develop/ai/overview' },
           ],
         },
         {
           title: 'Deploy',
           items: [
-            { label: 'Docker and Kubernetes', to: '/deploy/self-hosted/containerized-deployment' },
-            { label: 'CI/CD', to: '/deploy-operate/cicd/github-actions' },
-            { label: 'Observe', to: '/deploy-operate/observe/observability-overview' },
-            { label: 'Secure', to: '/deploy-operate/secure/authentication' },
+            { label: 'CI/CD', to: '/deploy/cicd/github-actions' },
+            { label: 'Observe', to: '/operate/observability-overview' },
+            { label: 'Secure', to: '/deploy/secure/authentication' },
           ],
         },
         sharedCommunityFooterLinks,
