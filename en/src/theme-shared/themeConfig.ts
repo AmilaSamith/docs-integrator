@@ -63,56 +63,11 @@ export const sharedPrism = {
 
 export const sharedImage = 'img/logo.svg';
 
-type ProductKey = 'cloud' | 'integrator' | 'connectors';
-
-/**
- * The three site branches that make up the WSO2 Integration Platform docs,
- * keyed by product. Root-relative hrefs (not absolute wso2.com URLs) so
- * these resolve correctly both in production, where all three are merged
- * under one domain by the publish workflows' destination_dir, and in a
- * local preview that replicates the same path prefixes.
- */
-const PRODUCTS: Record<ProductKey, { label: string; href: string }> = {
-  cloud: { label: 'WSO2 Cloud', href: '/integration-platform/docs/' },
-  integrator: { label: 'WSO2 Integrator', href: '/integration-platform/docs/integrator/' },
-  connectors: { label: 'Connectors', href: '/integration-platform/docs/connectors/' },
-};
-
-/**
- * Builds the navbar dropdown that lets readers jump between the three
- * product sites. `current` is per-branch (each docusaurus.config.ts calls
- * this with its own product key), so the dropdown's label always names the
- * site you're already on, and its items list only the other two.
- *
- * Each item's target belongs to a completely separate Docusaurus build
- * (own JS bundle, own router), even though in production they're merged
- * under one domain via the publish workflows' destination_dir. A plain
- * root-relative href (e.g. `/integration-platform/docs/integrator/`) gets
- * treated as "internal" by Docusaurus's isInternalUrl check purely
- * because it has no protocol -- same-origin isn't actually checked -- so
- * clicking it does a client-side React Router navigation instead of a
- * real page load, which 404s because that route doesn't exist in the
- * current site's own bundle (confirmed: reproduced locally, only fixed by
- * a manual refresh forcing a real request).
- *
- * The fix is Docusaurus's own documented escape hatch: a `pathname://`
- * prefix makes isInternalUrl treat the link as external (real <a> tag, no
- * history.push()), and `autoAddBaseUrl: false` stops it from prepending
- * the *current* site's own baseUrl on top of the already-complete path
- * (which would double up or misfire depending on which site you're
- * navigating from -- verified against Docusaurus's addBaseUrl source).
- */
-export function sharedProductDropdown(current: ProductKey) {
-  return {
-    type: 'dropdown' as const,
-    label: PRODUCTS[current].label,
-    position: 'left' as const,
-    items: (Object.keys(PRODUCTS) as ProductKey[])
-      .filter((key) => key !== current)
-      .map((key) => ({
-        label: PRODUCTS[key].label,
-        href: `pathname://${PRODUCTS[key].href}`,
-        autoAddBaseUrl: false,
-      })),
-  };
-}
+// The product-switcher dropdown used to live here as a navbar item
+// (sharedProductDropdown). It's now a pill row above the sidebar instead
+// (see src/components/SidebarProductHeader) to match the reference
+// pattern from reactnative.dev/docs -- no navbar duplicate. That
+// component keeps its own copy of the product list (label/href) since
+// it's a client-side React component and this file is TS-only
+// config-time code; keep the two in sync by hand if the product list
+// ever changes.
