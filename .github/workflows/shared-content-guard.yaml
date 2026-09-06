@@ -1,0 +1,45 @@
+name: Shared content guard
+
+# Phase 8 -- rejects any PR that edits a shared/synced directory directly
+# on this branch. Shared content (platform-overview, editor, develop,
+# test, customize, migrate, guides, plus get-started/concepts/core.md and
+# reference/appendix/glossary.md) has one source of truth --
+# wso2-integrator -- and flows here only via sync-content-to-saas.yaml's
+# bot PR. A direct edit here would silently diverge from that source and
+# get clobbered by the next sync.
+#
+# The sync bot's own PRs are exempt (matched by head branch name prefix,
+# set in sync-content-to-saas.yaml) -- everything else touching a shared
+# path fails this check.
+#
+# Targets PRs against `saas`, not `main`, matching
+# sync-content-to-saas.yaml -- see that workflow's header comment for
+# why, and repoint both at `main` together once saas is force-pushed
+# there.
+
+on:
+  pull_request:
+    branches: [saas]
+    paths:
+      - 'en/docs/platform-overview/**'
+      - 'en/docs/editor/**'
+      - 'en/docs/develop/**'
+      - 'en/docs/test/**'
+      - 'en/docs/customize/**'
+      - 'en/docs/migrate/**'
+      - 'en/docs/guides/**'
+      - 'en/docs/get-started/concepts/core.md'
+      - 'en/docs/reference/appendix/glossary.md'
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check whether this is the sync bot's own PR
+        run: |
+          if [[ "${{ github.head_ref }}" == sync-content-saas-* ]]; then
+            echo "Sync bot PR, allowed."
+            exit 0
+          fi
+          echo "::error::This is shared content synced from wso2-integrator. Send your PR there instead."
+          exit 1
