@@ -12,7 +12,8 @@
     "serve": "docusaurus serve en",
     "write-translations": "docusaurus write-translations en",
     "write-heading-ids": "docusaurus write-heading-ids en",
-    "typecheck": "tsc -p en"
+    "typecheck": "tsc -p en",
+    "preview:all": "node scripts/preview-all-sites.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
