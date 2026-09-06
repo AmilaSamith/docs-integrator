@@ -1,8 +1,9 @@
 .header {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  padding: 0.85rem 0.75rem 0.6rem;
+  padding: 0.6rem var(--ifm-navbar-padding-horizontal);
 }
 
 .pillWrapper {

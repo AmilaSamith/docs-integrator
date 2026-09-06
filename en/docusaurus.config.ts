@@ -7,6 +7,11 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityFooterLinks,
+  sharedCommunityDropdown,
+  sharedGithubNavbarItem,
+  sharedBlogNavbarItem,
+  sharedContributeNavbarItem,
+  sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
 } from './src/theme-shared/themeConfig';
@@ -90,11 +95,14 @@ const config: Config = {
     navbar: {
       logo: sharedNavbarLogo,
       items: [
-        {
-          href: 'https://github.com/wso2/docs-integrator',
-          label: 'GitHub',
-          position: 'right',
-        }
+        // No self-link to Connectors here -- this is the connectors site.
+        // No release-notes.md exists on this branch, so Releases points
+        // at GitHub's releases list instead (see sharedReleasesNavbarItem).
+        sharedReleasesNavbarItem('https://github.com/wso2/docs-integrator/releases'),
+        sharedContributeNavbarItem('wso2-connectors'),
+        sharedCommunityDropdown,
+        sharedBlogNavbarItem,
+        sharedGithubNavbarItem,
       ]
     },
     footer: {
