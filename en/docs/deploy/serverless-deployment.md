@@ -257,4 +257,3 @@ The compiler auto-detects the serverless platform and generates the appropriate 
 
 - [GraalVM Native Images](graalvm-native-images.md) — Compile to native binaries for minimal cold start
 - [Managing Configurations](managing-configurations.md) — Environment-specific configuration strategies
-- [Containerized Deployment](../../deploy/self-hosted/containerized-deployment.md) — Deploy as containers to Kubernetes or Docker

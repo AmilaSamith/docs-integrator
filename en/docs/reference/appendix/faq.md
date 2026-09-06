@@ -138,20 +138,9 @@ WSO2 Integrator supports observability through:
 - **Metrics:** Prometheus-compatible metrics exposed at a configurable endpoint
 - **Distributed tracing:** Jaeger-compatible traces for request flow analysis
 - **Logging:** Structured logging via `ballerina/log` with configurable levels
-- **ICP Dashboard:** Built-in monitoring UI for integration health and performance
+- **WSO2 Cloud console:** Built-in dashboards, alerting, live logs, and metrics for integrations deployed to WSO2 Cloud
 
-Enable observability by setting `observabilityIncluded = true` in `Ballerina.toml` under `[build-options]`.
-
-### What is the Integration Control Plane (ICP)?
-
-The ICP is a monitoring and management dashboard for deployed integrations. It provides:
-
-- Real-time metrics (request count, error rate, latency percentiles)
-- Log aggregation and search
-- Artifact discovery (services, listeners, connectors)
-- Integration lifecycle management (activate, deactivate, restart)
-
-See the [ICP API Reference](../api/icp.md) for programmatic access.
+Enable observability by setting `observabilityIncluded = true` in `Ballerina.toml` under `[build-options]`. See [Observability](../../manage/observability/overview.md) for the console-based monitoring experience on WSO2 Cloud.
 
 ## Migration
 

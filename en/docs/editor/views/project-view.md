@@ -36,6 +36,8 @@ Click the **+ Add** button at the top of the canvas to add a new integration or 
 
 ## Deployment options panel
 
+{/* NOTE: this branch's copy intentionally lists only Deploy to WSO2 Cloud, omitting Containerized/VM/ICP from wso2-integrator's copy -- those targets don't exist for WSO2 Cloud users. Don't overwrite this from a sync without re-checking. */}
+
 The deployment options panel appears on the right sidebar and provides shortcuts to deploy your integrations to different environments.
 
 ![Deployment options](/img/develop/understand-ide/views/project-view/deployment-options.png)
@@ -43,11 +45,6 @@ The deployment options panel appears on the right sidebar and provides shortcuts
 | Option | Target |
 |---|---|
 | [**Deploy to WSO2 Cloud**](../../deploy/deploy-to-cloud-overview.md) | Fully managed cloud platform for hosting and running integrations. |
-| [**Containerized Deployment**](../../deploy/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
-| [**VM Deployment**](../../deploy/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
-| [**Integration Control Plane (ICP)**](../../icp/index.md) | Monitor and manage running integrations from a centralized dashboard. |
-
-At the project level, click **Enable ICP for all integrations** to activate ICP monitoring for every integration in the project at once.
 
 ## README section
 

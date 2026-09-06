@@ -60,17 +60,6 @@ port = 3306
 user = "admin"
 ```
 
-For ICP runtime bridge configuration (the `wso2/icp.runtime.bridge` package used when connecting to ICP):
-
-```toml
-[wso2.icp.runtime.bridge]
-environment = "dev"
-project     = "my-project"
-integration = "my-integration"
-runtime     = "my-integration-1"
-secret      = "<generated-secret>"
-```
-
 ## Supported types
 
 Each subsection below shows the Ballerina `configurable` declaration followed by the corresponding `Config.toml` entry.

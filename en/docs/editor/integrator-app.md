@@ -94,6 +94,8 @@ The editor toolbar appears on the right side of the editor tab bar and provides 
 
 The toolbar is the same across the [Project view](views/project-view.md), [Integrator view](views/integration-view.md), and [Library view](views/library-view.md), so the view-specific pages refer back to this section instead of repeating it.
 
+{/* NOTE: this branch's copy intentionally omits the ICP status-bar row present on wso2-integrator -- ICP doesn't exist for WSO2 Cloud users. Don't overwrite this from a sync without re-checking. */}
+
 ## Status bar
 
 The status bar runs across the bottom edge of the IDE and shows the current state of your project, runtime, and tooling at a glance. Select an item to open the related panel or action.
@@ -105,7 +107,6 @@ The status bar runs across the bottom edge of the IDE and shows the current stat
 | **Branch indicator** (for example, `main*`) | Shows the active Git branch for the project. An asterisk indicates uncommitted changes. Select it to switch or manage branches. |
 | **Problems** (error and warning counts) | Shows the number of errors and warnings detected in the current project. Select it to open the Problems panel. |
 | **Ballerina version** | Shows the Ballerina distribution version that the IDE is using to build and run your integration (for example, `Ballerina 2201.13.4 (Swan Lake Update 13)`). |
-| **ICP** | Shows the status of the [Integration Control Plane](../icp/reference/integration-control-plane.md) connection (for example, `ICP: Stopped`). Select it to start, stop, or configure ICP for the project. |
 | **Notifications** | Opens the notifications panel for messages from the IDE and its extensions. |
 
 ## What's next

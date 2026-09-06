@@ -36,14 +36,6 @@ Project and deployment configuration files:
 
 - **[Ballerina API Docs](api/ballerina-documentation.md)** - Standard library API documentation
 
-## ICP Configuration
-
-Server and deployment configuration for WSO2 Integration Control Plane:
-
-- **[Server Configuration](icp/server-configuration.md)** - Server settings and authentication token keys
-- **[Database Configuration](icp/database-configuration.md)** - Main database and credentials database setup
-- **[Authentication Configuration](icp/authentication-config.md)** - Authentication backends and LDAP configuration
-
 ## Specifications & formats
 
 - **[Supported protocols](supported-protocols.md)** - Complete protocol support table

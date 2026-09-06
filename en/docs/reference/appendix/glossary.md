@@ -29,7 +29,6 @@ description: All WSO2 Integrator product-specific terms defined.
 | **Event Handler** | A reactive integration triggered by messages from Kafka, RabbitMQ, NATS, MQTT, or other message brokers. Implemented as a service attached to a messaging listener. |
 | **File Integration** | An integration where the listener watches a remote file server (FTP, SFTP, FTPS) or a local directory, and the service processes incoming files as CSV, JSON, XML, text, or binary. |
 | **Guardrail** | A safety mechanism that constrains what an AI agent can take as input or produce as output. Used to enforce content policies and prevent unsafe responses. |
-| **ICP** | Integration Control Plane. A dashboard for monitoring, managing, and troubleshooting running integrations in production. Provides metrics, logs, and artifact discovery. |
 | **Integration** | The top-level unit of work in WSO2 Integrator. A Ballerina package containing one or more artifacts (services, automations, event handlers). |
 | **json** | A Ballerina union type: `()\|boolean\|int\|float\|decimal\|string\|json[]\|map<json>`. Represents any value serializable to JSON format. |
 | **Library** | A shareable collection of reusable components, functions, or connectors packaged for distribution. Used across multiple projects or shared with a team. |

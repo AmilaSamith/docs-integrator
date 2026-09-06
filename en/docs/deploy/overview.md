@@ -1,7 +1,7 @@
 ---
 title: Deploy Overview
 description: Learn about the different deployment options for your WSO2 Integrator projects and how to choose the right one for your needs.
-keywords: [wso2 integrator, deployment, wso2 cloud, docker, kubernetes, vm-based deployment, integration control plane]
+keywords: [wso2 integrator, deployment, wso2 cloud, serverless, graalvm]
 ---
 {/* TODO: Work in progress */}
 
@@ -14,8 +14,6 @@ Once your integration is ready, this section covers everything you need to ship 
 WSO2 Integrator supports multiple deployment targets. Choose the one that fits your infrastructure:
 
 - **[WSO2 Cloud](deploy-to-cloud-overview.md)** — Push your project directly from the IDE or the cloud editor to the managed WSO2 Integration Platform. No infrastructure setup required.
-- **[VM Deployment](./self-hosted/vm-deployment.md)** — Deploy your integration to a virtual machine or bare-metal server as a standalone JAR file.
-- **[Containerized Deployment](./self-hosted/containerized-deployment.md)** — Package your integration as a container and deploy it to Docker, Kubernetes, or Red Hat OpenShift.
 - **[Serverless deployment](serverless-deployment.md)** — Run integrations as serverless functions.
 - **[GraalVM native images](graalvm-native-images.md)** — Compile your integration to a native binary for faster startup and lower memory usage.
 
