@@ -2,7 +2,7 @@
 title: "MCP Tools"
 description: "Extend WSO2 Integrator Copilot with your own tools by connecting MCP servers."
 keywords: [wso2 integrator, copilot, mcp, model context protocol, ai tools]
-slug: /develop/copilot/mcp-tools
+slug: /editor/copilot/mcp-tools
 ---
 
 # MCP Tools

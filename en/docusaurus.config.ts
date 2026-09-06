@@ -71,8 +71,25 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/wso2/docs-integrator/tree/main/en/',
+          editUrl: 'https://github.com/wso2/docs-integrator/tree/wso2-integrator/en/',
           showLastUpdateTime: true,
+          // Serve Next (docs/, the new IA) at the site root by default —
+          // matching reactnative.dev's model of latest/current up front,
+          // older releases behind the version switcher. Without this,
+          // Docusaurus defaults to serving the last *released* version
+          // (5.0.0, the frozen pre-migration snapshot) at the root and
+          // hiding Next behind /next/.
+          lastVersion: 'current',
+          versions: {
+            // No `path` here: leaving it unset is what makes `lastVersion`
+            // actually serve at the site root with no prefix. Setting an
+            // explicit path (e.g. 'next') overrides that and pushes this
+            // version's content to /next/ instead, leaving the root empty
+            // — verified by build inspection after getting this wrong once.
+            current: {
+              label: 'Next',
+            },
+          },
         },
         blog: false,
         theme: {
@@ -90,6 +107,10 @@ const config: Config = {
       logo: sharedNavbarLogo,
       items: [
         {
+          type: 'docsVersionDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/wso2/docs-integrator',
           label: 'GitHub',
           position: 'right',
@@ -102,9 +123,9 @@ const config: Config = {
         {
           title: 'Get started',
           items: [
-            { label: 'Overview', to: '/get-started/introduction' },
+            { label: 'Overview', to: '/platform-overview' },
             { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/get-started/build-automation' },
+            { label: 'Quick starts', to: '/develop/how-to/build-automation' },
           ],
         },
         {
@@ -112,17 +133,17 @@ const config: Config = {
           items: [
             { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
             { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/develop/test/built-in-try-it-tool' },
-            { label: 'AI Integrations', to: '/genai/overview' },
+            { label: 'Test', to: '/test/built-in-try-it-tool' },
+            { label: 'AI Integrations', to: '/develop/ai/overview' },
           ],
         },
         {
           title: 'Deploy',
           items: [
-            { label: 'Docker and Kubernetes', to: '/deploy/self-hosted/containerized-deployment' },
-            { label: 'CI/CD', to: '/deploy-operate/cicd/github-actions' },
-            { label: 'Observe', to: '/deploy-operate/observe/observability-overview' },
-            { label: 'Secure', to: '/deploy-operate/secure/authentication' },
+            { label: 'Docker and Kubernetes', to: '/deploy/containerized-deployment' },
+            { label: 'CI/CD', to: '/deploy/cicd/github-actions' },
+            { label: 'Observe', to: '/operate/observability-overview' },
+            { label: 'Secure', to: '/deploy/secure/authentication' },
           ],
         },
         sharedCommunityFooterLinks,

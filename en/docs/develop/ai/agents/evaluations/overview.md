@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Evaluations
 description: Reference for AI agent evaluations in WSO2 Integrator. Capture session traces into evalsets, build evaluations in the visual designer, and review run reports and history.
 keywords: [wso2 integrator, ai agent, evaluations, evalset, golden dataset, llm-as-judge, regression]
-slug: /genai/develop/agents/evaluations
+slug: /develop/ai/agents/evaluations
 ---
 
 # Evaluations

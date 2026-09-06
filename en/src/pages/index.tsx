@@ -30,17 +30,6 @@ function IconDevelop(): ReactNode {
   );
 }
 
-function IconConnectors(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1.5" />
-      <rect x="14" y="3" width="7" height="7" rx="1.5" />
-      <rect x="3" y="14" width="7" height="7" rx="1.5" />
-      <rect x="14" y="14" width="7" height="7" rx="1.5" />
-    </svg>
-  );
-}
-
 function IconGenAI(): ReactNode {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -111,7 +100,7 @@ const sections: SectionCard[] = [
   {
     title: 'Get started',
     description: 'Install, set up, and build your first integration in under 10 minutes.',
-    link: '/get-started/introduction',
+    link: '/get-started/setup/overview',
     icon: <IconGetStarted />,
     iconBg: '#ECFDF5',
     iconBgDark: 'rgba(5, 150, 105, 0.15)',
@@ -127,18 +116,9 @@ const sections: SectionCard[] = [
     iconColor: '#2563EB',
   },
   {
-    title: 'Connectors',
-    description: 'Browse pre-built connectors for SaaS, databases, messaging, and AI.',
-    link: '/connectors/overview',
-    icon: <IconConnectors />,
-    iconBg: '#F0EDFF',
-    iconBgDark: 'rgba(124, 58, 237, 0.15)',
-    iconColor: '#7C3AED',
-  },
-  {
     title: 'AI Integrations',
     description: 'Build AI-powered integrations with agents, RAG, and MCP servers.',
-    link: '/genai/overview',
+    link: '/develop/ai/overview',
     icon: <IconGenAI />,
     iconBg: '#FDF4FF',
     iconBgDark: 'rgba(168, 85, 247, 0.15)',
@@ -163,9 +143,9 @@ const sections: SectionCard[] = [
     iconColor: '#0891B2',
   },
   {
-    title: 'Manage',
+    title: 'Integration Control Plane',
     description: 'Centralized control and observability via the Integration Control Plane (ICP).',
-    link: '/manage/overview',
+    link: '/icp',
     icon: <IconManage />,
     iconBg: '#EEF2FF',
     iconBgDark: 'rgba(79, 70, 229, 0.15)',
@@ -186,10 +166,9 @@ const sections: SectionCard[] = [
 /*  Quick-links shown when the search input is focused but empty       */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Automation', to: '/get-started/build-automation' },
-  { label: 'Build an AI Agent', to: '/get-started/build-ai-agent' },
-  { label: 'Build an API Integration', to: '/get-started/build-api-integration' },
-  { label: 'Connector catalog', to: '/connectors/overview' },
+  { label: 'Build an Automation', to: '/develop/how-to/build-automation' },
+  { label: 'Build an AI Agent', to: '/develop/how-to/build-ai-agent' },
+  { label: 'Build an API Integration', to: '/develop/how-to/build-integration-api' },
 ];
 
 /* ------------------------------------------------------------------ */

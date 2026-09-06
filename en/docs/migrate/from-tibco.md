@@ -1,7 +1,7 @@
 ---
 title: Migrate from TIBCO BusinessWorks
 description: Migration guide for developers moving from TIBCO BusinessWorks to WSO2 Integrator.
-slug: /guides/migration/from-tibco
+slug: /migrate/from-tibco
 ---
 
 import Tabs from '@theme/Tabs';
