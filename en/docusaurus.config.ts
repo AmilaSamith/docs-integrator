@@ -7,6 +7,11 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityFooterLinks,
+  sharedCommunityDropdown,
+  sharedGithubNavbarItem,
+  sharedBlogNavbarItem,
+  sharedContributeNavbarItem,
+  sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
 } from './src/theme-shared/themeConfig';
@@ -98,14 +103,14 @@ const config: Config = {
           // this sidesteps.
           href: 'pathname:///integration-platform/docs/connectors/',
           autoAddBaseUrl: false,
-          label: 'Connectors',
+          html: 'Connectors',
           position: 'left',
         },
-        {
-          href: 'https://github.com/wso2/docs-integrator',
-          label: 'GitHub',
-          position: 'right',
-        }
+        sharedReleasesNavbarItem('/reference/appendix/release-notes'),
+        sharedContributeNavbarItem('saas'),
+        sharedCommunityDropdown,
+        sharedBlogNavbarItem,
+        sharedGithubNavbarItem,
       ]
     },
     footer: {
