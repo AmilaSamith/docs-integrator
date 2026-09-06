@@ -92,6 +92,15 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
     return `Could you read this document about WSO2 Integrator ${fullUrl} so I can ask questions about it?`;
   };
 
+  const handleDownloadPdf = () => {
+    setIsOpen(false);
+    // The browser's native print-to-PDF, not a server-rendered PDF -- no
+    // backend/service needed. Print-specific CSS (custom.css's @media
+    // print block) hides the navbar/sidebar/TOC/footer chrome so the
+    // print/PDF-save dialog only shows the article content.
+    window.print();
+  };
+
   const handleOpenInClaude = () => {
     window.open(`https://claude.ai/new?q=${encodeURIComponent(getPromptWithMarkdown())}`, '_blank');
     setIsOpen(false);
@@ -139,6 +148,14 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
               <div className={styles.markdownDropdownItemText}>
                 <span className={styles.markdownDropdownItemTitle}>View as Markdown</span>
                 <span className={styles.markdownDropdownItemDesc}>View this page as plain text</span>
+              </div>
+            </button>
+
+            <button className={styles.markdownDropdownItem} onClick={handleDownloadPdf}>
+              <PdfIcon />
+              <div className={styles.markdownDropdownItemText}>
+                <span className={styles.markdownDropdownItemTitle}>Download as PDF</span>
+                <span className={styles.markdownDropdownItemDesc}>Print or save this page as a PDF</span>
               </div>
             </button>
 
@@ -190,6 +207,16 @@ function MarkdownIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
       <path d="M14.85 3c.63 0 1.15.52 1.14 1.15v7.7c0 .63-.51 1.15-1.15 1.15H1.15C.52 13 0 12.48 0 11.84V4.15C0 3.52.52 3 1.15 3h13.7zM9 11V5H7l-1.5 2.25L4 5H2v6h2V8l1.5 2L7 8v3h2zm2.99.5L14.5 8H13V5h-2v3H9.5l2.49 3.5z" />
+    </svg>
+  );
+}
+
+function PdfIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M4 0a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V5.5L9.5 0H4z" opacity="0.25" />
+      <path d="M9.5 0v3.5A1.5 1.5 0 0011 5h3.5L9.5 0z" opacity="0.5" />
+      <path d="M4.5 9.5h1a1 1 0 011 1v.5a1 1 0 01-1 1h-.5V13h-1V9.5h.5zm.5 1.5h.5v-.5H5v.5zM7.5 9.5H9v1H8v.5h.75v1H8V13H7.5V9.5zm3 0h1.25c.55 0 1 .45 1 1v1.5c0 .55-.45 1-1 1H10.5V9.5zm1 2.5h.25c.14 0 .25-.11.25-.25v-1.5c0-.14-.11-.25-.25-.25H11.5v2z" />
     </svg>
   );
 }
