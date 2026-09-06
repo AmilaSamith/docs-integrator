@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import SiteNav from '@site/src/components/SiteNav';
+import AiAssistantPanel from '@site/src/components/AiAssistantPanel';
 
 // Make Prism available globally so extensions can reach it
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -125,6 +126,7 @@ export default function Root({ children }) {
     <>
       <SiteNav />
       {children}
+      <AiAssistantPanel />
     </>
   );
 }

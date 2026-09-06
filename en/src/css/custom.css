@@ -847,6 +847,40 @@ hr {
 }
 
 /* ================================================================
+   PRINT / DOWNLOAD AS PDF
+   Triggered by MarkdownButton's "Download as PDF" (window.print()) --
+   hide site chrome so the print/save-as-PDF dialog shows just the
+   article content.
+   ================================================================ */
+@media print {
+
+  .navbar,
+  .theme-doc-sidebar-container,
+  .theme-doc-toc-desktop,
+  .theme-doc-toc-mobile,
+  .theme-doc-breadcrumbs,
+  .theme-doc-footer,
+  .theme-doc-version-badge,
+  .pagination-nav,
+  footer,
+  .tocCollapsible,
+  [class*="aiAssistant"] {
+    display: none !important;
+  }
+
+  .main-wrapper,
+  article {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}
+
+/* ================================================================
    ACCESSIBILITY UTILITIES
    ================================================================ */
 .visually-hidden {

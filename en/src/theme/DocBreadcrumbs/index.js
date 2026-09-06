@@ -143,9 +143,16 @@ export default function DocBreadcrumbsWrapper(props) {
 
   // metadata.id is relative to docs/ with the extension stripped, and preserves
   // "index" for directory index files — matching exactly what the export plugin writes.
-  const markdownUrl = location.pathname.startsWith(docsBaseUrl)
-    ? `${docsBaseUrl}/${metadata.id}.md`
-    : null;
+  //
+  // Previously guarded by `location.pathname.startsWith(docsBaseUrl)`, which
+  // assumed the live doc route and the static markdown export shared the
+  // same path prefix. They don't: the export plugin always writes to
+  // static/docs/ (served at /docs/...) regardless of the docs plugin's own
+  // routeBasePath, which is '/' (root) here -- so that check was never
+  // true and the button never rendered on any page. This component only
+  // renders inside the doc page layout, so metadata.id is always present;
+  // no guard needed.
+  const markdownUrl = `${docsBaseUrl}/${metadata.id}.md`;
 
   // Read connector version data from the plugin's global data.
   let allConnectorVersions = {};
