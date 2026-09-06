@@ -9,7 +9,6 @@ import {
   sharedCommunityFooterLinks,
   sharedPrism,
   sharedImage,
-  sharedProductDropdown,
 } from './src/theme-shared/themeConfig';
 
 const config: Config = {
@@ -107,11 +106,6 @@ const config: Config = {
     navbar: {
       logo: sharedNavbarLogo,
       items: [
-        sharedProductDropdown('integrator'),
-        {
-          type: 'docsVersionDropdown',
-          position: 'right',
-        },
         {
           href: 'https://github.com/wso2/docs-integrator',
           label: 'GitHub',
