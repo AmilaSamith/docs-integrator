@@ -110,4 +110,4 @@ Ensure your orchestrator allows sufficient time for graceful shutdown. In Kubern
 
 ## What's next
 
-- [Metrics](../observe/metrics-prometheus-grafana.md) -- Monitor scaling behavior with Prometheus
+- [Metrics](../operate/metrics-prometheus-grafana.md) -- Monitor scaling behavior with Prometheus

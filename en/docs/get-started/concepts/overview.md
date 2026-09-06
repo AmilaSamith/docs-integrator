@@ -22,4 +22,4 @@ The WSO2 Integration Platform has two sides to it: designing and building integr
 - [Core concepts](core.md) — projects, integrations, services, connectors, and more
 - [WSO2 Cloud concepts](integration-cloud-concepts.md) — data planes, environments, and deployment tracks
 - [Local setup](../setup/local-setup.md) — install the WSO2 Integrator IDE on your machine
-- [Build an automation](../build-automation.md) — schedule tasks and run background jobs
+- [Build an automation](../../develop/how-to/build-automation.md) — schedule tasks and run background jobs

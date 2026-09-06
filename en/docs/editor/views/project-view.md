@@ -42,7 +42,7 @@ The deployment options panel appears on the right sidebar and provides shortcuts
 
 | Option | Target |
 |---|---|
-| [**Deploy to WSO2 Cloud**](../../deploy/cloud/overview.md) | Fully managed cloud platform for hosting and running integrations. |
+| [**Deploy to WSO2 Cloud**](../../deploy/deploy-to-cloud-overview.md) | Fully managed cloud platform for hosting and running integrations. |
 | [**Containerized Deployment**](../../deploy/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
 | [**VM Deployment**](../../deploy/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
 | [**Integration Control Plane (ICP)**](../../icp/index.md) | Monitor and manage running integrations from a centralized dashboard. |

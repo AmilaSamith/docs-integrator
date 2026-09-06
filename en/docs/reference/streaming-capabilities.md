@@ -125,7 +125,7 @@ service "OrderConsumer" on orderListener {
 }
 ```
 
-Listeners exist for every broker, every event source, and every streaming network protocol covered below. See the [Build an Event-Driven Integration](../get-started/build-event-driven-integration.md) quick start for a complete walkthrough.
+Listeners exist for every broker, every event source, and every streaming network protocol covered below. See the [Build an Event-Driven Integration](../develop/how-to/build-event-driven-integration.md) quick start for a complete walkthrough.
 
 ## Streaming capability categories
 
@@ -488,6 +488,6 @@ See [Supported Protocols](supported-protocols.md) for the full protocol matrix.
 * [Query Expressions](language/query-expressions.md) — full clause reference
 * [CSV](data-formats/csv.md) — CSV format reference
 * [Streaming large files](../develop/integration-artifacts/file/ftp-sftp.md#streaming-large-files) — deep dive on file streaming
-* [Build an Event-Driven Integration](../get-started/build-event-driven-integration.md) — quick start
+* [Build an Event-Driven Integration](../develop/how-to/build-event-driven-integration.md) — quick start
 * Event-driven artifact pages: [Kafka](../develop/integration-artifacts/event/kafka.md), [RabbitMQ](../develop/integration-artifacts/event/rabbitmq.md), [MQTT](../develop/integration-artifacts/event/mqtt.md), [Azure Service Bus](../develop/integration-artifacts/event/azure-service-bus.md), [Solace](../develop/integration-artifacts/event/solace.md)
 * [Supported Protocols](supported-protocols.md) — complete protocol matrix

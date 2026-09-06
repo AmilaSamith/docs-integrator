@@ -115,4 +115,4 @@ Ensure your client connection pools are sized to maintain at least the minimum c
 ## What's next
 
 - [Performance benchmarks](performance-benchmarks.md) — Detailed benchmark results for the HTTP passthrough scenario
-- [Scaling and high availability](../deploy/scaling-high-availability.md) — Configure horizontal scaling and HA deployments
+- [Scaling and high availability](../scaling-high-availability.md) — Configure horizontal scaling and HA deployments

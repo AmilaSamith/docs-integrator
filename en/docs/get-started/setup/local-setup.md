@@ -41,7 +41,7 @@ After installation, launch the IDE:
 
 ### Step 4: Sign in to WSO2 Integrator
 
-Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environments, access observability features, and use [WSO2 Integrator Copilot](../../develop/copilot/overview.md).
+Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environments, access observability features, and use [WSO2 Integrator Copilot](../../editor/copilot/overview.md).
 
 1. On the **Get Started** page, click **Sign In** in the top-right corner.
 

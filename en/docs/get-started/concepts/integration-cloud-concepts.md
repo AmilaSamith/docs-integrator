@@ -303,4 +303,4 @@ A new build undergoes a health check before switching traffic from the current b
 
 - [Sign up for WSO2 Cloud](../setup/sign-up-sign-in.md) — create an account and access the WSO2 Cloud Integration Platform
 - [Deploy](../../deploy/overview.md) — deployment options for self-hosted and cloud environments
-- [Build an automation](../build-automation.md) — schedule tasks and run background jobs
+- [Build an automation](../../develop/how-to/build-automation.md) — schedule tasks and run background jobs

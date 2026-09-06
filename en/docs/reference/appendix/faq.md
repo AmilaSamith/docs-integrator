@@ -90,7 +90,7 @@ Run tests with `bal test` and generate reports with `bal test --test-report --co
 
 ### Does WSO2 Integrator support building AI agents and RAG?
 
-Yes. WSO2 Integrator includes first-class support for AI agents, retrieval-augmented generation (RAG), Model Context Protocol (MCP) servers, and direct LLM calls. See [AI Integrations](../../genai/overview.md) for the full set of building blocks.
+Yes. WSO2 Integrator includes first-class support for AI agents, retrieval-augmented generation (RAG), Model Context Protocol (MCP) servers, and direct LLM calls. See [AI Integrations](../../develop/ai/overview.md) for the full set of building blocks.
 
 ### Which LLM and vector store providers are supported?
 
@@ -125,7 +125,7 @@ This allows you to use the same built artifact across development, staging, and 
 
 ### How do I handle secrets and sensitive configuration?
 
-WSO2 Integrator uses `Config.toml` files for runtime configuration. For secrets, keep them in a separate `Config.toml` (or another file referenced via the `BAL_CONFIG_FILES` environment variable) that is not checked into version control. Never commit secret values to git, whether they sit in `Config.toml` or anywhere else. In Kubernetes, mount the secret file from a `Secret`, or inject individual values as environment variables using `BAL_CONFIG_VAR_*` prefixes. See [Secrets and encryption](../../deploy-operate/secure/secrets-encryption.md) for the full pattern and [Configuration management](../config/configuration-management.md) for the underlying environment-variable reference.
+WSO2 Integrator uses `Config.toml` files for runtime configuration. For secrets, keep them in a separate `Config.toml` (or another file referenced via the `BAL_CONFIG_FILES` environment variable) that is not checked into version control. Never commit secret values to git, whether they sit in `Config.toml` or anywhere else. In Kubernetes, mount the secret file from a `Secret`, or inject individual values as environment variables using `BAL_CONFIG_VAR_*` prefixes. See [Secrets and encryption](../../deploy/secure/secrets-encryption.md) for the full pattern and [Configuration management](../config/configuration-management.md) for the underlying environment-variable reference.
 
 ### Does WSO2 Integrator support horizontal scaling?
 
@@ -159,7 +159,7 @@ See the [ICP API Reference](../api/icp.md) for programmatic access.
 
 ### Can I migrate from MuleSoft or TIBCO?
 
-Yes. WSO2 provides migration guides and tooling to help transition from other integration platforms. See [Migrate from MuleSoft](/guides/migration/from-mulesoft) and [Migrate from TIBCO](/guides/migration/from-tibco) for platform-specific guidance. For migrating third-party integrations programmatically, see [Migrate third-party integrations](../../develop/create-integrations/migrate-third-party-integrations.md).
+Yes. WSO2 provides migration guides and tooling to help transition from other integration platforms. See [Migrate from MuleSoft](/migrate/from-mulesoft) and [Migrate from TIBCO](/migrate/from-tibco) for platform-specific guidance. For migrating third-party integrations programmatically, see [Migrate third-party integrations](../../develop/create-integrations/migrate-third-party-integrations.md).
 
 ### Can I run WSO2 MI and WSO2 Integrator side by side?
 
@@ -168,5 +168,5 @@ Yes. The two products use different runtimes and can coexist in the same environ
 ## See also
 
 - [Get Started](../../get-started/setup/local-setup.md) — Install and set up WSO2 Integrator
-- [Build an Integration as API](../../get-started/build-integration-api.md) — Build your first integration
+- [Build an Integration as API](../../develop/how-to/build-integration-api.md) — Build your first integration
 - [Glossary](./glossary.md) — Definitions of key terms
