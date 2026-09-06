@@ -62,3 +62,35 @@ export const sharedPrism = {
 };
 
 export const sharedImage = 'img/logo.svg';
+
+type ProductKey = 'cloud' | 'integrator' | 'connectors';
+
+/**
+ * The three site branches that make up the WSO2 Integration Platform docs,
+ * keyed by product. Root-relative hrefs (not absolute wso2.com URLs) so
+ * these resolve correctly both in production, where all three are merged
+ * under one domain by the publish workflows' destination_dir, and in a
+ * local preview that replicates the same path prefixes.
+ */
+const PRODUCTS: Record<ProductKey, { label: string; href: string }> = {
+  cloud: { label: 'WSO2 Cloud', href: '/integration-platform/docs/' },
+  integrator: { label: 'WSO2 Integrator', href: '/integration-platform/docs/integrator/' },
+  connectors: { label: 'Connectors', href: '/integration-platform/docs/connectors/' },
+};
+
+/**
+ * Builds the navbar dropdown that lets readers jump between the three
+ * product sites. `current` is per-branch (each docusaurus.config.ts calls
+ * this with its own product key), so the dropdown's label always names the
+ * site you're already on, and its items list only the other two.
+ */
+export function sharedProductDropdown(current: ProductKey) {
+  return {
+    type: 'dropdown' as const,
+    label: PRODUCTS[current].label,
+    position: 'left' as const,
+    items: (Object.keys(PRODUCTS) as ProductKey[])
+      .filter((key) => key !== current)
+      .map((key) => ({ label: PRODUCTS[key].label, href: PRODUCTS[key].href })),
+  };
+}
