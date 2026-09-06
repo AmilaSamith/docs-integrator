@@ -107,6 +107,17 @@ const config: Config = {
       logo: sharedNavbarLogo,
       items: [
         {
+          // Real <a> tag (via pathname:// + autoAddBaseUrl:false), not a
+          // client-side route -- /integration-platform/docs/connectors/
+          // is a completely separate build/bundle. See
+          // SidebarProductHeader's docstring for the isInternalUrl pitfall
+          // this sidesteps.
+          href: 'pathname:///integration-platform/docs/connectors/',
+          autoAddBaseUrl: false,
+          label: 'Connectors',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/wso2/docs-integrator',
           label: 'GitHub',
           position: 'right',
