@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 The Integration Control Plane (ICP) is a self-hosted management server that connects to your WSO2 Integrator runtimes and provides centralized monitoring, lifecycle management, and access control. This page walks you through downloading, configuring, and starting ICP on your own infrastructure.
 
 :::tip
-This guide covers manual installation. For evaluation, run via WSO2 Integrator IDE [Integration Control Plane (ICP)](../../deploy-operate/observe/integration-control-plane-icp.md).
+This guide covers manual installation. For evaluation, run via WSO2 Integrator IDE [Integration Control Plane (ICP)](index.md).
 :::
 
 :::info Prerequisites
@@ -64,7 +64,7 @@ The table below covers the settings most commonly changed. All other settings ar
 | `schedulerIntervalSeconds` | `60` | How often ICP checks for inactive runtimes and marks them as offline, in seconds. |
 | `frontendJwtHMACSecret` | (default key) | JWT signing secret for user sessions. Change this before going to production. |
 
-Full reference: [Server Configuration](../../reference/icp/server-configuration.md).
+Full reference: [Server Configuration](reference/server-configuration.md).
 
 ### Database
 
@@ -195,7 +195,7 @@ credentialsDbPassword = "changeme"
 
 Set `credentialsDbType` to `h2`, `postgresql`, `mysql`, `mssql`, or `oracle`. The credentials database is independent of the main database, so the two can use different engines. For Oracle, set `credentialsDbName` to the service name and add `credentialsDbUseTLS = true` when the endpoint uses TCPS.
 
-Full reference: [Database Configuration](../../reference/icp/database-configuration.md).
+Full reference: [Database Configuration](reference/database-configuration.md).
 
 ## Start
 
@@ -235,7 +235,7 @@ Click **Sign In**. The browser redirects to the organization home at `https://<h
 Change the default `admin` password before using ICP in any non-evaluation environment. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**. See [Access Control](access-control.md) for details.
 :::
 
-For LDAP, SSO, or OIDC authentication, see [Authentication Configuration](../../reference/icp/authentication-config.md).
+For LDAP, SSO, or OIDC authentication, see [Authentication Configuration](reference/authentication-config.md).
 
 ## What's next
 

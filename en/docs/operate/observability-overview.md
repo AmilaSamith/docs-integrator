@@ -42,8 +42,8 @@ WSO2 provides fully managed observability solutions for integrations deployed on
 
 | Solution | Best For | Features | Setup Complexity |
 |----------|----------|----------|------------------|
-| **[Integration Control Plane (ICP)](integration-control-plane-icp.md)** | On-premise & hybrid deployments | Service inventory, real-time monitoring, log aggregation, deployment tracking | Low |
-| **[WSO2 Integration Platform](../../manage/cloud/observability/overview.md)** | Cloud-native integrations | Built-in dashboards, alerting, live logs, distributed tracing, diagnostics | Very Low |
+| **[Integration Control Plane (ICP)](../icp/index.md)** | On-premise & hybrid deployments | Service inventory, real-time monitoring, log aggregation, deployment tracking | Low |
+| **[WSO2 Integration Platform](../manage/cloud/observability/overview.md)** | Cloud-native integrations | Built-in dashboards, alerting, live logs, distributed tracing, diagnostics | Very Low |
 | **[Moesif](moesif-api-analytics.md)** | API analytics & monitoring | API usage tracking, request/response inspection, usage-based billing, alerting | Very Low |
 
 ### When to choose WSO2 solutions:

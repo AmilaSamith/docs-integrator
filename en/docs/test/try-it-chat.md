@@ -25,4 +25,4 @@ Select **Tracing: Off** in the toolbar to toggle tracing on. With tracing active
 
 - [Test MCP server](try-it-mcp.md) — invoke MCP tools directly from the inspector
 - [Test HTTP service](try-it-http.md) — request builder for REST endpoints
-- [Build an AI agent](../../get-started/build-ai-agent.md) — create your first chat agent
+- [Build an AI agent](../develop/how-to/build-ai-agent.md) — create your first chat agent

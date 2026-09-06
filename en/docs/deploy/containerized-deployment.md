@@ -48,7 +48,7 @@ When you build a Ballerina project with a cloud target, the compiler extension g
         └── <module>-0.0.1.yaml
 ```
 
-**`Cloud.toml`** overrides defaults that the compiler infers from your code. Every field is optional. The compiler provides sensible defaults when the file is absent or when a field is omitted. See the [Cloud.toml reference](../../reference/project/cloudtoml-reference.md) for the full field list.
+**`Cloud.toml`** overrides defaults that the compiler infers from your code. Every field is optional. The compiler provides sensible defaults when the file is absent or when a field is omitted. See the [Cloud.toml reference](../reference/project/cloudtoml-reference.md) for the full field list.
 
 **`Config.toml`** is intentionally excluded from the container image because it can contain sensitive values. For Docker, you supply it at runtime via a volume mount. For Kubernetes and OpenShift, use the `[[cloud.config.files]]` entry in `Cloud.toml` to mount it as a ConfigMap.
 

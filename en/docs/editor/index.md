@@ -38,4 +38,4 @@ Editors are the focused surfaces inside a view where you design and edit specifi
 
 - [Integrator app](integrator-app.md) — Explore the built-in plugin and its capabilities.
 - [Flow Diagram editor](editors/flow-diagram-editor/flow-diagram-editor.md) — Design integration logic using the visual flow editor.
-- [Create a new integration](../create-integrations/create-a-new-integration.md) — Start building your first integration.
+- [Create a new integration](../develop/create-integrations/create-a-new-integration.md) — Start building your first integration.

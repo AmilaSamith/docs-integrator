@@ -233,4 +233,4 @@ bal asyncapi -i service.bal --mode export -o specs/asyncapi.yaml
 
 - [gRPC Tool](grpc-tool.md) -- Generate gRPC services from Protocol Buffer definitions
 - [OpenAPI Tool](openapi-tool.md) -- Generate REST services and clients
-- [Error Handling](../../understand-ide/editors/flow-diagram-editor/error-handling.md) -- Handle event processing failures gracefully
+- [Error Handling](../../../editor/editors/flow-diagram-editor/error-handling.md) -- Handle event processing failures gracefully

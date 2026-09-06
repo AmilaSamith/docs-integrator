@@ -280,10 +280,10 @@ BAL_CONFIG_FILES=config/dev.toml bal run
 BAL_CONFIG_FILES=config/prod.toml bal run
 ```
 
-Never commit secret-bearing configuration files to version control. For production credential handling, secret managers, and TLS configuration, see [Secrets and encryption](../../deploy-operate/secure/secrets-encryption.md).
+Never commit secret-bearing configuration files to version control. For production credential handling, secret managers, and TLS configuration, see [Secrets and encryption](../../deploy/secure/secrets-encryption.md).
 
 ## What's next
 
 - [Configurations](../../develop/integration-artifacts/supporting/configurations.md) — Declare configurable variables and supply values through the visual designer.
-- [Secrets and encryption](../../deploy-operate/secure/secrets-encryption.md) — Securely supply credentials and protect data in transit and at rest.
+- [Secrets and encryption](../../deploy/secure/secrets-encryption.md) — Securely supply credentials and protect data in transit and at rest.
 - [Connections](../../develop/integration-artifacts/supporting/connections.md) — Use configurable variables to parameterize connections.

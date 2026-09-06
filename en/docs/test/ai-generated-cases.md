@@ -6,7 +6,7 @@ keywords: [wso2 integrator, ai test generation, copilot, generate tests, balleri
 
 # Generate Tests with AI
 
-Writing test cases with [WSO2 Integrator Copilot](../copilot/overview.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
+Writing test cases with [WSO2 Integrator Copilot](../editor/copilot/overview.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
 
 ## Generate tests with WSO2 Integrator Copilot
 

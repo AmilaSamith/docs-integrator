@@ -18,7 +18,7 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 
 :::info Prerequisites
 
-- [Model Providers for LLMs](../develop/components/model-providers.md)
+- [Model Providers for LLMs](../../develop/ai/components/model-providers.md)
 - A project to work in. If you do not have one, see [Create a new integration](../../develop/create-integrations/create-a-new-integration.md).
 :::
 
@@ -204,5 +204,5 @@ This is what differentiates a direct LLM call from a raw chat completion: you wr
 ## What's next
 
 - [Build a Hotel Finder Agent](build-a-hotel-finder-agent.md) — Add custom tools and session-scoped memory
-- [What is an AI Agent?](../develop/agents/overview.md) — Understand the agent architecture
-- [What are Tools?](../develop/agents/tools.md) — Learn tool design patterns
+- [What is an AI Agent?](../../develop/ai/agents/overview.md) — Understand the agent architecture
+- [What are Tools?](../../develop/ai/agents/tools.md) — Learn tool design patterns

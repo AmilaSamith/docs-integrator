@@ -212,7 +212,7 @@ wso2:
       dbPassword: "changeme"
 ```
 
-See [Database Configuration](../../reference/icp/database-configuration.md) for the full field reference.
+See [Database Configuration](reference/database-configuration.md) for the full field reference.
 
 ### TLS and JKS keystore
 
@@ -262,7 +262,7 @@ wso2:
         - profile
 ```
 
-See [Authentication Configuration](../../reference/icp/authentication-config.md) for the full reference.
+See [Authentication Configuration](reference/authentication-config.md) for the full reference.
 
 ### Scaling and session affinity
 

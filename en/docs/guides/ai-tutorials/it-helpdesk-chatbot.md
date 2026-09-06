@@ -32,7 +32,7 @@ Before getting started, ensure that the following requirements are met:
 
 - Install the [WSO2 Integrator VS Code extension](../../get-started/setup/local-setup.md)
 - Set up an MSSQL database for agent memory persistence
-- Have a basic understanding of memory configuration concepts. For more information, refer to [Memory](../develop/agents/memory.md)
+- Have a basic understanding of memory configuration concepts. For more information, refer to [Memory](../../develop/ai/agents/memory.md)
 
 ## Architecture
 
@@ -110,7 +110,7 @@ final KbArticle[] & readonly kbArticles = [
 </Tabs>
 ### Step 3: Create the AI agent
 
-Create the AI agent named `itHelpDeskAgent` by following the instructions in [Creating an Agent](../develop/agents/creating-an-agent.md).
+Create the AI agent named `itHelpDeskAgent` by following the instructions in [Creating an Agent](../../develop/ai/agents/creating-an-agent.md).
 
 ### Step 4: Update the system prompt
 
@@ -149,7 +149,7 @@ final ai:Agent itHelpDeskAgent = check new (
 
 ### Step 5: Add a tool to the agent
 
-Add the following tool to the agent by following the instructions in [Create custom tool](../develop/agents/tools.md#4-create-custom-tool).
+Add the following tool to the agent by following the instructions in [Create custom tool](../../develop/ai/agents/tools.md#4-create-custom-tool).
 
 <Tabs>
 <TabItem value="code" label="Ballerina Code">
@@ -177,7 +177,7 @@ isolated function searchKnowledgeBase(string query) returns string {
 
 ### Step 6: Add persistent memory to the agent
 
-Add persistent memory by following the instructions in [Memory](../develop/agents/memory.md).
+Add persistent memory by following the instructions in [Memory](../../develop/ai/agents/memory.md).
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>

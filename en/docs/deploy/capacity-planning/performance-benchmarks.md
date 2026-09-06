@@ -101,4 +101,4 @@ The table below maps throughput targets and payload sizes to the recommended res
 ## What's next
 
 - [Overview and sizing guidelines](overview.md) — Use these results to size your deployments
-- [Scaling and high availability](../deploy/scaling-high-availability.md) — Scale based on throughput requirements
+- [Scaling and high availability](../scaling-high-availability.md) — Scale based on throughput requirements

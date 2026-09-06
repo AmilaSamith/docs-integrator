@@ -6,7 +6,7 @@ keywords: [wso2 integrator, copilot, ai, data handling, privacy, byok, anthropic
 
 # AI Usage and Data Handling Guidelines
 
-WSO2 Integrator provides an AI-powered Copilot to enhance developer productivity. This page explains how [WSO2 Integrator Copilot](../develop/copilot/overview.md) works, how user data is handled, and what best practices organizations should follow when using AI features.
+WSO2 Integrator provides an AI-powered Copilot to enhance developer productivity. This page explains how [WSO2 Integrator Copilot](../editor/copilot/overview.md) works, how user data is handled, and what best practices organizations should follow when using AI features.
 
 These guidelines are designed to ensure transparency, security, and compliance when using AI-powered assistance in enterprise environments.
 
@@ -25,7 +25,7 @@ WSO2 Integrator Copilot is integrated into the WSO2 Integrator developer experie
 
 To maintain security, all WSO2 Integrator Copilot features require authentication:
 
-- Users must [sign in](../develop/copilot/getting-started.md) to enable Copilot functionality.
+- Users must [sign in](../editor/copilot/getting-started.md) to enable Copilot functionality.
 - Social sign-in options are supported for ease of use.
 - Authentication and session management are handled by [Asgardeo](https://wso2.com/asgardeo/), the WSO2 identity provider.
 
@@ -47,7 +47,7 @@ The movement of data through Copilot is designed for zero retention at the inter
 
 ## Bring your own key (BYOK)
 
-Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](../develop/copilot/getting-started.md) for the available sign-in options.
+Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](../editor/copilot/getting-started.md) for the available sign-in options.
 
 ### Anthropic deployment
 
@@ -132,5 +132,5 @@ General Copilot best practices:
 
 ## See also
 
-- [Copilot capabilities](../develop/copilot/overview.md) — What Copilot can do.
-- [Getting started](../develop/copilot/getting-started.md) — Sign in to Copilot.
+- [Copilot capabilities](../editor/copilot/overview.md) — What Copilot can do.
+- [Getting started](../editor/copilot/getting-started.md) — Sign in to Copilot.

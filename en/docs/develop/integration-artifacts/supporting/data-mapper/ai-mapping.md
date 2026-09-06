@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 The AI Data Mapper uses AI to generate mappings between data structures, without manual field-by-field matching. It is especially useful for large or complex schemas with hundreds of fields, deeply nested records, or domain-specific formats.
 
-For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../../understand-ide/editors/datamapper-editor.md).
+For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../../../editor/editors/datamapper-editor.md).
 
 ## How to use
 
@@ -20,7 +20,7 @@ For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../..
 <Tabs>
 <TabItem value="ui" label="Visual designer" default>
 
-1. Define the input and output record types in the **Types** panel. Define inner records first, then compose them into the parent input and output records. For details on creating records, see [Type editor](../../../understand-ide/editors/type-editor.md).
+1. Define the input and output record types in the **Types** panel. Define inner records first, then compose them into the parent input and output records. For details on creating records, see [Type editor](../../../../editor/editors/type-editor.md).
 
     ![Types canvas with child record cards visible, and the New Type panel open for defining a parent record that references them](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-define-personal-profile.png)
 
@@ -159,6 +159,6 @@ Large language models can produce unexpected results when processing highly doma
 
 ## What's next
 
-- [Data Mapper editor](../../../understand-ide/editors/datamapper-editor.md) — Open, configure, and work with the visual mapping canvas.
+- [Data Mapper editor](../../../../editor/editors/datamapper-editor.md) — Open, configure, and work with the visual mapping canvas.
 - [Data mapper](./data-mapper.md) — End-to-end guide to creating and using data mappers.
-- [Expression editor](../../../understand-ide/editors/expression-editor.md) — Write custom expressions for individual field mappings.
+- [Expression editor](../../../../editor/editors/expression-editor.md) — Write custom expressions for individual field mappings.

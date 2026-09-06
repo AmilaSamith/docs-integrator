@@ -50,6 +50,6 @@ See [ICP API](../../reference/api/icp.md) for the full REST endpoint reference.
 
 ## What's next
 
-- [Install ICP](install-icp.md) — download and configure ICP for your environment
-- [Get started with ICP](quick-start.md) — connect a runtime and enable observability end to end
-- [ICP console overview](icp-console-overview.md) — understand the console layout and navigation
+- [Install ICP](../install-icp.md) — download and configure ICP for your environment
+- [Get started with ICP](../quick-start.md) — connect a runtime and enable observability end to end
+- [ICP console overview](../icp-console-overview.md) — understand the console layout and navigation

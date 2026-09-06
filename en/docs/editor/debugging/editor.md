@@ -49,7 +49,7 @@ A red dot appears next to the line.
 
 ## Start a debug session
 
-Click **Debug** on the [editor toolbar](../understand-ide/integrator-app.md#editor-toolbar), or open the **Run and Debug** view from the [activity bar](../understand-ide/integrator-app.md#activity-bar) and select **Ballerina Debug**. Either path works for most integrations.
+Click **Debug** on the [editor toolbar](../integrator-app.md#editor-toolbar), or open the **Run and Debug** view from the [activity bar](../integrator-app.md#activity-bar) and select **Ballerina Debug**. Either path works for most integrations.
 
 ![Debug session paused at a breakpoint](/img/develop/debugging/editor-debugging/debug-session.gif)
 
@@ -63,7 +63,7 @@ Most debugging happens against a program running locally from the editor. The ne
 
 Set breakpoints inside the test functions first, then launch the test session in one of two ways:
 
-- Open the **Run and Debug** view from the [activity bar](../understand-ide/integrator-app.md#activity-bar), select **Ballerina Test** from the configuration dropdown, and click **Start Debugging**.
+- Open the **Run and Debug** view from the [activity bar](../integrator-app.md#activity-bar), select **Ballerina Test** from the configuration dropdown, and click **Start Debugging**.
 - Click the **Debug** CodeLens that appears above each test function to launch the debugger scoped to that single test.
 
 Use test debugging when a test fails and you want to inspect the inputs and intermediate values that produced the failure, rather than the full integration.
@@ -83,5 +83,5 @@ Then add a **Ballerina Remote** configuration to `launch.json` with the `debugge
 ## What's Next
 
 - [Features](features.md) - stepping, variable inspection, advanced breakpoints, and test or remote debugging.
-- [Tools](../tools/tools.md) - quick-start setup for a debug session.
-- [Async API Tool](../tools/integration-tools/asyncapi-tool.md) - quick-start setup for a debug session.
+- [Tools](../../develop/tools/tools.md) - quick-start setup for a debug session.
+- [Async API Tool](../../develop/tools/integration-tools/asyncapi-tool.md) - quick-start setup for a debug session.

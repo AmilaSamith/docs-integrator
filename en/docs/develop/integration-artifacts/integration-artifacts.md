@@ -25,8 +25,8 @@ Build AI-powered integrations that use large language models to reason, respond,
 
 | Artifact | Description |
 |---|---|
-| AI Chat Agent | An LLM-backed agent accessible via a chat interface or API. Covered in the [AI Integrations](../../genai/overview.md) section. |
-| MCP Service | Exposes integration capabilities as tools via the Model Context Protocol for use by AI assistants. Covered in the [AI Integrations](../../genai/overview.md) section. |
+| AI Chat Agent | An LLM-backed agent accessible via a chat interface or API. Covered in the [AI Integrations](../ai/overview.md) section. |
+| MCP Service | Exposes integration capabilities as tools via the Model Context Protocol for use by AI assistants. Covered in the [AI Integrations](../ai/overview.md) section. |
 
 ### Integration as API
 

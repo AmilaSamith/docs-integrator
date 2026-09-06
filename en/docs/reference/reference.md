@@ -43,9 +43,9 @@ Project and deployment configuration files:
 
 Server and deployment configuration for WSO2 Integration Control Plane:
 
-- **[Server Configuration](icp/server-configuration.md)** - Server settings and authentication token keys
-- **[Database Configuration](icp/database-configuration.md)** - Main database and credentials database setup
-- **[Authentication Configuration](icp/authentication-config.md)** - Authentication backends and LDAP configuration
+- **[Server Configuration](../icp/reference/server-configuration.md)** - Server settings and authentication token keys
+- **[Database Configuration](../icp/reference/database-configuration.md)** - Main database and credentials database setup
+- **[Authentication Configuration](../icp/reference/authentication-config.md)** - Authentication backends and LDAP configuration
 
 ## Specifications & formats
 
@@ -66,4 +66,4 @@ Server and deployment configuration for WSO2 Integration Control Plane:
 - **[FAQ](appendix/faq.md)** - Frequently asked questions
 - **[Release Notes](appendix/release-notes.md)** - What's new in each release
 
-For troubleshooting and debugging, see [Debugging](../develop/debugging/editor.md).
+For troubleshooting and debugging, see [Debugging](../editor/debugging/editor.md).

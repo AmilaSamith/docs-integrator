@@ -8,7 +8,7 @@ description: Map fields between source and target types visually, without writin
 
 The Data Mapper editor is the visual surface you open for any data mapper in WSO2 Integrator. It shows the source types on the left, the target type on the right, and the mapping area between them, so you can map fields by creating links or filling expressions instead of writing the conversion function manually. The data mapper is either a typed function with one or more inputs and a single output, or a variable declaration with a supported type. Every change you make in the editor is reflected in the underlying source.
 
-For end-to-end usage, including how to create a data mapper, work with arrays and nested records, and apply transformations, see [Data Mapper](../../integration-artifacts/supporting/data-mapper/data-mapper.md).
+For end-to-end usage, including how to create a data mapper, work with arrays and nested records, and apply transformations, see [Data Mapper](../../develop/integration-artifacts/supporting/data-mapper/data-mapper.md).
 
 ![Data Mapper editor for the transform data mapper](/img/develop/understand-ide/editors/datamapper-editor/overview.png)
 
@@ -16,7 +16,7 @@ For end-to-end usage, including how to create a data mapper, work with arrays an
 
 Select a data mapper under **Data Mappers** in the project explorer, or select the **View** option of the data mapper node from a flow in the [Flow Diagram editor](flow-diagram-editor/flow-diagram-editor.md). To open the data mapper for a [declare variable](flow-diagram-editor/statement.md#declare-variable) node, select the **Open in Data Mapper** button in the side panel.
 
-To create a new data mapper before opening the editor, see [Data Mapper](../../integration-artifacts/supporting/data-mapper/data-mapper.md).
+To create a new data mapper before opening the editor, see [Data Mapper](../../develop/integration-artifacts/supporting/data-mapper/data-mapper.md).
 
 ## Header
 
@@ -37,7 +37,7 @@ The header runs along the top of the editor and combines the breadcrumb, the dat
 
 ## Expression bar
 
-Below the header, the Expression bar shows the field you are currently working with and provides an editor with completion support to write inline expressions when an output field is selected. See [Expression bar](../../integration-artifacts/supporting/data-mapper/mapping-capabilities.md#expression-bar).
+Below the header, the Expression bar shows the field you are currently working with and provides an editor with completion support to write inline expressions when an output field is selected. See [Expression bar](../../develop/integration-artifacts/supporting/data-mapper/mapping-capabilities.md#expression-bar).
 
 ## Inputs side
 
@@ -51,7 +51,7 @@ The **Global Inputs** section at the top of the inputs side exposes values that 
 
 ### Sub Mappings
 
-A sub mapping is a named intermediate mapping computed once inside the data mapper and reused across multiple output fields. Select **+ Add Sub Mapping** at the bottom of the inputs side to create one. A sub mapping behaves like an additional input field. Use sub mappings to avoid repeating the same computation across many output fields, or to break a complex transformation into named steps. See [Sub Mappings](../../integration-artifacts/supporting/data-mapper/submappings.md).
+A sub mapping is a named intermediate mapping computed once inside the data mapper and reused across multiple output fields. Select **+ Add Sub Mapping** at the bottom of the inputs side to create one. A sub mapping behaves like an additional input field. Use sub mappings to avoid repeating the same computation across many output fields, or to break a complex transformation into named steps. See [Sub Mappings](../../develop/integration-artifacts/supporting/data-mapper/submappings.md).
 
 {/* ![Sub mapping defined for a transform data mapper](/img/develop/understand-ide/editors/datamapper-editor/sub-mapping.png) */}
 
@@ -65,7 +65,7 @@ The right side of the editor shows the data mapper's output type with each field
 
 The mapping area is the central region between the input and output sides. Links on this area represent mapping connections.
 
-- Select an input field, then select the desired output field to create a mapping. See [Mapping capabilities](../../integration-artifacts/supporting/data-mapper/mapping-capabilities.md).
+- Select an input field, then select the desired output field to create a mapping. See [Mapping capabilities](../../develop/integration-artifacts/supporting/data-mapper/mapping-capabilities.md).
 - Select an existing link to see available options for that mapping.
 - When there is an issue with a created mapping, the corresponding link shows a diagnostic so you can fix it using the available code actions or the expression bar.
 
@@ -85,6 +85,6 @@ For more, see [AI data mapping](/develop/integration-artifacts/supporting/data-m
 
 ## What's next
 
-- [Data Mapper](../../integration-artifacts/supporting/data-mapper/data-mapper.md): end-to-end guide to creating and using data mappers.
+- [Data Mapper](../../develop/integration-artifacts/supporting/data-mapper/data-mapper.md): end-to-end guide to creating and using data mappers.
 - [Type editor](type-editor.md): define the record types the data mapper maps between.
 - [Flow Diagram editor](flow-diagram-editor/flow-diagram-editor.md): invoke the data mapper from a flow node.

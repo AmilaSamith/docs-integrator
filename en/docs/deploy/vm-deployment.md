@@ -269,6 +269,6 @@ service /health on new http:Listener(9091) {
 ## What's next
 
 - [Containerized Deployment](./containerized-deployment.md) — Deploy your project to Docker, Kubernetes, or Red Hat OpenShift using Code to Cloud
-- [Managing Configurations](../../deploy-operate/deploy/managing-configurations.md) — Per-environment configuration strategies
-- [Scaling & High Availability](../../deploy-operate/deploy/scaling-high-availability.md) — Run multiple instances behind a load balancer
-- [GraalVM Native Images](../../deploy-operate/deploy/graalvm-native-images.md) — Compile to native binaries for faster startup
+- [Managing Configurations](managing-configurations.md) — Per-environment configuration strategies
+- [Scaling & High Availability](scaling-high-availability.md) — Run multiple instances behind a load balancer
+- [GraalVM Native Images](graalvm-native-images.md) — Compile to native binaries for faster startup

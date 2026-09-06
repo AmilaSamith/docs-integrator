@@ -18,8 +18,8 @@ Event integrations are designed for reactive workflows triggered by messages fro
 :::info Prerequisites
 
 - A working WSO2 Integrator environment. Choose the path that fits how you want to work:
-    - [Cloud setup](setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
-    - [Local setup](setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+    - [Cloud setup](../../get-started/setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
+    - [Local setup](../../get-started/setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
 - A running RabbitMQ instance (or use Docker: `docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management`)
 :::
 
@@ -164,9 +164,9 @@ Deploy your integration to WSO2 Cloud - Integration Platform in any of the follo
 
 ## What's next
 
-- [Kafka](../develop/integration-artifacts/event/kafka.md) — Consume and produce Kafka messages
-- [Azure Service Bus](../develop/integration-artifacts/event/azure-service-bus.md) — Integrate with Azure Service Bus queues and topics
-- [RabbitMQ](../develop/integration-artifacts/event/rabbitmq.md) — Full RabbitMQ listener and publisher reference
-- [MQTT](../develop/integration-artifacts/event/mqtt.md) — Handle MQTT messages from IoT and messaging devices
-- [CDC for PostgreSQL](../develop/integration-artifacts/event/cdc-postgresql.md) — React to database changes with change data capture
+- [Kafka](../integration-artifacts/event/kafka.md) — Consume and produce Kafka messages
+- [Azure Service Bus](../integration-artifacts/event/azure-service-bus.md) — Integrate with Azure Service Bus queues and topics
+- [RabbitMQ](../integration-artifacts/event/rabbitmq.md) — Full RabbitMQ listener and publisher reference
+- [MQTT](../integration-artifacts/event/mqtt.md) — Handle MQTT messages from IoT and messaging devices
+- [CDC for PostgreSQL](../integration-artifacts/event/cdc-postgresql.md) — React to database changes with change data capture
 

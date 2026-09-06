@@ -24,7 +24,7 @@ Use a typed message envelope when the integration needs a stable application-lev
 
 1. Create a new integration in WSO2 Integrator.
 2. Add the header, body, and envelope records in [Types](../../develop/integration-artifacts/supporting/types.md).
-3. Open the flow and [add a step](../../develop/understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
+3. Open the flow and [add a step](../../editor/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
 4. Add a **Declare Variable** or **Map Data** step to construct the envelope.
 5. Pass the envelope to the connector call, return it from the resource function, or map it into another boundary-specific message.
 

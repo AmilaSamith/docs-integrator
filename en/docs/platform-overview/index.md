@@ -80,9 +80,9 @@ AI shows up on the platform in two ways. WSO2 Integrator Copilot helps you build
 
 ## What's next
 
-- [Concepts](concepts/overview.md) — learn the vocabulary used across the platform
-- [Set up WSO2 Integrator](setup/overview.md) — set up the IDE and create your first integration
-- [Build an automation](build-automation.md) — schedule tasks and run background jobs
-- [Integration Control Plane](../manage/icp/integration-control-plane.md) — monitor and manage running integrations centrally
+- [Concepts](../get-started/concepts/overview.md) — learn the vocabulary used across the platform
+- [Set up WSO2 Integrator](../get-started/setup/overview.md) — set up the IDE and create your first integration
+- [Build an automation](../develop/how-to/build-automation.md) — schedule tasks and run background jobs
+- [Integration Control Plane](../icp/reference/integration-control-plane.md) — monitor and manage running integrations centrally
 - [WSO2 Cloud](../deploy/cloud/overview.md) — deploy integrations to the fully managed cloud platform
 - [Ballerina by Example](../reference/ballerina-by-example.md) — explore working code samples for common patterns

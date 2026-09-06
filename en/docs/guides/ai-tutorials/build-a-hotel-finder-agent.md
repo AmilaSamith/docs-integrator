@@ -56,9 +56,9 @@ import TabItem from '@theme/TabItem';
 
 :::tip Default model provider
 
-By default, the agent is created with the WSO2 model provider. If you have not [signed in to WSO2 Integrator Copilot](../../develop/copilot/getting-started.md) yet, sign in when prompted. No third-party API key is required.
+By default, the agent is created with the WSO2 model provider. If you have not [signed in to WSO2 Integrator Copilot](../../editor/copilot/getting-started.md) yet, sign in when prompted. No third-party API key is required.
 
-To use a different LLM instead, see [Model providers](../develop/components/model-providers.md) for the full list of supported providers (OpenAI, Anthropic, Azure OpenAI, and others).
+To use a different LLM instead, see [Model providers](../../develop/ai/components/model-providers.md) for the full list of supported providers (OpenAI, Anthropic, Azure OpenAI, and others).
 
 :::
 
@@ -162,7 +162,7 @@ The tool's visual flow opens. Add the logic:
 
    :::note
 
-   This uses hardcoded sample data. In a real scenario, you would call an external hotel API, query a database, or connect an [MCP tool](../develop/agents/tools.md).
+   This uses hardcoded sample data. In a real scenario, you would call an external hotel API, query a database, or connect an [MCP tool](../../develop/ai/agents/tools.md).
 
    :::
 
@@ -268,7 +268,7 @@ In the tool's visual flow, select **+** and select **Return** under **Control**.
 
 :::note
 
-This returns hardcoded sample data. In a real scenario, you would query a booking system, call an availability API, or connect an [MCP tool](../develop/agents/tools.md).
+This returns hardcoded sample data. In a real scenario, you would query a booking system, call an availability API, or connect an [MCP tool](../../develop/ai/agents/tools.md).
 
 :::
 
@@ -348,7 +348,7 @@ Create a file named `agents.bal`. Each tool is an `isolated` function annotated 
 
 :::note
 
-Both tools use hardcoded sample data. In a real scenario, you would call external APIs, query a database, or connect [MCP tools](../develop/agents/tools.md).
+Both tools use hardcoded sample data. In a real scenario, you would call external APIs, query a database, or connect [MCP tools](../../develop/ai/agents/tools.md).
 
 :::
 
@@ -458,6 +458,6 @@ This example demonstrates two patterns you will reuse in production agents:
 
 ## What's next
 
-- [Creating an agent](../develop/agents/creating-an-agent.md) — Full reference for agent configuration
-- [Tools](../develop/agents/tools.md) — Advanced tool patterns, including connection-backed tools and MCP servers
-- [Memory](../develop/agents/memory.md) — Custom memory strategies beyond the default session store
+- [Creating an agent](../../develop/ai/agents/creating-an-agent.md) — Full reference for agent configuration
+- [Tools](../../develop/ai/agents/tools.md) — Advanced tool patterns, including connection-backed tools and MCP servers
+- [Memory](../../develop/ai/agents/memory.md) — Custom memory strategies beyond the default session store

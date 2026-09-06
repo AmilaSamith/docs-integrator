@@ -20,8 +20,8 @@ An AI agent uses an LLM to reason about user queries and call tools to retrieve 
 
 A working WSO2 Integrator environment. Choose the path that fits how you want to work:
 
-- [Cloud setup](setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
-- [Local setup](setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+- [Cloud setup](../../get-started/setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
+- [Local setup](../../get-started/setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
 :::
 
 ## Architecture
@@ -82,9 +82,9 @@ In the cloud editor, you're already inside a project. Skip to Step 2.
 
 :::tip Default model provider
 
-By default, the agent is configured to use the WSO2 model provider. If you want to use a different LLM, see [Model providers](../genai/develop/components/model-providers.md) for the full list of supported providers (OpenAI, Azure OpenAI, Anthropic, and others).
+By default, the agent is configured to use the WSO2 model provider. If you want to use a different LLM, see [Model providers](../ai/components/model-providers.md) for the full list of supported providers (OpenAI, Azure OpenAI, Anthropic, and others).
 
-If you are using the WSO2 model provider, the access token is obtained through [WSO2 Integrator Copilot](../develop/copilot/getting-started.md). If you have not already signed in, you will be prompted to do so.
+If you are using the WSO2 model provider, the access token is obtained through [WSO2 Integrator Copilot](../../editor/copilot/getting-started.md). If you have not already signed in, you will be prompted to do so.
 :::
 
 ## Step 4: Run and test
@@ -162,4 +162,4 @@ Deploy your integration to WSO2 Cloud - Integration Platform in any of the follo
 - [Build an Integration as API](build-integration-api.md) — Build an HTTP service
 - [Build an event-driven integration](build-event-driven-integration.md) — React to messages from brokers
 - [Build a file-driven integration](build-file-driven-integration.md) — Process files from FTP or local directories
-- [AI agents](../genai/develop/agents/overview.md) — Learn how to build production-grade AI agents with tools, memory, and evaluations
+- [AI agents](../ai/agents/overview.md) — Learn how to build production-grade AI agents with tools, memory, and evaluations

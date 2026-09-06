@@ -181,5 +181,5 @@ graalvmBuildOptions = "--no-fallback --initialize-at-build-time -march=native"
 ## What's next
 
 - [Serverless Deployment](serverless-deployment.md) -- Deploy native images as Lambda functions
-- [VM Deployment](../../deploy/self-hosted/vm-deployment.md) -- Run native binaries on virtual machines
-- [Containerized Deployment](../../deploy/self-hosted/containerized-deployment.md) -- Build minimal container images for Docker, Kubernetes, and OpenShift
+- [VM Deployment](vm-deployment.md) -- Run native binaries on virtual machines
+- [Containerized Deployment](containerized-deployment.md) -- Build minimal container images for Docker, Kubernetes, and OpenShift

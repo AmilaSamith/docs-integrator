@@ -409,5 +409,5 @@ configurable "DEBUG"|"INFO"|"WARN"|"ERROR" logLevel = "INFO"; // Enum constraint
 
 ## What's next
 
-- [Secrets & Encryption](../secure/secrets-encryption.md) -- Advanced secrets management with Vault
-- [Containerized Deployment](../../deploy/self-hosted/containerized-deployment.md) -- ConfigMap and Secret patterns for Docker, Kubernetes, and OpenShift
+- [Secrets & Encryption](secure/secrets-encryption.md) -- Advanced secrets management with Vault
+- [Containerized Deployment](containerized-deployment.md) -- ConfigMap and Secret patterns for Docker, Kubernetes, and OpenShift

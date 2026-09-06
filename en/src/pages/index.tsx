@@ -290,7 +290,7 @@ function HomepageHeader(): ReactNode {
         <div className={styles.buttons}>
           <Link
             className={styles.heroBtn}
-            to="/get-started/build-automation">
+            to="/develop/how-to/build-automation">
             Build your first integration
             <svg
               width="16"

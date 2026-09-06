@@ -3,6 +3,19 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import { useVersions } from '@docusaurus/plugin-content-docs/client';
 
+/**
+ * A bare `version.path` is just that version's URL prefix, which isn't
+ * necessarily a rendered page on its own (a released version's prefix
+ * has no index page, only its docs). Append `mainDocId` — the version's
+ * designated landing doc — matching Docusaurus's own versions-page
+ * pattern, rather than relying on `current` happening to resolve
+ * correctly on its own (verified via build inspection: it does, but
+ * only because it's `lastVersion`; older versions don't).
+ */
+function versionHref(version: { path: string; mainDocId: string }): string {
+  return `${version.path}/${version.mainDocId}`;
+}
+
 export default function Versions(): ReactNode {
   const versions = useVersions(undefined);
   const current = versions.find((v) => v.name === 'current');
@@ -35,7 +48,7 @@ export default function Versions(): ReactNode {
             <ul>
               {released.map((version) => (
                 <li key={version.name}>
-                  <Link to={version.path}>{version.label}</Link>
+                  <Link to={versionHref(version)}>{version.label}</Link>
                 </li>
               ))}
             </ul>

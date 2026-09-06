@@ -249,4 +249,4 @@ groups:
 
 - [Jaeger distributed tracing](jaeger-distributed-tracing.md) -- Trace requests across services
 - [Logging overview](logging-overview.md) -- Configure structured logging
-- [Integration Control Plane](integration-control-plane-icp.md) -- Centralized monitoring dashboard
+- [Integration Control Plane](../icp/index.md) -- Centralized monitoring dashboard

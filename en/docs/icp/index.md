@@ -97,7 +97,7 @@ import wso2/icp.runtime.bridge as _;
 
 ## What's next
 
-- [Logging](logging-overview.md) — Configure structured logging
-- [Metrics](metrics-overview.md) — Prometheus metrics and Grafana dashboards
-- [Jaeger](jaeger-distributed-tracing.md) — Distributed tracing with Jaeger
-- [Observability Setup](../../manage/icp/observability-setup.md) — Set up centralized logs and metrics monitoring
+- [Logging](../operate/logging-overview.md) — Configure structured logging
+- [Metrics](../operate/metrics-overview.md) — Prometheus metrics and Grafana dashboards
+- [Jaeger](../operate/jaeger-distributed-tracing.md) — Distributed tracing with Jaeger
+- [Observability Setup](observability-setup.md) — Set up centralized logs and metrics monitoring

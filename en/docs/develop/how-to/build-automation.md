@@ -20,8 +20,8 @@ An automation runs your integration logic without an external request, on demand
 
 A working WSO2 Integrator environment. Choose the path that fits how you want to work:
 
-- [Cloud setup](setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
-- [Local setup](setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+- [Cloud setup](../../get-started/setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
+- [Local setup](../../get-started/setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
 :::
 
 <Tabs>
@@ -143,4 +143,4 @@ Periodic invocation is configured in an external system once the automation is d
 - [Build an AI agent](build-ai-agent.md) — Build an intelligent agent
 - [Build an event-driven integration](build-event-driven-integration.md) — React to messages from brokers
 - [Build a file-driven integration](build-file-driven-integration.md) — Process files from FTP or local directories
-- [Automation](../develop/integration-artifacts/automation.md) — Configure scheduling, manual execution, and integration logic
+- [Automation](../integration-artifacts/automation.md) — Configure scheduling, manual execution, and integration logic

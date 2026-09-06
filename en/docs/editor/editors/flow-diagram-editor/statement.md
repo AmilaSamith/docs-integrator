@@ -45,7 +45,7 @@ The function picker lists functions in three sections: **Within Project**, **Imp
 
 ![Function picker showing Within Project, Imported Functions, and Standard Library entries](/img/develop/flow-design-elements/call-function-options.png)
 
-For details on creating, organizing, and reusing functions across artifacts, see the [Functions](../../../integration-artifacts/supporting/functions.md) reference.
+For details on creating, organizing, and reusing functions across artifacts, see the [Functions](../../../develop/integration-artifacts/supporting/functions.md) reference.
 
 ## Map Data
 
@@ -57,7 +57,7 @@ The picker lists every data mapper in the project under **Within Project**. Sele
 
 ![Data Mappers picker with Create Data Mapper action and existing mappers](/img/develop/flow-design-elements/map-data-view.png)
 
-For mapping capabilities, array handling, and sub mappings, see the [Data Mapper](../../../integration-artifacts/supporting/data-mapper/data-mapper.md) reference.
+For mapping capabilities, array handling, and sub mappings, see the [Data Mapper](../../../develop/integration-artifacts/supporting/data-mapper/data-mapper.md) reference.
 
 ## What's next
 

@@ -14,7 +14,7 @@ Selecting a connection in the node panel adds a step bound to that connection.
 
 ![mysqlClient connection in the Connections section](/img/develop/flow-design-elements/connection-node.png)
 
-To create a new connection, select **+** next to **Connections**. For details on connection types, scopes, and credential management, see the [Connections](../../../integration-artifacts/supporting/connections.md) reference.
+To create a new connection, select **+** next to **Connections**. For details on connection types, scopes, and credential management, see the [Connections](../../../develop/integration-artifacts/supporting/connections.md) reference.
 
 ## Connection actions
 
@@ -28,4 +28,4 @@ Each action opens its own configuration form when selected. Action forms typical
 
 - [Statement](./statement.md) — Declare and update variables, call functions, and map data.
 - [Control](./control.md) — Branch, loop, and return.
-- [Connections reference](../../../integration-artifacts/supporting/connections.md) — Create, configure, and reuse clients to external systems.
+- [Connections reference](../../../develop/integration-artifacts/supporting/connections.md) — Create, configure, and reuse clients to external systems.

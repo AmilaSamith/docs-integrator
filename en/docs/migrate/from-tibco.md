@@ -138,7 +138,7 @@ The wizard runs the automated rule-based migration and displays progress in the 
 After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. You can select one of the following:
 
 - **Enhance with AI** (AI automatically resolves unmapped elements, fixes build errors, and improves migration quality)
-- **Skip for Now – Enhance Later** (Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../../develop/copilot/overview.md))
+- **Skip for Now – Enhance Later** (Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/overview.md))
 
 Click **Start AI Enhancement** to proceed to Step 5. If you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
 
@@ -273,7 +273,7 @@ To build a deployable artifact:
 bal build
 ```
 
-See [Deploy](../../deploy/overview.md) for Docker, Kubernetes, and cloud deployment options.
+See [Deploy](../deploy/overview.md) for Docker, Kubernetes, and cloud deployment options.
 
 ## Concept mapping
 

@@ -19,8 +19,8 @@ File integrations are ideal for batch uploads, scheduled file processing, and ET
 :::info Prerequisites
 
 - A working WSO2 Integrator environment. Choose the path that fits how you want to work:
-    - [Cloud setup](setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
-    - [Local setup](setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+    - [Cloud setup](../../get-started/setup/cloud-setup.md) — launch WSO2 Integrator in a browser-based cloud editor.
+    - [Local setup](../../get-started/setup/local-setup.md) — install and launch the WSO2 Integrator IDE on your machine.
 - A file at the listener path to watch. Create one if you don't have one:
 
   <Tabs groupId="os">
@@ -195,7 +195,7 @@ Confirm the run terminal shows the log line `File modified`.
 
 ## What's next
 
-- [Local files](../develop/integration-artifacts/file/local-files.md) — Full Local Files listener reference (events, recursive watching, file handlers)
-- [FTP/SFTP](../develop/integration-artifacts/file/ftp-sftp.md) — Watch and process files on remote FTP or SFTP servers
-- [Streaming large files](../develop/integration-artifacts/file/ftp-sftp.md#streaming-large-files) — Process large files without loading them fully into memory
-- [CSV fault tolerance](../develop/integration-artifacts/file/csv-fault-tolerance.md) — Handle errors and partial failures when processing CSV files
+- [Local files](../integration-artifacts/file/local-files.md) — Full Local Files listener reference (events, recursive watching, file handlers)
+- [FTP/SFTP](../integration-artifacts/file/ftp-sftp.md) — Watch and process files on remote FTP or SFTP servers
+- [Streaming large files](../integration-artifacts/file/ftp-sftp.md#streaming-large-files) — Process large files without loading them fully into memory
+- [CSV fault tolerance](../integration-artifacts/file/csv-fault-tolerance.md) — Handle errors and partial failures when processing CSV files

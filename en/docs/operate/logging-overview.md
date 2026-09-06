@@ -164,4 +164,4 @@ JSON output:
 
 - [Metrics](metrics-overview.md) — Monitor service health with Prometheus
 - [Distributed tracing](jaeger-distributed-tracing.md) — Trace requests across services
-- [Integration Control Plane](integration-control-plane-icp.md) — Centralized monitoring dashboard
+- [Integration Control Plane](../icp/index.md) — Centralized monitoring dashboard

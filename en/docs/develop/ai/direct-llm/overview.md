@@ -12,7 +12,7 @@ A **direct LLM call** is the simplest way to use AI in WSO2 Integrator. You add 
 This page is a single, end-to-end reference for everything you need to make that call work in WSO2 Integrator: adding a model provider, dropping a `generate` node, writing the prompt, and binding the response to a Ballerina type.
 
 :::tip Looking for a hands-on walkthrough?
-See the **[Email Generator with Direct LLM](../../tutorials/email-generator-direct-llm.md)** tutorial. It builds a `POST /emails/generate` service end-to-end using everything described on this page.
+See the **[Email Generator with Direct LLM](../../../guides/ai-tutorials/email-generator-direct-llm.md)** tutorial. It builds a `POST /emails/generate` service end-to-end using everything described on this page.
 :::
 
 ## When to use direct LLM calls
@@ -96,7 +96,7 @@ The **Insert** menu is the bridge between the prompt and the rest of your projec
 
 ## What's next
 
-- **[Email Generator with Direct LLM (Tutorial)](../../tutorials/email-generator-direct-llm.md)** — build a complete `POST /emails/generate` service from scratch using everything on this page.
+- **[Email Generator with Direct LLM (Tutorial)](../../../guides/ai-tutorials/email-generator-direct-llm.md)** — build a complete `POST /emails/generate` service from scratch using everything on this page.
 - **[Model Providers](../components/model-providers.md)** — switch the LLM provider for production; tune temperature, max tokens, retries.
 - **[Natural Functions](../natural-functions/overview.md)** — when the same prompt is used in many places, package it as a typed function.
 - **[RAG](../rag/overview.md)** — ground the model's answers in your own documents.

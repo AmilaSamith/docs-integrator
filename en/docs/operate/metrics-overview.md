@@ -186,5 +186,5 @@ activeConnections.decrement(amount = 1);
 
 - [Distributed tracing](jaeger-distributed-tracing.md) — Trace requests across services with Jaeger or Zipkin
 - [Logging](logging-overview.md) — Configure structured logging
-- [Integration Control Plane](integration-control-plane-icp.md) — Centralized monitoring dashboard
+- [Integration Control Plane](../icp/index.md) — Centralized monitoring dashboard
 - [Overview](observability-overview.md) — Full observability architecture

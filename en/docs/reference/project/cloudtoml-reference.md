@@ -213,5 +213,5 @@ file = "./Secret.toml"
 
 ## What's next
 
-- [Containerized Deployment](../../deploy/self-hosted/containerized-deployment.md) — deploy to Docker, Kubernetes, or OpenShift using the artifacts produced from Cloud.toml.
+- [Containerized Deployment](../../deploy/containerized-deployment.md) — deploy to Docker, Kubernetes, or OpenShift using the artifacts produced from Cloud.toml.
 - [Config.toml reference](../config/configtoml-reference.md) — define the runtime values you mount via `[[cloud.config.files]]`.

@@ -65,14 +65,14 @@ service "priority-order-consumer" on orderListener {
 
 ## Flow-level selection
 
-Use flow-level selection with [if/else statements](../../develop/understand-ide/editors/flow-diagram-editor/control.md#if) when the consumer must inspect the delivered payload, call another system, or apply rules that cannot be expressed as a broker selector. The service still reads from the shared channel, but the accepted branch contains the processing logic and the unmatched branch is ignored or handled separately.
+Use flow-level selection with [if/else statements](../../editor/editors/flow-diagram-editor/control.md#if) when the consumer must inspect the delivered payload, call another system, or apply rules that cannot be expressed as a broker selector. The service still reads from the shared channel, but the accepted branch contains the processing logic and the unmatched branch is ignored or handled separately.
 
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create or open the consumer service that receives messages from the shared channel.
-2. Open the message handler flow and [add a step](../../develop/understand-ide/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
-3. Add an [If node](../../develop/understand-ide/editors/flow-diagram-editor/control.md#if) at the point where the flow has the payload fields needed for selection.
+2. Open the message handler flow and [add a step](../../editor/editors/flow-diagram-editor/flow-diagram-editor.md#anatomy-of-the-editor).
+3. Add an [If node](../../editor/editors/flow-diagram-editor/control.md#if) at the point where the flow has the payload fields needed for selection.
 4. Set the condition to the consumer criteria, such as `order.priority == "high" && order.region == "west"`.
 5. Add the processing steps inside the **True** branch.
 6. Leave the **False** branch empty when unmatched messages should be ignored, or add separate handling for rejected messages.

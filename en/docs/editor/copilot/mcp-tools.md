@@ -12,7 +12,7 @@ WSO2 Integrator Copilot ships with a built-in set of tools for building integrat
 This lets you and your team extend Copilot with the tools your work needs, whether they run as a local process or a remote service.
 
 :::note
-This page is about giving *Copilot* extra tools. To make *your own integrations* speak MCP, whether by exposing a service as an MCP server or by consuming MCP from an AI agent, see [MCP integration](../../genai/develop/mcp/overview.md).
+This page is about giving *Copilot* extra tools. To make *your own integrations* speak MCP, whether by exposing a service as an MCP server or by consuming MCP from an AI agent, see [MCP integration](../../develop/ai/mcp/overview.md).
 :::
 
 ## Enable MCP tools
@@ -146,5 +146,5 @@ HTTP server with an environment-backed header:
 ## See also
 
 - [Copilot capabilities](overview.md) — Explore planning, review, testing, and more.
-- [MCP integration](../../genai/develop/mcp/overview.md) — Expose your integrations as MCP servers or consume MCP from an AI agent.
+- [MCP integration](../../develop/ai/mcp/overview.md) — Expose your integrations as MCP servers or consume MCP from an AI agent.
 - [AI usage and data handling guidelines](../../reference/ai-usage-and-data-handling-guidelines.md) — How Copilot handles your data.

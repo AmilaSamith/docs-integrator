@@ -425,7 +425,7 @@ Click **Save**. You are returned to the **Model Providers** panel with `aiWso2mo
 ![Model Providers panel with aiWso2modelprovider](/img/genai/tutorials/hr-knowledge-base-rag/24f-mode-provider-node.png)
 
 :::tip Sign in to use the default WSO2 model provider
-If you have not [signed into WSO2 Integrator Copilot](../../develop/copilot/getting-started.md) yet, a sign-in prompt appears at this point. Sign in so the Copilot can configure the default model provider.
+If you have not [signed into WSO2 Integrator Copilot](../../editor/copilot/getting-started.md) yet, a sign-in prompt appears at this point. Sign in so the Copilot can configure the default model provider.
 :::
 
 ### 3.6 Generate the answer
@@ -531,6 +531,6 @@ You now have a fully visual HR RAG pipeline that grounds an LLM in your actual p
 
 ## What's next
 
-- [Vector stores](../develop/components/vector-stores.md) — Swap the in-memory store for a persistent backend (Pinecone, Milvus, Pgvector, Weaviate).
-- [Chunkers](../develop/components/chunkers.md) — Tune chunk size and overlap, or plug in a custom chunker.
-- [How RAG works](../develop/rag/overview.md#how-it-works) — Customize retrieval (top-K, filters, hybrid search).
+- [Vector stores](../../develop/ai/components/vector-stores.md) — Swap the in-memory store for a persistent backend (Pinecone, Milvus, Pgvector, Weaviate).
+- [Chunkers](../../develop/ai/components/chunkers.md) — Tune chunk size and overlap, or plug in a custom chunker.
+- [How RAG works](../../develop/ai/rag/overview.md#how-it-works) — Customize retrieval (top-K, filters, hybrid search).

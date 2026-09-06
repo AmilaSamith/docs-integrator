@@ -102,5 +102,5 @@ public function main(string param1 = "", int param2 = 0) returns error? {
 ## What's next
 
 - [HTTP service](service/http.md) — expose your integration as a REST API
-- [Error handling](../understand-ide/editors/flow-diagram-editor/error-handling.md) — handle automation failures
+- [Error handling](../../editor/editors/flow-diagram-editor/error-handling.md) — handle automation failures
 - [Connections](supporting/connections.md) — call external services from your automation

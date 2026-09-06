@@ -125,6 +125,6 @@ service /api on secureListener { }
 
 ## What's next
 
-- [SSO configuration](../../manage/icp/user-stores/sso-configuration.md) — Set up single sign-on using OpenID Connect
+- [SSO configuration](../../icp/user-stores/sso-configuration.md) — Set up single sign-on using OpenID Connect
 - [API security and rate limiting](api-security-rate-limiting.md) — Rate limiting and input validation for your APIs
 - [Secrets and encryption](secrets-encryption.md) — Manage credentials securely
