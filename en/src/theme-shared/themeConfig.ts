@@ -83,6 +83,24 @@ const PRODUCTS: Record<ProductKey, { label: string; href: string }> = {
  * product sites. `current` is per-branch (each docusaurus.config.ts calls
  * this with its own product key), so the dropdown's label always names the
  * site you're already on, and its items list only the other two.
+ *
+ * Each item's target belongs to a completely separate Docusaurus build
+ * (own JS bundle, own router), even though in production they're merged
+ * under one domain via the publish workflows' destination_dir. A plain
+ * root-relative href (e.g. `/integration-platform/docs/integrator/`) gets
+ * treated as "internal" by Docusaurus's isInternalUrl check purely
+ * because it has no protocol -- same-origin isn't actually checked -- so
+ * clicking it does a client-side React Router navigation instead of a
+ * real page load, which 404s because that route doesn't exist in the
+ * current site's own bundle (confirmed: reproduced locally, only fixed by
+ * a manual refresh forcing a real request).
+ *
+ * The fix is Docusaurus's own documented escape hatch: a `pathname://`
+ * prefix makes isInternalUrl treat the link as external (real <a> tag, no
+ * history.push()), and `autoAddBaseUrl: false` stops it from prepending
+ * the *current* site's own baseUrl on top of the already-complete path
+ * (which would double up or misfire depending on which site you're
+ * navigating from -- verified against Docusaurus's addBaseUrl source).
  */
 export function sharedProductDropdown(current: ProductKey) {
   return {
@@ -91,6 +109,10 @@ export function sharedProductDropdown(current: ProductKey) {
     position: 'left' as const,
     items: (Object.keys(PRODUCTS) as ProductKey[])
       .filter((key) => key !== current)
-      .map((key) => ({ label: PRODUCTS[key].label, href: PRODUCTS[key].href })),
+      .map((key) => ({
+        label: PRODUCTS[key].label,
+        href: `pathname://${PRODUCTS[key].href}`,
+        autoAddBaseUrl: false,
+      })),
   };
 }
