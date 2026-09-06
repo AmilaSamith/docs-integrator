@@ -34,9 +34,6 @@ Project and deployment configuration files:
 
 ## APIs
 
-- **[Management API](api/management.md)** - Runtime management endpoints
-- **[Auth API](api/auth-api.md)** - Authentication and authorization endpoints
-- **[ICP API](api/icp.md)** - Integration Control Plane API
 - **[Ballerina API Docs](api/ballerina-documentation.md)** - Standard library API documentation
 
 ## ICP Configuration
