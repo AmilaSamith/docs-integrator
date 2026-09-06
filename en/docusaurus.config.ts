@@ -1,10 +1,19 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {
+  sharedColorMode,
+  sharedDocsSidebar,
+  sharedNavbarLogo,
+  sharedFooterStyle,
+  sharedFooterCopyright,
+  sharedCommunityFooterLinks,
+  sharedPrism,
+  sharedImage,
+} from './src/theme-shared/themeConfig';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
-  tagline: 'Build integrations with low-code simplicity and pro-code power',
+  title: 'WSO2 Integration Platform Documentation',
+  tagline: 'Build, deploy, and manage integrations at cloud speed',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -63,7 +72,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/wso2/docs-integrator/tree/main/en/',
+          editUrl: 'https://github.com/wso2/docs-integrator/tree/saas/en/',
           showLastUpdateTime: true,
         },
         blog: false,
@@ -75,27 +84,11 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
-    colorMode: {
-      defaultMode: 'light',
-      respectPrefersColorScheme: true,
-    },
-    docs: {
-      sidebar: {
-        // Collapse sibling categories whenever a category expands. With
-        // `useAutoExpandActiveCategory`, this means navigating to a page
-        // collapses every other top-level category and only leaves the
-        // current path expanded.        
-        autoCollapseCategories: true,
-      },
-    },
+    image: sharedImage,
+    colorMode: sharedColorMode,
+    docs: sharedDocsSidebar,
     navbar: {
-      logo: {
-        alt: 'WSO2 Integration Platform Logo',
-        src: 'img/WSO2_Integration_Platform_Black.svg',
-        srcDark: 'img/WSO2_Integration_Platform_White.svg',
-        href: '/',
-      },
+      logo: sharedNavbarLogo,
       items: [
         {
           href: 'https://github.com/wso2/docs-integrator',
@@ -105,7 +98,7 @@ const config: Config = {
       ]
     },
     footer: {
-      style: 'dark',
+      style: sharedFooterStyle,
       links: [
         {
           title: 'Get started',
@@ -134,25 +127,11 @@ const config: Config = {
             { label: 'Secure', to: '/deploy-operate/secure/authentication' },
           ],
         },
-        {
-          title: 'Community',
-          items: [
-            { label: 'WSO2 Integrator: MI', href: 'https://mi.docs.wso2.com' },
-            { label: 'WSO2 Integrator: SI', href: 'https://si.docs.wso2.com/latest/' },
-            { label: 'Ballerina Central', href: 'https://central.ballerina.io' },
-            { label: 'Community Forums', href: 'https://discord.com/invite/wso2' },
-            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/wso2' },
-            { label: 'GitHub', href: 'https://github.com/wso2' },
-          ],
-        },
+        sharedCommunityFooterLinks,
       ],
-      copyright: `Copyright \u00A9 ${new Date().getFullYear()} WSO2 LLC. Built with Docusaurus.`,
+      copyright: sharedFooterCopyright,
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'bash', 'json', 'yaml', 'toml'],
-    },
+    prism: sharedPrism,
   } satisfies Preset.ThemeConfig,
 };
 
