@@ -5,3 +5,14 @@
 
 # These owners will be the default owners for everything in the repo.
 *       @rosensilva @NipunaRanasinghe @KavinduZoysa @anupama-pathirage
+
+# Phase 8 — Section Ownership. PLACEHOLDER team handle below
+# (@wso2/library-team) -- replace with the real GitHub team slug once
+# one exists (Settings > repo > Collaborators and teams). An unresolved
+# placeholder fails safe: GitHub silently ignores a CODEOWNERS entry
+# referencing a team/user that isn't a real collaborator, so this line
+# has no effect (falls back to the default owners above) until fixed.
+# Last-match-wins, so this overrides the default owners for docs content
+# specifically on this branch, while non-content files (workflows,
+# configs) stay with the general default owners above.
+en/docs/  @wso2/library-team
