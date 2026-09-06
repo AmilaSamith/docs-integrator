@@ -45,7 +45,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [wso2-connectors]
+        target: [wso2-connectors, saas]
     steps:
       - uses: actions/checkout@v4
         with:

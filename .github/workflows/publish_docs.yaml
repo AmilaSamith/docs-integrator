@@ -1,10 +1,24 @@
 name: WSO2 Integrator Docs Publish
 
+# Publishes this branch's site under /integration-platform/docs/integrator/
+# on the shared gh-pages branch, alongside saas (root) and wso2-connectors
+# (/connectors/). See docs-integrator's Docs Repo & Branch Strategy for the
+# full multi-branch publish design.
+#
+# keep_files: true is load-bearing -- without it, peaceiris wipes the
+# entire gh-pages branch before each deploy, deleting whatever the other
+# two branches' workflows published. The shared concurrency group prevents
+# two of these three workflows from racing to push gh-pages at once.
+
 on:
   push:
     branches:
-      - main
+      - wso2-integrator
   workflow_dispatch:
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
 
 jobs:
   release-wso2-integrator-docs:
@@ -28,10 +42,12 @@ jobs:
       - name: Build Docusaurus site
         run: npm run build
         env:
-          BASE_URL: /integration-platform/docs/
+          BASE_URL: /integration-platform/docs/integrator/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: en/build
+          destination_dir: integrator
+          keep_files: true
