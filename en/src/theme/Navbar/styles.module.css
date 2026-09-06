@@ -1,0 +1,7 @@
+.secondaryRow {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: calc(var(--ifm-z-index-fixed) - 1);
+  background-color: var(--ifm-background-color);
+  border-bottom: 1px solid var(--wso2-surface-border);
+}

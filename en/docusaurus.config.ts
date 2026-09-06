@@ -7,6 +7,11 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityFooterLinks,
+  sharedCommunityDropdown,
+  sharedGithubNavbarItem,
+  sharedBlogNavbarItem,
+  sharedContributeNavbarItem,
+  sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
 } from './src/theme-shared/themeConfig';
@@ -111,17 +116,18 @@ const config: Config = {
           // client-side route -- /integration-platform/docs/connectors/
           // is a completely separate build/bundle. See
           // SidebarProductHeader's docstring for the isInternalUrl pitfall
-          // this sidesteps.
+          // this sidesteps. `html` (not `label`) so Docusaurus doesn't
+          // auto-append its external-link arrow icon.
           href: 'pathname:///integration-platform/docs/connectors/',
           autoAddBaseUrl: false,
-          label: 'Connectors',
+          html: 'Connectors',
           position: 'left',
         },
-        {
-          href: 'https://github.com/wso2/docs-integrator',
-          label: 'GitHub',
-          position: 'right',
-        }
+        sharedReleasesNavbarItem('/reference/appendix/release-notes'),
+        sharedContributeNavbarItem('wso2-integrator'),
+        sharedCommunityDropdown,
+        sharedBlogNavbarItem,
+        sharedGithubNavbarItem,
       ]
     },
     footer: {
