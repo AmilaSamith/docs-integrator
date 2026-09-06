@@ -312,12 +312,38 @@ function HomepageHeader(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
+/*  "What do you want to build?" — tutorial row                        */
+/* ------------------------------------------------------------------ */
+function TutorialRow(): ReactNode {
+  return (
+    <section className={styles.tutorialRow}>
+      <div className="container">
+        <Heading as="h2" className={styles.tutorialRowTitle}>
+          What do you want to build?
+        </Heading>
+        <div className={styles.tutorialGrid}>
+          {quickLinks.map((link) => (
+            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+              <span>{link.label}</span>
+              <span className={styles.tutorialCardArrow}>&rarr;</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Section Cards                                                      */
 /* ------------------------------------------------------------------ */
 function SectionCards(): ReactNode {
   return (
     <section className={styles.sectionCards}>
       <div className="container">
+        <Heading as="h2" className={styles.sectionCardsTitle}>
+          Explore the platform
+        </Heading>
         <div className={styles.sectionGrid}>
           {sections.map((card, idx) => (
             <Link
@@ -384,6 +410,7 @@ export default function Home(): ReactNode {
     <Layout title="Home" description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
+        <TutorialRow />
         <SectionCards />
         <WhatsNew />
       </main>

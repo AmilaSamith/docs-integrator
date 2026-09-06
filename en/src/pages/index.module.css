@@ -293,15 +293,103 @@
 }
 
 /* ================================================================
+   TUTORIAL ROW — "What do you want to build?"
+   ================================================================ */
+.tutorialRow {
+  padding: 2.5rem 0 0.5rem;
+  background: linear-gradient(180deg, #EFF6FF 0%, #F0F7FF 100%);
+}
+
+[data-theme='dark'] .tutorialRow {
+  background: linear-gradient(180deg, #141D30 0%, #0E1629 100%);
+}
+
+.tutorialRowTitle {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #17223A;
+}
+
+[data-theme='dark'] .tutorialRowTitle {
+  color: #F2F2F2;
+}
+
+.tutorialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .tutorialGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tutorialCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: #0077B6;
+  color: #FFFFFF !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.tutorialCard:hover {
+  background: #006AA3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 119, 182, 0.25);
+}
+
+[data-theme='dark'] .tutorialCard {
+  background: #38BDF8;
+  color: #0B1120 !important;
+}
+
+[data-theme='dark'] .tutorialCard:hover {
+  background: #5ECBFA;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.25);
+}
+
+.tutorialCardArrow {
+  transition: transform 0.2s ease;
+}
+
+.tutorialCard:hover .tutorialCardArrow {
+  transform: translateX(3px);
+}
+
+/* ================================================================
    SECTION CARDS — Clean, modern grid
    ================================================================ */
 .sectionCards {
-  padding: 3.5rem 0 3rem;
-  background: linear-gradient(180deg, #EFF6FF 0%, #F0F7FF 40%, #F8FAFC 100%);
+  padding: 2.5rem 0 3rem;
+  background: linear-gradient(180deg, #F0F7FF 0%, #F8FAFC 100%);
 }
 
 [data-theme='dark'] .sectionCards {
-  background: linear-gradient(180deg, #141D30 0%, #0E1629 50%, #0B1120 100%);
+  background: linear-gradient(180deg, #0E1629 0%, #0B1120 100%);
+}
+
+.sectionCardsTitle {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #17223A;
+}
+
+[data-theme='dark'] .sectionCardsTitle {
+  color: #F2F2F2;
 }
 
 .sectionGrid {

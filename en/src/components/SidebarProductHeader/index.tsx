@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { Component, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -142,11 +142,37 @@ function VersionPill(): ReactNode {
   );
 }
 
+/**
+ * VersionPill's hooks (useActiveDocContext/useDocsVersionCandidates)
+ * assume they're called from within a page that's actually wrapped by
+ * the docs plugin's version-context providers. That's true for the
+ * normal case (this component rendered inside DocSidebar/Desktop on a
+ * real doc page), but SiteNav also renders DocSidebar/Desktop directly
+ * as the homepage drawer's content -- outside that context -- which
+ * throws ("Hook ... is called outside the ...ContextProvider"),
+ * crashing the whole page. A class component is the only way to catch
+ * a render error from a child (no hook-based equivalent), so this
+ * isolates that crash to just this optional widget: worst case, no
+ * version pill on a page where its context isn't available, rather
+ * than an unrelated page-level crash.
+ */
+class VersionPillBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    return this.state.hasError ? null : this.props.children;
+  }
+}
+
 export default function SidebarProductHeader(): ReactNode {
   return (
     <div className={styles.header}>
       <ProductPill />
-      <VersionPill />
+      <VersionPillBoundary>
+        <VersionPill />
+      </VersionPillBoundary>
     </div>
   );
 }
