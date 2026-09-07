@@ -1,5 +1,6 @@
 import { Component, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
@@ -45,9 +46,11 @@ function ChevronDownIcon(): ReactNode {
 
 function Pill({
   label,
+  variant,
   children,
 }: {
   label: string;
+  variant?: 'product' | 'version';
   children: (close: () => void) => ReactNode;
 }): ReactNode {
   const [open, setOpen] = useState(false);
@@ -68,7 +71,7 @@ function Pill({
     <div ref={ref} className={styles.pillWrapper}>
       <button
         type="button"
-        className={styles.pill}
+        className={clsx(styles.pill, variant === 'product' && styles.pillProduct)}
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}>
@@ -80,13 +83,15 @@ function Pill({
   );
 }
 
+/** Fixed width regardless of label length ("SaaS" vs "WSO2 Integrator") so
+ * the pill group's overall size doesn't jump around when switching products. */
 function ProductPill(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   const current = detectCurrentProduct(siteConfig.baseUrl);
   const others = (Object.keys(PRODUCTS) as ProductKey[]).filter((key) => key !== current);
 
   return (
-    <Pill label={PRODUCTS[current].label}>
+    <Pill label={PRODUCTS[current].label} variant="product">
       {() =>
         others.map((key) => (
           <li key={key}>
@@ -169,10 +174,15 @@ class VersionPillBoundary extends Component<{ children: ReactNode }, { hasError:
 export default function SidebarProductHeader(): ReactNode {
   return (
     <div className={styles.header}>
-      <ProductPill />
-      <VersionPillBoundary>
-        <VersionPill />
-      </VersionPillBoundary>
+      {/* Grouped into one bordered pill-shaped control (divider between the
+          two) rather than two separate floating pills, so product+version
+          read as a single "where am I" control. */}
+      <div className={styles.pillGroup}>
+        <ProductPill />
+        <VersionPillBoundary>
+          <VersionPill />
+        </VersionPillBoundary>
+      </div>
     </div>
   );
 }
