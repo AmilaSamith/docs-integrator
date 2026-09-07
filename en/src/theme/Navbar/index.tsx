@@ -8,10 +8,17 @@
  * `position: sticky; top: var(--ifm-navbar-height)` in its own
  * stylesheet, so it sits directly beneath it and stays there together
  * while scrolling.
+ *
+ * The row also carries the "Copy page" export dropdown (CopyPageButton,
+ * moved here from DocBreadcrumbs) at its far right, opposite the
+ * product+version pill group -- both boundary-wrapped since each depends
+ * on doc-page-only hooks that throw when this row renders on a
+ * non-doc page (see each component's own docstring).
  */
 import type { ReactNode } from 'react';
 import Navbar from '@theme-original/Navbar';
 import SidebarProductHeader from '@site/src/components/SidebarProductHeader';
+import CopyPageButton from './CopyPageButton';
 
 import styles from './styles.module.css';
 
@@ -20,7 +27,10 @@ export default function NavbarWrapper(props: Record<string, unknown>): ReactNode
     <>
       <Navbar {...props} />
       <div className={styles.secondaryRow}>
-        <SidebarProductHeader />
+        <div className={styles.secondaryRowInner}>
+          <SidebarProductHeader />
+          <CopyPageButton />
+        </div>
       </div>
     </>
   );

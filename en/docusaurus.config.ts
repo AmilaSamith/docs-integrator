@@ -121,7 +121,7 @@ const config: Config = {
           href: 'pathname:///integration-platform/docs/connectors/',
           autoAddBaseUrl: false,
           html: 'Connectors',
-          position: 'left',
+          position: 'right',
         },
         sharedReleasesNavbarItem('/reference/appendix/release-notes'),
         sharedContributeNavbarItem('wso2-integrator'),
