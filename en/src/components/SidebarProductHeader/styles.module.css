@@ -3,7 +3,34 @@
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  padding: 0.6rem var(--ifm-navbar-padding-horizontal);
+}
+
+/* Groups product + version into one bordered, pill-shaped control -- the
+   group carries the border/background/radius; the individual pills below
+   are transparent and share a divider instead of each having their own
+   border, so the two read as a single "where am I" control. */
+.pillGroup {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 999px;
+  background: var(--ifm-background-color);
+  /* No `overflow: hidden` here -- it would clip the pill's own dropdown
+     menu (an absolutely-positioned descendant that intentionally
+     overflows below this row). Rounded outer corners come from the
+     first/last pill buttons instead. */
+}
+
+.pillGroup .pillWrapper:not(:last-child) .pill {
+  border-right: 1px solid var(--wso2-surface-border);
+}
+
+.pillGroup .pillWrapper:first-child .pill {
+  border-radius: 999px 0 0 999px;
+}
+
+.pillGroup .pillWrapper:last-child .pill {
+  border-radius: 0 999px 999px 0;
 }
 
 .pillWrapper {
@@ -14,20 +41,27 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.3rem 0.6rem;
-  border: 1px solid var(--wso2-surface-border);
-  border-radius: 999px;
-  background: var(--ifm-background-color);
+  height: 100%;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  background: transparent;
   color: var(--ifm-font-color-base);
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.2;
   cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
 .pill:hover {
-  border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* Fixed width regardless of label length ("SaaS" vs "WSO2 Integrator") so
+   the group's overall size stays put when switching products. */
+.pillProduct {
+  width: 10rem;
+  justify-content: space-between;
 }
 
 .pillLabel {
@@ -35,6 +69,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 9rem;
+}
+
+.pillProduct .pillLabel {
+  max-width: none;
+  flex: 1;
+  text-align: left;
 }
 
 .pill svg {

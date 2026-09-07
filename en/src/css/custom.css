@@ -201,6 +201,24 @@
   background-color: rgba(56, 189, 248, 0.08);
 }
 
+/* Icon-only GitHub navbar link -- same 2rem circular hit target as the
+   built-in color-mode toggle, so the two read as one icon-button family
+   at the navbar's right edge. Overrides .navbar__link's text padding. */
+.navbar-github-link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0 !important;
+  margin: 0 0.125rem;
+  border-radius: 50%;
+}
+
+.navbar-github-link:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
 /* ================================================================
    SIDEBAR — Clean, subtle active state
    ================================================================ */
