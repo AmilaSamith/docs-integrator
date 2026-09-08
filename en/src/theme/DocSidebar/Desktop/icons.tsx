@@ -95,6 +95,30 @@ function CustomizeIcon(): ReactNode {
   );
 }
 
+function ManageIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <line x1="4" y1="21" x2="4" y2="14" />
+      <line x1="4" y1="10" x2="4" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12" y2="3" />
+      <line x1="20" y1="21" x2="20" y2="16" />
+      <line x1="20" y1="12" x2="20" y2="3" />
+      <line x1="1" y1="14" x2="7" y2="14" />
+      <line x1="9" y1="8" x2="15" y2="8" />
+      <line x1="17" y1="16" x2="23" y2="16" />
+    </svg>
+  );
+}
+
+function AIIntegrationsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" />
+    </svg>
+  );
+}
+
 function MigrateIcon(): ReactNode {
   return (
     <svg {...iconProps}>
@@ -131,6 +155,16 @@ function ReferenceIcon(): ReactNode {
   );
 }
 
+function ConnectorCatalogIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <rect x="3.5" y="4" width="17" height="16" rx="2.5" />
+      <path d="M3.5 9h17M8 4v5" />
+      <circle cx="12" cy="14.5" r="2.3" />
+    </svg>
+  );
+}
+
 function FallbackIcon(): ReactNode {
   return (
     <svg {...iconProps}>
@@ -141,17 +175,24 @@ function FallbackIcon(): ReactNode {
 
 const ICONS_BY_LABEL: Record<string, () => ReactNode> = {
   'platform overview': PlatformOverviewIcon,
+  // Bare "Overview" (wso2-connectors' flat top-level doc, not a category)
+  // reuses the same icon as "Platform Overview" -- same concept, just a
+  // shorter label on that branch's simpler sidebar.
+  overview: PlatformOverviewIcon,
   'get started': GetStartedIcon,
   editor: EditorIcon,
   develop: DevelopIcon,
+  'ai integrations': AIIntegrationsIcon,
   test: TestIcon,
   deploy: DeployIcon,
   operate: OperateIcon,
+  manage: ManageIcon,
   customize: CustomizeIcon,
   migrate: MigrateIcon,
   'integration control plane': IntegrationControlPlaneIcon,
   guides: GuidesIcon,
   reference: ReferenceIcon,
+  'connector catalog': ConnectorCatalogIcon,
 };
 
 export function railIconFor(label: string): ReactNode {

@@ -21,7 +21,13 @@ on:
       - 'en/src/components/TabAwareToc/**'
       - 'en/src/components/ProductDocsLinks/**'
       - 'en/src/components/SidebarProductHeader/**'
+      - 'en/src/components/ExploreDropdown/**'
       - 'en/src/components/ConnectorCatalog/styles.module.css'
+      - 'en/src/components/ConnectorCatalog/context.tsx'
+      - 'en/src/components/ConnectorCatalog/Filters.tsx'
+      - 'en/src/pages/community.tsx'
+      - 'en/src/pages/community.module.css'
+      - 'en/src/pages/contribute.module.css'
       - 'en/src/css/custom.css'
       - 'en/static/img/**'
       - 'en/plugins/docusaurus-plugin-markdown-export/**'
@@ -39,7 +45,13 @@ env:
     en/src/components/TabAwareToc
     en/src/components/ProductDocsLinks
     en/src/components/SidebarProductHeader
+    en/src/components/ExploreDropdown
     en/src/components/ConnectorCatalog/styles.module.css
+    en/src/components/ConnectorCatalog/context.tsx
+    en/src/components/ConnectorCatalog/Filters.tsx
+    en/src/pages/community.tsx
+    en/src/pages/community.module.css
+    en/src/pages/contribute.module.css
     en/src/css/custom.css
     en/static/img
     en/plugins/docusaurus-plugin-markdown-export
