@@ -1,154 +1,222 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
+import { useCatalogRegister, useCatalog, SORTS, PAGE_SIZE, type Connector } from './context';
 import styles from './styles.module.css';
-
-interface Connector {
-  name: string;
-  description: string;
-  operations: string;
-  auth: string;
-  link: string;
-  category: string;
-  icon?: string;
-}
 
 interface Props {
   connectors: Connector[];
   categories: string[];
 }
 
+/**
+ * Curated highlights for the "Most used" row -- real connector names,
+ * cross-checked against the actual catalog data below (see `featured`),
+ * not a separate popularity metric we don't have. Silently drops any
+ * name that isn't present, so this can never render a broken chip if
+ * the catalog data changes.
+ */
+const FEATURED_NAMES = ['HTTP', 'AI', 'Salesforce', 'Kafka', 'AWS S3', 'Slack', 'Stripe'];
+
+/**
+ * One pastel bg + ink pair per category, used for the fallback initials
+ * mark on cards/chips that have no real icon image. Deliberately
+ * theme-invariant (same hex regardless of light/dark mode) -- like a
+ * brand-colored badge, not page chrome, so it stays vibrant either way.
+ * "Built-in" gets the WSO2 accent peach since those are WSO2's own
+ * bundled connectors, not third-party ones.
+ */
+const CATEGORY_TINTS: Record<string, [string, string]> = {
+  'Built-in': ['#FDE3D9', '#D63B12'],
+  'AI & ML': ['#EDE9FE', '#5B3FBF'],
+  'Cloud & Infrastructure': ['#E4F0FF', '#1D5FA8'],
+  Communication: ['#E7F6EF', '#1B7A52'],
+  'CRM & Sales': ['#FDE7EF', '#A81B54'],
+  Database: ['#E9EEF7', '#2C4373'],
+  'Developer Tools': ['#EDEFF3', '#3C4657'],
+  'E-Commerce': ['#FFF1DC', '#8A5A12'],
+  'ERP & Business': ['#E6F1F1', '#146060'],
+  'Finance & Accounting': ['#E8F4E5', '#3A6B24'],
+  HRMS: ['#F3E9FB', '#6B2E8F'],
+  'Marketing & Social': ['#FFE9E3', '#B23A16'],
+  Messaging: ['#E5F1FB', '#175E8C'],
+  'Productivity & Collaboration': ['#EAF0FE', '#2B4BAF'],
+  'Security & Identity': ['#FDEEE7', '#9A4415'],
+  'Storage & Files': ['#E9F3EE', '#26694C'],
+};
+const DEFAULT_TINT: [string, string] = ['#EDEFF3', '#3C4657'];
+
+function tintOf(category: string): [string, string] {
+  return CATEGORY_TINTS[category] ?? DEFAULT_TINT;
+}
+
+function initialsOf(name: string): string {
+  return name
+    .replace(/[^A-Za-z0-9 ]/g, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase();
+}
+
+/** No operation-count field exists in the data -- `operations` is a
+ * comma-separated list of real operation names, so this derives a count
+ * from it rather than inventing one. */
+function opsCount(operations: string): number {
+  return operations.split(',').filter((s) => s.trim().length > 0).length;
+}
+
+function SearchIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </svg>
+  );
+}
+
+function ClearIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  );
+}
+
 export default function ConnectorCatalog({ connectors, categories }: Props) {
-  const [search, setSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const filtered = useMemo(() => {
-    const query = search.toLowerCase();
-    return connectors.filter((c) => {
-      const matchesCategory =
-        selectedCategory === 'All' || c.category === selectedCategory;
-      const matchesSearch =
-        !query ||
-        c.name.toLowerCase().includes(query) ||
-        c.description.toLowerCase().includes(query) ||
-        c.operations.toLowerCase().includes(query) ||
-        c.auth.toLowerCase().includes(query);
-      return matchesCategory && matchesSearch;
-    });
-  }, [search, selectedCategory, connectors]);
-
-  const resultCount = filtered.length;
-
+  useCatalogRegister(connectors, categories);
+  const catalog = useCatalog();
   const catalogBase = useBaseUrl('/catalog/');
+
+  // First render (before the registration effect above has run) or SSR:
+  // fall back to the raw props so the page isn't empty for a tick.
+  const query = catalog?.query ?? '';
+  const setQuery = catalog?.setQuery ?? (() => {});
+  const sort = catalog?.sort ?? 'Popular';
+  const setSort = catalog?.setSort ?? (() => {});
+  const selectedCats = catalog?.selectedCats ?? [];
+  const filtered = catalog?.filtered ?? connectors;
+  const limit = catalog?.limit ?? PAGE_SIZE;
+  const clearAll = catalog?.clearAll ?? (() => {});
+  const loadMore = catalog?.loadMore ?? (() => {});
+
+  const featured = FEATURED_NAMES.map((n) => connectors.find((c) => c.name === n)).filter(
+    (c): c is Connector => Boolean(c),
+  );
+
+  const shown = filtered.slice(0, limit);
+  const remaining = filtered.length - shown.length;
 
   return (
     <div className={styles.catalog}>
-      {/* Search + Filter Bar */}
-      <div className={styles.toolbar}>
-        <div className={styles.searchWrapper}>
-          <svg
-            className={styles.searchIcon}
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            className={styles.searchInput}
-            placeholder="Search connectors by name or description..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            aria-label="Search connectors"
-          />
-          {search && (
-            <button
-              className={styles.clearButton}
-              onClick={() => setSearch('')}
-              aria-label="Clear search"
-              type="button"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </div>
-        <div className={styles.filterRow}>
-          <div className={styles.categoryChips}>
-            {['All', ...categories].map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`${styles.chip} ${selectedCategory === cat ? styles.chipActive : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat}
-                {cat === 'All' && (
-                  <span className={styles.chipCount}>{connectors.length}</span>
-                )}
-              </button>
-            ))}
+      <label className={styles.bigSearch}>
+        <SearchIcon />
+        <input
+          type="search"
+          className={styles.bigSearchInput}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search connectors by name, description or operation"
+          aria-label="Search connectors"
+        />
+        {query ? (
+          <button type="button" className={styles.bigSearchClear} onClick={() => setQuery('')} aria-label="Clear search">
+            <ClearIcon />
+          </button>
+        ) : (
+          <kbd className={styles.kbd}>/</kbd>
+        )}
+      </label>
+
+      {featured.length > 0 && (
+        <>
+          <div className={styles.rule}>
+            <span>Most used</span>
+            <span className={styles.ruleLine} />
           </div>
+          <div className={styles.featured}>
+            {featured.map((c) => {
+              const [bg, ink] = tintOf(c.category);
+              return (
+                <Link key={c.name} to={`${catalogBase}${c.link.replace(/\/$/, '')}`} className={styles.fchip}>
+                  <span className={styles.fmark} style={{ background: bg, color: ink }}>
+                    {initialsOf(c.name)}
+                  </span>
+                  {c.name}
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      <div className={styles.resultBar}>
+        <span className={styles.count}>
+          <strong>{filtered.length}</strong> connector{filtered.length === 1 ? '' : 's'}
+          {selectedCats.length ? ` in ${selectedCats.length} categor${selectedCats.length === 1 ? 'y' : 'ies'}` : ''}
+        </span>
+        <div className={styles.sorts}>
+          {SORTS.map((s) => (
+            <button key={s} type="button" className={styles.sortBtn} aria-pressed={sort === s} onClick={() => setSort(s)}>
+              {s}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Results count */}
-      <div className={styles.resultsMeta}>
-        <span className={styles.resultCount}>
-          {resultCount} connector{resultCount !== 1 ? 's' : ''}
-          {selectedCategory !== 'All' && ` in ${selectedCategory}`}
-          {search && ` matching "${search}"`}
-        </span>
-      </div>
-
-      {/* Connector Cards */}
-      {resultCount > 0 ? (
+      {shown.length > 0 ? (
         <div className={styles.grid}>
-          {filtered.map((c) => (
-            <Link key={c.name + c.link} to={`${catalogBase}${c.link.replace(/\/$/, '')}`} className={styles.card}>
-              <div className={styles.cardHeader}>
-                {c.icon ? (
-                  <img
-                    src={c.icon}
-                    alt=""
-                    className={styles.cardIcon}
-                    loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                ) : (
-                  <span className={styles.cardIconFallback}>{c.name.charAt(0)}</span>
-                )}
-                <span className={styles.cardName}>{c.name}</span>
-                <span className={styles.cardCategory}>{c.category}</span>
-              </div>
-              <p className={styles.cardDesc}>{c.description}</p>
-              <span className={styles.cardLink}>Learn more →</span>
-            </Link>
-          ))}
+          {shown.map((c) => {
+            const [bg, ink] = tintOf(c.category);
+            return (
+              <Link key={c.name} to={`${catalogBase}${c.link.replace(/\/$/, '')}`} className={styles.card}>
+                <div className={styles.cardHead}>
+                  {c.icon ? (
+                    <img
+                      src={c.icon}
+                      alt=""
+                      className={styles.cardIcon}
+                      loading="lazy"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span className={styles.cardMark} style={{ background: bg, color: ink }}>
+                      {initialsOf(c.name)}
+                    </span>
+                  )}
+                  <span className={styles.cardHeadText}>
+                    <span className={styles.cardName}>{c.name}</span>
+                    <span className={styles.cardCat}>{c.category}</span>
+                  </span>
+                  {c.category === 'Built-in' && <span className={styles.tag}>BUILT-IN</span>}
+                </div>
+                <p className={styles.cardDesc}>{c.description}</p>
+                <div className={styles.cardFoot}>
+                  <span>{opsCount(c.operations)} operations</span>
+                  <span className={styles.cardFootAuth}>{c.auth}</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       ) : (
         <div className={styles.empty}>
-          <p>No connectors found matching your criteria.</p>
-          <button
-            type="button"
-            className={styles.resetButton}
-            onClick={() => {
-              setSearch('');
-              setSelectedCategory('All');
-            }}
-          >
-            Reset filters
+          No connectors match those filters.{' '}
+          <button type="button" className={styles.emptyClear} onClick={clearAll}>
+            Clear all filters
           </button>
         </div>
+      )}
+
+      {remaining > 0 && (
+        <button type="button" className={styles.more} onClick={loadMore}>
+          Show {Math.min(PAGE_SIZE, remaining)} more connectors
+        </button>
       )}
     </div>
   );

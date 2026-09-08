@@ -1,0 +1,29 @@
+/* First two rules copied verbatim from the stock module (see this
+   file's docstring) -- only .docItemColWide/.tocColWide are new. */
+.docItemContainer header + *,
+.docItemContainer article > *:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+
+  /* Catalog page only: main content takes whatever's left instead of a
+     hardcoded 75%, since the filter column beside it is now a fixed
+     width instead of a 25% share. */
+  .docItemColWide {
+    flex: 1 1 0 !important;
+    max-width: none !important;
+  }
+
+  /* Fixed 320px instead of Infima's col--3 (25%, computed relative to
+     viewport width) -- comfortably fits the filter rail's category
+     labels without wrapping awkwardly on any reasonable screen size,
+     which a percentage-based width can't guarantee. */
+  .tocColWide {
+    flex: 0 0 320px !important;
+    max-width: 320px !important;
+  }
+}

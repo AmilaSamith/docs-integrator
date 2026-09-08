@@ -1,218 +1,194 @@
 /* ================================================================
-   CONNECTOR CATALOG — Search, Filter, Grid
-
-   Uses the theme palette from custom.css:
-     Light:  BG #FFFFFF | Surface #F7F9FC | Border #E5E9F0
-             Text #1B2A49 #565656 #7B8598 | Primary #F14E23
-     Dark:   BG #0B1120 | Surface #0E1728 | Border rgba(255,255,255,.09)
-             Text #EFF3F9 #B6C1D3 #8B94A7 | Primary #F14E23
+   CONNECTOR CATALOG — big search, "Most used" row, sortable/filterable
+   grid, category facet rail. Uses the site's real theme tokens
+   (custom.css's --wso2- and --ifm- variables), not hardcoded hex, so it
+   follows the site's light/dark toggle and any future palette tweaks
+   automatically.
    ================================================================ */
 
 .catalog {
   margin-top: 0.5rem;
-}
-
-/* ── Toolbar (search + chips) ── */
-.toolbar {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 20px;
 }
 
-/* ── Search Input ── */
-.searchWrapper {
-  position: relative;
+/* ── Big search ── */
+.bigSearch {
   display: flex;
   align-items: center;
-}
-
-.searchIcon {
-  position: absolute;
-  left: 14px;
-  color: #7B8598;
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 0.7rem 2.5rem 0.7rem 2.75rem;
-  font-size: 0.925rem;
-  font-family: inherit;
-  border: 1.5px solid #E5E9F0;
+  gap: 11px;
+  height: 48px;
+  padding: 0 15px;
   border-radius: 12px;
-  background: #FFFFFF;
-  color: #565656;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: var(--wso2-well-bg);
+  border: 1px solid var(--wso2-surface-border);
+  color: var(--wso2-text-muted);
 }
 
-.searchInput::placeholder {
-  color: #7B8598;
-}
-
-.searchInput:focus {
+.bigSearch:focus-within {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.1);
 }
 
-[data-theme='dark'] .searchInput {
-  background: #0E1728;
-  border-color: rgba(255, 255, 255, 0.09);
-  color: #B6C1D3;
+.bigSearchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: var(--wso2-heading-color);
 }
 
-[data-theme='dark'] .searchInput::placeholder {
-  color: #8B94A7;
+.bigSearchInput::placeholder {
+  color: var(--wso2-text-muted);
 }
 
-[data-theme='dark'] .searchInput:focus {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.16);
+.kbd {
+  flex-shrink: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--wso2-text-muted);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-color);
 }
 
-.clearButton {
-  position: absolute;
-  right: 12px;
+.bigSearchClear {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 24px;
   height: 24px;
   border: none;
   border-radius: 6px;
-  background: #F7F9FC;
-  color: #7B8598;
+  background: transparent;
+  color: var(--wso2-text-muted);
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.clearButton:hover {
-  background: #E5E9F0;
-  color: #1B2A49;
+.bigSearchClear:hover {
+  background: var(--ifm-background-color);
+  color: var(--wso2-heading-color);
 }
 
-[data-theme='dark'] .clearButton {
-  background: rgba(255, 255, 255, 0.06);
-  color: #8B94A7;
-}
-
-[data-theme='dark'] .clearButton:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #EFF3F9;
-}
-
-/* ── Category Chips ── */
-.filterRow {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.filterRow::-webkit-scrollbar {
-  display: none;
-}
-
-.categoryChips {
+/* ── "Most used" row ── */
+.rule {
   display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.chip {
-  display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  font-family: inherit;
-  border: 1px solid #E5E9F0;
-  border-radius: 20px;
-  background: #FFFFFF;
-  color: #565656;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
-  line-height: 1.4;
+  gap: 10px;
 }
 
-.chip:hover {
-  background: #F7F9FC;
-  border-color: var(--ifm-color-primary);
-  color: var(--wso2-accent-text);
+.rule span:first-child {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wso2-text-muted);
 }
 
-.chipActive {
-  background: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: #FFFFFF;
+.ruleLine {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--wso2-border-subtle);
 }
 
-.chipActive:hover {
-  background: #D63B12;
-  border-color: #D63B12;
-  color: #FFFFFF;
+.featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-[data-theme='dark'] .chip {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.09);
-  color: #8B94A7;
-}
-
-[data-theme='dark'] .chip:hover {
-  background: rgba(241, 78, 35, 0.16);
-  border-color: var(--ifm-color-primary);
-  color: var(--wso2-accent-text);
-}
-
-[data-theme='dark'] .chipActive {
-  background: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: #FFFFFF;
-}
-
-[data-theme='dark'] .chipActive:hover {
-  background: #FF8A3D;
-  border-color: #FF8A3D;
-  color: #FFFFFF;
-}
-
-.chipCount {
-  font-size: 0.7rem;
+.fchip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 8px;
+  border-radius: 999px;
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-surface-color);
+  font-size: 13px;
   font-weight: 600;
-  padding: 0 0.35rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.25);
-  line-height: 1.5;
+  color: var(--wso2-heading-color) !important;
+  text-decoration: none !important;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
-.chip:not(.chipActive) .chipCount {
-  background: #F7F9FC;
-  color: #7B8598;
+.fchip:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--wso2-accent-text) !important;
+  text-decoration: none;
 }
 
-[data-theme='dark'] .chip:not(.chipActive) .chipCount {
-  background: rgba(255, 255, 255, 0.06);
+.fmark {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  font-size: 10.5px;
+  font-weight: 800;
+  flex-shrink: 0;
 }
 
-/* ── Results meta ── */
-.resultsMeta {
-  margin-bottom: 0.75rem;
+/* ── Result count + sort ── */
+.resultBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.resultCount {
-  font-size: 0.825rem;
-  color: #7B8598;
+.count {
+  font-size: 13.5px;
+  color: var(--ifm-font-color-base);
 }
 
-/* ── Card Grid ── */
+.count strong {
+  color: var(--wso2-heading-color);
+}
+
+.sorts {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.sortBtn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 9px;
+  border: 1px solid var(--wso2-surface-border);
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+}
+
+.sortBtn[aria-pressed='true'] {
+  border-color: var(--ifm-color-primary);
+  background: #FDE3D9;
+  color: var(--wso2-accent-text);
+}
+
+[data-theme='dark'] .sortBtn[aria-pressed='true'] {
+  background: rgba(241, 78, 35, 0.16);
+}
+
+/* ── Card grid ── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  gap: 12px;
 }
 
 @media (max-width: 600px) {
@@ -221,109 +197,96 @@
   }
 }
 
-/* ── Connector Card ── */
 .card {
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.15rem;
-  border: 1px solid #E5E9F0;
-  border-radius: 12px;
-  background: #F7F9FC;
-  text-decoration: none;
+  gap: 9px;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-surface-color);
   color: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
-  transform: translateY(-2px);
-  text-decoration: none;
+  box-shadow: var(--wso2-card-shadow-hover);
   color: inherit;
+  text-decoration: none;
 }
 
-[data-theme='dark'] .card {
-  background: #0E1728;
-  border-color: rgba(255, 255, 255, 0.09);
-}
-
-[data-theme='dark'] .card:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.cardHeader {
+.cardHead {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  gap: 10px;
 }
 
 .cardIcon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 9px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.cardIconFallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cardMark {
+  display: grid;
+  place-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  background: rgba(241, 78, 35, 0.08);
-  color: var(--wso2-accent-text);
-  font-size: 0.85rem;
-  font-weight: 700;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 800;
   flex-shrink: 0;
 }
 
-[data-theme='dark'] .cardIconFallback {
-  background: rgba(241, 78, 35, 0.16);
-  color: var(--wso2-accent-text);
+.cardHeadText {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .cardName {
-  flex: 1;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1B2A49;
-  line-height: 1.3;
-}
-
-[data-theme='dark'] .cardName {
-  color: #EFF3F9;
-}
-
-.cardCategory {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  background: rgba(241, 78, 35, 0.08);
-  color: var(--wso2-accent-text);
-  border: 1px solid rgba(241, 78, 35, 0.2);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  flex-shrink: 0;
-  letter-spacing: 0.01em;
-  line-height: 1.4;
 }
 
-[data-theme='dark'] .cardCategory {
-  background: rgba(241, 78, 35, 0.16);
+.cardCat {
+  font-size: 11.5px;
+  color: var(--wso2-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: #FDE3D9;
   color: var(--wso2-accent-text);
-  border-color: rgba(241, 78, 35, 0.3);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+[data-theme='dark'] .tag {
+  background: rgba(241, 78, 35, 0.16);
 }
 
 .cardDesc {
-  flex: 1;
-  font-size: 0.825rem;
+  margin: 0;
+  font-size: 12.8px;
   line-height: 1.5;
-  color: #565656;
-  margin: 0 0 0.75rem 0;
+  color: var(--ifm-font-color-base);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -331,68 +294,213 @@
   overflow: hidden;
 }
 
-[data-theme='dark'] .cardDesc {
-  color: #8B94A7;
-}
-
-.cardLink {
+.cardFoot {
   margin-top: auto;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--wso2-accent-text);
-  transition: color 0.15s ease;
-}
-
-.card:hover .cardLink {
-  color: #D63B12;
-}
-
-[data-theme='dark'] .cardLink {
-  color: var(--wso2-accent-text);
-}
-
-[data-theme='dark'] .card:hover .cardLink {
-  color: #FF8A3D;
-}
-
-/* ── Empty State ── */
-.empty {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #7B8598;
-}
-
-.empty p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-.resetButton {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.85rem;
+  gap: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--wso2-border-subtle);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--wso2-text-muted);
+}
+
+.cardFootAuth {
+  margin-left: auto;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  color: var(--wso2-accent-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── "Show more" / empty state ── */
+.more {
+  align-self: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 11px;
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-surface-color);
+  font-size: 13.5px;
   font-weight: 600;
   font-family: inherit;
-  border: 1.5px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  background: transparent;
-  color: var(--ifm-color-primary);
+  color: var(--wso2-heading-color);
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.resetButton:hover {
-  background: var(--ifm-color-primary);
-  color: #FFFFFF;
-}
-
-[data-theme='dark'] .resetButton {
+.more:hover {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--wso2-accent-text);
 }
 
-[data-theme='dark'] .resetButton:hover {
-  background: var(--ifm-color-primary);
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px dashed var(--wso2-surface-border);
+  border-radius: 14px;
+  font-size: 13.5px;
+  color: var(--wso2-text-muted);
+}
+
+.emptyClear {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--wso2-accent-text);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ── Right filter rail ── */
+/* Rendered inside the real "On this page" TOC slot (see theme/TOC and
+   Filters.tsx), not as a second column inside this component -- that
+   slot already owns its own width (Infima's col--3) and its own
+   scroll/sticky container, so this only needs to fill it, matching
+   @theme-original/TOC's own .tableOfContents formula exactly (this
+   replaces that component outright on the catalog page, so nothing
+   else provides the sticky/scroll behavior here). */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  overflow-y: auto;
+}
+
+/* Same breakpoint @theme-original/TOC hides its own .tableOfContents at
+   -- this replaces that component outright here, so it has to repeat
+   the same mobile behavior itself (mobile users get no filter rail at
+   all, same as they'd get no desktop TOC; there's no mobile-drawer
+   equivalent for this). */
+@media (max-width: 996px) {
+  .filters {
+    display: none;
+  }
+}
+
+.filtersHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.filtersHead span {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wso2-text-muted);
+}
+
+.clear {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--wso2-accent-text);
+  cursor: pointer;
+}
+
+.facetGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.facetTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+}
+
+.facet {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  border: 0;
+  background: transparent;
+  border-radius: 9px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  text-align: left;
+}
+
+.facet:hover {
+  background: var(--wso2-well-bg);
+}
+
+.facet[aria-pressed='true'] {
+  color: var(--wso2-heading-color);
+  font-weight: 600;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1.5px solid var(--wso2-surface-border);
+  background: var(--ifm-background-color);
   color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.facet[aria-pressed='true'] .box {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+}
+
+.box svg {
+  opacity: 0;
+}
+
+.facet[aria-pressed='true'] .box svg {
+  opacity: 1;
+}
+
+.facetLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.facetCount {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--wso2-text-muted);
+}
+
+.promo {
+  padding: 14px;
+  border-radius: 12px;
+  background: #FDE3D9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+[data-theme='dark'] .promo {
+  background: rgba(241, 78, 35, 0.16);
+}
+
+.promo b,
+.promo span {
+  color: var(--wso2-accent-text);
+  font-size: 12.5px;
+  line-height: 1.5;
 }

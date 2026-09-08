@@ -6,8 +6,7 @@ import {
   sharedNavbarLogo,
   sharedFooterStyle,
   sharedFooterCopyright,
-  sharedCommunityFooterLinks,
-  sharedCommunityDropdown,
+  sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
   sharedContributeNavbarItem,
@@ -97,11 +96,24 @@ const config: Config = {
       logo: sharedNavbarLogo,
       items: [
         // No self-link to Connectors here -- this is the connectors site.
+        // Instead, the first item is a real <a> (via pathname:// +
+        // autoAddBaseUrl:false, same reasoning as the other two branches'
+        // Connectors item) back to the saas site, so this is never a
+        // dead end -- matches saas/wso2-integrator's item count too,
+        // keeping the centered nav group the same width across all three.
+        {
+          href: 'pathname:///integration-platform/docs/',
+          autoAddBaseUrl: false,
+          // See saas's docusaurus.config.ts for why target:'_self' is here.
+          target: '_self',
+          html: 'SaaS',
+          position: 'left',
+        },
         // No release-notes.md exists on this branch, so Releases points
         // at GitHub's releases list instead (see sharedReleasesNavbarItem).
         sharedReleasesNavbarItem('https://github.com/wso2/docs-integrator/releases'),
-        sharedContributeNavbarItem('wso2-connectors'),
-        sharedCommunityDropdown,
+        sharedContributeNavbarItem(),
+        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
         sharedGithubNavbarItem,
       ]
@@ -114,10 +126,30 @@ const config: Config = {
           items: [
             { label: 'Overview', to: '/overview' },
             { label: 'Catalog', to: '/catalog' },
-            { label: 'Build your own', to: '/build-your-own/build-own' },
           ],
         },
-        sharedCommunityFooterLinks,
+        {
+          title: 'Build your own',
+          items: [
+            { label: 'Getting started', to: '/build-your-own/build-own' },
+            { label: 'From OpenAPI spec', to: '/build-your-own/create-from-openapi-spec' },
+            { label: 'Custom development', to: '/build-your-own/custom-development' },
+          ],
+        },
+        {
+          title: 'Platform Components',
+          items: [
+            // Real <a> tags (pathname:// + autoAddBaseUrl:false), not
+            // client-side routes -- each is a completely separate
+            // build/bundle. See SidebarProductHeader's docstring for
+            // the isInternalUrl pitfall this sidesteps. target:'_self'
+            // overrides Link's default of opening anything it treats as
+            // external (which pathname:// does) in a new tab -- a
+            // sibling product should feel like same-site navigation.
+            { label: 'SaaS', href: 'pathname:///integration-platform/docs/', autoAddBaseUrl: false, target: '_self' },
+            { label: 'WSO2 Integrator', href: 'pathname:///integration-platform/docs/integrator/', autoAddBaseUrl: false, target: '_self' },
+          ],
+        },
       ],
       copyright: sharedFooterCopyright,
     },
