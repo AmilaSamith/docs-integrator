@@ -1,88 +1,1170 @@
 ---
+id: platform-overview
+title: Platform overview
+sidebar_label: Overview
 sidebar_position: 1
-title: Introduction
-description: WSO2 Integration Platform is a 100% open-source solution for connecting AI agents, APIs, data, and events across cloud, on-prem, and hybrid environments.
-keywords: [wso2 integrator, integration platform, architecture, low-code, pro-code, ballerina, ai integration]
+description: Understand the WSO2 Integration Platform, its development model, integration styles, deployment architecture, and operational lifecycle.
+keywords:
+  - WSO2 Integration Platform
+  - WSO2 Integrator
+  - integration development
+  - integrations as APIs
+  - event-driven integration
+  - file-driven integration
+  - AI agents
+  - connectors
+  - control plane
+  - data plane
 ---
 
-# Introduction
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-The WSO2 Integration Platform is an 100% open-source integration solution for connecting AI agents, APIs, data, and events across cloud, on-prem, and hybrid environments. It lets you build any type of integration from a single API to a distributed AI-driven workflow and run it wherever your business needs it.
+# Platform overview
 
-The platform pairs the rapid development of low-code with the full control of pro-code, with AI assistance available across both, taking you from your first local integration to a managed, observable deployment at scale.
+The **WSO2 Integration Platform** is an open-source integration platform for connecting **AI agents, APIs, data, events, applications, and services** across cloud, on-premises, and hybrid environments.
 
-## Design and run
+As an integration developer, you use the platform to:
 
-Working with the WSO2 Integration Platform involves two activities: you design integrations in the IDE, and you deploy them to the runtime of your choice, such as WSO2 Cloud, your own Kubernetes cluster, or on-premises infrastructure.
+- build integrations and workflows
+- connect to enterprise and SaaS systems
+- expose business capabilities as APIs
+- process events and messages
+- process and exchange files
+- transform data between systems
+- build AI-powered integrations and agents
+- deploy integrations to managed or self-managed environments
+- manage and observe integrations throughout their lifecycle
 
-### Design: WSO2 Integrator IDE
+The platform is designed to separate **how you develop an integration** from **where the integration runs and how it is operated**.
 
-The WSO2 Integrator IDE is where you design, build, and test integrations. It offers:
+> **Core mental model**
+>
+> **Develop → Build & Validate → Deploy → Test → Promote → Operate**
+>
+> Development environments such as **Development**, **Staging**, and **Production** are deployment environments within this lifecycle. They are not lifecycle steps themselves.
 
-- **The visual designer and code editor stay in sync.** Every change in one appears instantly in the other, no export step required.
-- **AI-assisted development** across both views, so you can move from intent to working integration quickly.
+<!--
+AI IMAGE PROMPT — PLATFORM OVERVIEW ARCHITECTURE
 
-### Deploy and manage
+Create a clean enterprise technical architecture diagram titled:
+"WSO2 Integration Platform"
 
-Integrations built in the IDE can run in two ways. Pick the one that fits your operational model.
+Audience:
+- integration developers
+- DevOps engineers
+- solution architects
 
-**WSO2 Cloud:** A fully managed cloud platform operated by WSO2. WSO2 Integration Cloud handles build pipelines, environments, deployment tracks, observability, and zero-downtime promotion across development, staging, and production.
+Show these layers from top to bottom:
 
-**Self-hosted (open source).** Run the platform on your own infrastructure: Kubernetes, Docker, VMs, or bare metal. You retain full control over data sovereignty, infrastructure choices, and CI/CD and observability stack. Your integrations never leave your perimeter, and the platform runs in air-gapped environments.
+1. Development
+   - WSO2 Integrator
+   - Visual development
+   - Source-code development
+   - Flow Diagram editor
+   - Data Mapper editor
+   - Expression editor
+   - Type editor
+   - AI-assisted development
 
-## Architecture
+2. Control plane
+   - WSO2 Cloud - Integration Platform
+   - Integration Control Plane (ICP)
+   - Deploy
+   - Manage
+   - Observe
+   - Environments
 
-![WSO2 Integrator architecture diagram](@site/src/assets/img/get-started/overview-and-architecture/integrator_diagram.webp)
+3. Data plane
+   - WSO2-managed data plane
+   - Private data plane
+   - Self-hosted runtime
+   - Kubernetes
+   - OpenShift
+   - Docker
+   - VM
 
-The platform is organized into a small number of clearly separated planes, each with a focused responsibility. The diagram above shows the architecture as it appears in WSO2 Integration Cloud. Self-hosted deployments use a simpler topology that maps to the same essential planes.
+4. Connected systems
+   - APIs
+   - SaaS applications
+   - Databases
+   - Message brokers
+   - Files
+   - AI models
+   - Knowledge bases
+   - MCP servers
 
-### WSO2 Integrator IDE
+Show the primary path:
+Developer -> WSO2 Integrator -> Control Plane -> Data Plane -> Connected Systems
 
-The WSO2 Integrator IDE is the entry point for developers. It produces the source artifacts that the rest of the platform deploys, runs, and observes.
+Show a separate operational/observability path:
+Data Plane -> Control Plane / Observability
+
+Visually distinguish:
+- Control plane = manages
+- Data plane = runs integrations
+- Development = creates integration artifacts
+
+Style:
+- modern enterprise architecture
+- technical documentation quality
+- flat vector
+- white/light background
+- restrained blue and neutral palette
+- no 3D
+- no people
+- no marketing slogans
+- 16:9
+-->
+
+![WSO2 Integration Platform architecture](/img/platform-overview/platform-overview-architecture.png)
+
+## Platform architecture
+
+The platform can be understood through three primary concerns:
+
+| Area | Responsibility |
+| --- | --- |
+| **Development** | Create, edit, test, debug, and package integration artifacts |
+| **Control plane** | Deploy, manage, configure, and observe integrations |
+| **Data plane** | Execute integration workloads |
+
+The **control plane does not execute the integration business logic**. Integrations run in the **data plane**.
+
+This separation allows the same development approach to be used across different deployment models.
+
+---
+
+# WSO2 Integrator
+
+**WSO2 Integrator** is the development environment used to create integration projects and applications.
+
+It supports both **visual development** and **source-code development**. These are different ways of working with the same integration source rather than separate implementation models.
+
+## Visual development
+
+Use the visual development experience to:
+
+- construct integration flows
+- add triggers and entry points
+- configure connectors and connections
+- add processing steps
+- define routing and control flow
+- map data
+- configure integration settings
+
+## Source-code development
+
+Use the source editor when you need direct control over the implementation, including:
+
+- custom logic
+- reusable functions
+- advanced expressions
+- typed data structures
+- code-level integration patterns
+
+## Editors
+
+WSO2 Integrator provides focused editors for common development tasks:
+
+| Editor | Use it to |
+| --- | --- |
+| **Flow Diagram editor** | Build integration logic visually |
+| **Service Design editor** | Define service interfaces |
+| **Expression editor** | Create and edit expressions |
+| **Type editor** | Define reusable data types |
+| **Type Diagram editor** | Visualize type relationships |
+| **Configure editor** | Configure integration and service settings |
+| **Data Mapper editor** | Map data between source and target structures |
+| **GraphQL editor** | Design GraphQL services and types |
+
+> **Development model**
+>
+> Start with visual development when it helps you model the flow quickly. Move to source code when the integration requires more direct control. Both views work with the same underlying integration source.
+
+<!--
+AI IMAGE PROMPT — DEVELOPMENT EXPERIENCE
+
+Create a technical illustration of a modern integration development environment.
+
+Show:
+- project explorer on the left
+- Flow Diagram editor in the center
+- source editor available for the same integration
+- configuration panel on the right
+- toolbar actions such as Run, Debug, Build, and Deploy
+
+Visually communicate:
+"Visual development and source-code development are two synchronized ways of working with the same integration."
+
+Do not use the term "IDE" anywhere in the image.
+
+Style:
+- realistic enterprise developer tooling
+- clean documentation illustration
+- minimal UI
+- no people
+- no decorative elements
+- 16:9
+-->
+
+![WSO2 Integrator development experience](/img/platform-overview/integrator-development-experience.png)
+
+---
+
+# What you can build
+
+WSO2 Integrator supports several integration styles.
+
+## Integrations as APIs
+
+Build APIs that expose business capabilities, orchestrate backend systems, or provide a modern interface to legacy applications.
+
+```text
+Client
+  |
+  v
+API Entry Point
+  |
+  +--> Validate
+  |
+  +--> Transform
+  |
+  +--> Invoke backend systems
+  |
+  +--> Compose response
+  |
+  v
+Response
+```
+
+Typical use cases include:
+
+- exposing backend functionality as APIs
+- composing multiple services behind one API
+- transforming request and response models
+- orchestrating synchronous business processes
+
+<!--
+AI DIAGRAM PROMPT — API INTEGRATION
+
+Create a left-to-right technical integration diagram.
+
+Flow:
+Client -> API Entry Point -> Validate -> Transform -> Backend Systems -> Response
+
+Show multiple backend branches:
+- CRM
+- ERP
+- Database
+
+Use simple system boxes and directional arrows.
+
+Style:
+- enterprise architecture
+- flat vector
+- documentation-ready
+- light background
+- minimal labels
+- no 3D
+- 16:9
+-->
+
+![Integrations as APIs](/img/platform-overview/integrations-as-apis.png)
+
+---
+
+## Event-driven integrations
+
+Build integrations that react to messages or events instead of requiring a synchronous request.
+
+```text
+Event Producer
+      |
+      v
+Message Broker
+      |
+      v
+Event Listener
+      |
+      +--> Validate
+      |
+      +--> Transform
+      |
+      +--> Enrich
+      |
+      +--> Route
+      |
+      v
+Downstream Systems
+```
+
+Typical use cases include:
+
+- asynchronous business processing
+- event routing
+- real-time notifications
+- data synchronization
+- event enrichment
+- decoupled application architectures
+
+Supported technologies can include messaging and streaming systems such as Kafka, JMS, MQTT, and other systems available through WSO2 connectivity options.
+
+<!--
+AI DIAGRAM PROMPT — EVENT-DRIVEN INTEGRATION
+
+Create a technical event-driven architecture diagram.
+
+Show:
+Producer Applications -> Message Broker / Stream -> WSO2 Integrator -> Processing -> Multiple Consumers
+
+Inside processing show:
+- Validate
+- Transform
+- Enrich
+- Route
+
+Show multiple consumer systems on the right.
+
+Style:
+- professional enterprise architecture
+- flat vector
+- minimal
+- high readability
+- white/light background
+- no people
+- 16:9
+-->
+
+![Event-driven integration](/img/platform-overview/event-driven-integration.png)
+
+---
+
+## File-driven integrations
+
+Build integrations triggered by file creation, modification, or movement.
+
+Typical use cases include:
+
+- B2B file exchange
+- file transformation
+- file validation
+- encryption and decryption
+- file signing and verification
+- partner file processing
+- legacy-system integration
+
+Example:
+
+```text
+Inbound File
+     |
+     v
+Read / Validate
+     |
+     v
+Transform
+     |
+     v
+Secure / Process
+     |
+     v
+Partner Repository
+```
+
+---
+
+## Task automations
+
+Run integration logic on a predefined schedule.
+
+Typical use cases include:
+
+- scheduled data synchronization
+- batch processing
+- recurring reports
+- periodic cleanup
+- scheduled data exchange
+
+```text
+Schedule
+   |
+   v
+Automation
+   |
+   +--> Read source
+   +--> Process data
+   +--> Update target
+   |
+   v
+Completion
+```
+
+---
+
+## AI and agent integrations
+
+Build AI-powered integration solutions by connecting AI models, agents, enterprise systems, data, knowledge bases, and tools.
+
+You can use integration capabilities to:
+
+- invoke AI models
+- build AI agents
+- connect agents to enterprise systems
+- integrate knowledge bases
+- implement RAG-based solutions
+- expose tools and enterprise capabilities through MCP
+- combine deterministic integration logic with AI-driven decisions
+
+Example:
+
+```text
+User / Application
+        |
+        v
+Integration API
+        |
+        v
+AI Agent
+   /    |    \
+  /     |     \
+CRM   Knowledge  Order System
+      Base
+        |
+        v
+Decision / Action
+        |
+        v
+Response
+```
+
+The integration layer can provide the connectivity, orchestration, transformation, security, and enterprise-system access required by an AI workflow.
+
+<!--
+AI DIAGRAM PROMPT — AI-ENABLED INTEGRATION
+
+Create a clean enterprise architecture diagram titled:
+"AI-enabled integration"
+
+Show:
+User / Application
+   ->
+Integration API
+   ->
+AI Agent
+
+From the AI Agent, show connections to:
+- CRM
+- ERP / Order System
+- Knowledge Base
+- External AI Model
+- MCP-enabled tools
+
+Also show:
+- deterministic business logic
+- authentication and authorization
+- data transformation
+
+The message should be:
+"AI reasoning is embedded within an enterprise integration flow."
+
+Avoid:
+- robots
+- human illustrations
+- futuristic scenery
+- decorative AI imagery
+
+Style:
+technical documentation
+flat vector
+professional
+white/light background
+16:9
+-->
+
+![AI-enabled integration](/img/platform-overview/ai-enabled-integration.png)
+
+---
+
+# Connectivity
+
+Connectivity determines how an integration communicates with external systems.
+
+WSO2 provides a broad connector ecosystem for enterprise applications, SaaS applications, databases, messaging systems, cloud services, and AI services.
+
+The public WSO2 platform currently advertises **600+ connectors**.
+
+A connection represents the configuration required to communicate with a target system and can be reused by integration logic.
+
+Example:
+
+```text
+Integration
+    |
+    +---- Salesforce connection
+    |
+    +---- PostgreSQL connection
+    |
+    +---- Kafka connection
+    |
+    +---- HTTP connection
+```
+
+Use connectors when you need application-specific operations. Use supported protocols directly when your integration requires lower-level control.
+
+---
+
+# Data transformation
+
+Different systems often represent the same business data differently.
+
+WSO2 Integrator provides transformation capabilities for mapping source structures to target structures.
+
+```text
+Source Data
+     |
+     v
+Data Mapper
+     |
+     +--> Rename fields
+     +--> Convert types
+     +--> Restructure objects
+     +--> Map arrays
+     +--> Apply expressions
+     |
+     v
+Target Data
+```
+
+Use the **Data Mapper editor** for visual mapping and the **Expression editor** when a transformation requires direct expression-based logic.
+
+---
+
+# Integration logic and control flow
+
+Integration flows commonly require more than a simple sequence of calls.
+
+You can implement:
+
+- conditions
+- routing
+- loops
+- reusable functions
+- validation
+- error handling
+- retries
+- alternative processing paths
+
+For example:
+
+```text
+                +--> Condition A --> System A
+Request --> Validate
+                +--> Condition B --> System B
+```
+
+or:
+
+```text
+Event
+  |
+  v
+Read items
+  |
+  v
+Iterate
+  |
+  v
+Process each item
+  |
+  v
+Publish result
+```
+
+---
+
+# Deployment architecture
+
+A key platform concept is the separation between the **control plane** and the **data plane**.
+
+```text
+Developer
+    |
+    v
+WSO2 Integrator
+    |
+    v
+Integration Artifact
+    |
+    v
+Control Plane
+    |
+    +-------------------+
+    |                   |
+    v                   v
+Data Plane A       Data Plane B
+    |                   |
+    v                   v
+Runtime              Runtime
+```
 
 ### Control plane
 
-The control plane is the operations brain of the platform. It is where admins and DevOps users perform the three core lifecycle actions: deploy, manage, and observe.
+The control plane is responsible for lifecycle operations such as:
 
-The control plane does not run your integrations. Its job is to orchestrate the data plane and interpret the observability plane. The control plane shown in the diagram is the one provided by WSO2 Integration Cloud. In self-hosted deployments, you can manage these actions through the Integration Control Plane or through your own tooling and pipelines.
+- deployment
+- environment management
+- runtime management
+- configuration
+- access control
+- observability and monitoring
 
 ### Data plane
 
-The data plane is the infrastructure on which your integrations actually run. 
+The data plane is where your integrations actually execute.
 
-The data plane can be:
+Depending on the deployment model, the data plane can run in infrastructure such as:
 
-- **WSO2-managed:** Provisioned and operated by WSO2 as part of WSO2 Integration Cloud.
-- **Private (cloud):** Running in your own AWS, Azure, GCP, OpenShift, or Kubernetes environment, but still managed through WSO2 Integration Cloud's control plane.
-- **Self-hosted:** Running entirely on your own infrastructure, managed end-to-end by you.
+- WSO2-managed cloud infrastructure
+- your cloud infrastructure
+- Kubernetes
+- OpenShift
+- Docker
+- virtual machines
+- bare metal
 
-### Observability plane
+<!--
+AI DIAGRAM PROMPT — CONTROL PLANE AND DATA PLANE
 
-The observability plane works with common tools like ELK, Grafana, Zipkin, Prometheus, and Jenkins, and fits into your operational dashboards, alerting, and incident workflows.
+Create a technical architecture diagram showing the relationship between control plane and data plane.
 
-### External systems
+Top:
+Developer
 
-Integrations connect to external systems and services like SAP, Salesforce, Snowflake, Twilio, OpenAI, and HubSpot through typed connectors and connections defined at design time.
+Below:
+WSO2 Integrator
 
-## What makes it different
+Below:
+Control Plane
 
-### 100% low-code and pro-code parity
+Split into:
+- WSO2-managed data plane
+- Private data plane
+- Self-hosted data plane
 
-Every integration can be built in two ways, and both remain in sync. You can add components through a graphical interface, configure properties visually, and view the flow as a diagram. Alternatively, you can write code directly with full IDE support, including autocompletion and type checking.
+Inside each data plane:
+Integration Runtime
 
-### Powered by Ballerina
+Bottom:
+APIs | Events | Files | Databases | SaaS | AI Systems
 
-Under the hood, every integration is a Ballerina program. The language has cloud-native services and protocols (HTTP, gRPC, GraphQL, WebSocket, Kafka, and more) built in, type-safe data handling that catches errors at compile time, and a rich standard library for data formats (JSON, XML, CSV, and more) and connectors (SAP, Salesforce, Twilio, and more).
+Make the semantic distinction visually obvious:
 
-### AI-assisted, AI-ready
+CONTROL PLANE = manages
+DATA PLANE = executes
 
-AI shows up on the platform in two ways. WSO2 Integrator Copilot helps you build integrations by generating flows, scaffolding connectors, and writing logic from natural-language prompts. And AI is a first-class part of what you build: AI agents, MCP servers, and RAG workflows are native integration types alongside APIs, automations, and event handlers.
+Style:
+- enterprise architecture
+- flat vector
+- high readability
+- white/light background
+- no marketing graphics
+- 16:9
+-->
 
-## What's next
+![Control plane and data plane](/img/platform-overview/control-plane-and-data-plane.png)
 
-- [Concepts](../get-started/concepts/overview.md) — learn the vocabulary used across the platform
-- [Set up WSO2 Integrator](../get-started/setup/overview.md) — set up the IDE and create your first integration
-- [Build an automation](../develop/how-to/build-automation.md) — schedule tasks and run background jobs
-- [Integration Control Plane](../icp/reference/integration-control-plane.md) — monitor and manage running integrations centrally
-- [WSO2 Cloud](../deploy/cloud/overview.md) — deploy integrations to the fully managed cloud platform
-- [Ballerina by Example](../reference/ballerina-by-example.md) — explore working code samples for common patterns
+---
+
+# Deployment options
+
+The platform supports different operating models depending on where you want your control plane and data plane to run.
+
+<Tabs>
+<TabItem value="cloud" label="WSO2 Cloud">
+
+Use **WSO2 Cloud - Integration Platform** when you want a managed platform experience.
+
+WSO2 operates the platform infrastructure while you focus on building, deploying, managing, and observing integrations.
+
+Typical benefits include:
+
+- no control-plane infrastructure to install
+- managed deployment workflows
+- managed environments
+- managed observability
+- managed secret storage
+- built-in platform operations
+
+</TabItem>
+
+<TabItem value="private" label="Private data plane">
+
+Use a **private data plane** when your integration workloads need to run in infrastructure you control while still using WSO2 Cloud capabilities for management.
+
+Typical environments include:
+
+- AWS
+- Azure
+- Google Cloud
+- Kubernetes
+- OpenShift
+
+This model is useful when data residency, network topology, or internal infrastructure requirements require runtime workloads to stay within your environment.
+
+</TabItem>
+
+<TabItem value="self-hosted" label="Self-hosted">
+
+Use a **self-hosted deployment** when your organization needs control over the platform infrastructure.
+
+Typical environments include:
+
+- Kubernetes
+- OpenShift
+- Docker
+- virtual machines
+- bare metal
+- air-gapped environments
+
+You can use the **Integration Control Plane (ICP)** to centrally manage self-hosted WSO2 Integrator runtimes.
+
+</TabItem>
+</Tabs>
+
+---
+
+# Control planes
+
+WSO2 Integrator supports two primary control-plane options:
+
+| Control plane | Operating model | Typical use |
+| --- | --- | --- |
+| **WSO2 Cloud - Integration Platform** | Managed SaaS | Managed cloud operations |
+| **Integration Control Plane (ICP)** | Self-hosted | On-premises, private cloud, or air-gapped environments |
+
+Both control-plane models provide centralized management of deployed integrations, but they differ in where the management infrastructure runs and how much infrastructure you operate.
+
+> **Important**
+>
+> The control plane manages the integration runtime. It is not the execution environment for your integration logic.
+
+<!--
+AI IMAGE PROMPT — CONTROL PLANE COMPARISON
+
+Create a side-by-side technical comparison.
+
+LEFT:
+"WSO2 Cloud - Integration Platform"
+- Managed SaaS control plane
+- WSO2 operates infrastructure
+- Managed environments
+- Managed observability
+
+RIGHT:
+"Integration Control Plane (ICP)"
+- Self-hosted management server
+- Customer-operated infrastructure
+- Private cloud / on-premises / air-gapped
+- Connects to WSO2 Integrator runtimes
+
+Bottom:
+Both manage WSO2 Integrator runtimes.
+
+Visually emphasize:
+Managed by WSO2 vs Managed by customer
+
+Style:
+enterprise documentation
+flat vector
+minimal
+16:9
+-->
+
+![WSO2 Cloud vs Integration Control Plane comparison](/img/platform-overview/control-plane-comparison.png)
+
+---
+
+# Environments
+
+Environments are deployment targets used to separate stages of your integration lifecycle.
+
+A common setup is:
+
+```text
+Development
+     |
+     v
+Staging
+     |
+     v
+Production
+```
+
+Each environment can have its own runtime configuration, endpoints, secrets, scaling behavior, and access controls.
+
+The important distinction is:
+
+```text
+Lifecycle action          Environment
+-----------------         -----------
+Develop                    Development
+Build                      Development
+Test                       Development / Staging
+Promote                    Staging / Production
+Operate                    Production
+```
+
+**Development**, **Staging**, and **Production** are environments. **Develop**, **Build**, **Test**, **Promote**, and **Operate** are lifecycle activities.
+
+This distinction becomes important when designing CI/CD pipelines and promotion workflows.
+
+---
+
+# Integration lifecycle
+
+Treat integrations as software artifacts and manage them through a repeatable development and delivery lifecycle.
+
+The recommended conceptual flow is:
+
+```text
+Develop
+   |
+   v
+Source Control
+   |
+   v
+Build & Validate
+   |
+   v
+Deploy
+   |
+   v
+Test
+   |
+   v
+Promote
+   |
+   v
+Approve
+   |
+   v
+Operate & Observe
+   |
+   v
+Improve
+   |
+   +----------------------> Develop
+```
+
+Deployment environments sit within this lifecycle:
+
+```text
+                     Lifecycle
+                         |
+       +-----------------+------------------+
+       |                 |                  |
+       v                 v                  v
+   Development         Staging          Production
+       |                 |                  |
+       +------ Deploy / Promote ------------+
+```
+
+A practical implementation can therefore look like:
+
+```text
+Developer
+   |
+   v
+Source Control
+   |
+   v
+Build & Validate
+   |
+   v
+Deploy to Development
+   |
+   v
+Test
+   |
+   v
+Promote to Staging
+   |
+   v
+Validate / Approve
+   |
+   v
+Promote to Production
+   |
+   v
+Observe & Operate
+```
+
+<!--
+AI DIAGRAM PROMPT — INTEGRATION LIFECYCLE
+
+Create a horizontal software delivery lifecycle diagram titled:
+"Integration lifecycle"
+
+Main lifecycle:
+Develop
+  ->
+Source Control
+  ->
+Build & Validate
+  ->
+Deploy
+  ->
+Test
+  ->
+Promote
+  ->
+Approve
+  ->
+Operate & Observe
+  ->
+Improve
+  ->
+Develop
+
+Below the lifecycle, show deployment environments as a separate dimension:
+Development | Staging | Production
+
+Do NOT represent Development, Staging, or Production as lifecycle activities.
+They are deployment environments.
+
+Use small arrows showing:
+Deploy to Development
+Promote to Staging
+Promote to Production
+
+Style:
+- enterprise CI/CD documentation
+- flat vector
+- simple
+- technically precise
+- no marketing graphics
+- 16:9
+-->
+
+![Integration lifecycle](/img/platform-overview/integration-lifecycle.png)
+
+---
+
+# Configuration and secrets
+
+Keep integration logic separate from environment-specific configuration and sensitive values.
+
+Examples of environment-specific configuration include:
+
+- endpoint URLs
+- database connection settings
+- queue and topic names
+- credentials
+- API keys
+- operational parameters
+- feature flags
+
+A common deployment model is:
+
+```text
+Same integration artifact
+         |
+         +--> Development configuration
+         |
+         +--> Staging configuration
+         |
+         +--> Production configuration
+```
+
+This makes it possible to promote the same integration artifact across environments without changing its implementation.
+
+---
+
+# Security
+
+Integration solutions often process sensitive business information, credentials, and confidential data.
+
+Apply security throughout the lifecycle.
+
+## During development
+
+- do not hard-code credentials
+- validate external input
+- use secure configuration
+- minimize privileges
+
+## At runtime
+
+- secure inbound APIs
+- protect connections to external systems
+- encrypt sensitive information where required
+- restrict access to runtime resources
+- monitor authentication and authorization failures
+
+## During deployment
+
+- keep secrets outside source code
+- separate environment configuration
+- restrict deployment permissions
+- maintain an auditable release process
+
+---
+
+# Observability
+
+Production integrations need visibility into runtime behavior.
+
+Observability typically includes:
+
+- **Logs** — detailed execution and error information
+- **Metrics** — throughput, failures, latency, and resource behavior
+- **Traces** — request and execution paths across distributed systems
+
+A typical operational flow is:
+
+```text
+Integration Runtime
+       |
+       +--> Logs
+       +--> Metrics
+       +--> Traces
+       |
+       v
+Observability
+       |
+       +--> Monitor
+       +--> Diagnose
+       +--> Alert
+       +--> Troubleshoot
+```
+
+Use observability to answer questions such as:
+
+- Is the integration running?
+- Are requests or events being processed?
+- Where are failures occurring?
+- Which downstream dependency is slow?
+- How long does an execution take?
+- Are retries increasing?
+- Which runtime instance is affected?
+
+---
+
+# A developer's view of the platform
+
+For day-to-day development, use this model:
+
+```text
+                         WSO2 Integration Platform
+                                  |
+                  +---------------+---------------+
+                  |                               |
+                  v                               v
+             Development                    Operations
+                  |                               |
+                  v                               v
+          WSO2 Integrator                    Control Plane
+                  |                               |
+                  v                               v
+         Integration Artifact                  Deploy
+                  |                               |
+                  +-------------------------------+
+                                  |
+                                  v
+                              Data Plane
+                                  |
+                                  v
+                         Integration Runtime
+                                  |
+                 +----------------+----------------+
+                 |                |                |
+                 v                v                v
+                APIs            Events           Files
+                 |                |                |
+                 +----------------+----------------+
+                                  |
+                                  v
+                       Enterprise / AI Systems
+                                  |
+                                  v
+                           Observe & Operate
+```
+
+The two most important platform concepts are:
+
+> **The development environment creates the integration artifact.**
+
+> **The control plane manages the artifact and runtime; the data plane executes the integration.**
+
+---
+
+# Where to go next
+
+<Tabs>
+<TabItem value="first" label="Build your first integration">
+
+Start with [Create your first integration](../develop/get-started/create-your-first-integration).
+
+Learn how to create a project, add an integration, configure an entry point, and implement a simple flow.
+
+</TabItem>
+
+<TabItem value="connect" label="Connect systems">
+
+Explore [Connectors](../develop/connectors/overview) to learn how to connect integrations to databases, SaaS applications, APIs, messaging systems, and other platforms.
+
+</TabItem>
+
+<TabItem value="api" label="Build APIs">
+
+Learn how to build [Integrations as APIs](../develop/integrations-as-apis/overview).
+
+</TabItem>
+
+<TabItem value="events" label="Process events">
+
+Learn how to build [Event-driven integrations](../develop/event-driven/overview).
+
+</TabItem>
+
+<TabItem value="files" label="Process files">
+
+Learn how to build [File-driven integrations](../develop/file-integrations/overview).
+
+</TabItem>
+
+<TabItem value="ai" label="Build AI integrations">
+
+Explore [AI and agent integrations](../develop/ai/overview).
+
+</TabItem>
+
+<TabItem value="deploy" label="Deploy">
+
+Learn about [Deployment options](../deploy/overview), environments, runtime configuration, and deployment models.
+
+</TabItem>
+
+<TabItem value="operate" label="Operate">
+
+{/* NOTE: intentional divergence -- self-hosted management goes through
+    the Integration Control Plane (/icp), not /manage/overview (that's
+    the saas-only cloud console page). saas's copy of this file points
+    this link at /manage/overview instead. */}
+Learn about [Management and observability](/icp), runtime operations, monitoring, and troubleshooting.
+
+</TabItem>
+</Tabs>
+
+---
+
+# Related concepts
+
+- [Core concepts](../get-started/concepts/core)
+- [Projects and artifacts](../develop/projects/overview)
+- [Connectors and connections](../develop/connectors/overview)
+- [Data mapping](../develop/data-mapping/overview)
+- [Deployment](../deploy/overview)
+- [Control planes](./choosing-a-control-plane)
+- [Observability](/operate/observability-overview)
