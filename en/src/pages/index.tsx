@@ -304,43 +304,26 @@ function SearchBar(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Download panel — the wso2-integrator equivalent of saas's
- *  cloud-console mockup. Rather than a fabricated screenshot of the
- *  IDE (or a real one that would go stale as the UI evolves), this
- *  slot is a functional download CTA: the IDE is a local install, so
- *  the useful action here is "get it", not "look at it".
+/*  Welcome screenshot -- the real WSO2 Integrator get-started screen.
+ *  Unlike saas's cloud-console screenshot, this one already has its
+ *  own rounded corners/shadow/glow baked in (a polished mockup export,
+ *  not a flat capture), so it's rendered standalone rather than inside
+ *  the .productCard browser-chrome frame -- that frame would double up
+ *  the styling and clip the image's own soft edges.
  * ------------------------------------------------------------------ */
-function DownloadPanel(): ReactNode {
+function WelcomeScreenshot(): ReactNode {
+  const src = useBaseUrl('/img/landing/wso2-integrator-welcome.png');
   return (
-    <div className={styles.productCard}>
-      <div className={styles.productCardChrome}>
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardTitle}>WSO2 Integrator IDE</span>
-      </div>
-      <div className={styles.downloadPanelBody}>
-        <span className={styles.mockIconBadge}>
-          <IconWave stroke="#FFFFFF" size={26} />
-        </span>
-        <span className={styles.mockPill}>Local Setup</span>
-        <h2 className={styles.downloadPanelHeading}>Build integrations on your machine</h2>
-        <p className={styles.downloadPanelText}>
-          A full-featured IDE for designing, testing, and debugging integrations
-          locally -- available for Windows, macOS, and Linux.
-        </p>
-        <Link className={styles.downloadPanelBtn} to="/get-started/setup/local-setup">
-          <IconDownload />
-          Download WSO2 Integrator
-        </Link>
-        <span className={styles.downloadPanelPlatforms}>Windows &middot; macOS &middot; Linux</span>
-      </div>
-    </div>
+    <img
+      className={styles.heroScreenshot}
+      src={src}
+      alt="WSO2 Integrator welcome and sign-in screen"
+    />
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  Hero Banner — split layout: download panel (left) +               */
+/*  Hero Banner — split layout: welcome screenshot (left) +            */
 /*  badge/heading/search/CTA (right)                                  */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
@@ -348,7 +331,22 @@ function HomepageHeader(): ReactNode {
     <header className={styles.heroBanner}>
       <div className={styles.heroInner}>
         <div className={styles.heroLeft}>
-          <DownloadPanel />
+          <WelcomeScreenshot />
+          <div className={styles.downloadRow}>
+            <Link
+              className={styles.downloadBtn}
+              href="https://wso2.com/products/downloads/?product=wso2integrator"
+              target="_blank"
+              rel="noopener noreferrer">
+              <IconDownload />
+              Download WSO2 Integrator
+            </Link>
+            <span className={styles.downloadCaption}>
+              Windows &middot; macOS &middot; Linux
+              <br />
+              100% open source
+            </span>
+          </div>
         </div>
 
         <div className={styles.heroRight}>

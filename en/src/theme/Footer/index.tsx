@@ -17,21 +17,13 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
 
-type FooterItem = { label: string; to?: string; href?: string };
+type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
 
 function ExternalIcon(): ReactNode {
   return (
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <path d="M7 17 17 7M9 7h8v8" />
-    </svg>
-  );
-}
-
-function GithubIcon(): ReactNode {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5.01 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
     </svg>
   );
 }
@@ -45,11 +37,31 @@ function DiscordIcon(): ReactNode {
   );
 }
 
+function YoutubeIcon(): ReactNode {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 5 12 5 12 5s-6 0-7.7.3a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9C6 19 12 19 12 19s6 0 7.7-.3a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15.2V8.8l5.5 3.2Z" />
+    </svg>
+  );
+}
+
+function StackOverflowIcon(): ReactNode {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.4 18.2v-4.6h1.5V19.7H4.6v-6.1h1.5v4.6ZM7.7 13.6l7.3 1.5.3-1.5-7.3-1.6Zm1-3.6 6.8 3.1.6-1.4-6.7-3.2Zm2-3.4 5.8 4.8.9-1.2-5.7-4.8Zm3.3-3.5-1.2.9 4.4 5.9 1.2-.9ZM7.6 17.1h7.4v-1.5H7.6Z" />
+    </svg>
+  );
+}
+
 function FooterLink({ item }: { item: FooterItem }): ReactNode {
-  const { label, to, href } = item;
+  const { label, to, href, autoAddBaseUrl, target } = item;
   const toUrl = useBaseUrl(to);
   return (
-    <Link className={styles.footerColLink} {...(href ? { href } : { to: toUrl })}>
+    <Link
+      className={styles.footerColLink}
+      {...(href ? { href } : { to: toUrl })}
+      {...(autoAddBaseUrl === false && { autoAddBaseUrl: false })}
+      {...(target && { target })}>
       {label}
       {href && !isInternalUrl(href) && <ExternalIcon />}
     </Link>
@@ -73,15 +85,8 @@ export default function Footer(): ReactNode {
         <div className={styles.footerBrand}>
           <img className={styles.footerLogo} src={logoSrc} alt="WSO2 Integration Platform" />
           <p className={styles.footerTagline}>{siteConfig.tagline}</p>
+          <span className={styles.footerSocialLabel}>Community</span>
           <div className={styles.footerSocial}>
-            <a
-              className={styles.footerSocialBtn}
-              href="https://github.com/wso2/docs-integrator"
-              target="_blank"
-              rel="noopener noreferrer">
-              <GithubIcon />
-              GitHub
-            </a>
             <a
               className={styles.footerSocialBtn}
               href="https://discord.com/invite/wso2"
@@ -89,6 +94,22 @@ export default function Footer(): ReactNode {
               rel="noopener noreferrer">
               <DiscordIcon />
               Discord
+            </a>
+            <a
+              className={styles.footerSocialBtn}
+              href="https://www.youtube.com/@WSO2official"
+              target="_blank"
+              rel="noopener noreferrer">
+              <YoutubeIcon />
+              YouTube
+            </a>
+            <a
+              className={styles.footerSocialBtn}
+              href="https://stackoverflow.com/questions/tagged/wso2"
+              target="_blank"
+              rel="noopener noreferrer">
+              <StackOverflowIcon />
+              Stack Overflow
             </a>
           </div>
         </div>

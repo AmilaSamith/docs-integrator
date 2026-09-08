@@ -6,8 +6,7 @@ import {
   sharedNavbarLogo,
   sharedFooterStyle,
   sharedFooterCopyright,
-  sharedCommunityFooterLinks,
-  sharedCommunityDropdown,
+  sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
   sharedContributeNavbarItem,
@@ -122,12 +121,34 @@ const config: Config = {
           // the catalog, not just the connectors site's homepage.
           href: 'pathname:///integration-platform/docs/connectors/catalog',
           autoAddBaseUrl: false,
+          // See saas's docusaurus.config.ts for why target:'_self' is here.
+          target: '_self',
           html: 'Connectors',
           position: 'left',
         },
+        // Same 8 sections as the homepage's "Explore the platform" grid --
+        // one source of truth would need lifting that data out of
+        // src/pages/index.tsx into a shared module; kept in sync by hand
+        // for now, matching how SidebarProductHeader's own product list
+        // note already handles the analogous config-vs-component split.
+        {
+          type: 'custom-exploreDropdown',
+          label: 'Explore',
+          position: 'left',
+          items: [
+            { title: 'Get started', description: 'Install, set up, and build your first integration.', href: '/get-started/setup/overview' },
+            { title: 'Develop', description: 'Build services, transform data, and test integrations.', href: '/develop/overview' },
+            { title: 'AI Integrations', description: 'Agents, RAG, and MCP servers.', href: '/develop/ai/overview' },
+            { title: 'Guides', description: 'End-to-end tutorials and integration patterns.', href: '/guides/overview' },
+            { title: 'Deploy', description: 'Docker, Kubernetes, CI/CD, and production security.', href: '/deploy/overview' },
+            { title: 'Integration Control Plane', description: 'Centralized control and observability via ICP.', href: '/icp' },
+            { title: 'Migrate', description: 'Move existing MuleSoft and TIBCO integrations.', href: '/migrate' },
+            { title: 'Reference', description: 'Language reference, config keys, CLI, error codes.', href: '/reference/overview' },
+          ],
+        },
         sharedReleasesNavbarItem('/reference/appendix/release-notes'),
-        sharedContributeNavbarItem('wso2-integrator'),
-        sharedCommunityDropdown,
+        sharedContributeNavbarItem(),
+        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
         sharedGithubNavbarItem,
       ]
@@ -161,7 +182,14 @@ const config: Config = {
             { label: 'Secure', to: '/deploy/secure/authentication' },
           ],
         },
-        sharedCommunityFooterLinks,
+        {
+          title: 'Operate',
+          items: [
+            { label: 'Observability', to: '/operate/observability-overview' },
+            { label: 'Logging', to: '/operate/logging-overview' },
+            { label: 'Metrics', to: '/operate/metrics-overview' },
+          ],
+        },
       ],
       copyright: sharedFooterCopyright,
     },

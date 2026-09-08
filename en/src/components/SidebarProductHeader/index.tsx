@@ -218,7 +218,7 @@ function VersionPill(): ReactNode {
               to={targetDoc.path}
               onClick={close}
               className={styles.pillMenuItem}
-              isActive={version === activeVersion}>
+              isActive={() => version === activeVersion}>
               {version.label}
             </Link>
           );
