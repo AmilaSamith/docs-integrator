@@ -5,9 +5,12 @@ site (`/integration-platform/docs/`, `/integrator/`, `/connectors/`):
 
 | Branch | Product | Versioned? |
 |---|---|---|
-| `saas` (→ `main` once cut over) | WSO2 Cloud | No |
+| `saas` | WSO2 Cloud | No |
 | `wso2-integrator` | WSO2 Integrator (self-hosted) | Yes |
 | `wso2-connectors` | Connectors catalog | No |
+
+(`main` isn't a product branch — see [MAINTENANCE.md](MAINTENANCE.md)
+for what it's for and how a change actually reaches production.)
 
 A set of sections is genuinely hosting-model-agnostic and is **shared**:
 authored once on `wso2-integrator`, then synced to `saas` by a bot PR.
@@ -40,9 +43,12 @@ see [Section Ownership](#section-ownership) and the scenarios below.
    removes one of these overrides (e.g. re-adding self-hosted-only
    deploy options), that's the sync clobbering the override — revert
    that hunk, don't accept it.
-5. **Never push directly to `main`.** `main` is production. It only
-   moves when `saas` is deliberately force-pushed there — that's a
-   maintainer decision, not a routine contribution.
+5. **Never push directly to `main`.** `main` isn't a product branch or
+   a deploy target — it's the shared-theme/governance source of truth
+   every product branch forks from and syncs out of. An unreviewed
+   change there fans out everywhere. See
+   [MAINTENANCE.md](MAINTENANCE.md) for the full branch/release model
+   this fits into, including how staging and production actually work.
 
 ## Section Ownership
 
