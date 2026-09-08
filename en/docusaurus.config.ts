@@ -60,7 +60,14 @@ const config: Config = {
       {
         hashed: true,
         language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
+        // Was `true`: the plugin's own behavior is to mark *every*
+        // occurrence of the searched term across the whole target
+        // page's <article> and leave it lit for as long as you stay on
+        // that page -- reads as the term being highlighted everywhere
+        // rather than helping you find the one relevant spot. Disabled
+        // in favor of the existing search-result context snippets,
+        // which already show where the match is.
+        highlightSearchTermsOnTargetPage: false,
         explicitSearchResultPath: true,
         docsRouteBasePath: '/',
         indexBlog: false,
@@ -100,11 +107,12 @@ const config: Config = {
           // client-side route -- /integration-platform/docs/connectors/
           // is a completely separate build/bundle. See
           // SidebarProductHeader's docstring for the isInternalUrl pitfall
-          // this sidesteps.
-          href: 'pathname:///integration-platform/docs/connectors/',
+          // this sidesteps. Goes straight to the catalog, not just the
+          // connectors site's homepage.
+          href: 'pathname:///integration-platform/docs/connectors/catalog',
           autoAddBaseUrl: false,
           html: 'Connectors',
-          position: 'right',
+          position: 'left',
         },
         sharedReleasesNavbarItem('/reference/appendix/release-notes'),
         sharedContributeNavbarItem('saas'),

@@ -21,13 +21,32 @@ type ProductKey = 'cloud' | 'integrator' | 'connectors';
  * completely separate build/bundle, so this must always be a real page
  * load, never client-side routing (see themeConfig.ts's sharedProductDropdown
  * docstring for the isInternalUrl pitfall this sidesteps entirely by not
- * going through Link at all).
+ * going through Link at all). Connectors goes straight to the catalog,
+ * not just that site's homepage -- same target as the navbar's own
+ * "Connectors" link.
  */
-const PRODUCTS: Record<ProductKey, { label: string; href: string }> = {
-  cloud: { label: 'SaaS', href: '/integration-platform/docs/' },
-  integrator: { label: 'WSO2 Integrator', href: '/integration-platform/docs/integrator/' },
-  connectors: { label: 'Connectors', href: '/integration-platform/docs/connectors/' },
+const PRODUCTS: Record<ProductKey, { label: string; description: string; href: string; icon: () => ReactNode }> = {
+  cloud: {
+    label: 'SaaS',
+    description: 'Cloud-hosted integration platform',
+    href: '/integration-platform/docs/',
+    icon: CloudIcon,
+  },
+  integrator: {
+    label: 'WSO2 Integrator',
+    description: 'Integrations, automations, AI agents',
+    href: '/integration-platform/docs/integrator/',
+    icon: ProductIcon,
+  },
+  connectors: {
+    label: 'WSO2 Connectors',
+    description: 'Pre-built connectors for common systems',
+    href: '/integration-platform/docs/connectors/catalog',
+    icon: PlugIcon,
+  },
 };
+
+const PRODUCT_ORDER: ProductKey[] = ['cloud', 'integrator', 'connectors'];
 
 /** Detects which of the three sites this build is, from its own baseUrl -- no per-branch config needed, so this file can be byte-identical across branches. */
 function detectCurrentProduct(baseUrl: string): ProductKey {
@@ -44,13 +63,50 @@ function ChevronDownIcon(): ReactNode {
   );
 }
 
+/** Waveform mark -- WSO2 Integrator, and also the product pill's own icon
+ * badge (same mark as the homepage hero's "Docs" badge, for a consistent
+ * brand touchpoint). */
+function ProductIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12h3l2-4 3 8 2-4h4" />
+    </svg>
+  );
+}
+
+function CloudIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-1.5A4.5 4.5 0 0 0 6.5 19h11z" />
+    </svg>
+  );
+}
+
+function PlugIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 3v4M15 3v4" />
+      <path d="M6 7h12v4a6 6 0 0 1-12 0V7Z" />
+      <path d="M12 17v4" />
+    </svg>
+  );
+}
+
 function Pill({
   label,
+  icon,
   variant,
+  menuHeading,
+  menuClassName,
   children,
 }: {
   label: string;
+  icon?: ReactNode;
   variant?: 'product' | 'version';
+  /** Small uppercase label above the menu's rows (e.g. "Platform Components"). */
+  menuHeading?: string;
+  /** Extra class on the popup menu, for a variant-specific width. */
+  menuClassName?: string;
   children: (close: () => void) => ReactNode;
 }): ReactNode {
   const [open, setOpen] = useState(false);
@@ -75,32 +131,58 @@ function Pill({
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}>
+        {icon && <span className={styles.pillIcon}>{icon}</span>}
         <span className={styles.pillLabel}>{label}</span>
         <ChevronDownIcon />
       </button>
-      {open && <ul className={styles.pillMenu}>{children(() => setOpen(false))}</ul>}
+      {open && (
+        <div className={clsx(styles.pillMenu, menuClassName)}>
+          {menuHeading && <div className={styles.pillMenuHeading}>{menuHeading}</div>}
+          {children(() => setOpen(false))}
+        </div>
+      )}
     </div>
   );
 }
 
 /** Fixed width regardless of label length ("SaaS" vs "WSO2 Integrator") so
- * the pill group's overall size doesn't jump around when switching products. */
+ * the pill group's overall size doesn't jump around when switching products.
+ * The dropdown lists all three products (including the current one,
+ * highlighted) rather than just the other two, matching the reference's
+ * "Platform Components" menu exactly. */
 function ProductPill(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   const current = detectCurrentProduct(siteConfig.baseUrl);
-  const others = (Object.keys(PRODUCTS) as ProductKey[]).filter((key) => key !== current);
 
   return (
-    <Pill label={PRODUCTS[current].label} variant="product">
+    <Pill
+      label={PRODUCTS[current].label}
+      icon={<ProductIcon />}
+      variant="product"
+      menuHeading="Platform Components"
+      menuClassName={styles.pillMenuWide}>
       {() =>
-        others.map((key) => (
-          <li key={key}>
-            {/* Real <a>, not <Link>: target is a separate build, must be a real page load. */}
-            <a href={PRODUCTS[key].href} className={styles.pillMenuItem}>
-              {PRODUCTS[key].label}
+        PRODUCT_ORDER.map((key) => {
+          const product = PRODUCTS[key];
+          const isActive = key === current;
+          const Icon = product.icon;
+          return (
+            // Real <a>, not <Link>: each product is a separate static
+            // build, must always be a real page load.
+            <a
+              key={key}
+              href={product.href}
+              className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
+              <span className={clsx(styles.pillMenuRowIcon, isActive && styles.pillMenuRowIconActive)}>
+                <Icon />
+              </span>
+              <span className={styles.pillMenuRowText}>
+                <span className={styles.pillMenuRowTitle}>{product.label}</span>
+                <span className={styles.pillMenuRowDesc}>{product.description}</span>
+              </span>
             </a>
-          </li>
-        ))
+          );
+        })
       }
     </Pill>
   );
@@ -125,21 +207,20 @@ function VersionPill(): ReactNode {
   }
 
   return (
-    <Pill label={activeVersion.label}>
+    <Pill label={activeVersion.label} icon={<span className={styles.pillDot} />}>
       {(close) =>
         versions.map((version) => {
           const targetDoc = targetDocFor(version);
           if (!targetDoc) return null;
           return (
-            <li key={version.name}>
-              <Link
-                to={targetDoc.path}
-                onClick={close}
-                className={styles.pillMenuItem}
-                isActive={version === activeVersion}>
-                {version.label}
-              </Link>
-            </li>
+            <Link
+              key={version.name}
+              to={targetDoc.path}
+              onClick={close}
+              className={styles.pillMenuItem}
+              isActive={version === activeVersion}>
+              {version.label}
+            </Link>
           );
         })
       }
@@ -174,9 +255,8 @@ class VersionPillBoundary extends Component<{ children: ReactNode }, { hasError:
 export default function SidebarProductHeader(): ReactNode {
   return (
     <div className={styles.header}>
-      {/* Grouped into one bordered pill-shaped control (divider between the
-          two) rather than two separate floating pills, so product+version
-          read as a single "where am I" control. */}
+      {/* Two independent bordered pills side by side (a small gap, not a
+          fused single control) -- see styles.module.css's docstring. */}
       <div className={styles.pillGroup}>
         <ProductPill />
         <VersionPillBoundary>

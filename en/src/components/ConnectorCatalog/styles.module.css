@@ -2,10 +2,10 @@
    CONNECTOR CATALOG — Search, Filter, Grid
 
    Uses the theme palette from custom.css:
-     Light:  BG #FFFFFF | Surface #F8FAFC | Border #E2E8F0
-             Text #0F172A #475569 #94A3B8 | Primary #0077B6 | Accent #E8590C
-     Dark:   BG #0B1120 | Surface #151E31 | Border #1E293B
-             Text #F1F5F9 #94A3B8 #64748B | Primary #38BDF8 | Accent #FB923C
+     Light:  BG #FFFFFF | Surface #F7F9FC | Border #E5E9F0
+             Text #1B2A49 #565656 #7B8598 | Primary #F14E23
+     Dark:   BG #0B1120 | Surface #0E1728 | Border rgba(255,255,255,.09)
+             Text #EFF3F9 #B6C1D3 #8B94A7 | Primary #F14E23
    ================================================================ */
 
 .catalog {
@@ -30,7 +30,7 @@
 .searchIcon {
   position: absolute;
   left: 14px;
-  color: #94A3B8;
+  color: #7B8598;
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -40,36 +40,36 @@
   padding: 0.7rem 2.5rem 0.7rem 2.75rem;
   font-size: 0.925rem;
   font-family: inherit;
-  border: 1.5px solid #E2E8F0;
+  border: 1.5px solid #E5E9F0;
   border-radius: 12px;
   background: #FFFFFF;
-  color: #0F172A;
+  color: #565656;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .searchInput::placeholder {
-  color: #94A3B8;
+  color: #7B8598;
 }
 
 .searchInput:focus {
-  border-color: #0077B6;
-  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.1);
 }
 
 [data-theme='dark'] .searchInput {
-  background: #151E31;
-  border-color: #1E293B;
-  color: #F1F5F9;
+  background: #0E1728;
+  border-color: rgba(255, 255, 255, 0.09);
+  color: #B6C1D3;
 }
 
 [data-theme='dark'] .searchInput::placeholder {
-  color: #64748B;
+  color: #8B94A7;
 }
 
 [data-theme='dark'] .searchInput:focus {
-  border-color: #38BDF8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.16);
 }
 
 .clearButton {
@@ -82,25 +82,25 @@
   height: 24px;
   border: none;
   border-radius: 6px;
-  background: #F8FAFC;
-  color: #94A3B8;
+  background: #F7F9FC;
+  color: #7B8598;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .clearButton:hover {
-  background: #E2E8F0;
-  color: #0F172A;
+  background: #E5E9F0;
+  color: #1B2A49;
 }
 
 [data-theme='dark'] .clearButton {
   background: rgba(255, 255, 255, 0.06);
-  color: #64748B;
+  color: #8B94A7;
 }
 
 [data-theme='dark'] .clearButton:hover {
   background: rgba(255, 255, 255, 0.12);
-  color: #F1F5F9;
+  color: #EFF3F9;
 }
 
 /* ── Category Chips ── */
@@ -128,10 +128,10 @@
   font-size: 0.8rem;
   font-weight: 500;
   font-family: inherit;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E5E9F0;
   border-radius: 20px;
   background: #FFFFFF;
-  color: #475569;
+  color: #565656;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.15s ease;
@@ -139,45 +139,45 @@
 }
 
 .chip:hover {
-  background: #F8FAFC;
-  border-color: #0077B6;
-  color: #0077B6;
+  background: #F7F9FC;
+  border-color: var(--ifm-color-primary);
+  color: var(--wso2-accent-text);
 }
 
 .chipActive {
-  background: #0077B6;
-  border-color: #0077B6;
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
   color: #FFFFFF;
 }
 
 .chipActive:hover {
-  background: #005F8F;
-  border-color: #005F8F;
+  background: #D63B12;
+  border-color: #D63B12;
   color: #FFFFFF;
 }
 
 [data-theme='dark'] .chip {
   background: rgba(255, 255, 255, 0.04);
-  border-color: #1E293B;
-  color: #94A3B8;
+  border-color: rgba(255, 255, 255, 0.09);
+  color: #8B94A7;
 }
 
 [data-theme='dark'] .chip:hover {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: #38BDF8;
-  color: #38BDF8;
+  background: rgba(241, 78, 35, 0.16);
+  border-color: var(--ifm-color-primary);
+  color: var(--wso2-accent-text);
 }
 
 [data-theme='dark'] .chipActive {
-  background: #38BDF8;
-  border-color: #38BDF8;
-  color: #0B1120;
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #FFFFFF;
 }
 
 [data-theme='dark'] .chipActive:hover {
-  background: #7DD3FC;
-  border-color: #7DD3FC;
-  color: #0B1120;
+  background: #FF8A3D;
+  border-color: #FF8A3D;
+  color: #FFFFFF;
 }
 
 .chipCount {
@@ -190,8 +190,8 @@
 }
 
 .chip:not(.chipActive) .chipCount {
-  background: #F8FAFC;
-  color: #94A3B8;
+  background: #F7F9FC;
+  color: #7B8598;
 }
 
 [data-theme='dark'] .chip:not(.chipActive) .chipCount {
@@ -205,7 +205,7 @@
 
 .resultCount {
   font-size: 0.825rem;
-  color: #94A3B8;
+  color: #7B8598;
 }
 
 /* ── Card Grid ── */
@@ -226,16 +226,16 @@
   display: flex;
   flex-direction: column;
   padding: 1rem 1.15rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E5E9F0;
   border-radius: 12px;
-  background: #F8FAFC;
+  background: #F7F9FC;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
-  border-color: #0077B6;
+  border-color: var(--ifm-color-primary);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
   transform: translateY(-2px);
   text-decoration: none;
@@ -243,12 +243,12 @@
 }
 
 [data-theme='dark'] .card {
-  background: #151E31;
-  border-color: #1E293B;
+  background: #0E1728;
+  border-color: rgba(255, 255, 255, 0.09);
 }
 
 [data-theme='dark'] .card:hover {
-  border-color: #38BDF8;
+  border-color: var(--ifm-color-primary);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -274,28 +274,28 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(0, 119, 182, 0.08);
-  color: #0077B6;
+  background: rgba(241, 78, 35, 0.08);
+  color: var(--wso2-accent-text);
   font-size: 0.85rem;
   font-weight: 700;
   flex-shrink: 0;
 }
 
 [data-theme='dark'] .cardIconFallback {
-  background: rgba(56, 189, 248, 0.1);
-  color: #38BDF8;
+  background: rgba(241, 78, 35, 0.16);
+  color: var(--wso2-accent-text);
 }
 
 .cardName {
   flex: 1;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #0F172A;
+  color: #1B2A49;
   line-height: 1.3;
 }
 
 [data-theme='dark'] .cardName {
-  color: #F1F5F9;
+  color: #EFF3F9;
 }
 
 .cardCategory {
@@ -303,9 +303,9 @@
   font-weight: 600;
   padding: 0.2rem 0.6rem;
   border-radius: 6px;
-  background: rgba(0, 119, 182, 0.08);
-  color: #0077B6;
-  border: 1px solid rgba(0, 119, 182, 0.2);
+  background: rgba(241, 78, 35, 0.08);
+  color: var(--wso2-accent-text);
+  border: 1px solid rgba(241, 78, 35, 0.2);
   white-space: nowrap;
   flex-shrink: 0;
   letter-spacing: 0.01em;
@@ -313,16 +313,16 @@
 }
 
 [data-theme='dark'] .cardCategory {
-  background: rgba(56, 189, 248, 0.1);
-  color: #38BDF8;
-  border-color: rgba(56, 189, 248, 0.2);
+  background: rgba(241, 78, 35, 0.16);
+  color: var(--wso2-accent-text);
+  border-color: rgba(241, 78, 35, 0.3);
 }
 
 .cardDesc {
   flex: 1;
   font-size: 0.825rem;
   line-height: 1.5;
-  color: #475569;
+  color: #565656;
   margin: 0 0 0.75rem 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -332,34 +332,34 @@
 }
 
 [data-theme='dark'] .cardDesc {
-  color: #94A3B8;
+  color: #8B94A7;
 }
 
 .cardLink {
   margin-top: auto;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #0077B6;
+  color: var(--wso2-accent-text);
   transition: color 0.15s ease;
 }
 
 .card:hover .cardLink {
-  color: #005F8F;
+  color: #D63B12;
 }
 
 [data-theme='dark'] .cardLink {
-  color: #38BDF8;
+  color: var(--wso2-accent-text);
 }
 
 [data-theme='dark'] .card:hover .cardLink {
-  color: #7DD3FC;
+  color: #FF8A3D;
 }
 
 /* ── Empty State ── */
 .empty {
   text-align: center;
   padding: 3rem 1rem;
-  color: #94A3B8;
+  color: #7B8598;
 }
 
 .empty p {
@@ -374,25 +374,25 @@
   font-size: 0.85rem;
   font-weight: 600;
   font-family: inherit;
-  border: 1.5px solid #E8590C;
+  border: 1.5px solid var(--ifm-color-primary);
   border-radius: 10px;
   background: transparent;
-  color: #E8590C;
+  color: var(--ifm-color-primary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .resetButton:hover {
-  background: #E8590C;
+  background: var(--ifm-color-primary);
   color: #FFFFFF;
 }
 
 [data-theme='dark'] .resetButton {
-  border-color: #FB923C;
-  color: #FB923C;
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] .resetButton:hover {
-  background: #FB923C;
-  color: #0B1120;
+  background: var(--ifm-color-primary);
+  color: #FFFFFF;
 }

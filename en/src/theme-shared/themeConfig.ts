@@ -28,14 +28,34 @@ export const sharedDocsSidebar = {
     // collapses every other top-level category and only leaves the
     // current path expanded.
     autoCollapseCategories: true,
+    // Off by default in Docusaurus -- turns on the collapse toggle at
+    // all. theme/DocSidebar/Desktop replaces what it collapses TO (a
+    // 64px icon rail) but this flag is what makes the toggle exist.
+    hideable: true,
   },
 };
 
+/** The real WSO2 lockup files, used as-is (not recreated in CSS/HTML) --
+ * `src` is the solid-black variant (light theme, dark ink on a light
+ * navbar), `srcDark` is the white+orange variant (dark theme -- it's
+ * white ink, so it only reads correctly on a dark navbar background). No
+ * custom Logo swizzle needed: stock @theme/Logo already renders
+ * src/srcDark via ThemedImage.
+ *
+ * `href` is an absolute URL to the saas site's production landing page,
+ * not `/` -- the logo is meant to be the one consistent "home base"
+ * across every site branch (saas, wso2-integrator, wso2-connectors),
+ * so clicking it from anywhere always lands on the saas homepage rather
+ * than each subsite's own root. Since it's absolute, @theme/Logo's
+ * `useBaseUrl` passes it through unchanged and Link renders a real
+ * anchor (full navigation), not a client-side route. Locally this means
+ * clicking the logo during dev leaves localhost for the real production
+ * URL -- expected, not a bug. */
 export const sharedNavbarLogo = {
-  alt: 'WSO2 Integration Platform Logo',
-  src: 'img/WSO2_Integration_Platform_Black.svg',
-  srcDark: 'img/WSO2_Integration_Platform_White.svg',
-  href: '/',
+  alt: 'WSO2 Integration Platform',
+  src: 'img/wso2-integration-platform-black.svg',
+  srcDark: 'img/wso2-integration-platform-full-colour.svg',
+  href: 'https://wso2.com/integration-platform/docs/',
 };
 
 export const sharedFooterStyle = 'dark' as const;
@@ -86,18 +106,23 @@ export const sharedGithubNavbarItem = {
   'aria-label': 'GitHub',
 };
 
-/** Community dropdown reusing the exact same links as the shared footer group -- one source of truth for the URL list. */
+/** Community dropdown reusing the exact same links as the shared footer group -- one source of truth for the URL list.
+ * `position: 'left'` here (and on the other nav items below) puts these
+ * in the CENTER-justified group in theme/Navbar/Content's custom 3-region
+ * layout (logo pinned left, these centered, GitHub/toggle/search pinned
+ * right) -- despite the name, "left" just means "not explicitly right"
+ * to Docusaurus's own left/right split, which our swizzle repurposes. */
 export const sharedCommunityDropdown = {
   type: 'dropdown' as const,
   label: 'Community',
-  position: 'right' as const,
+  position: 'left' as const,
   items: sharedCommunityFooterLinks.items,
 };
 
 export const sharedBlogNavbarItem = {
   href: 'https://wso2.com/blog/',
   label: 'Blog',
-  position: 'right' as const,
+  position: 'left' as const,
 };
 
 /** `branch` picks the per-branch CONTRIBUTING.md, matching the existing editUrl pattern (each branch's docusaurus.config.ts already points editUrl at its own branch). */
@@ -105,7 +130,7 @@ export function sharedContributeNavbarItem(branch: string) {
   return {
     href: `https://github.com/wso2/docs-integrator/blob/${branch}/CONTRIBUTING.md`,
     label: 'Contribute',
-    position: 'right' as const,
+    position: 'left' as const,
   };
 }
 
@@ -115,6 +140,6 @@ export function sharedReleasesNavbarItem(target: string) {
   return {
     [isExternal ? 'href' : 'to']: target,
     label: 'Releases',
-    position: 'right' as const,
+    position: 'left' as const,
   };
 }

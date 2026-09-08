@@ -1,0 +1,136 @@
+/**
+ * Always the navy gradient, independent of the site's light/dark theme --
+ * same brand-banner treatment as the hero (see pages/index.module.css).
+ */
+.footer {
+  background: linear-gradient(150deg, var(--wso2-navy-mid), var(--wso2-navy));
+  color: var(--wso2-on-navy-cool);
+}
+
+.footerTop {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 56px 40px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 56px;
+}
+
+/* ---- Brand column ---- */
+.footerBrand {
+  flex: 1 1 280px;
+  min-width: 0;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerLogo {
+  display: block;
+  height: 52px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.footerTagline {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--wso2-on-navy-muted);
+}
+
+.footerSocial {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.footerSocialBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 13px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--wso2-on-navy-text) !important;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease;
+}
+
+.footerSocialBtn:hover {
+  border-color: var(--ifm-color-primary-lighter);
+  text-decoration: none;
+}
+
+/* ---- Link columns (config-driven, from docusaurus.config.ts) ---- */
+.footerCol {
+  flex: 1 1 160px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footerColTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wso2-on-navy-label);
+}
+
+.footerColLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--wso2-on-navy-cool) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footerColLink:hover {
+  color: var(--wso2-on-navy-text) !important;
+  text-decoration: none;
+}
+
+/* ---- Bottom bar ---- */
+.footerBottom {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 18px 40px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+}
+
+.footerCopyright {
+  font-size: 12.5px;
+  color: var(--wso2-on-navy-muted-dim);
+}
+
+.footerLegal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.footerLegalLink {
+  font-size: 12.5px;
+  color: var(--wso2-on-navy-muted-dim) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footerLegalLink:hover {
+  color: var(--wso2-on-navy-text) !important;
+  text-decoration: none;
+}
