@@ -6,8 +6,7 @@ import {
   sharedNavbarLogo,
   sharedFooterStyle,
   sharedFooterCopyright,
-  sharedCommunityFooterLinks,
-  sharedCommunityDropdown,
+  sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
   sharedContributeNavbarItem,
@@ -111,12 +110,37 @@ const config: Config = {
           // connectors site's homepage.
           href: 'pathname:///integration-platform/docs/connectors/catalog',
           autoAddBaseUrl: false,
+          // Docusaurus's Link auto-opens a new tab for anything it treats
+          // as external, which the pathname:// prefix above does -- fine
+          // for a genuinely external site (GitHub, the blog), wrong for a
+          // sibling product that should feel like same-site navigation.
+          target: '_self',
           html: 'Connectors',
           position: 'left',
         },
+        // Same 8 sections as the homepage's "Explore the platform" grid --
+        // one source of truth would need lifting that data out of
+        // src/pages/index.tsx into a shared module; kept in sync by hand
+        // for now, matching how SidebarProductHeader's own product list
+        // note already handles the analogous config-vs-component split.
+        {
+          type: 'custom-exploreDropdown',
+          label: 'Explore',
+          position: 'left',
+          items: [
+            { title: 'Get started', description: 'Install, set up, and build your first integration.', href: '/platform-overview' },
+            { title: 'Develop', description: 'Build services, transform data, and test integrations.', href: '/develop/overview' },
+            { title: 'AI Integrations', description: 'Agents, RAG, and MCP servers.', href: '/develop/ai/overview' },
+            { title: 'Guides', description: 'End-to-end tutorials and integration patterns.', href: '/guides/overview' },
+            { title: 'Deploy', description: 'Docker, Kubernetes, CI/CD, and production security.', href: '/deploy/overview' },
+            { title: 'Manage', description: 'Centralized control via the WSO2 Cloud console.', href: '/manage/overview' },
+            { title: 'Migrate', description: 'Move existing MuleSoft and TIBCO integrations.', href: '/migrate' },
+            { title: 'Reference', description: 'Language reference, config keys, CLI, error codes.', href: '/reference/overview' },
+          ],
+        },
         sharedReleasesNavbarItem('/reference/appendix/release-notes'),
-        sharedContributeNavbarItem('saas'),
-        sharedCommunityDropdown,
+        sharedContributeNavbarItem(),
+        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
         sharedGithubNavbarItem,
       ]
@@ -149,7 +173,14 @@ const config: Config = {
             { label: 'Secure', to: '/deploy/secure/authentication' },
           ],
         },
-        sharedCommunityFooterLinks,
+        {
+          title: 'Operate',
+          items: [
+            { label: 'Observability', to: '/operate/observability-overview' },
+            { label: 'Logging', to: '/operate/logging-overview' },
+            { label: 'Metrics', to: '/operate/metrics-overview' },
+          ],
+        },
       ],
       copyright: sharedFooterCopyright,
     },

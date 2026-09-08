@@ -304,14 +304,13 @@ function SearchBar(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Cloud console mockup — the saas equivalent of the WSO2 Integrator
- *  IDE screenshot used in this same slot on the wso2-integrator branch.
- *  Built as HTML/CSS (not a static image) since there's no real cloud
- *  console screenshot to use; colors are hardcoded rather than themed,
- *  same as a real screenshot would be (it doesn't follow the site's
- *  light/dark toggle).
+/*  Cloud console screenshot -- the real WSO2 Cloud sign-in page,
+ *  inside the same browser-chrome frame used across the hero. A raw
+ *  flat screenshot (no rounding/shadow of its own baked in), so the
+ *  chrome frame is what gives it presentation.
  * ------------------------------------------------------------------ */
-function CloudConsoleMockup(): ReactNode {
+function CloudConsoleScreenshot(): ReactNode {
+  const src = useBaseUrl('/img/landing/wso2-integration-platform-sign-in.png');
   return (
     <div className={styles.productCard}>
       <div className={styles.productCardChrome}>
@@ -320,29 +319,7 @@ function CloudConsoleMockup(): ReactNode {
         <span className={styles.productCardDot} />
         <span className={styles.productCardTitle}>WSO2 Cloud Console</span>
       </div>
-      <div className={styles.mockScreen}>
-        <div className={styles.mockScreenLeft}>
-          <span className={styles.mockIconBadge}>
-            <IconWave stroke="#FFFFFF" size={26} />
-          </span>
-          <span className={styles.mockPill}>Get Started</span>
-          <h2 className={styles.mockHeading}>Welcome to WSO2 Cloud</h2>
-          <p className={styles.mockBody}>
-            Connect AI agents, APIs, data, and events across cloud environments.
-            Build and deploy integrations without installing anything.
-          </p>
-        </div>
-        <div className={styles.mockScreenRight}>
-          <span className={styles.mockLabel}>WSO2 CLOUD</span>
-          <span className={styles.mockRightHeading}>Sign in</span>
-          <span className={styles.mockRightBody}>
-            Sign in to access your organization and start building in the
-            cloud editor.
-          </span>
-          <span className={styles.mockDarkButton}>Sign in with WSO2 account</span>
-          <span className={styles.mockLightButton}>Create a free account</span>
-        </div>
-      </div>
+      <img src={src} alt="WSO2 Integration Platform sign-in page" />
     </div>
   );
 }
@@ -356,9 +333,13 @@ function HomepageHeader(): ReactNode {
     <header className={styles.heroBanner}>
       <div className={styles.heroInner}>
         <div className={styles.heroLeft}>
-          <CloudConsoleMockup />
+          <CloudConsoleScreenshot />
           <div className={styles.downloadRow}>
-            <Link className={styles.downloadBtn} to="/get-started/setup/cloud-setup">
+            <Link
+              className={styles.downloadBtn}
+              href="https://console.devant.dev/signup"
+              target="_blank"
+              rel="noopener noreferrer">
               <IconDownload />
               Launch WSO2 Cloud
             </Link>

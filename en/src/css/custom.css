@@ -317,28 +317,36 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Active top-level category: solid peach/orange-wash fill (same treatment
-   as the navbar/breadcrumb active states). */
-.menu__link--active:not(.menu__link--sublist) {
+/* Active top-level *section*: solid peach/orange-wash fill (same
+   treatment as the navbar/breadcrumb active states). Docusaurus marks a
+   collapsible category's own link `--active` too (not just plain leaf
+   links) whenever the active page is anywhere in its subtree -- the
+   previous `:not(.menu__link--sublist)` exclusion here dropped that
+   case entirely, so only a top-level item with no children of its own
+   (e.g. a bare "Overview" doc) ever lit up. Dropping the exclusion is
+   what makes a real section like "Develop" or "Connector Catalog" show
+   as active while you're anywhere inside it, not just on its own page. */
+.menu__link--active {
   background-color: #FDE3D9;
   color: var(--wso2-accent-text);
   font-weight: 700;
 }
 
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+[data-theme='dark'] .menu__link--active {
   background-color: rgba(241, 78, 35, 0.16);
 }
 
-/* Active *nested* leaf item (inside an expanded category): a neutral
-   chip fill with just the accent text color, not the peach category
-   fill -- keeps the expanded category itself visually "in charge" of
-   the peach treatment. */
-.menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+/* Active *nested* section/leaf (inside an expanded top-level category):
+   a neutral chip fill with just the accent text color, not the peach
+   top-level fill -- keeps the expanded top-level section visually "in
+   charge" of the peach treatment, however many levels deep the actual
+   active page is. */
+.menu__list .menu__list .menu__link--active {
   background-color: rgba(0, 0, 0, 0.04);
   color: var(--wso2-accent-text);
 }
 
-[data-theme='dark'] .menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+[data-theme='dark'] .menu__list .menu__list .menu__link--active {
   background-color: rgba(255, 255, 255, 0.06);
 }
 
