@@ -5,32 +5,13 @@
   flex-wrap: wrap;
 }
 
-/* Groups product + version into one bordered, pill-shaped control -- the
-   group carries the border/background/radius; the individual pills below
-   are transparent and share a divider instead of each having their own
-   border, so the two read as a single "where am I" control. */
+/* Product and version are two independent bordered pills side by side
+   (a small gap between, not fused into one control) -- matches the
+   reference exactly. */
 .pillGroup {
   display: flex;
-  align-items: stretch;
-  border: 1px solid var(--wso2-surface-border);
-  border-radius: 999px;
-  background: var(--ifm-background-color);
-  /* No `overflow: hidden` here -- it would clip the pill's own dropdown
-     menu (an absolutely-positioned descendant that intentionally
-     overflows below this row). Rounded outer corners come from the
-     first/last pill buttons instead. */
-}
-
-.pillGroup .pillWrapper:not(:last-child) .pill {
-  border-right: 1px solid var(--wso2-surface-border);
-}
-
-.pillGroup .pillWrapper:first-child .pill {
-  border-radius: 999px 0 0 999px;
-}
-
-.pillGroup .pillWrapper:last-child .pill {
-  border-radius: 0 999px 999px 0;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .pillWrapper {
@@ -40,27 +21,33 @@
 .pill {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   height: 100%;
-  padding: 0.35rem 0.75rem;
-  border: none;
-  background: transparent;
-  color: var(--ifm-font-color-base);
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 11px;
+  background: var(--ifm-background-color);
+  color: var(--wso2-heading-color);
+  font-size: 0.8125rem;
+  font-weight: 700;
   line-height: 1.2;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  box-shadow: var(--wso2-card-shadow);
+  transition: border-color 0.15s ease;
 }
 
 .pill:hover {
-  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-primary);
 }
 
-/* Fixed width regardless of label length ("SaaS" vs "WSO2 Integrator") so
-   the group's overall size stays put when switching products. */
+/* `min-width` (not a fixed `width`) so the pill grows to fit the
+   longest real product label ("WSO2 Connectors") instead of clipping
+   it -- only one product name is ever shown here at a time (switching
+   products is a full page load to a different site, not a client-side
+   swap), so there's no "jumping width" to guard against; a fixed width
+   sized for "SaaS" was just truncating the longer names. */
 .pillProduct {
-  width: 10rem;
+  min-width: 10rem;
   justify-content: space-between;
 }
 
@@ -77,9 +64,40 @@
   text-align: left;
 }
 
-.pill svg {
+.pill > svg {
   flex-shrink: 0;
   opacity: 0.6;
+}
+
+/* Icon badge shown before the product pill's label -- full opacity,
+   unlike the trailing chevron above. */
+.pillIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #FDE3D9;
+  color: var(--wso2-accent-text);
+}
+
+[data-theme='dark'] .pillIcon {
+  background: rgba(241, 78, 35, 0.16);
+}
+
+/* Dot shown before the version pill's label. */
+.pillDot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px #FDE3D9;
+}
+
+[data-theme='dark'] .pillDot {
+  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.16);
 }
 
 .pillMenu {
@@ -88,12 +106,12 @@
   left: 0;
   z-index: 10;
   min-width: 10rem;
-  margin: 0;
   padding: 0.35rem;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
   background: var(--ifm-background-color);
   border: 1px solid var(--wso2-surface-border);
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: var(--wso2-card-shadow-hover);
 }
 
@@ -114,4 +132,85 @@
 
 [data-theme='dark'] .pillMenuItem:hover {
   background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Product dropdown ("Platform Components") ---- */
+.pillMenuWide {
+  width: 330px;
+}
+
+.pillMenuHeading {
+  padding: 8px 10px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wso2-text-muted);
+}
+
+.pillMenuRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 10px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+}
+
+/* Hover is the only background highlight in the open menu -- including
+   on the current product's own row. The current product is still
+   marked (gradient icon, bold accent-colored title/desc below), just
+   not with a permanently-lit row background: a menu that's meant for
+   picking where to go shouldn't visually anchor on where you already
+   are while you're scanning it. */
+.pillMenuRow:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .pillMenuRow:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.pillMenuRowIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--wso2-well-bg);
+  color: var(--wso2-text-muted);
+}
+
+.pillMenuRowIconActive {
+  background: linear-gradient(145deg, #FF8A3D, #F14E23);
+  color: #FFFFFF;
+}
+
+.pillMenuRowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pillMenuRowTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--wso2-heading-color);
+}
+
+.pillMenuRowActive .pillMenuRowTitle {
+  font-weight: 700;
+  color: var(--wso2-accent-text);
+}
+
+.pillMenuRowDesc {
+  font-size: 12px;
+  color: var(--wso2-text-muted);
+}
+
+.pillMenuRowActive .pillMenuRowDesc {
+  color: var(--ifm-font-color-base);
 }

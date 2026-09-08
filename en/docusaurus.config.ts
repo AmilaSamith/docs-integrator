@@ -59,7 +59,8 @@ const config: Config = {
       {
         hashed: true,
         language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
+        // See saas's docusaurus.config.ts for why this is off.
+        highlightSearchTermsOnTargetPage: false,
         explicitSearchResultPath: true,
         docsRouteBasePath: '/',
         indexBlog: false,

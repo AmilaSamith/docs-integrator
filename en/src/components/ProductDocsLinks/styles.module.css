@@ -55,5 +55,5 @@
 }
 
 .productLink:hover .productLinkIcon {
-  color: var(--ifm-menu-color-active, #0077B6);
+  color: var(--ifm-menu-color-active, #D63B12);
 }
