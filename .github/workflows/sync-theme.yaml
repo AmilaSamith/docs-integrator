@@ -1,0 +1,101 @@
+name: Sync shared theme to product branches
+
+# Propagates the shared visual identity and governance docs from `main`,
+# the canonical branch, to every product branch — same "accept
+# duplication, automate sync" pattern as the docs content sync, applied
+# to theme/chrome and process docs instead of documentation content. See
+# MAINTENANCE.md for the full model this fits into (in particular, why
+# `main` is the source and not any one product branch).
+#
+# Add a branch to the matrix below to bring it into the shared-theme
+# contract when a new product launches (e.g. wso2-agent-builder).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'en/src/theme-shared/**'
+      - 'en/src/theme/**'
+      - 'en/src/plugins/expose-sidebars/**'
+      - 'en/src/components/SiteNav/**'
+      - 'en/src/components/TabAwareToc/**'
+      - 'en/src/components/ProductDocsLinks/**'
+      - 'en/src/components/SidebarProductHeader/**'
+      - 'en/src/components/ConnectorCatalog/styles.module.css'
+      - 'en/src/css/custom.css'
+      - 'en/static/img/**'
+      - 'en/plugins/docusaurus-plugin-markdown-export/**'
+      - 'MAINTENANCE.md'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/staging_sync.yaml'
+  workflow_dispatch:
+
+env:
+  SHARED_PATHS: >-
+    en/src/theme-shared
+    en/src/theme
+    en/src/plugins/expose-sidebars
+    en/src/components/SiteNav
+    en/src/components/TabAwareToc
+    en/src/components/ProductDocsLinks
+    en/src/components/SidebarProductHeader
+    en/src/components/ConnectorCatalog/styles.module.css
+    en/src/css/custom.css
+    en/static/img
+    en/plugins/docusaurus-plugin-markdown-export
+    MAINTENANCE.md
+    CONTRIBUTING.md
+    .github/workflows/staging_sync.yaml
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [saas, wso2-integrator, wso2-connectors]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push shared theme + governance files to ${{ matrix.target }}
+        run: |
+          git config user.name "Docs Bot"
+          git config user.email "docs@wso2.com"
+
+          git fetch origin main ${{ matrix.target }}
+          git checkout -b sync-theme-${{ matrix.target }} origin/${{ matrix.target }}
+
+          # Full replace, not overlay: `git checkout <ref> -- <path>` only
+          # adds/updates files present in <ref> — it never removes a path
+          # that exists on the target but not on main. Since these paths
+          # are meant to be wholly owned by the shared contract (no
+          # target-specific files inside them — ConnectorCatalog's own
+          # index.tsx is deliberately NOT in this list, only its
+          # stylesheet is), clear each one first so a removal on main
+          # actually propagates. Guarded to directories only; single-file
+          # paths (custom.css, MAINTENANCE.md, etc.) are just overwritten.
+          for p in $SHARED_PATHS; do
+            if [ -d "$p" ]; then
+              rm -rf "$p"
+            fi
+            git checkout origin/main -- "$p" 2>/dev/null || true
+          done
+
+          git add -A -- $SHARED_PATHS
+
+          if git diff --cached --quiet; then
+            echo "No shared-theme/governance changes to sync to ${{ matrix.target }}."
+            exit 0
+          fi
+
+          git commit -m "theme(sync): shared theme + governance docs from main ($(date +%Y-%m-%d))"
+          git push origin sync-theme-${{ matrix.target }}
+
+          gh pr create --base ${{ matrix.target }} --head sync-theme-${{ matrix.target }} \
+            --title "theme(sync): shared theme + governance docs from main" \
+            --body "Auto-synced shared theme files (custom.css, theme overrides, SiteNav, ProductDocsLinks, TabAwareToc, SidebarProductHeader, ConnectorCatalog styling, expose-sidebars, markdown-export, brand assets) and governance docs (MAINTENANCE.md, CONTRIBUTING.md, staging_sync.yaml). Review for ${{ matrix.target }}-specific breakage before merge."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
