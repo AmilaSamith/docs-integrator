@@ -59,7 +59,8 @@ const config: Config = {
       {
         hashed: true,
         language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
+        // See saas's docusaurus.config.ts for why this is off.
+        highlightSearchTermsOnTargetPage: false,
         explicitSearchResultPath: true,
         docsRouteBasePath: '/',
         indexBlog: false,
@@ -117,11 +118,12 @@ const config: Config = {
           // is a completely separate build/bundle. See
           // SidebarProductHeader's docstring for the isInternalUrl pitfall
           // this sidesteps. `html` (not `label`) so Docusaurus doesn't
-          // auto-append its external-link arrow icon.
-          href: 'pathname:///integration-platform/docs/connectors/',
+          // auto-append its external-link arrow icon. Goes straight to
+          // the catalog, not just the connectors site's homepage.
+          href: 'pathname:///integration-platform/docs/connectors/catalog',
           autoAddBaseUrl: false,
           html: 'Connectors',
-          position: 'right',
+          position: 'left',
         },
         sharedReleasesNavbarItem('/reference/appendix/release-notes'),
         sharedContributeNavbarItem('wso2-integrator'),

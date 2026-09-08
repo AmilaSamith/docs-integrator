@@ -56,6 +56,14 @@ function IconDeploy(): ReactNode {
   );
 }
 
+function IconMigrate(): ReactNode {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 7h13l-3-3M20 17H7l3 3" />
+    </svg>
+  );
+}
+
 function IconReference(): ReactNode {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -83,6 +91,33 @@ function IconManage(): ReactNode {
   );
 }
 
+/** The pulse/waveform mark used as the "Docs" badge icon in the hero
+ * and as the logo-ish icon in the download panel. */
+function IconWave({ stroke = 'currentColor', size = 14 }: { stroke?: string; size?: number }): ReactNode {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h3l2-4 3 8 2-4h4" />
+    </svg>
+  );
+}
+
+function IconArrowRight(): ReactNode {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+      <path d="M4 12h15M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function IconDownload(): ReactNode {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5" />
+      <path d="M5 19h14" />
+    </svg>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Section Data                                                       */
 /* ------------------------------------------------------------------ */
@@ -91,8 +126,9 @@ type SectionCard = {
   description: string;
   link: string;
   icon: ReactNode;
-  iconBg: string;
-  iconBgDark: string;
+  /** Kept per-category (not tied to the brand accent) so the grid stays
+   * quickly scannable -- only the icon stroke is tinted, the badge itself
+   * is a neutral bordered square (see .sectionIcon). */
   iconColor: string;
 };
 
@@ -102,8 +138,6 @@ const sections: SectionCard[] = [
     description: 'Install, set up, and build your first integration in under 10 minutes.',
     link: '/get-started/setup/overview',
     icon: <IconGetStarted />,
-    iconBg: '#ECFDF5',
-    iconBgDark: 'rgba(5, 150, 105, 0.15)',
     iconColor: '#059669',
   },
   {
@@ -111,17 +145,13 @@ const sections: SectionCard[] = [
     description: 'Build services, transform data, and test integrations on your machine.',
     link: '/develop/overview',
     icon: <IconDevelop />,
-    iconBg: '#EFF6FF',
-    iconBgDark: 'rgba(37, 99, 235, 0.15)',
-    iconColor: '#2563EB',
+    iconColor: '#26365A',
   },
   {
     title: 'AI Integrations',
     description: 'Build AI-powered integrations with agents, RAG, and MCP servers.',
     link: '/develop/ai/overview',
     icon: <IconGenAI />,
-    iconBg: '#FDF4FF',
-    iconBgDark: 'rgba(168, 85, 247, 0.15)',
     iconColor: '#A855F7',
   },
   {
@@ -129,8 +159,6 @@ const sections: SectionCard[] = [
     description: 'End-to-end tutorials and integration patterns.',
     link: '/guides/overview',
     icon: <IconTutorials />,
-    iconBg: '#FFF8EB',
-    iconBgDark: 'rgba(217, 119, 6, 0.15)',
     iconColor: '#D97706',
   },
   {
@@ -138,8 +166,6 @@ const sections: SectionCard[] = [
     description: 'Docker, Kubernetes, CI/CD, observability, and production security.',
     link: '/deploy/overview',
     icon: <IconDeploy />,
-    iconBg: '#ECFEFF',
-    iconBgDark: 'rgba(8, 145, 178, 0.15)',
     iconColor: '#0891B2',
   },
   {
@@ -147,17 +173,20 @@ const sections: SectionCard[] = [
     description: 'Centralized control and observability via the Integration Control Plane (ICP).',
     link: '/icp',
     icon: <IconManage />,
-    iconBg: '#EEF2FF',
-    iconBgDark: 'rgba(79, 70, 229, 0.15)',
     iconColor: '#4F46E5',
+  },
+  {
+    title: 'Migrate',
+    description: 'Move existing MuleSoft and TIBCO integrations to WSO2.',
+    link: '/migrate',
+    icon: <IconMigrate />,
+    iconColor: '#B45309',
   },
   {
     title: 'Reference',
     description: 'Language reference, configuration keys, CLI commands, and error codes.',
     link: '/reference/overview',
     icon: <IconReference />,
-    iconBg: '#F1F5F9',
-    iconBgDark: 'rgba(100, 116, 139, 0.15)',
     iconColor: '#475569',
   },
 ];
@@ -166,9 +195,9 @@ const sections: SectionCard[] = [
 /*  Quick-links shown when the search input is focused but empty       */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Automation', to: '/develop/how-to/build-automation' },
-  { label: 'Build an AI Agent', to: '/develop/how-to/build-ai-agent' },
-  { label: 'Build an API Integration', to: '/develop/how-to/build-integration-api' },
+  { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/develop/how-to/build-automation' },
+  { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/develop/how-to/build-ai-agent' },
+  { label: 'Build an API Integration', sub: 'Services, proxies and gateways', to: '/develop/how-to/build-integration-api' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -275,36 +304,71 @@ function SearchBar(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Hero Banner                                                        */
+/*  Download panel — the wso2-integrator equivalent of saas's
+ *  cloud-console mockup. Rather than a fabricated screenshot of the
+ *  IDE (or a real one that would go stale as the UI evolves), this
+ *  slot is a functional download CTA: the IDE is a local install, so
+ *  the useful action here is "get it", not "look at it".
+ * ------------------------------------------------------------------ */
+function DownloadPanel(): ReactNode {
+  return (
+    <div className={styles.productCard}>
+      <div className={styles.productCardChrome}>
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardTitle}>WSO2 Integrator IDE</span>
+      </div>
+      <div className={styles.downloadPanelBody}>
+        <span className={styles.mockIconBadge}>
+          <IconWave stroke="#FFFFFF" size={26} />
+        </span>
+        <span className={styles.mockPill}>Local Setup</span>
+        <h2 className={styles.downloadPanelHeading}>Build integrations on your machine</h2>
+        <p className={styles.downloadPanelText}>
+          A full-featured IDE for designing, testing, and debugging integrations
+          locally -- available for Windows, macOS, and Linux.
+        </p>
+        <Link className={styles.downloadPanelBtn} to="/get-started/setup/local-setup">
+          <IconDownload />
+          Download WSO2 Integrator
+        </Link>
+        <span className={styles.downloadPanelPlatforms}>Windows &middot; macOS &middot; Linux</span>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero Banner — split layout: download panel (left) +               */
+/*  badge/heading/search/CTA (right)                                  */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   return (
     <header className={styles.heroBanner}>
-      <div className="container">
+      <div className={styles.heroInner}>
+        <div className={styles.heroLeft}>
+          <DownloadPanel />
+        </div>
 
-        <Heading as="h1">WSO2 Integration Platform</Heading>
-        <p className={styles.heroSubtitle}>
-          Build and deploy integrations with low-code simplicity and pro-code power.
-        </p>
-        <SearchBar />
-        <div className={styles.buttons}>
-          <Link
-            className={styles.heroBtn}
-            to="/develop/how-to/build-automation">
-            Build your first integration
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+        <div className={styles.heroRight}>
+          <span className={styles.heroBadge}>
+            <IconWave stroke="#FF8A3D" />
+            Docs · WSO2 Integrator
+          </span>
+          <Heading as="h1">WSO2 Integration Platform</Heading>
+          <p className={styles.heroSubtitle}>
+            Build and deploy integrations with low-code simplicity and pro-code power.
+          </p>
+          <SearchBar />
+          <div className={styles.buttons}>
+            <Link
+              className={styles.heroBtn}
+              to="/develop/how-to/build-automation">
+              Build your first integration
+              <IconArrowRight />
+            </Link>
+          </div>
         </div>
       </div>
     </header>
@@ -317,18 +381,21 @@ function HomepageHeader(): ReactNode {
 function TutorialRow(): ReactNode {
   return (
     <section className={styles.tutorialRow}>
-      <div className="container">
-        <Heading as="h2" className={styles.tutorialRowTitle}>
-          What do you want to build?
-        </Heading>
-        <div className={styles.tutorialGrid}>
-          {quickLinks.map((link) => (
-            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-              <span>{link.label}</span>
-              <span className={styles.tutorialCardArrow}>&rarr;</span>
-            </Link>
-          ))}
-        </div>
+      <Heading as="h2" className={styles.tutorialRowTitle}>
+        What do you want to build?
+      </Heading>
+      <div className={styles.tutorialGrid}>
+        {quickLinks.map((link) => (
+          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+            <span className={styles.tutorialCardText}>
+              <span className={styles.tutorialCardTitle}>{link.label}</span>
+              <span className={styles.tutorialCardSub}>{link.sub}</span>
+            </span>
+            <span className={styles.tutorialCardArrow}>
+              <IconArrowRight />
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );
@@ -340,62 +407,23 @@ function TutorialRow(): ReactNode {
 function SectionCards(): ReactNode {
   return (
     <section className={styles.sectionCards}>
-      <div className="container">
-        <Heading as="h2" className={styles.sectionCardsTitle}>
-          Explore the platform
-        </Heading>
-        <div className={styles.sectionGrid}>
-          {sections.map((card, idx) => (
-            <Link
-              key={idx}
-              to={card.link}
-              className={styles.sectionCard}
-              style={
-                {
-                  '--icon-bg': card.iconBg,
-                  '--icon-bg-dark': card.iconBgDark,
-                  '--icon-color': card.iconColor,
-                } as React.CSSProperties
-              }>
-              <span className={styles.sectionIcon}>{card.icon}</span>
-              <Heading as="h3" className={styles.sectionCardTitle}>
-                {card.title}
-              </Heading>
-              <p className={styles.sectionCardDesc}>{card.description}</p>
-              <span className={styles.sectionCardArrow}>&rarr;</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  What's New banner                                                  */
-/* ------------------------------------------------------------------ */
-function WhatsNew(): ReactNode {
-  return (
-    <section className={styles.whatsNew}>
-      <div className="container">
-        <Link
-          to="/reference/appendix/release-notes"
-          className={styles.whatsNewLink}>
-          <span className={styles.whatsNewBadge}>New</span>
-          Check out the latest release notes
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </Link>
+      <Heading as="h2" className={styles.sectionCardsTitle}>
+        Explore the platform
+      </Heading>
+      <div className={styles.sectionGrid}>
+        {sections.map((card, idx) => (
+          <Link
+            key={idx}
+            to={card.link}
+            className={styles.sectionCard}
+            style={{ '--icon-color': card.iconColor } as React.CSSProperties}>
+            <span className={styles.sectionIcon}>{card.icon}</span>
+            <Heading as="h3" className={styles.sectionCardTitle}>
+              {card.title}
+            </Heading>
+            <p className={styles.sectionCardDesc}>{card.description}</p>
+          </Link>
+        ))}
       </div>
     </section>
   );
@@ -412,7 +440,6 @@ export default function Home(): ReactNode {
       <main>
         <TutorialRow />
         <SectionCards />
-        <WhatsNew />
       </main>
     </Layout>
   );

@@ -143,7 +143,7 @@
   color: var(--ifm-font-color-base);
   background-color: var(--ifm-background-color);
   border: 1px solid var(--wso2-surface-border, var(--ifm-color-emphasis-300));
-  border-radius: 999px;
+  border-radius: 10px;
   cursor: pointer;
   transition: border-color 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
@@ -183,8 +183,16 @@
   transition: background-color 0.15s ease;
 }
 
+/* Same peach/orange highlight used for the active row in the product
+   dropdown (SidebarProductHeader) -- here triggered on hover instead of
+   a persistent "active" state, since these are one-shot actions, not a
+   "where am I" list. */
 .markdownDropdownItem:hover {
-  background-color: var(--ifm-color-emphasis-100);
+  background-color: #FDE3D9;
+}
+
+[data-theme='dark'] .markdownDropdownItem:hover {
+  background-color: rgba(241, 78, 35, 0.16);
 }
 
 .markdownDropdownItem svg:first-child {
@@ -192,6 +200,11 @@
   width: 16px;
   height: 16px;
   color: var(--ifm-color-emphasis-600);
+  transition: color 0.15s ease;
+}
+
+.markdownDropdownItem:hover svg:first-child {
+  color: var(--wso2-accent-text);
 }
 
 .markdownDropdownItemText {
@@ -204,6 +217,11 @@
 .markdownDropdownItemTitle {
   font-weight: 500;
   color: var(--ifm-color-emphasis-900);
+  transition: color 0.15s ease;
+}
+
+.markdownDropdownItem:hover .markdownDropdownItemTitle {
+  color: var(--wso2-accent-text);
 }
 
 .markdownDropdownItemDesc {
