@@ -6,69 +6,81 @@
  *   - Color ONLY for interactive elements (links, buttons, active states)
  *   - Generous whitespace, crisp typography
  *
- * Light Palette (Slate-based neutrals):
- *   Background:   #FFFFFF
- *   Surface:      #F8FAFC
- *   Border:       #E2E8F0
- *   Text:         #0F172A  #475569  #94A3B8
- *   Primary:      #0077B6
- *   Accent:       #E8590C (warm orange — CTAs, badges, attention)
+ * Light Palette:
+ *   Background:   #FFFFFF   Surface (ash): #F7F9FC   Sidebar: #FBFCFE
+ *   Border (lines): #E5E9F0   Hairline: #EEF1F6
+ *   Text:         headings #1B2A49   body #565656   muted #7B8598
+ *   Primary (Pulse orange): #F14E23   Accent text on light: #D63B12
  *
- * Dark Palette (Deep navy base):
- *   Background:   #0B1120
- *   Surface:      #151E31
- *   Border:       #1E293B
- *   Text:         #F1F5F9  #94A3B8  #64748B
- *   Primary:      #38BDF8
- *   Accent:       #FB923C (warm orange — CTAs, badges, attention)
+ * Dark Palette:
+ *   Background:   #0B1120   Surface (alt): #0E1728   Sidebar: #0C1424
+ *   Border (lines): rgba(255,255,255,.09)
+ *   Text:         headings #EFF3F9   body #B6C1D3   muted #8B94A7   accent text #FF9163
+ *   Primary (same orange, works on both themes): #F14E23
  *
- * Typography: Inter
+ * Brand navy (control surfaces, hero, footer): #1B2A49 (deep) / #26365A (mid)
+ * Peach active-state fill (light): #FDE3D9 — dark equivalent: rgba(241,78,35,.16)
+ *
+ * Typography: Inter (body) / Plus Jakarta Sans (headings)
  */
 
-/* Google Font — Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Google Fonts — Inter (body) + Plus Jakarta Sans (headings) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 /* ================================================================
    LIGHT THEME
    ================================================================ */
 :root {
-  /* === Primary — Brand Blue === */
-  --ifm-color-primary: #0077B6;
-  --ifm-color-primary-dark: #006AA3;
-  --ifm-color-primary-darker: #00639A;
-  --ifm-color-primary-darkest: #00527F;
-  --ifm-color-primary-light: #0084C9;
-  --ifm-color-primary-lighter: #008BD2;
-  --ifm-color-primary-lightest: #009FED;
+  /* === Primary — Pulse Orange (same value in both themes; reads
+     clearly on both white and navy, unlike the old brand-blue which
+     needed a brighter dark-mode variant) === */
+  --ifm-color-primary: #F14E23;
+  --ifm-color-primary-dark: #D63B12;
+  --ifm-color-primary-darker: #C13710;
+  --ifm-color-primary-darkest: #A62E0D;
+  --ifm-color-primary-light: #FF6B3D;
+  --ifm-color-primary-lighter: #FF8A3D;
+  --ifm-color-primary-lightest: #FFAD75;
 
   /* === Brand Tokens === */
   --wso2-navy: #1B2A49;
   --wso2-navy-deep: #0F172A;
-  --wso2-accent: #E8590C;
-  --wso2-accent-hover: #D14F0A;
-  --wso2-accent-light: rgba(232, 89, 12, 0.08);
+  --wso2-navy-mid: #26365A;
+  --wso2-accent: #F14E23;
+  --wso2-accent-hover: #D63B12;
+  --wso2-accent-light: rgba(241, 78, 35, 0.08);
+
+  /* Text-on-surface accent (links, active nav/TOC/breadcrumb text) --
+     a touch darker than the primary fill so it stays legible as text,
+     not just a button color. */
+  --wso2-accent-text: #D63B12;
+
+  /* Heading color -- Infima has no dedicated heading-color var, so this
+     is applied via explicit h1-h6 selectors below. */
+  --wso2-heading-color: #1B2A49;
 
   /* === Neutral Surfaces (no color tint) === */
   --ifm-background-color: #FFFFFF;
-  --ifm-background-surface-color: #F8FAFC;
-  --wso2-surface-border: #E2E8F0;
-  --wso2-border-subtle: #F1F5F9;
+  --ifm-background-surface-color: #F7F9FC;
+  --wso2-surface-border: #E5E9F0;
+  --wso2-border-subtle: #EEF1F6;
+  --wso2-well-bg: #F2F5F9;
   --wso2-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --wso2-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
 
   /* === Text Hierarchy === */
-  --ifm-font-color-base: #0F172A;
-  --ifm-font-color-secondary: #475569;
-  --wso2-text-muted: #94A3B8;
+  --ifm-font-color-base: #565656;
+  --ifm-font-color-secondary: #7B8598;
+  --wso2-text-muted: #7B8598;
 
   /* === Code === */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 119, 182, 0.06);
+  --docusaurus-highlighted-code-line-bg: rgba(241, 78, 35, 0.06);
 
-  /* === Typography — Inter === */
+  /* === Typography — Inter (body) / Plus Jakarta Sans (headings) === */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  --ifm-heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, sans-serif;
+  --ifm-heading-font-family: 'Plus Jakarta Sans', 'Inter', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --ifm-font-weight-semibold: 600;
   --ifm-heading-font-weight: 600;
   --ifm-font-size-base: 16px;
@@ -92,68 +104,105 @@
 
   /* === Navbar & Navigation === */
   --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
-  --wso2-sidebar-bg: #F8FAFC;
-  --ifm-navbar-shadow: 0 1px 0 #E2E8F0;
+  --wso2-sidebar-bg: #FBFCFE;
+  --ifm-navbar-shadow: 0 1px 0 #E5E9F0;
   --ifm-navbar-height: 4rem;
   --ifm-navbar-padding-vertical: 0;
 
   /* === Sidebar === */
-  --ifm-menu-color: #475569;
-  --ifm-menu-color-active: #0077B6;
+  --ifm-menu-color: #565656;
+  --ifm-menu-color-active: #D63B12;
   --doc-sidebar-width: 280px;
+  /* A real icon rail (see theme/DocSidebar/Desktop), not stock Docusaurus's
+     30px sliver -- this var drives both the collapsed container's width
+     and the main content area's max-width calc, so both sides agree. */
+  --doc-sidebar-hidden-width: 64px;
 
   /* === Link color === */
-  --ifm-link-color: #0077B6;
-  --ifm-link-hover-color: #005F8F;
+  --ifm-link-color: #D63B12;
+  --ifm-link-hover-color: #C13710;
+
+  /* === On-navy support (hero, footer -- always-dark navy surfaces,
+     independent of light/dark site theme) === */
+  --wso2-on-navy-text: #FFFFFF;
+  --wso2-on-navy-cool: #C8D3E6;
+  --wso2-on-navy-muted: #9FB0CC;
+  --wso2-on-navy-muted-dim: #8FA0BD;
+  --wso2-on-navy-label: #FFB59A;
+  --wso2-status-dot: #4ADE80;
 }
 
 /* ================================================================
    DARK THEME
    ================================================================ */
 [data-theme='dark'] {
-  /* === Primary — Bright Sky Blue === */
-  --ifm-color-primary: #38BDF8;
-  --ifm-color-primary-dark: #1AAFE6;
-  --ifm-color-primary-darker: #0FA5DB;
-  --ifm-color-primary-darkest: #0C87B4;
-  --ifm-color-primary-light: #5ECBFA;
-  --ifm-color-primary-lighter: #7AD5FB;
-  --ifm-color-primary-lightest: #A5E3FC;
+  /* === Primary — same Pulse Orange as light (fill color reads fine on
+     both white and navy) === */
+  --ifm-color-primary: #F14E23;
+  --ifm-color-primary-dark: #D63B12;
+  --ifm-color-primary-darker: #C13710;
+  --ifm-color-primary-darkest: #A62E0D;
+  --ifm-color-primary-light: #FF6B3D;
+  --ifm-color-primary-lighter: #FF8A3D;
+  --ifm-color-primary-lightest: #FFAD75;
 
-  /* === Accent — warm orange (CTAs, badges) === */
-  --wso2-accent: #FB923C;
-  --wso2-accent-hover: #FDBA74;
-  --wso2-accent-light: rgba(251, 146, 60, 0.1);
+  /* === Accent — same orange family, lighten (not darken) on hover
+     since we're brightening against a dark surface === */
+  --wso2-accent: #F14E23;
+  --wso2-accent-hover: #FF8A3D;
+  --wso2-accent-light: rgba(241, 78, 35, 0.16);
+
+  /* Text-on-surface accent -- lighter salmon-orange for legibility on
+     dark navy (the vivid fill orange reads too harsh as body text). */
+  --wso2-accent-text: #FF9163;
+
+  --wso2-heading-color: #EFF3F9;
 
   /* === Dark Surfaces — deep navy-black === */
   --ifm-background-color: #0B1120;
-  --ifm-background-surface-color: #151E31;
-  --wso2-surface-border: #1E293B;
-  --wso2-border-subtle: #1E293B;
+  --ifm-background-surface-color: #0E1728;
+  --wso2-surface-border: rgba(255, 255, 255, 0.09);
+  --wso2-border-subtle: rgba(255, 255, 255, 0.09);
+  --wso2-well-bg: #0F1930;
   --wso2-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --wso2-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.4);
 
   /* === Text Hierarchy === */
-  --ifm-font-color-base: #F1F5F9;
-  --ifm-font-color-secondary: #94A3B8;
-  --wso2-text-muted: #64748B;
+  --ifm-font-color-base: #B6C1D3;
+  --ifm-font-color-secondary: #8B94A7;
+  --wso2-text-muted: #8B94A7;
 
   /* === Code === */
-  --docusaurus-highlighted-code-line-bg: rgba(56, 189, 248, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(241, 78, 35, 0.16);
 
   /* === Navbar — transparent to blend with hero === */
-  --ifm-navbar-background-color: rgba(11, 17, 32, 0.6);
-  --wso2-sidebar-bg: #151E31;
+  --ifm-navbar-background-color: rgba(10, 16, 32, 0.6);
+  --wso2-sidebar-bg: #0C1424;
   --ifm-navbar-shadow: none;
 
   /* === Sidebar === */
-  --ifm-menu-color: #94A3B8;
-  --ifm-menu-color-active: #38BDF8;
+  --ifm-menu-color: #B6C1D3;
+  --ifm-menu-color-active: #FF9163;
   --ifm-color-emphasis-600: #CBD5E1;
 
   /* === Link color === */
-  --ifm-link-color: #38BDF8;
-  --ifm-link-hover-color: #7DD3FC;
+  --ifm-link-color: #FF9163;
+  --ifm-link-hover-color: #FF8A3D;
+
+  /* === On-navy support === */
+  --wso2-on-navy-text: #FFFFFF;
+  --wso2-on-navy-cool: #C8D3E6;
+  --wso2-on-navy-muted: #9FB0CC;
+  --wso2-on-navy-muted-dim: #8FA0BD;
+  --wso2-on-navy-label: #FFB59A;
+  --wso2-status-dot: #4ADE80;
+}
+
+/* Headings use the dedicated heading token (navy in light, off-white in
+   dark) rather than the body-text color -- Infima has no separate
+   heading-color var. */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--wso2-heading-color);
 }
 
 /* ================================================================
@@ -170,8 +219,20 @@
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
+/* Infima's default .navbar__logo container is a fixed 2rem (32px) tall,
+   and its own img rule is `height: 100%` -- so bumping just the img's
+   height without also freeing the container leaves the image fighting
+   its own 32px box. Sized big and deliberate -- most of the 4rem (64px)
+   navbar height, not a small icon-sized mark. */
+.navbar__logo {
+  height: 52px;
+  margin-right: 0.75rem;
+}
+
 .navbar__logo img {
-  height: 30px;
+  height: 52px;
+  width: auto;
+  max-height: none;
 }
 
 .navbar__link {
@@ -191,24 +252,61 @@
 }
 
 .navbar__link--active {
-  color: #0077B6;
+  color: var(--wso2-accent-text);
   font-weight: 600;
-  background-color: rgba(0, 119, 182, 0.06);
+  background-color: #FDE3D9;
 }
 
 [data-theme='dark'] .navbar__link--active {
-  color: #38BDF8;
-  background-color: rgba(56, 189, 248, 0.08);
+  color: var(--wso2-accent-text);
+  background-color: rgba(241, 78, 35, 0.16);
+}
+
+/* Icon-only GitHub navbar link -- same 2rem circular hit target as the
+   built-in color-mode toggle, so the two read as one icon-button family
+   at the navbar's right edge. Overrides .navbar__link's text padding. */
+.navbar-github-link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0 !important;
+  margin: 0 0.125rem;
+  border-radius: 50%;
+}
+
+.navbar-github-link:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Infima's default navbar search input is 12.5rem -- widen it a bit. */
+.navbar__search-input {
+  width: 16rem;
+}
+
+@media (max-width: 996px) {
+  .navbar__search-input {
+    width: 12.5rem;
+  }
 }
 
 /* ================================================================
    SIDEBAR — Clean, subtle active state
    ================================================================ */
 .menu__link {
-  border-radius: 8px;
+  border-radius: 16px;
   font-size: 0.875rem;
-  padding: 0.4rem 0.75rem;
-  transition: background-color 0.15s ease;
+  font-weight: 700;
+  padding: 12px 14px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Bold is reserved for top-level (main-section) links -- nested
+   subsection links inside an expanded category read as normal text so
+   the hierarchy is visible at a glance, not just via indentation. */
+.menu__list .menu__list .menu__link {
+  font-weight: 400;
 }
 
 .menu__link:hover {
@@ -219,21 +317,41 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+/* Active top-level category: solid peach/orange-wash fill (same treatment
+   as the navbar/breadcrumb active states). */
 .menu__link--active:not(.menu__link--sublist) {
-  background-color: rgba(0, 119, 182, 0.06);
-  font-weight: 600;
-  border-left: 3px solid #0077B6;
-  padding-left: calc(0.75rem - 3px);
+  background-color: #FDE3D9;
+  color: var(--wso2-accent-text);
+  font-weight: 700;
 }
 
 [data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-  background-color: rgba(56, 189, 248, 0.08);
-  border-left-color: #38BDF8;
+  background-color: rgba(241, 78, 35, 0.16);
+}
+
+/* Active *nested* leaf item (inside an expanded category): a neutral
+   chip fill with just the accent text color, not the peach category
+   fill -- keeps the expanded category itself visually "in charge" of
+   the peach treatment. */
+.menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--wso2-accent-text);
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Vertical guide line along an expanded category's nested items. */
+.menu__list .menu__list {
+  border-left: 1px solid var(--wso2-surface-border);
+  margin-left: 0.85rem;
+  padding-left: 0.5rem;
 }
 
 .menu__list-item-collapsible:hover {
   background-color: rgba(0, 0, 0, 0.03);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:hover {
@@ -251,27 +369,27 @@
 }
 
 .button--primary {
-  background: #0077B6;
+  background: #F14E23;
   border-color: transparent;
   color: #FFFFFF;
 }
 
 .button--primary:hover {
-  background: #005F8F;
-  box-shadow: 0 4px 16px rgba(0, 119, 182, 0.25);
+  background: #D63B12;
+  box-shadow: 0 4px 16px rgba(241, 78, 35, 0.25);
   transform: translateY(-1px);
   color: #FFFFFF;
 }
 
 [data-theme='dark'] .button--primary {
-  background: #38BDF8;
-  color: #0B1120;
+  background: #F14E23;
+  color: #FFFFFF;
 }
 
 [data-theme='dark'] .button--primary:hover {
-  background: #7DD3FC;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
-  color: #0B1120;
+  background: #FF8A3D;
+  box-shadow: 0 4px 16px rgba(255, 138, 61, 0.25);
+  color: #FFFFFF;
 }
 
 .button--outline {
@@ -279,13 +397,13 @@
 }
 
 .button--secondary {
-  background: #F1F5F9;
-  border: 1px solid #E2E8F0;
-  color: #0F172A;
+  background: #F2F5F9;
+  border: 1px solid #E5E9F0;
+  color: #565656;
 }
 
 .button--secondary:hover {
-  background: #E2E8F0;
+  background: #E5E9F0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   transform: translateY(-1px);
 }
@@ -293,7 +411,7 @@
 [data-theme='dark'] .button--secondary {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.1);
-  color: #F1F5F9;
+  color: #B6C1D3;
 }
 
 [data-theme='dark'] .button--secondary:hover {
@@ -302,46 +420,18 @@
 }
 
 [data-theme='dark'] .button--outline {
-  color: #F1F5F9;
+  color: #B6C1D3;
   border-color: rgba(255, 255, 255, 0.15);
 }
 
 [data-theme='dark'] .button--outline:hover {
   background-color: rgba(255, 255, 255, 0.06);
-  border-color: #38BDF8;
-  color: #F1F5F9;
+  border-color: var(--ifm-color-primary);
+  color: #B6C1D3;
 }
 
-/* ================================================================
-   FOOTER — Deep dark
-   ================================================================ */
-.footer--dark {
-  background: #0B1120;
-  border-top: 1px solid #1E293B;
-}
-
-.footer__title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #64748B;
-}
-
-.footer__link-item {
-  font-size: 0.875rem;
-  color: #94A3B8;
-  transition: color 0.2s ease;
-}
-
-.footer__link-item:hover {
-  color: #F1F5F9;
-}
-
-.footer__copyright {
-  color: #475569;
-  font-size: 0.8rem;
-}
+/* Footer is a full custom swizzle (src/theme/Footer) with its own
+   styles.module.css -- these Infima footer classes are no longer used. */
 
 /* ================================================================
    DOCS CONTENT
@@ -367,13 +457,13 @@
 .markdown h2 {
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E5E9F0;
   padding-bottom: 0.35rem;
   margin-top: 1.75rem;
 }
 
 [data-theme='dark'] .markdown h2 {
-  border-bottom-color: #1E293B;
+  border-bottom-color: rgba(255, 255, 255, 0.09);
 }
 
 .markdown h3 {
@@ -394,18 +484,19 @@ article {
 code {
   border-radius: 6px;
   padding: 0.15rem 0.4rem;
-  background-color: #F1F5F9;
-  border: 1px solid #E2E8F0;
-  color: #0F172A;
+  background-color: #F2F5F9;
+  border: 1px solid #E5E9F0;
+  color: var(--wso2-heading-color);
 }
 
 [data-theme='dark'] code {
   background-color: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.08);
-  color: #E2E8F0;
+  color: var(--wso2-heading-color);
 }
 
-/* Ballerina class-name tokens (module:Type, PascalCaseType) */
+/* Ballerina class-name tokens (module:Type, PascalCaseType) -- a
+   distinct syntax-highlighting color, unrelated to the brand palette. */
 .token.class-name {
   color: #6f42c1;
 }
@@ -417,15 +508,15 @@ code {
 /* Code blocks — override inline code style */
 .prism-code {
   border-radius: var(--ifm-code-border-radius);
-  border: 1px solid #CBD5E1;
-  background-color: #F1F5F9 !important;
+  border: 1px solid #E5E9F0;
+  background-color: #F2F5F9 !important;
   padding: 1rem !important;
   line-height: 1.5;
 }
 
 [data-theme='dark'] .prism-code {
-  border-color: #1E293B;
-  background-color: #0D1526 !important;
+  border-color: rgba(255, 255, 255, 0.09);
+  background-color: #0F1930 !important;
 }
 
 .prism-code code {
@@ -445,14 +536,14 @@ code {
 
 /* Blockquotes — subtle left border */
 blockquote {
-  border-left: 4px solid #E2E8F0;
-  background: #F8FAFC;
+  border-left: 4px solid #E5E9F0;
+  background: #F7F9FC;
   border-radius: 0 12px 12px 0;
   padding: 1rem 1.25rem;
 }
 
 [data-theme='dark'] blockquote {
-  border-left-color: #334155;
+  border-left-color: rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -462,18 +553,18 @@ table {
   border-spacing: 0;
   border-radius: 10px;
   overflow: auto;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E5E9F0;
   width: max-content;
   max-width: 100%;
   display: block;
 }
 
 [data-theme='dark'] table {
-  border-color: #1E293B;
+  border-color: rgba(255, 255, 255, 0.09);
 }
 
 table thead tr {
-  background: #F8FAFC;
+  background: #F7F9FC;
 }
 
 [data-theme='dark'] table thead tr {
@@ -485,17 +576,17 @@ table thead th {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #475569;
-  border-bottom: 2px solid #E2E8F0;
+  color: #7B8598;
+  border-bottom: 2px solid #E5E9F0;
 }
 
 [data-theme='dark'] table thead th {
-  color: #94A3B8;
-  border-bottom-color: #1E293B;
+  color: #8B94A7;
+  border-bottom-color: rgba(255, 255, 255, 0.09);
 }
 
 table tbody tr:nth-child(even) {
-  background: #FAFBFD;
+  background: #F7F9FC;
 }
 
 [data-theme='dark'] table tbody tr:nth-child(even) {
@@ -503,7 +594,7 @@ table tbody tr:nth-child(even) {
 }
 
 table tbody tr:hover {
-  background: #F1F5F9;
+  background: #F2F5F9;
 }
 
 [data-theme='dark'] table tbody tr:hover {
@@ -512,19 +603,22 @@ table tbody tr:hover {
 
 table td,
 table th {
-  border-color: #E2E8F0;
+  border-color: #E5E9F0;
 }
 
 [data-theme='dark'] table td,
 [data-theme='dark'] table th {
-  border-color: #1E293B;
+  border-color: rgba(255, 255, 255, 0.09);
 }
 
-/* Admonitions — neutral base, colored left border only */
+/* Admonitions — neutral base, colored left border only. Info/tip/note/
+   danger keep their conventional status colors (a widely-recognized
+   convention across doc systems, independent of brand primary); only
+   "caution" is brand-tied via --wso2-accent. */
 .admonition {
   border-radius: 12px;
   border-left-width: 4px;
-  background: #F8FAFC;
+  background: #F7F9FC;
 }
 
 [data-theme='dark'] .admonition {
@@ -553,30 +647,27 @@ table th {
 
 /* Table of contents */
 .table-of-contents__link {
+  display: inline-block;
   font-size: 0.875rem;
-  color: #334155;
-  transition: color 0.15s ease;
+  color: #565656;
+  border-left: 2px solid transparent;
+  padding-left: 0.7rem;
+  margin-left: -1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 [data-theme='dark'] .table-of-contents__link {
-  color: #94A3B8;
+  color: #8B94A7;
 }
 
 .table-of-contents__link:hover {
-  color: #0077B6;
-}
-
-[data-theme='dark'] .table-of-contents__link:hover {
-  color: #38BDF8;
+  color: var(--wso2-accent-text);
 }
 
 .table-of-contents__link--active {
-  color: #0077B6;
+  color: var(--wso2-accent-text);
   font-weight: 600;
-}
-
-[data-theme='dark'] .table-of-contents__link--active {
-  color: #38BDF8;
+  border-left-color: var(--ifm-color-primary);
 }
 
 /* Breadcrumbs */
@@ -600,68 +691,64 @@ table th {
 }
 
 .breadcrumbs__item--active .breadcrumbs__link {
-  background-color: rgba(0, 119, 182, 0.06);
-  color: #0077B6;
+  background-color: #FDE3D9;
+  color: var(--wso2-accent-text);
 }
 
 [data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
-  background-color: rgba(56, 189, 248, 0.08);
-  color: #38BDF8;
+  background-color: rgba(241, 78, 35, 0.16);
+  color: var(--wso2-accent-text);
 }
 
 /* Pagination */
 .pagination-nav__link {
   border-radius: 12px;
-  border-color: #E2E8F0;
+  border-color: #E5E9F0;
   transition: all 0.2s ease;
   background: #FFFFFF;
 }
 
 [data-theme='dark'] .pagination-nav__link {
-  border-color: #1E293B;
+  border-color: rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.02);
 }
 
 .pagination-nav__link:hover {
-  border-color: #CBD5E1;
+  border-color: #E5E9F0;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  background: #FAFBFD;
+  background: #F7F9FC;
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
-  border-color: #334155;
+  border-color: rgba(255, 255, 255, 0.14);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .pagination-nav__sublabel {
-  color: #94A3B8;
+  color: #7B8598;
 }
 
 .pagination-nav__label {
-  color: #0077B6;
-}
-
-[data-theme='dark'] .pagination-nav__label {
-  color: #38BDF8;
+  color: var(--wso2-accent-text);
 }
 
 /* Search input (navbar) */
 .DocSearch-Button {
   border-radius: 10px !important;
-  border-color: #E2E8F0 !important;
+  border-color: #E5E9F0 !important;
 }
 
 [data-theme='dark'] .DocSearch-Button {
-  border-color: #1E293B !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
 }
 
 /* ================================================================
    CONTENT TYPE BADGES
    ================================================================ */
 .badge--quickstart {
-  --ifm-badge-background-color: #38BDF8;
-  --ifm-badge-border-color: #38BDF8;
+  --ifm-badge-background-color: var(--ifm-color-primary);
+  --ifm-badge-border-color: var(--ifm-color-primary);
 }
 
 .badge--tutorial {
@@ -670,13 +757,13 @@ table th {
 }
 
 .badge--concept {
-  --ifm-badge-background-color: #0F172A;
-  --ifm-badge-border-color: #0F172A;
+  --ifm-badge-background-color: var(--wso2-navy);
+  --ifm-badge-border-color: var(--wso2-navy);
 }
 
 .badge--howto {
-  --ifm-badge-background-color: #0077B6;
-  --ifm-badge-border-color: #0077B6;
+  --ifm-badge-background-color: var(--ifm-color-primary);
+  --ifm-badge-border-color: var(--ifm-color-primary);
 }
 
 .badge--reference {
@@ -716,26 +803,26 @@ table th {
    DOC SIDEBAR DIVIDER
    ================================================================ */
 .theme-doc-sidebar-menu>.menu__list-item+.menu__list-item {
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid #E5E9F0;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu>.menu__list-item+.menu__list-item {
-  border-top-color: #1E293B;
+  border-top-color: rgba(255, 255, 255, 0.09);
 }
 
 /* ================================================================
    TOC COLLAPSIBLE
    ================================================================ */
 .tocCollapsible {
-  border-color: #E2E8F0 !important;
-  background: #F8FAFC;
+  border-color: #E5E9F0 !important;
+  background: #F7F9FC;
   border-radius: 12px;
 }
 
 [data-theme='dark'] .tocCollapsible {
-  border-color: #1E293B !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -759,20 +846,20 @@ table th {
   transition: all 0.2s ease;
   font-size: 0.85rem;
   padding: 0.4rem 1rem;
-  border: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
+  border: 1px solid #E5E9F0;
+  border-bottom: 1px solid #E5E9F0;
   border-radius: 8px 8px 0 0;
   background: #FFFFFF;
-  color: #0F172A;
+  color: #565656;
   margin-left: -1px;
   margin-bottom: -1px;
 }
 
 [data-theme='dark'] .tabs__item {
-  border-color: #1E293B;
-  border-bottom-color: #1E293B;
+  border-color: rgba(255, 255, 255, 0.09);
+  border-bottom-color: rgba(255, 255, 255, 0.09);
   background: #0B1120;
-  color: #F1F5F9;
+  color: #B6C1D3;
 }
 
 .tabs__item:first-child {
@@ -780,34 +867,34 @@ table th {
 }
 
 .tabs__item:hover {
-  background-color: #F1F5F9;
+  background-color: #F2F5F9;
 }
 
 [data-theme='dark'] .tabs__item:hover {
-  background-color: #151E31;
+  background-color: #0E1728;
 }
 
 .tabs__item--active {
-  color: #0077B6;
+  color: var(--wso2-accent-text);
   background: #FFFFFF;
   font-weight: 600;
-  border-color: #E2E8F0;
-  border-top: 2px solid #0077B6;
+  border-color: #E5E9F0;
+  border-top: 2px solid var(--ifm-color-primary);
   border-bottom-color: #FFFFFF;
 }
 
 [data-theme='dark'] .tabs__item--active {
-  color: #38BDF8;
+  color: var(--wso2-accent-text);
   background: #0B1120;
-  border-color: #1E293B;
-  border-top: 2px solid #38BDF8;
+  border-color: rgba(255, 255, 255, 0.09);
+  border-top: 2px solid var(--ifm-color-primary);
   border-bottom-color: #0B1120;
 }
 
 /* Box around tab content */
 @layer docusaurus.infima {
   .tabs-container>div.margin-top--md {
-    border: 1px solid #E2E8F0;
+    border: 1px solid #E5E9F0;
     border-radius: 0 0 12px 12px;
     padding: 1.25rem;
     background: #FFFFFF;
@@ -815,7 +902,7 @@ table th {
   }
 
   [data-theme='dark'] .tabs-container>div.margin-top--md {
-    border-color: #1E293B;
+    border-color: rgba(255, 255, 255, 0.09);
     background: #0B1120;
   }
 }
@@ -826,11 +913,11 @@ table th {
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, #E2E8F0, transparent 80%);
+  background: linear-gradient(90deg, #E5E9F0, transparent 80%);
 }
 
 [data-theme='dark'] hr {
-  background: linear-gradient(90deg, #1E293B, transparent 80%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.09), transparent 80%);
 }
 
 /* ================================================================
@@ -844,6 +931,40 @@ hr {
 
 [data-theme='dark'] .theme-doc-sidebar-container {
   border-right-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================================
+   PRINT / DOWNLOAD AS PDF
+   Triggered by MarkdownButton's "Download as PDF" (window.print()) --
+   hide site chrome so the print/save-as-PDF dialog shows just the
+   article content.
+   ================================================================ */
+@media print {
+
+  .navbar,
+  .theme-doc-sidebar-container,
+  .theme-doc-toc-desktop,
+  .theme-doc-toc-mobile,
+  .theme-doc-breadcrumbs,
+  .theme-doc-footer,
+  .theme-doc-version-badge,
+  .pagination-nav,
+  footer,
+  .tocCollapsible,
+  [class*="aiAssistant"] {
+    display: none !important;
+  }
+
+  .main-wrapper,
+  article {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
 }
 
 /* ================================================================

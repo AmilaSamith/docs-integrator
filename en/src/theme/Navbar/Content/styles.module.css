@@ -1,0 +1,56 @@
+.navLeft {
+  flex-shrink: 0;
+}
+
+/* The center region gets the remaining space and centers its own content
+   within it -- this is what stock Docusaurus's two-region (left/right)
+   layout can't do, since its "left" group (logo + items) has no spare
+   space of its own to redistribute (the gap between it and the
+   margin-left:auto "right" group belongs to that margin, not to the left
+   group's box). */
+.navCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Clip horizontal overflow only -- a plain `overflow: hidden` here
+     would also clip the Community dropdown's flyout menu, since its
+     containing block (the .dropdown wrapper) lives inside this
+     container and the menu hangs *below* it. `clip` is the one
+     non-`visible` overflow keyword that doesn't force the other axis
+     to stop being `visible` (see the CSS Overflow Module's axis-
+     consistency rule), so vertical flyouts stay fully visible while
+     the row itself still can't push .navRight off past the fixed-
+     width regions at narrower desktop widths. */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.navRight {
+  flex-shrink: 0;
+}
+
+/* Below this, individual .navbar__item elements are already display:none
+   (Infima's own breakpoint, unrelated to this file) and the mobile
+   hamburger takes over -- this range is specifically the "still desktop,
+   but not wide enough for everything on one line" gap, where centered
+   items now wrap instead of overflowing past the fixed-width regions. */
+@media (max-width: 1350px) {
+  :global(.navbar__search-input) {
+    width: 11rem;
+  }
+}
+
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}
+
+/* Restore some Infima style that broke with CSS Cascade Layers
+   (carried over from the original module -- see
+   https://github.com/facebook/docusaurus/pull/11142) */
+:global(.navbar__items--right) > :last-child {
+  padding-right: 0;
+}

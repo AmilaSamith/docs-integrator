@@ -1,0 +1,15 @@
+.secondaryRow {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: calc(var(--ifm-z-index-fixed) - 1);
+  background-color: var(--ifm-background-color);
+  border-bottom: 1px solid var(--wso2-surface-border);
+}
+
+.secondaryRowInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem var(--ifm-navbar-padding-horizontal);
+}
