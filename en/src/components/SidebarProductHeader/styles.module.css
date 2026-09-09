@@ -163,15 +163,13 @@
    marked (gradient icon, bold accent-colored title/desc below), just
    not with a permanently-lit row background: a menu that's meant for
    picking where to go shouldn't visually anchor on where you already
-   are while you're scanning it. Same peach used by the Copy Page
-   dropdown's own hover (DocBreadcrumbs' .markdownDropdownItem:hover),
-   so every dropdown in the chrome shares one hover treatment. */
+   are while you're scanning it. */
 .pillMenuRow:hover {
-  background-color: #FDE3D9;
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 [data-theme='dark'] .pillMenuRow:hover {
-  background-color: rgba(241, 78, 35, 0.16);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .pillMenuRowIcon {

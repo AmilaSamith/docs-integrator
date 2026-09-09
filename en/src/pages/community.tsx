@@ -53,11 +53,11 @@ function ForumIcon(): ReactNode {
   );
 }
 
-/** The community channels formerly listed in the footer's now-retired
- * "Community" link column, plus YouTube (see MAINTENANCE.md-adjacent
- * history in theme-shared/themeConfig.ts) -- hand-written here with
- * real descriptions and icons for card presentation, not just a label
- * + href like a plain footer link. */
+/** Same channels as the footer's community column (sharedCommunityFooterLinks
+ * in theme-shared/themeConfig.ts), plus YouTube -- kept as a separate,
+ * hand-written list here rather than importing that one, since these
+ * need real descriptions and icons for card presentation, not just a
+ * label + href for a plain text link. */
 const CHANNELS: Channel[] = [
   {
     title: 'Discord',
