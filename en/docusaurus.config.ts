@@ -13,6 +13,7 @@ import {
   sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
+  CROSS_PRODUCT_BASE,
 } from './src/theme-shared/themeConfig';
 
 const config: Config = {
@@ -26,6 +27,14 @@ const config: Config = {
 
   url: 'https://wso2.com',
   baseUrl: process.env.BASE_URL || '/',
+
+  // Exposes CROSS_PRODUCT_BASE to client-side code (SidebarProductHeader) --
+  // config-time TS modules like themeConfig.ts aren't importable from
+  // browser-bundled components, so Docusaurus's customFields is the
+  // sanctioned bridge. See themeConfig.ts's CROSS_PRODUCT_BASE docstring.
+  customFields: {
+    crossProductBase: CROSS_PRODUCT_BASE,
+  },
 
   organizationName: 'wso2',
   projectName: 'docs-integrator',
@@ -108,7 +117,7 @@ const config: Config = {
           // SidebarProductHeader's docstring for the isInternalUrl pitfall
           // this sidesteps. Goes straight to the catalog, not just the
           // connectors site's homepage.
-          href: 'pathname:///integration-platform/docs/connectors/catalog',
+          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
           autoAddBaseUrl: false,
           // Docusaurus's Link auto-opens a new tab for anything it treats
           // as external, which the pathname:// prefix above does -- fine

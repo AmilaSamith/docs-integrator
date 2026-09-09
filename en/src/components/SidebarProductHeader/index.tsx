@@ -25,26 +25,31 @@ type ProductKey = 'cloud' | 'integrator' | 'connectors';
  * not just that site's homepage -- same target as the navbar's own
  * "Connectors" link.
  */
-const PRODUCTS: Record<ProductKey, { label: string; description: string; href: string; icon: () => ReactNode }> = {
+/** `path` is relative to CROSS_PRODUCT_BASE (siteConfig.customFields.crossProductBase,
+ * set per-branch in docusaurus.config.ts from themeConfig.ts's CROSS_PRODUCT_BASE --
+ * can't import that directly here, see this const's own docstring above). */
+const PRODUCTS: Record<ProductKey, { label: string; description: string; path: string; icon: () => ReactNode }> = {
   cloud: {
     label: 'SaaS',
     description: 'Cloud-hosted integration platform',
-    href: '/integration-platform/docs/',
+    path: '',
     icon: CloudIcon,
   },
   integrator: {
     label: 'WSO2 Integrator',
     description: 'Integrations, automations, AI agents',
-    href: '/integration-platform/docs/integrator/',
+    path: 'integrator/',
     icon: ProductIcon,
   },
   connectors: {
     label: 'WSO2 Connectors',
     description: 'Pre-built connectors for common systems',
-    href: '/integration-platform/docs/connectors/catalog',
+    path: 'connectors/catalog',
     icon: PlugIcon,
   },
 };
+
+const DEFAULT_CROSS_PRODUCT_BASE = '/integration-platform/docs/';
 
 const PRODUCT_ORDER: ProductKey[] = ['cloud', 'integrator', 'connectors'];
 
@@ -153,6 +158,7 @@ function Pill({
 function ProductPill(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   const current = detectCurrentProduct(siteConfig.baseUrl);
+  const crossProductBase = (siteConfig.customFields?.crossProductBase as string) || DEFAULT_CROSS_PRODUCT_BASE;
 
   return (
     <Pill
@@ -171,7 +177,7 @@ function ProductPill(): ReactNode {
             // build, must always be a real page load.
             <a
               key={key}
-              href={product.href}
+              href={`${crossProductBase}${product.path}`}
               className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
               <span className={clsx(styles.pillMenuRowIcon, isActive && styles.pillMenuRowIconActive)}>
                 <Icon />
