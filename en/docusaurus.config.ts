@@ -13,6 +13,7 @@ import {
   sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
+  CROSS_PRODUCT_BASE,
 } from './src/theme-shared/themeConfig';
 
 const config: Config = {
@@ -26,6 +27,14 @@ const config: Config = {
 
   url: 'https://wso2.com',
   baseUrl: process.env.BASE_URL || '/',
+
+  // Exposes CROSS_PRODUCT_BASE to client-side code (SidebarProductHeader) --
+  // config-time TS modules like themeConfig.ts aren't importable from
+  // browser-bundled components, so Docusaurus's customFields is the
+  // sanctioned bridge. See themeConfig.ts's CROSS_PRODUCT_BASE docstring.
+  customFields: {
+    crossProductBase: CROSS_PRODUCT_BASE,
+  },
 
   organizationName: 'wso2',
   projectName: 'docs-integrator',
@@ -102,7 +111,7 @@ const config: Config = {
         // dead end -- matches saas/wso2-integrator's item count too,
         // keeping the centered nav group the same width across all three.
         {
-          href: 'pathname:///integration-platform/docs/',
+          href: `pathname://${CROSS_PRODUCT_BASE}`,
           autoAddBaseUrl: false,
           // See saas's docusaurus.config.ts for why target:'_self' is here.
           target: '_self',
@@ -146,8 +155,8 @@ const config: Config = {
             // overrides Link's default of opening anything it treats as
             // external (which pathname:// does) in a new tab -- a
             // sibling product should feel like same-site navigation.
-            { label: 'SaaS', href: 'pathname:///integration-platform/docs/', autoAddBaseUrl: false, target: '_self' },
-            { label: 'WSO2 Integrator', href: 'pathname:///integration-platform/docs/integrator/', autoAddBaseUrl: false, target: '_self' },
+            { label: 'SaaS', href: `pathname://${CROSS_PRODUCT_BASE}`, autoAddBaseUrl: false, target: '_self' },
+            { label: 'WSO2 Integrator', href: `pathname://${CROSS_PRODUCT_BASE}integrator/`, autoAddBaseUrl: false, target: '_self' },
           ],
         },
       ],
