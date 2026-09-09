@@ -16,6 +16,16 @@ import { themes as prismThemes } from 'prism-react-renderer';
  * docusaurus.config.ts.
  */
 
+/** Absolute path the saas site is rooted at in real production/staging --
+ * used for any link that must resolve to a SIBLING site's real URL
+ * regardless of this build's own baseUrl (sharedNavbarLogo below,
+ * SidebarProductHeader, and each docusaurus.config.ts's own
+ * pathname:// cross-product links). Overridable via env var so a
+ * one-off build hosted at a different absolute root (e.g. a GitHub
+ * fork's own Pages URL) can point these at itself instead --
+ * real production/staging never set this, so they're unaffected. */
+export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
+
 export const sharedColorMode = {
   defaultMode: 'light' as const,
   respectPrefersColorScheme: true,
@@ -56,7 +66,7 @@ export const sharedNavbarLogo = {
   alt: 'WSO2 Integration Platform',
   src: 'img/wso2-integration-platform-black.svg',
   srcDark: 'img/wso2-integration-platform-full-colour.svg',
-  href: '/integration-platform/docs/',
+  href: CROSS_PRODUCT_BASE,
 };
 
 export const sharedFooterStyle = 'dark' as const;
