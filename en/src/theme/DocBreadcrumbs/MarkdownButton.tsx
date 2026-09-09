@@ -25,37 +25,10 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
   const handleCopyPage = async () => {
     try {
       setCopyError(false);
-
-      // In modern browsers, we must write to the clipboard using ClipboardItem with a Promise
-      // to prevent the browser from blocking the write due to the asynchronous fetch delay.
-      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard && navigator.clipboard.write) {
-        try {
-          const copyPromise = fetch(markdownUrl).then(async (response) => {
-            if (!response.ok) throw new Error('Failed to fetch content');
-            return response.text();
-          });
-
-          await navigator.clipboard.write([
-            new ClipboardItem({
-              'text/plain': copyPromise,
-            }),
-          ]);
-        } catch (writeErr) {
-          // If the modern ClipboardItem path fails, fallback to standard writeText
-          console.warn('ClipboardItem write failed, trying fallback:', writeErr);
-          const response = await fetch(markdownUrl);
-          if (!response.ok) throw new Error('Failed to fetch content');
-          const markdown = await response.text();
-          await navigator.clipboard.writeText(markdown);
-        }
-      } else {
-        // Fallback for older browsers
-        const response = await fetch(markdownUrl);
-        if (!response.ok) throw new Error('Failed to fetch content');
-        const markdown = await response.text();
-        await navigator.clipboard.writeText(markdown);
-      }
-
+      const response = await fetch(markdownUrl);
+      if (!response.ok) throw new Error('Failed to fetch content');
+      const markdown = await response.text();
+      await navigator.clipboard.writeText(markdown);
       setCopied(true);
       setIsOpen(false);
       setTimeout(() => setCopied(false), 2000);
@@ -92,6 +65,11 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
     return `Could you read this document about WSO2 Integrator ${fullUrl} so I can ask questions about it?`;
   };
 
+  const handleOpenInClaude = () => {
+    window.open(`https://claude.ai/new?q=${encodeURIComponent(getPromptWithMarkdown())}`, '_blank');
+    setIsOpen(false);
+  };
+
   const handleDownloadPdf = () => {
     setIsOpen(false);
     // The browser's native print-to-PDF, not a server-rendered PDF -- no
@@ -99,11 +77,6 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
     // print block) hides the navbar/sidebar/TOC/footer chrome so the
     // print/PDF-save dialog only shows the article content.
     window.print();
-  };
-
-  const handleOpenInClaude = () => {
-    window.open(`https://claude.ai/new?q=${encodeURIComponent(getPromptWithMarkdown())}`, '_blank');
-    setIsOpen(false);
   };
 
   const handleOpenInChatGPT = () => {
