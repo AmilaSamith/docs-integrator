@@ -61,27 +61,43 @@ jobs:
 
       - name: Resolve this branch's BASE_URL
         id: cfg
+        env:
+          # Unset on the real org repo (production/staging always build
+          # against the real custom-domain path). Set as a repo variable
+          # on a personal fork's own GitHub Pages -- which has no custom
+          # domain, so it serves everything one level deeper, under
+          # /<repo-name>/ -- to point builds at that fork's own actual
+          # root instead (Settings -> Secrets and variables -> Actions ->
+          # Variables -> FORK_BASE_PATH, e.g. "/docs-integrator/").
+          FORK_BASE_PATH: ${{ vars.FORK_BASE_PATH }}
         run: |
+          family_base="${FORK_BASE_PATH:-/integration-platform/docs/}"
           case "${{ github.ref_name }}" in
             saas)
-              echo "base_url=/integration-platform/docs/saas/" >> "$GITHUB_OUTPUT"
+              echo "base_url=${family_base}saas/" >> "$GITHUB_OUTPUT"
               ;;
             wso2-integrator)
-              echo "base_url=/integration-platform/docs/integrator/" >> "$GITHUB_OUTPUT"
+              echo "base_url=${family_base}integrator/" >> "$GITHUB_OUTPUT"
               ;;
             wso2-connectors)
-              echo "base_url=/integration-platform/docs/connectors/" >> "$GITHUB_OUTPUT"
+              echo "base_url=${family_base}connectors/" >> "$GITHUB_OUTPUT"
               ;;
             *)
               echo "::error::No staging config for branch '${{ github.ref_name }}' -- add it to this case statement and to the trigger list above."
               exit 1
               ;;
           esac
+          echo "cross_product_base=${family_base}" >> "$GITHUB_OUTPUT"
 
       - name: Build Docusaurus site
         run: npm run build
         env:
           BASE_URL: ${{ steps.cfg.outputs.base_url }}
+          # See themeConfig.ts's CROSS_PRODUCT_BASE docstring -- without
+          # this, cross-product links (navbar logo, product switcher)
+          # would still point at the production family root even on a
+          # fork build using FORK_BASE_PATH above for its own baseUrl.
+          CROSS_PRODUCT_BASE: ${{ steps.cfg.outputs.cross_product_base }}
 
       # `keep_files: true` is load-bearing: without it, peaceiris wipes
       # the whole `staging` branch before each deploy, deleting whatever
@@ -105,13 +121,26 @@ jobs:
           destination_dir: saas
           keep_files: true
 
+      - name: Prepare root redirect for this base path
+        if: github.ref_name == 'saas'
+        # root-redirect/index.html hardcodes the production target
+        # (/integration-platform/docs/saas/) since it's a plain static
+        # file, not part of the Docusaurus build. On the real org repo
+        # this sed is a no-op (steps.cfg's base_url IS that exact
+        # string there); on a fork with FORK_BASE_PATH set, it rewrites
+        # the redirect to that fork's own resolved saas base instead of
+        # shipping a link that 404s on it.
+        run: |
+          mkdir -p /tmp/root-redirect
+          sed "s#/integration-platform/docs/saas/#${{ steps.cfg.outputs.base_url }}#g" root-redirect/index.html > /tmp/root-redirect/index.html
+
       - name: Deploy root redirect (root of staging)
         if: github.ref_name == 'saas'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: staging
-          publish_dir: root-redirect
+          publish_dir: /tmp/root-redirect
           keep_files: true
 
       - name: Deploy wso2-integrator (staging/integrator)
