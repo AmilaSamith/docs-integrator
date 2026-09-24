@@ -51,6 +51,21 @@
   justify-content: space-between;
 }
 
+/* The 10rem min-width exists so the pill doesn't clip the longest real
+   product label ("WSO2 Connectors") -- on a narrow phone that fixed
+   floor competes with the version pill and the Copy Page button for
+   the same ~320-375px of width. Let it shrink to fit instead; the
+   label's own text-overflow: ellipsis (below) keeps it readable. */
+@media (max-width: 480px) {
+  .pillProduct {
+    min-width: 0;
+  }
+
+  .pillProduct .pillLabel {
+    max-width: 6rem;
+  }
+}
+
 .pillLabel {
   white-space: nowrap;
   overflow: hidden;

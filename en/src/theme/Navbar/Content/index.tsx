@@ -1,29 +1,36 @@
 /**
- * Full custom swizzle (not a @theme-original wrapper). Stock Docusaurus's
- * NavbarContent only has two regions -- "left" (logo + left-position
- * items, as one flex group) and "right" (right-position items + the
- * color-mode toggle + search, pushed to the far edge via margin-left:
- * auto). Logo and left-position items are flat siblings in that SAME
- * left group, so there's no way to center just the nav links while
- * keeping the logo pinned left using CSS alone on top of that structure
- * -- the left group has no extra space to redistribute internally (see
- * this file's own centering rule below for why).
+ * Ejected from @docusaurus/theme-classic to add a third, centered zone
+ * for the plain-link nav items (Connectors, Explore, Contribute,
+ * Community, Blog, FAQ -- everything configured with `position: 'left'`
+ * in docusaurus.config.ts) instead of clustering them right next to the
+ * logo. Only the layout changes: still the same NavbarItem components,
+ * same splitNavbarItems() left/right split for which items go where
+ * (the "left" set now renders in the new center zone, "right" items
+ * are untouched), same color-mode toggle and search fallback.
  *
- * This swizzle restructures it into three independent regions instead:
- * logo (fixed left) | nav items (centered, in the remaining space) |
- * GitHub icon + color-mode toggle + search (fixed right). Which navbar
- * items land in the center group is still driven by config as before
- * (theme-shared/themeConfig.ts's items use `position: 'left'` for
- * "goes in the center group", `position: 'right'` for "stays pinned
- * right" -- repurposing Docusaurus's own left/right split rather than
- * inventing a third config value it doesn't understand).
+ * The centering itself needs no bespoke CSS -- Infima already ships a
+ * `.navbar__items--center` class for exactly this: flanked by the
+ * logo's `.navbar__items` (flex: 1) on one side and `.navbar__items
+ * --right` (also flex: 1, but only via the adjacent-sibling selector
+ * `.navbar__items--center + .navbar__items--right`) on the other, so
+ * both sides grow equally and the center block sits truly centered
+ * regardless of how wide the logo or the right-side icons are. Equal
+ * spacing between the items themselves is likewise already Infima's
+ * default: every `.navbar__item` gets the same
+ * `--ifm-navbar-item-padding-horizontal` on both sides.
+ *
+ * On mobile (<996px), Infima's stock responsive rules already collapse
+ * every `.navbar__items` except `--right` behind the hamburger sidebar
+ * -- that includes this new center zone the same way it included these
+ * items when they lived in the logo's own zone, so mobile behavior is
+ * unchanged.
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
  */
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import { useThemeConfig, ThemeClassNames } from '@docusaurus/theme-common';
+import { useThemeConfig, ErrorCauseBoundary, ThemeClassNames } from '@docusaurus/theme-common';
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem, { type Props as NavbarItemConfig } from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
@@ -34,6 +41,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 
 import styles from './styles.module.css';
 
+// TODO temporary casting until ThemeConfig type is improved, same as stock.
 function useNavbarItems(): NavbarItemConfig[] {
   return (useThemeConfig() as { navbar: { items: NavbarItemConfig[] } }).navbar.items;
 }
@@ -42,38 +50,68 @@ function NavbarItems({ items }: { items: NavbarItemConfig[] }): ReactNode {
   return (
     <>
       {items.map((item, i) => (
-        <NavbarItem {...item} key={i} />
+        <ErrorCauseBoundary
+          key={i}
+          onError={(error) =>
+            new Error(
+              `A theme navbar item failed to render.
+Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
+${JSON.stringify(item, null, 2)}`,
+              { cause: error },
+            )
+          }>
+          <NavbarItem {...item} />
+        </ErrorCauseBoundary>
       ))}
     </>
+  );
+}
+
+function NavbarContentLayout({
+  logo,
+  center,
+  right,
+}: {
+  logo: ReactNode;
+  center: ReactNode;
+  right: ReactNode;
+}): ReactNode {
+  return (
+    <div className="navbar__inner">
+      <div className={clsx(ThemeClassNames.layout.navbar.containerLeft, 'navbar__items')}>{logo}</div>
+      <div className="navbar__items navbar__items--center">{center}</div>
+      <div className={clsx(ThemeClassNames.layout.navbar.containerRight, 'navbar__items navbar__items--right')}>
+        {right}
+      </div>
+    </div>
   );
 }
 
 export default function NavbarContent(): ReactNode {
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
-  const [centerItems, rightItems] = splitNavbarItems(items);
+  const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
-
   return (
-    <div className="navbar__inner">
-      <div className={clsx(ThemeClassNames.layout.navbar.containerLeft, 'navbar__items', styles.navLeft)}>
-        {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-        <NavbarLogo />
-      </div>
-
-      <div className={styles.navCenter}>
-        <NavbarItems items={centerItems} />
-      </div>
-
-      <div className={clsx(ThemeClassNames.layout.navbar.containerRight, 'navbar__items navbar__items--right', styles.navRight)}>
-        <NavbarItems items={rightItems} />
-        <NavbarColorModeToggle className={styles.colorModeToggle} />
-        {!searchBarItem && (
-          <NavbarSearch>
-            <SearchBar />
-          </NavbarSearch>
-        )}
-      </div>
-    </div>
+    <NavbarContentLayout
+      logo={
+        <>
+          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+          <NavbarLogo />
+        </>
+      }
+      center={<NavbarItems items={leftItems} />}
+      right={
+        <>
+          <NavbarItems items={rightItems} />
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          {!searchBarItem && (
+            <NavbarSearch>
+              <SearchBar />
+            </NavbarSearch>
+          )}
+        </>
+      }
+    />
   );
 }

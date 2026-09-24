@@ -17,3 +17,14 @@
   gap: 0.75rem;
   padding: 0.5rem var(--ifm-navbar-padding-horizontal);
 }
+
+/* Below this, the product+version pill group and the Copy Page button
+   no longer fit on one line at their normal sizes (see each component's
+   own mobile rules for how they shrink) -- wrap instead of clipping or
+   forcing horizontal scroll on the whole row. */
+@media (max-width: 480px) {
+  .secondaryRowInner {
+    flex-wrap: wrap;
+    row-gap: 0.4rem;
+  }
+}

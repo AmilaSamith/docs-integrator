@@ -149,3 +149,25 @@
   color: var(--wso2-on-navy-text) !important;
   text-decoration: none;
 }
+
+/* The 40px fixed side padding above eats a much bigger share of a
+   320-375px phone's width than a desktop's; tighten it instead of
+   leaving it fixed. footerLegal's margin-left: auto (pushing it to the
+   far right of .footerBottom) also only makes sense when it shares a
+   line with the copyright text -- once flex-wrap drops it to its own
+   line at this width, that same auto margin would strand it at the
+   right edge instead of lining up under the copyright text. */
+@media (max-width: 640px) {
+  .footerTop {
+    padding: 40px 20px 24px;
+    gap: 32px 40px;
+  }
+
+  .footerBottom {
+    padding: 16px 20px 32px;
+  }
+
+  .footerLegal {
+    margin-left: 0;
+  }
+}

@@ -16,6 +16,16 @@ export interface ExploreItem {
 interface Props {
   label?: string;
   items: ExploreItem[];
+  /** Passed by Navbar/MobileSidebar/PrimaryMenu when this item renders
+   * inside the slide-out mobile drawer instead of the desktop navbar --
+   * the ONLY signal this component gets to distinguish the two (Infima
+   * hides the desktop instance below 996px via the plain `navbar__item`
+   * class already on the wrapper below, same as every other navbar
+   * item, so this only needs to handle rendering the mobile one). */
+  mobile?: boolean;
+  /** Passed by the same mobile menu so a link tap also closes the
+   * drawer, matching every other navbar item's mobile behavior. */
+  onClick?: () => void;
 }
 
 function ChevronDownIcon(): ReactNode {
@@ -33,7 +43,7 @@ function ChevronDownIcon(): ReactNode {
  * branch from docusaurus.config.ts, since each product's top-level
  * sections differ.
  */
-export default function ExploreDropdown({ label = 'Explore', items }: Props): ReactNode {
+export default function ExploreDropdown({ label = 'Explore', items, mobile, onClick }: Props): ReactNode {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -47,6 +57,29 @@ export default function ExploreDropdown({ label = 'Explore', items }: Props): Re
     document.addEventListener('mousedown', handleOutside);
     return () => document.removeEventListener('mousedown', handleOutside);
   }, [open]);
+
+  // The desktop card-grid flyout (position: absolute, a fixed 2x220px
+  // grid) doesn't fit the mobile drawer's narrow width -- render a flat
+  // link list matching how Docusaurus's own sidebar categories look
+  // there (menu__list-item > menu__link--sublist + nested menu__list)
+  // instead, always expanded since 8 items is short enough not to need
+  // its own collapse/expand state.
+  if (mobile) {
+    return (
+      <li className="menu__list-item">
+        <span className="menu__link menu__link--sublist menu__link--sublist-caret">{label}</span>
+        <ul className="menu__list">
+          {items.map((item) => (
+            <li className="menu__list-item" key={item.href}>
+              <Link to={item.href} className="menu__link" onClick={onClick}>
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </li>
+    );
+  }
 
   return (
     <div ref={ref} className={clsx('navbar__item', styles.wrapper)}>

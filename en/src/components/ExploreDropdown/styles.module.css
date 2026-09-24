@@ -92,8 +92,9 @@
   color: var(--wso2-text-muted);
 }
 
-@media (max-width: 996px) {
-  .wrapper {
-    display: none;
-  }
-}
+/* Below 996px, Infima's own `.navbar__item { display: none }` rule
+   already hides the DESKTOP instance of this component (`.wrapper`
+   below always carries that class too) -- the mobile drawer renders a
+   completely separate instance with `mobile: true`, which returns
+   different, non-absolutely-positioned markup (see index.tsx) that
+   this file's `.wrapper`/`.menu`/`.grid` rules don't apply to at all. */
