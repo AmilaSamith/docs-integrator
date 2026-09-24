@@ -27,18 +27,51 @@ import PaletteIcon, { type PaletteIconName } from '@site/src/components/PaletteI
  *   </PaletteCard>
  */
 
-export function PaletteGrid({ children }: { children: React.ReactNode }): React.ReactElement {
-  return <div className="palette-grid">{children}</div>;
+export function PaletteGrid({
+  children,
+  cols,
+}: {
+  children: React.ReactNode;
+  /** Force exactly this many columns on desktop instead of the default
+   * auto-fill/minmax behavior, which packs as many 260px+ columns as fit
+   * the current width -- fine when a grid's card count is open-ended, but
+   * for a fixed, known set (e.g. 4 cards meant to always read as one row)
+   * auto-fill can still wrap unevenly at in-between viewport widths. Below
+   * the site's mobile breakpoint this still collapses the same as any
+   * other .palette-grid -- see the min-width guard in custom.css. */
+  cols?: number;
+}): React.ReactElement {
+  return (
+    <div
+      className={cols ? 'palette-grid palette-grid--fixed-cols' : 'palette-grid'}
+      style={cols ? ({ '--palette-grid-cols': cols } as React.CSSProperties) : undefined}>
+      {children}
+    </div>
+  );
 }
 
 export function PaletteCard({
   icon,
   href,
+  highlight,
+  standalone,
   children,
 }: {
   icon: PaletteIconName;
   /** Whole-card link -- only for a single-item category with no chips. */
   href?: string;
+  /** Distinct tinted treatment for a card that should stand out from its
+   * siblings (e.g. an AI-assisted feature among plain reference cards) --
+   * see .palette-card--highlight in custom.css. A visual variant only,
+   * doesn't change link behavior. */
+  highlight?: boolean;
+  /** For a lone card that isn't inside a PaletteGrid (its own bottom
+   * margin, since it gets none of PaletteGrid's own margin/gap) --
+   * see .palette-card--standalone in custom.css. Needed in particular
+   * inside a .palette-group, whose own `.palette-grid { margin: 0 }`
+   * rule means a card+grid pairing there has no automatic spacing
+   * between them otherwise. */
+  standalone?: boolean;
   children: React.ReactNode;
 }): React.ReactElement {
   const content = (
@@ -47,6 +80,9 @@ export function PaletteCard({
       {children}
     </>
   );
+  const className = ['palette-card', highlight && 'palette-card--highlight', standalone && 'palette-card--standalone']
+    .filter(Boolean)
+    .join(' ');
 
   if (href) {
     const external = !isInternalUrl(href);
@@ -61,19 +97,19 @@ export function PaletteCard({
     // Link is for same-site client-side routing only.
     if (!external) {
       return (
-        <Link className="palette-card" to={href}>
+        <Link className={className} to={href}>
           {content}
         </Link>
       );
     }
     return (
-      <a className="palette-card" href={href} target="_blank" rel="noopener noreferrer">
+      <a className={className} href={href} target="_blank" rel="noopener noreferrer">
         {content}
       </a>
     );
   }
 
-  return <div className="palette-card">{content}</div>;
+  return <div className={className}>{content}</div>;
 }
 
 export function PaletteChip({

@@ -64,7 +64,14 @@
 .sidebarCollapseOverlay {
   position: absolute;
   top: 10px;
-  right: 8px;
+  /* Aligned with .menu__caret's own right edge (custom.css): .menu's
+     fixed 8px right padding (also custom.css, forced deterministic for
+     exactly this reason) + .menu__caret's own 14px margin-right = 22px
+     total inset from this element's own container. Since this button
+     sits in .sidebarContentWrap (a sibling of the scrolling .menu, not
+     a descendant of it), it needs that same 22px spelled out here by
+     hand -- there's no shared box either could inherit it from. */
+  right: 22px;
   z-index: 2;
   display: grid;
   place-items: center;

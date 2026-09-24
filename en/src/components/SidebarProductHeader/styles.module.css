@@ -154,6 +154,16 @@
   width: 330px;
 }
 
+/* Marks connectors as a supporting product (a catalog used BY saas and
+   integrator) rather than a third platform of the same kind as those
+   two -- same divider treatment as the Copy Page dropdown's own
+   .markdownDropdownDivider. */
+.pillMenuDivider {
+  height: 1px;
+  background-color: var(--wso2-surface-border);
+  margin: 0.35rem 0.35rem;
+}
+
 .pillMenuHeading {
   padding: 8px 10px 6px;
   font-size: 10.5px;

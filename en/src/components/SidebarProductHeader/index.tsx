@@ -1,4 +1,4 @@
-import { Component, useState, useRef, useEffect } from 'react';
+import { Component, Fragment, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -176,20 +176,24 @@ function ProductPill(): ReactNode {
           const isActive = key === current;
           const Icon = product.icon;
           return (
-            // Real <a>, not <Link>: each product is a separate static
-            // build, must always be a real page load.
-            <a
-              key={key}
-              href={`${crossProductBase}${product.path}`}
-              className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
-              <span className={clsx(styles.pillMenuRowIcon, isActive && styles.pillMenuRowIconActive)}>
-                <Icon />
-              </span>
-              <span className={styles.pillMenuRowText}>
-                <span className={styles.pillMenuRowTitle}>{product.label}</span>
-                <span className={styles.pillMenuRowDesc}>{product.description}</span>
-              </span>
-            </a>
+            // Fragment: connectors is a supporting product (a catalog used
+            // BY the two real platforms, saas and integrator, not a third
+            // one of the same kind) -- a divider ahead of it marks that
+            // split instead of listing all three as equally-weighted peers.
+            <Fragment key={key}>
+              {key === 'connectors' && <div className={styles.pillMenuDivider} />}
+              {/* Real <a>, not <Link>: each product is a separate static
+                  build, must always be a real page load. */}
+              <a href={`${crossProductBase}${product.path}`} className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
+                <span className={clsx(styles.pillMenuRowIcon, isActive && styles.pillMenuRowIconActive)}>
+                  <Icon />
+                </span>
+                <span className={styles.pillMenuRowText}>
+                  <span className={styles.pillMenuRowTitle}>{product.label}</span>
+                  <span className={styles.pillMenuRowDesc}>{product.description}</span>
+                </span>
+              </a>
+            </Fragment>
           );
         })
       }

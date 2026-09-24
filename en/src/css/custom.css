@@ -55,6 +55,22 @@
      not just a button color. */
   --wso2-accent-text: #D63B12;
 
+  /* Second accent, blue -- used only for the AI-assistance highlight
+     card (.palette-card--highlight), to read as distinct from the
+     orange "active state" treatment used everywhere else. --wso2-navy
+     is NOT reused for this: it's a large-surface background color
+     (hero, footer), too dark/desaturated to pop as a small accent, and
+     in dark mode it would sit almost on top of --ifm-background-color
+     there (#0B1120, itself a near-black navy) -- the exact "brand-blue
+     needed a brighter dark-mode variant" trap this file's own header
+     comment already flags from an earlier color. Genuinely different
+     values per theme, not just re-lightened: dark enough to read as
+     text on a light card here, deliberately much brighter in the
+     [data-theme='dark'] block below to still read as blue -- not
+     navy-on-navy -- there. */
+  --wso2-ai-accent: #2F6FE4;
+  --wso2-ai-accent-text: #2354B8;
+
   /* Heading color -- Infima has no dedicated heading-color var, so this
      is applied via explicit h1-h6 selectors below. */
   --wso2-heading-color: #1B2A49;
@@ -172,6 +188,15 @@
   /* Text-on-surface accent -- lighter salmon-orange for legibility on
      dark navy (the vivid fill orange reads too harsh as body text). */
   --wso2-accent-text: #FF9163;
+
+  /* Second accent, blue (AI-assistance highlight card only) -- much
+     brighter than the light-mode values, deliberately: the page
+     background here is already a near-black navy (#0B1120 below), so a
+     merely-darker blue would just blend into it instead of reading as
+     a highlight. See this var's own light-mode definition for the
+     fuller reasoning. */
+  --wso2-ai-accent: #5B9BFF;
+  --wso2-ai-accent-text: #8AB6FF;
 
   --wso2-heading-color: #EFF3F9;
 
@@ -347,6 +372,25 @@ h1, h2, h3, h4, h5, h6 {
 /* ================================================================
    SIDEBAR — Clean, subtle active state
    ================================================================ */
+
+/* Stock Docusaurus (theme-classic's own Content/styles.module.css)
+   drops .menu's right padding to 0 on any browser supporting
+   `scrollbar-gutter: stable` (nearly all of them), reserving that
+   space for a gutter instead -- whose actual width is OS/browser-
+   dependent, not a fixed value. That made .menu__caret's effective
+   right-edge position (padding + its own margin-right, both below)
+   impossible to align DocSidebar/Desktop's collapse button against
+   with a fixed `right` -- it'd only line up by coincidence on any one
+   machine. Forcing a fixed, known padding here trades a little of that
+   gutter's layout-shift protection (sidebar content nudges ~1px if a
+   scrollbar appears/disappears) for the two to line up identically
+   everywhere -- see .sidebarCollapseOverlay's own `right` value
+   (DocSidebar/Desktop/styles.module.css), computed FROM this same
+   8px. */
+.menu {
+  padding-right: 0.5rem;
+}
+
 .menu__link {
   border-radius: 16px;
   font-size: 0.875rem;
@@ -387,6 +431,112 @@ h1, h2, h3, h4, h5, h6 {
 
 [data-theme='dark'] .menu__link--active {
   background-color: rgba(241, 78, 35, 0.16);
+}
+
+/* The rule above alone never actually shows for a category WITH
+   children (anything rendered through the collapsible path -- i.e.
+   most sections): Infima's own default.css has
+   `.menu__list-item-collapsible .menu__link--active { background:
+   none !important }`, which strips it right back off, by design --
+   Infima expects hover/active background for a collapsible category to
+   live on the OUTER row (.menu__list-item-collapsible[--active]
+   below), not the inner link. That `!important` sits in the
+   `docusaurus.infima` cascade layer; this file's own CSS is unlayered,
+   which for `!important` declarations specifically is the LOWEST
+   priority tier (the reverse of how unlayered CSS behaves for normal
+   declarations, where it wins over everything) -- so matching it with
+   `!important` here wouldn't actually win. Styling the outer row
+   instead sidesteps the fight entirely: Infima's rule never mentions
+   `.menu__list-item-collapsible` itself, only the link inside it, so
+   this has nothing to override. This is also why "Platform Overview"
+   (a category with only its own index page and no other children) was
+   the one place the fill DID show: with no visible children, it renders
+   through the plain leaf-link path instead of the collapsible one, so
+   Infima's override never applied to it in the first place. */
+.menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: #FDE3D9;
+}
+
+[data-theme='dark'] .menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: rgba(241, 78, 35, 0.16);
+}
+
+/* Left accent bar on the active TOP-LEVEL category only (nested active
+   items already have their own, more subdued treatment above) -- an
+   absolutely-positioned bar rather than a border-left, since a real
+   border would shift the row's own content 2px to the right instead of
+   overlaying flush with the sidebar's edge. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+  position: relative;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:has(.menu__link--active)::before {
+  content: '';
+  position: absolute;
+  left: -0.6rem;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 2px;
+  background-color: var(--ifm-color-primary);
+}
+
+/* Two separate chevron rendering paths share the same oversized-icon
+   problem: .menu__caret is the standalone collapse/expand button a
+   category with its own index page gets; a category WITHOUT one folds
+   the same chevron into the label link itself instead, as a
+   ::after pseudo-element carrying .menu__link--sublist-caret (no
+   separate hit box, so no hover-background rule needed for it --
+   the parent .menu__link's own row-wide hover already covers it).
+   Infima's default renders both at a full menu-link-sized box with an
+   oversized icon (2rem background-size inside a 1.25rem box) -- reads
+   as heavier/more "boxed" than the rest of the chrome. Sized and toned
+   down to match .sidebarCollapseOverlay (DocSidebar/Desktop's own
+   collapse button): muted at rest, `.menu__caret` additionally getting
+   a small fixed hit box and a subtle hover fill instead of a permanent
+   highlighted look. Only `width`/`height`/`background-size`/color-
+   related properties change here -- `transform` (the expand/collapse
+   rotation) and `--ifm-menu-link-sublist-icon-filter` (dark-mode
+   invert) are untouched, both still Infima's own. */
+.menu__caret {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  /* .menu__link--sublist-caret's chevron (below) sits INSIDE .menu__link's
+     own padded box (.menu__link's `padding: 12px 14px` further up this
+     file), so it lands 14px in from the row's true outer edge. .menu__caret
+     is a separate, zero-padding sibling box instead (a category WITH its
+     own index page gets this one, not that pseudo-element) -- without this
+     margin it sits flush at that true edge, 14px further right than the
+     other chevron type, misaligning a top-level category's caret against
+     any nested one's. Matches that same 14px by margin instead of adding
+     matching padding, so the 28px hit box/hover circle itself stays exactly
+     as sized above. */
+  margin-right: 14px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  transition: background-color 0.15s ease;
+}
+
+.menu__caret:before,
+.menu__link--sublist-caret:after {
+  width: 1rem;
+  height: 1rem;
+  background-size: 1rem 1rem;
+  opacity: 0.6;
+}
+
+.menu__caret:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.menu__caret:hover:before {
+  opacity: 0.85;
+}
+
+.menu__link--sublist-caret:hover:after {
+  opacity: 0.85;
 }
 
 /* Active *nested* section/leaf (inside an expanded top-level category):
@@ -1164,6 +1314,18 @@ hr {
   margin: 1.5rem 0 2.5rem;
 }
 
+/* PaletteGrid's `cols` prop -- an exact column count instead of
+   auto-fill's "as many 260px+ columns as fit," for a grid with a fixed,
+   known card count that should always read as one row (see that prop's
+   own docstring). Only above the site's own tablet/mobile breakpoint --
+   below it, this still collapses via the plain .palette-grid rule above,
+   same as every other instance. */
+@media (min-width: 900px) {
+  .markdown .palette-grid--fixed-cols {
+    grid-template-columns: repeat(var(--palette-grid-cols, 4), minmax(0, 1fr));
+  }
+}
+
 .markdown .palette-card {
   position: relative;
   display: block;
@@ -1199,6 +1361,52 @@ hr {
   border-color: var(--ifm-color-primary);
   box-shadow: var(--wso2-card-shadow-hover);
   transform: translateY(-2px);
+}
+
+/* Distinct tinted variant for a card that should stand out from its
+   plain siblings (e.g. an AI-assisted feature among reference cards) --
+   blue (--wso2-ai-accent*), not the orange/peach the rest of the site
+   uses for "active"/"in-focus" states (sidebar active category,
+   dropdown hover), specifically so this doesn't just read as another
+   ordinary hover/active state. Applied to the whole card at rest, not
+   only on hover.
+
+   The two rgba() base triplets below ARE the theme's own
+   --wso2-ai-accent value per mode (#2F6FE4 light / #5B9BFF dark) --
+   kept as literal rgba() rather than color-mix()/a var() reference
+   since this project's browser support baseline predates color-mix(),
+   same reasoning as the orange version this replaced. If
+   --wso2-ai-accent ever changes, update these two rgba() triplets to
+   match by hand. */
+.markdown .palette-card--highlight {
+  background: linear-gradient(135deg, rgba(47, 111, 228, 0.07), rgba(47, 111, 228, 0.03));
+  border-color: rgba(47, 111, 228, 0.35);
+}
+
+.markdown .palette-card--highlight .palette-card-icon {
+  color: var(--wso2-ai-accent);
+}
+
+.markdown .palette-card--highlight .palette-card-title {
+  color: var(--wso2-ai-accent-text);
+}
+
+.markdown .palette-card--highlight:hover {
+  border-color: var(--wso2-ai-accent);
+  box-shadow: 0 10px 30px rgba(47, 111, 228, 0.18);
+}
+
+[data-theme='dark'] .markdown .palette-card--highlight {
+  /* Brighter base + more alpha than light mode -- the page background
+     here is already a near-black navy, so this needs real luminance to
+     read as a highlight instead of blending in (see --wso2-ai-accent's
+     own dark-mode definition for the fuller reasoning). */
+  background: linear-gradient(135deg, rgba(91, 155, 255, 0.22), rgba(91, 155, 255, 0.08));
+  border-color: rgba(91, 155, 255, 0.45);
+}
+
+[data-theme='dark'] .markdown .palette-card--highlight:hover {
+  box-shadow: 0 10px 30px rgba(91, 155, 255, 0.25);
 }
 
 .markdown .palette-card:hover .palette-card-title {

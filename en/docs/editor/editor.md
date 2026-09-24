@@ -16,12 +16,14 @@ The **WSO2 Integrator editor** brings together everything you need to develop, b
 
 Explore each part of the editor below.
 
-<PaletteGrid>
+<div class="palette-group">
 
-<PaletteCard icon="editor-window" href="/editor/editor-window">
+<PaletteCard icon="editor-window" href="/editor/editor-window" standalone>
   <h3 class="palette-card-title">Editor Window</h3>
   <p class="palette-card-desc">The frame that surrounds every view: a top menu bar, an activity bar, the project explorer, the editor tab area, and a status bar that all stay constant no matter which view is active.</p>
 </PaletteCard>
+
+<PaletteGrid cols={4}>
 
 <PaletteCard icon="views">
   <h3 class="palette-card-title">Views</h3>
@@ -43,15 +45,6 @@ Explore each part of the editor below.
   </div>
 </PaletteCard>
 
-<PaletteCard icon="designers">
-  <h3 class="palette-card-title">Designers</h3>
-  <p class="palette-card-desc">Designers are dedicated surfaces for building one artifact end to end.</p>
-  <div class="palette-chip-row">
-    <PaletteChip href="/editor/designers/service-designer">Service Designer</PaletteChip>
-    <PaletteChip href="/editor/designers/data-mapper">Data Mapper</PaletteChip>
-  </div>
-</PaletteCard>
-
 <PaletteCard icon="panels">
   <h3 class="palette-card-title">Panels</h3>
   <p class="palette-card-desc">Panels are focused forms for defining or configuring a single artifact.</p>
@@ -62,17 +55,28 @@ Explore each part of the editor below.
   </div>
 </PaletteCard>
 
-<PaletteCard icon="ai">
+<PaletteCard icon="designers">
+  <h3 class="palette-card-title">Designers</h3>
+  <p class="palette-card-desc">Designers are dedicated surfaces for building one artifact end to end.</p>
+  <div class="palette-chip-row">
+    <PaletteChip href="/editor/designers/service-designer">Service Designer</PaletteChip>
+    <PaletteChip href="/editor/designers/data-mapper">Data Mapper</PaletteChip>
+  </div>
+</PaletteCard>
+
+</PaletteGrid>
+
+</div>
+
+<PaletteCard icon="ai" highlight>
   <h3 class="palette-card-title">AI Assistance</h3>
-  <p class="palette-card-desc">WSO2 Integrator Copilot is AI assistance built into the editor, for generating, testing, and fixing integrations.</p>
+  <p class="palette-card-desc">WSO2 Integrator Copilot is the AI assistant built into the editor, for generating, testing, and fixing integrations.</p>
   <div class="palette-chip-row">
     <PaletteChip href="/editor/copilot/getting-started">WSO2 Integrator Copilot</PaletteChip>
     <PaletteChip href="/editor/copilot/copilot-capabilities">Built-in Capabilities</PaletteChip>
     <PaletteChip href="/editor/copilot/customize-copilot">Customize Copilot</PaletteChip>
   </div>
 </PaletteCard>
-
-</PaletteGrid>
 
 ## What's next
 
