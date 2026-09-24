@@ -4,66 +4,18 @@ title: Migrate from TIBCO BusinessWorks
 
 # Migrate from TIBCO BusinessWorks
 
-A tutorial for developers migrating integrations from TIBCO BusinessWorks to WSO2 Integrator. This tutorial walks you through migrating a real TIBCO BusinessWorks project to WSO2 Integrator using the automated migration tool. No prior knowledge of Ballerina or WSO2 Integrator is required.
-
-**What you'll learn:**
-- How to run the automated migration tool (UI wizard or CLI) to convert a TIBCO BusinessWorks projects to Ballerina code
-- How to read the migration report and handle items the tool couldn't convert automatically
-- How TIBCO concepts (process definitions, activities, shared resources) translate to their WSO2 Integrator equivalents
-- How to configure credentials, test, and run your migrated integration
-
-**Time:** ~30–45 minutes
+TIBCO BusinessWorks builds an integration as a process definition, assembled in Business Studio and stored as XML. WSO2 Integrator describes the same integration as real Ballerina code you can compile. An automated migration tool does most of that conversion for you. This page covers running it, and how TIBCO concepts map to their WSO2 Integrator equivalents.
 
 **Prerequisites:**
-- WSO2 Integrator installed (UI wizard path), **or** Ballerina installed with `bal` on your PATH (CLI path)
-- Git installed (to clone the sample project; not required if using your own project)
+- WSO2 Integrator installed (wizard path), **or** Ballerina installed with `bal` on your PATH (CLI path)
 
-## What You'll Build
+## Overview
 
-You'll migrate the [TIBCO BusinessWorks Credit Application sample](https://github.com/TIBCOSoftware/bw-samples/tree/master/TN2018/Apps) to WSO2 Integrator. It's a multi-project TIBCO BW 6.x application that models a credit application workflow:
+The migration tool converts TIBCO BusinessWorks process definitions to Ballerina code. It handles process flows, activities, transitions, shared resources, error handling configurations, and more, using either the WSO2 Integrator migration wizard or the `bal migrate-tibco` CLI command. Both paths produce a migration report; the wizard additionally offers an optional AI enhancement pass that resolves unmapped elements automatically.
 
-- **CreditAppService**: the orchestration service. Receives HTTP requests for credit applications, calls the backend and external bureau services, and returns a credit decision
-- **CreditCheckBackendService**: implements the credit decision logic using JDBC queries against a database
-- **ExperianDemoService**: a mock external credit bureau REST service
-- **LoggingService**: centralized logging across all services
+## Run the migration tool
 
-**Sample project:** [TN2018/Apps](https://github.com/TIBCOSoftware/bw-samples/tree/master/TN2018/Apps)
-
-The migration tool converts the TIBCO process definitions to Ballerina services, maps the JDBC and HTTP connections, and generates a migration report. You'll review the report, fix up any remaining items, configure credentials in `Config.toml`, and run the result.
-
-> **Using your own project?** You can follow every step below using any TIBCO BusinessWorks project(s) instead of the sample.
-
-## Step 1: Get the sample project
-
-Clone the sample TIBCO BusinessWorks project:
-
-```bash
-git clone https://github.com/TIBCOSoftware/bw-samples.git
-cd bw-samples/TN2018/Apps
-```
-
-Take a moment to look at the project structure. The `Apps` directory contains four cooperating TIBCO BW projects:
-
-```bash
-TN2018/Apps/
-├── CreditAppService/          # Orchestration service (HTTP Listener, calls backend + bureau)
-│   ├── CreditApp.parent/      # Maven parent POM
-│   ├── CreditApp.module/      # BW module containing process files (.bwp)
-│   └── CreditApp/             # Application EAR and configuration
-├── CreditCheckBackendService/ # Credit decision logic (JDBC queries)
-├── ExperianDemoService/       # Mock external credit bureau (REST service)
-└── LoggingService/            # Centralized logging service
-```
-
-Each project follows the standard TIBCO BW 6.x Maven multi-module layout: a parent POM, a module directory with `.bwp` process files, and an application EAR directory with connection and Global Variable settings.
-
-> **Using your own project?** Skip this step and substitute your project's directory path wherever the sample path appears below.
-
-## Step 2: Run the migration tool
-
-WSO2 Integrator provides an automated migration tool that converts TIBCO BusinessWorks process definitions to Ballerina code. The tool handles process flows, activities, transitions, shared resources, error handling, and more.
-
-The migration wizard guides you through a 5-step process to convert your TIBCO project(s) into a WSO2 Integrator project.
+The migration wizard guides you through a 5-step process to convert your TIBCO BusinessWorks project(s) into a WSO2 Integrator project.
 
 ### Prerequisite
 - Ensure WSO2 Integrator is installed and available on your system.
@@ -72,8 +24,10 @@ The migration wizard guides you through a 5-step process to convert your TIBCO p
 
 1. Open WSO2 Integrator, click **More Actions**, and select **Migrate Integrations from Other Vendors**.
 2. Select **TIBCO** as the source platform.
-3. Under **Select a Project Folder or Directory**, click **Browse** and select the `TN2018/Apps` directory you cloned in Step 1 (or your own project directory).
-4. Under **Source Layout**, select **Multiple Projects** (the `Apps` directory contains four separate BW projects). If you have a single project, select **Single Project** instead.
+3. Under **Select a Project Folder or Directory**, click **Browse** and select your TIBCO BusinessWorks project directory or a directory containing multiple projects.
+4. Under **Source Layout**, select one of the following:
+   - **Single Project** — The source path points to a single project directory.
+   - **Multiple Projects** — The source path points to a directory containing one or more project directories.
 
    > **Note:** The **Source Layout** section appears only after you select a directory.
 
@@ -87,22 +41,19 @@ The wizard performs a dry run against your source project(s) to generate a cover
 
 When the dry run completes, the wizard displays a summary of the migration coverage:
 
-- **Migration Coverage**: Percentage of code lines that were automatically migrated.
-- **Total code lines**: Total number of source code lines analyzed.
-- **Migratable code lines**: Lines successfully converted to Ballerina.
-- **Non-migratable code lines**: Lines that require manual attention.
+- **Migration Coverage** — Percentage of code lines that were automatically migrated.
+- **Total code lines** — Total number of source code lines analyzed.
+- **Migratable code lines** — Lines successfully converted to Ballerina.
+- **Non-migratable code lines** — Lines that require manual attention.
 
    ![Report generation step](/img/develop/tools/migration-tools/tibco-report-generation.png)
 
-   > **Note:** The exact coverage percentages shown in the screenshots may differ from what you see. They reflect the tool's capabilities and the reference project at the time the screenshots were taken, and both evolve over time.
-
 Click **View Full Report** to open the full HTML report. The report includes:
 
-- **Migration Coverage Overview**: Overall coverage percentage with a breakdown of total, migratable, and non-migratable code lines.
-- **Breakdown Components**: Separate coverage for TIBCO activities and process elements.
-- **Manual Work Estimation**: Estimated effort (best, average, and worst case) for completing non-migratable items.
-- **Currently Unsupported Elements**: List of elements that could not be automatically migrated.
-- **Element Blocks that Require Manual Conversion**: Specific code blocks that need manual implementation.
+- **Migration Coverage Overview** — Overall coverage percentage with a breakdown of total, migratable, and non-migratable code lines.
+- **Manual Work Estimation** — Estimated effort (best, average, and worst case) for completing non-migratable items.
+- **Currently Unsupported Elements** — List of elements that could not be automatically migrated.
+- **Element Blocks that Require Manual Conversion** — Specific code blocks that need manual implementation.
 
    ![Full migration report](/img/develop/tools/migration-tools/tibco-sample-migration-report.png)
 
@@ -114,9 +65,9 @@ Click **Configure Destination** to proceed, or **Done** to exit the wizard.
 
 1. Enter an **Integration Name** for your migrated project.
 2. Configure the project settings:
-   - **Project Name**: Name of the project (defaults to `Default`).
-   - **Create within a project**: Enable project mode to manage multiple integrations and libraries within a single repository.
-   - **Select Path**: Choose where to create the migrated project.
+   - **Project Name** — Name of the project (defaults to `Default`).
+   - **Create within a project** — Enable project mode to manage multiple integrations and libraries within a single repository.
+   - **Select Path** — Choose where to create the migrated project.
 3. Click **Start Migration**.
 
    ![Configure destination step](/img/develop/tools/migration-tools/tibco-configure-destination.png)
@@ -125,12 +76,12 @@ Click **Configure Destination** to proceed, or **Done** to exit the wizard.
 
 The wizard runs the automated rule-based migration and displays progress in the migration log.
 
-After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. You can select one of the following:
+After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. Select one of the following:
 
-- **Enhance with AI** (AI automatically resolves unmapped elements, fixes build errors, and improves migration quality)
-- **Skip for Now – Enhance Later** (Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/overview.md))
+- **Enhance with AI** — AI automatically resolves unmapped elements, fixes build errors, and improves migration quality.
+- **Skip for Now – Enhance Later** — Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/capabilities.md).
 
-Click **Start AI Enhancement** to proceed to Step 5. If you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
+Click **Start AI Enhancement** to proceed to Step 5, or if you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
 
    ![Rule-based migration step](/img/develop/tools/migration-tools/rule-based-migration.png)
 
@@ -155,95 +106,89 @@ While the agent is running:
 - Click **Pause** to pause the AI enhancement. Click **Resume** to continue.
 - Click **Done** to exit the wizard, or **Open Project** to open the project without waiting for the agent to finish.
 
-   ![Enhancing with AI agent](/img/develop/tools/migration-tools/tibco-ai-enhancement.png)
+   ![Enhancing with ai-agent](/img/develop/tools/migration-tools/tibco-ai-enhancement.png)
 
 When the AI enhancement completes, the status shows **AI Enhancement completed**. Click **Open Project** to open the migrated project or **Done** to exit.
 
-### Prerequisites
-
-- Ballerina installed and the `bal` command available in your environment.
+### CLI prerequisite
+- Ensure Ballerina is installed, and the `bal` command is available in your environment.
 
 ### Steps
-
 1. Install the migration tool:
    ```bash
    bal tool pull migrate-tibco
    ```
-2. Run the migration:
+2. Run the migration command:
    ```bash
-   bal migrate-tibco <source-project-directory-or-file> [-o <output-directory>] [-k] [-v] [-d] [-m] [-g <org-name>] [-p <project-name>]
+   bal migrate-tibco <source-project-directory-or-file> [-o|--out <output-directory>] [-k|--keep-structure] [-v|--verbose] [-d|--dry-run] [-m|--multi-root] [-g|--org-name <organization-name>] [-p|--project-name <project-name>]
    ```
 
-**Key flags:**
+#### Key parameters
 
-| Flag | Description |
+| Parameter | Description |
 |---|---|
-| `<source>` | Path to the TIBCO BusinessWorks project directory or a standalone process file |
-| `-o, --out` | Output directory for the generated Ballerina project |
-| `-k, --keep-structure` | Preserve the original process directory structure |
-| `-v, --verbose` | Enable verbose output |
-| `-d, --dry-run` | Analyze and generate a report without creating code |
-| `-m, --multi-root` | Treat each child directory as a separate project |
-| `-g, --org-name` | Organization name for the generated Ballerina package |
-| `-p, --project-name` | Project name for the generated Ballerina package |
+| `<source-project-directory-or-file>` | Path to the TIBCO BusinessWorks project directory or a standalone process file |
+| `-o, --out <output-directory>` | (Optional) Output directory for the generated Ballerina package |
+| `-k, --keep-structure` | (Optional) Preserve original process structure |
+| `-v, --verbose` | (Optional) Enable verbose output |
+| `-d, --dry-run` | (Optional) Analyze and generate a migration report without creating Ballerina code |
+| `-m, --multi-root` | (Optional) Treat each child directory as a separate TIBCO project and convert all |
+| `-g, --org-name <organization-name>` | (Optional) Organization name for the generated Ballerina package |
+| `-p, --project-name <project-name>` | (Optional) Project name for the generated Ballerina package |
 
-**Examples:**
+### Examples
 
 ```bash
-# Migrate all projects in the sample TN2018/Apps directory (multi-root mode)
-bal migrate-tibco ./bw-samples/TN2018/Apps -o ./migrated-credit-app -m
+# Migrate a project to a specific output directory
+bal migrate-tibco /path/to/tibco-project -o /path/to/output-dir
 
-# Migrate a single project
-bal migrate-tibco ./bw-samples/TN2018/Apps/CreditAppService -o ./migrated-credit-app-service
+# Migrate all TIBCO BusinessWorks projects in a directory (multi-root mode)
+bal migrate-tibco /path/to/projects-directory -o /path/to/output-dir -m
 
-# Dry run: generate a report without creating code
-bal migrate-tibco ./bw-samples/TN2018/Apps -o ./migrated-credit-app -m -d
+# Dry run — generate a report without creating code
+bal migrate-tibco /path/to/projects-directory -o /path/to/output-dir -m -d
 ```
+
+For more CLI options and usage, see the [official migration tool documentation](https://central.ballerina.io/wso2/tool_migrate_tibco/latest).
 
 > **Note:** AI enhancement is available only in the WSO2 Integrator wizard, not in the CLI.
 
-## Step 3: Fix up the generated code
+## Handle manual migration items
 
-The migration tool converts everything it can automatically. This step walks through reviewing the output and resolving any items that still need attention.
+The migration tool converts everything it can automatically. The output directory contains:
 
-### Handle items requiring manual attention
+- **`migration_report.html`** — the rule-based migration report listing every TIBCO activity, its conversion status, and any items that need manual attention.
+- **`ENHANCEMENT_SUMMARY.md`** — present only if you opted in to AI enhancement. It summarizes the AI-assisted improvements applied on top of the rule-based migration.
 
-Navigate to the output directory created by the migration tool. You'll find:
-
-- **`migration_report.html`:** the rule-based migration report listing every TIBCO activity, its conversion status, and any items that need manual attention.
-- **`ENHANCEMENT_SUMMARY.md`:** present only if you opted in to AI enhancement. It summarises the AI-assisted improvements applied on top of the rule-based migration.
-
-Open `migration_report.html` and work through any non-migratable items. If you opted in to AI enhancement, check `ENHANCEMENT_SUMMARY.md` first, as many of these items may already have been resolved automatically. Only address what remains:
+Open `migration_report.html` and work through any non-migratable items. If you opted in to AI enhancement, check `ENHANCEMENT_SUMMARY.md` first — many of these items may already have been resolved automatically. Only address what remains:
 
 1. **Unsupported activities**: Implement the equivalent Ballerina logic manually. Refer to the [concept mapping table](#concept-mapping) below.
 2. **Custom XSLT/XPath transformations**: Replace with Ballerina query expressions or use the Visual Data Mapper.
-3. **Complex Mapper Activity expressions**: Open the Visual Data Mapper in WSO2 Integrator IDE and redraw the mappings.
+3. **Complex Mapper Activity expressions**: Open the Visual Data Mapper in the WSO2 Integrator editor and redraw the mappings.
 
 ### Configure credentials
 
-The migration tool extracts TIBCO Global Variables and connection settings into a `Config.toml` in the output directory, so you don't need to create it manually. However, the file will contain placeholder values; you need to replace them with the correct values for your environment before running the migrated project:
+The migration tool extracts TIBCO Global Variables and connection settings into a `Config.toml` in the output directory. The generated file contains placeholder values — replace them with the correct values for your environment before running the migrated project:
 
 ```toml
-# Config.toml - already created by the tool; update values before running
+# Config.toml — generated by the tool; update values before running
 dbHost = "localhost"
 dbUser = "myuser"
 dbPassword = "mypassword"
 httpEndpoint = "https://api.example.com"
 ```
 
-## Step 4: Test it
+## Test the migrated integration
 
-If your TIBCO project had tests, the migration tool will have converted them to Ballerina. Run them with:
+If the source TIBCO project had tests, the migration tool converts them to Ballerina. Run them with:
 
 ```bash
 bal test
 ```
 
-You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the IDE. Open the service file, click **Try it**, and test each endpoint.
+You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the IDE. Open the service file, click **Try it**, and test each endpoint against the responses returned by the original TIBCO application.
 
-Compare the responses with those returned by your original TIBCO application.
-
-## Step 5: Deploy
+## Deploy
 
 Once tests pass, run the integration locally:
 
@@ -257,7 +202,7 @@ To build a deployable artifact:
 bal build
 ```
 
-See [Deploy](../deploy/overview.md) for Docker, Kubernetes, and cloud deployment options.
+See [Deploy](../deploy-and-run/deploy-and-run.md) for Docker, Kubernetes, and cloud deployment options.
 
 ## Concept mapping
 
@@ -281,17 +226,17 @@ See [Deploy](../deploy/overview.md) for Docker, Kubernetes, and cloud deployment
 | Timer | Automation with schedule | `task:Listener` with cron or interval configuration |
 | Log Activity | `log:printInfo` / `log:printError` | Structured logging |
 | Engine | Ballerina runtime | JVM-based runtime; distributable as a standalone JAR |
-| Administrator | WSO2 Integrator IDE + ICP | Development IDE + Integration Control Plane for monitoring |
+| Administrator | WSO2 Integrator editor + ICP | Development editor + Integration Control Plane for monitoring |
 
 ## Key differences
 
 ### Development model
 
-TIBCO BusinessWorks uses Eclipse-based Business Studio with XML process definition files. WSO2 Integrator uses VS Code with a visual designer that is bidirectionally synced with Ballerina code. You can switch between the visual canvas and the code editor at any time; changes in one are instantly reflected in the other, with no separate export or import step.
+TIBCO BusinessWorks uses Eclipse-based Business Studio with XML process definition files. WSO2 Integrator uses a visual designer that is bidirectionally synced with Ballerina code. You can switch between the visual canvas and the code editor at any time; changes in one are instantly reflected in the other, with no separate export or import step.
 
 | Aspect | TIBCO BusinessWorks | WSO2 Integrator |
 |---|---|---|
-| **IDE** | TIBCO Business Studio (Eclipse) | VS Code with WSO2 Integrator extension |
+| **Editor** | TIBCO Business Studio (Eclipse) | WSO2 Integrator editor |
 | **Process definition** | XML files | Ballerina code (visual designer synced) |
 | **Deployment** | TIBCO Admin + AppNode | JAR, Docker, Kubernetes |
 | **Configuration** | Global variables + properties | Config.toml + environment variables |
@@ -360,33 +305,31 @@ do {
 
 The key advantage is that Ballerina errors are typed. You handle `mysql:DatabaseError` specifically rather than matching on a string fault type like `DB_FAULT`.
 
-## Understanding the migration in depth
+## How the migration tool converts your project
 
-The migration tool handles the conversion automatically. This section explains what the tool does under the hood. This is useful if you want to understand the decisions it makes, manually convert a component it couldn't handle, or build a deeper understanding of Ballerina alongside the migration.
+### 1. Process inventory
 
-### 1. Inventory your TIBCO processes
-
-Categorize each TIBCO process definition:
+The tool categorizes each TIBCO process definition:
 - **HTTP Receiver processes** → WSO2 Integrator **services**
 - **Timer-triggered processes** → **automations**
 - **JMS/Kafka listener processes** → **event handlers**
 - **Sub-processes** → Ballerina **functions**
 
-### 2. Convert Mapper Activity mappings
+### 2. Mapper Activity conversion
 
 For each Mapper Activity:
-1. For simple field mappings, use the **Visual Data Mapper** (drag and drop).
-2. For complex XPath/XSLT expressions, write Ballerina **query expressions** or inline Ballerina expressions.
-3. For format conversions (XML to JSON, CSV, etc.), use `ballerina/data.xmldata`, `ballerina/data.csv`, etc.
+1. Simple field mappings become **Visual Data Mapper** mappings (drag and drop).
+2. Complex XPath/XSLT expressions become Ballerina **query expressions** or inline Ballerina expressions.
+3. Format conversions (XML to JSON, CSV, etc.) use `ballerina/data.xmldata`, `ballerina/data.csv`, etc.
 
-### 3. Map connections
+### 3. Connection mapping
 
 For each TIBCO connection resource:
-- **JDBC Connection**: Use `ballerinax/mysql`, `ballerinax/postgresql`, etc.
-- **HTTP Connection**: Use the `ballerina/http` client
-- **JMS Connection**: Use `ballerinax/kafka` or `ballerinax/rabbitmq`
-- **WSDL/SOAP service**: Run `bal wsdl` to generate a type-safe Ballerina client
-- **File Connection**: Use `ballerina/file`, `ballerina/io`, or `ballerina/ftp`
+- **JDBC Connection** → `ballerinax/mysql`, `ballerinax/postgresql`, etc.
+- **HTTP Connection** → the `ballerina/http` client
+- **JMS Connection** → `ballerinax/kafka` or `ballerinax/rabbitmq`
+- **WSDL/SOAP service** → run `bal wsdl` to generate a type-safe Ballerina client
+- **File Connection** → `ballerina/file`, `ballerina/io`, or `ballerina/ftp`
 - Check the [Connectors](../../connectors/overview.md) page for the full list.
 
 ### 4. Activity constructs
@@ -415,9 +358,7 @@ The tool maps TIBCO's built-in activities to their Ballerina equivalents:
 - **Palette connectors**: Not all TIBCO Palette connectors have direct equivalents on Ballerina Central. Check the [Connectors](../../connectors/overview.md) page; for connectors without a match, use the generic `http:Client` or implement a custom Ballerina client.
 - **Sub-process calling conventions**: TIBCO sub-processes can be called synchronously or asynchronously. In Ballerina, use a regular function call for synchronous and `start` for fire-and-forget.
 
-## Before/After examples
-
-These are additional reference examples showing how common TIBCO BusinessWorks patterns map to WSO2 Integrator. They are not from the sample project used in this tutorial.
+## Examples
 
 ### HTTP service with database query
 
@@ -478,7 +419,3 @@ service "eventPoller" on new task:Listener({intervalInMillis: 300000}) {
     }
 }
 ```
-
-## Summary
-
-You've migrated the TIBCO BusinessWorks Credit Application sample to WSO2 Integrator. The tool converted the four TIBCO process definitions to Ballerina services, mapped JDBC and HTTP connections, and generated a migration report. You reviewed the concept differences (XML processes vs. typed Ballerina services, Mapper Activities vs. the Visual Data Mapper, TIBCO Fault Handlers vs. `do`/`on fail`), handled unsupported activities, replaced Global Variables with `Config.toml`, and tested the result. The same workflow applies to any TIBCO BusinessWorks project.

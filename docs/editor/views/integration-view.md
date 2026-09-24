@@ -1,18 +1,18 @@
 ---
-title: Integrator View
+title: Integration View
 ---
 
-# Integrator View
+# Integration View
 
-The Integrator view is the primary development interface in WSO2 Integrator. Use it to build, test, and deploy a single integration. It combines a project explorer, a visual design canvas, and deployment options in one unified workspace.
+The Integration view is the primary development interface in WSO2 Integrator. Use it to build, test, and deploy a single integration. It combines a project explorer, a visual design canvas, and deployment options in one unified workspace.
 
-![Integrator view overview](/img/develop/understand-ide/views/integration-view/overview.png)
+![Integration view overview](/img/editor/views/integration-view/overview.png)
 
 ## Design canvas
 
-The design canvas is the central area of the Integrator view. It displays a visual overview of your integration, showing how entry points, listeners, connections, and services relate to each other.
+The design canvas is the central area of the Integration view. It displays a visual overview of your integration, showing how entry points, listeners, connections, and services relate to each other.
 
-![Design canvas](/img/develop/understand-ide/views/integration-view/design-canvas.png)
+![Design canvas](/img/editor/views/integration-view/design-canvas.png)
 
 ### Service diagram
 
@@ -52,9 +52,9 @@ Click the **+ Add Artifact** button at the top of the canvas to add a new compon
 
 ## Toolbar
 
-The toolbar sits at the top of the Integrator view and provides quick access to common actions for building, running, and debugging your integration.
+The toolbar sits at the top of the Integration view and provides quick access to common actions for building, running, and debugging your integration.
 
-![Toolbar](/img/develop/understand-ide/views/integration-view/toolbar.png)
+![Toolbar](/img/editor/views/integration-view/toolbar.png)
 
 | Action | Description |
 |---|---|
@@ -69,22 +69,22 @@ The toolbar sits at the top of the Integrator view and provides quick access to 
 
 The deployment options panel appears on the right sidebar and provides shortcuts to deploy the integration to different environments.
 
-![Deployment options](/img/develop/understand-ide/views/integration-view/deployment-options.png)
+![Deployment options](/img/editor/views/integration-view/deployment-options.png)
 
 | Option | Target |
 |---|---|
-| [**Deploy to WSO2 Cloud**](../../deploy/deploy-to-cloud-overview.md) | Fully managed cloud platform for hosting and running integrations. |
+| [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-and-run.md) | Fully managed cloud platform for hosting and running integrations. |
 
 ## README section
 
-The README section at the bottom of the Integrator view displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
+The README section at the bottom of the Integration view displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
 
-![Readme](/img/develop/understand-ide/views/integration-view/readme.png)
+![Readme](/img/editor/views/integration-view/readme.png)
 
 Click **Edit** to modify the README directly. You can also click **Generate with AI** to create a README automatically based on your project's components and configuration.
 
 ## What's next
 
-- [Flow Diagram editor](../editors/flow-diagram-editor/flow-diagram-editor.md) — Build logic using the visual designer.
-- [Integration artifacts](../../develop/integration-artifacts/integration-artifacts.md) — Learn about artifact types and their configuration.
-- [Deploy to WSO2 Cloud](../../deploy/deploy-to-cloud-overview.md) — Deploy your integration to the cloud.
+- [Flow Canvas](../canvases/flow-canvas/flow-canvas.md) — Build logic using the visual designer.
+- [Integration artifacts](../../develop-and-test/integration-artifacts/integration-artifacts.md) — Learn about artifact types and their configuration.
+- [Deploy to WSO2 Cloud](../../deploy-and-run/deploy-and-run.md) — Deploy your integration to the cloud.

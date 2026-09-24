@@ -18,5 +18,5 @@ If you want to upgrade the service plan of a platform service you have created, 
 
 ## What's next
 
-- [Managed databases and caches](../platform-services/managed-databases.md) — Service plans, high-availability tiers, and connection limits for managed PostgreSQL, MySQL, and Cache services.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [Managed databases and caches](../managed-databases-and-caches.md) — Service plans, high-availability tiers, and connection limits for managed PostgreSQL, MySQL, and Cache services.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

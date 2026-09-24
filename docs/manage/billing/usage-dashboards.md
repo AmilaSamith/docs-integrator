@@ -389,4 +389,4 @@ To do this, click the **Download** icon on the top-right of the relevant chart a
 ## What's next
 
 - [Pricing and plans](./pricing-and-plans.md) — How WSO2 Cloud bills platform services and how to upgrade a service plan.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

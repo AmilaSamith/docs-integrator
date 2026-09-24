@@ -4,66 +4,16 @@ title: Migrate from MuleSoft
 
 # Migrate from MuleSoft
 
-A guide for developers migrating integrations from MuleSoft Anypoint to WSO2 Integrator. This tutorial walks you through migrating a real MuleSoft project to WSO2 Integrator using the automated migration tool. No prior knowledge of Ballerina or WSO2 Integrator is required.
-
-**What you'll learn:**
-- How to run the automated migration tool (UI wizard or CLI) to convert a MuleSoft project to Ballerina code
-- How to read the migration report and handle items the tool couldn't convert automatically
-- How MuleSoft concepts (flows, DataWeave, connectors) translate to their WSO2 Integrator equivalents
-- How to configure credentials, test, and run your migrated integration
-
-**Time:** ~30–45 minutes
+MuleSoft configures an integration as a set of flows in Anypoint's XML dialect. WSO2 Integrator describes the same integration as real Ballerina code you can compile. An automated migration tool does most of that conversion for you. This page covers running it, and how MuleSoft concepts map to their WSO2 Integrator equivalents.
 
 **Prerequisites:**
-- WSO2 Integrator installed (UI wizard path), **or** Ballerina installed with `bal` on your PATH (CLI path)
-- Git installed (to clone the sample project; not required if using your own project)
+- WSO2 Integrator installed (wizard path), **or** Ballerina installed with `bal` on your PATH (CLI path)
 
-## What You'll Build
+## Overview
 
-You'll migrate the [Mule Customer API Demo](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/third-party-integration-samples/Mule-API-Integration) to WSO2 Integrator. It's a Mule 4.x project that exposes two REST endpoints backed by a MySQL database.
+The migration tool converts MuleSoft Anypoint flows (XML configurations) to Ballerina code. It handles HTTP listeners, HTTP request connectors, DataWeave transformations, routers, error handling patterns, and more, using either the WSO2 Integrator migration wizard or the `bal migrate-mule` CLI command. Both paths produce a migration report; the wizard additionally offers an optional AI enhancement pass that resolves unmapped elements automatically.
 
-- `GET /customers`: retrieves customer records from the database (with an optional `?mock=true` mode for testing without a live database)
-- `POST /customers`: adds a new customer, applying a DataWeave transformation to normalise the input data
-
-The project also includes a global error handler. This is a representative slice of what most real MuleSoft applications look like.
-
-**Sample project:** [Mule-API-Integration](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/third-party-integration-samples/Mule-API-Integration)
-
-The migration tool converts the Mule flows to Ballerina services, maps the MySQL connector, and generates a migration report. You'll review the report, fix up any remaining items, configure credentials in `Config.toml`, and run the result.
-
-> **Using your own project?** You can follow every step below using any Anypoint project(s) instead of the sample.
-
-## Step 1: Get the sample project
-
-Clone the sample MuleSoft project:
-
-```bash
-git clone https://github.com/wso2/integration-samples.git
-cd integration-samples/integrator-default-profile/third-party-integration-samples/Mule-API-Integration
-```
-
-Take a moment to look at the project structure. It follows the standard Mule 4 layout:
-
-```bash
-Mule-API-Integration/
-├── pom.xml                        # Maven configuration
-├── mule-artifact.json             # Mule application descriptor
-└── src/
-    └── main/
-        ├── mule/
-        │   └── muledemo.xml       # All Mule flows
-        └── resources/
-            ├── config.properties  # Database credentials
-            └── log4j2.xml         # Logging configuration
-```
-
-The single flow file `muledemo.xml` contains the HTTP listener, the database operations, the DataWeave transformations, and the global error handler.
-
-> **Using your own project?** Skip this step and substitute your project's directory path wherever the sample path appears below.
-
-## Step 2: Run the migration tool
-
-WSO2 Integrator provides an automated migration tool that converts MuleSoft Anypoint flows (XML configurations) to Ballerina code. The tool handles HTTP listeners, HTTP request connectors, DataWeave transformations, routers, error handling patterns, and more.
+## Run the migration tool
 
 The migration wizard guides you through a 5-step process to convert your MuleSoft project(s) into a WSO2 Integrator project.
 
@@ -74,13 +24,15 @@ The migration wizard guides you through a 5-step process to convert your MuleSof
 
 1. Open WSO2 Integrator, click **More Actions**, and select **Migrate Integrations from Other Vendors**.
 2. Select **MuleSoft** as the source platform.
-3. Under **Select a Project Folder or Directory**, click **Browse** and select the `Mule-API-Integration` directory you cloned in Step 1 (or your own project directory).
-4. Under **Source Layout**, select **Single Project** (`Mule-API-Integration` is a single Mule project). If you have multiple projects in a parent directory, select **Multiple Projects** instead.
+3. Under **Select a Project Folder or Directory**, click **Browse** and select your MuleSoft project directory or a directory containing multiple projects.
+4. Under **Source Layout**, select one of the following:
+   - **Single Project** — The source path points to a single project directory.
+   - **Multiple Projects** — The source path points to a directory containing one or more project directories.
 
    > **Note:** The **Source Layout** section appears only after you select a directory.
 
 5. Expand **Configure MuleSoft Settings** to set optional parameters:
-   - **Force Version**: Select a specific Mule version, or use **Auto Detect** to let the tool determine it from your project.
+   - **Force Version** — Select a specific Mule version or use **Auto Detect** to let the tool determine it from your project.
 6. Click **Generate Report**.
 
    ![Configure source step](/img/develop/tools/migration-tools/mule-configure-source.png)
@@ -91,22 +43,20 @@ The wizard performs a dry run against your source project(s) to generate a cover
 
 When the dry run completes, the wizard displays a summary of the migration coverage:
 
-- **Migration Coverage**: Percentage of code lines that were automatically migrated.
-- **Total code lines**: Total number of source code lines analyzed.
-- **Migratable code lines**: Lines successfully converted to Ballerina.
-- **Non-migratable code lines**: Lines that require manual attention.
+- **Migration Coverage** — Percentage of code lines that were automatically migrated.
+- **Total code lines** — Total number of source code lines analyzed.
+- **Migratable code lines** — Lines successfully converted to Ballerina.
+- **Non-migratable code lines** — Lines that require manual attention.
 
    ![Report generation step](/img/develop/tools/migration-tools/mule-report-generation.png)
 
-   > **Note:** The exact coverage percentages shown in the screenshots may differ from what you see. They reflect the tool's capabilities and the reference project at the time the screenshots were taken, and both evolve over time.
-
 Click **View Full Report** to open the full HTML report. The report includes:
 
-- **Migration Coverage Overview**: Overall coverage percentage with a breakdown of total, migratable, and non-migratable code lines.
-- **Breakdown Components**: Separate coverage for Mule Elements and DataWeave expressions.
-- **Manual Work Estimation**: Estimated effort (best, average, and worst case) for completing non-migratable items.
-- **Currently Unsupported Elements**: List of elements that could not be automatically migrated.
-- **Element Blocks that Require Manual Conversion**: Specific code blocks that need manual implementation.
+- **Migration Coverage Overview** — Overall coverage percentage with a breakdown of total, migratable, and non-migratable code lines.
+- **Breakdown Components** — Separate coverage for Mule Elements and DataWeave expressions.
+- **Manual Work Estimation** — Estimated effort (best, average, and worst case) for completing non-migratable items.
+- **Currently Unsupported Elements** — List of elements that could not be automatically migrated.
+- **Element Blocks that Require Manual Conversion** — Specific code blocks that need manual implementation.
 
    ![Full migration report](/img/develop/tools/migration-tools/mule-sample-migration-report.png)
 
@@ -118,9 +68,9 @@ Click **Configure Destination** to proceed, or **Done** to exit the wizard.
 
 1. Enter an **Integration Name** for your migrated project.
 2. Configure the project settings:
-   - **Project Name**: Name of the project (defaults to `Default`).
-   - **Create within a project**: Enable project mode to manage multiple integrations and libraries within a single repository.
-   - **Select Path**: Choose where to create the migrated project.
+   - **Project Name** — Name of the project (defaults to `Default`).
+   - **Create within a project** — Enable project mode to manage multiple integrations and libraries within a single repository.
+   - **Select Path** — Choose where to create the migrated project.
 3. Click **Start Migration**.
 
    ![Configure destination step](/img/develop/tools/migration-tools/mule-configure-destination.png)
@@ -129,12 +79,12 @@ Click **Configure Destination** to proceed, or **Done** to exit the wizard.
 
 The wizard runs the automated rule-based migration and displays progress in the migration log.
 
-After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. You can select one of the following:
+After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. Select one of the following:
 
-- **Enhance with AI** (AI automatically resolves unmapped elements, fixes build errors, and improves migration quality)
-- **Skip for Now – Enhance Later** (Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/overview.md))
+- **Enhance with AI** — AI automatically resolves unmapped elements, fixes build errors, and improves migration quality.
+- **Skip for Now – Enhance Later** — Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/capabilities.md).
 
-Click **Start AI Enhancement** to proceed to Step 5. If you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
+Click **Start AI Enhancement** to proceed to Step 5, or if you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
 
    ![Rule-based migration step](/img/develop/tools/migration-tools/rule-based-migration.png)
 
@@ -159,7 +109,7 @@ While the agent is running:
 - Click **Pause** to pause the AI enhancement. Click **Resume** to continue.
 - Click **Done** to exit the wizard, or **Open Project** to open the project without waiting for the agent to finish.
 
-   ![Enhancing with AI agent](/img/develop/tools/migration-tools/mule-ai-enhancement.png)
+   ![Enhancing with ai-agent](/img/develop/tools/migration-tools/mule-ai-enhancement.png)
 
 When the AI enhancement completes, the status shows **AI Enhancement completed**. Click **Open Project** to open the migrated project or **Done** to exit.
 
@@ -192,30 +142,28 @@ When the AI enhancement completes, the status shows **AI Enhancement completed**
 ### Examples
 
 ```bash
-# Migrate the sample project
-bal migrate-mule ./Mule-API-Integration -o ./migrated-customer-api
+# Migrate a project to a specific output directory
+bal migrate-mule /path/to/mule-project -o /path/to/output-dir
 
 # Migrate all MuleSoft projects in a directory (multi-root mode)
-bal migrate-mule /path/to/projects-directory -o /path/to/output -m
+bal migrate-mule /path/to/projects-directory -o /path/to/output-dir -m
 
 # Dry run — generate a report without creating code
-bal migrate-mule ./Mule-API-Integration -o ./migrated-customer-api -d
+bal migrate-mule /path/to/mule-project -o /path/to/output-dir -d
 ```
+
+For more CLI options and usage, see the [official migration tool documentation](https://central.ballerina.io/wso2/tool_migrate_mule/latest).
 
 > **Note:** AI enhancement is available only in the WSO2 Integrator wizard, not in the CLI.
 
-## Step 3: Fix up the generated code
+## Handle manual migration items
 
-The migration tool converts everything it can automatically. This step walks through reviewing the output and resolving any items that still need attention.
+The migration tool converts everything it can automatically. The output directory contains:
 
-### Handle items requiring manual attention
+- **`migration_report.html`** — the rule-based migration report listing every Mule element, its conversion status, and any items that need manual attention.
+- **`ENHANCEMENT_SUMMARY.md`** — present only if you opted in to AI enhancement. It summarizes the AI-assisted improvements applied on top of the rule-based migration.
 
-Navigate to the output directory created by the migration tool. You'll find:
-
-- **`migration_report.html`:** the rule-based migration report listing every Mule element, its conversion status, and any items that need manual attention.
-- **`ENHANCEMENT_SUMMARY.md`:** present only if you opted in to AI enhancement. It summarises the AI-assisted improvements applied on top of the rule-based migration.
-
-Open `migration_report.html` and work through any non-migratable items. If you opted in to AI enhancement, check `ENHANCEMENT_SUMMARY.md` first. Many of these items may already have been resolved automatically. Only address what remains:
+Open `migration_report.html` and work through any non-migratable items. If you opted in to AI enhancement, check `ENHANCEMENT_SUMMARY.md` first — many items may already be resolved automatically. Only address what remains:
 
 1. **Unsupported Mule elements**: Implement the equivalent Ballerina logic manually. Refer to the [concept and component mapping table](#concept-and-component-mapping) below.
 2. **DataWeave transformations**: Simple field mappings can be redone with the Visual Data Mapper. Complex transformations should be rewritten as Ballerina query expressions.
@@ -223,27 +171,25 @@ Open `migration_report.html` and work through any non-migratable items. If you o
 
 ### Configure credentials
 
-The migration tool automatically converts your Mule properties file (`config.properties`) to a Ballerina `Config.toml` in the output directory, so you don't need to create it manually. However, the file will contain placeholder values, you need to replace them with the correct values for your environment before running the migrated project:
+The migration tool converts a Mule properties file (`config.properties`) to a Ballerina `Config.toml` in the output directory. The generated file contains placeholder values — replace them with the correct values for your environment before running the migrated project:
 
 ```toml
-# Config.toml — already created by the tool; update values before running
+# Config.toml — generated by the tool; update values before running
 db_user = "root"
 db_password = "abc123"
 ```
 
-## Step 4: Test it
+## Test the migrated integration
 
-If your Mule project had tests, the migration tool will have converted them to Ballerina. Run them with:
+If the source Mule project had tests, the migration tool converts them to Ballerina. Run them with:
 
 ```bash
 bal test
 ```
 
-You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the IDE. Open the service file, click **Try it**, and test each endpoint.
+You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the IDE. Open the service file, click **Try it**, and test each endpoint against the responses returned by the original Mule application.
 
-Compare the responses with those returned by your original Mule application.
-
-## Step 5: Deploy
+## Deploy
 
 Once tests pass, run the integration locally:
 
@@ -257,7 +203,7 @@ To build a deployable artifact:
 bal build
 ```
 
-See [Deploy](../deploy/overview.md) for Docker, Kubernetes, and cloud deployment options.
+See [Deploy](../deploy-and-run/deploy-and-run.md) for Docker, Kubernetes, and cloud deployment options.
 
 ## Concept and component mapping
 
@@ -404,50 +350,46 @@ do {
 
 The key advantage is that Ballerina errors are typed. You handle `postgresql:Error` specifically rather than matching on a string error type like `DB:CONNECTIVITY`.
 
-## Understanding the migration in depth
+## How the migration tool converts your project
 
-The migration tool handles the conversion automatically. This section explains what the tool does under the hood. This is useful if you want to understand the decisions it makes, manually convert a component it couldn't handle, or build a deeper understanding of Ballerina alongside the migration.
+### 1. Flow inventory
 
-### 1. Inventory your Mule applications
+The tool categorizes each Mule flow:
+- **API flows** (HTTP Listener + APIkit) → WSO2 Integrator **services**
+- **Scheduler flows** → **automations**
+- **JMS/Kafka listener flows** → **event handlers**
+- **Batch jobs** → **automations** with streaming/query expressions
 
-Categorize each Mule flow:
-- **API flows** (HTTP Listener + APIkit) --> WSO2 Integrator **services**
-- **Scheduler flows** --> **automations**
-- **JMS/Kafka listener flows** --> **event handlers**
-- **Batch jobs** --> **automations** with streaming/query expressions
-
-### 2. Convert DataWeave to Ballerina
+### 2. DataWeave conversion
 
 For each DataWeave transformation:
-1. Define the **input and output record types** in Ballerina (equivalent to DataWeave type definitions).
-2. For simple field mappings, use the **Visual Data Mapper** (drag and drop).
-3. For complex transformations, write Ballerina **query expressions** (similar to DataWeave `map`/`filter`).
-4. For format conversions (JSON to XML, CSV, etc.), use `ballerina/data.xmldata`, `ballerina/data.csv`, etc.
+1. Input and output **record types** are generated in Ballerina (equivalent to DataWeave type definitions).
+2. Simple field mappings become **Visual Data Mapper** mappings (drag and drop).
+3. Complex transformations become Ballerina **query expressions** (similar to DataWeave `map`/`filter`).
+4. Format conversions (JSON to XML, CSV, etc.) use `ballerina/data.xmldata`, `ballerina/data.csv`, etc.
 
-### 3. Map connectors
+### 3. Connector mapping
 
 For each MuleSoft connector:
-- **Database** (`db:select`, `db:insert`): Use `ballerinax/postgresql`, `ballerinax/mysql`, etc.
-- **HTTP Request**: Use the `ballerina/http` client
-- **Salesforce**: Use `ballerinax/salesforce`
-- **Kafka**: Use `ballerinax/kafka`
-- **File/FTP**: Use `ballerina/ftp`, `ballerina/io`
-- **JMS**: Use `ballerinax/java.jms` or migrate to Kafka
-- **Email**: Use `ballerina/email`
+- **Database** (`db:select`, `db:insert`) → `ballerinax/postgresql`, `ballerinax/mysql`, etc.
+- **HTTP Request** → the `ballerina/http` client
+- **Salesforce** → `ballerinax/salesforce`
+- **Kafka** → `ballerinax/kafka`
+- **File/FTP** → `ballerina/ftp`, `ballerina/io`
+- **JMS** → `ballerinax/java.jms` or migrate to Kafka
+- **Email** → `ballerina/email`
 - Check the [Connectors](../../connectors/overview.md) page for the full list.
 
 ### 4. Flow control constructs
 
-The tool maps Mule's structural flow constructs to their Ballerina equivalents:
-
-- **APIkit Router** --> `service` resource functions with path parameters
-- **Choice Router** --> `if`/`else` or `match`
-- **Scatter-Gather** --> Ballerina workers
-- **For Each** --> `foreach` loop or query expression
-- **Try Scope / Error Handler** --> `do`/`on fail`
-- **Set Variable** --> local variable
-- **Set Payload** --> function return value
-- **flow-ref** --> direct function call
+- **APIkit Router** → `service` resource functions with path parameters
+- **Choice Router** → `if`/`else` or `match`
+- **Scatter-Gather** → Ballerina workers
+- **For Each** → `foreach` loop or query expression
+- **Try Scope / Error Handler** → `do`/`on fail`
+- **Set Variable** → local variable
+- **Set Payload** → function return value
+- **flow-ref** → direct function call
 
 ## Common gotchas
 
@@ -458,9 +400,7 @@ The tool maps Mule's structural flow constructs to their Ballerina equivalents:
 - **Batch processing**: MuleSoft has a dedicated batch module. In Ballerina, use streaming with query expressions or chunked processing in a `foreach` loop.
 - **MEL expressions**: Mule Expression Language is replaced by Ballerina expressions. All expressions are statically typed.
 
-## Before/After examples
-
-These are additional reference examples showing how common MuleSoft patterns map to WSO2 Integrator. They are not from the sample project used in this tutorial.
+## Examples
 
 ### REST API with database
 
@@ -510,7 +450,7 @@ service /api on new http:Listener(8090) {
 
 ### Kafka consumer with transformation
 
-**MuleSoft**: Kafka Listener --> DataWeave transform --> HTTP POST to downstream service
+**MuleSoft**: Kafka Listener → DataWeave transform → HTTP POST to downstream service
 
 **WSO2 Integrator**:
 
@@ -545,7 +485,6 @@ service on orderListener {
             json payload = check (check string:fromBytes(rec.value)).fromJsonString();
             KafkaOrder order = check payload.cloneWithType();
 
-            // Transform (equivalent to DataWeave)
             FulfillmentRequest req = {
                 orderRef: order.orderId,
                 customer: order.customerId,

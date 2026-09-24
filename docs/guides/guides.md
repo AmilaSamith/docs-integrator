@@ -9,18 +9,6 @@ Complete, end-to-end examples you can follow from start to finish.
 :::info Guides vs. Develop
 **Develop** pages are handbook lookups. **Guides** are narrative walkthroughs. Different modes, different content.
 
-## Enterprise integration patterns
+Looking for reusable enterprise integration patterns (Message Filter, Content Based Routing, and similar)? Those are handbook-style reference material now under [Apply Integration Patterns](/develop-and-test/integration-patterns) in Develop and Test.
 
-Reusable integration patterns you can apply across projects:
-
-- **[Message](patterns/message.md)** -- Package business data and metadata for transmission through a message channel
-- **[Message Filter](patterns/message-filter.md)** -- Route only messages that match a condition
-- **[Content Based Routing](patterns/content-based-routing.md)** -- Route messages by inspecting their content
-- **[Channel Adapter](patterns/channel-adapter.md)** -- Connect applications, services, or broker channels to an integration flow
-
-## Migration guides
-
-Coming from another platform? Start here:
-
-- **[Migrate from MuleSoft](/migrate/from-mulesoft)** -- Migrate from MuleSoft Anypoint
-- **[Migrate from TIBCO](/migrate/from-tibco)** -- Migrate from TIBCO BusinessWorks
+Coming from another platform? See [Migrate](/migrate).

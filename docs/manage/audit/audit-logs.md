@@ -92,5 +92,5 @@ You must be the organization administrator to perform this action.
 
 ## What's next
 
-- [Runtime logs](../observability/runtime-logs.md) — Search, filter, and analyze runtime log output for your integrations.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [Runtime logs](../../observe/runtime-logs.md) — Search, filter, and analyze runtime log output for your integrations.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

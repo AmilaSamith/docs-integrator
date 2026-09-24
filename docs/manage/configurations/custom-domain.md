@@ -176,6 +176,6 @@ Once deployed, both the custom URL and the default URL can be used to access the
 
 ## What's next
 
-- [Configurations overview](./overview.md) — Explore all configuration options available for integrations in WSO2 Cloud
+- [Configurations overview](./configurations.md) — Explore all configuration options available for integrations in WSO2 Cloud
 - [Endpoint configurations](./endpoint-configurations.md) — Control the visibility level for each integration endpoint
 - [Security configurations](./security-configurations.md) — Secure integration endpoints with API Key or OAuth2 authentication

@@ -4,49 +4,23 @@ title: Reference
 
 # Reference
 
-Pure lookup material - syntax, configuration keys, CLI commands, API docs, and specifications. No tutorials, no narrative - just the facts.
+<PaletteCard icon="faq" href="/reference/faq">
+  <h3 class="palette-card-title">FAQ</h3>
+  <ul class="palette-card-list">
+    <li>Frequently asked questions about WSO2 Integrator</li>
+  </ul>
 
-## Language
+<PaletteCard icon="book" href="/reference/glossary">
+  <h3 class="palette-card-title">Glossary</h3>
+  <ul class="palette-card-list">
+    <li>Terminology definitions</li>
+  </ul>
 
-Ballerina language reference for integration developers:
+<PaletteCard icon="external" href="https://ballerina.io/learn/">
+  <h3 class="palette-card-title">Ballerina Documentation</h3>
+  <ul class="palette-card-list">
+    <li>Language syntax and standard library API docs</li>
+    <li>Configuration file reference and runnable examples</li>
+  </ul>
 
-- **[Type System](language/type-system.md)** - Structural types, unions, optional, any, stream, never
-- **[Error Handling](language/error-handling.md)** - Error types and handling patterns
-- **[Query Expressions](language/query-expressions.md)** - SQL-like data processing
-- **[Concurrency](language/concurrency.md)** - Workers, strands, locks, transactions
-
-## Configuration
-
-Project and deployment configuration files:
-
-| File                                                         | Purpose                           |
-| ------------------------------------------------------------ | --------------------------------- |
-| **[Configuration management](config/configuration-management.md)**    | Configurable variables, value sources, and environment variables |
-| **[Ballerina.toml](project/ballerinatoml-reference.md)**              | Project metadata and dependencies |
-| **[Config.toml](config/configtoml-reference.md)**                     | Runtime configuration values      |
-| **[Cloud.toml](project/cloudtoml-reference.md)**                      | Cloud deployment settings         |
-
-## APIs
-
-- **[Ballerina API Docs](api/ballerina-documentation.md)** - Standard library API documentation
-
-## Specifications & formats
-
-- **[Supported protocols](supported-protocols.md)** - Complete protocol support table
-- **[Supported data formats](data-formats/supported-data-formats.md)** - Complete data format support table
-- **[Ballerina by Example](ballerina-by-example.md)** - 200+ runnable examples
-- **[Ballerina Specifications](ballerina-specifications.md)** - Language, library, and platform specs
-
-## Miscellaneous
-
-- **[Configure a Network Proxy for WSO2 Integrator](miscellaneous/configure-a-network-proxy.md)** - Set up proxy access in corporate environments
-- **[Proxy Ballerina Central with Maven Repository](miscellaneous/proxy-ballerina-central-with-maven-repository.md)** - Set up Maven repository proxy for Ballerina Central
-
-## Appendix
-
-- **[Error Codes](appendix/error-code.md)** - Error code reference
-- **[Glossary](appendix/glossary.md)** - Terminology definitions
-- **[FAQ](appendix/faq.md)** - Frequently asked questions
-- **[Release Notes](appendix/release-notes.md)** - What's new in each release
-
-For troubleshooting and debugging, see [Debugging](../editor/debugging/editor.md).
+For troubleshooting and debugging, see [Debugging](../develop-and-test/debugging/debugging.md).

@@ -130,4 +130,4 @@ You have successfully configured role-based access control for enterprise login.
 
 ## What's next
 
-- [Access APIs with an External IdP](./api-external-idp/overview.md) — Use external IdPs to access Integration as APIs with OAuth2.
+- [Access APIs with an External IdP](./api-external-idp/api-external-idp.md) — Use external IdPs to access Integration as APIs with OAuth2.

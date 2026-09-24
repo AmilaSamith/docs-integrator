@@ -42,6 +42,6 @@ The new environment is created and available for use across projects in your org
 
 ## What's next
 
+- [Configure promotion pipelines](./configure-promotion-pipelines.md) — Define the promotion flow of integrations across environments in your organization
 - [Promote an integration](./promotion.md) — Move an integration from one environment to the next in your pipeline
 - [Promotion approvals](./promotion-approval.md) — Require approvals before an integration is promoted to a protected environment
-- [Manage deployment pipelines](../cicd/deployment-pipelines.md) — Define the promotion flow of integrations across environments in your organization

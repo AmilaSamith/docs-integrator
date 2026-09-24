@@ -113,4 +113,4 @@ You have successfully set up access control within your project.
 ## What's next
 
 - [Configure enterprise login](./configure-enterprise-login.md) - Configure enterprise login to your organization
-- [Access APIs with an External IdP](./api-external-idp/overview.md) - Use external IdPs to access Integration as APIs with OAuth2.
+- [Access APIs with an External IdP](./api-external-idp/api-external-idp.md) - Use external IdPs to access Integration as APIs with OAuth2.
