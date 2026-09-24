@@ -226,14 +226,42 @@ h1, h2, h3, h4, h5, h6 {
    NAVBAR — Frosted glass, neutral
    ================================================================ */
 .navbar {
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
   border-bottom: 1px solid var(--wso2-surface-border);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Desktop only -- backdrop-filter on .navbar isn't just a visual
+   effect, it makes .navbar establish a new containing block for any
+   `position: fixed` descendant (same rule as `transform`/`filter`,
+   per the CSS spec). The mobile hamburger drawer (.navbar-sidebar,
+   Infima's own markup) is rendered as a DIRECT CHILD of <nav
+   class="navbar">, and IS position: fixed with top/bottom: 0 meant to
+   resolve against the viewport -- with backdrop-filter applied here,
+   those instead resolve against .navbar's own ~4rem-tall box, so the
+   drawer's whole height gets squashed into the navbar bar itself
+   instead of covering the screen. Scoping the blur to desktop (where
+   there's no fixed-position drawer child to break) avoids the bug
+   entirely, and skips the (real, on mobile GPUs) blur cost there too. */
+@media (min-width: 997px) {
+  .navbar {
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+  }
+}
+
 [data-theme='dark'] .navbar {
   border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* The mobile drawer (.navbar-sidebar) reuses --ifm-navbar-background-color
+   by default -- tuned for a slim, blurred navbar bar (rgba, ~85%/60%
+   opaque) where the transparency reads as "frosted glass". Stretched
+   across a full-height slide-out panel with no blur behind it, that
+   same partial transparency just looks broken/washed out against
+   whatever's behind it. Use the solid page background instead --
+   already theme-aware (light/dark [data-theme] blocks above). */
+.navbar-sidebar {
+  background-color: var(--ifm-background-color);
 }
 
 /* Infima's default .navbar__logo container is a fixed 2rem (32px) tall,
