@@ -172,10 +172,43 @@
 }
 
 @media screen and (max-width: 900px) {
+  /* Stacked single column below the desktop side-by-side breakpoint --
+     .heroRight (badge/heading/search/CTA) first, then a horizontal
+     divider (was a vertical .heroRight border-left when side by side;
+     becomes a .heroLeft border-top now that it's second/below instead
+     of second/right), then .heroLeft (screenshot/download/caption).
+     Everything centered, since there's no longer a second column to
+     visually balance against. */
+  .heroInner {
+    flex-direction: column;
+    /* Tighter than the 2.5rem desktop side-by-side gap -- stacked,
+       that much empty space read as a gap before the divider line
+       even starts, on top of .heroLeft's own padding-top after it. */
+    gap: 1.25rem;
+  }
+
   .heroRight {
+    order: 1;
     padding-left: 0;
     border-left: none;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .heroLeft {
+    order: 2;
+    align-items: center;
+    text-align: center;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .downloadRow {
+    justify-content: center;
   }
 }
 

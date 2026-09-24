@@ -1,11 +1,17 @@
-/* .navbar__search-input is built for a real <input> -- its placeholder
-   text comes from ::placeholder, which a <Link> has no equivalent for.
-   Color this trigger's own text content the same way instead, and
-   undo the anchor defaults (underline, link color) Infima doesn't
-   need to override on a real input but we do here. */
+/* Icon-only trigger -- Infima's stock .navbar__search-input is sized
+   and padded for a real input with placeholder text ("Search") to the
+   right of the icon; this one has no visible text at all (see
+   index.tsx's docstring), so it's shrunk to a small square with the
+   icon centered instead of left-offset to make room for text that
+   isn't there. Undoes the anchor defaults (underline, link color)
+   Infima doesn't need to override on a real input but we do here. */
 .trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 2rem;
+  padding: 0;
+  background-position: center !important;
   color: var(--ifm-navbar-search-input-placeholder-color) !important;
   text-decoration: none !important;
   cursor: pointer;

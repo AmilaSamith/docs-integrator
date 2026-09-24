@@ -33,11 +33,11 @@ function MobileSearchTrigger(): ReactNode {
     message: 'Search',
     description: 'The ARIA label and placeholder for search button',
   });
-  return (
-    <Link to="/search" className={`navbar__search-input ${styles.trigger}`} aria-label={label}>
-      {label}
-    </Link>
-  );
+  // Icon only -- no visible "Search" text next to it (see .trigger in
+  // styles.module.css, which shrinks this down to a small icon-only
+  // square and re-centers the background icon accordingly). `aria-label`
+  // still carries the accessible name for screen readers.
+  return <Link to="/search" className={`navbar__search-input ${styles.trigger}`} aria-label={label} />;
 }
 
 export default function SearchBar(props: Props): ReactNode {
