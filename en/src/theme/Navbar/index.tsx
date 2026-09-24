@@ -10,11 +10,19 @@
  * while scrolling.
  *
  * The row also carries the "Copy page" export dropdown (CopyPageButton,
- * moved here from DocBreadcrumbs) at its far right, opposite the
- * product+version pill group -- both boundary-wrapped since each depends
- * on doc-page-only hooks that throw when this row renders on a
- * non-doc page (see each component's own docstring).
- */
+ * moved here from DocBreadcrumbs) and, immediately before it,
+ * `#wso2-edit-page-slot` -- an empty portal TARGET, not a component: the
+ * actual "Edit this page" link only exists deep in DocItem's own tree
+ * (stock EditThisPage, reading `editUrl` from useDoc(), a hook that
+ * throws out here -- same reason CopyPageButton doesn't call useDoc()
+ * either, see its own docstring). The swizzled EditThisPage
+ * (src/theme/EditThisPage) portals its real rendered link INTO this
+ * slot instead of rendering inline at the bottom of the article (where
+ * it stock-defaults to, easy to miss below a long page) -- Docusaurus's
+ * own editUrl computation (correct per-version on wso2-integrator too)
+ * stays completely untouched, only WHERE the result visually lands
+ * changes. Both boundary-wrapped/empty-safe since each depends on
+ * doc-page-only hooks/state that may not apply on a non-doc page. */
 import type { ReactNode } from 'react';
 import Navbar from '@theme-original/Navbar';
 import SidebarProductHeader from '@site/src/components/SidebarProductHeader';
@@ -29,7 +37,10 @@ export default function NavbarWrapper(props: Record<string, unknown>): ReactNode
       <div className={styles.secondaryRow}>
         <div className={styles.secondaryRowInner}>
           <SidebarProductHeader />
-          <CopyPageButton />
+          <div className={styles.rightGroup}>
+            <div id="wso2-edit-page-slot" />
+            <CopyPageButton />
+          </div>
         </div>
       </div>
     </>

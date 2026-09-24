@@ -1,0 +1,26 @@
+/* Matches CopyPageButton's own trigger pill (DocBreadcrumbs/styles.module.css
+   .markdownDropdownButton) so the two read as one family of buttons
+   sitting together in the secondary navbar row, not stock Docusaurus's
+   plain inline text-with-icon link (theme-edit-this-page's own default
+   styling, meant for sitting alone at the bottom of an article). */
+.editLink {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base) !important;
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--wso2-surface-border, var(--ifm-color-emphasis-300));
+  border-radius: 10px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: border-color 0.15s ease;
+}
+
+.editLink:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base) !important;
+}

@@ -18,6 +18,16 @@
   padding: 0.5rem var(--ifm-navbar-padding-horizontal);
 }
 
+/* Groups #wso2-edit-page-slot (see index.tsx's docstring) with
+   CopyPageButton so they sit right next to each other on the row's
+   right side, instead of `justify-content: space-between` above
+   spreading a third top-level child away from CopyPageButton. */
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Below this, the product+version pill group and the Copy Page button
    no longer fit on one line at their normal sizes (see each component's
    own mobile rules for how they shrink) -- wrap instead of clipping or
