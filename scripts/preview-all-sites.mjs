@@ -42,7 +42,7 @@ const WORKTREE_ROOT = path.join(tmpdir(), 'docs-integrator-worktrees');
 
 /** branchKey -> { branch, baseUrl, mergeSubdir } */
 const SITES = {
-  saas: { branch: 'saas', baseUrl: '/integration-platform/docs/', mergeSubdir: 'integration-platform/docs' },
+  saas: { branch: 'saas', baseUrl: '/integration-platform/docs/saas/', mergeSubdir: 'integration-platform/docs/saas' },
   integrator: { branch: 'wso2-integrator', baseUrl: '/integration-platform/docs/integrator/', mergeSubdir: 'integration-platform/docs/integrator' },
   connectors: { branch: 'wso2-connectors', baseUrl: '/integration-platform/docs/connectors/', mergeSubdir: 'integration-platform/docs/connectors' },
 };
@@ -187,7 +187,26 @@ async function main() {
     console.log(`[${site.branch}] merged into ${dest}`);
   }
 
-  console.log(`\nServing merged preview at http://localhost:${basePort}/integration-platform/docs/`);
+  // saas no longer owns the bare /integration-platform/docs/ root (moved to
+  // /saas/, matching /integrator/ and /connectors/) -- root-redirect/index.html
+  // (tracked on the saas branch only, same file staging_sync.yaml and
+  // promote_to_production.yaml publish there) answers the bare root instead.
+  // Only copy it when saas is actually one of the sites being previewed.
+  if (keys.includes('saas')) {
+    const saasWorktree = await ensureWorktree(SITES.saas);
+    const redirectSrc = path.join(saasWorktree, 'root-redirect', 'index.html');
+    if (existsSync(redirectSrc)) {
+      const redirectDest = path.join(PREVIEW_ROOT, 'integration-platform', 'docs', 'index.html');
+      mkdirSync(path.dirname(redirectDest), { recursive: true });
+      cpSync(redirectSrc, redirectDest);
+      console.log(`[saas] root redirect merged into ${redirectDest}`);
+    }
+  }
+
+  const entryUrl = keys.includes('saas')
+    ? `http://localhost:${basePort}/integration-platform/docs/saas/`
+    : `http://localhost:${basePort}/integration-platform/docs/`;
+  console.log(`\nServing merged preview at ${entryUrl}`);
   console.log(`Press Ctrl+C to stop.\n`);
   await run('npx', ['serve', PREVIEW_ROOT, '-l', String(basePort)], { cwd: REPO_ROOT });
 }

@@ -32,7 +32,7 @@ const PRODUCTS: Record<ProductKey, { label: string; description: string; path: s
   cloud: {
     label: 'SaaS',
     description: 'Cloud-hosted integration platform',
-    path: '',
+    path: 'saas/',
     icon: CloudIcon,
   },
   integrator: {
@@ -57,6 +57,9 @@ const PRODUCT_ORDER: ProductKey[] = ['cloud', 'integrator', 'connectors'];
 function detectCurrentProduct(baseUrl: string): ProductKey {
   if (baseUrl.includes('/integrator/')) return 'integrator';
   if (baseUrl.includes('/connectors/')) return 'connectors';
+  if (baseUrl.includes('/saas/')) return 'cloud';
+  // Fallback for a local/dev build with baseUrl '/' (no product segment
+  // at all) -- still saas, since that's this branch's own default.
   return 'cloud';
 }
 
