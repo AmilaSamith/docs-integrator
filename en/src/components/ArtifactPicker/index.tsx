@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import { CATEGORIES, ARTIFACTS, type ArtifactCategoryKey } from './data';
 import { INLINE_ICONS } from './inlineIcons';
 import styles from './styles.module.css';
@@ -8,7 +9,9 @@ import styles from './styles.module.css';
  * adapts to light/dark theme via CSS) if one exists for this file,
  * otherwise falls back to a plain <img> for icons that ARE a real,
  * fixed-color brand mark (Solace, MySQL, Azure, ...) and should stay
- * exactly as vendored, not be recolored.
+ * exactly as vendored, not be recolored. `src` must already be
+ * baseUrl-resolved (see ArtifactPicker's own withBaseUrl use below) --
+ * this component doesn't resolve it itself.
  */
 function ArtifactIcon({ src, className }: { src: string; className?: string }): React.ReactElement {
   const key = src.split('/').pop()?.replace(/\.svg$/, '') ?? '';
@@ -22,6 +25,14 @@ function ArtifactIcon({ src, className }: { src: string; className?: string }): 
 export default function ArtifactPicker(): React.ReactElement {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<ArtifactCategoryKey | 'all'>('all');
+  // data.ts's href/icon constants are root-relative ('/develop-and-test/...',
+  // '/img/artifact-icons') with no baseUrl prefix -- correct on localhost
+  // (baseUrl is '/' there) but broken on GitHub Pages, where every
+  // product site is served under its own subpath (e.g. '/integration-platform/docs/saas/').
+  // withBaseUrl (Docusaurus's own utility, useBaseUrlUtils so it's one
+  // hook call up here rather than one per item in the loops below,
+  // which the rules of hooks don't allow) prepends that subpath.
+  const { withBaseUrl } = useBaseUrlUtils();
 
   const query = search.trim().toLowerCase();
 
@@ -108,7 +119,7 @@ export default function ArtifactPicker(): React.ReactElement {
             <div className={styles.sectionHeader}>
               <div className={styles.sectionTitleRow}>
                 <span className={styles.sectionIconWrap}>
-                  <ArtifactIcon src={category.icon} className={styles.sectionIcon} />
+                  <ArtifactIcon src={withBaseUrl(category.icon)} className={styles.sectionIcon} />
                 </span>
                 <h3 className={styles.sectionTitle}>{category.label}</h3>
               </div>
@@ -119,7 +130,7 @@ export default function ArtifactPicker(): React.ReactElement {
                 const content = (
                   <>
                     <span className={styles.cardIconWrap}>
-                      <ArtifactIcon src={artifact.icon} className={styles.cardIcon} />
+                      <ArtifactIcon src={withBaseUrl(artifact.icon)} className={styles.cardIcon} />
                     </span>
                     <span className={styles.cardName}>{artifact.name}</span>
                     {artifact.beta && <span className={styles.betaBadge}>Beta</span>}
@@ -131,7 +142,7 @@ export default function ArtifactPicker(): React.ReactElement {
                   </>
                 );
                 return artifact.href ? (
-                  <a key={artifact.name} href={artifact.href} className={styles.card}>
+                  <a key={artifact.name} href={withBaseUrl(artifact.href)} className={styles.card}>
                     {content}
                   </a>
                 ) : (
