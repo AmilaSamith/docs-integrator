@@ -1,7 +1,9 @@
 ---
+sidebar_position: 3
 title: Configure Enterprise Login
 description: Learn how to configure enterprise login for your organization in WSO2 Cloud - Integration Platform using an external identity provider (IdP).
 keywords: [wso2 cloud, enterprise login, identity provider, IdP, SSO, Asgardeo, RBAC]
+slug: /manage/users-and-access/configure-enterprise-login
 ---
 
 # Configure Enterprise Login
@@ -134,4 +136,4 @@ You have successfully configured role-based access control for enterprise login.
 
 ## What's next
 
-- [Access APIs with an External IdP](./api-external-idp/overview.md) — Use external IdPs to access Integration as APIs with OAuth2.
+- [Access APIs with an External IdP](./api-external-idp/api-external-idp.md) — Use external IdPs to access Integration as APIs with OAuth2.

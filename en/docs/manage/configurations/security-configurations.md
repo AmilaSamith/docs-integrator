@@ -1,7 +1,9 @@
 ---
+sidebar_position: 4
 title: "Security"
 description: "Configure API Key and OAuth2 security schemes for integrations deployed to the WSO2 Cloud - Integration Platform."
 keywords: [wso2 integrator, api security, api key, oauth2, integration as api, wso2 cloud]
+slug: /manage/configurations/security-configurations
 ---
 
 # Security Configurations

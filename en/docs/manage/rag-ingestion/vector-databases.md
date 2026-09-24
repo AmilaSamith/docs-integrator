@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: "Managed Vector Databases"
 description: "Create and manage vector databases in WSO2 Integration Platform."
 keywords: [wso2 integrator, wso2 integration platform, managed database, postgresql, vector database]
+slug: /manage/rag-ingestion/vector-databases
 ---
 
 # Managed Vector Databases
@@ -81,6 +83,6 @@ The following connection limits apply based on service plan:
 
 ## What's next
 
-- [WSO2 Integration Platform overview](../overview.md) — Learn the management areas available in WSO2 Integration Platform.
-- [Managed databases and caches](../platform-services/managed-databases.md) — Create and manage other database and cache services.
+- [WSO2 Integration Platform overview](../manage.md) — Learn the management areas available in WSO2 Integration Platform.
+- [Managed databases and caches](../managed-databases-and-caches.md) — Create and manage other database and cache services.
 - [RAG ingestion](./ingestion.md) — Configure ingestion for knowledge bases and vector stores.

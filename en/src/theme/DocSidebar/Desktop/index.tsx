@@ -5,14 +5,16 @@
  * 1. `<ProductDocsLinks />` between `<Content>` and the collapse button
  *    (unchanged from before, text-style external links to WSO2 MI/SI docs).
  *
- * 2. A "DOCUMENTATION" title row + a real icon rail for the collapsed
- *    state, instead of stock Docusaurus's fully-hidden sidebar with a tiny
+ * 2. A collapse button overlaid on the first sidebar row (no separate
+ *    title row above Content -- see `.sidebarContentWrap` in
+ *    styles.module.css) + a real icon rail for the collapsed state,
+ *    instead of stock Docusaurus's fully-hidden sidebar with a tiny
  *    30px re-expand sliver. This reuses Docusaurus's own `isHidden`/
  *    `onCollapse` props and the same collapse animation (see custom.css's
  *    `--doc-sidebar-hidden-width: 64px` override) -- only what gets
  *    rendered at each state differs, not how the collapse itself works.
  *    Rail icons don't navigate (mirrors the reference design): clicking
- *    one just re-expands the sidebar, same as the header's own toggle.
+ *    one just re-expands the sidebar, same as the overlay toggle.
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
@@ -98,20 +100,19 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props): Reac
         hideOnScroll && styles.sidebarWithHideableNavbar,
       )}>
       {hideOnScroll && <Logo tabIndex={-1} className={styles.sidebarLogo} />}
-      <div className={styles.sidebarHeader}>
-        <span className={styles.sidebarHeaderTitle}>Documentation</span>
+      <div className={styles.sidebarContentWrap}>
         {hideable && (
           <button
             type="button"
             onClick={onCollapse}
             title="Collapse navigation"
             aria-label="Collapse navigation"
-            className={styles.sidebarHeaderCollapse}>
+            className={styles.sidebarCollapseOverlay}>
             <CollapseIcon />
           </button>
         )}
+        <Content path={path} sidebar={sidebar} />
       </div>
-      <Content path={path} sidebar={sidebar} />
       <ProductDocsLinks />
     </div>
   );

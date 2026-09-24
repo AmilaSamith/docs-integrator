@@ -1,7 +1,9 @@
 ---
+sidebar_position: 3
 title: "Runtime"
 description: "Configure integration settings per environment on WSO2 Cloud - Integration Platform, and manage reusable configuration groups at the organization level."
 keywords: [wso2 integrator, wso2 cloud, configuration, config groups, environment config]
+slug: /manage/configurations/runtime-configurations
 ---
 
 # Runtime Configurations

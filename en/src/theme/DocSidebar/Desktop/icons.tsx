@@ -75,22 +75,12 @@ function DeployIcon(): ReactNode {
   );
 }
 
-function OperateIcon(): ReactNode {
+function ObserveIcon(): ReactNode {
   return (
     <svg {...iconProps}>
       <path d="M4 14a8 8 0 1 1 16 0" />
       <path d="M12 14l4-5" />
       <path d="M4 14h1M19 14h1M12 14v1" />
-    </svg>
-  );
-}
-
-function CustomizeIcon(): ReactNode {
-  return (
-    <svg {...iconProps}>
-      <path d="M4 7h10M18 7h2M4 17h2M10 17h10" />
-      <circle cx="16" cy="7" r="2.3" />
-      <circle cx="8" cy="17" r="2.3" />
     </svg>
   );
 }
@@ -181,13 +171,19 @@ const ICONS_BY_LABEL: Record<string, () => ReactNode> = {
   overview: PlatformOverviewIcon,
   'get started': GetStartedIcon,
   editor: EditorIcon,
+  // saas's actual current category labels (see docs/editor/_category_.json,
+  // develop-and-test/_category_.json, deploy-and-run/_category_.json) --
+  // kept alongside the shorter 'editor'/'develop'/'deploy' keys above/below
+  // since other branches may still use those.
+  'editor tour': EditorIcon,
   develop: DevelopIcon,
+  'develop and test': DevelopIcon,
   'ai integrations': AIIntegrationsIcon,
   test: TestIcon,
   deploy: DeployIcon,
-  operate: OperateIcon,
+  'deploy and run': DeployIcon,
+  observe: ObserveIcon,
   manage: ManageIcon,
-  customize: CustomizeIcon,
   migrate: MigrateIcon,
   'integration control plane': IntegrationControlPlaneIcon,
   guides: GuidesIcon,

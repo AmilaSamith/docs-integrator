@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: Configure Asgardeo as an External IdP
 description: Learn how to configure Asgardeo as an external identity provider in WSO2 Cloud - Integration Platform to manage API access control using Asgardeo user stores.
 keywords: [wso2 cloud, asgardeo, external IdP, identity provider, API access control, API scopes]
+slug: /manage/users-and-access/api-external-idp/asgardeo
 ---
 
 # Configure Asgardeo as an External IdP

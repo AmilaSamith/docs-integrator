@@ -3,21 +3,22 @@ sidebar_position: 3
 title: Library View
 description: Build and manage reusable libraries in WSO2 Integrator.
 keywords: [wso2 integrator, ide, library view, reusable libraries, artifacts]
+slug: /editor/views/library-view
 ---
 
 # Library View
 
 The Library view is a dedicated view in WSO2 Integrator for creating utilities and shared resources that you can use across multiple integrations. Rather than building executable integrations, you use the Library view to bundle shared type definitions, utility functions, custom connections, and data mapper configurations into a centralized module that other integrations can depend on.
 
-![Library view overview](/img/develop/understand-ide/views/library-view/overview.png)
+![Library view overview](/img/editor/views/library-view/overview.png)
 
 ## Library overview canvas
 
 The library overview canvas is the central area of the Library view. It provides a dashboard for the library, showing the library name as a heading and an **Artifacts summary** with cards for the total number of defined types, functions, data mappers, and connections.
 
-![Library overview canvas](/img/develop/understand-ide/views/library-view/library-overview-canvas.png)
+![Library overview canvas](/img/editor/views/library-view/library-overview-canvas.png)
 
-## Add reusable artifacts
+## Add supportive artifacts
 
 Click the **+ Add Artifacts** button at the top right of the canvas to add a new component to your library. This opens a menu with all available artifact types that can be created in a library:
 
@@ -27,15 +28,15 @@ Click the **+ Add Artifacts** button at the top right of the canvas to add a new
 - **Connection**
 - **Configuration**
 
-![Add artifacts menu](/img/develop/understand-ide/views/library-view/add-artifacts.png)
+![Add artifacts menu](/img/editor/views/library-view/add-artifacts.png)
 
-For detailed information on configuring each specific artifact type, see the [Integration artifacts](../../develop/integration-artifacts/integration-artifacts.md) documentation.
+For detailed information on configuring each specific artifact type, see the [Integration artifacts](../../develop-and-test/integration-artifacts/integration-artifacts.md) documentation.
 
 ## Artifact management
 
 Clicking any of the artifact category cards on the main canvas (such as **Functions** or **Types**) navigates to a specific list view for those artifacts.
 
-![Artifact list view](/img/develop/understand-ide/views/library-view/artifact-list.png)
+![Artifact list view](/img/editor/views/library-view/artifact-list.png)
 
 From this view, you can:
 
@@ -47,7 +48,7 @@ From this view, you can:
 
 The toolbar sits at the top of the Library view and provides quick access to actions for configuring and publishing your library.
 
-![Toolbar](/img/develop/understand-ide/views/library-view/toolbar.png)
+![Toolbar](/img/editor/views/library-view/toolbar.png)
 
 | Action | Description |
 |---|---|
@@ -59,10 +60,10 @@ The toolbar sits at the top of the Library view and provides quick access to act
 
 The README section at the bottom of the Library view displays the contents of your library's `README.md` file. Use it to document the library's purpose, setup instructions, and usage notes so other developers know how to consume it. Click **Edit** to modify the README directly.
 
-![README](/img/develop/understand-ide/views/library-view/readme.png)
+![README](/img/editor/views/library-view/readme.png)
 
 ## What's next
 
-- [Create a library](../../develop/create-integrations/create-a-library.md) — Set up a new library package for sharing common logic across integrations.
-- [Integration artifacts](../../develop/integration-artifacts/integration-artifacts.md) — Learn about the artifact types you can define in a library.
-- [Functions](../../develop/integration-artifacts/supporting/functions.md) — Encapsulate reusable logic in function artifacts for validation and transformation.
+- [Create a library](../../develop-and-test/organize-workbench/create-a-library.md) — Set up a new library package for sharing common logic across integrations.
+- [Integration artifacts](../../develop-and-test/integration-artifacts/integration-artifacts.md) — Learn about the artifact types you can define in a library.
+- [Functions](../../develop-and-test/integration-artifacts/supportive-artifacts/functions.md) — Encapsulate reusable logic in function artifacts for validation and transformation.

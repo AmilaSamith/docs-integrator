@@ -1,7 +1,9 @@
 ---
+sidebar_position: 6
 title: "Scaling"
 description: "Configure autoscaling and scale-to-zero for integrations deployed on WSO2 Cloud - Integration Platform."
 keywords: [wso2 integrator, wso2 cloud, scaling, replicas, autoscale, scale to zero, hpa]
+slug: /manage/configurations/scaling-resource-limits
 ---
 
 # Scale Integrations
@@ -89,4 +91,4 @@ If the first request to a scale-to-zero integration returns a `503` error, the r
 
 ## What's next
 
-- [Environments](../environments/overview.md) — Organize your integration lifecycle with multiple environments.
+- [Environments](../environments/environments.md) — Organize your integration lifecycle with multiple environments.

@@ -1,7 +1,9 @@
 ---
+sidebar_position: 3
 title: "RAG Ingestion Automation"
 description: "Set up scheduled RAG ingestion in WSO2 Integration Platform to load source files into your vector store."
 keywords: [wso2 integrator, rag, ingestion, vector store, knowledge base]
+slug: /manage/rag-ingestion/ingestion
 ---
 
 # RAG Ingestion

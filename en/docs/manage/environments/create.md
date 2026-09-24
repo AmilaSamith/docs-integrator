@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: Create an Environment
 description: Learn how to create a new environment in your WSO2 Cloud - Integration Platform organization to support additional stages in your deployment pipeline.
 keywords: [wso2 cloud, create environment, production environment]
+slug: /manage/environments/create
 ---
 
 # Create an Environment
@@ -46,6 +48,6 @@ The new environment is created and available for use across projects in your org
 
 ## What's next
 
+- [Configure promotion pipelines](./configure-promotion-pipelines.md) — Define the promotion flow of integrations across environments in your organization
 - [Promote an integration](./promotion.md) — Move an integration from one environment to the next in your pipeline
 - [Promotion approvals](./promotion-approval.md) — Require approvals before an integration is promoted to a protected environment
-- [Manage deployment pipelines](../cicd/deployment-pipelines.md) — Define the promotion flow of integrations across environments in your organization

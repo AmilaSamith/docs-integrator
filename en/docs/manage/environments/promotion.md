@@ -1,7 +1,9 @@
 ---
+sidebar_position: 4
 title: "Promote an Integration"
 description: "Promote an integration from one environment to the next in the WSO2 Integration Platform."
 keywords: [wso2 integrator, promote integration, environments, development, production, wso2 cloud]
+slug: /manage/environments/promotion
 ---
 
 # Promote an Integration

@@ -1,7 +1,9 @@
 ---
+sidebar_position: 5
 title: "RAG Service"
 description: "Use the RAG service API to programmatically ingest, chunk, and retrieve documents in WSO2 Cloud - Integration Platform."
 keywords: [wso2 integrator, rag, api, service, ingestion]
+slug: /manage/rag-ingestion/service
 ---
 
 # RAG Service

@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: "Pricing and Plans"
 description: "How WSO2 Cloud bills platform services such as managed databases, caches, and Kafka, and how to upgrade a service plan."
 keywords: [wso2 integrator, wso2 cloud, billing, pricing, service plan, upgrade, platform services]
+slug: /manage/billing/pricing-and-plans
 ---
 
 # Pricing and Plans
@@ -20,5 +22,5 @@ If you want to upgrade the service plan of a platform service you have created, 
 
 ## What's next
 
-- [Managed databases and caches](../platform-services/managed-databases.md) — Service plans, high-availability tiers, and connection limits for managed PostgreSQL, MySQL, and Cache services.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [Managed databases and caches](../managed-databases-and-caches.md) — Service plans, high-availability tiers, and connection limits for managed PostgreSQL, MySQL, and Cache services.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

@@ -1,7 +1,9 @@
 ---
+sidebar_position: 5
 title: "Promotion Approvals"
 description: "Require approval before an integration is promoted to a protected environment in the WSO2 Integration Platform."
 keywords: [wso2 integrator, promotion approval, workflow, environments, wso2 cloud]
+slug: /manage/environments/promotion-approval
 ---
 
 # Promotion Approvals

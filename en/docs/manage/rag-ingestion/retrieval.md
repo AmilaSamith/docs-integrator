@@ -1,7 +1,9 @@
 ---
+sidebar_position: 4
 title: "RAG Retrieval"
 description: "Query a vector store in WSO2 Integration Platform to retrieve relevant chunks for RAG applications."
 keywords: [wso2 integrator, rag, retrieval, vector store, query]
+slug: /manage/rag-ingestion/retrieval
 ---
 
 # RAG Retrieval

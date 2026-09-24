@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: "Build"
 description: "Configure build settings for integrations on WSO2 Cloud - Integration Platform, including unit test execution and submodule handling."
 keywords: [wso2 integrator, build configuration, wso2 cloud, unit tests, submodules]
+slug: /manage/configurations/build-configurations
 ---
 
 # Build Configurations

@@ -1,7 +1,9 @@
 ---
+sidebar_position: 3
 title: "Data Residency and Compliance"
 description: "How WSO2 Cloud handles data residency, retention, encryption, and compliance for logs and metrics."
 keywords: [wso2 integrator, wso2 cloud, compliance, data residency, data retention, encryption, dsar, breach notification]
+slug: /manage/audit/compliance-data-residency
 ---
 
 # Data Residency and Compliance

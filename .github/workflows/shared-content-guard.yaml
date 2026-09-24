@@ -1,12 +1,41 @@
 name: Shared content guard
 
 # Phase 8 -- rejects any PR that edits a shared/synced directory directly
-# on this branch. Shared content (platform-overview, editor, develop,
-# test, customize, migrate, guides, plus get-started/concepts/core.md and
-# reference/appendix/glossary.md) has one source of truth --
-# wso2-integrator -- and flows here only via sync-content-to-saas.yaml's
-# bot PR. A direct edit here would silently diverge from that source and
-# get clobbered by the next sync.
+# on this branch. Shared content (platform-overview, editor,
+# develop-and-test, migrate, guides, plus reference/glossary.md)
+# has one source of truth -- wso2-integrator -- and flows here only via
+# sync-content-to-saas.yaml's bot PR. A direct edit here would silently
+# diverge from that source and get clobbered by the next sync.
+#
+# `develop/` and `test/` were merged into `develop-and-test/` in the
+# deploy-and-run/observe/manage reorg (see CONTRIBUTING.md) -- update this
+# paths list to match section renames like that one, or the guard goes
+# silently blind to a folder it's supposed to be watching.
+#
+# `customize/` was dropped from this list -- the section was removed on
+# saas (TODO stub, no real content; see CONTRIBUTING.md for where its
+# planned scope actually lives). If wso2-integrator still has
+# `en/docs/customize/`, remove it there too, or the next sync recreates
+# an empty section here with nothing watching it.
+#
+# reference/appendix/glossary.md moved to reference/glossary.md when the
+# reference section was trimmed down to FAQ + Glossary + a Ballerina docs
+# link (most of reference/ was generic Ballerina/tooling content with no
+# saas dependency, so it was deleted here rather than kept as an
+# unsynced duplicate -- see CONTRIBUTING.md). If wso2-integrator still
+# has it at the old appendix/ path, the next sync recreates that file
+# here with nothing watching it -- move it there too, or update this
+# path to match wherever it actually lives upstream.
+#
+# get-started/concepts/core.md no longer exists -- it was replaced by
+# concepts.mdx plus per-topic partials (_foundations.md, _develop.md,
+# _deploy.md, _manage-observe.md). Deliberately NOT added back here:
+# those partials carry saas-specific links (deploy-and-run/, manage/,
+# observe/ paths) that need per-branch maintenance, same as the
+# NOTE-marked overrides in Golden Rule 4 of CONTRIBUTING.md. Confirm
+# with a maintainer whether concepts.mdx itself should be guarded (its
+# prose, as opposed to the partials' links, may still be meant to stay
+# in sync) before adding it back.
 #
 # The sync bot's own PRs are exempt (matched by head branch name prefix,
 # set in sync-content-to-saas.yaml) -- everything else touching a shared
@@ -23,13 +52,10 @@ on:
     paths:
       - 'en/docs/platform-overview/**'
       - 'en/docs/editor/**'
-      - 'en/docs/develop/**'
-      - 'en/docs/test/**'
-      - 'en/docs/customize/**'
+      - 'en/docs/develop-and-test/**'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
-      - 'en/docs/get-started/concepts/core.md'
-      - 'en/docs/reference/appendix/glossary.md'
+      - 'en/docs/reference/glossary.md'
 
 jobs:
   guard:

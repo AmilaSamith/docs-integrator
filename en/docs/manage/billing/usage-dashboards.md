@@ -1,7 +1,9 @@
 ---
+sidebar_position: 3
 title: "Usage Dashboards"
 description: "Analyze API traffic, errors, latency, cache, devices, and alerts on WSO2 Cloud, and generate standard or custom usage reports."
 keywords: [wso2 integrator, wso2 cloud, usage insights, dashboards, traffic, errors, latency, alerts, custom reports, billing]
+slug: /manage/billing/usage-dashboards
 ---
 
 # Usage Dashboards
@@ -393,4 +395,4 @@ To do this, click the **Download** icon on the top-right of the relevant chart a
 ## What's next
 
 - [Pricing and plans](./pricing-and-plans.md) — How WSO2 Cloud bills platform services and how to upgrade a service plan.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

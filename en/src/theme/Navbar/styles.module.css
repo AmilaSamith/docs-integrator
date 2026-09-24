@@ -4,6 +4,10 @@
   z-index: calc(var(--ifm-z-index-fixed) - 1);
   background-color: var(--ifm-background-color);
   border-bottom: 1px solid var(--wso2-surface-border);
+  /* Kept in sync with custom.css's --wso2-secondary-row-height, which
+     other rules (anchor scroll-margin) size against -- see that
+     variable's definition for why this needs to be a known height. */
+  min-height: var(--wso2-secondary-row-height);
 }
 
 .secondaryRowInner {

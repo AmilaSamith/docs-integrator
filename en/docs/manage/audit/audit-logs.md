@@ -1,7 +1,9 @@
 ---
+sidebar_position: 2
 title: "Audit Logs"
 description: "View, retain, and manage access to organization-level audit logs in WSO2 Cloud."
 keywords: [wso2 integrator, wso2 cloud, audit logs, security, compliance, access control, role, group]
+slug: /manage/audit/audit-logs
 ---
 
 # Audit Logs
@@ -96,5 +98,5 @@ You must be the organization administrator to perform this action.
 
 ## What's next
 
-- [Runtime logs](../observability/runtime-logs.md) — Search, filter, and analyze runtime log output for your integrations.
-- [WSO2 Cloud overview](../overview.md) — How WSO2 Cloud manages your deployed integrations end to end.
+- [Runtime logs](../../observe/runtime-logs.md) — Search, filter, and analyze runtime log output for your integrations.
+- [WSO2 Cloud overview](../manage.md) — How WSO2 Cloud manages your deployed integrations end to end.

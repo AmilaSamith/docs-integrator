@@ -109,14 +109,31 @@
   --ifm-navbar-height: 4rem;
   --ifm-navbar-padding-vertical: 0;
 
+  /* Height of the sticky product/version + "Copy page" row rendered
+     directly under the navbar (theme/Navbar/index.tsx, .secondaryRow).
+     Single source of truth for that row's own min-height AND for how
+     far anchor-linked headings need to scroll clear of it below --
+     see the anchorTargetStickyNavbar override further down. */
+  --wso2-secondary-row-height: 3rem;
+
   /* === Sidebar === */
   --ifm-menu-color: #565656;
   --ifm-menu-color-active: #D63B12;
-  --doc-sidebar-width: 280px;
+  --doc-sidebar-width: 320px;
   /* A real icon rail (see theme/DocSidebar/Desktop), not stock Docusaurus's
      30px sliver -- this var drives both the collapsed container's width
      and the main content area's max-width calc, so both sides agree. */
   --doc-sidebar-hidden-width: 64px;
+
+  /* Infima's own collapse-arrow icon is a SOLID filled chevron -- reads
+     as heavy/bold next to this site's thin-stroke icons everywhere
+     else. Swapping just the icon (an "up" chevron, matching the
+     original's orientation) keeps Infima's own rotate transforms
+     (.menu__caret:before / .menu__link--sublist-caret:after in its
+     default.css) working unchanged -- only the graphic differs. Used
+     by both the caret button on categories with their own index page
+     and the plain arrow on categories without one. */
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>');
 
   /* === Link color === */
   --ifm-link-color: #D63B12;
@@ -262,10 +279,10 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(241, 78, 35, 0.16);
 }
 
-/* Icon-only GitHub navbar link -- same 2rem circular hit target as the
-   built-in color-mode toggle, so the two read as one icon-button family
-   at the navbar's right edge. Overrides .navbar__link's text padding. */
-.navbar-github-link {
+/* Icon-only navbar links (GitHub, ...) -- same 2rem circular hit
+   target as the built-in color-mode toggle, so icon items read as one
+   icon-button family. Overrides .navbar__link's text padding. */
+.navbar-icon-link {
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -276,8 +293,16 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
 }
 
-.navbar-github-link:hover {
+.navbar-icon-link:hover {
   background-color: var(--ifm-color-emphasis-200);
+}
+
+/* The "?" icon inlined before the FAQ navbar link's text (see
+   sharedFaqNavbarItem) -- baseline-align it with the label instead of
+   sitting on the text baseline like a stray glyph. */
+.navbar-faq-icon {
+  vertical-align: -0.15em;
+  margin-right: 0.35rem;
 }
 
 /* Infima's default navbar search input is 12.5rem -- widen it a bit. */
@@ -462,21 +487,35 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
+/* h2 = topic, h3 = subtopic. Both get a rule plus extra top spacing so
+   a section break reads clearly even in dense, multi-subtopic pages
+   (e.g. Concepts, where several ### terms follow one ## phase). Built
+   on theme border tokens, so light/dark stay in sync automatically. */
 .markdown h2 {
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-bottom: 1px solid #E5E9F0;
-  padding-bottom: 0.35rem;
-  margin-top: 1.75rem;
-}
-
-[data-theme='dark'] .markdown h2 {
-  border-bottom-color: rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid var(--wso2-surface-border);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
 }
 
 .markdown h3 {
   font-weight: 600;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--wso2-border-subtle);
+}
+
+/* Jumping to a heading (card link, TOC, #anchor in the URL) must clear
+   BOTH sticky rows: the navbar itself and the product/"Copy page" row
+   stacked under it (theme/Navbar's .secondaryRow). Docusaurus only
+   accounts for the navbar via its own anchorTargetStickyNavbar class
+   (theme-common/utils/anchorUtils.module.css), which is why headings
+   were landing hidden behind that second row. Attribute-selector match
+   because CSS Modules hash the class name at build time; !important
+   because this must win regardless of chunk load order. */
+[class*="anchorTargetStickyNavbar"] {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 0.5rem) !important;
 }
 
 .markdown h4 {
@@ -540,6 +579,30 @@ code {
 .prism-code .token-line {
   line-height: 1.5;
   padding: 0.125rem 0;
+}
+
+/* Doc images — bordered card, centered, consistent spacing.
+   Standalone images are auto-wrapped in <a class="zoomable-img-link">
+   (see theme/MDXComponents/Img.tsx); .markdown img still centers the
+   rare unwrapped case (e.g. an image already inside an author-written
+   link), and the img's own margin is zeroed when nested in the
+   wrapper so the two don't stack. */
+.markdown img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  border: 1px solid #E5E9F0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(27, 42, 73, 0.08);
+}
+
+.markdown .zoomable-img-link img {
+  margin: 0;
+}
+
+[data-theme='dark'] .markdown img {
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Blockquotes — subtle left border */
@@ -941,6 +1004,40 @@ hr {
   border-right-color: rgba(255, 255, 255, 0.06);
 }
 
+/* Stock theme-classic pulls this container up by exactly
+   --ifm-navbar-height so its sticky inner viewport (an un-classed child
+   div, left untouched below -- see note) can clamp to the literal top
+   of the viewport and use the full 100vh for its own scroll area. That
+   assumes the navbar is the only fixed/sticky chrome above it; this
+   site also has the secondary row (product/version pill + copy-page
+   button, theme/Navbar/index.tsx), sticky right below the navbar.
+   Correcting the margin-top here to also pull past that row is enough
+   on its own -- the inner viewport still sticks to y:0 and still gets
+   the full 100vh, it's DocSidebar/Desktop/styles.module.css's own
+   `.sidebar` padding-top (already widened to match) that pushes the
+   VISIBLE content down below both bars. Without this fix the sidebar
+   started scrolling from underneath the secondary row instead of
+   staying put beside it. */
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    margin-top: calc(-1 * (var(--ifm-navbar-height) + var(--wso2-secondary-row-height))) !important;
+  }
+
+  /* "On this page" wraps this element in its own sticky, scrollable
+     container (see theme/TOC/styles.module.css's `.tocWrapper`, which
+     carries the real secondary-row-aware top/max-height fix) -- nested
+     inside that, this element's OWN sticky positioning is redundant
+     and, worse, would resolve relative to `.tocWrapper`'s scroll box
+     instead of the viewport once that box actually needs to scroll
+     internally. Neutralize it here rather than doubling up two sticky
+     offsets that can drift out of sync with each other. */
+  .theme-doc-toc-desktop {
+    position: static !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+}
+
 /* ================================================================
    PRINT / DOWNLOAD AS PDF
    Triggered by MarkdownButton's "Download as PDF" (window.print()) --
@@ -995,5 +1092,194 @@ hr {
 .zoomable-img-link:hover {
   text-decoration: none;
   color: inherit;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.5rem auto;
+}
+
+/* ================================================================
+   PALETTE CARDS
+   The site's common category-navigation component: one big,
+   non-clickable card per category (title + description), with
+   small clickable chips inside it for each item. Used wherever a
+   page indexes many items under a handful of categories -- the
+   Concepts page, the Node Palette page, and the Editor Tour landing
+   page all share this same markup and styling. Built on the shared
+   theme tokens so it stays in sync across light and dark mode
+   without a separate [data-theme='dark'] block. The category card
+   itself can't be the whole-card link (as on the homepage's
+   "Explore the platform" cards, sectionCard in pages/index.module.css)
+   since <a> cannot nest inside <a> -- only the chips are links.
+
+   Two layouts:
+   - Wrap cards in .palette-grid to lay several out side by side
+     (e.g. Node Palette, Editor Tour landing).
+   - Add .palette-card--standalone to a lone card stacked full-width
+     under its own heading (e.g. Concepts).
+
+   A category with only one item (e.g. Editor Window) can skip the
+   chip entirely and use <a class="palette-card"> directly as the
+   whole-card link -- there's no second chip to conflict with, so
+   the nested-<a> restriction above doesn't apply.
+
+   An optional inline <svg class="palette-card-icon"> as the card's
+   first child sits pinned to the top-right corner (the card's own
+   right padding reserves room for it so it never collides with the
+   title/description text) and recolors to the brand accent on hover
+   along with the title and its divider.
+   ================================================================ */
+.markdown .palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.markdown .palette-card {
+  position: relative;
+  display: block;
+  padding: 18px 46px 18px 20px;
+  border-radius: var(--ifm-card-border-radius);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--wso2-surface-border);
+  box-shadow: var(--wso2-card-shadow);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.markdown a.palette-card:hover {
+  text-decoration: none;
+}
+
+.markdown .palette-card-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+  color: var(--wso2-text-muted);
+  transition: color 0.2s ease;
+}
+
+.markdown .palette-card:hover .palette-card-icon {
+  color: var(--ifm-color-primary);
+}
+
+.markdown .palette-card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--wso2-card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.markdown .palette-card:hover .palette-card-title {
+  color: var(--wso2-accent-text);
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+.markdown .palette-card-title {
+  margin: 0 0 0.85rem;
+  padding: 0 0 0.85rem;
+  border: none;
+  border-bottom: 2px solid var(--wso2-surface-border);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+  transition: border-color 0.2s ease;
+}
+
+.markdown .palette-card-desc {
+  margin: 0 0 0.85rem;
+  color: var(--ifm-font-color-base);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.markdown .palette-card-list {
+  margin: 0 0 0.85rem;
+  padding-left: 1.1rem;
+  color: var(--ifm-font-color-base);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.markdown .palette-card-list li {
+  margin: 0.15rem 0;
+}
+
+.markdown .palette-card-list li::marker {
+  color: var(--wso2-text-muted);
+}
+
+.markdown .palette-card-badge {
   display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--wso2-surface-border);
+  color: var(--wso2-text-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+
+.markdown .palette-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.markdown a.palette-chip {
+  flex: 1 1 auto;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--wso2-surface-border);
+  color: var(--wso2-heading-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.markdown .palette-card--standalone {
+  margin: 0 0 1.25rem;
+}
+
+/* Wraps a subset of cards inside a shared PaletteGrid to signal they're
+   one alternative among several (e.g. "these four cover the same ground
+   as the single AI-assisted card above them"). The border + background
+   is the whole point -- it's what visually ties the group together. */
+.markdown .palette-group {
+  margin: 0 0 1.25rem;
+  padding: 20px;
+  border: 1px dashed var(--wso2-surface-border);
+  border-radius: var(--ifm-card-border-radius);
+  background: var(--ifm-background-color);
+}
+
+.markdown .palette-group .palette-grid {
+  margin: 0;
+}
+
+.markdown .palette-group-label {
+  margin: 0 0 1rem;
+  color: var(--wso2-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.markdown a.palette-chip:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--wso2-accent-text);
+  text-decoration: none;
 }

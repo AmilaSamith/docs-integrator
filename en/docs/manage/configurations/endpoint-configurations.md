@@ -1,7 +1,9 @@
 ---
+sidebar_position: 5
 title: "Endpoints"
 description: "Configure endpoint visibility levels per environment for integrations deployed to the WSO2 Integration Platform."
 keywords: [wso2 integrator, endpoints, networking, endpoint visibility, wso2 cloud, integration as api]
+slug: /manage/configurations/endpoint-configurations
 ---
 
 # Endpoints and Networking Configuration

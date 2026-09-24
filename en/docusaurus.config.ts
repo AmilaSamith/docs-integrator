@@ -9,8 +9,8 @@ import {
   sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
+  sharedFaqNavbarItem,
   sharedContributeNavbarItem,
-  sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
   CROSS_PRODUCT_BASE,
@@ -41,6 +41,7 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
+  onBrokenAnchors: 'throw',
 
   markdown: {
     mermaid: true,
@@ -59,6 +60,7 @@ const config: Config = {
     './src/plugins/connector-versions',
     './plugins/docusaurus-plugin-markdown-export',
     './src/plugins/expose-sidebars',
+    './src/plugins/guidesCatalogPlugin',
   ],
 
   themes: [
@@ -137,20 +139,20 @@ const config: Config = {
           label: 'Explore',
           position: 'left',
           items: [
-            { title: 'Get started', description: 'Install, set up, and build your first integration.', href: '/platform-overview' },
-            { title: 'Develop', description: 'Build services, transform data, and test integrations.', href: '/develop/overview' },
-            { title: 'AI Integrations', description: 'Agents, RAG, and MCP servers.', href: '/develop/ai/overview' },
+            { title: 'Platform Overview', description: "Understand the platform's architecture and core concepts.", href: '/platform-overview' },
+            { title: 'Editor Tour', description: 'Tour the WSO2 Integrator editor and its Copilot.', href: '/editor' },
+            { title: 'Develop and Test', description: 'Build services, transform data, and test integrations.', href: '/develop-and-test' },
+            { title: 'Deploy and Run', description: 'Deploy to WSO2 Cloud, CI/CD, and production security.', href: '/deploy-and-run' },
+            { title: 'Manage', description: 'Centralized control via the WSO2 Cloud console.', href: '/manage' },
+            { title: 'Observe', description: 'Monitor logs, metrics, and alerts in WSO2 Cloud.', href: '/observe' },
+            { title: 'Migrate', description: 'Move existing MuleSoft, TIBCO, and Azure Logic Apps integrations.', href: '/migrate' },
             { title: 'Guides', description: 'End-to-end tutorials and integration patterns.', href: '/guides/overview' },
-            { title: 'Deploy', description: 'Docker, Kubernetes, CI/CD, and production security.', href: '/deploy/overview' },
-            { title: 'Manage', description: 'Centralized control via the WSO2 Cloud console.', href: '/manage/overview' },
-            { title: 'Migrate', description: 'Move existing MuleSoft and TIBCO integrations.', href: '/migrate' },
-            { title: 'Reference', description: 'Language reference, config keys, CLI, error codes.', href: '/reference/overview' },
           ],
         },
-        sharedReleasesNavbarItem('/reference/appendix/release-notes'),
         sharedContributeNavbarItem(),
         sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
+        sharedFaqNavbarItem('/reference/faq'),
         sharedGithubNavbarItem,
       ]
     },
@@ -158,36 +160,43 @@ const config: Config = {
       style: sharedFooterStyle,
       links: [
         {
-          title: 'Get started',
+          title: 'Get Started',
           items: [
-            { label: 'Overview', to: '/platform-overview' },
-            { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/develop/how-to/build-automation' },
+            { label: 'Platform Overview', to: '/platform-overview' },
+            { label: 'Concepts', to: '/get-started/concepts' },
+            { label: 'Cloud Setup', to: '/get-started/cloud-setup' },
+            { label: 'Quickstarts', to: '/get-started/quickstarts/build-automation' },
           ],
         },
         {
-          title: 'Develop',
+          title: 'Editor Tour',
           items: [
-            { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
-            { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/test/built-in-try-it-tool' },
-            { label: 'AI Integrations', to: '/develop/ai/overview' },
+            { label: 'Flow Canvas', to: '/editor/canvases/flow-canvas' },
+            { label: 'Copilot', to: '/editor/copilot/getting-started' },
+            { label: 'Project View', to: '/editor/views/project-view' },
           ],
         },
         {
-          title: 'Deploy',
+          // One column for the whole develop -> deploy -> manage ->
+          // observe journey (each linking to that section's own
+          // landing page) instead of a separate column per stage --
+          // four nearly-empty columns read as more cluttered than one
+          // well-organized one. Matches Resources' landing-page-only
+          // pattern below.
+          title: 'Integration Lifecycle',
           items: [
-            { label: 'CI/CD', to: '/deploy/cicd/github-actions' },
-            { label: 'Observe', to: '/operate/observability-overview' },
-            { label: 'Secure', to: '/deploy/secure/authentication' },
+            { label: 'Develop and Test', to: '/develop-and-test' },
+            { label: 'Deploy and Run', to: '/deploy-and-run' },
+            { label: 'Manage', to: '/manage' },
+            { label: 'Observe', to: '/observe' },
           ],
         },
         {
-          title: 'Operate',
+          title: 'Resources',
           items: [
-            { label: 'Observability', to: '/operate/observability-overview' },
-            { label: 'Logging', to: '/operate/logging-overview' },
-            { label: 'Metrics', to: '/operate/metrics-overview' },
+            { label: 'Migrate', to: '/migrate' },
+            { label: 'Guides', to: '/guides/overview' },
+            { label: 'FAQ', to: '/reference/faq' },
           ],
         },
       ],

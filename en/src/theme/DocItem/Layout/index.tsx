@@ -44,9 +44,15 @@ function useDocTOC() {
 
 export default function DocItemLayout({ children }: Props): ReactNode {
   const docTOC = useDocTOC();
-  const { metadata } = useDoc();
+  const { metadata, frontMatter } = useDoc();
   const { pathname } = useLocation();
   const isConnectorCatalog = CONNECTOR_CATALOG_PATH.test(pathname);
+  // Opt-in for a card-grid landing page (hide_table_of_contents: true,
+  // wide_layout: true) -- lets its content use the width the TOC column
+  // would have taken instead of staying capped at prose reading width
+  // (article's global max-width: 820px in custom.css), so a .palette-grid
+  // can lay out more columns instead of leaving that space empty.
+  const isWideLayout = Boolean((frontMatter as { wide_layout?: boolean }).wide_layout);
 
   return (
     <div className="row">
@@ -58,7 +64,7 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         <ContentVisibility metadata={metadata} />
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
-          <article>
+          <article className={clsx(isWideLayout && styles.articleWide)}>
             <DocBreadcrumbs />
             <DocVersionBadge />
             {docTOC.mobile}

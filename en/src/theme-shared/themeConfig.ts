@@ -94,15 +94,31 @@ export const sharedImage = 'img/logo.svg';
  * auto-appended external-link arrow (added whenever `label` is used with
  * a non-internal href) doesn't show; an icon needs no such affordance.
  * `className` gives it the same 2rem circular hit target as the
- * color-mode toggle (see custom.css's `.navbar-github-link`), so the two
+ * color-mode toggle (see custom.css's `.navbar-icon-link`), so the two
  * read as one visual family of icon buttons at the navbar's right edge. */
 export const sharedGithubNavbarItem = {
   html: '<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>',
   href: 'https://github.com/wso2/docs-integrator',
   position: 'right' as const,
-  className: 'navbar-github-link',
+  className: 'navbar-icon-link',
   'aria-label': 'GitHub',
 };
+
+/** FAQ navbar link -- a "?" icon followed by the "FAQ" label, styled as
+ * a plain text nav item (like Blog/Community/Contribute) rather than
+ * the icon-only circular buttons (GitHub, color-mode toggle). `html`
+ * carries both the icon and the text since Docusaurus's `label` can't
+ * be combined with a leading icon. `target` is the in-site FAQ doc
+ * path, so each branch that has its own FAQ page can point this at it;
+ * a branch without one should skip adding this item rather than pass a
+ * guess. */
+export function sharedFaqNavbarItem(target: string) {
+  return {
+    html: 'FAQ <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="navbar-faq-icon"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.925-.966 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg>',
+    to: target,
+    position: 'left' as const,
+  };
+}
 
 /** A plain link to the in-site Community page (src/pages/community.tsx)
  * instead of a dropdown -- that page is where the channel list (same
@@ -121,7 +137,7 @@ export const sharedCommunityNavbarItem = {
 };
 
 export const sharedBlogNavbarItem = {
-  href: 'https://wso2.com/api-platform/learn/',
+  href: 'https://wso2.com/integration-platform/learn/',
   label: 'Blog',
   position: 'left' as const,
 };

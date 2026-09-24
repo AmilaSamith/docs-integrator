@@ -1,7 +1,9 @@
 ---
+sidebar_position: 7
 title: Custom Domain
 description: Learn how to configure a custom domain for your organization and set custom URLs for integrations in WSO2 Cloud - Integration Platform.
 keywords: [wso2 cloud, custom domain, custom URL, CNAME, TLS certificate, Let's Encrypt, branding]
+slug: /manage/configurations/custom-domain
 ---
 
 # Configure a Custom Domain
@@ -186,6 +188,6 @@ Once deployed, both the custom URL and the default URL can be used to access the
 
 ## What's next
 
-- [Configurations overview](./overview.md) — Explore all configuration options available for integrations in WSO2 Cloud
+- [Configurations overview](./configurations.md) — Explore all configuration options available for integrations in WSO2 Cloud
 - [Endpoint configurations](./endpoint-configurations.md) — Control the visibility level for each integration endpoint
 - [Security configurations](./security-configurations.md) — Secure integration endpoints with API Key or OAuth2 authentication

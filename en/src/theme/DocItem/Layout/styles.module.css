@@ -5,6 +5,20 @@
   margin-top: 0;
 }
 
+/* Opt-in wide layout (wide_layout: true frontmatter) for a card-grid
+   landing page that also hides the TOC -- overrides the global
+   `article { max-width: 820px }` prose cap in custom.css so a
+   .palette-grid can lay out more columns in the freed-up width
+   instead of leaving it empty. Centered (unlike the default article,
+   which is fine sitting flush-left since the TOC column beside it
+   already justifies the rest of the row) so the wider card grid
+   doesn't just hug the left edge with blank space on the right. */
+.articleWide {
+  max-width: 1100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @media (min-width: 997px) {
   .docItemCol {
     max-width: 75% !important;
