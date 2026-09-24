@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { detectCurrentProduct } from '@site/src/components/SidebarProductHeader';
+import type { ProductKey } from '@site/src/components/SidebarProductHeader';
 
 import styles from './styles.module.css';
 
@@ -7,15 +10,30 @@ import styles from './styles.module.css';
  * for where/how this is mounted (alongside AiAssistantPanel) and its
  * shared fixed positioning/sizing.
  *
- * Links straight to product-integrator's own issue-template chooser
+ * Links straight to each product's own issue-template chooser
  * (`/issues/new/choose`), not a prefilled `/issues/new?title=...`
  * form -- this is about reporting a problem with the *product*, and
  * `/choose` is where that product's own structured templates (bug
- * report, feature request, etc.) live. Files against
- * wso2/product-integrator, not this docs-integrator repo: most things
- * a reader reports from a doc page ("this doesn't work", "this is out
- * of date") are actually product behavior, not a docs bug, and
- * product-integrator is where that gets triaged.
+ * report, feature request, etc.) live. Files against the product repo,
+ * not this docs-integrator repo: most things a reader reports from a
+ * doc page ("this doesn't work", "this is out of date") are actually
+ * product behavior, not a docs bug.
+ *
+ * This file is wholesale-shared (sync-theme.yaml's SHARED_PATHS) and
+ * synced byte-for-byte to every product branch, so the target repo
+ * can't be a single hardcoded constant -- every branch would report
+ * against the same product. Instead, same pattern as
+ * SidebarProductHeader's own PRODUCTS map: one map keyed by
+ * `ProductKey`, with `detectCurrentProduct(baseUrl)` (reused from that
+ * component, not duplicated) picking the right entry at runtime. Adding
+ * a new product is then a one-line addition to this map on `main` --
+ * see MAINTENANCE.md's "Onboarding a new product" checklist -- not a
+ * per-branch file edit.
+ *
+ * TODO: every entry below is wso2/product-integrator as a placeholder
+ * until each product's own real issue-tracker repo is confirmed --
+ * update per product as those are decided, keeping this a map rather
+ * than reverting to a single constant.
  *
  * A plain `<a>`, not a button + `window.open()` -- there's no
  * per-click URL to build anymore (the chooser page doesn't accept
@@ -23,7 +41,11 @@ import styles from './styles.module.css';
  * a real link is simpler and gets the usual link affordances (open in
  * new tab, copy link, etc.) for free.
  */
-const ISSUE_CHOOSER_URL = 'https://github.com/wso2/product-integrator/issues/new/choose';
+const ISSUE_CHOOSER_URLS: Record<ProductKey, string> = {
+  cloud: 'https://github.com/wso2/product-integrator/issues/new/choose',
+  integrator: 'https://github.com/wso2/product-integrator/issues/new/choose',
+  connectors: 'https://github.com/wso2/product-integrator/issues/new/choose',
+};
 
 function FlagIcon(): ReactNode {
   return (
@@ -35,10 +57,14 @@ function FlagIcon(): ReactNode {
 }
 
 export default function ReportIssueButton(): ReactNode {
+  const { siteConfig } = useDocusaurusContext();
+  const product = detectCurrentProduct(siteConfig.baseUrl);
+  const issueUrl = ISSUE_CHOOSER_URLS[product];
+
   return (
     <a
       className={styles.fab}
-      href={ISSUE_CHOOSER_URL}
+      href={issueUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Report product issue"

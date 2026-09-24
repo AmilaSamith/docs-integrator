@@ -11,7 +11,7 @@ import {
 
 import styles from './styles.module.css';
 
-type ProductKey = 'cloud' | 'integrator' | 'connectors';
+export type ProductKey = 'cloud' | 'integrator' | 'connectors';
 
 /**
  * Kept in sync by hand with theme-shared/themeConfig.ts's PRODUCTS map
@@ -53,8 +53,13 @@ const DEFAULT_CROSS_PRODUCT_BASE = '/integration-platform/docs/';
 
 const PRODUCT_ORDER: ProductKey[] = ['cloud', 'integrator', 'connectors'];
 
-/** Detects which of the three sites this build is, from its own baseUrl -- no per-branch config needed, so this file can be byte-identical across branches. */
-function detectCurrentProduct(baseUrl: string): ProductKey {
+/** Detects which of the three sites this build is, from its own baseUrl
+ * -- no per-branch config needed, so this file can be byte-identical
+ * across branches. Exported so other wholesale-shared components that
+ * need per-product data (e.g. ReportIssueButton's issue-tracker repo)
+ * can reuse the same detection instead of duplicating it -- keeps the
+ * "which product is this" logic in exactly one place. */
+export function detectCurrentProduct(baseUrl: string): ProductKey {
   if (baseUrl.includes('/integrator/')) return 'integrator';
   if (baseUrl.includes('/connectors/')) return 'connectors';
   if (baseUrl.includes('/saas/')) return 'cloud';
