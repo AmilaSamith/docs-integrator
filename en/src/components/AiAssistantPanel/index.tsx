@@ -4,9 +4,13 @@ import type { ReactNode } from 'react';
 import styles from './styles.module.css';
 
 /**
- * Floating "AI Documentation Assistant" button, mounted globally via
- * src/theme/Root.js so it's present on every page (doc pages, homepage,
- * search, etc.) -- not just the ones with a DocBreadcrumbs/MarkdownButton.
+ * Floating "AI Documentation Assistant" button. Mounted globally, via
+ * src/components/FloatingActions (itself mounted in src/theme/Root.js)
+ * alongside ReportIssueButton, so it's present on every page (doc
+ * pages, homepage, search, etc.) -- not just the ones with a
+ * DocBreadcrumbs/MarkdownButton. Its own fixed positioning/sizing
+ * lives on FloatingActions's shared wrapper now, not here -- see that
+ * component for why.
  *
  * No LLM backend of our own: this reuses the same mechanism as
  * MarkdownButton's "Open in ChatGPT/Claude/Perplexity" -- hand the
@@ -41,11 +45,19 @@ function buildAssistantUrl(assistant: Assistant, prompt: string): string {
   }
 }
 
+/** A bot/agent head -- antenna, rounded head, side "ears", two eyes --
+ * reads as "chat agent" specifically (not just generic chat/messaging,
+ * which a plain speech bubble could equally mean for a human-to-human
+ * chat feature). */
 function AssistantIcon(): ReactNode {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" />
-      <path d="M19 15l.7 2.1 2.1.7-2.1.7L19 20.5l-.7-2.1-2.1-.7 2.1-.7L19 15z" />
+      <path d="M12 2v3" />
+      <circle cx="12" cy="1.6" r="0.9" fill="currentColor" stroke="none" />
+      <rect x="4" y="8" width="16" height="12" rx="4" />
+      <path d="M2 13h2M20 13h2" />
+      <circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none" />
     </svg>
   );
 }

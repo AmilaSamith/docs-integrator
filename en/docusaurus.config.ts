@@ -7,6 +7,10 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityNavbarItem,
+  sharedDiscordNavbarItem,
+  sharedLinkedInNavbarItem,
+  sharedYoutubeNavbarItem,
+  sharedXNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
   sharedFaqNavbarItem,
@@ -154,6 +158,10 @@ const config: Config = {
         sharedBlogNavbarItem,
         sharedFaqNavbarItem('/reference/faq'),
         sharedGithubNavbarItem,
+        sharedDiscordNavbarItem,
+        sharedLinkedInNavbarItem,
+        sharedYoutubeNavbarItem,
+        sharedXNavbarItem,
       ]
     },
     footer: {

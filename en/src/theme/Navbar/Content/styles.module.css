@@ -7,6 +7,42 @@ Hide color mode toggle in small viewports
   }
 }
 
+/* Vertical divider between the color-mode toggle and the icon-only
+   social/GitHub links that follow it -- see NavbarContent's own
+   docstring for the full right-zone order this sits in. Sized against
+   the 2rem .navbar-icon-link buttons it sits between (custom.css),
+   not the full navbar height, so it doesn't touch the navbar's own
+   top/bottom border. Hidden below 996px along with .colorModeToggle
+   and the individual .navbar__item icons themselves (Infima's own
+   breakpoint) -- nothing left to divide there either. */
+.iconDivider {
+  display: inline-block;
+  width: 1px;
+  height: 1.25rem;
+  margin: 0 0.5rem;
+  background-color: var(--wso2-surface-border);
+}
+
+@media (max-width: 996px) {
+  .iconDivider {
+    display: none;
+  }
+}
+
+/* Also hidden (for a different reason than the 996px rule above) on
+   13"/14" laptop-class viewports -- still comfortably "desktop" (well
+   above the 996px hamburger threshold), but the divider's own width
+   plus its 0.5rem margin on each side is exactly the difference
+   between "fits" and the search input visually running into FAQ, the
+   last centered nav item. Freeing that space is enough on its own at
+   this range; the search input itself only needs shrinking further
+   down (see the 1350px rule below). */
+@media (max-width: 1536px) {
+  .iconDivider {
+    display: none;
+  }
+}
+
 /*
 Restore some Infima style that broke with CSS Cascade Layers
 See https://github.com/facebook/docusaurus/pull/11142
@@ -31,9 +67,24 @@ See https://github.com/facebook/docusaurus/pull/11142
    hamburger takes over -- this range is specifically the "still desktop,
    but not wide enough for everything on one line" gap, where the fixed
    16rem search input (custom.css) would otherwise force the centered
-   items to wrap earlier than necessary. */
+   items to wrap earlier than necessary.
+
+   Two steps, not one -- the icon row (GitHub/Discord/LinkedIn/YouTube/X)
+   added more content to the right zone than this was originally tuned
+   for, so a single width no longer covers the whole "still desktop"
+   range without the search input visually running into FAQ, the last
+   centered item: a modest shrink at 13"/14" laptop widths (paired with
+   hiding .iconDivider above, freed space of its own at this width),
+   then a deeper shrink further down for narrower business-laptop
+   widths. */
+@media (max-width: 1536px) {
+  :global(.navbar__search-input) {
+    width: 12rem;
+  }
+}
+
 @media (max-width: 1350px) {
   :global(.navbar__search-input) {
-    width: 11rem;
+    width: 9rem;
   }
 }

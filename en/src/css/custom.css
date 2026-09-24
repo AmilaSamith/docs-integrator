@@ -119,7 +119,7 @@
   --ifm-code-font-size: 93%;
 
   /* === Navbar & Navigation === */
-  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-navbar-background-color: #FFFFFF;
   --wso2-sidebar-bg: #FBFCFE;
   --ifm-navbar-shadow: 0 1px 0 #E5E9F0;
   --ifm-navbar-height: 4rem;
@@ -217,8 +217,8 @@
   /* === Code === */
   --docusaurus-highlighted-code-line-bg: rgba(241, 78, 35, 0.16);
 
-  /* === Navbar — transparent to blend with hero === */
-  --ifm-navbar-background-color: rgba(10, 16, 32, 0.6);
+  /* === Navbar — solid, opaque in every mode (desktop/tablet/mobile) === */
+  --ifm-navbar-background-color: #0A1020;
   --wso2-sidebar-bg: #0C1424;
   --ifm-navbar-shadow: none;
 
@@ -248,43 +248,38 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================================================
-   NAVBAR — Frosted glass, neutral
+   NAVBAR — Solid, opaque in every mode (desktop/tablet/mobile)
    ================================================================ */
 .navbar {
   border-bottom: 1px solid var(--wso2-surface-border);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Desktop only -- backdrop-filter on .navbar isn't just a visual
-   effect, it makes .navbar establish a new containing block for any
-   `position: fixed` descendant (same rule as `transform`/`filter`,
-   per the CSS spec). The mobile hamburger drawer (.navbar-sidebar,
-   Infima's own markup) is rendered as a DIRECT CHILD of <nav
-   class="navbar">, and IS position: fixed with top/bottom: 0 meant to
-   resolve against the viewport -- with backdrop-filter applied here,
-   those instead resolve against .navbar's own ~4rem-tall box, so the
-   drawer's whole height gets squashed into the navbar bar itself
-   instead of covering the screen. Scoping the blur to desktop (where
-   there's no fixed-position drawer child to break) avoids the bug
-   entirely, and skips the (real, on mobile GPUs) blur cost there too. */
-@media (min-width: 997px) {
-  .navbar {
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-  }
-}
+/* No backdrop-filter here (deliberately removed, not just unset) --
+   --ifm-navbar-background-color is a fully opaque color now, so a
+   blur behind it would have no visible effect anyway. It used to be a
+   desktop-only frosted-glass blur, specifically scoped to desktop
+   because applying it unconditionally broke the mobile hamburger
+   drawer (.navbar-sidebar, a `position: fixed` DIRECT CHILD of <nav
+   class="navbar">): backdrop-filter makes its ancestor establish a
+   new containing block for fixed descendants (same rule as
+   transform/filter, per the CSS spec), so the drawer's top/bottom: 0
+   resolved against .navbar's own ~4rem-tall box instead of the
+   viewport, squashing its whole height into the navbar bar. If a
+   translucent navbar ever comes back, that fixed-positioning bug
+   comes back with it -- re-scope to desktop only, don't apply it
+   unconditionally. */
 
 [data-theme='dark'] .navbar {
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
 /* The mobile drawer (.navbar-sidebar) reuses --ifm-navbar-background-color
-   by default -- tuned for a slim, blurred navbar bar (rgba, ~85%/60%
-   opaque) where the transparency reads as "frosted glass". Stretched
-   across a full-height slide-out panel with no blur behind it, that
-   same partial transparency just looks broken/washed out against
-   whatever's behind it. Use the solid page background instead --
-   already theme-aware (light/dark [data-theme] blocks above). */
+   by default, which is a close but not identical navy shade to the
+   page background in dark mode (#0A1020 vs #0B1120) -- use the solid
+   page background here instead so the full-height slide-out panel
+   matches the page behind it exactly. Already theme-aware (light/dark
+   [data-theme] blocks above). */
 .navbar-sidebar {
   background-color: var(--ifm-background-color);
 }
@@ -348,6 +343,42 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-icon-link:hover {
   background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Infima hides every .navbar__item below 996px (@media max-width:996px
+   { .navbar__item { display: none } }, no !important) in favor of the
+   hamburger drawer -- but .navbar-icon-link's own `display: flex
+   !important` above unconditionally overrides that for these items
+   specifically, since !important always wins over a non-important
+   declaration regardless of specificity or source order. That kept
+   GitHub/Discord/LinkedIn/YouTube/X visible in the mobile HEADER bar
+   too, alongside the search icon, instead of only in the drawer. Undo
+   it, but only for the top-bar instance (`.navbar__items--right`) --
+   the drawer's own instance (`.navbar-sidebar`, styled by the rule
+   below) must stay visible; it's a different DOM subtree, so this
+   selector doesn't touch it. */
+@media (max-width: 996px) {
+  .navbar__items--right .navbar-icon-link {
+    display: none !important;
+  }
+}
+
+/* In the mobile hamburger drawer, every navbar item (desktop 'left'
+   AND 'right' alike) renders as its own full-width stacked row --
+   there's no left/right split there (see
+   @docusaurus/theme-classic's NavbarMobilePrimaryMenu, which just maps
+   the config array in order into one flat <ul>). That's right for
+   plain text links, but the icon-only items (GitHub, Discord,
+   LinkedIn, YouTube, X) should sit together as one row of icons
+   instead of five separate full-width rows. Their <li> itself carries
+   no distinguishing class (DefaultNavbarItemMobile only classes the
+   inner <a>), so select on the <a class="navbar-icon-link"> child
+   instead -- :has() is already used elsewhere in this file for the
+   same "style the row by what it contains" reason (see the
+   `.menu__list-item-collapsible:has(> .menu__link--active)` fix
+   further down). */
+.navbar-sidebar li.menu__list-item:has(> a.navbar-icon-link) {
+  display: inline-block;
 }
 
 /* The "?" icon inlined before the FAQ navbar link's text (see

@@ -21,6 +21,14 @@ function DiscordIcon(): ReactNode {
   );
 }
 
+function LinkedInIcon(): ReactNode {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3.2 8.75h3.5V21H3.2Zm6.3 0h3.36v1.68h.05c.47-.88 1.6-1.8 3.3-1.8 3.53 0 4.19 2.32 4.19 5.35V21h-3.5v-5.44c0-1.3-.02-2.97-1.81-2.97-1.82 0-2.1 1.42-2.1 2.88V21H9.5Z" />
+    </svg>
+  );
+}
+
 function StackOverflowIcon(): ReactNode {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -54,16 +62,22 @@ function ForumIcon(): ReactNode {
 }
 
 /** The community channels formerly listed in the footer's now-retired
- * "Community" link column, plus YouTube (see MAINTENANCE.md-adjacent
- * history in theme-shared/themeConfig.ts) -- hand-written here with
- * real descriptions and icons for card presentation, not just a label
- * + href like a plain footer link. */
+ * "Community" link column, plus YouTube and LinkedIn (see
+ * MAINTENANCE.md-adjacent history in theme-shared/themeConfig.ts) --
+ * hand-written here with real descriptions and icons for card
+ * presentation, not just a label + href like a plain footer link. */
 const CHANNELS: Channel[] = [
   {
     title: 'Discord',
     description: 'Ask questions, share what you’re building, and talk directly with the team and other users.',
     href: 'https://discord.com/invite/wso2',
     icon: <DiscordIcon />,
+  },
+  {
+    title: 'LinkedIn',
+    description: 'Follow WSO2 for product announcements, release highlights, and company news.',
+    href: 'https://www.linkedin.com/company/wso2',
+    icon: <LinkedInIcon />,
   },
   {
     title: 'Stack Overflow',

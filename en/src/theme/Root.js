@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import SiteNav from '@site/src/components/SiteNav';
-import AiAssistantPanel from '@site/src/components/AiAssistantPanel';
+import FloatingActions from '@site/src/components/FloatingActions';
 import { CatalogProvider } from '@site/src/components/ConnectorCatalog/context';
 
 // Make Prism available globally so extensions can reach it
@@ -127,7 +127,7 @@ export default function Root({ children }) {
     <CatalogProvider>
       <SiteNav />
       {children}
-      <AiAssistantPanel />
+      <FloatingActions />
     </CatalogProvider>
   );
 }

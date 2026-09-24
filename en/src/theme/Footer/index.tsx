@@ -128,14 +128,10 @@ export default function Footer(): ReactNode {
         {copyright && <span className={styles.footerCopyright}>{copyright}</span>}
         <div className={styles.footerLegal}>
           {/* Privacy policy / Terms of use aren't linked here yet -- no
-              confirmed URL for either; add once we have real ones. */}
-          <a
-            className={styles.footerLegalLink}
-            href="https://github.com/wso2/docs-integrator/issues/new"
-            target="_blank"
-            rel="noopener noreferrer">
-            Report an issue
-          </a>
+              confirmed URL for either; add once we have real ones.
+              "Report an issue" used to live here -- moved to the
+              floating ReportIssueButton (src/components/FloatingActions),
+              present on every page, not just the footer. */}
         </div>
       </div>
     </footer>

@@ -1,16 +1,21 @@
+/* Fixed-position + z-index used to live here directly; now provided by
+   the shared FloatingActions wrapper this sits inside of (see
+   src/components/FloatingActions), so this button and ReportIssueButton
+   move, space, and resize together at each breakpoint instead of each
+   having its own copy of the same positioning/sizing rules to keep in
+   sync by hand. `position: relative` is still needed here, though --
+   .panel below anchors to THIS element specifically (opens directly
+   above the AI button, not shifted by ReportIssueButton's presence). */
 .wrapper {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  z-index: 200;
+  position: relative;
 }
 
 .fab {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: var(--floating-fab-size, 3.25rem);
+  height: var(--floating-fab-size, 3.25rem);
   border-radius: 999px;
   border: none;
   background: var(--ifm-color-primary);

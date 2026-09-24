@@ -6,7 +6,15 @@
  * logo. Only the layout changes: still the same NavbarItem components,
  * same splitNavbarItems() left/right split for which items go where
  * (the "left" set now renders in the new center zone, "right" items
- * are untouched), same color-mode toggle and search fallback.
+ * are untouched).
+ *
+ * The right zone's own internal order is also deliberately NOT stock:
+ * search, then the color-mode toggle, then a vertical divider
+ * (.iconDivider), then the icon-only `position: 'right'` items in
+ * docusaurus.config.ts's own array order (today: GitHub, Discord,
+ * LinkedIn, YouTube, X) -- stock puts the configured items before the
+ * toggle/search. Keep new icon-only navbar items appended to that
+ * array (not inserted before the toggle/search) to preserve this order.
  *
  * The centering itself needs no bespoke CSS -- Infima already ships a
  * `.navbar__items--center` class for exactly this: flanked by the
@@ -103,13 +111,14 @@ export default function NavbarContent(): ReactNode {
       center={<NavbarItems items={leftItems} />}
       right={
         <>
-          <NavbarItems items={rightItems} />
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
               <SearchBar />
             </NavbarSearch>
           )}
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          {rightItems.length > 0 && <span className={styles.iconDivider} aria-hidden="true" />}
+          <NavbarItems items={rightItems} />
         </>
       }
     />
