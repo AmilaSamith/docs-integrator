@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 title: Customer Review Analyzer with Natural Function
 description: Step-by-step tutorial that builds an HTTP service using a Natural Function to analyze customer reviews and return structured feedback with sentiment, topics, churn risk, and a suggested action.
 keywords: [wso2 integrator, genai, natural functions, tutorial, customer review, sentiment analysis]
-slug: /guides/how-to-guides/review-summarizer-natural-function
+slug: /guides/business-use-cases/review-summarizer-natural-function
 card_icon: natural-functions
 card_summary: Summarize customer reviews with a natural function
 card_keywords: [sentiment analysis, feedback, churn, structured output]
@@ -301,4 +301,4 @@ The LLM analyzed the review, identified the overall sentiment, extracted per-top
 ## What's next
 
 - **[Natural Functions reference](../../develop-and-test/integration-artifacts/ai-integrations/natural-functions/natural-functions.md)** — the single-page reference covering the form, the Prompt node, typed return inference, and calling from a flow.
-- **[Email Generator with Direct LLM](email-generator-direct-llm.md)** — a similar tutorial built around direct LLM calls.
+- **[Email Generator with Direct LLM](../how-to-guides/email-generator-direct-llm.md)** — a similar tutorial built around direct LLM calls.

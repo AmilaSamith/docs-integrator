@@ -17,7 +17,3 @@ Complete, end-to-end examples you can follow from start to finish.
 :::
 
 <GuidesCatalog />
-
-Looking for reusable enterprise integration patterns (Message Filter, Content Based Routing, and similar)? Those are handbook-style reference material now under [Apply Integration Patterns](/develop-and-test/integration-patterns) in Develop and Test.
-
-Coming from another platform? See [Migrate](/migrate).

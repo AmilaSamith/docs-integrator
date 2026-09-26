@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 title: "Raise SAP Business One Purchase Requests for Low-Stock Items"
 sidebar_label: "Raise SAP Business One Purchase Requests for Low-Stock Items"
 description: Build a scheduled automation that finds low-stock items in SAP Business One, raises a purchase request for each, and emails the procurement team, designed visually with SAP Business One and email connections.

@@ -17,12 +17,12 @@ import styles from './styles.module.css';
  *   category's own subsection landing page (how-to-guides.md /
  *   business-use-cases.md): just a plain grid of that category's
  *   cards, no heading (the page already has one, its `# Title`) and no
- *   search box (a search over 2-7 items doesn't earn its keep, and
- *   without it these pages read as a distinct "browse this category"
- *   view instead of a smaller echo of the top-level page). This is
- *   what keeps those two pages from needing their own hand-written
- *   guide list, same single-source-of-truth reasoning as the top-level
- *   page.
+ *   search box (a search over a handful of items doesn't earn its
+ *   keep, and without it these pages read as a distinct "browse this
+ *   category" view instead of a smaller echo of the top-level page).
+ *   This is what keeps those two pages from needing their own
+ *   hand-written guide list, same single-source-of-truth reasoning as
+ *   the top-level page.
  *
  * The guide list itself comes from guidesCatalogPlugin (plain JS, see
  * its own docstring for why -- so its GuideCardData shape is

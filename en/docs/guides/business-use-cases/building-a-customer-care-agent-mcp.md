@@ -1,9 +1,9 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 title: "Build a Customer Care Agent with MCP"
 description: Build an AI agent that connects to a live MCP server to answer product and order questions via natural language.
 keywords: [wso2 integrator, mcp, ai agent, mcp toolkit, customer care, tutorial]
-slug: /guides/how-to-guides/building-a-customer-care-agent-mcp
+slug: /guides/business-use-cases/building-a-customer-care-agent-mcp
 card_icon: mcp
 card_summary: An agent backed by an MCP server
 card_keywords: [model context protocol, chatbot, tool calling, customer support]

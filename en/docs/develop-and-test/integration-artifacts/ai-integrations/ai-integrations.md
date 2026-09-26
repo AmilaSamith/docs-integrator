@@ -55,7 +55,7 @@ WSO2 Integrator lets you build AI-powered integrations, including direct LLM cal
 ## Tutorials
 
 - **[Email Generator with Direct LLM](../../../guides/how-to-guides/email-generator-direct-llm.md)**
-- **[Customer review analyzer with Natural Function](../../../guides/how-to-guides/review-summarizer-natural-function.md)**
-- **[Building an HR knowledge base with RAG](../../../guides/how-to-guides/building-hr-knowledge-base-rag.md)**
-- **[Build a customer care agent with MCP](../../../guides/how-to-guides/building-a-customer-care-agent-mcp.md)**
-- **[Building an IT Helpdesk AI Agent with Persistent Memory](../../../guides/how-to-guides/it-helpdesk-chatbot.md)**
+- **[Customer review analyzer with Natural Function](../../../guides/business-use-cases/review-summarizer-natural-function.md)**
+- **[Building an HR knowledge base with RAG](../../../guides/business-use-cases/building-hr-knowledge-base-rag.md)**
+- **[Build a customer care agent with MCP](../../../guides/business-use-cases/building-a-customer-care-agent-mcp.md)**
+- **[Building an IT Helpdesk AI Agent with Persistent Memory](../../../guides/business-use-cases/it-helpdesk-chatbot.md)**

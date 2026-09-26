@@ -11,7 +11,7 @@ A **natural function** is a function whose body is written in **English** instea
 
 This page is a single, end-to-end reference covering the form that creates the function, the Prompt node, the return type, and how to call it from a flow.
 
-> **Looking for a hands-on walkthrough?** See the **[Customer Review Analyzer with Natural Function](../../../../guides/how-to-guides/review-summarizer-natural-function.md)** tutorial. It builds the example shown on this page from an empty project to a working `POST /api/v1/analyze` endpoint.
+> **Looking for a hands-on walkthrough?** See the **[Customer Review Analyzer with Natural Function](../../../../guides/business-use-cases/review-summarizer-natural-function.md)** tutorial. It builds the example shown on this page from an empty project to a working `POST /api/v1/analyze` endpoint.
 
 :::caution Experimental feature
 Natural functions are an experimental feature. Enable experimental features in WSO2 Integrator before using them: open **Settings**, expand **Extensions**, select the **Ballerina** extension, and tick **Experimental: Enable Experimental Feature**.
@@ -198,7 +198,7 @@ A natural function can also be wired up as an [agent tool](../agents/tools.md): 
 
 ## What's Next
 
-- **[Customer Review Analyzer with Natural Function (Tutorial)](../../../../guides/how-to-guides/review-summarizer-natural-function.md)** — end-to-end tutorial that builds a `POST /api/v1/analyze` service using everything on this page.
+- **[Customer Review Analyzer with Natural Function (Tutorial)](../../../../guides/business-use-cases/review-summarizer-natural-function.md)** — end-to-end tutorial that builds a `POST /api/v1/analyze` service using everything on this page.
 - **[Model Providers](../ai-building-blocks/model-providers.md)** — switch providers, tune temperature, max tokens, and retries for the Prompt node's connection.
 - **[Direct LLM Calls](../direct-llm/direct-llm.md)** — when you only need a single in-flow call without packaging it as a function.
 - **[AI Agents](../agents/agents.md)** — when natural functions become tools an agent can choose to call.

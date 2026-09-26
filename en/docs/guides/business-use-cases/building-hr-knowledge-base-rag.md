@@ -1,9 +1,9 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 title: "Building an HR Knowledge Base with RAG"
 description: Step-by-step tutorial for building an HR knowledge base in WSO2 Integrator that ingests HR policy documents and answers employee questions over HTTP using retrieval-augmented generation.
 keywords: [wso2 integrator, genai, rag, hr knowledge base, vector store, tutorial]
-slug: /guides/how-to-guides/building-hr-knowledge-base-rag
+slug: /guides/business-use-cases/building-hr-knowledge-base-rag
 card_icon: rag
 card_summary: Answer HR questions using retrieval-augmented generation
 card_keywords: [vector database, embeddings, chatbot, document ingestion, hr policy]

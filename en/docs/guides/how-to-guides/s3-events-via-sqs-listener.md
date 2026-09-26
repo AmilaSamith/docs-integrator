@@ -1,10 +1,10 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 title: "File Integrations on S3 File Events"
 sidebar_label: "File Integrations on S3 File Events"
 description: Configure AWS S3 to push object-created notifications to an SQS queue, then consume and parse those events in a Ballerina integration using the aws.sqs listener.
 keywords: [wso2 integrator, aws, s3, sqs, event-driven, csv, file processing, ballerina, listener, trigger, object notification, cloud]
-slug: /guides/business-use-cases/s3-events-via-sqs-listener
+slug: /guides/how-to-guides/s3-events-via-sqs-listener
 card_icon: event
 card_summary: React to S3 uploads using an SQS listener
 card_keywords: [aws, event-driven, file processing, cloud storage]

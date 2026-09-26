@@ -29,6 +29,15 @@ const fg = require('fast-glob');
  * summary already cover the terms someone would search for; add it
  * where they don't.
  *
+ * The two folders are two genuinely different kinds of guide, not just
+ * two piles of content: `how-to-guides/` demonstrates one integration
+ * capability or pattern in the abstract (an agent, a connector, an
+ * event listener), while `business-use-cases/` solves a concrete,
+ * end-to-end problem for a named business function (HR, IT support,
+ * customer care, procurement). Which folder a new guide belongs in is
+ * a judgment call on that basis, not on topic (AI vs. not) or on where
+ * its content originally came from.
+ *
  * Plain JS, not TS: local plugins referenced by string path in the
  * `plugins` array (docusaurus.config.ts) are resolved with a plain
  * Node `require()`, which doesn't understand TypeScript syntax -- only

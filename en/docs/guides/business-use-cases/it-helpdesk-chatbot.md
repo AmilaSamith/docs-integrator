@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 4
 title: "Building an IT Helpdesk AI Agent with Persistent Memory"
 description: Build an IT helpdesk AI agent that uses persistent MSSQL-backed memory to retain conversation history across requests and service restarts.
-slug: /guides/how-to-guides/it-helpdesk-chatbot
+slug: /guides/business-use-cases/it-helpdesk-chatbot
 card_icon: agents
 card_summary: A chatbot that remembers context across sessions
 card_keywords: [mssql, database, agent, helpdesk, support]
@@ -185,7 +185,7 @@ Add persistent memory by following the instructions in [Memory](../../develop-an
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
-    ![Agent with inmemory](/img/genai/develop-and-test/agents/29-agent-with-inmemory.png)
+    ![Agent with inmemory](/img/genai/develop/agents/29-agent-with-inmemory.png)
 </TabItem>
 
 <TabItem value="code" label="Ballerina Code">
