@@ -25,7 +25,7 @@ Click any card to navigate to the [Integration view](integration-view.md) or [Li
 
 ### Generate with AI
 
-Click the **Generate with AI** button at the top of the canvas to open the [WSO2 Integrator Copilot](../copilot/getting-started.md). Describe what you want in natural language, and WSO2 Integrator Copilot generates the integration with the appropriate entry points, connections, and logic.
+Click the **Generate with AI** button at the top of the canvas to open the [WSO2 Integrator Copilot](../copilot/copilot.md). Describe what you want in natural language, and WSO2 Integrator Copilot generates the integration with the appropriate entry points, connections, and logic.
 
 ### Add integration or library
 

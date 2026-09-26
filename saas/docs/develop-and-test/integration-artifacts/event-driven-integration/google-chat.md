@@ -4,25 +4,48 @@ title: Google Chat
 
 # Google Chat
 
-Google Chat event integrations receive interaction events directly from a Google Chat app over HTTPS and trigger handler functions as users message the app, join or leave a space, or interact with cards and dialogs. Use them to build Chat apps that reply to messages, react to space membership changes, and process card clicks, slash commands, and form submissions without polling the Google Chat API.
+Google Chat event integrations receive interaction events directly from Google Chat over HTTP and trigger handler functions as users message, add, or interact with your Chat app. Use them to build Chat apps, bots, and interactive cards without polling any API.
 
-## Creating a Google Chat service
+The Google Chat listener must be reachable over a public HTTPS URL. For local development, use a tunneling tool such as [ngrok](https://ngrok.com) to create a public URL for your local port.
 
-The Google Chat listener must be reachable from the internet over HTTPS. For local development, use a tunneling tool such as [ngrok](https://ngrok.com) to create a public HTTPS URL for your local port. In production, deploy the integration to a publicly accessible host.
+After starting the integration, configure your Chat app in the **Google Cloud Console** under **Google Chat API → Configuration**: set the **HTTP endpoint URL** to your listener's public URL and choose an **Authentication audience** that matches your service's configuration. See the [setup guide](../../../connectors/catalog/communication/google-chat/setup-guide.md) for details.
 
-After starting the integration, configure the app's connection settings in the **Google Chat API** configuration page of the Google Cloud console, setting the app URL to `https://<your-host>` with HTTP method `POST`.
+## Creating a Google Chat listener
+
+1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
+2. In the **Artifacts** panel, select **Google Chat** under **Event Integration**.
+3. In the creation form, fill in the following fields:
+
+   <ThemedImage
+       alt="Create Google Chat form showing the Listener Name, Port, Auth Config, and HTTP Listener Config fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-service-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-service-form.png'),
+       }}
+   />
+
+   | Field | Description | Default |
+   |---|---|---|
+   | **Listener Name** | Identifier for the listener created with this service. | `chatListener` |
+   | **Port** | The port or HTTP listener to listen on. | `8000` |
+   | **Auth Config** | Authentication for the Chat API client: a service account, OAuth 2.0, or bearer token config. | Required |
+   | **HTTP Listener Config** | Optional inbound HTTP listener settings. | `{}` |
+
+4. Click **Create**.
+
+5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill and an empty **Event Handlers** section.
+
+6. Click **+ Add Handler** to define how incoming events are processed.
 
 ```ballerina
 import ballerinax/googleapis.chat;
 import ballerina/log;
 
-configurable int port = 8090;
-configurable string serviceAccountPath = "./service-account-key.json";
-configurable string endpointUrl = "https://<your-host>";
+configurable chat:ServiceAccountFileConfig authConfig = ?;
+configurable string endpointUrl = ?;
+configurable int listenerPort = 8000;
 
-listener chat:Listener chatListener = new (port, {
-    auth: {path: serviceAccountPath}
-});
+listener chat:Listener chatListener = new (listenerPort, {auth: authConfig});
 
 @chat:ServiceConfig {
     endpointUrl: endpointUrl
@@ -30,82 +53,140 @@ listener chat:Listener chatListener = new (port, {
 service chat:ChatService on chatListener {
 
     remote function onMessage(chat:MessageEvent event, chat:MessageCaller caller) returns error? {
-        log:printInfo("Message received", text = event.message.text ?: "");
-        check caller->respond({text: "Echo: " + (event.message.text ?: "")});
-    }
-
-    remote function onAddedToSpace(chat:ChatEvent event, chat:MessageCaller caller) returns error? {
-        log:printInfo("App added to space", space = event.space?.name ?: "");
-        check caller->respond({text: "Thanks for adding me!"});
-    }
-
-    remote function onRemovedFromSpace(chat:ChatEvent event) returns error? {
-        log:printInfo("App removed from space", space = event.space?.name ?: "");
-    }
-
-    remote function onCardClicked(chat:ChatEvent event, chat:CardClickedCaller caller) returns error? {
-        log:printInfo("Card clicked", space = event.space?.name ?: "");
-        check caller->respond({text: "Got your click!"});
-    }
-
-    remote function onWidgetUpdated(chat:ChatEvent event, chat:WidgetUpdatedCaller caller) returns error? {
-        log:printInfo("Widget updated", space = event.space?.name ?: "");
-    }
-
-    remote function onAppCommand(chat:ChatEvent event, chat:MessageCaller caller) returns error? {
-        log:printInfo("App command invoked", space = event.space?.name ?: "");
-        check caller->respond({text: "Command received"});
-    }
-
-    remote function onAppHome(chat:ChatEvent event, chat:AppHomeCaller caller) returns error? {
-        log:printInfo("App home opened", user = event.user?.name ?: "");
-        check caller->respond({});
-    }
-
-    remote function onSubmitForm(chat:ChatEvent event, chat:SubmitFormCaller caller) returns error? {
-        log:printInfo("Form submitted", space = event.space?.name ?: "");
-        check caller->respond({});
+        string text = event.message.text ?: "";
+        log:printInfo("Google Chat message received", text = text);
+        check caller->respond({text: "Echo: " + text});
     }
 }
 ```
 
-## Service and listener configuration
+Save this as `main.bal` and run `bal run` from the project directory. Configure your Chat app's **HTTP endpoint URL** to point at the listener and make sure **Authentication audience** matches the `@chat:ServiceConfig` annotation.
 
-`chat:Listener` accepts a port number (or an existing `http:Listener`) together with a `ListenerConfig` record, and starts an HTTPS-facing endpoint that Google Chat posts interaction events to.
+## Service configuration
 
-**Listener configuration (`chat:ListenerConfig`):**
+Service configuration controls the Google Chat trigger's audience validation, and the name, port, and auth settings of each attached listener.
 
-| Field | Description | Default |
-|---|---|---|
-| `auth` | Authentication used to verify and process events: a service account (`ServiceAccountAuthConfig`), OAuth2 credentials (`OAuth2Config`), or a bearer token (`http:BearerTokenConfig`). | Required |
-| `httpListenerConfig` | Underlying `http:ListenerConfiguration` applied to the HTTP listener created for this port. | `{}` |
+In the **Service Designer**, click **Configure** to open the **Google Chat Configuration** panel.
 
-**Service configuration (`@chat:ServiceConfig` annotation, required on every `ChatService`):**
+The left panel shows **Attached Listeners**. Pick a listener under **Attached Listeners** to configure its connection settings in the main configuration panel.
+
+<ThemedImage
+    alt="Google Chat Configuration panel showing the Google Chat audience settings and the Attached Listeners list with the Name, Listen On, Auth Config, and HTTP Listener Config fields"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/service-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/service-config.png'),
+    }}
+/>
+
+### Main configurations
 
 | Field | Description |
 |---|---|
-| `endpointUrl` | The public HTTPS URL of this listener, exactly as configured for the app in the Google Chat API console. Used to verify the bearer token on incoming requests. |
-| `projectNumber` | Alternative to `endpointUrl`: the GCP project number the Chat app was built under, used to verify the token's audience instead. |
+| **HTTP Endpoint URL Config** or **Project Number** | The audience the listener validates incoming bearer tokens against. Must match the **Authentication audience** configured for your Chat app. Required. |
 
-Only one of `endpointUrl` or `projectNumber` needs to be set.
+### Listener configurations
+
+| Field | Description |
+|---|---|
+| **Name** | The name of the listener. Required. |
+| **Listen On** | The port or HTTP listener to listen on. Defaults to `8000`. |
+| **Auth Config** | Authentication for the Chat API client: a service account, OAuth 2.0, or bearer token config. Required. |
+| **HTTP Listener Config** | Optional inbound HTTP listener settings. |
+
+Click **Attach Listener** to attach an additional listener to the same service.
+
+Click **Save Changes** to apply updates.
+
+The service-level `@chat:ServiceConfig` annotation configures which bearer-token audience the listener validates:
+
+```ballerina
+@chat:ServiceConfig {
+    endpointUrl: "https://my-app.example.com"
+}
+service chat:ChatService on chatListener {
+    // handlers
+}
+```
+
+Use `projectNumber` instead of `endpointUrl` if your Chat app's **Authentication audience** is set to **Project Number**.
+
+Listener configuration maps to the `chat:ListenerConfig` passed when constructing the listener:
+
+```ballerina
+listener chat:Listener chatListener = new (listenerPort, {auth: authConfig});
+```
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `auth` | <code>ServiceAccountAuthConfig&#124;OAuth2Config&#124;http:BearerTokenConfig</code> | Required | Authentication for the internal Chat API client (service account, OAuth2, or bearer token). |
+| `httpListenerConfig` | `http:ListenerConfiguration` | `{}` | Optional inbound HTTP listener settings. |
 
 ## Event handlers
 
-When a Google Chat service is created, implement the handlers for the interactions your app needs to support. All handlers are optional remote functions on `chat:ChatService`.
+An event handler is a `remote function` that WSO2 Integrator calls for each Google Chat interaction event received.
+
+### Adding an event handler
+
+In the **Service Designer**, click **+ Add Handler**. A **Select Handler to Add** panel opens on the right listing the available event types.
+
+<ThemedImage
+    alt="Select Handler to Add drawer listing the Google Chat event handlers"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-service-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-service-designer.png'),
+    }}
+/>
+
+Pick **On Message**, then click **Save**. This opens the **Flow Designer** for `onMessage`.
+
+<ThemedImage
+    alt="Flow canvas for the Google Chat onMessage handler with a built-in Error Handler block"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-onmessage-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/google-chat/step-onmessage-flow.png'),
+    }}
+/>
+
+Every handler is scaffolded with a built-in **Error Handler** block. Use the flow canvas to add integration steps such as database writes, HTTP calls, and transformations, and edit the **Error Handler** block to define recovery logic for errors raised in the flow. Repeat these steps to add the other handlers you need.
+
+**onMessage handler** — called when a user sends a message, @mentions the app, or invokes a slash command:
+
+```ballerina
+service chat:ChatService on chatListener {
+
+    remote function onMessage(chat:MessageEvent event, chat:MessageCaller caller) returns error? {
+        do {
+            check caller->respond({text: "Echo: " + (event.message.text ?: "")});
+        } on fail error err {
+            log:printError("Failed to handle onMessage event", err);
+        }
+    }
+}
+```
+
+Return `error?` from a handler to allow unhandled errors to propagate to the listener, which logs them. Return `()` to suppress them.
+
+### Handler types
+
+`chat:ChatService` exposes one optional handler per Chat event type. Implement only the ones you need.
 
 | Handler | Triggered when |
 |---|---|
-| `onMessage` | A user sends a message to the app in a space or direct message |
-| `onAddedToSpace` | The app is added to a space or direct message |
-| `onRemovedFromSpace` | The app is removed from a space or direct message |
-| `onCardClicked` | A user clicks an interactive element on a card message |
-| `onWidgetUpdated` | A user interacts with a widget, such as a multi-select menu, that updates a card in place |
-| `onAppCommand` | A user invokes a slash command registered by the app |
-| `onAppHome` | A user opens the app's Home tab |
-| `onSubmitForm` | A user submits a dialog form |
+| `onMessage` | A user sends a message, @mentions the app, or invokes a slash command. |
+| `onAddedToSpace` | The app is added to a space. |
+| `onRemovedFromSpace` | The app is removed from a space. |
+| `onCardClicked` | A user clicks a button or interactive element on a card. |
+| `onWidgetUpdated` | A widget requests an autocomplete or similar update. |
+| `onAppCommand` | A user invokes a Chat app command. |
+| `onAppHome` | A user opens the app's home page. |
+| `onSubmitForm` | A user submits a dialog or form. |
+
+Each handler receives the event and, for most event types, an event-specific caller (`chat:MessageCaller`, `chat:CardClickedCaller`, `chat:AppHomeCaller`, or `chat:SubmitFormCaller`) pre-configured with the event's space context. Use the caller to `respond` synchronously within the event window, or to call Chat APIs asynchronously (`sendMessage`, `updateMessage`, `deleteMessage`, `getSpace`).
 
 ## What's next
 
-- [Telegram](telegram.md) — react to Telegram bot events
-- [WhatsApp Business](whatsapp-business.md) — react to WhatsApp Business events
-- [Connections](../supportive-artifacts/connections.md) — reuse credentials across services
+- [WhatsApp Business](whatsapp-business.md) — react to WhatsApp Business Cloud webhook events
+- [Telegram](telegram.md) — react to Telegram Bot API webhook updates
+- [Connections](../supportive-artifacts/connections.md) — reuse Google Chat credentials across services
+- [Google Chat connector reference](../../../connectors/catalog/communication/google-chat/overview.md) — full connector API reference
+- [Google Chat setup guide](../../../connectors/catalog/communication/google-chat/setup-guide.md) — create a GCP project and configure the Chat app
