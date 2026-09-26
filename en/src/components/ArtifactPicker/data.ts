@@ -92,8 +92,8 @@ export const ARTIFACTS: Artifact[] = [
   { name: 'Automation', category: 'automation', icon: `${ICON_BASE}/automation.svg`, href: `${DEV}/automation` },
 
   // Durable Workflow
-  { name: 'Durable Workflow', category: 'workflow', icon: `${ICON_BASE}/durable-workflow.svg`, href: `${DEV}/workflow/durable-workflow`, generated: true },
-  { name: 'Durable Agentic Workflow', category: 'workflow', icon: `${ICON_BASE}/durable-workflow.svg`, href: `${DEV}/workflow/durable-agentic-workflow`, generated: true },
+  { name: 'Durable Workflow', category: 'workflow', icon: `${ICON_BASE}/durable-workflow.svg`, href: `${DEV}/workflow/durable-workflow` },
+  { name: 'Durable Agentic Workflow', category: 'workflow', icon: `${ICON_BASE}/durable-workflow.svg`, href: `${DEV}/workflow/durable-agentic-workflow` },
 
   // AI Integration
   { name: 'Chat Agent Service', category: 'ai', icon: `${ICON_BASE}/chat-agent.svg`, href: `${AI}/agents` },
