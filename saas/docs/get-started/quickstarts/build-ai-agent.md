@@ -68,7 +68,7 @@ In the cloud editor, you're already inside a project. Skip to Step 2.
 
 By default, the agent is configured to use the WSO2 model provider. If you want to use a different LLM, see [Model providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md) for the full list of supported providers (OpenAI, Azure OpenAI, Anthropic, and others).
 
-If you are using the WSO2 model provider, the access token is obtained through [WSO2 Integrator Copilot](../../editor/copilot/getting-started.md). If you have not already signed in, you will be prompted to do so.
+If you are using the WSO2 model provider, the access token is obtained through [WSO2 Integrator Copilot](../../editor/copilot/copilot.md). If you have not already signed in, you will be prompted to do so.
 
 ## Step 4: Run and test
 

@@ -870,6 +870,6 @@ listener ftp:Listener ftpListener = new (
 
 - [CSV fault tolerance](csv-fault-tolerance.md) — skip malformed rows instead of failing the whole file
 - [Local files](local-files.md) — monitor a local directory instead of a remote server
-- [File integrations on S3 file events](../../../guides/business-use-cases/s3-events-via-sqs-listener.md) — react to S3 uploads using an SQS listener
+- [File integrations on S3 file events](../../../guides/how-to-guides/s3-events-via-sqs-listener.md) — react to S3 uploads using an SQS listener
 - [Connections](../supportive-artifacts/connections.md) — reuse FTP connection credentials across services
 - [Data Mapper](../supportive-artifacts/data-mapper/data-mapper.md) — transform incoming file payloads between formats

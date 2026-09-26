@@ -8,7 +8,7 @@ This page shows how to deploy an AI agent to WSO2 Cloud - Integration Platform a
 
 :::info Prerequisites
 - WSO2 Integrator installed on your machine.
-- A working AI agent. You can follow the [IT helpdesk chatbot tutorial](../../guides/how-to-guides/it-helpdesk-chatbot.md).
+- A working AI agent. You can follow the [IT helpdesk chatbot tutorial](../../guides/business-use-cases/it-helpdesk-chatbot.md).
 - API keys for any model providers used by the agent, for example OpenAI. Do not commit keys to source control.
 - Access to a WSO2 Cloud account with permission to create projects and services.
 
@@ -65,4 +65,4 @@ Example queries to exercise RAG and tools:
 
 - [RAG ingestion](./ingestion.md) — Configure scheduled ingestion into your vector store.
 - [RAG retrieval](./retrieval.md) — Query a vector store to retrieve relevant chunks.
-- [IT helpdesk chatbot tutorial](../../guides/how-to-guides/it-helpdesk-chatbot.md) — Example project that can be used in this walkthrough.
+- [IT helpdesk chatbot tutorial](../../guides/business-use-cases/it-helpdesk-chatbot.md) — Example project that can be used in this walkthrough.
