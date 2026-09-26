@@ -41,6 +41,7 @@ The **AI Agent** block allows you to configure the following components of the a
 - **System prompt and agent behavior**: Click the **AI Agent** block to open the configuration panel, where you can configure the agent role, instructions, query input, and response mapping.
 - **Memory configuration**: Use the **Add Memory** option to configure conversational or persistent memory for the agent. For more information, see [Memory](./memory.md).
 - **Tools**: Use the **+** button on the AI Agent block to add tools and integrations that the agent can invoke during execution. For more information, see [Tools](./tools.md).
+- **Gated tools**: Mark a tool as requiring approval so the agent pauses and asks a person before it runs. For more information, see [Gated Tools](./gated-tools.md).
 - **Model Provider Configuration**: Click the attached model provider node (for example, `wso2ModelProvider`) to configure the LLM provider and model settings used by the agent. For more information, see [Model Providers](../ai-building-blocks/model-providers.md).
 
 ## Try it and run
@@ -68,6 +69,8 @@ The chat interface reuses the same session across interactions, enabling memory-
 
 - **[Creating an Agent](create-an-agent.md)** - Learn how to create and configure agents using the AI Chat Agent Wizard.
 - **[Tools](tools.md)** - Add functions, connectors, and integrations to your agents.
+- **[Gated Tools](gated-tools.md)** - Pause a tool call for approval before it runs.
 - **[Memory](memory.md)** - Configure conversational and persistent memory.
 - **[Observability](observability.md)** - Monitor traces, logs, and execution details.
+- **[Identity & Access Management](identity-and-access-management.md)** - Secure agents, tools, and integrations with identity and access control.
 - **[Evaluations](evaluations/evaluations.md)** - Test and evaluate agent behavior and response quality.

@@ -140,5 +140,5 @@ export const ARTIFACTS: Artifact[] = [
   { name: 'Type', category: 'other', icon: `${ICON_BASE}/type.svg`, href: `${DEV}/supportive-artifacts/types` },
   { name: 'Connection', category: 'other', icon: `${ICON_BASE}/connection.svg`, href: `${DEV}/supportive-artifacts/connections` },
   { name: 'Configuration', category: 'other', icon: `${ICON_BASE}/config.svg`, href: `${DEV}/supportive-artifacts/configurations` },
-  { name: 'Agent', category: 'other', icon: `${ICON_BASE}/chat-agent.svg`, href: `${DEV}/supportive-artifacts/agent`, generated: true },
+  { name: 'Agent', category: 'other', icon: `${ICON_BASE}/chat-agent.svg`, href: `${DEV}/supportive-artifacts/agent` },
 ];
