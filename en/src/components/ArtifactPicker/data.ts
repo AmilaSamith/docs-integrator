@@ -111,7 +111,7 @@ export const ARTIFACTS: Artifact[] = [
   { name: 'Kafka', category: 'event', icon: `${ICON_BASE}/kafka.svg`, href: `${DEV}/event-driven-integration/kafka` },
   { name: 'RabbitMQ', category: 'event', icon: `${ICON_BASE}/rabbitmq.svg`, href: `${DEV}/event-driven-integration/rabbitmq` },
   { name: 'Solace', category: 'event', icon: `${ICON_BASE}/solace.svg`, href: `${DEV}/event-driven-integration/solace` },
-  { name: 'Solace (JMS)', category: 'event', icon: `${ICON_BASE}/solace.svg`, href: `${DEV}/event-driven-integration/solace-jms`, generated: true },
+  { name: 'Solace (JMS)', category: 'event', icon: `${ICON_BASE}/solace.svg`, href: `${DEV}/event-driven-integration/solace-jms` },
   { name: 'MQTT', category: 'event', icon: `${ICON_BASE}/mqtt.svg`, href: `${DEV}/event-driven-integration/mqtt` },
   { name: 'Azure Service Bus', category: 'event', icon: `${ICON_BASE}/azure-files.svg`, href: `${DEV}/event-driven-integration/azure-service-bus` },
   { name: 'AWS SQS', category: 'event', icon: `${ICON_BASE}/aws.svg`, href: `${DEV}/event-driven-integration/aws-sqs`, generated: true },
@@ -123,9 +123,9 @@ export const ARTIFACTS: Artifact[] = [
   { name: 'Shopify', category: 'event', icon: `${ICON_BASE}/shopify.svg`, href: `${DEV}/event-driven-integration/shopify`, beta: true, generated: true },
   { name: 'HubSpot', category: 'event', icon: `${ICON_BASE}/hubspot.svg`, href: `${DEV}/event-driven-integration/hubspot`, beta: true, generated: true },
   { name: 'Twilio', category: 'event', icon: `${ICON_BASE}/chat.svg`, href: `${DEV}/event-driven-integration/twilio` },
-  { name: 'WhatsApp Business', category: 'event', icon: `${ICON_BASE}/whatsapp.svg`, href: `${DEV}/event-driven-integration/whatsapp-business`, generated: true },
-  { name: 'Telegram', category: 'event', icon: `${ICON_BASE}/telegram.svg`, href: `${DEV}/event-driven-integration/telegram`, generated: true },
-  { name: 'Google Chat', category: 'event', icon: `${ICON_BASE}/google-chat.svg`, href: `${DEV}/event-driven-integration/google-chat`, generated: true },
+  { name: 'WhatsApp Business', category: 'event', icon: `${ICON_BASE}/whatsapp.svg`, href: `${DEV}/event-driven-integration/whatsapp-business` },
+  { name: 'Telegram', category: 'event', icon: `${ICON_BASE}/telegram.svg`, href: `${DEV}/event-driven-integration/telegram` },
+  { name: 'Google Chat', category: 'event', icon: `${ICON_BASE}/google-chat.svg`, href: `${DEV}/event-driven-integration/google-chat` },
   { name: 'POP3/IMAP4', category: 'event', icon: `${ICON_BASE}/email.svg`, href: `${DEV}/event-driven-integration/pop3imap4` },
 
   // File-Driven Integration

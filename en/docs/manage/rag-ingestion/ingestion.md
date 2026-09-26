@@ -116,6 +116,30 @@ You can run ingestion at intervals such as minutely, hourly, daily, monthly, or 
 
 ![Schedule recurring ingestion](/img/manage/cloud/rag-ingestion/rag-schedule-light.gif)
 
+### Step 7: Verify
+
+Once processing is complete, execute test queries to ensure proper data retrieval.
+
+1. On the automation overview page, switch to the **Retrieval** tab.
+2. Enter a query based on the content of the files ingested in the previous step in the **Query** field.
+3. **Maximum chunks to retrieve** and **Minimum similarity threshold** are automatically populated with default values. You can modify them if needed by clicking **Query Configurations**.
+
+:::info
+- **Maximum chunks to retrieve** defines the number of matching chunks to retrieve for the query.
+- **Minimum similarity threshold** determines whether a chunk is relevant enough to be considered a match for a given query. It is expressed as a value between 0 and 1 (for example, 0.7 or 70% similarity).
+:::
+
+4. Click **Send** to execute the query.
+5. Review the returned chunks to confirm that relevant content is retrieved.
+
+If the **Send** button is unavailable, use the [RAG retrieval](./retrieval.md) to verify retrieval.
+
+![Configure retrieval values and verify results in the Retrieval tab](/img/manage/cloud/rag-ingestion/rag-retrieval-verification.gif)
+
+:::note
+A component named **RAG Retrieval Service** is automatically created alongside the ingestion automation. This component is used internally by the ingestion automation and is not intended for external use.
+:::
+
 ## What's next
 
 - [RAG retrieval](./retrieval.md) — Query the vector store after ingestion completes.
