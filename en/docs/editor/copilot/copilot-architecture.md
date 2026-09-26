@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Copilot Architecture and Data Handling
 description: Understand how WSO2 Integrator Copilot handles prompts, responses, feedback, and authentication data, and the best practices to follow when using AI features.
-keywords: [wso2 integrator, copilot, ai, data handling, privacy, byok, anthropic, aws bedrock, asgardeo, architecture]
+keywords: [wso2 integrator, copilot, ai, data handling, privacy, byok, anthropic, aws bedrock, google vertex ai, asgardeo, architecture]
 slug: /editor/copilot/copilot-architecture
 ---
 
@@ -27,7 +27,7 @@ WSO2 Integrator Copilot is integrated into the WSO2 Integrator developer experie
 
 To maintain security, all WSO2 Integrator Copilot features require authentication:
 
-- Users must [sign in](getting-started.md) to enable Copilot functionality.
+- Users must [sign in](copilot.md) to enable Copilot functionality.
 - Social sign-in options are supported for ease of use.
 - Authentication and session management are handled by [Asgardeo](https://wso2.com/asgardeo/), the WSO2 identity provider.
 
@@ -49,7 +49,7 @@ The movement of data through Copilot is designed for zero retention at the inter
 
 ## Bring your own key (BYOK)
 
-Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](getting-started.md) for the available sign-in options.
+Organizations can configure Copilot to run using their own model provider accounts. This ensures enterprise-level control over data governance and billing. See [Getting started](copilot.md) for the available sign-in options.
 
 ### Anthropic deployment
 
@@ -62,6 +62,12 @@ Organizations can configure Copilot to run using their own model provider accoun
 - Copilot can also run using Claude models deployed on Amazon Bedrock.
 - Requires an active Claude deployment in your Amazon Bedrock environment.
 - Users must provide their own access keys for connectivity.
+
+### Google Vertex AI
+
+- Copilot can also run using Claude models deployed on Google Vertex AI.
+- Requires an active Anthropic Claude deployment in your Google Cloud project.
+- Users must provide the GCP project ID, the location of the deployment, and the path to a service account JSON key file.
 
 ## Open source
 
@@ -135,4 +141,4 @@ General Copilot best practices:
 ## See also
 
 - [Copilot capabilities](capabilities.md) — What Copilot can do.
-- [Getting started](getting-started.md) — Sign in to Copilot.
+- [Getting started](copilot.md) — Sign in to Copilot.

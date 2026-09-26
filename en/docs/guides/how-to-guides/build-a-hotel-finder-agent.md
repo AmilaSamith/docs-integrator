@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
 
 :::tip Default model provider
 
-By default, the agent is created with the WSO2 model provider. If you have not [signed in to WSO2 Integrator Copilot](../../editor/copilot/getting-started.md) yet, sign in when prompted. No third-party API key is required.
+By default, the agent is created with the WSO2 model provider. If you have not [signed in to WSO2 Integrator Copilot](../../editor/copilot/copilot.md) yet, sign in when prompted. No third-party API key is required.
 
 To use a different LLM instead, see [Model providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md) for the full list of supported providers (OpenAI, Anthropic, Azure OpenAI, and others).
 

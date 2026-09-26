@@ -2,7 +2,7 @@
 title: "Built-in Capabilities"
 description: "Write, test, debug, and fix integrations with WSO2 Integrator Copilot."
 keywords: [wso2 integrator, copilot, ai, integration generation]
-sidebar_position: 2
+sidebar_position: 3
 slug: /editor/copilot/copilot-capabilities
 ---
 
@@ -61,18 +61,43 @@ Copilot can run your integrations and read the runtime logs to debug issues as t
 
 ![Copilot debugging an integration by reproducing the failing request, inspecting the HTTP response and service logs, and identifying a case-sensitivity bug in the team filter.](/img/editor/copilot/debugging-using-service-logs.png)
 
-## Preserve Chat History
+## Follow-up suggestions
 
-Copilot saves each project's conversation, so it stays available after you reload or restart the editor. History is tied to the project's location on disk, so it no longer appears if you move, rename, or open the project from a different path.
+When Copilot finishes a response, it offers a few follow-up suggestions as chips below the message. Each chip is a short label for a sensible next step, such as adding a test, handling an error case, or running the service.
 
-You can also reset the conversation in two ways:
+Select a chip to place its full prompt in the input bar. Copilot doesn't send it, so you can reword the prompt or add detail first.
 
-- **New Chat**: Clears the current project's history and starts a fresh conversation.
-- **Restore Checkpoint**: Rolls your integration back to a saved checkpoint, undoing the changes Copilot made afterward and removing the later prompts.
+![Follow-up suggestion chips below a Copilot response.](/img/editor/copilot/followup-suggestions.png)
+
+Suggestions appear under the most recent response only, and they clear when you send your next message.
+
+:::note
+To turn suggestions off, set `ballerina.copilot.followupSuggestions` to `false` in your editor settings.
+:::
+
+## Chat sessions
+
+Each conversation with Copilot is a session. Copilot saves every session for the project, so your work stays available after you reload or restart the editor. Sessions are tied to the project's location on disk, so they no longer appear if you move or rename the project, or open it from a different path.
+
+Select **Chats** in the panel header to list the project's sessions, grouped by when you last used them. Each row shows the session name, the number of prompts it holds, and when it was last updated. Select a row to switch to that session.
+
+![The Chats list showing the saved sessions for a project.](/img/editor/copilot/chat-sessions.png)
+
+From this list you can:
+
+- **Start a session**: Select **New Chat**. Your existing sessions are kept.
+- **Find a session**: Type in **Search sessions** to filter the list by name.
+- **Rename a session**: Select the edit icon on the row. Copilot names a session after its first prompt, so renaming helps when several sessions begin alike. If you clear the name, Copilot restores the original.
+- **Delete a session**: Select the delete icon, then confirm.
+
+You can't switch sessions while Copilot is generating a response. Finish or stop the response first.
+
+To undo what Copilot changed, select **Restore Checkpoint**. It rolls your integration back to a saved checkpoint and removes the prompts that came after it.
 
 ## See also
 
-- [Getting started](getting-started.md) — Sign in to WSO2 Integrator Copilot.
+- [Getting started](copilot.md) — Sign in to WSO2 Integrator Copilot.
+- [Copilot Chat Interface](chat-interface.md) — Chat controls, slash commands, and modes.
 - [Customize Copilot](customize-copilot.md) — Give Copilot project instructions, reusable skills, and your own tools through MCP servers.
 - [Generate tests with AI](../../develop-and-test/test/ai-generated-cases.md) — Use Copilot to generate test cases.
 - [AI data mapper](../../develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/ai-mapping.md) — Generate data mappings using AI.

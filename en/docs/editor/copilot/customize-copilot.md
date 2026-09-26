@@ -2,7 +2,7 @@
 title: "Customize Copilot"
 description: "Give Copilot standing project instructions, reusable skills, and your own tools through MCP servers."
 keywords: [wso2 integrator, copilot, agents.md, skills, mcp, model context protocol, customize copilot]
-sidebar_position: 3
+sidebar_position: 4
 slug: /editor/copilot/customize-copilot
 ---
 
