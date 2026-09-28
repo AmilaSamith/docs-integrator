@@ -76,12 +76,12 @@ Queries the ApprenticeEventType collection and returns a page of entities, optio
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListApprenticeEventTypesQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper&#124;error`
+**Returns:** `ListApprenticeEventTypesResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper result = check client->listApprenticeEventTypes();
+ListApprenticeEventTypesResponse result = check client->listApprenticeEventTypes();
 ```
 
 **Sample response:**
@@ -224,12 +224,12 @@ Queries the DepartmentApprenticeDetail collection and returns a page of entities
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListDepartmentApprenticeDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_1&#124;error`
+**Returns:** `ListDepartmentApprenticeDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_1 result = check client->listDepartmentApprenticeDetails();
+ListDepartmentApprenticeDetailsResponse result = check client->listDepartmentApprenticeDetails();
 ```
 
 **Sample response:**
@@ -384,12 +384,12 @@ Queries the ApprenticeSchool collection and returns a page of entities, optional
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListApprenticeSchoolsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_2&#124;error`
+**Returns:** `ListApprenticeSchoolsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_2 result = check client->listApprenticeSchools();
+ListApprenticeSchoolsResponse result = check client->listApprenticeSchools();
 ```
 
 **Sample response:**
@@ -532,12 +532,12 @@ Queries the ApprenticeGroup collection and returns a page of entities, optionall
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListApprenticeGroupsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_3&#124;error`
+**Returns:** `ListApprenticeGroupsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_3 result = check client->listApprenticeGroups();
+ListApprenticeGroupsResponse result = check client->listApprenticeGroups();
 ```
 
 **Sample response:**
@@ -680,12 +680,12 @@ Queries the ApprenticeSchoolEvent collection and returns a page of entities, opt
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListApprenticeSchoolEventsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_4&#124;error`
+**Returns:** `ListApprenticeSchoolEventsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_4 result = check client->listApprenticeSchoolEvents();
+ListApprenticeSchoolEventsResponse result = check client->listApprenticeSchoolEvents();
 ```
 
 **Sample response:**
@@ -987,12 +987,12 @@ Queries the Apprentice collection and returns a page of entities, optionally fil
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListApprenticesQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_7&#124;error`
+**Returns:** `ListApprenticesResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_7 result = check client->listApprentices();
+ListApprenticesResponse result = check client->listApprentices();
 ```
 
 **Sample response:**

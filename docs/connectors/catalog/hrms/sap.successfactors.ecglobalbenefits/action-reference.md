@@ -123,12 +123,12 @@ Queries the BenefitSavingsPlanSubType collection and returns a page of entities,
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanSubTypesQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_1&#124;error`
+**Returns:** `ListBenefitSavingsPlanSubTypesResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_1 result = check client->listBenefitSavingsPlanSubTypes();
+ListBenefitSavingsPlanSubTypesResponse result = check client->listBenefitSavingsPlanSubTypes();
 ```
 
 **Sample response:**
@@ -241,12 +241,12 @@ Queries the BenefitBalanceCarryForwardDetail collection and returns a page of en
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitBalanceCarryForwardDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_3&#124;error`
+**Returns:** `ListBenefitBalanceCarryForwardDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_3 result = check client->listBenefitBalanceCarryForwardDetails();
+ListBenefitBalanceCarryForwardDetailsResponse result = check client->listBenefitBalanceCarryForwardDetails();
 ```
 
 **Sample response:**
@@ -311,12 +311,12 @@ Queries the EmployeeWithEmployerMatchContributions collection and returns a page
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListEmployeeWithEmployerMatchContributionssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_4&#124;error`
+**Returns:** `ListEmployeeWithEmployerMatchContributionssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_4 result = check client->listEmployeeWithEmployerMatchContributionss();
+ListEmployeeWithEmployerMatchContributionssResponse result = check client->listEmployeeWithEmployerMatchContributionss();
 ```
 
 **Sample response:**
@@ -439,12 +439,12 @@ Queries the EmployeeWithEmployerMatchContributionEntries collection and returns 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListEmployeeWithEmployerMatchContributionEntriessQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_6&#124;error`
+**Returns:** `ListEmployeeWithEmployerMatchContributionEntriessResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_6 result = check client->listEmployeeWithEmployerMatchContributionEntriess();
+ListEmployeeWithEmployerMatchContributionEntriessResponse result = check client->listEmployeeWithEmployerMatchContributionEntriess();
 ```
 
 **Sample response:**
@@ -605,12 +605,12 @@ Queries the BenefitCompanyCarLeaseServiceProvider collection and returns a page 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyCarLeaseServiceProvidersQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_9&#124;error`
+**Returns:** `ListBenefitCompanyCarLeaseServiceProvidersResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_9 result = check client->listBenefitCompanyCarLeaseServiceProviders();
+ListBenefitCompanyCarLeaseServiceProvidersResponse result = check client->listBenefitCompanyCarLeaseServiceProviders();
 ```
 
 **Sample response:**
@@ -723,12 +723,12 @@ Queries the BenefitEmployeeLifeEventDeclarationForm collection and returns a pag
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitEmployeeLifeEventDeclarationFormsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_11&#124;error`
+**Returns:** `ListBenefitEmployeeLifeEventDeclarationFormsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_11 result = check client->listBenefitEmployeeLifeEventDeclarationForms();
+ListBenefitEmployeeLifeEventDeclarationFormsResponse result = check client->listBenefitEmployeeLifeEventDeclarationForms();
 ```
 
 **Sample response:**
@@ -923,12 +923,12 @@ Queries the ImputedCostForAgeRanges collection and returns a page of entities, o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListImputedCostForAgeRangessQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_13&#124;error`
+**Returns:** `ListImputedCostForAgeRangessResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_13 result = check client->listImputedCostForAgeRangess();
+ListImputedCostForAgeRangessResponse result = check client->listImputedCostForAgeRangess();
 ```
 
 **Sample response:**
@@ -1092,12 +1092,12 @@ Queries the BenefitEvent collection and returns a page of entities, optionally f
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitEventsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_16&#124;error`
+**Returns:** `ListBenefitEventsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_16 result = check client->listBenefitEvents();
+ListBenefitEventsResponse result = check client->listBenefitEvents();
 ```
 
 **Sample response:**
@@ -1162,12 +1162,12 @@ Queries the BenefitSchedules collection and returns a page of entities, optional
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSchedulessQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_17&#124;error`
+**Returns:** `ListBenefitSchedulessResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_17 result = check client->listBenefitScheduless();
+ListBenefitSchedulessResponse result = check client->listBenefitScheduless();
 ```
 
 **Sample response:**
@@ -1287,12 +1287,12 @@ Queries the SavingsAccountDeductionDetails collection and returns a page of enti
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListSavingsAccountDeductionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_19&#124;error`
+**Returns:** `ListSavingsAccountDeductionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_19 result = check client->listSavingsAccountDeductionDetails();
+ListSavingsAccountDeductionDetailsResponse result = check client->listSavingsAccountDeductionDetails();
 ```
 
 **Sample response:**
@@ -1368,12 +1368,12 @@ Queries the BenefitPaymentOptions collection and returns a page of entities, opt
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPaymentOptionssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_20&#124;error`
+**Returns:** `ListBenefitPaymentOptionssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_20 result = check client->listBenefitPaymentOptionss();
+ListBenefitPaymentOptionssResponse result = check client->listBenefitPaymentOptionss();
 ```
 
 **Sample response:**
@@ -1439,12 +1439,12 @@ Queries the BenefitSavingsPlanSubTypeCountryLookup collection and returns a page
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanSubTypeCountryLookupsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_21&#124;error`
+**Returns:** `ListBenefitSavingsPlanSubTypeCountryLookupsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_21 result = check client->listBenefitSavingsPlanSubTypeCountryLookups();
+ListBenefitSavingsPlanSubTypeCountryLookupsResponse result = check client->listBenefitSavingsPlanSubTypeCountryLookups();
 ```
 
 **Sample response:**
@@ -1519,12 +1519,12 @@ Queries the LifeEventForBenefit collection and returns a page of entities, optio
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListLifeEventForBenefitsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_22&#124;error`
+**Returns:** `ListLifeEventForBenefitsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_22 result = check client->listLifeEventForBenefits();
+ListLifeEventForBenefitsResponse result = check client->listLifeEventForBenefits();
 ```
 
 **Sample response:**
@@ -1588,12 +1588,12 @@ Queries the BenefitInsurancePlanUSA collection and returns a page of entities, o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitInsurancePlanUSAsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_23&#124;error`
+**Returns:** `ListBenefitInsurancePlanUSAsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_23 result = check client->listBenefitInsurancePlanUSAs();
+ListBenefitInsurancePlanUSAsResponse result = check client->listBenefitInsurancePlanUSAs();
 ```
 
 **Sample response:**
@@ -1722,12 +1722,12 @@ Queries the IRSPremiumTable collection and returns a page of entities, optionall
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListIRSPremiumTablesQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_25&#124;error`
+**Returns:** `ListIRSPremiumTablesResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_25 result = check client->listIRSPremiumTables();
+ListIRSPremiumTablesResponse result = check client->listIRSPremiumTables();
 ```
 
 **Sample response:**
@@ -1802,12 +1802,12 @@ Queries the BenefitSchedulePeriod collection and returns a page of entities, opt
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSchedulePeriodsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_26&#124;error`
+**Returns:** `ListBenefitSchedulePeriodsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_26 result = check client->listBenefitSchedulePeriods();
+ListBenefitSchedulePeriodsResponse result = check client->listBenefitSchedulePeriods();
 ```
 
 **Sample response:**
@@ -1919,12 +1919,12 @@ Queries the PensionBandingConfiguration collection and returns a page of entitie
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListPensionBandingConfigurationsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_28&#124;error`
+**Returns:** `ListPensionBandingConfigurationsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_28 result = check client->listPensionBandingConfigurations();
+ListPensionBandingConfigurationsResponse result = check client->listPensionBandingConfigurations();
 ```
 
 **Sample response:**
@@ -1989,12 +1989,12 @@ Queries the BenefitInsuranceDependentDetail collection and returns a page of ent
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitInsuranceDependentDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_29&#124;error`
+**Returns:** `ListBenefitInsuranceDependentDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_29 result = check client->listBenefitInsuranceDependentDetails();
+ListBenefitInsuranceDependentDetailsResponse result = check client->listBenefitInsuranceDependentDetails();
 ```
 
 **Sample response:**
@@ -2157,12 +2157,12 @@ Queries the BenefitEmployeeClaimDetail collection and returns a page of entities
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitEmployeeClaimDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_32&#124;error`
+**Returns:** `ListBenefitEmployeeClaimDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_32 result = check client->listBenefitEmployeeClaimDetails();
+ListBenefitEmployeeClaimDetailsResponse result = check client->listBenefitEmployeeClaimDetails();
 ```
 
 **Sample response:**
@@ -2227,12 +2227,12 @@ Queries the BenefitFuelReimbursement collection and returns a page of entities, 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitFuelReimbursementsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_33&#124;error`
+**Returns:** `ListBenefitFuelReimbursementsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_33 result = check client->listBenefitFuelReimbursements();
+ListBenefitFuelReimbursementsResponse result = check client->listBenefitFuelReimbursements();
 ```
 
 **Sample response:**
@@ -2297,12 +2297,12 @@ Queries the InsuranceEnrollmentFieldsConfiguration collection and returns a page
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListInsuranceEnrollmentFieldsConfigurationsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_34&#124;error`
+**Returns:** `ListInsuranceEnrollmentFieldsConfigurationsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_34 result = check client->listInsuranceEnrollmentFieldsConfigurations();
+ListInsuranceEnrollmentFieldsConfigurationsResponse result = check client->listInsuranceEnrollmentFieldsConfigurations();
 ```
 
 **Sample response:**
@@ -2375,12 +2375,12 @@ Queries the BenefitCompanyCar collection and returns a page of entities, optiona
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyCarsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_35&#124;error`
+**Returns:** `ListBenefitCompanyCarsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_35 result = check client->listBenefitCompanyCars();
+ListBenefitCompanyCarsResponse result = check client->listBenefitCompanyCars();
 ```
 
 **Sample response:**
@@ -2474,12 +2474,12 @@ Queries the BenefitCompanyHousing collection and returns a page of entities, opt
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyHousingsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_36&#124;error`
+**Returns:** `ListBenefitCompanyHousingsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_36 result = check client->listBenefitCompanyHousings();
+ListBenefitCompanyHousingsResponse result = check client->listBenefitCompanyHousings();
 ```
 
 **Sample response:**
@@ -2549,12 +2549,12 @@ Queries the BenefitPensionAdditionalContributionLimits collection and returns a 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionAdditionalContributionLimitssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_37&#124;error`
+**Returns:** `ListBenefitPensionAdditionalContributionLimitssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_37 result = check client->listBenefitPensionAdditionalContributionLimitss();
+ListBenefitPensionAdditionalContributionLimitssResponse result = check client->listBenefitPensionAdditionalContributionLimitss();
 ```
 
 **Sample response:**
@@ -2619,12 +2619,12 @@ Queries the BenefitPensionNonDependentNominees collection and returns a page of 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionNonDependentNomineessQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_38&#124;error`
+**Returns:** `ListBenefitPensionNonDependentNomineessResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_38 result = check client->listBenefitPensionNonDependentNomineess();
+ListBenefitPensionNonDependentNomineessResponse result = check client->listBenefitPensionNonDependentNomineess();
 ```
 
 **Sample response:**
@@ -2932,12 +2932,12 @@ Queries the BenefitPensionFundEnrollmentContributionDetail collection and return
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionFundEnrollmentContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_44&#124;error`
+**Returns:** `ListBenefitPensionFundEnrollmentContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_44 result = check client->listBenefitPensionFundEnrollmentContributionDetails();
+ListBenefitPensionFundEnrollmentContributionDetailsResponse result = check client->listBenefitPensionFundEnrollmentContributionDetails();
 ```
 
 **Sample response:**
@@ -3003,12 +3003,12 @@ Queries the BenefitPensionEnrollmentContributionDetail collection and returns a 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionEnrollmentContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_45&#124;error`
+**Returns:** `ListBenefitPensionEnrollmentContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_45 result = check client->listBenefitPensionEnrollmentContributionDetails();
+ListBenefitPensionEnrollmentContributionDetailsResponse result = check client->listBenefitPensionEnrollmentContributionDetails();
 ```
 
 **Sample response:**
@@ -3074,12 +3074,12 @@ Queries the BenefitPensionMinMaxContributionLimits collection and returns a page
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionMinMaxContributionLimitssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_46&#124;error`
+**Returns:** `ListBenefitPensionMinMaxContributionLimitssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_46 result = check client->listBenefitPensionMinMaxContributionLimitss();
+ListBenefitPensionMinMaxContributionLimitssResponse result = check client->listBenefitPensionMinMaxContributionLimitss();
 ```
 
 **Sample response:**
@@ -3146,12 +3146,12 @@ Queries the BenefitDependentDetail collection and returns a page of entities, op
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitDependentDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_47&#124;error`
+**Returns:** `ListBenefitDependentDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_47 result = check client->listBenefitDependentDetails();
+ListBenefitDependentDetailsResponse result = check client->listBenefitDependentDetails();
 ```
 
 **Sample response:**
@@ -3267,12 +3267,12 @@ Queries the BenefitPensionEmployerContributionDetail collection and returns a pa
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionEmployerContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_49&#124;error`
+**Returns:** `ListBenefitPensionEmployerContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_49 result = check client->listBenefitPensionEmployerContributionDetails();
+ListBenefitPensionEmployerContributionDetailsResponse result = check client->listBenefitPensionEmployerContributionDetails();
 ```
 
 **Sample response:**
@@ -3342,12 +3342,12 @@ Queries the BenefitsConfigUIScreenLookup collection and returns a page of entiti
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitsConfigUIScreenLookupsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_50&#124;error`
+**Returns:** `ListBenefitsConfigUIScreenLookupsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_50 result = check client->listBenefitsConfigUIScreenLookups();
+ListBenefitsConfigUIScreenLookupsResponse result = check client->listBenefitsConfigUIScreenLookups();
 ```
 
 **Sample response:**
@@ -3411,12 +3411,12 @@ Queries the BenefitDocuments collection and returns a page of entities, optional
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitDocumentssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_51&#124;error`
+**Returns:** `ListBenefitDocumentssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_51 result = check client->listBenefitDocumentss();
+ListBenefitDocumentssResponse result = check client->listBenefitDocumentss();
 ```
 
 **Sample response:**
@@ -3483,12 +3483,12 @@ Queries the BenefitPensionFund collection and returns a page of entities, option
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionFundsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_52&#124;error`
+**Returns:** `ListBenefitPensionFundsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_52 result = check client->listBenefitPensionFunds();
+ListBenefitPensionFundsResponse result = check client->listBenefitPensionFunds();
 ```
 
 **Sample response:**
@@ -3558,12 +3558,12 @@ Queries the PensionBandingConfigurationDetails collection and returns a page of 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListPensionBandingConfigurationDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_53&#124;error`
+**Returns:** `ListPensionBandingConfigurationDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_53 result = check client->listPensionBandingConfigurationDetails();
+ListPensionBandingConfigurationDetailsResponse result = check client->listPensionBandingConfigurationDetails();
 ```
 
 **Sample response:**
@@ -3725,12 +3725,12 @@ Queries the BenefitLegalEntity collection and returns a page of entities, option
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitLegalEntitysQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_56&#124;error`
+**Returns:** `ListBenefitLegalEntitysResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_56 result = check client->listBenefitLegalEntitys();
+ListBenefitLegalEntitysResponse result = check client->listBenefitLegalEntitys();
 ```
 
 **Sample response:**
@@ -3794,12 +3794,12 @@ Queries the BenefitSavingsPlanEnrollmentContributionDetail collection and return
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanEnrollmentContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_57&#124;error`
+**Returns:** `ListBenefitSavingsPlanEnrollmentContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_57 result = check client->listBenefitSavingsPlanEnrollmentContributionDetails();
+ListBenefitSavingsPlanEnrollmentContributionDetailsResponse result = check client->listBenefitSavingsPlanEnrollmentContributionDetails();
 ```
 
 **Sample response:**
@@ -3875,12 +3875,12 @@ Queries the BenefitCompanyCarRecommendedVendors collection and returns a page of
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyCarRecommendedVendorssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_58&#124;error`
+**Returns:** `ListBenefitCompanyCarRecommendedVendorssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_58 result = check client->listBenefitCompanyCarRecommendedVendorss();
+ListBenefitCompanyCarRecommendedVendorssResponse result = check client->listBenefitCompanyCarRecommendedVendorss();
 ```
 
 **Sample response:**
@@ -3945,12 +3945,12 @@ Queries the BenefitInsuranceEnrolleeType collection and returns a page of entiti
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitInsuranceEnrolleeTypesQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_59&#124;error`
+**Returns:** `ListBenefitInsuranceEnrolleeTypesResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_59 result = check client->listBenefitInsuranceEnrolleeTypes();
+ListBenefitInsuranceEnrolleeTypesResponse result = check client->listBenefitInsuranceEnrolleeTypes();
 ```
 
 **Sample response:**
@@ -4064,12 +4064,12 @@ Queries the BenefitCompanyCarClaim collection and returns a page of entities, op
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyCarClaimsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_61&#124;error`
+**Returns:** `ListBenefitCompanyCarClaimsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_61 result = check client->listBenefitCompanyCarClaims();
+ListBenefitCompanyCarClaimsResponse result = check client->listBenefitCompanyCarClaims();
 ```
 
 **Sample response:**
@@ -4230,12 +4230,12 @@ Queries the BenefitPensionDependentNominees collection and returns a page of ent
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionDependentNomineessQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_64&#124;error`
+**Returns:** `ListBenefitPensionDependentNomineessResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_64 result = check client->listBenefitPensionDependentNomineess();
+ListBenefitPensionDependentNomineessResponse result = check client->listBenefitPensionDependentNomineess();
 ```
 
 **Sample response:**
@@ -4301,12 +4301,12 @@ Queries the BenefitContact collection and returns a page of entities, optionally
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitContactsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_65&#124;error`
+**Returns:** `ListBenefitContactsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_65 result = check client->listBenefitContacts();
+ListBenefitContactsResponse result = check client->listBenefitContacts();
 ```
 
 **Sample response:**
@@ -4370,12 +4370,12 @@ Queries the BenefitFuelReimbursementClaimDetail collection and returns a page of
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitFuelReimbursementClaimDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_66&#124;error`
+**Returns:** `ListBenefitFuelReimbursementClaimDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_66 result = check client->listBenefitFuelReimbursementClaimDetails();
+ListBenefitFuelReimbursementClaimDetailsResponse result = check client->listBenefitFuelReimbursementClaimDetails();
 ```
 
 **Sample response:**
@@ -4440,12 +4440,12 @@ Queries the BenefitPensionStatutoryMinimumLookup collection and returns a page o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionStatutoryMinimumLookupsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_67&#124;error`
+**Returns:** `ListBenefitPensionStatutoryMinimumLookupsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_67 result = check client->listBenefitPensionStatutoryMinimumLookups();
+ListBenefitPensionStatutoryMinimumLookupsResponse result = check client->listBenefitPensionStatutoryMinimumLookups();
 ```
 
 **Sample response:**
@@ -4561,12 +4561,12 @@ Queries the BenefitLeaveTravelReimbursementClaim collection and returns a page o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitLeaveTravelReimbursementClaimsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_69&#124;error`
+**Returns:** `ListBenefitLeaveTravelReimbursementClaimsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_69 result = check client->listBenefitLeaveTravelReimbursementClaims();
+ListBenefitLeaveTravelReimbursementClaimsResponse result = check client->listBenefitLeaveTravelReimbursementClaims();
 ```
 
 **Sample response:**
@@ -4631,12 +4631,12 @@ Queries the BenefitBalanceCarryForward collection and returns a page of entities
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitBalanceCarryForwardsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_70&#124;error`
+**Returns:** `ListBenefitBalanceCarryForwardsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_70 result = check client->listBenefitBalanceCarryForwards();
+ListBenefitBalanceCarryForwardsResponse result = check client->listBenefitBalanceCarryForwards();
 ```
 
 **Sample response:**
@@ -4702,12 +4702,12 @@ Queries the BenefitCompanyCarAllowedModels collection and returns a page of enti
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyCarAllowedModelssQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_71&#124;error`
+**Returns:** `ListBenefitCompanyCarAllowedModelssResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_71 result = check client->listBenefitCompanyCarAllowedModelss();
+ListBenefitCompanyCarAllowedModelssResponse result = check client->listBenefitCompanyCarAllowedModelss();
 ```
 
 **Sample response:**
@@ -4772,12 +4772,12 @@ Queries the BenefitsConfirmationStatementConfiguration collection and returns a 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitsConfirmationStatementConfigurationsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_72&#124;error`
+**Returns:** `ListBenefitsConfirmationStatementConfigurationsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_72 result = check client->listBenefitsConfirmationStatementConfigurations();
+ListBenefitsConfirmationStatementConfigurationsResponse result = check client->listBenefitsConfirmationStatementConfigurations();
 ```
 
 **Sample response:**
@@ -4997,12 +4997,12 @@ Queries the BenefitCompanyHousingEnrollment collection and returns a page of ent
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitCompanyHousingEnrollmentsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_76&#124;error`
+**Returns:** `ListBenefitCompanyHousingEnrollmentsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_76 result = check client->listBenefitCompanyHousingEnrollments();
+ListBenefitCompanyHousingEnrollmentsResponse result = check client->listBenefitCompanyHousingEnrollments();
 ```
 
 **Sample response:**
@@ -5072,12 +5072,12 @@ Queries the BenefitPensionEmployeeContributionDetail collection and returns a pa
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionEmployeeContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_77&#124;error`
+**Returns:** `ListBenefitPensionEmployeeContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_77 result = check client->listBenefitPensionEmployeeContributionDetails();
+ListBenefitPensionEmployeeContributionDetailsResponse result = check client->listBenefitPensionEmployeeContributionDetails();
 ```
 
 **Sample response:**
@@ -5196,12 +5196,12 @@ Queries the BenefitDeductibleAllowanceEnrollment collection and returns a page o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitDeductibleAllowanceEnrollmentsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_79&#124;error`
+**Returns:** `ListBenefitDeductibleAllowanceEnrollmentsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_79 result = check client->listBenefitDeductibleAllowanceEnrollments();
+ListBenefitDeductibleAllowanceEnrollmentsResponse result = check client->listBenefitDeductibleAllowanceEnrollments();
 ```
 
 **Sample response:**
@@ -5316,12 +5316,12 @@ Queries the BenefitSavingsPlanERContributionConfig collection and returns a page
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanERContributionConfigsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_81&#124;error`
+**Returns:** `ListBenefitSavingsPlanERContributionConfigsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_81 result = check client->listBenefitSavingsPlanERContributionConfigs();
+ListBenefitSavingsPlanERContributionConfigsResponse result = check client->listBenefitSavingsPlanERContributionConfigs();
 ```
 
 **Sample response:**
@@ -5398,12 +5398,12 @@ Queries the BenefitSavingsPlanERContributionConfigDetail collection and returns 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanERContributionConfigDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_82&#124;error`
+**Returns:** `ListBenefitSavingsPlanERContributionConfigDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_82 result = check client->listBenefitSavingsPlanERContributionConfigDetails();
+ListBenefitSavingsPlanERContributionConfigDetailsResponse result = check client->listBenefitSavingsPlanERContributionConfigDetails();
 ```
 
 **Sample response:**
@@ -5473,12 +5473,12 @@ Queries the BenefitSavingsPlanCatchUpDetail collection and returns a page of ent
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanCatchUpDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_83&#124;error`
+**Returns:** `ListBenefitSavingsPlanCatchUpDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_83 result = check client->listBenefitSavingsPlanCatchUpDetails();
+ListBenefitSavingsPlanCatchUpDetailsResponse result = check client->listBenefitSavingsPlanCatchUpDetails();
 ```
 
 **Sample response:**
@@ -5736,12 +5736,12 @@ Queries the BenefitSavingsPlanPrimaryBeneficiary collection and returns a page o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanPrimaryBeneficiarysQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_87&#124;error`
+**Returns:** `ListBenefitSavingsPlanPrimaryBeneficiarysResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_87 result = check client->listBenefitSavingsPlanPrimaryBeneficiarys();
+ListBenefitSavingsPlanPrimaryBeneficiarysResponse result = check client->listBenefitSavingsPlanPrimaryBeneficiarys();
 ```
 
 **Sample response:**
@@ -5807,12 +5807,12 @@ Queries the BenefitSavingsPlanContingentBeneficiary collection and returns a pag
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanContingentBeneficiarysQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_88&#124;error`
+**Returns:** `ListBenefitSavingsPlanContingentBeneficiarysResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_88 result = check client->listBenefitSavingsPlanContingentBeneficiarys();
+ListBenefitSavingsPlanContingentBeneficiarysResponse result = check client->listBenefitSavingsPlanContingentBeneficiarys();
 ```
 
 **Sample response:**
@@ -5878,12 +5878,12 @@ Queries the BenefitHyperlinkConfiguration collection and returns a page of entit
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitHyperlinkConfigurationsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_89&#124;error`
+**Returns:** `ListBenefitHyperlinkConfigurationsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_89 result = check client->listBenefitHyperlinkConfigurations();
+ListBenefitHyperlinkConfigurationsResponse result = check client->listBenefitHyperlinkConfigurations();
 ```
 
 **Sample response:**
@@ -5953,12 +5953,12 @@ Queries the BenefitOverviewHyperlinkConfiguration collection and returns a page 
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitOverviewHyperlinkConfigurationsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_90&#124;error`
+**Returns:** `ListBenefitOverviewHyperlinkConfigurationsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_90 result = check client->listBenefitOverviewHyperlinkConfigurations();
+ListBenefitOverviewHyperlinkConfigurationsResponse result = check client->listBenefitOverviewHyperlinkConfigurations();
 ```
 
 **Sample response:**
@@ -6022,12 +6022,12 @@ Queries the BenefitOverviewHyperlinkDetails collection and returns a page of ent
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitOverviewHyperlinkDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_91&#124;error`
+**Returns:** `ListBenefitOverviewHyperlinkDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_91 result = check client->listBenefitOverviewHyperlinkDetails();
+ListBenefitOverviewHyperlinkDetailsResponse result = check client->listBenefitOverviewHyperlinkDetails();
 ```
 
 **Sample response:**
@@ -6385,12 +6385,12 @@ Queries the BenefitPensionAdditionalEmployeeContributionDetail collection and re
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitPensionAdditionalEmployeeContributionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_98&#124;error`
+**Returns:** `ListBenefitPensionAdditionalEmployeeContributionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_98 result = check client->listBenefitPensionAdditionalEmployeeContributionDetails();
+ListBenefitPensionAdditionalEmployeeContributionDetailsResponse result = check client->listBenefitPensionAdditionalEmployeeContributionDetails();
 ```
 
 **Sample response:**
@@ -6504,12 +6504,12 @@ Queries the BenefitSavingsPlanEnrollmentDetails collection and returns a page of
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitSavingsPlanEnrollmentDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_100&#124;error`
+**Returns:** `ListBenefitSavingsPlanEnrollmentDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_100 result = check client->listBenefitSavingsPlanEnrollmentDetails();
+ListBenefitSavingsPlanEnrollmentDetailsResponse result = check client->listBenefitSavingsPlanEnrollmentDetails();
 ```
 
 **Sample response:**
@@ -6575,12 +6575,12 @@ Queries the ACAReportingDependentDetails collection and returns a page of entiti
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListACAReportingDependentDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_101&#124;error`
+**Returns:** `ListACAReportingDependentDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_101 result = check client->listACAReportingDependentDetails();
+ListACAReportingDependentDetailsResponse result = check client->listACAReportingDependentDetails();
 ```
 
 **Sample response:**
@@ -6647,12 +6647,12 @@ Queries the BenefitDeductionDetails collection and returns a page of entities, o
 | `headers` | <code>map&#60;string&#124;string[]&#62;</code> | No | Headers to be sent with the request |
 | `queries` | <code>ListBenefitDeductionDetailsQueries</code> | No | Queries to be sent with the request |
 
-**Returns:** `Wrapper_102&#124;error`
+**Returns:** `ListBenefitDeductionDetailsResponse&#124;error`
 
 **Sample code:**
 
 ```ballerina
-Wrapper_102 result = check client->listBenefitDeductionDetails();
+ListBenefitDeductionDetailsResponse result = check client->listBenefitDeductionDetails();
 ```
 
 **Sample response:**
