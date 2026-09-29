@@ -1,10 +1,29 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {
+  sharedColorMode,
+  sharedDocsSidebar,
+  sharedNavbarLogo,
+  sharedFooterStyle,
+  sharedFooterCopyright,
+  sharedCommunityNavbarItem,
+  sharedDiscordNavbarItem,
+  sharedStackOverflowNavbarItem,
+  sharedLinkedInNavbarItem,
+  sharedYoutubeNavbarItem,
+  sharedXNavbarItem,
+  sharedGithubNavbarItem,
+  sharedBlogNavbarItem,
+  sharedFaqNavbarItem,
+  sharedContributeNavbarItem,
+  sharedPrism,
+  sharedImage,
+  CROSS_PRODUCT_BASE,
+} from './src/theme-shared/themeConfig';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
-  tagline: 'Build integrations with low-code simplicity and pro-code power',
+  title: 'WSO2 Connectors',
+  tagline: 'Pre-built connectors for the WSO2 Integration Platform',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -13,6 +32,17 @@ const config: Config = {
 
   url: 'https://wso2.com',
   baseUrl: process.env.BASE_URL || '/',
+
+  // Exposes CROSS_PRODUCT_BASE to client-side code (SidebarProductHeader) --
+  // config-time TS modules like themeConfig.ts aren't importable from
+  // browser-bundled components, so Docusaurus's customFields is the
+  // sanctioned bridge. See themeConfig.ts's CROSS_PRODUCT_BASE docstring.
+  customFields: {
+    crossProductBase: CROSS_PRODUCT_BASE,
+    // No top-level sections to scroll between here (one long connector
+    // catalog), so skip the sidebar's scroll-to-section behavior.
+    sidebarScrollToSection: false,
+  },
 
   organizationName: 'wso2',
   projectName: 'docs-integrator',
@@ -45,7 +75,8 @@ const config: Config = {
       {
         hashed: true,
         language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
+        // See saas's docusaurus.config.ts for why this is off.
+        highlightSearchTermsOnTargetPage: false,
         explicitSearchResultPath: true,
         docsRouteBasePath: '/',
         indexBlog: false,
@@ -60,9 +91,10 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: 'docs/connectors',
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/wso2/docs-integrator/tree/main/en/',
+          editUrl: 'https://github.com/wso2/docs-integrator/tree/wso2-connectors/en/',
           showLastUpdateTime: true,
         },
         blog: false,
@@ -74,84 +106,86 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
-    colorMode: {
-      defaultMode: 'light',
-      respectPrefersColorScheme: true,
-    },
-    docs: {
-      sidebar: {
-        // Collapse sibling categories whenever a category expands. With
-        // `useAutoExpandActiveCategory`, this means navigating to a page
-        // collapses every other top-level category and only leaves the
-        // current path expanded.        
-        autoCollapseCategories: true,
-      },
-    },
+    image: sharedImage,
+    colorMode: sharedColorMode,
+    docs: sharedDocsSidebar,
     navbar: {
-      logo: {
-        alt: 'WSO2 Integration Platform Logo',
-        src: 'img/WSO2_Integration_Platform_Black.svg',
-        srcDark: 'img/WSO2_Integration_Platform_White.svg',
-        href: '/',
-      },
+      logo: sharedNavbarLogo,
       items: [
+        // No self-link to Connectors here -- this is the connectors site.
+        // Instead, the first item is a real <a> (via pathname:// +
+        // autoAddBaseUrl:false, same reasoning as the other two branches'
+        // Connectors item) back to the saas site, so this is never a
+        // dead end -- matches saas/wso2-integrator's item count too,
+        // keeping the centered nav group the same width across all three.
         {
-          href: 'https://github.com/wso2/docs-integrator',
-          label: 'GitHub',
-          position: 'right',
-        }
+          href: `pathname://${CROSS_PRODUCT_BASE}`,
+          autoAddBaseUrl: false,
+          // See saas's docusaurus.config.ts for why target:'_self' is here.
+          target: '_self',
+          html: 'SaaS',
+          position: 'left',
+        },
+        // Real <a> tag (external, not a client-side route) to the
+        // marketplace listing for this catalog on wso2.com -- not a
+        // sharedReleasesNavbarItem call, since this item isn't release
+        // notes here, and the label/target genuinely diverge from what
+        // that shared helper assumes.
+        {
+          href: 'https://wso2.com/integration-platform/connectors/',
+          label: 'Integration Store',
+          position: 'left',
+        },
+        sharedContributeNavbarItem(),
+        sharedCommunityNavbarItem,
+        sharedBlogNavbarItem,
+        sharedFaqNavbarItem('/reference/faq'),
+        sharedGithubNavbarItem,
+        sharedDiscordNavbarItem,
+        sharedStackOverflowNavbarItem,
+        sharedLinkedInNavbarItem,
+        sharedYoutubeNavbarItem,
+        sharedXNavbarItem,
       ]
     },
     footer: {
-      style: 'dark',
+      style: sharedFooterStyle,
       links: [
         {
-          title: 'Get started',
+          title: 'Connectors',
           items: [
-            { label: 'Overview', to: '/get-started/introduction' },
-            { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/get-started/build-automation' },
+            { label: 'Overview', to: '/overview' },
+            { label: 'Using Connectors', to: '/using-connectors' },
+            { label: 'Catalog', to: '/catalog' },
           ],
         },
         {
-          title: 'Develop',
+          title: 'Build your own',
           items: [
-            { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
-            { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/develop/test/built-in-try-it-tool' },
-            { label: 'Connectors', to: '/connectors/overview' },
-            { label: 'AI Integrations', to: '/genai/overview' },
+            { label: 'Getting started', to: '/build-your-own/build-own' },
+            { label: 'Build from OpenAPI spec', to: '/build-your-own/create-from-openapi-spec' },
+            { label: 'Build from scratch', to: '/build-your-own/custom-development' },
+            { label: 'Publish a connector', to: '/build-your-own/publish-connector' },
           ],
         },
         {
-          title: 'Deploy',
+          title: 'Platform Components',
           items: [
-            { label: 'Docker and Kubernetes', to: '/deploy/self-hosted/containerized-deployment' },
-            { label: 'CI/CD', to: '/deploy-operate/cicd/github-actions' },
-            { label: 'Observe', to: '/deploy-operate/observe/observability-overview' },
-            { label: 'Secure', to: '/deploy-operate/secure/authentication' },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            { label: 'WSO2 Integrator: MI', href: 'https://mi.docs.wso2.com' },
-            { label: 'WSO2 Integrator: SI', href: 'https://si.docs.wso2.com/latest/' },
-            { label: 'Ballerina Central', href: 'https://central.ballerina.io' },
-            { label: 'Community Forums', href: 'https://discord.com/invite/wso2' },
-            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/wso2' },
-            { label: 'GitHub', href: 'https://github.com/wso2' },
+            // Real <a> tags (pathname:// + autoAddBaseUrl:false), not
+            // client-side routes -- each is a completely separate
+            // build/bundle. See SidebarProductHeader's docstring for
+            // the isInternalUrl pitfall this sidesteps. target:'_self'
+            // overrides Link's default of opening anything it treats as
+            // external (which pathname:// does) in a new tab -- a
+            // sibling product should feel like same-site navigation.
+            { label: 'SaaS', href: `pathname://${CROSS_PRODUCT_BASE}`, autoAddBaseUrl: false, target: '_self' },
+            { label: 'WSO2 Integrator', href: `pathname://${CROSS_PRODUCT_BASE}integrator/`, autoAddBaseUrl: false, target: '_self' },
           ],
         },
       ],
-      copyright: `Copyright \u00A9 ${new Date().getFullYear()} WSO2 LLC. Built with Docusaurus.`,
+      copyright: sharedFooterCopyright,
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'bash', 'json', 'yaml', 'toml'],
-    },
+    prism: sharedPrism,
   } satisfies Preset.ThemeConfig,
 };
 

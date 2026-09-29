@@ -1,9 +1,9 @@
 ---
-title: Custom Development
+title: Build from Scratch
 description: Build a custom Ballerina connector from scratch using an OpenAPI specification and the Ballerina OpenAPI tool.
 ---
 
-# Custom Development
+# Build from Scratch
 
 Ballerina connectors are packages containing one or more clients that communicate with external services via REST APIs. Build one from scratch when you need full control over authentication, error handling, or data transformation logic, or when you want to publish a reusable connector to [Ballerina Central](https://central.ballerina.io/) for your team or the broader community. This guide walks through generating a connector from an OpenAPI specification, which is the fastest and most reliable approach.
 
@@ -11,7 +11,7 @@ Ballerina connectors are packages containing one or more clients that communicat
 
 - Basic knowledge of [Ballerina Swan Lake](https://ballerina.io/) with the latest version installed
 - An OpenAPI specification for the target API, plus any relevant API credentials
-- WSO2 Integrator IDE installed and configured
+- [WSO2 Integrator](https://wso2.com/products/downloads/?product=wso2integrator) installed and configured
 - A GitHub account with Git installed locally (required only if you plan to publish to Ballerina Central)
 
 ## Step 1: Set up the project structure
@@ -145,39 +145,11 @@ Add practical examples that demonstrate real-world scenarios. Each example shoul
 
 ## Step 6: Publish the connector
 
-Update `Ballerina.toml` with your connector metadata:
-
-```toml
-[package]
-org = "your_org"
-name = "myconnector"
-version = "1.0.0"
-license = ["Apache-2.0"]
-authors = ["Your Name"]
-keywords = ["integration", "myservice", "Vendor/MyService", "Area/Communication", "Type/Connector"]
-repository = "https://github.com/your-username/module-ballerinax-myconnector"
-icon = "icon.png"
-```
-
-#### Keywords for the WSO2 Integration Platform
-
-The `Vendor/`, `Area/`, and `Type/` keywords classify your connector in the WSO2 Integration Platform connector catalog. Use the following format:
-
-| Keyword | Purpose | Example |
-|---|---|---|
-| `Vendor/<name>` | The service or company the connector targets | `Vendor/Salesforce` |
-| `Area/<category>` | The functional category of the connector | `Area/CRM & Sales` |
-| `Type/Connector` | Marks the package as a connector (use this fixed value) | `Type/Connector` |
-| `Name/<display name>` | Optional. Use when the display name should differ from the package name | `Name/Salesforce CRM` |
-
-:::note
-The WSO2 Integration Platform connector catalog currently lists pre-built WSO2 connectors. Support for community-published connectors is planned, and adding these keywords now ensures your connector is ready when that support rolls out.
-:::
-
-Then follow the [package publishing guide](https://ballerina.io/learn/publish-packages-to-ballerina-central/) to publish to Ballerina Central.
+Once your connector is built, tested, and documented, you can publish it to Ballerina Central so your team or the broader community can use it — see [Publish Connector](publish-connector.md) for updating the package metadata, classifying it with the right keywords, and the publishing steps.
 
 ## What's next
 
-- [Create from OpenAPI spec](create-from-openapi-spec.md): Generate a connector directly in the WSO2 Integrator IDE without writing code
+- [Publish Connector](publish-connector.md): Publish your finished connector to Ballerina Central
+- [Build from OpenAPI Spec](create-from-openapi-spec.md): Generate a connector directly in the WSO2 Integrator without writing code
 - [Build your own connector](build-own.md): Compare approaches for creating custom connectors
 - [Connector catalog](../catalog/index.mdx): Browse all available pre-built connectors

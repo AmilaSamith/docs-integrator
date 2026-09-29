@@ -13,36 +13,7 @@ Connectors make these integrations possible without writing low-level HTTP or pr
 
 Most integrations follow a similar pattern:
 
-```mermaid
-flowchart LR
-    A([Trigger])
-
-    A --> B
-
-    B["Transform & route
-    (map, filter, branch)"]
-
-    B --> C
-
-    subgraph connector["Connector"]
-        C["Connector action
-        (call external service)"]
-    end
-
-    C --> D
-
-    D["Handle response
-    (error handling, retry)"]
-
-    D --> E([Output])
-
-    style A fill:#EEEDFE,stroke:#534AB7,color:#3C3489
-    style B fill:#F1EFE8,stroke:#5F5E5A,color:#444441
-    style C fill:#FAECE7,stroke:#993C1D,color:#712B13
-    style D fill:#F1EFE8,stroke:#5F5E5A,color:#444441
-    style E fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    style connector fill:#fafafa,stroke:#cbd5e1,stroke-dasharray:5 5,color:#64748b
-```
+![Integration flow: Trigger leads to Transform & route (map, filter, branch), into a Connector action (call external service), then Handle response (error handling, retry), ending in Output](/img/connectors/overview/connector-flow.png)
 
 The connector action is where WSO2 Integrator communicates with the external service.
 
@@ -51,6 +22,10 @@ The connector action is where WSO2 Integrator communicates with the external ser
 ### Connector
 
 A connector is a pre-built integration component that exposes an external service's API as ready-to-use operations. Instead of constructing HTTP requests and parsing responses by hand, you select an action from the connector's list and configure its inputs.
+
+### Library
+
+A library adds integration capabilities that don't need a client or connection at all, such as PDF generation, string manipulation, I/O, or invoking a cloud function (AWS Lambda, Azure Functions). Import and use one directly in your integration logic, the same way you would any other Ballerina library.
 
 ### Connection
 
@@ -73,12 +48,9 @@ Some connectors also support triggers, which are inbound events the external ser
 
 Most connectors are action-only. Trigger support is available for select connectors, primarily databases (MySQL, PostgreSQL, MSSQL), messaging systems (Kafka, RabbitMQ), and file storage. See each connector's documentation for what's available.
 
-## Libraries without client connectors
-
-Not everything in the connector catalog is a client connector. Some packages are libraries that provide integration capabilities without a client, such as PDF generation, string manipulation, I/O, and cloud function invocation (AWS Lambda and Azure Functions). Use them inside your integration logic the same way you would any other Ballerina library.
-
 ## What's next
 
+- [Using Connectors](using-connectors.md): See how connections, actions, and triggers come together in a real integration
 - [Connector catalog](catalog/index.mdx): Browse all available connectors
 - [Connections](../develop/integration-artifacts/supporting/connections.md): Create and manage connections in your integration
 - [Build your own connector](build-your-own/build-own.md): Create a custom connector for a service not in the catalog

@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: "Example"
 description: Step-by-step examples for using the GitHub connector to create issues and listen for GitHub webhook events in WSO2 Integrator.
 keywords: [wso2 integrator, github connector example, github webhook trigger, create issue, event integration]
 ---
