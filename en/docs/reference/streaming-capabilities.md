@@ -2,6 +2,8 @@
 title: Streaming Capabilities
 description: Reference of the streaming capabilities of WSO2 Integrator — language-level streams, database query streaming, CSV streaming, message brokers, CDC, file/object transfer streaming, and streaming network protocols.
 keywords: [streaming, stream, event-driven, kafka, rabbitmq, mqtt, cdc, sql streaming, csv streaming, websocket, grpc, sse, server-sent events, graphql subscriptions, smb, ftp]
+sidebar_position: 6
+slug: /reference/streaming-capabilities
 ---
 
 # Streaming Capabilities
@@ -102,7 +104,7 @@ do {
 check orders.close();
 ```
 
-For the full query clause reference, see [Query Expressions](language/query-expressions.md).
+For the full query clause reference, see [Query Expressions](https://ballerina.io/spec/lang/master/).
 
 ### Service/listener model {#service-listener-model}
 
@@ -125,14 +127,14 @@ service "OrderConsumer" on orderListener {
 }
 ```
 
-Listeners exist for every broker, every event source, and every streaming network protocol covered below. See the [Build an Event-Driven Integration](../get-started/build-event-driven-integration.md) quick start for a complete walkthrough.
+Listeners exist for every broker, every event source, and every streaming network protocol covered below. See the [Build an Event-Driven Integration](../get-started/quickstarts/build-event-driven-integration.md) quick start for a complete walkthrough.
 
 ## Streaming capability categories
 
 | Category | What it covers | Connector |
 | ----- | ----- | ----- |
 | [Database query streaming](#database-query-streaming-sql) | Result sets returned as lazy streams of records | [MySQL](../connectors/catalog/database/mysql/connector-overview.md), [PostgreSQL](../connectors/catalog/database/postgresql/connector-overview.md), [Microsoft SQL Server (MSSQL)](../connectors/catalog/database/mssql/connector-overview.md), [OracleDB](../connectors/catalog/database/oracledb/oracle-db-connector-overview.md), [Snowflake](../connectors/catalog/database/snowflake/connector-overview.md), [JDBC](../connectors/catalog/database/java.jdbc/java-jdbc-connector-overview.md) |
-| [CSV streaming](#csv-streaming) | Streaming CSV parser that yields one record at a time | [CSV](../develop/transform/csv-flat-file.md#processing-large-files) |
+| [CSV streaming](#csv-streaming) | Streaming CSV parser that yields one record at a time | [CSV](../develop-and-test/data-transformation/csv-flat-file.md#processing-large-files) |
 | [Message brokers](#message-brokers) | Distributed event streaming and messaging | [Kafka](../connectors/catalog/messaging/kafka/connector-overview.md), [RabbitMQ](../connectors/catalog/messaging/rabbitmq/connector-overview.md), [MQTT](../connectors/catalog/built-in/mqtt/mqtt.md), [NATS](../connectors/catalog/messaging/nats/connector-overview.md), [JMS](../connectors/catalog/messaging/java.jms/jms-connector-overview.md), [ASB](../connectors/catalog/messaging/asb/azure-service-bus-connector-overview.md), [Solace](../connectors/catalog/messaging/solace/connector-overview.md), [AWS SQS](../connectors/catalog/messaging/aws.sqs/aws-sqs-connector-overview.md), [AWS SNS](../connectors/catalog/communication/aws.sns/aws-sns-connector-overview.md) |
 | [Change Data Capture and SaaS event sources](#change-data-capture-and-saas-event-sources) | Database change events, cloud/SaaS events | [CDC](../connectors/catalog/database/cdc/connector-overview.md), [Salesforce](../connectors/catalog/crm-sales/salesforce/connector-overview.md), [Email](../connectors/catalog/built-in/email/email.md), [DynamoDB Streams](https://central.ballerina.io/ballerinax/aws.dynamodbstreams/latest), [GitHub Trigger](https://central.ballerina.io/ballerinax/trigger.github/latest) |
 | [File / object transfer streaming](#file-object-transfer-streaming) | Memory-efficient streaming over file transfer protocols | [I/O](https://central.ballerina.io/ballerina/io/latest), [FTP](../connectors/catalog/built-in/ftp/ftp.md), [SMB](https://central.ballerina.io/ballerina/smb/latest) |
@@ -184,7 +186,7 @@ For per-database actions and configuration, see the connector docs: [MySQL](../c
 
 ## CSV streaming {#csv-streaming}
 
-For very large CSV files, [CSV connector](../develop/transform/csv-flat-file.md#processing-large-files) exposes `parseToStream`, which incrementally parses a byte block stream and yields one record at a time. This keeps memory usage bounded regardless of file size, and the resulting record stream composes naturally with query expressions.
+For very large CSV files, [CSV connector](../develop-and-test/data-transformation/csv-flat-file.md#processing-large-files) exposes `parseToStream`, which incrementally parses a byte block stream and yields one record at a time. This keeps memory usage bounded regardless of file size, and the resulting record stream composes naturally with query expressions.
 
 ```ballerina
 import ballerina/data.csv;
@@ -274,7 +276,7 @@ service "orders" on rmqListener {
 }
 ```
 
-For per-broker artifact pages with the full creation workflow, see the [Event-Driven Integration](../develop/integration-artifacts/integration-artifacts.md) section.
+For per-broker artifact pages with the full creation workflow, see the [Event-Driven Integration](../develop-and-test/integration-artifacts/integration-artifacts.md) section.
 
 ## Change Data Capture and SaaS event sources {#change-data-capture-and-saas-event-sources}
 
@@ -321,7 +323,7 @@ service cdc:Service on postgresqlCdcListener {
 }
 ```
 
-For per-source guides, see the artifact pages: [CDC for PostgreSQL](../develop/integration-artifacts/event/cdc-postgresql.md), [CDC for MSSQL](../develop/integration-artifacts/event/cdc-mssql.md), [Salesforce events](../develop/integration-artifacts/event/salesforce-events.md), [GitHub webhooks](../develop/integration-artifacts/event/github-webhooks.md), [POP3/IMAP4](../develop/integration-artifacts/event/pop3imap4.md).
+For per-source guides, see the artifact pages: [CDC for PostgreSQL](../develop-and-test/integration-artifacts/event-driven-integration/cdc-postgresql.md), [CDC for MSSQL](../develop-and-test/integration-artifacts/event-driven-integration/cdc-mssql.md), [Salesforce events](../develop-and-test/integration-artifacts/event-driven-integration/salesforce-events.md), [GitHub webhooks](../develop-and-test/integration-artifacts/event-driven-integration/github-webhooks.md), [POP3/IMAP4](../develop-and-test/integration-artifacts/event-driven-integration/pop3imap4.md).
 
 ## File / object transfer streaming {#file-object-transfer-streaming}
 
@@ -380,7 +382,7 @@ public function main() returns error? {
 }
 ```
 
-For file-arrival events, both modules also expose a Listener. For the file-streaming deep dive, see [FTP / SFTP](../develop/integration-artifacts/file/ftp-sftp.md#streaming-large-files).
+For file-arrival events, both modules also expose a Listener. For the file-streaming deep dive, see [FTP / SFTP](../develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp.md#streaming-large-files).
 
 ## Streaming network protocols {#streaming-network-protocols}
 
@@ -485,9 +487,9 @@ See [Supported Protocols](supported-protocols.md) for the full protocol matrix.
 
 ## See also
 
-* [Query Expressions](language/query-expressions.md) — full clause reference
+* [Query Expressions](https://ballerina.io/spec/lang/master/) — full clause reference
 * [CSV](data-formats/csv.md) — CSV format reference
-* [Streaming large files](../develop/integration-artifacts/file/ftp-sftp.md#streaming-large-files) — deep dive on file streaming
-* [Build an Event-Driven Integration](../get-started/build-event-driven-integration.md) — quick start
-* Event-driven artifact pages: [Kafka](../develop/integration-artifacts/event/kafka.md), [RabbitMQ](../develop/integration-artifacts/event/rabbitmq.md), [MQTT](../develop/integration-artifacts/event/mqtt.md), [Azure Service Bus](../develop/integration-artifacts/event/azure-service-bus.md), [Solace](../develop/integration-artifacts/event/solace.md)
+* [Streaming large files](../develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp.md#streaming-large-files) — deep dive on file streaming
+* [Build an Event-Driven Integration](../get-started/quickstarts/build-event-driven-integration.md) — quick start
+* Event-driven artifact pages: [Kafka](../develop-and-test/integration-artifacts/event-driven-integration/kafka.md), [RabbitMQ](../develop-and-test/integration-artifacts/event-driven-integration/rabbitmq.md), [MQTT](../develop-and-test/integration-artifacts/event-driven-integration/mqtt.md), [Azure Service Bus](../develop-and-test/integration-artifacts/event-driven-integration/azure-service-bus.md), [Solace](../develop-and-test/integration-artifacts/event-driven-integration/solace.md)
 * [Supported Protocols](supported-protocols.md) — complete protocol matrix

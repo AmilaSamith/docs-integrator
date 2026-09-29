@@ -1,5 +1,6 @@
 ---
 title: HL7
+slug: /reference/data-formats/hl7
 ---
 
 # HL7

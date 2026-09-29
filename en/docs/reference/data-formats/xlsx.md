@@ -1,12 +1,13 @@
 ---
 title: XLSX
+slug: /reference/data-formats/xlsx
 ---
 
 # XLSX
 
 The `ballerina/xlsx` module reads and writes Microsoft Excel files in the XLSX format with type-safe data binding to Ballerina records. It provides a one-shot functional API (`parseSheet`, `writeSheet`, `parseTable`, `writeTable`) for single-sheet and single-table ETL, and an object-based Workbook API for multi-sheet operations, byte-array I/O, and cell-level control. All processing is local, with no external service dependency.
 
-For a task-oriented walkthrough, see the [Excel (XLSX) processing guide](../../develop/transform/xlsx.md). This page is part of the [supported data formats](supported-data-formats.md) reference, alongside the [CSV reference](csv.md).
+For a task-oriented walkthrough, see the [Excel (XLSX) processing guide](../../develop-and-test/data-transformation/xlsx.md). This page is part of the [supported data formats](supported-data-formats.md) reference, alongside the [CSV reference](csv.md).
 
 ## Module
 

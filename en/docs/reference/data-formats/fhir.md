@@ -1,5 +1,6 @@
 ---
 title: FHIR
+slug: /reference/data-formats/fhir
 ---
 
 # FHIR

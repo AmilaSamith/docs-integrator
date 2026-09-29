@@ -1,69 +1,99 @@
 ---
-title: Reference
-sidebar_label: Overview
 sidebar_position: 0
-slug: /reference/overview
-description: "What's the exact syntax / config / API for Z?"
+sidebar_label: Overview
+title: Reference
+description: Lookup material for WSO2 Integrator - configuration, CLI commands, APIs, error codes, supported protocols and data formats, and release notes.
+slug: /reference
+hide_table_of_contents: true
+wide_layout: true
 ---
 
 # Reference
 
-Pure lookup material - syntax, configuration keys, CLI commands, API docs, and specifications. No tutorials, no narrative - just the facts.
+<PaletteGrid>
 
-## Language
+<PaletteCard icon="tools" href="/reference/configuration-reference">
+  <h3 class="palette-card-title">Configuration Reference</h3>
+  <ul class="palette-card-list">
+    <li>Configurable variables and value sources</li>
+    <li>Config.toml, Ballerina.toml, Cloud.toml</li>
+  </ul>
+</PaletteCard>
 
-Ballerina language reference for integration developers:
+<PaletteCard icon="scan" href="/reference/cli-commands">
+  <h3 class="palette-card-title">CLI Commands</h3>
+  <ul class="palette-card-list">
+    <li>Build, run, and test</li>
+    <li>Code generation and migration tools</li>
+  </ul>
+</PaletteCard>
 
-- **[Type System](language/type-system.md)** - Structural types, unions, optional, any, stream, never
-- **[Error Handling](language/error-handling.md)** - Error types and handling patterns
-- **[Query Expressions](language/query-expressions.md)** - SQL-like data processing
-- **[Concurrency](language/concurrency.md)** - Workers, strands, locks, transactions
+<PaletteCard icon="api" href="/reference/api-reference">
+  <h3 class="palette-card-title">API Reference</h3>
+  <ul class="palette-card-list">
+    <li>Ballerina library APIs</li>
+    <li>Integration Control Plane APIs</li>
+  </ul>
+</PaletteCard>
 
+<PaletteCard icon="error-handling" href="/reference/error-codes">
+  <h3 class="palette-card-title">Error Codes</h3>
+  <ul class="palette-card-list">
+    <li>Error code reference</li>
+  </ul>
+</PaletteCard>
 
-## Configuration
+<PaletteCard icon="server" href="/reference/supported-protocols">
+  <h3 class="palette-card-title">Supported Protocols</h3>
+  <ul class="palette-card-list">
+    <li>Protocol support at a glance</li>
+  </ul>
+</PaletteCard>
 
-Project and deployment configuration files:
+<PaletteCard icon="event" href="/reference/streaming-capabilities">
+  <h3 class="palette-card-title">Streaming Capabilities</h3>
+  <ul class="palette-card-list">
+    <li>Streaming support in WSO2 Integrator</li>
+  </ul>
+</PaletteCard>
 
-| File                                                         | Purpose                           |
-| ------------------------------------------------------------ | --------------------------------- |
-| **[Configuration management](config/configuration-management.md)**    | Configurable variables, value sources, and environment variables |
-| **[Ballerina.toml](project/ballerinatoml-reference.md)**              | Project metadata and dependencies |
-| **[Config.toml](config/configtoml-reference.md)**                     | Runtime configuration values      |
-| **[Cloud.toml](project/cloudtoml-reference.md)**                      | Cloud deployment settings         |
+<PaletteCard icon="transform" href="/reference/data-formats/supported-data-formats">
+  <h3 class="palette-card-title">Data Formats</h3>
+  <ul class="palette-card-list">
+    <li>Supported data formats</li>
+    <li>A reference page for each format</li>
+  </ul>
+</PaletteCard>
 
+<PaletteCard icon="migrate" href="/reference/release-notes">
+  <h3 class="palette-card-title">Release Notes</h3>
+  <ul class="palette-card-list">
+    <li>What's new in each release</li>
+  </ul>
+</PaletteCard>
 
-## APIs
+<PaletteCard icon="faq" href="/reference/faq">
+  <h3 class="palette-card-title">FAQ</h3>
+  <ul class="palette-card-list">
+    <li>Frequently asked questions about WSO2 Integrator</li>
+  </ul>
+</PaletteCard>
 
-- **[Management API](api/management.md)** - Runtime management endpoints
-- **[Auth API](api/auth-api.md)** - Authentication and authorization endpoints
-- **[ICP API](api/icp.md)** - Integration Control Plane API
-- **[Ballerina API Docs](api/ballerina-documentation.md)** - Standard library API documentation
+<PaletteCard icon="book" href="/reference/glossary">
+  <h3 class="palette-card-title">Glossary</h3>
+  <ul class="palette-card-list">
+    <li>Terminology definitions</li>
+  </ul>
+</PaletteCard>
 
-## ICP Configuration
+<PaletteCard icon="external" href="https://ballerina.io/learn/">
+  <h3 class="palette-card-title">Ballerina Documentation</h3>
+  <ul class="palette-card-list">
+    <li>Language syntax and standard library docs</li>
+    <li>Language specification and runnable examples</li>
+  </ul>
+</PaletteCard>
 
-Server and deployment configuration for WSO2 Integration Control Plane:
+</PaletteGrid>
 
-- **[Server Configuration](icp/server-configuration.md)** - Server settings and authentication token keys
-- **[Database Configuration](icp/database-configuration.md)** - Main database and credentials database setup
-- **[Authentication Configuration](icp/authentication-config.md)** - Authentication backends and LDAP configuration
-
-## Specifications & formats
-
-- **[Supported protocols](supported-protocols.md)** - Complete protocol support table
-- **[Supported data formats](data-formats/supported-data-formats.md)** - Complete data format support table
-- **[Ballerina by Example](ballerina-by-example.md)** - 200+ runnable examples
-- **[Ballerina Specifications](ballerina-specifications.md)** - Language, library, and platform specs
-
-## Miscellaneous
-
-- **[Configure a Network Proxy for WSO2 Integrator](miscellaneous/configure-a-network-proxy.md)** - Set up proxy access in corporate environments
-- **[Proxy Ballerina Central with Maven Repository](miscellaneous/proxy-ballerina-central-with-maven-repository.md)** - Set up Maven repository proxy for Ballerina Central
-
-## Appendix
-
-- **[Error Codes](appendix/error-code.md)** - Error code reference
-- **[Glossary](appendix/glossary.md)** - Terminology definitions
-- **[FAQ](appendix/faq.md)** - Frequently asked questions
-- **[Release Notes](appendix/release-notes.md)** - What's new in each release
-
-For troubleshooting and debugging, see [Debugging](../develop/debugging/editor.md).
+ICP server, database, and authentication settings are documented with the [Integration Control Plane](../icp/index.md).

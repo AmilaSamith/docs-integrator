@@ -1,5 +1,6 @@
 ---
 title: TOML
+slug: /reference/data-formats/toml
 ---
 
 # TOML

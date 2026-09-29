@@ -1,5 +1,6 @@
 ---
 title: XML
+slug: /reference/data-formats/xml
 ---
 
 # XML

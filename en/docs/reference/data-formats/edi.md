@@ -1,5 +1,6 @@
 ---
 title: EDI
+slug: /reference/data-formats/edi
 ---
 
 # EDI
@@ -38,7 +39,7 @@ See [prebuilt EDIFACT packages](#prebuilt-edifact-packages) for the full list.
 
 ### Generating types from a schema
 
-For EDIFACT or X12 documents not covered by prebuilt packages, use the [EDI Tool](../../develop/tools/integration-tools/edi-tool.md) to generate Ballerina types and parser functions from the standard spec. This gives you a typed API without writing a schema by hand.
+For EDIFACT or X12 documents not covered by prebuilt packages, use the [EDI Tool](../../develop-and-test/developer-tools/integration-tools/edi-tool.md) to generate Ballerina types and parser functions from the standard spec. This gives you a typed API without writing a schema by hand.
 
 ## Module
 
@@ -186,7 +187,7 @@ For full signatures, parameters, error types (`InvalidEnvelopeError`, `SchemaCom
 
 ## Custom EDI schemas
 
-For a proprietary or non-standard format — one with no X12 or EDIFACT specification to convert from — define the structure directly as a JSON schema. The following JSON schema defines the structure of the simple order EDI format shown above. To handle a trading partner's variations on a *standard* format, start from the converted schema instead: see [Adapting the schema to a trading partner](../../develop/transform/edi.md#adapting-the-schema-to-a-trading-partner).
+For a proprietary or non-standard format — one with no X12 or EDIFACT specification to convert from — define the structure directly as a JSON schema. The following JSON schema defines the structure of the simple order EDI format shown above. To handle a trading partner's variations on a *standard* format, start from the converted schema instead: see [Adapting the schema to a trading partner](../../develop-and-test/data-transformation/edi.md#adapting-the-schema-to-a-trading-partner).
 
 ```json
 {

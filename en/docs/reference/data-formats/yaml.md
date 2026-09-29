@@ -1,5 +1,6 @@
 ---
 title: YAML
+slug: /reference/data-formats/yaml
 ---
 
 # YAML
