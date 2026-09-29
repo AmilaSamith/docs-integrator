@@ -1,5 +1,6 @@
 ---
 title: JSON
+slug: /reference/data-formats/json
 ---
 
 # JSON

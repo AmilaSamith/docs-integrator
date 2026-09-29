@@ -1,0 +1,95 @@
+name: Sync shared content to saas
+
+# Phase 6 -- shared/hosting-model-agnostic content flows from
+# wso2-integrator (the source of truth) to saas as a reviewed bot PR,
+# never auto-merged. Same "accept duplication, automate sync" pattern
+# as sync-theme.yaml, applied to docs content instead of theme/chrome.
+#
+# Targets `saas`, not `main`: main is still the untouched pre-revamp
+# branch, saas is where active development actually happens. Repoint
+# `--base` (and the trigger comment below) at `main` once saas has been
+# force-pushed there and main becomes the live development branch.
+#
+# NOT synced (deliberately): deploy/, operate/, manage/, reference/ (all
+# of it except appendix/glossary.md) -- hosting-model-specific, authored
+# independently per branch. connectors/ isn't a folder here at all
+# (lives on its own wso2-connectors branch, referenced by link, not
+# synced). Agent Builder is parked, no sync target exists yet.
+
+on:
+  push:
+    branches: [wso2-integrator]
+    paths:
+      - 'en/docs/platform-overview/**'
+      - 'en/docs/editor/**'
+      - 'en/docs/develop/**'
+      - 'en/docs/test/**'
+      - 'en/docs/customize/**'
+      - 'en/docs/migrate/**'
+      - 'en/docs/guides/**'
+      - 'en/docs/get-started/concepts/core.md'
+      - 'en/docs/reference/appendix/glossary.md'
+  workflow_dispatch:
+
+env:
+  SYNC_DIRS: >-
+    en/docs/platform-overview
+    en/docs/editor
+    en/docs/develop
+    en/docs/test
+    en/docs/customize
+    en/docs/migrate
+    en/docs/guides
+  SYNC_FILES: >-
+    en/docs/get-started/concepts/core.md
+    en/docs/reference/appendix/glossary.md
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push shared content to saas
+        run: |
+          git config user.name "Docs Bot"
+          git config user.email "docs@wso2.com"
+
+          git fetch origin wso2-integrator saas
+          git checkout -b sync-content-saas-$(date +%Y%m%d%H%M%S) origin/saas
+
+          # Full replace, not overlay: `git checkout <ref> -- <path>` only
+          # adds/updates files present in <ref> -- it never removes a path
+          # that exists on saas but not on wso2-integrator. Clear each
+          # shared directory first so a removal on wso2-integrator
+          # actually propagates.
+          for d in $SYNC_DIRS; do
+            rm -rf "$d"
+            git checkout origin/wso2-integrator -- "$d" 2>/dev/null || true
+          done
+          for f in $SYNC_FILES; do
+            git checkout origin/wso2-integrator -- "$f" 2>/dev/null || true
+          done
+
+          git add -A -- $SYNC_DIRS $SYNC_FILES
+
+          if git diff --cached --quiet; then
+            echo "No content changes to sync."
+            exit 0
+          fi
+
+          git commit -m "content(sync): shared docs from wso2-integrator ($(date +%Y-%m-%d))"
+          git push origin HEAD
+
+          gh pr create --base saas --head "$(git branch --show-current)" \
+            --title "content(sync): shared docs from wso2-integrator" \
+            --body "Auto-synced shared content (platform-overview, editor, develop, test, customize, migrate, guides, get-started/concepts/core.md, reference/appendix/glossary.md) from wso2-integrator.
+
+**Review before merging, do not auto-merge.** In particular:
+- \`editor/views/integration-view.md\`, \`editor/views/project-view.md\`, and \`editor/integrator-app.md\` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR's diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that's this sync clobbering the saas-specific override -- revert those hunks before merging, don't accept them as-is.
+- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one." \
+            --label "content-sync"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

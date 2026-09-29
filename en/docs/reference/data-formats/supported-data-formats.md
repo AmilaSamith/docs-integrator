@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: Supported Data Formats
 description: Complete reference of all data formats supported by WSO2 Integrator with Ballerina modules and usage patterns.
+slug: /reference/data-formats/supported-data-formats
 ---
 
 # Supported Data Formats
@@ -42,9 +43,9 @@ Common format-to-format transformation patterns supported in WSO2 Integrator:
 
 ## See also
 
-- [Data Transformation - JSON](../../develop/transform/json.md) -- JSON transformation guide
-- [Data Transformation - XML](../../develop/transform/xml.md) -- XML transformation guide
-- [Data Transformation - CSV](../../develop/transform/csv-flat-file.md) -- CSV processing guide
-- [Data Transformation - XLSX](../../develop/transform/xlsx.md) -- Excel (XLSX) processing guide
-- [Data Transformation - EDI](../../develop/transform/edi.md) -- EDI processing guide
-- [Ballerina API Documentation](../api/ballerina-documentation.md) -- Full API docs for all modules
+- [Data Transformation - JSON](../../develop-and-test/data-transformation/json.md) -- JSON transformation guide
+- [Data Transformation - XML](../../develop-and-test/data-transformation/xml.md) -- XML transformation guide
+- [Data Transformation - CSV](../../develop-and-test/data-transformation/csv-flat-file.md) -- CSV processing guide
+- [Data Transformation - XLSX](../../develop-and-test/data-transformation/xlsx.md) -- Excel (XLSX) processing guide
+- [Data Transformation - EDI](../../develop-and-test/data-transformation/edi.md) -- EDI processing guide
+- [Ballerina API Documentation](../api-reference.md) -- Full API docs for all modules

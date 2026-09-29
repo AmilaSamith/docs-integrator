@@ -1,5 +1,6 @@
 ---
 title: CSV
+slug: /reference/data-formats/csv
 ---
 
 # CSV

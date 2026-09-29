@@ -1,5 +1,6 @@
 ---
 title: Protocol Buffers
+slug: /reference/data-formats/protocol-buffers
 ---
 
 # Protocol Buffers

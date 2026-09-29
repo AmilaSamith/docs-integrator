@@ -1,5 +1,6 @@
 ---
 title: Avro
+slug: /reference/data-formats/avro
 ---
 
 # Avro

@@ -1,7 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 title: Supported Protocols
 description: Complete reference of all communication protocols supported by WSO2 Integrator with Ballerina module names and versions.
+slug: /reference/supported-protocols
 ---
 
 # Supported Protocols
@@ -197,6 +198,6 @@ service "emailObserver" on imapListener {
 
 ## See also
 
-- [Ballerina API Documentation](api/ballerina-documentation.md) -- Full API docs for all modules
+- [Ballerina API Documentation](api-reference.md) -- Full API docs for all modules
 - [Connectors Catalog](../connectors/catalog/index.mdx) -- Protocol connector guides
 - [Data Formats](data-formats/supported-data-formats.md) -- Supported data formats
