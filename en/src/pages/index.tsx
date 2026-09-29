@@ -12,11 +12,12 @@ import styles from './index.module.css';
 /* ------------------------------------------------------------------ */
 /*  Clean SVG Icon Components                                          */
 /* ------------------------------------------------------------------ */
-function IconGetStarted(): ReactNode {
+function IconPlatformOverview(): ReactNode {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polygon points="10 8 16 12 10 16 10 8" />
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
     </svg>
   );
 }
@@ -26,26 +27,6 @@ function IconDevelop(): ReactNode {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
-    </svg>
-  );
-}
-
-function IconConnectors(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1.5" />
-      <rect x="14" y="3" width="7" height="7" rx="1.5" />
-      <rect x="3" y="14" width="7" height="7" rx="1.5" />
-      <rect x="14" y="14" width="7" height="7" rx="1.5" />
-    </svg>
-  );
-}
-
-function IconGenAI(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" />
-      <path d="M20 16l.62 1.88L22.5 18.5l-1.88.62L20 21l-.62-1.88L17.5 18.5l1.88-.62L20 16z" />
     </svg>
   );
 }
@@ -67,13 +48,10 @@ function IconDeploy(): ReactNode {
   );
 }
 
-function IconReference(): ReactNode {
+function IconMigrate(): ReactNode {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-      <line x1="16" y1="13" x2="8" y2="13" />
-      <line x1="16" y1="17" x2="8" y2="17" />
+      <path d="M4 7h13l-3-3M20 17H7l3 3" />
     </svg>
   );
 }
@@ -94,6 +72,53 @@ function IconManage(): ReactNode {
   );
 }
 
+function IconEditorTour(): ReactNode {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+    </svg>
+  );
+}
+
+function IconObserve(): ReactNode {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 14a8 8 0 1 1 16 0" />
+      <path d="M12 14l4-5" />
+      <path d="M4 14h1M19 14h1M12 14v1" />
+    </svg>
+  );
+}
+
+/** The pulse/waveform mark used as the "Docs" badge icon in the hero
+ * and as the logo-ish icon in the cloud-console mockup. */
+function IconWave({ stroke = 'currentColor', size = 14 }: { stroke?: string; size?: number }): ReactNode {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h3l2-4 3 8 2-4h4" />
+    </svg>
+  );
+}
+
+function IconArrowRight(): ReactNode {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+      <path d="M4 12h15M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function IconLaunch(): ReactNode {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Section Data                                                       */
 /* ------------------------------------------------------------------ */
@@ -102,83 +127,68 @@ type SectionCard = {
   description: string;
   link: string;
   icon: ReactNode;
-  iconBg: string;
-  iconBgDark: string;
+  /** Kept per-category (not tied to the brand accent) so the grid stays
+   * quickly scannable -- only the icon stroke is tinted, the badge itself
+   * is a neutral bordered square (see .sectionIcon). */
   iconColor: string;
 };
 
 const sections: SectionCard[] = [
   {
-    title: 'Get started',
-    description: 'Install, set up, and build your first integration in under 10 minutes.',
-    link: '/get-started/introduction',
-    icon: <IconGetStarted />,
-    iconBg: '#ECFDF5',
-    iconBgDark: 'rgba(5, 150, 105, 0.15)',
+    title: 'Platform Overview',
+    description: "Understand WSO2 Integrator's architecture, core concepts, and key capabilities.",
+    link: '/platform-overview',
+    icon: <IconPlatformOverview />,
     iconColor: '#059669',
   },
   {
-    title: 'Develop',
+    title: 'Editor Tour',
+    description: 'Take a tour of the WSO2 Integrator editor -- workspace, canvases, and Copilot.',
+    link: '/editor',
+    icon: <IconEditorTour />,
+    iconColor: '#DB2777',
+  },
+  {
+    title: 'Develop and Test',
     description: 'Build services, transform data, and test integrations on your machine.',
-    link: '/develop/overview',
+    link: '/develop-and-test',
     icon: <IconDevelop />,
-    iconBg: '#EFF6FF',
-    iconBgDark: 'rgba(37, 99, 235, 0.15)',
-    iconColor: '#2563EB',
+    iconColor: '#26365A',
   },
   {
-    title: 'Connectors',
-    description: 'Browse pre-built connectors for SaaS, databases, messaging, and AI.',
-    link: '/connectors/overview',
-    icon: <IconConnectors />,
-    iconBg: '#F0EDFF',
-    iconBgDark: 'rgba(124, 58, 237, 0.15)',
-    iconColor: '#7C3AED',
+    title: 'Deploy and Run',
+    description: 'Deploy to WSO2 Cloud, connect a Git provider, and secure integrations in production.',
+    link: '/deploy-and-run',
+    icon: <IconDeploy />,
+    iconColor: '#0891B2',
   },
   {
-    title: 'AI Integrations',
-    description: 'Build AI-powered integrations with agents, RAG, and MCP servers.',
-    link: '/genai/overview',
-    icon: <IconGenAI />,
-    iconBg: '#FDF4FF',
-    iconBgDark: 'rgba(168, 85, 247, 0.15)',
-    iconColor: '#A855F7',
+    title: 'Manage',
+    description: 'Centralized control over integrations, environments, and access via the WSO2 Cloud console.',
+    link: '/manage',
+    icon: <IconManage />,
+    iconColor: '#4F46E5',
+  },
+  {
+    title: 'Observe',
+    description: 'Monitor logs, metrics, and alerts for your integrations in WSO2 Cloud.',
+    link: '/observe',
+    icon: <IconObserve />,
+    iconColor: '#0D9488',
+  },
+  {
+    title: 'Migrate',
+    description: 'Move existing MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps integrations to WSO2.',
+    link: '/migrate',
+    icon: <IconMigrate />,
+    iconColor: '#B45309',
   },
   {
     title: 'Guides',
     description: 'End-to-end tutorials and integration patterns.',
     link: '/guides/overview',
     icon: <IconTutorials />,
-    iconBg: '#FFF8EB',
-    iconBgDark: 'rgba(217, 119, 6, 0.15)',
     iconColor: '#D97706',
-  },
-  {
-    title: 'Deploy',
-    description: 'Docker, Kubernetes, CI/CD, observability, and production security.',
-    link: '/deploy/overview',
-    icon: <IconDeploy />,
-    iconBg: '#ECFEFF',
-    iconBgDark: 'rgba(8, 145, 178, 0.15)',
-    iconColor: '#0891B2',
-  },
-  {
-    title: 'Manage',
-    description: 'Centralized control and observability via the Integration Control Plane (ICP).',
-    link: '/manage/overview',
-    icon: <IconManage />,
-    iconBg: '#EEF2FF',
-    iconBgDark: 'rgba(79, 70, 229, 0.15)',
-    iconColor: '#4F46E5',
-  },
-  {
-    title: 'Reference',
-    description: 'Language reference, configuration keys, CLI commands, and error codes.',
-    link: '/reference/overview',
-    icon: <IconReference />,
-    iconBg: '#F1F5F9',
-    iconBgDark: 'rgba(100, 116, 139, 0.15)',
-    iconColor: '#475569',
   },
 ];
 
@@ -186,10 +196,9 @@ const sections: SectionCard[] = [
 /*  Quick-links shown when the search input is focused but empty       */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Automation', to: '/get-started/build-automation' },
-  { label: 'Build an AI Agent', to: '/get-started/build-ai-agent' },
-  { label: 'Build an API Integration', to: '/get-started/build-api-integration' },
-  { label: 'Connector catalog', to: '/connectors/overview' },
+  { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
+  { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-order-processing' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -296,39 +305,100 @@ function SearchBar(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Hero Banner                                                        */
+/*  Cloud console screenshot -- the real WSO2 Cloud sign-in page,
+ *  inside the same browser-chrome frame used across the hero. A raw
+ *  flat screenshot (no rounding/shadow of its own baked in), so the
+ *  chrome frame is what gives it presentation.
+ * ------------------------------------------------------------------ */
+function CloudConsoleScreenshot(): ReactNode {
+  const src = useBaseUrl('/img/landing/wso2-integration-platform-sign-in.png');
+  return (
+    <div className={styles.productCard}>
+      <div className={styles.productCardChrome}>
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardTitle}>WSO2 Cloud Console</span>
+      </div>
+      <img src={src} alt="WSO2 Integration Platform sign-in page" />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero Banner — split layout: product-screenshot card (left) +      */
+/*  badge/heading/search/CTA (right)                                  */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   return (
     <header className={styles.heroBanner}>
-      <div className="container">
+      <div className={styles.heroInner}>
+        <div className={styles.heroLeft}>
+          <CloudConsoleScreenshot />
+          <div className={styles.downloadRow}>
+            <Link
+              className={styles.downloadBtn}
+              href="https://console.devant.dev/signup"
+              target="_blank"
+              rel="noopener noreferrer">
+              <IconLaunch />
+              Launch WSO2 Cloud
+            </Link>
+            <span className={styles.downloadCaption}>
+              No installation required
+              <br />
+              Runs entirely in your browser
+            </span>
+          </div>
+        </div>
 
-        <Heading as="h1">WSO2 Integration Platform</Heading>
-        <p className={styles.heroSubtitle}>
-          Build and deploy integrations with low-code simplicity and pro-code power.
-        </p>
-        <SearchBar />
-        <div className={styles.buttons}>
-          <Link
-            className={styles.heroBtn}
-            to="/get-started/build-automation">
-            Build your first integration
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+        <div className={styles.heroRight}>
+          <span className={styles.heroBadge}>
+            <IconWave stroke="#FF8A3D" />
+            Docs · WSO2 Cloud
+          </span>
+          <Heading as="h1">WSO2 Integration Platform</Heading>
+          <p className={styles.heroSubtitle}>
+            Build, deploy, and manage integrations at cloud speed
+          </p>
+          <SearchBar />
+          <div className={styles.buttons}>
+            <Link
+              className={styles.heroBtn}
+              to="/get-started">
+              Let's Get Started
+              <IconArrowRight />
+            </Link>
+          </div>
         </div>
       </div>
     </header>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  "What do you want to build?" — tutorial row                        */
+/* ------------------------------------------------------------------ */
+function TutorialRow(): ReactNode {
+  return (
+    <section className={styles.tutorialRow}>
+      <Heading as="h2" className={styles.tutorialRowTitle}>
+        What do you want to build?
+      </Heading>
+      <div className={styles.tutorialGrid}>
+        {quickLinks.map((link) => (
+          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+            <span className={styles.tutorialCardText}>
+              <span className={styles.tutorialCardTitle}>{link.label}</span>
+              <span className={styles.tutorialCardSub}>{link.sub}</span>
+            </span>
+            <span className={styles.tutorialCardArrow}>
+              <IconArrowRight />
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -338,59 +408,23 @@ function HomepageHeader(): ReactNode {
 function SectionCards(): ReactNode {
   return (
     <section className={styles.sectionCards}>
-      <div className="container">
-        <div className={styles.sectionGrid}>
-          {sections.map((card, idx) => (
-            <Link
-              key={idx}
-              to={card.link}
-              className={styles.sectionCard}
-              style={
-                {
-                  '--icon-bg': card.iconBg,
-                  '--icon-bg-dark': card.iconBgDark,
-                  '--icon-color': card.iconColor,
-                } as React.CSSProperties
-              }>
-              <span className={styles.sectionIcon}>{card.icon}</span>
-              <Heading as="h3" className={styles.sectionCardTitle}>
-                {card.title}
-              </Heading>
-              <p className={styles.sectionCardDesc}>{card.description}</p>
-              <span className={styles.sectionCardArrow}>&rarr;</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  What's New banner                                                  */
-/* ------------------------------------------------------------------ */
-function WhatsNew(): ReactNode {
-  return (
-    <section className={styles.whatsNew}>
-      <div className="container">
-        <Link
-          to="/reference/appendix/release-notes"
-          className={styles.whatsNewLink}>
-          <span className={styles.whatsNewBadge}>New</span>
-          Check out the latest release notes
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </Link>
+      <Heading as="h2" className={styles.sectionCardsTitle}>
+        Explore the platform
+      </Heading>
+      <div className={styles.sectionGrid}>
+        {sections.map((card, idx) => (
+          <Link
+            key={idx}
+            to={card.link}
+            className={styles.sectionCard}
+            style={{ '--icon-color': card.iconColor } as React.CSSProperties}>
+            <span className={styles.sectionIcon}>{card.icon}</span>
+            <Heading as="h3" className={styles.sectionCardTitle}>
+              {card.title}
+            </Heading>
+            <p className={styles.sectionCardDesc}>{card.description}</p>
+          </Link>
+        ))}
       </div>
     </section>
   );
@@ -405,8 +439,8 @@ export default function Home(): ReactNode {
     <Layout title="Home" description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
+        <TutorialRow />
         <SectionCards />
-        <WhatsNew />
       </main>
     </Layout>
   );
