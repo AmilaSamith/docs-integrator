@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: "Example"
 description: Step-by-step examples for using the Twilio connector to send SMS messages and handle SMS and call status events using Twilio webhooks.
 keywords: [twilio, sms, connector example, webhook, trigger, ballerina]
 ---

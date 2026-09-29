@@ -1,7 +1,7 @@
 ---
 connector: true
 connector_name: "hubspot.events.completions"
-title: "HubSpot Events Completions Example"
+title: "Example"
 ---
 
 # Example

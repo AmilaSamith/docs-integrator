@@ -2,7 +2,7 @@
 connector: true
 connector_name: "hubspot.events.completions"
 toc_max_heading_level: 4
-title: "HubSpot Events Completions Action Reference"
+title: "Actions"
 ---
 
 # Actions

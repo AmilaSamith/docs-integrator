@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: "Example"
 description: Step-by-step examples for sending messages, receiving messages, and setting up event-driven triggers with the Azure Service Bus connector.
 keywords: [wso2 integrator, azure service bus, asb, example, sender, receiver, trigger]
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Action Reference"
+title: "Actions"
 description: "Full reference for all operations available in the Intercom connector: parameters, return types, and sample code."
 ---
 

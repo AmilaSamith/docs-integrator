@@ -1,17 +1,17 @@
 ---
-title: Create from OpenAPI Spec
-description: Generate a custom connector from an OpenAPI specification directly in the WSO2 Integrator IDE without coding.
+title: Build from OpenAPI Spec
+description: Generate a custom connector from an OpenAPI specification directly in the WSO2 Integrator without coding.
 keywords: [wso2 integrator, connector, openapi, custom connector, api specification, connection]
 ---
 
-# Create from OpenAPI Spec
+# Build from OpenAPI Spec
 
-WSO2 Integrator can generate a fully functional connector from any OpenAPI specification file, letting you integrate any REST API without writing manual client logic. Import the spec in the WSO2 Integrator IDE and the generated connector is ready to use in your integration.
+WSO2 Integrator can generate a fully functional connector from any OpenAPI specification file, letting you integrate any REST API without writing manual client logic. Import the spec in the WSO2 Integrator and the generated connector is ready to use in your integration.
 
 ## Prerequisites
 
 - An OpenAPI specification file (JSON or YAML) for the target API
-- WSO2 Integrator IDE installed and configured
+- [WSO2 Integrator](https://wso2.com/products/downloads/?product=wso2integrator) installed and configured
 
 ## Generate a connector
 
@@ -56,9 +56,14 @@ You don't have to start from the **Artifacts** view. While you work in the [Flow
 
 ![Add a connection from the node palette in the Flow Diagram editor](/img/connectors/build-your-own/create-from-openapi-spec/create-connector-while-in-visualizer.gif)
 
+## Publish the generated connector
+
+A connector generated this way is added directly to your project. To make it reusable across other projects, or to share it with your team or the broader community, package it as a standalone Ballerina project and [publish it to Ballerina Central](publish-connector.md).
+
 ## What's next
 
 - [Connections](../../develop/integration-artifacts/supporting/connections.md): Understand how connections are configured and reused across an integration.
-- [Custom development](custom-development.md): Build a connector from scratch using Ballerina for full control over the implementation.
+- [Build from Scratch](custom-development.md): Build a connector from scratch using Ballerina for full control over the implementation.
 - [Build your own connector](build-own.md): Compare approaches for creating custom connectors.
+- [Publish Connector](publish-connector.md): Share a finished connector via Ballerina Central.
 - [Connector catalog](../catalog/index.mdx): Browse all available pre-built connectors.

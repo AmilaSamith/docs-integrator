@@ -1,7 +1,7 @@
 ---
 connector: true
 connector_name: "aws.sqs"
-title: "Examples"
+title: "Example"
 ---
 
 # Example

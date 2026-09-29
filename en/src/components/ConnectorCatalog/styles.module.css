@@ -1,398 +1,525 @@
 /* ================================================================
-   CONNECTOR CATALOG — Search, Filter, Grid
-
-   Uses the theme palette from custom.css:
-     Light:  BG #FFFFFF | Surface #F8FAFC | Border #E2E8F0
-             Text #0F172A #475569 #94A3B8 | Primary #0077B6 | Accent #E8590C
-     Dark:   BG #0B1120 | Surface #151E31 | Border #1E293B
-             Text #F1F5F9 #94A3B8 #64748B | Primary #38BDF8 | Accent #FB923C
+   CONNECTOR CATALOG — sidebar facets (Area/Vendor), toolbar
+   (per-page/sort/pagination), and card grid. Uses the site's real
+   theme tokens (custom.css's --wso2- and --ifm- variables), not
+   hardcoded hex, so it follows the site's light/dark toggle and any
+   future palette tweaks automatically.
    ================================================================ */
 
+/* ── Page shell ── */
 .catalog {
   margin-top: 0.5rem;
 }
 
-/* ── Toolbar (search + chips) ── */
-.toolbar {
+/* ── Sidebar (rendered in the TOC slot by Filters.tsx) ── */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 14px;
+  background: var(--ifm-background-surface-color);
+  padding: 16px;
+  box-shadow: var(--wso2-card-shadow);
+}
+
+.sidebarSearch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: var(--wso2-well-bg);
+  border: 1px solid var(--wso2-surface-border);
+  color: var(--wso2-text-muted);
+}
+
+.sidebarSearch:focus-within {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.1);
+}
+
+.sidebarSearch input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--wso2-heading-color);
+}
+
+.sidebarSearch input::placeholder {
+  color: var(--wso2-text-muted);
+}
+
+.clear {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.facetGroup {
+  border-top: 1px solid var(--wso2-border-subtle);
+  padding-top: 0.75rem;
+}
+
+.facetGroupHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0 0 0.5rem;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--wso2-heading-color);
+  cursor: pointer;
+}
+
+.facetList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.facet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: none;
+  padding: 5px 2px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--wso2-heading-color);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.facet:hover {
+  background: var(--wso2-well-bg);
+}
+
+.box {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--wso2-surface-border);
+  color: transparent;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.facet[aria-pressed='true'] .box {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.facetLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.promo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--wso2-border-subtle);
+  padding-top: 0.75rem;
+  font-size: 12px;
+  color: var(--wso2-text-muted);
+}
+
+.promo b {
+  color: var(--wso2-heading-color);
+  font-size: 12.5px;
+}
+
+.promo a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.promo a:hover {
+  text-decoration: underline;
+}
+
+/* ── Mobile filters (rendered in the mobile "On this page" slot by
+   Filters.tsx's ConnectorCatalogFiltersMobile) -- search stays visible,
+   Area/Vendor/the promo sit behind the .filtersToggle button below.
+   Docusaurus renders DocItem/TOC/Mobile unconditionally (not gated by
+   viewport JS-side -- see DocItem/Layout's own docTOC.mobile, always
+   set whenever canRender is true) and relies on CSS to hide it above
+   its 997px mobile/desktop breakpoint (see theme-classic's own
+   DocItem/TOC/Mobile/styles.module.css, .tocMobile). Our swizzle
+   replaces its content on the catalog page but not that hiding rule,
+   so without repeating it here this block showed on every viewport,
+   duplicating the desktop rail (theme/TOC's ConnectorCatalogFilters)
+   above the connector grid instead of only appearing on mobile. ── */
+.filtersMobile {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-/* ── Search Input ── */
-.searchWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.searchIcon {
-  position: absolute;
-  left: 14px;
-  color: #94A3B8;
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 0.7rem 2.5rem 0.7rem 2.75rem;
-  font-size: 0.925rem;
-  font-family: inherit;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 12px;
-  background: #FFFFFF;
-  color: #0F172A;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.searchInput::placeholder {
-  color: #94A3B8;
-}
-
-.searchInput:focus {
-  border-color: #0077B6;
-  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
-}
-
-[data-theme='dark'] .searchInput {
-  background: #151E31;
-  border-color: #1E293B;
-  color: #F1F5F9;
-}
-
-[data-theme='dark'] .searchInput::placeholder {
-  color: #64748B;
-}
-
-[data-theme='dark'] .searchInput:focus {
-  border-color: #38BDF8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
-}
-
-.clearButton {
-  position: absolute;
-  right: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border: none;
-  border-radius: 6px;
-  background: #F8FAFC;
-  color: #94A3B8;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.clearButton:hover {
-  background: #E2E8F0;
-  color: #0F172A;
-}
-
-[data-theme='dark'] .clearButton {
-  background: rgba(255, 255, 255, 0.06);
-  color: #64748B;
-}
-
-[data-theme='dark'] .clearButton:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #F1F5F9;
-}
-
-/* ── Category Chips ── */
-.filterRow {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.filterRow::-webkit-scrollbar {
-  display: none;
-}
-
-.categoryChips {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  font-family: inherit;
-  border: 1px solid #E2E8F0;
-  border-radius: 20px;
-  background: #FFFFFF;
-  color: #475569;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
-  line-height: 1.4;
-}
-
-.chip:hover {
-  background: #F8FAFC;
-  border-color: #0077B6;
-  color: #0077B6;
-}
-
-.chipActive {
-  background: #0077B6;
-  border-color: #0077B6;
-  color: #FFFFFF;
-}
-
-.chipActive:hover {
-  background: #005F8F;
-  border-color: #005F8F;
-  color: #FFFFFF;
-}
-
-[data-theme='dark'] .chip {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: #1E293B;
-  color: #94A3B8;
-}
-
-[data-theme='dark'] .chip:hover {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: #38BDF8;
-  color: #38BDF8;
-}
-
-[data-theme='dark'] .chipActive {
-  background: #38BDF8;
-  border-color: #38BDF8;
-  color: #0B1120;
-}
-
-[data-theme='dark'] .chipActive:hover {
-  background: #7DD3FC;
-  border-color: #7DD3FC;
-  color: #0B1120;
-}
-
-.chipCount {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0 0.35rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.25);
-  line-height: 1.5;
-}
-
-.chip:not(.chipActive) .chipCount {
-  background: #F8FAFC;
-  color: #94A3B8;
-}
-
-[data-theme='dark'] .chip:not(.chipActive) .chipCount {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* ── Results meta ── */
-.resultsMeta {
-  margin-bottom: 0.75rem;
-}
-
-.resultCount {
-  font-size: 0.825rem;
-  color: #94A3B8;
-}
-
-/* ── Card Grid ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.75rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (min-width: 997px) {
+  .filtersMobile {
+    display: none;
   }
 }
 
-/* ── Connector Card ── */
-.card {
+.filtersToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--wso2-heading-color);
+  cursor: pointer;
+}
+
+.filtersToggle span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filtersCount {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.filtersMobilePanel {
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.15rem;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  background: #F8FAFC;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  gap: 0.75rem;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 14px;
+  background: var(--ifm-background-surface-color);
+  padding: 16px;
+  box-shadow: var(--wso2-card-shadow);
+}
+
+/* ── Toolbar (per-page, result count, sort, pagination) ── */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.toolbarLeft,
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.perPage,
+.sortBy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--wso2-text-muted);
+  white-space: nowrap;
+}
+
+.selectWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.selectWrap select {
+  appearance: none;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  color: var(--wso2-heading-color);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 6px 26px 6px 10px;
+  cursor: pointer;
+}
+
+.selectWrap svg {
+  position: absolute;
+  right: 8px;
+  pointer-events: none;
+  color: var(--wso2-text-muted);
+}
+
+.resultsMeta {
+  font-size: 13px;
+  color: var(--wso2-text-muted);
+  white-space: nowrap;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pageNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: var(--wso2-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+.pageNav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pageNav:not(:disabled):hover {
+  color: var(--ifm-color-primary);
+}
+
+.pageNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 999px;
+  background: var(--ifm-background-color);
+  color: var(--wso2-heading-color);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.pageNum:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.pageNum[aria-current='page'] {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.pageGap {
+  padding: 0 2px;
+  color: var(--wso2-text-muted);
+}
+
+/* ── Card grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: stretch;
+  gap: 14px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-surface-color);
+  padding: 16px;
+  box-shadow: var(--wso2-card-shadow);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .card:hover {
-  border-color: #0077B6;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
-  transform: translateY(-2px);
-  text-decoration: none;
-  color: inherit;
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--wso2-card-shadow-hover);
 }
 
-[data-theme='dark'] .card {
-  background: #151E31;
-  border-color: #1E293B;
+/* Grows to fill whatever extra height .grid's row-stretch gives this
+   card over its shortest sibling -- keeps the divider/tags pinned near
+   the bottom consistently instead of every card being only as tall as
+   its own description needs. */
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 auto;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 
-[data-theme='dark'] .card:hover {
-  border-color: #38BDF8;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
+/* Fixed height (not just min-height) regardless of whether a real icon
+   image loaded, the initials fallback rendered instead, or c.version
+   is present -- none of those should change this row's shape. */
 .cardHeader {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 32px;
+}
+
+.versionBadge {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--wso2-well-bg);
+  color: var(--wso2-text-muted);
+  font-size: 10.5px;
+  font-weight: 600;
 }
 
 .cardIcon {
+  flex-shrink: 0;
   width: 32px;
   height: 32px;
   border-radius: 8px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .cardIconFallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(0, 119, 182, 0.08);
-  color: #0077B6;
-  font-size: 0.85rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-[data-theme='dark'] .cardIconFallback {
-  background: rgba(56, 189, 248, 0.1);
-  color: #38BDF8;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .cardName {
-  flex: 1;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #0F172A;
-  line-height: 1.3;
-}
-
-[data-theme='dark'] .cardName {
-  color: #F1F5F9;
-}
-
-.cardCategory {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  background: rgba(0, 119, 182, 0.08);
-  color: #0077B6;
-  border: 1px solid rgba(0, 119, 182, 0.2);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  flex-shrink: 0;
-  letter-spacing: 0.01em;
-  line-height: 1.4;
-}
-
-[data-theme='dark'] .cardCategory {
-  background: rgba(56, 189, 248, 0.1);
-  color: #38BDF8;
-  border-color: rgba(56, 189, 248, 0.2);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
 }
 
 .cardDesc {
-  flex: 1;
-  font-size: 0.825rem;
+  margin: 0;
+  font-size: 13px;
   line-height: 1.5;
-  color: #475569;
-  margin: 0 0 0.75rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: var(--wso2-text-muted);
 }
 
-[data-theme='dark'] .cardDesc {
-  color: #94A3B8;
-}
-
-.cardLink {
-  margin-top: auto;
-  font-size: 0.8rem;
+.showMore {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-top: -6px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: #0077B6;
-  transition: color 0.15s ease;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
 }
 
-.card:hover .cardLink {
-  color: #005F8F;
+.showMore:hover {
+  text-decoration: underline;
 }
 
-[data-theme='dark'] .cardLink {
-  color: #38BDF8;
+.cardDivider {
+  border-top: 1px solid var(--wso2-border-subtle);
 }
 
-[data-theme='dark'] .card:hover .cardLink {
-  color: #7DD3FC;
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 
-/* ── Empty State ── */
-.empty {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #94A3B8;
-}
-
-.empty p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-.resetButton {
+.tagVendor,
+.tagCategory {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.85rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
   font-weight: 600;
-  font-family: inherit;
-  border: 1.5px solid #E8590C;
-  border-radius: 10px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tagVendor {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.tagCategory {
   background: transparent;
-  color: #E8590C;
+  border: 1px solid var(--wso2-accent-text);
+  color: var(--wso2-accent-text);
+}
+
+/* ── Empty state ── */
+.empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--wso2-text-muted);
+  font-size: 14px;
+}
+
+.emptyClear {
+  border: none;
+  background: none;
+  padding: 0;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.resetButton:hover {
-  background: #E8590C;
-  color: #FFFFFF;
-}
-
-[data-theme='dark'] .resetButton {
-  border-color: #FB923C;
-  color: #FB923C;
-}
-
-[data-theme='dark'] .resetButton:hover {
-  background: #FB923C;
-  color: #0B1120;
+.emptyClear:hover {
+  text-decoration: underline;
 }
