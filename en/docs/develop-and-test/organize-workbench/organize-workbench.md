@@ -18,20 +18,16 @@ A project can hold any number of integrations and libraries side by side. You ca
 
 ![How WSO2 Integrator organizes a project, its integrations, and its libraries](/img/develop/organize/integartor-work-organization.png)
 
-## Project
+## Create Your Project
 
 - **[Create a project](create-a-project.md)** — Set up a new project workspace to hold multiple integrations and libraries.
+
+    - **[Create a new integration](create-a-project.md#add-an-integration)** — Add a new integration to your project.
+    - **[Create a library](create-a-project.md#add-a-library)** — Add a library to your project to share common logic across its integrations.
+
 - **[Open a project](open-a-project.md)** — Open an existing project from your local filesystem, or clone one from WSO2 Cloud.
 
-## Integration
-
-- **[Create a new integration](create-a-new-integration.md)** — Start a new integration from the creation wizard, standalone or inside a project.
-- **[Open an existing integration](open-existing-integration.md)** — Open an integration or project already on disk.
 - **[Explore sample integrations](explore-sample-integrations.md)** — Start from a curated, pre-built sample instead of a blank integration.
-
-## Library
-
-- **[Create a library](create-a-library.md)** — Package shared logic so multiple integrations can reuse it.
 
 ## What's next
 

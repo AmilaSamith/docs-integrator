@@ -11,24 +11,19 @@ If you already have a project, you can open it from the WSO2 Integrator home scr
 
 ## Open the project wizard
 
-On the WSO2 Integrator home screen, click **More Actions** below the three primary cards to reveal additional options.
+On the WSO2 Integrator home screen, click **Open Existing** on the `Create a Project card`.
 
-![Home screen with More Actions expanded](/img/open-project/home-screen-more-actions.gif)
+![Home screen with More Actions expanded](/img/open-project/home-screen.png)
 
-The expanded panel shows four entries (and the trigger relabels itself **Show less**):
+Click More Actions below the main cards to reveal additional options. The panel expands and the trigger relabels itself Show less:
 
-- **Create Library** — Create reusable components and utilities to share across integrations and projects.
-- **Create Project** — Create a project to organize and manage multiple integrations.
-- **Open Project** — Open an existing project to view and manage its integrations.
-- **Migrate Integrations from Other Vendors** — Import integrations from other vendors and convert them to WSO2 Integrator format.
-
-Click **Open Project** to open the project wizard.
+**Migrate Integrations from Other Vendors** — Import integrations from other vendors and convert them to WSO2 Integrator format.
 
 ## Choose a source
 
-The wizard opens with the prompt *Choose how you'd like to open a project.* and presents two cards.
+The wizard opens with the prompt `Choose how you'd like to open a project` and presents two cards.
 
-![Open Project options](/img/open-project/open-project-options.png)
+      ![Open Project options](/img/open-project/open-project-options.png)
 
 - **Open Local Project** — *Browse your computer and open an existing integration project folder.*
 - **Open Cloud Project** — *Browse and clone a project from your WSO2 Cloud organization.*
@@ -58,4 +53,3 @@ WSO2 Integrator detects the project structure and opens the [project view](../..
 
 - [Project view](../../editor/views/project-view.md) — Manage, run, and debug your project
 - [Create a project](create-a-project.md) — Create a new project from scratch
-- [Create a new integration](create-a-new-integration.md) — Create a standalone integration

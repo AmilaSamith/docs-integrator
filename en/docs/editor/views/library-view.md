@@ -64,6 +64,6 @@ The README section at the bottom of the Library view displays the contents of yo
 
 ## What's next
 
-- [Create a library](../../develop-and-test/organize-workbench/create-a-library.md) — Set up a new library package for sharing common logic across integrations.
+- [Create a library](../../develop-and-test/organize-workbench/create-a-project.md) — Set up a new library package for sharing common logic across integrations.
 - [Integration artifacts](../../develop-and-test/integration-artifacts/integration-artifacts.md) — Learn about the artifact types you can define in a library.
 - [Functions](../../develop-and-test/integration-artifacts/supportive-artifacts/functions.md) — Encapsulate reusable logic in function artifacts for validation and transformation.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 title: Explore Sample Integrations
 description: Browse and open pre-built sample integrations to accelerate your development.
 slug: /develop-and-test/organize-workbench/explore-sample-integrations
@@ -43,5 +43,5 @@ Select a folder and click **Select Folder**. WSO2 Integrator downloads the sampl
 ## What's next
 
 - [Project view](../../editor/views/project-view.md) — Run, edit, and debug your sample project
-- [Create a new integration](create-a-new-integration.md) — Start a new project from scratch
+- [Create a new integration](create-a-project.md) — Start a new project from scratch
 - [Integration artifacts](../integration-artifacts/integration-artifacts.md) — Understand the artifact types used in samples
