@@ -37,7 +37,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: staging-deploy
+  group: staging-deploy-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
