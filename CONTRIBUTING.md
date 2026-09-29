@@ -124,11 +124,8 @@ including required frontmatter that's build-enforced — see
 
 ## Section Ownership
 
-| Path | Branch | Owner |
-|---|---|---|
-| `en/docs/icp/` | `wso2-integrator` | ICP team (`@wso2/icp-team` — placeholder, needs a real team slug) |
-| `en/docs/` (all) | `wso2-connectors` | Library team (`@wso2/library-team` — placeholder, needs a real team slug) |
-| Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
+Ownership is handled per-branch by `.github/CODEOWNERS`, not documented
+here — see that file on each branch for the current owners.
 
 ## Contributor scenarios
 
