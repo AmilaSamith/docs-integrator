@@ -79,6 +79,14 @@ wide_layout: true
   </ul>
 </PaletteCard>
 
+<PaletteCard icon="debug" href="/reference/migration-troubleshooting">
+  <h3 class="palette-card-title">Migration Troubleshooting</h3>
+  <ul class="palette-card-list">
+    <li>Ballerina version and dependency update screens</li>
+    <li>Staying on an earlier version</li>
+  </ul>
+</PaletteCard>
+
 <PaletteCard icon="book" href="/reference/glossary">
   <h3 class="palette-card-title">Glossary</h3>
   <ul class="palette-card-list">
