@@ -29,7 +29,7 @@ HR systems know who is on leave; calendars are what everyone actually looks at. 
 
 The WSO2 Integrator Scheduler invokes the automation periodically, and each run follows the same short flow:
 
-1. List `EmployeeTime` records from Employee Central, filtered to those approved and starting today or tomorrow — a one-day look-ahead, so tomorrow's absences are already on the calendar.
+1. List `EmployeeTime` records from Employee Central, filtered to those approved and starting today or tomorrow: a one-day look-ahead, so tomorrow's absences are already on the calendar.
 2. Unpack the OData response into a plain array.
 3. For each approved leave, convert SuccessFactors' OData date format into the plain date Google Calendar expects.
 4. Create an "Out of office" event on Google Calendar for that date range, tagged with the SuccessFactors leave ID.
@@ -95,7 +95,7 @@ An [automation](../../develop/integration-artifacts/automation.md#creating-an-au
 2. For every field in the connection config, select **Configurables** in the [Expression editor](../../develop/understand-ide/editors/expression-editor.md)'s helper pane, then **New Configurable**, so credentials are supplied at runtime instead of stored in the flow. Create one for each of `apiKey`, `companyId`, `userName`, `privateKey`, `certificate`, and `tokenUrl` (all `string`).
 
     :::note
-    `privateKey` and `certificate` take the **file paths** of the `private_key.pem` and `certificate.pem` files from the setup guide — not the PEM contents.
+    `privateKey` and `certificate` take the **file paths** of the `private_key.pem` and `certificate.pem` files from the setup guide, not the PEM contents.
     :::
 
     <ThemedImage
@@ -280,14 +280,14 @@ The OData response wraps the actual records under `jsonResult.d.results` as loos
 
 SuccessFactors returns dates as OData's `/Date(1790208000000)/` epoch-millisecond strings, but Google Calendar expects a plain `YYYY-MM-DD` date. Write one more function to bridge the two.
 
-1. Add a function `odataDateToIsoDate`, taking a `string` parameter `odataDate` and returning `string|error`. Give it a short description — *Converts a SuccessFactors OData date string, e.g. `/Date(1790208000000)/`, into a plain `YYYY-MM-DD` date the Google Calendar API accepts* — it appears as a tooltip wherever the function is used, and as the `#` doc comment in the code tab.
+1. Add a function `odataDateToIsoDate`, taking a `string` parameter `odataDate` and returning `string|error`. Give it a short description, such as *Converts a SuccessFactors OData date string, e.g. `/Date(1790208000000)/`, into a plain `YYYY-MM-DD` date the Google Calendar API accepts*. It appears as a tooltip wherever the function is used, and as the `#` doc comment in the code tab.
 2. Inside it, add a **Declare Variable** named `span`, type `regexp:Span`, with the expression:
 
     ```ballerina
     check (re `\d+`.find(odataDate) ?: error(string `Invalid OData date: ${odataDate}`))
     ```
 
-    This finds the first run of digits in the string — the epoch milliseconds — and fails clearly if the input doesn't look like an OData date at all.
+    This finds the first run of digits in the string (the epoch milliseconds) and fails clearly if the input doesn't look like an OData date at all.
 
     <ThemedImage
         alt="Function odataDateToIsoDate with a Declare Variable creating span using a regexp find, followed by an int:fromString call and a Return node"
@@ -325,7 +325,7 @@ SuccessFactors returns dates as OData's `/Date(1790208000000)/` epoch-millisecon
 
 ## Step 7: Create the Google Calendar event and log the result
 
-1. Inside the **Foreach** loop, add **Declare Variable** nodes for `userId` (`check leave.userId.ensureType()`) and `externalCode` (`check leave.externalCode.ensureType()`) — SuccessFactors' leave ID, which you'll use to trace the event back later.
+1. Inside the **Foreach** loop, add **Declare Variable** nodes for `userId` (`check leave.userId.ensureType()`) and `externalCode` (`check leave.externalCode.ensureType()`), the SuccessFactors leave ID you'll use to trace the event back later.
 2. Add two **Call Function** nodes for `odataDateToIsoDate`, one with **Odata Date** `check leave.startDate.ensureType()` producing `startDate`, and one with `check leave.endDate.ensureType()` producing `endDate`. Hovering the function shows the description you gave it in Step 6.
 
     <ThemedImage
