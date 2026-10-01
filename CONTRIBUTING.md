@@ -36,7 +36,7 @@ see [Section Ownership](#section-ownership) and the scenarios below.
    already lives elsewhere: connector catalog content is
    `wso2-connectors`-only per Golden Rule 3, custom connector generation
    is covered under `editor/copilot/`, and reusable libraries are fully
-   covered under `develop-and-test/organize-workbench/library/` and
+   covered under `develop-and-test/create-workspace/create-a-project.md` and
    `editor/views/library-view.md`. If `wso2-integrator` still has a
    `customize/` folder, the same removal needs to happen there, or the
    next sync recreates it on `saas`.)

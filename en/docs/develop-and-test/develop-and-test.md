@@ -16,11 +16,11 @@ This section covers the Develop and Test phase of the [integration lifecycle](..
 Start building your integration by prompting [WSO2 Integrator Copilot](../editor/copilot/copilot.md) to generate a first working version of your integration flow, refine it on the visual designer, and drop into Ballerina pro-code only when you need more precise control; everything stays in sync throughout.
 :::
 
-## Create Integration Workbench
+## Create Integration Workspace
 
 <PaletteGrid>
 
-<PaletteCard icon="quickstart" href="/develop-and-test/organize-workbench">
+<PaletteCard icon="quickstart" href="/develop-and-test/create-workspace">
   <h3 class="palette-card-title">Create integrations</h3>
   <ul class="palette-card-list">
     <li>Start new integration project</li>
@@ -147,6 +147,6 @@ Moving from another platform? See [Migrate](../migrate/index.md).
 
 ## What's next
 
-- [Create a new integration](organize-workbench/create-a-new-integration.md) — Start a project in the WSO2 Integrator IDE or from the CLI
+- [Create a new integration](create-workspace/create-a-project.md) — Start a project in the WSO2 Integrator IDE or from the CLI
 - [Design integration logic](../editor/canvases/flow-canvas/flow-canvas.md) — Wire up the flow between request and response
 - [Deploy and operate](../deploy-and-run/deploy-and-run.md) — Ship your integration once it's ready

@@ -66,6 +66,6 @@ Create one and set up your organization by following <CloudDocsLink to="/get-sta
 ## Next steps
 
 - <CloudDocsLink to="/get-started/cloud-setup">Cloud setup</CloudDocsLink> — Create a WSO2 Cloud account and organization to get the most out of WSO2 Integrator.
-- [Develop a new integration](../../develop-and-test/organize-workbench/create-a-new-integration.md) — Create a new integration project and start building.
-- [Open an existing integration](../../develop-and-test/organize-workbench/open-existing-integration.md) — Continue working on a project you already have.
-- [Explore sample integrations](../../develop-and-test/organize-workbench/explore-sample-integrations.md) — Learn from ready-made examples.
+- [Develop a new integration](../../develop-and-test/create-workspace/create-a-project.md) — Create a new integration project and start building.
+- [Open an existing integration](../../develop-and-test/create-workspace/open-a-project.md) — Continue working on a project you already have.
+- [Explore sample integrations](../../develop-and-test/create-workspace/explore-sample-integrations.md) — Learn from ready-made examples.
