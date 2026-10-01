@@ -82,4 +82,4 @@ Explore each part of the editor below.
 
 - [The editor window](editor-window.md) — Explore the shared chrome that surrounds every view.
 - [Flow Canvas](canvases/flow-canvas/flow-canvas.md) — Design integration logic using the visual flow canvas.
-- [Create a new integration](../develop-and-test/organize-workbench/create-a-project.md) — Start building your first integration.
+- [Create a new integration](../develop-and-test/create-workspace/create-a-project.md) — Start building your first integration.

@@ -1,12 +1,12 @@
 ---
-title: Create Integration Workbench
-description: Create Integration Workbench, then create the integrations and libraries that live inside it.
+title: Create Integration Workspace
+description: Create Integration Workspace, then create the integrations and libraries that live inside it.
 sidebar_label: Overview
 sidebar_position: 0
-slug: /develop-and-test/organize-workbench
+slug: /develop-and-test/create-workspace
 ---
 
-# Create Integration Workbench
+# Create Integration Workspace
 
 WSO2 Integrator organizes your work into three concepts that build on each other:
 

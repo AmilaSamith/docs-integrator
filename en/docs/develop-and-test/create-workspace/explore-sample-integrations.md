@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: Explore Sample Integrations
 description: Browse and open pre-built sample integrations to accelerate your development.
-slug: /develop-and-test/organize-workbench/explore-sample-integrations
+slug: /develop-and-test/create-workspace/explore-sample-integrations
 ---
 
 # Explore Sample Integrations
@@ -71,13 +71,13 @@ If you saved the sample outside a project, convert it to a new project.
    | **Project Name** | The name of the new project. Your current integration becomes the first member of this project. |
    | **Project Location** | The directory where the project folder is created. Click **Browse** to select a location. Your current integration is moved into this folder. |
 
-3. Optionally, select **Also add a new integration or library** to add another integration or library to the project at the same time.
+3. Optionally, check the **Also add a new integration or library** checkbox to add another integration or library to the project at the same time.
 
 4. Click **Convert to Project**.
 
    ![Convert to Project form](/img/explore-samples/convert-to-project-form.png)
 
-The integration now opens inside the new project. An **Overview** link appears at the top of the view, which takes you to the project view. From there, you can [add more integrations and libraries](create-a-project.md#add-additional-integrations-and-libraries).
+The integration now opens inside the new project. An **Overview** link appears at the top of the view, which takes you to the project view. From there, you can [add more integrations and libraries](create-a-project.md#add-more-integrations-and-libraries).
 
 ## What's next
 
