@@ -4,7 +4,7 @@ title: SAP SuccessFactors Employee Central Employment Information
 
 [SAP SuccessFactors Employee Central](https://www.sap.com/products/hcm/core-hr-payroll.html) is a comprehensive human capital management solution that helps organizations manage their workforce effectively. It provides a unified platform for HR processes including employee data management, organizational structures, and employment lifecycle management.
 
-WSO2 SAP Successfactors Employment Information provides a way to interact with the [SAP SuccessFactors Employee Central APIs](https://api.sap.com/package/SuccessFactorsEmployeeCentral/overview). The service allows to access employment related information, including job information, employment termination, and work permit.
+WSO2 SAP SuccessFactors Employment Information provides a way to interact with the [SAP SuccessFactors Employee Central Employment Information API](https://api.sap.com/package/SuccessFactorsEmployeeCentral/overview). The service allows to access employment related information, including job information, employment termination, and work permit.
 
 ## Key Features
 
