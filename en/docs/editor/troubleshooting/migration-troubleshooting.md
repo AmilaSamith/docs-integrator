@@ -121,8 +121,6 @@ Switch to the Ballerina version that set up the dependencies, then switch the ex
     bal dist pull 2201.12.3
     ```
 
-    If the version is a pre-release, such as `2201.13.0-alpha`, use its release version (`2201.13.0`).
-
 3. Switch the extensions to their previous versions as described in [Keep your current Ballerina version](#keep-your-current-ballerina-version).
 
 Until you finish step 3, the editor shows the **cannot start** screen. That's expected, because the current extensions need Ballerina 2201.14.0.
