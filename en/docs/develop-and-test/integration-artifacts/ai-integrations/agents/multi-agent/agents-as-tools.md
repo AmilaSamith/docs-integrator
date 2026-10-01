@@ -8,7 +8,7 @@ description: Attach an agent as a tool of another AI agent in WSO2 Integrator by
 
 An agent can be attached to another agent as a tool. The calling agent then treats it like any other tool: it decides when to invoke it, passes it a task, and uses what comes back.
 
-This page describes how to attach an agent as a tool and how to configure the result. For guidance on whether to split work across agents at all, see [Multi-Agent Systems](overview.md).
+This page describes how to attach an agent as a tool and how to configure the result. For guidance on whether to split work across agents at all, see [Multi-Agent Systems](multi-agent.md).
 
 ## Open the agent node
 
@@ -46,7 +46,7 @@ The options are the same as when adding an agent as an artifact:
 | **Create Agent Definition** | A reusable definition, and an instance of it attached as the tool. |
 | **Pre-built Agents** | An instance of a definition that already exists in this project or your organization. |
 
-For the fields in each path, see [Create an agent definition](../definitions/overview.md#create-an-agent-definition).
+For the fields in each path, see [Create an agent definition](../definitions/definitions.md#create-an-agent-definition).
 
 ## Reuse an instance or create a new one
 
@@ -97,7 +97,7 @@ Write the tool description around the trigger condition, meaning the situations 
 
 ## What the sub-agent returns
 
-The value the calling agent receives is determined by the sub-agent's response type. This is the **Response Type** of an [agent definition](../definitions/overview.md#response-type), or the **Type Descriptor** in the advanced configuration of an agent created directly in an integration.
+The value the calling agent receives is determined by the sub-agent's response type. This is the **Response Type** of an [agent definition](../definitions/definitions.md#response-type), or the **Type Descriptor** in the advanced configuration of an agent created directly in an integration.
 
 A narrow response type makes the sub-agent easier for the calling agent to use, because the result needs no further interpretation. A `string` response gives the calling agent prose it must reason about again.
 
@@ -107,7 +107,7 @@ A narrow response type makes the sub-agent easier for the calling agent to use, 
 
 **Iteration budgets compound.** Each agent enforces its own **Maximum Iterations**, defaulting to its tool count or 10, whichever is larger. A delegating agent's worst case is its own budget multiplied by its sub-agents'. Nesting is not otherwise bounded, so keep hierarchies shallow. See [Advanced configuration](../create-an-agent.md#advanced-configuration).
 
-**Delegations can run in parallel.** Tool calls from one response run concurrently by default, so two delegations can be in flight at once. This matters if they share memory. See [Memory posture for sub-agents](overview.md#memory-posture-for-sub-agents).
+**Delegations can run in parallel.** Tool calls from one response run concurrently by default, so two delegations can be in flight at once. This matters if they share memory. See [Memory posture for sub-agents](multi-agent.md#memory-posture-for-sub-agents).
 
 ## Common pitfalls
 
@@ -119,7 +119,7 @@ A narrow response type makes the sub-agent easier for the calling agent to use, 
 
 ## What's next
 
-- **[Multi-Agent Systems](overview.md)** — Topologies, cost, and when not to delegate.
-- **[Agent Definitions](../definitions/overview.md)** — Build a specialist once and reuse it.
+- **[Multi-Agent Systems](multi-agent.md)** — Topologies, cost, and when not to delegate.
+- **[Agent Definitions](../definitions/definitions.md)** — Build a specialist once and reuse it.
 - **[Tools](../tools.md)** — The other tool types available to an agent.
 - **[Observability](../observability.md)** — Trace a delegated call end to end.

@@ -38,7 +38,7 @@ Most problems that look like they need a second agent are better solved by addin
 | A task needs instructions that conflict with the main agent's | Add a sub-agent |
 | The agent has grown so many tools that it picks the wrong one | Group related tools behind sub-agents |
 | A subtask should run with narrower credentials than the caller | Add a sub-agent |
-| Two capabilities have separate owners or release cadences | Separate integrations, or a shared [agent definition](../definitions/overview.md) |
+| Two capabilities have separate owners or release cadences | Separate integrations, or a shared [agent definition](../definitions/definitions.md) |
 | The steps are fixed and known in advance | An integration flow, not an agent |
 
 A single agent with five tools is usually better than two agents with three tools each. Every delegation adds a reasoning hop, and every hop is a chance to lose intent.
@@ -105,6 +105,6 @@ Set a maximum iteration count on every agent in the system, and use [observabili
 ## What's next
 
 - **[Agents as Tools](agents-as-tools.md)** — Attach an agent as a tool of another agent.
-- **[Agent Definitions](../definitions/overview.md)** — Build a specialist once and reuse it.
+- **[Agent Definitions](../definitions/definitions.md)** — Build a specialist once and reuse it.
 - **[Memory](../memory.md)** — Configure conversational and persistent memory.
 - **[Observability](../observability.md)** — Trace delegation across agents.

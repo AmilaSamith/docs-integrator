@@ -14,7 +14,7 @@ This page describes how to publish a definition, how consumers find and use it, 
 
 Before getting started, ensure that the following requirements are met:
 
-- The definition was created with **New library package** selected. A definition kept in the current integration cannot be shared. For more information, see [Where a definition lives](overview.md#where-a-definition-lives)
+- The definition was created with **New library package** selected. A definition kept in the current integration cannot be shared. For more information, see [Where a definition lives](definitions.md#where-a-definition-lives)
 - A Ballerina Central access token is configured. For more information, see [Obtain an access token](https://ballerina.io/learn/publish-packages-to-ballerina-central/#obtain-an-access-token)
 
 ## Publish a definition
@@ -73,7 +73,7 @@ Use the search box to filter by name.
 
 ## Use a shared definition
 
-Select the definition under **Pre-built Agents**. WSO2 Integrator adds the package as a dependency and guides you through supplying its model provider, memory, and any [initialization parameters](overview.md#initialization-parameters) it declares.
+Select the definition under **Pre-built Agents**. WSO2 Integrator adds the package as a dependency and guides you through supplying its model provider, memory, and any [initialization parameters](definitions.md#initialization-parameters) it declares.
 
 The definition can be used in two places:
 
@@ -120,6 +120,6 @@ A definition that works well in the integration it was written for often fails e
 
 ## What's next
 
-- **[Agent Definitions](overview.md)** — Create and configure a definition.
+- **[Agent Definitions](definitions.md)** — Create and configure a definition.
 - **[Agents as Tools](../multi-agent/agents-as-tools.md)** — Use a shared definition as a tool of another agent.
-- **[Multi-Agent Systems](../multi-agent/overview.md)** — Decide when to split work across agents.
+- **[Multi-Agent Systems](../multi-agent/multi-agent.md)** — Decide when to split work across agents.

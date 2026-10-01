@@ -106,7 +106,7 @@ Selecting **Use Agent** attaches another agent as a tool. The calling agent deci
 
 Agents already instantiated in the integration are listed for selection, and new ones can be created from the same panel. For the full flow and the fields on the tool, see [Agents as Tools](multi-agent/agents-as-tools.md).
 
-Use this option when a task needs its own multi-step reasoning rather than a single action. See [Multi-Agent Systems](multi-agent/overview.md) for when to split work this way.
+Use this option when a task needs its own multi-step reasoning rather than a single action. See [Multi-Agent Systems](multi-agent/multi-agent.md) for when to split work this way.
 
 ## 4. Use MCP server
 
