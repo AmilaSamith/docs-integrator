@@ -23,6 +23,7 @@ New to WSO2 Integration Platform? Start here: install WSO2 Integrator, learn the
     <PaletteChip href="/get-started/quickstarts/build-ai-agent">AI Agent
     <PaletteChip href="/get-started/quickstarts/build-event-driven-integration">Event-Driven
     <PaletteChip href="/get-started/quickstarts/build-file-driven-integration">File-Driven
+    <PaletteChip href="/get-started/quickstarts/build-order-processing">Durable Workflows
 
 
 ## What's next

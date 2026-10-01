@@ -64,7 +64,7 @@ In this section, you will create the integration project and configure the AI ag
 
 ### Step 1: Create the integration project
 
-Create a new integration project by following the instructions in [Create a project](../../develop-and-test/organize-workbench/create-a-project.md).
+Create a new integration project by following the instructions in [Create a project](../../develop-and-test/create-workspace/create-a-project.md).
 
 ### Step 2: Define the data type
 
