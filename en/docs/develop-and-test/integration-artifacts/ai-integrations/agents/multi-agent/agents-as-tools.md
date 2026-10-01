@@ -105,7 +105,7 @@ A narrow response type makes the sub-agent easier for the calling agent to use, 
 
 **Failures are recoverable.** A failing sub-agent does not fail the calling agent's run. The error comes back as a tool result the calling agent can react to. Say in its instructions what to do when a delegation fails.
 
-**Iteration budgets compound.** Each agent enforces its own **Maximum Iterations**, defaulting to its tool count or 10, whichever is larger. A delegating agent's worst case is its own budget multiplied by its sub-agents'. Nesting is not otherwise bounded, so keep hierarchies shallow. See [Advanced configuration](../creating-an-agent.md#advanced-configuration).
+**Iteration budgets compound.** Each agent enforces its own **Maximum Iterations**, defaulting to its tool count or 10, whichever is larger. A delegating agent's worst case is its own budget multiplied by its sub-agents'. Nesting is not otherwise bounded, so keep hierarchies shallow. See [Advanced configuration](../create-an-agent.md#advanced-configuration).
 
 **Delegations can run in parallel.** Tool calls from one response run concurrently by default, so two delegations can be in flight at once. This matters if they share memory. See [Memory posture for sub-agents](overview.md#memory-posture-for-sub-agents).
 
