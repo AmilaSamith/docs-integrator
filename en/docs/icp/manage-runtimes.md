@@ -64,5 +64,5 @@ At the project level, the runtimes page is read-only. Use the organization or in
 ## What's next
 
 - [Connect an integration to ICP](connect-runtime.md) — generate a secret and configure the runtime bridge
-- [Observability setup](observability-setup.md) — enable centralized logs and metrics for connected runtimes
+- [Observability setup](observability-setup/index.md) — enable centralized logs and metrics for connected runtimes
 - [Access control](access-control.md) — control who can add and remove runtimes

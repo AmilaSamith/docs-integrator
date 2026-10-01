@@ -379,5 +379,5 @@ helm show values icp/
 
 - [Connect a runtime to ICP](connect-runtime.md) — register a Ballerina runtime with heartbeats
 - [Access control](access-control.md) — manage users, roles, and groups
-- [Observability setup](observability-setup.md) — add centralized logs and metrics
+- [Observability setup](observability-setup/index.md) — add centralized logs and metrics
 - [Encrypt secrets](encrypt-secrets.md) — use the WSO2 secure vault for sensitive values
