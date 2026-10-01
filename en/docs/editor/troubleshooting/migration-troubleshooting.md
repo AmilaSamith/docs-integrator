@@ -1,9 +1,9 @@
 ---
-sidebar_position: 9.5
+sidebar_position: 1
 title: Migration Troubleshooting
 description: Resolve the Ballerina version and dependency screens that appear when you open an older setup or integration after moving to Ballerina 2201.14.0 and Java 25.
 keywords: [wso2 integrator, migration, troubleshooting, ballerina 2201.14.0, java 25, dependencies, upgrade, downgrade, previous version]
-slug: /reference/migration-troubleshooting
+slug: /editor/troubleshooting/migration-troubleshooting
 ---
 
 # Migration Troubleshooting
@@ -106,7 +106,7 @@ The screen shows the reason in red, with a **Show output** link that opens the b
 - **Compile errors**: fix the errors shown in the build output, then click **Update Dependencies** again.
 - **Ballerina Central couldn't be reached**: check your internet connection and any proxy settings, then click **Update Dependencies** again.
 
-If the update keeps failing, capture the output and report the issue as described in [Editor troubleshooting](../editor/troubleshooting/troubleshooting.md).
+If the update keeps failing, capture the output and report the issue as described in [Editor troubleshooting](troubleshooting.md).
 
 ### Keep the current dependencies
 
@@ -133,5 +133,5 @@ The WSO2 Integrator app bundles its own Ballerina version. Download a WSO2 Integ
 
 ## What's next
 
-- [Editor troubleshooting](../editor/troubleshooting/troubleshooting.md) - capture verbose editor output and report an issue.
-- [Ballerina.toml reference](configuration-reference.md#ballerinatoml-reference) - manage package settings and dependencies.
+- [Editor troubleshooting](troubleshooting.md) - capture verbose editor output and report an issue.
+- [Ballerina.toml reference](../../reference/configuration-reference.md#ballerinatoml-reference) - manage package settings and dependencies.
