@@ -7,7 +7,7 @@ description: "Overview of the ballerinax/sap.successfactors.ecpayrolltimesheets 
 
 [SAP SuccessFactors Employee Central](https://www.sap.com/products/hcm/core-hr-payroll.html) is a comprehensive human capital management solution that helps organizations manage their workforce effectively. It provides a unified platform for HR processes including employee data management, organizational structures, and employment lifecycle management.
 
-WSO2 SAP Successfactors Payroll Time Sheets provides a way to interact with the [SAP SuccessFactors Employee Central APIs](https://api.sap.com/package/SuccessFactorsEmployeeCentral/overview). The service allows to manage employee time sheet data, working hours, and payroll-related time information.
+WSO2 SAP SuccessFactors Payroll Time Sheets provides a way to interact with the [SAP SuccessFactors Employee Central Payroll Time Sheets API](https://api.sap.com/package/SuccessFactorsEmployeeCentral/overview). The service allows to manage employee time sheet data, working hours, and payroll-related time information.
 
 ## Key Features
 
