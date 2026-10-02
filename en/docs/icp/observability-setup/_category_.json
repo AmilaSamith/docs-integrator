@@ -1,0 +1,7 @@
+{
+  "label": "Observability Setup",
+  "position": 14,
+  "customProps": {
+    "separatorBefore": "Observe Integrations"
+  }
+}

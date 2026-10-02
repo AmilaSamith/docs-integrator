@@ -39,4 +39,4 @@ If runtimes connect directly to ICP (bypassing the proxy), leave `serverUrl` poi
 
 - [Access control](access-control.md) — manage users, roles, and groups for externally exposed ICP
 - [Connect an integration to ICP](connect-runtime.md) — register a runtime with heartbeats
-- [Observability setup](observability-setup.md) — add centralized logs and metrics
+- [Observability setup](observability-setup/index.md) — add centralized logs and metrics
