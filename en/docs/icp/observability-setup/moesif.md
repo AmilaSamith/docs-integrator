@@ -34,7 +34,7 @@ You will use two different credentials:
 | Credential | Where to use it | Purpose |
 |------------|-----------------|---------|
 | **Collector Application ID** | The integration's `Config.toml` and the Fluent Bit bundle's `.env`. | Publishes metrics and logs to Moesif. |
-| **Management API Key** | The **Management API Key** field in the ICP console. | Allows ICP to load the embedded dashboards. |
+| **Management API Key** | The **Management API Key** field on either the **Metrics** or **Logs** page in ICP. | Allows ICP to load both embedded dashboards for the environment. |
 
 ## 2. Publish metrics from the integration
 
@@ -127,16 +127,16 @@ The bundle sends logs directly to Moesif's `/v1/logs` endpoint over HTTPS. It st
 
 Once data is flowing, create a **Management API Key** in Moesif for the same application used in steps 2 and 3. Give it the **access_tokens: create** and **events: read** scopes.
 
-Link each dashboard once per environment. If another integration in the environment has already linked it, open the dashboard directly. To update its credentials, use **View Configurations** instead of repeating the initial linking steps.
+ICP stores one Management API Key per environment. Linking either dashboard configures both dashboards for every integration in that environment.
 
-1. In the integration's **Metrics** page, select the environment and expand **Step 03: Load the dashboard** in the Moesif setup flow.
+1. Open either the integration's **Metrics** or **Logs** page, select the environment, and expand **Step 03: Load the dashboard** in the Moesif setup flow.
 2. Paste the key into **Management API Key** and click **Link canvas**.
-3. Open **Logs** for the same environment and repeat **Step 03: Load the dashboard** using a key for the same Moesif application.
+3. Open the other observability page for the same environment and confirm that its dashboard loads without asking for the key again.
 
-Metrics and logs are linked separately. ICP derives the Moesif organization and application from the key and generates short-lived tokens to load the embedded dashboards. Use **View Configurations** on a configured dashboard to review the publishing settings or update its credentials.
+ICP derives the Moesif organization and application from the key and generates short-lived tokens to load the embedded dashboards. Use **View Configurations** on either dashboard to review the publishing settings or update the shared credentials.
 
 :::note
-ICP rejects a key for a different Moesif application when the environment is already linked. Use credentials for the same application for both dashboards. Treat the Management API Key and the Fluent Bit `.env` as secrets.
+Treat the Management API Key and the Fluent Bit `.env` as secrets. Updating the key from either dashboard changes the shared credentials for the entire environment.
 :::
 
 ## 5. Verify Moesif observability
