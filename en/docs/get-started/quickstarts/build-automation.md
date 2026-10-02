@@ -8,117 +8,194 @@ slug: /get-started/quickstarts/build-automation
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 # Build an Automation
 
 **Time:** Under 10 minutes | **What you'll build:** An automation that prints `Hello World` to the terminal when it runs.
 
-An automation runs your integration logic without an external request, on demand or on a schedule. Automations are ideal for data synchronization, report generation, and routine maintenance jobs. This quick start shows the full cycle: add an automation artifact, build the logic in the visual designer, run it, and review the scheduling options for production.
+<p style={{textAlign: 'justify'}}>
+An automation runs your integration logic without requiring an external request, either on demand or on a schedule. Automations are useful for tasks such as data synchronization, report generation, and routine maintenance. This quick start walks you through the full process: adding an automation artifact, building the logic in the visual designer, running it, and reviewing scheduling options for production.
+</p>
 
 :::info Prerequisites
 
-A working WSO2 Integrator environment. See [Local setup](../setup/setup.md) to install and launch WSO2 Integrator on your machine.
+A working WSO2 Integrator environment. Choose the path that fits how you want to work:
+
+- <CloudDocsLink to="/get-started/cloud-setup">Cloud setup</CloudDocsLink> — launch WSO2 Integrator in a browser-based cloud editor.
+- [Local setup](../setup/setup.md) — install and launch the WSO2 Integrator IDE on your machine.
 :::
+
+<Tabs>
+<TabItem value="ui" label="Visual Designer" default>
+
 
 ## Step 1: Create the integration
 
 :::info Note
-
-If you already have a project open, skip to Step 2.
+If you're using the cloud editor, a project is already open, so you can skip this step and go directly to [Step 2: Add an automation artifact](#step-2-add-an-automation-artifact).
 :::
 
 1. Open WSO2 Integrator.
-2. Select the **Create New Integration** card.
-3. Set **Integration Name** to `HelloWorldAutomation`.
-4. Set **Project Name** to `automation-quickstart`.
-5. **Create Integration**.
 
-<ThemedImage
-    alt="Create new integration form with Integration Name set to HelloWorldAutomation and Project Name set to automation-quickstart"
-    sources={{
-        light: useBaseUrl('/img/get-started/build-automation/create-the-project.png'),
-        dark: useBaseUrl('/img/get-started/build-automation/create-the-project.png'),
-    }}
-/>
+2. Click **Create** in the **Create a Project** card.
+
+   <ThemedImage
+      alt="WSO2 Integrator home screen with the Create a Project card"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/wso2-integrator.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/wso2-integrator.png'),
+      }}
+   />
+
+3. Set **Project Name** to `automation-quickstart`.
+
+4. Set **Integration Name** to `HelloWorldAutomation`.
+
+5. Click **Create**.
+
+   <ThemedImage
+      alt="Create a Project form with Project name set to automation-quickstart and Integration name set to HelloWorldAutomation"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/create-project.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/create-project.png'),
+      }}
+   />
+
 
 ## Step 2: Add an automation artifact
 
 1. Select your integration from the project overview canvas.
-2. Select **+ Add Artifact** in the design canvas.
-3. Select **Automation** under **Automation**.
-4. Select **Create**.
 
-<ThemedImage
-    alt="Create New Automation form opened after selecting Automation under Automation"
-    sources={{
-        light: useBaseUrl('/img/get-started/build-automation/add-an-automation-artifact.png'),
-        dark: useBaseUrl('/img/get-started/build-automation/add-an-automation-artifact.png'),
-    }}
-/>
+2. In the design view, click **Add Artifact Manually**.
+
+   <ThemedImage
+      alt="Integration design view with the Add Artifact manually button highlighted"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/add-artifact.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/add-artifact.png'),
+      }}
+   />
+
+3. Select **Automation** under **Automation**.
+
+   <ThemedImage
+      alt="Artifacts page with Automation highlighted under Automation"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/select-automation.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/select-automation.png'),
+      }}
+   />
+
+4. Click **Create**.
+
+   <ThemedImage
+      alt="Create New Automation form with the Create button"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/create-automation.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/create-automation.png'),
+      }}
+   />
+
 
 ## Step 3: Add logic
 
-1. Select **+** after the **Start** node to open the node panel.
-2. Select **Call Function**.
-3. Select **Print** under **io** from the function list.
-4. Select **Initialize Array** for the **Values** parameter.
+1. Click **+** below the **Start** node to open the node panel.
+
+2. Select **Call Function** under **Statement**.
+
+   <ThemedImage
+      alt="Node panel with Call Function highlighted under Statement"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/call-function-selection.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/call-function-selection.png'),
+      }}
+   />
+
+3. Select **Print** under **io** from the functions list.
+
+   <ThemedImage
+      alt="Functions list with print highlighted under io"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/select-print.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/select-print.png'),
+      }}
+   />
+
+4. Click **Initialize Array** for the **Values** parameter.
+
+   <ThemedImage
+      alt="io:print panel with the Initialize Array button highlighted under Values"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/select-initialize-array.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/select-initialize-array.png'),
+      }}
+   />
+
 5. Set **Values** to `"Hello World"` and select **Save**.
 
-<ThemedImage
-    alt="io:print configuration panel with the Values parameter set to Hello World, ready to be saved"
-    sources={{
-        light: useBaseUrl('/img/get-started/build-automation/add-logic.png'),
-        dark: useBaseUrl('/img/get-started/build-automation/add-logic.png'),
-    }}
-/>
+   <ThemedImage
+      alt="io:print panel with Values set to Hello World"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/set-value.png'),
+         dark: useBaseUrl('/img/get-started/build-automation/set-value.png'),
+      }}
+   />
+
 
 ## Step 4: Run and test
 
-1. Select **Run**.
+1. Click **Run**.
+
 2. Confirm the terminal output contains `Hello World`.
 
-<ThemedImage
-    alt="Running the automation and seeing the Hello World output in the terminal"
-    sources={{
-        light: useBaseUrl('/img/get-started/build-automation/run-and-test-light.gif'),
-        dark: useBaseUrl('/img/get-started/build-automation/run-and-test-light.gif'),
-    }}
-/>
+   <ThemedImage
+      alt="Running the automation and seeing the Hello World output in the terminal"
+      sources={{
+         light: useBaseUrl('/img/get-started/build-automation/run-and-test-light.gif'),
+         dark: useBaseUrl('/img/get-started/build-automation/run-and-test-light.gif'),
+      }}
+   />
 
-## Source code
+</TabItem>
+<TabItem value="code" label="Ballerina Code">
 
-<details>
-<summary>View the generated Ballerina code</summary>
 
-The steps above generate the following complete, runnable Ballerina program:
+The following complete, runnable Ballerina program produces the same automation shown in the visual designer steps.
 
 ```ballerina
 import ballerina/io;
 import ballerina/log;
 
 public function main() returns error? {
-    do {
-        io:print("Hello World");
-    } on fail error e {
-        log:printError("Error occurred", 'error = e);
-        return e;
-    }
+   do {
+       io:print("Hello World");
+   } on fail error e {
+       log:printError("Error occurred", 'error = e);
+       return e;
+   }
 }
 ```
 
-</details>
+Save this as `automation.bal`, then click the **Run** button in the top toolbar. The terminal output contains `Hello World`.
+
+</TabItem>
+</Tabs>
+
 
 ## Step 5: Deploy to WSO2 Cloud
 
-Deploy your integration to WSO2 Cloud. Check [Save and deploy](/deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor#save-and-deploy).
+Deploy your integration to WSO2 Cloud - Integration Platform in any of the following ways:
 
-## Skip ahead: deploy a ready-made sample
+- If you're using the cloud editor, see [Save and deploy](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md#save-and-deploy).
+- If you're using the WSO2 Integrator IDE, see [Deploy from the IDE](../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md).
+- If you'd rather skip the build and try a ready-made sample, one-click deploy it:
 
-Rather not build it yourself? One-click deploy the `HelloWorldAutomation` sample straight to WSO2 Cloud:
-
-<a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/automation" target="_blank">
-    <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" />
-</a>
+ <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/automation" target="_blank">
+  <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0'}} />
+  </a>
 
 ## Scheduling automations
 
@@ -128,3 +205,14 @@ Periodic invocation is configured in an external system once the automation is d
 - **Kubernetes**: define a `CronJob` resource to run the automation on a recurring schedule.
 - **VM**: use a host scheduler such as Windows Task Scheduler or `systemd` timers.
 - **WSO2 Integration Platform**: configure the schedule in the WSO2 Integration Platform when the integration is pushed to the cloud.
+
+
+## What's next
+
+- [Build an Integration as API](build-integration-api.md) — Build an HTTP service
+- [Build an AI agent](build-ai-agent.md) — Build an intelligent agent
+- [Build an event-driven integration](build-event-driven-integration.md) — React to messages from brokers
+- [Build a file-driven integration](build-file-driven-integration.md) — Process files from FTP or local directories
+- [Automation](../../develop-and-test/integration-artifacts/automation.md) — Configure scheduling, manual execution, and integration logic
+
+

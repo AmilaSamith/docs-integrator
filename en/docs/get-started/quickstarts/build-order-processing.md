@@ -1,9 +1,10 @@
 ---
 sidebar_position: 6
 title: "Build an Order Processing Workflow"
+sidebar_label: "Build a Durable Workflow"
 description: Build a crash-safe order processing workflow in WSO2 Integrator that reserves inventory, waits for a payment confirmation, and then confirms or cancels the order.
 keywords: [wso2 integrator, durable workflow, order processing, activity, data event, wait, crash recovery]
-slug: /get-started/quickstarts/build-order-processing
+slug: /get-started/quickstarts/build-durable-workflow
 ---
 
 import Tabs from '@theme/Tabs';

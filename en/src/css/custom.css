@@ -1635,3 +1635,66 @@ hr {
   color: var(--wso2-accent-text);
   text-decoration: none;
 }
+
+/* Wrap plain-text code blocks (for example, prompts and instructions) by default,
+   so readers don't need the word-wrap toggle. Other languages keep scrolling. */
+.theme-code-block.language-text pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.theme-code-block.language-text button[title="Toggle word wrap"] {
+  display: none;
+}
+
+/* Remove the empty space above a heading that opens a tab panel
+   (for example, "Step 1" right under the Visual Designer tab). */
+[role="tabpanel"] > h2:first-child,
+[role="tabpanel"] > h3:first-child {
+  margin-top: 0;
+}
+
+/* Add space between a note box (for example, Prerequisites) and the tabs that follow it. */
+.theme-admonition + .tabs-container {
+  margin-top: 2rem;
+}
+
+/* Remove the extra space at the bottom of a tab panel, so the next section
+   (for example, "Step 6: Deploy") isn't pushed far down. */
+[role="tabpanel"] > :last-child {
+  margin-bottom: 0;
+}
+
+/* Reduce the gap between a tab box and the heading right after it
+   (for example, the run-and-test GIF and "Step 6: Deploy to WSO2 Cloud"). */
+.tabs-container {
+  margin-bottom: 0;
+}
+
+.tabs-container + h2 {
+  margin-top: 2rem;
+}
+
+/* An image or GIF at the end of a tab panel's last list item shouldn't add extra space. */
+[role="tabpanel"] li:last-child > :last-child,
+[role="tabpanel"] ol:last-child,
+[role="tabpanel"] ul:last-child {
+  margin-bottom: 0;
+}
+
+/* Small OS tabs nested inside a step (for example, the /tmp or C:\tmp path):
+   keep them compact so they don't leave a big gap in the list. */
+li .tabs-container {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@layer docusaurus.infima {
+  li .tabs-container > div.margin-top--md {
+    padding: 0.75rem;
+  }
+}
+
+li .tabs-container [role="tabpanel"] .theme-code-block {
+  margin-bottom: 0;
+}
