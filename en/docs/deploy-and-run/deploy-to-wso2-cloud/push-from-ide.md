@@ -1,25 +1,25 @@
 ---
-title: Deploy from the IDE
-description: Push your integrations from the WSO2 Integrator IDE directly to WSO2 Cloud, either as a whole project or as a single integration.
+title: Deploy from WSO2 Integrator
+description: Push your integrations from WSO2 Integrator directly to WSO2 Cloud, either as a whole project or as a single integration.
 keywords: [wso2 integrator, wso2 cloud, deploy, push, cloud deployment]
 ---
 
-# Deploy to WSO2 Cloud from the IDE
+# Deploy to WSO2 Cloud from WSO2 Integrator
 
-You can deploy your integrations to WSO2 Cloud directly from the WSO2 Integrator IDE. You can deploy the entire project at once or deploy a single integration individually.
+You can deploy your integrations to WSO2 Cloud directly from WSO2 Integrator. You can deploy the entire project at once or deploy a single integration individually.
 
 :::info Prerequisites
-- An integration or project with integration(s) created in the WSO2 Integrator IDE.
+- An integration or project with integration(s) created in WSO2 Integrator.
 :::
 
 ## Deploy the whole project
 
-1. In the WSO2 Integrator IDE, open the project overview canvas.
+1. In WSO2 Integrator, open the project overview canvas.
 
     ![Project Overview](/img/deploy/cloud/push-from-ide/project-overview.png)
 
 2. Under **Deployment Options** in the right column, locate the **Deploy to WSO2 Cloud** box and click **Deploy**.
-3. If you are not already signed in to WSO2 Cloud, the IDE prompts you to sign in. Click **Sign In** and complete the authentication in the browser, then return to the IDE.
+3. If you are not already signed in to WSO2 Cloud, WSO2 Integrator prompts you to sign in. Click **Sign In** and complete the authentication in the browser, then return to WSO2 Integrator.
 4. When prompted, select the organization on WSO2 Cloud. You can select an existing project or click **Create New** to create one.
 
    A new tab opens showing your project's integrations. By default, all integrations are selected for deployment.
@@ -30,17 +30,17 @@ You can deploy your integrations to WSO2 Cloud directly from the WSO2 Integrator
 
     ![Deploying Integrations to WSO2 Cloud](/img/deploy/cloud/push-from-ide/deploy-tab-setup-repository.png)
 
-    a. In the WSO2 Integrator IDE, click **Source Control** in the left sidebar.
+    a. In WSO2 Integrator, click **Source Control** in the left sidebar.
 
     b. Click **Initialize Repository**. This creates a local Git repository inside your project folder.
 
     c. In the **Source Control** sidebar, type a commit message and click **Commit**. When prompted, click **Yes** to stage and commit all files.
 
-    d. Click **Publish**. If you are not signed in to GitHub, the IDE prompts you to authorize access. Complete the sign-in in the browser and return to the IDE.
+    d. Click **Publish**. If you are not signed in to GitHub, WSO2 Integrator prompts you to authorize access. Complete the sign-in in the browser and return to WSO2 Integrator.
 
-    e. When prompted, select a repository name and visibility (**Public** or **Private**). The IDE creates the repository on GitHub and pushes your code to it.
+    e. When prompted, select a repository name and visibility (**Public** or **Private**). WSO2 Integrator creates the repository on GitHub and pushes your code to it.
 
-6. If WSO2 Cloud does not have access to your remote repository, a warning appears. Click the link to grant access on GitHub, complete the authorization, then return to the IDE and click **Refresh** to validate access.
+6. If WSO2 Cloud does not have access to your remote repository, a warning appears. Click the link to grant access on GitHub, complete the authorization, then return to WSO2 Integrator and click **Refresh** to validate access.
 7. Click **Deploy All**.
 
    WSO2 Cloud creates the integrations. Once the deployment is complete, click **View in Console**.
@@ -52,7 +52,7 @@ A browser opens showing your project on WSO2 Cloud.
 
 ## Deploy a single integration
 
-1. In the WSO2 Integrator IDE, open the integration overview canvas for the integration you want to deploy.
+1. In WSO2 Integrator, open the integration overview canvas for the integration you want to deploy.
 2. Under **Deployment Options** in the right column, locate the **Deploy to WSO2 Cloud** box and click **Deploy**.
 3. Follow the same steps as the whole-project flow, and click **Deploy**.
 

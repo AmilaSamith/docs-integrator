@@ -23,7 +23,7 @@ File integrations are ideal for batch uploads, scheduled file processing, and ET
 
 - A working WSO2 Integrator environment. Choose the path that fits how you want to work:
    - <CloudDocsLink to="/get-started/cloud-setup">Cloud setup</CloudDocsLink> — launch WSO2 Integrator in a browser-based cloud editor.
-   - [Local setup](../setup/setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+   - [Local setup](../setup/setup.md) — install and launch WSO2 Integrator on your machine.
 - A file at the listener path to watch. Create one if you don't have one:
 
  <Tabs groupId="os">

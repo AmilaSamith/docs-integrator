@@ -25,7 +25,7 @@ An automation runs your integration logic without requiring an external request,
 A working WSO2 Integrator environment. Choose the path that fits how you want to work:
 
 - <CloudDocsLink to="/get-started/cloud-setup">Cloud setup</CloudDocsLink> — launch WSO2 Integrator in a browser-based cloud editor.
-- [Local setup](../setup/setup.md) — install and launch the WSO2 Integrator IDE on your machine.
+- [Local setup](../setup/setup.md) — install and launch WSO2 Integrator on your machine.
 :::
 
 <Tabs>
@@ -190,7 +190,7 @@ Save this as `automation.bal`, then click the **Run** button in the top toolbar.
 Deploy your integration to WSO2 Cloud - Integration Platform in any of the following ways:
 
 - If you're using the cloud editor, see [Save and deploy](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md#save-and-deploy).
-- If you're using the WSO2 Integrator IDE, see [Deploy from the IDE](../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md).
+- If you're using WSO2 Integrator on your machine, see [Deploy from WSO2 Integrator](../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md).
 - If you'd rather skip the build and try a ready-made sample, one-click deploy it:
 
  <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/automation" target="_blank">
