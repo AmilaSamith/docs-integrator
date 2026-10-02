@@ -147,6 +147,6 @@ If the runtime fails to connect or does not appear in ICP, check logs on both si
 
 ## What's next
 
-- [Observability setup](observability-setup.md) — add centralized logs and metrics for connected runtimes
+- [Observability setup](observability-setup/index.md) — add centralized logs and metrics for connected runtimes
 - [Manage runtimes](manage-runtimes.md) — view runtime status, restart, and remove runtimes
 - [Access control](access-control.md) — manage who can connect and manage runtimes

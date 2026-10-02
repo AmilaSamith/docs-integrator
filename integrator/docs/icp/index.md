@@ -123,6 +123,6 @@ See [ICP Runtime API](runtime-api.md) for the full REST endpoint reference.
 - [Install ICP](install-icp.md) — download and configure ICP for your environment
 - [ICP console overview](icp-console-overview.md) — understand the console layout and navigation
 - [Manage Workflows](manage-workflows/manage-workflows.md) — start, follow, and complete durable workflow runs from the console
-- [Observability Setup](observability-setup.md) — set up centralized logs and metrics monitoring
+- [Observability Setup](observability-setup/index.md) — set up centralized logs and metrics monitoring
 - [Logging](../observe/logging.md) — configure structured logging
 - [Metrics](../observe/metrics.md) — Prometheus metrics and Grafana dashboards

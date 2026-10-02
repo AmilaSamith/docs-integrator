@@ -66,7 +66,7 @@ The **Runtimes** page groups runtime instances by environment. Each environment 
 
 ### Logs
 
-The **Logs** page shows runtime log entries when both a connected runtime and OpenSearch observability are configured. See [Observability setup](observability-setup.md) to enable this.
+The **Logs** page shows runtime log entries when both a connected runtime and an observability provider are configured. See [Observability setup](observability-setup/index.md) to enable this.
 
 When operational, the page provides:
 
@@ -105,7 +105,7 @@ Click **View Runtimes** on any logger row to see which runtime IDs are receiving
 
 ### Metrics
 
-The **Metrics** page shows request performance data when both a connected runtime and observability are configured. See [Observability setup](observability-setup.md) to enable this.
+The **Metrics** page shows request performance data when both a connected runtime and an observability provider are configured. See [Observability setup](observability-setup/index.md) to enable this.
 
 When operational, the page provides:
 
@@ -140,5 +140,5 @@ ICP sends a `START` or `STOP` command to every runtime associated with the liste
 ## What's next
 
 - [Connect an integration to ICP](connect-runtime.md) — register a runtime to start sending heartbeats and status updates
-- [Observability setup](observability-setup.md) — enable centralized logs and metrics for connected runtimes
+- [Observability setup](observability-setup/index.md) — enable centralized logs and metrics for connected runtimes
 - [Manage runtimes](manage-runtimes.md) — view and manage runtime instances across integrations

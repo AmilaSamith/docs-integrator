@@ -23,7 +23,7 @@ Setting this up involves four steps:
 4. Set up Fluent Bit to ship the logs to OpenSearch.
 
 :::info Complete guide
-The full step-by-step procedure, including commands and configuration, is in [Observability setup](../icp/observability-setup.md) in the Integration Control Plane section.
+The full step-by-step procedure, including commands and configuration, is in [Observability setup](../icp/observability-setup/index.md) in the Integration Control Plane section.
 
 ## Related
 
