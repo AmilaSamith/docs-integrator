@@ -7,8 +7,6 @@ slug: /get-started/quickstarts/build-event-driven-integration
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Build an Event-Driven Integration
@@ -29,9 +27,6 @@ Event integrations are designed for reactive workflows triggered by messages fro
   docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management
   ```
 :::
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 
 ## Step 1: Create the integration
@@ -178,11 +173,12 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-</TabItem>
-<TabItem value="code" label="Ballerina Code">
+## Source code
 
+<details>
+<summary>View the generated Ballerina code</summary>
 
-The following complete, runnable Ballerina program produces the same integration shown in the visual designer steps.
+The steps above generate the following complete, runnable Ballerina program:
 
 ```ballerina
 import ballerina/log;
@@ -202,10 +198,8 @@ service "Orders" on rabbitmqListener {
 }
 ```
 
-Save this as `main.bal`, then click the **Run** button in the top toolbar. Once running, open `http://localhost:15672` (default credentials: guest/guest), navigate to **Queues → Orders → Publish message**, and publish any message. The terminal log should display `Received order`.
+</details>
 
-</TabItem>
-</Tabs>
 
 ## Step 6: Deploy to WSO2 Cloud
 
@@ -213,11 +207,20 @@ Deploy your integration to WSO2 Cloud - Integration Platform in any of the follo
 
 - If you're using the cloud editor, see [Save and deploy](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md#save-and-deploy).
 - If you're using WSO2 Integrator on your machine, see [Deploy from WSO2 Integrator](../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md).
-- If you'd rather skip the build and try a ready-made sample, one-click deploy it:
 
-  <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/orderprocessor" target="_blank">
-  <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0'}} />
-  </a>
+<div class="skip-ahead-card">
+
+<PaletteCard icon="ai" highlight>
+  <h3 class="palette-card-title">Skip ahead: deploy a ready-made sample</h3>
+  <p class="palette-card-desc">Rather not build it yourself? One-click deploy the OrderProcessor sample straight to WSO2 Cloud.</p>
+  <div class="palette-chip-row" style={{justifyContent: 'center'}}>
+    <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/orderprocessor" target="_blank" rel="noopener noreferrer">
+      <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0', border: 'none', boxShadow: 'none'}} />
+    </a>
+  </div>
+</PaletteCard>
+
+</div>
 
 ## Supported event sources
 

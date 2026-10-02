@@ -8,8 +8,6 @@ slug: /get-started/quickstarts/build-ai-agent
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 # Build an AI Agent
@@ -26,9 +24,6 @@ A working WSO2 Integrator environment. Choose the path that fits how you want to
 - <CloudDocsLink to="/get-started/cloud-setup">Cloud setup</CloudDocsLink> — launch WSO2 Integrator in a browser-based cloud editor.
 - [Local setup](../setup/setup.md) — install and launch WSO2 Integrator on your machine.
 :::
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 
 ## Step 1: Create the integration
@@ -121,7 +116,6 @@ If you're using the cloud editor, a project is already open, so you can skip thi
    />
 
 
-
 :::tip Default model provider
 
 By default, the agent is configured to use the WSO2 model provider. If you want to use a different LLM, see [Model providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md) for the full list of supported providers (OpenAI, Azure OpenAI, Anthropic, and others).
@@ -146,12 +140,12 @@ If you are using the WSO2 model provider, the access token is obtained through [
       }}
    />
 
+## Source code
 
-</TabItem>
-<TabItem value="code" label="Ballerina Code">
+<details>
+<summary>View the generated Ballerina code</summary>
 
-
-The following complete, runnable Ballerina program produces the same AI chat agent shown in the visual designer steps. The wizard generates two files: `agents.bal` for the agent definition and `main.bal` for the listener and service.
+The steps above generate the following complete, runnable Ballerina program. It has two files: `agents.bal` for the agent definition and `main.bal` for the listener and service.
 
 
 **`agents.bal`**
@@ -184,8 +178,8 @@ service /wso2IntegratorAssistant on chatAgentListener {
    }
 }
 ```
-</TabItem>
-</Tabs>
+
+</details>
 
 
 ## Step 4: Deploy to WSO2 Cloud
@@ -194,11 +188,20 @@ Deploy your integration to WSO2 Cloud - Integration Platform in any of the follo
 
 - If you're using the cloud editor, see [Save and deploy](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md#save-and-deploy).
 - If you're using WSO2 Integrator on your machine, see [Deploy from WSO2 Integrator](../../deploy-and-run/deploy-to-wso2-cloud/push-from-ide.md).
-- If you'd rather skip the build and try a ready-made sample, one-click deploy it:
 
-  <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/aiagent" target="_blank">
-  <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0'}} />
-  </a>
+<div class="skip-ahead-card">
+
+<PaletteCard icon="ai" highlight>
+  <h3 class="palette-card-title">Skip ahead: deploy a ready-made sample</h3>
+  <p class="palette-card-desc">Rather not build it yourself? One-click deploy the AIAgent sample straight to WSO2 Cloud.</p>
+  <div class="palette-chip-row" style={{justifyContent: 'center'}}>
+    <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/aiagent" target="_blank" rel="noopener noreferrer">
+      <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0', border: 'none', boxShadow: 'none'}} />
+    </a>
+  </div>
+</PaletteCard>
+
+</div>
 
 
 ## What's next
@@ -208,6 +211,5 @@ Deploy your integration to WSO2 Cloud - Integration Platform in any of the follo
 - [Build an event-driven integration](build-event-driven-integration.md) — React to messages from brokers
 - [Build a file-driven integration](build-file-driven-integration.md) — Process files from FTP or local directories
 - [AI agents](../../develop-and-test/integration-artifacts/ai-integrations/agents/agents.md) — Learn how to build production-grade AI agents with tools, memory, and evaluations
-
 
 

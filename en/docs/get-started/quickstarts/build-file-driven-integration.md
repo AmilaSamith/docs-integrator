@@ -46,9 +46,6 @@ File integrations are ideal for batch uploads, scheduled file processing, and ET
 
 :::
 
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
-
 
 ## Step 1: Create the integration
 
@@ -207,10 +204,12 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-</TabItem>
-<TabItem value="code" label="Ballerina Code">
+## Source code
 
-The following complete, runnable Ballerina program produces the same integration shown in the visual designer steps.
+<details>
+<summary>View the generated Ballerina code</summary>
+
+The steps above generate the following complete, runnable Ballerina program:
 
 
 :::info Windows
@@ -238,29 +237,7 @@ service file:Service on fileListener {
 }
 ```
 
-Save this as `main.bal`, then click the **Run** button in the top toolbar. With the test file already in place (see Prerequisites), run the modify command in a separate terminal to trigger the handler:
-
-<Tabs groupId="os">
-<TabItem value="unix" label="macOS / Linux" default>
-
-```bash
-echo "modify" > /tmp/testfile.txt
-```
-
-</TabItem>
-<TabItem value="windows" label="Windows">
-
-```bat
-echo modify > C:\tmp\testfile.txt
-```
-
-</TabItem>
-</Tabs>
-
-Confirm the run terminal shows the log line `File modified`.
-
-</TabItem>
-</Tabs>
+</details>
 
 
 ## What's next
