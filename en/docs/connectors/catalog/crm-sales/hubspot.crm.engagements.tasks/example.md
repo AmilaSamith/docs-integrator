@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **Connections → + Add Connection** in the WSO2 Integrator project tree to open the connector palette.
 
-![HubSpot Tasks connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Tasks connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the HubSpot Tasks connector
 
@@ -45,13 +54,25 @@ Configure the connection form by binding each field to a configurable variable:
 - **config**: A `tasks:ConnectionConfig` record containing the bearer token: set to expression `{auth: {token: hubspotAuthToken}}`
 - **serviceUrl**: The HubSpot Tasks API base URL: bind to configurable variable `hubspotServiceUrl`
 
-![HubSpot Tasks connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_02_connection_config.png)
+<ThemedImage
+    alt="HubSpot Tasks connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_02_connection_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_02_connection_config.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that the `tasksClient` node appears in the Connections panel.
 
-![HubSpot Tasks Connections panel showing tasksClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot Tasks Connections panel showing tasksClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -74,18 +95,36 @@ Select **Save Connection** to persist the connection. Confirm that the `tasksCli
 1. Select the **+** placeholder node in the flow canvas (between **Start** and **Error Handler**).
 2. Under **Connections**, expand **tasksClient** to reveal available operations.
 
-![HubSpot Tasks connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Tasks connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create a task** to open the configuration form, then fill in the following parameters:
 
 - **payload**: The task record containing `associations` and `properties`: set to an expression with `hs_task_subject`, `hs_task_body`, `hs_task_priority`, `hs_task_type`, and `hs_timestamp` fields
 - **resultVariable** : Set to `result` to store the returned `tasks:SimplePublicObject`
 
-![HubSpot Tasks post operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_05_operation_values.png)
+<ThemedImage
+    alt="HubSpot Tasks post operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_05_operation_values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_05_operation_values.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed HubSpot Tasks automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Tasks automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/hubspot_crm_engagements_tasks_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

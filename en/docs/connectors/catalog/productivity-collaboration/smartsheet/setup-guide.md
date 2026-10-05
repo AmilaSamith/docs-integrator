@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through obtaining the API access token required to use the Smartsheet connector.
@@ -16,7 +20,13 @@ This guide walks you through obtaining the API access token required to use the 
 3. Select **Personal Settings**.
 4. Navigate to the **API Access** tab and select **Generate new access token**.
 
-   ![Generate API access token](/img/connectors/catalog/productivity-collaboration/smartsheet/setup/generate-api-token.png)
+   <ThemedImage
+       alt="Generate API access token"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/setup/generate-api-token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/setup/generate-api-token.png'),
+       }}
+   />
 
 5. Give the token a descriptive name (for example, `Ballerina Integration`) and select **OK**.
 6. Copy the generated token immediately — it will not be shown again.

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -35,7 +38,13 @@ flowchart LR
 
 Select the **+** button next to **Connections** in the project tree to open the **Add Connection** palette, which displays available pre-built connectors.
 
-![IBM CTG connector palette open with search field before any selection](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_01_palette.png)
+<ThemedImage
+    alt="IBM CTG connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the IBM CTG connection
 
@@ -49,13 +58,25 @@ Search for **ibm.ctg** in the search field, select the **IBM CTG** connector car
 - **cicsServer** : Target CICS server name
 - **auth** : Authentication credentials record containing user ID and password
 
-![IBM CTG connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="IBM CTG connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to create the connection. The `ctgClient` entry appears in the **Connections** panel on the canvas.
 
-![IBM CTG Connections panel showing ctgClient entry after saving](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="IBM CTG Connections panel showing ctgClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -81,13 +102,31 @@ Expand **ctgClient** in the **Connections** section of the node panel to view av
 - **result** : Name of the result variable (for example, `byteResult`)
 - **resultType** : Return type of the result (`byte[]|()`)
 
-![IBM CTG connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="IBM CTG connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_04_operations_panel.png'),
+    }}
+/>
 
-![IBM CTG Execute operation configuration filled with all values](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="IBM CTG Execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed IBM CTG automation flow](/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed IBM CTG automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ibm.ctg/ibm_ctg_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

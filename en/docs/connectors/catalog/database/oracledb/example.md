@@ -6,6 +6,9 @@ description: "Build an automation that inserts a record into an Oracle database,
 keywords: ["oracledb", "oracle", "database", "cdc", "trigger", "example"]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 * **[OracleDB connector example](#oracledb-connector-example)**: Build an automation that executes a SQL INSERT against an Oracle database using the connector's `Client`.
@@ -43,7 +46,13 @@ flowchart LR
 
 On the canvas, click **+ Add Connection** (or the **+** button in the Connections panel) to open the Add Connection palette, which shows available connectors.
 
-![OracleDB connector palette open with search field before any selection](/img/connectors/catalog/database/oracledb/oracledb_screenshot_01_palette.png)
+<ThemedImage
+    alt="OracleDB connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Search for and select the OracleDB connector
 
@@ -62,14 +71,26 @@ In the **Configure OracleDB** dialog, scroll down to the **Advanced Configuratio
 - **password** : The database password, bound to a string configurable
 - **database** : The target database/service name, bound to a string configurable
 
-![OracleDB connection form fully filled with all parameters before saving](/img/connectors/catalog/database/oracledb/oracledb_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="OracleDB connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 1. Scroll to the top of the dialog and verify the **Connection Name** is set to `oracledbClient`.
 2. Click **Save**: the dialog closes and the `oracledbClient` connection node appears on the canvas.
 
-![OracleDB Connections panel showing oracledbClient entry after saving](/img/connectors/catalog/database/oracledb/oracledb_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="OracleDB Connections panel showing oracledbClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -91,7 +112,13 @@ In the **Configure OracleDB** dialog, scroll down to the **Advanced Configuratio
 3. Click the **+** button between **Start** and **End** to open the step panel.
 4. Expand **oracledbClient** in the connections list to see all available operations.
 
-![OracleDB connection node expanded showing all available operations before selection](/img/connectors/catalog/database/oracledb/oracledb_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="OracleDB connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 #### Step 7: Select and configure the execute operation
 
@@ -103,9 +130,21 @@ Under **oracledbClient**, click **execute** to open the Execute operation form, 
 
 Click **Save**.
 
-![OracleDB execute operation configuration filled with all values](/img/connectors/catalog/database/oracledb/oracledb_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="OracleDB execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Automation flow: Start → oracledb:execute → Error Handler → End](/img/connectors/catalog/database/oracledb/oracledb_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Automation flow: Start → oracledb:execute → Error Handler → End"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -141,7 +180,13 @@ flowchart LR
 
 On the integration's **Overview** page, select **+ Add Artifact**, open the **Event Integration** category, and select the **CDC for Oracle DB** card.
 
-![Artifacts palette with the Event Integration category open and the CDC for Oracle DB card visible](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette with the Event Integration category open and the CDC for Oracle DB card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configure the OracleDB CDC listener
 
@@ -155,13 +200,25 @@ In the **Create Oracle CDC Integration** form, keep **Create new** selected and 
 - **Insert events**: keep enabled. Disable **Update events** and **Delete events** to keep this example focused on inserts.
 - **Table**: enter the fully-qualified table name to capture, in `<database>.<schema>.<table>` format (for example, `FREEPDB1.APP_USER.CUSTOMERS`).
 
-![Trigger configuration form with Host, Port, and Database Name bound to configurable expressions](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="Trigger configuration form with Host, Port, and Database Name bound to configurable expressions"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Set actual values for your configurations
 
 Click **Create**. WSO2 Integrator creates the `oracledbListener` listener and a `CDC Oracle Service` with no event handlers yet.
 
-![CDC Oracle Service view showing the listener, table name, and no event handlers found](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_03_service_view_empty.png)
+<ThemedImage
+    alt="CDC Oracle Service view showing the listener, table name, and no event handlers found"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_03_service_view_empty.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_03_service_view_empty.png'),
+    }}
+/>
 
 Open **Configurations** in the project tree and set a value for each configurable: `oracleHost`, `oraclePort`, `oracleDatabase`, `oracleUser`, `oraclePassword`.
 
@@ -171,7 +228,13 @@ Open **Configurations** in the project tree and set a value for each configurabl
 
 Click **+ Add Handler** and select **onCreate** — the handler fired when a new row is inserted into the captured table.
 
-![Select Handler to Add panel listing onRead, onCreate, onUpdate, onDelete, and onError](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Select Handler to Add panel listing onRead, onCreate, onUpdate, onDelete, and onError"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Define the entry type schema
 
@@ -181,7 +244,13 @@ In the **New onCreate Configuration** panel, select **Define Message Configurati
 2. Add a field `ID` of type `int`.
 3. Add a field `NAME` of type `string`.
 
-![Create Type Schema form with OracleDBInsertEntry name and ID/NAME fields](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Create Type Schema form with OracleDBInsertEntry name and ID/NAME fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 Save the type schema, then save the handler configuration.
 
@@ -193,13 +262,25 @@ Open the generated `onCreate` remote function flow. Click the **+** node between
 after.toJsonString()
 ```
 
-![Completed onCreate flow: Start → log:printInfo(after.toJsonString()) → Error Handler](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="Completed onCreate flow: Start → log:printInfo(after.toJsonString()) → Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Confirm the registered handler
 
 Navigate back to the **CDC Oracle Service** view and confirm the `onCreate` event handler is registered alongside the listener and table name.
 
-![CDC Oracle Service view showing the registered onCreate event handler](/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="CDC Oracle Service view showing the registered onCreate event handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/oracledb/oracledb_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Run the integration
 

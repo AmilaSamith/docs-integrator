@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 - [Solace Producer Example](#solace-producer-example)
@@ -37,7 +40,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, select **+** next to **Connections** to open the **Add Connection** palette.
 2. Enter `solace` in the search field.
 
-![Add Connection palette filtered to solace, listing Solace MessageProducer, Solace MessageConsumer, and Solace Caller alongside the legacy Jms connectors](/img/connectors/catalog/messaging/solace/solace_producer_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Connection palette filtered to solace, listing Solace MessageProducer, Solace MessageConsumer, and Solace Caller alongside the legacy Jms connectors"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Select the **Solace MessageProducer** card.
 
@@ -50,7 +59,13 @@ For each field, open its helper panel, select the **Configurables** tab, select 
 - **Url** : The Solace broker URL, bound to a configurable variable.
 - **Auth** : The authentication configuration; enter `{username: solaceUsername, password: solacePassword}` in expression mode, referencing configurable variables for both fields.
 
-![Configure Solace MessageProducer form with the Url and Auth fields bound to configurable variables before saving](/img/connectors/catalog/messaging/solace/solace_producer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Configure Solace MessageProducer form with the Url and Auth fields bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
@@ -83,13 +98,25 @@ Select **Send** to open the `solaceMessageproducer → send` form, then enter:
 - **Message** : A `solace:Message` record; set the `payload` field to `"Hello from Solace!"`.
 - **Destination** : `{topicName: solaceTopicName}`.
 
-![Send operation form with the Message payload and topic Destination filled in before saving](/img/connectors/catalog/messaging/solace/solace_producer_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Send operation form with the Message payload and topic Destination filled in before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_05_operation_form.png'),
+    }}
+/>
 
 #### Step 8: Save the operation
 
 Select **Save**. The `solace : send` node connects between **Start** and **Error Handler** in the automation flow.
 
-![Completed automation flow with the solace : send node between Start and Error Handler](/img/connectors/catalog/messaging/solace/solace_producer_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with the solace : send node between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_producer_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -132,7 +159,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, select **+** next to **Connections** to open the **Add Connection** palette.
 2. Enter `solace` in the search field.
 
-![Add Connection palette filtered to solace, listing Solace MessageConsumer, Solace MessageProducer, and Solace Caller alongside the legacy Jms connectors](/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Connection palette filtered to solace, listing Solace MessageConsumer, Solace MessageProducer, and Solace Caller alongside the legacy Jms connectors"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Select the **Solace MessageConsumer** card.
 
@@ -143,7 +176,13 @@ flowchart LR
 - **Auth** : Enter `{username: solaceUsername, password: solacePassword}` in expression mode, referencing configurable variables for both fields.
 - **Subscription Config** : Enter `{queueName: solaceQueueName}` in expression mode, referencing a configurable variable for the queue name.
 
-![Configure Solace MessageConsumer form with the Auth and Subscription Config fields bound to configurable variables before saving](/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Configure Solace MessageConsumer form with the Auth and Subscription Config fields bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
@@ -176,7 +215,13 @@ This operation has no required parameters. Enter the following optional values:
 - **Result** : The variable name to store the received message in.
 - **T** : A narrowed message type, for example, `record {|*Message; T payload;|}`, to bind the payload to a specific type. Leave this as `solace:Message` to receive the raw message.
 
-![Receive operation form showing the Result variable name and the T type parameter set to solace:Message](/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Receive operation form showing the Result variable name and the T type parameter set to solace:Message"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_consumer_screenshot_05_operation_form.png'),
+    }}
+/>
 
 #### Step 8: Save the operation and log the result
 
@@ -229,7 +274,13 @@ For each field, open its helper panel, select the **Configurables** tab, select 
 - **Message VPN** : The message VPN to connect to. Defaults to `default`.
 - **Basic Authentication** : Select this option, then bind **Username** and **Password** to configurable variables.
 
-![Create Solace Event Integration form showing the Listener Name, Broker URL, Message VPN, and Basic Authentication fields](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Create Solace Event Integration form showing the Listener Name, Broker URL, Message VPN, and Basic Authentication fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 #### Step 2: Configure the destination and acknowledgement mode
 
@@ -239,7 +290,13 @@ Scroll down and configure the remaining fields:
 - **Queue Name** : The queue to consume messages from, bound to a configurable variable. The queue must already exist on the broker.
 - **Acknowledgement Mode** : Leave this at the default **Auto Ack**.
 
-![Create Solace Event Integration form with Username and Password bound to configurables and the Queue Name field showing the Configurables menu](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="Create Solace Event Integration form with Username and Password bound to configurables and the Queue Name field showing the Configurables menu"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -255,7 +312,13 @@ Scroll down and configure the remaining fields:
 
 Select **Create**. The listener and service are registered, and the Service view opens with an empty **Event Handlers** list.
 
-![Service view for the new Solace Event Integration service showing an empty Event Handlers list](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_03_service_view_empty.png)
+<ThemedImage
+    alt="Service view for the new Solace Event Integration service showing an empty Event Handlers list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_03_service_view_empty.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_03_service_view_empty.png'),
+    }}
+/>
 
 ### Handling Solace events
 
@@ -263,7 +326,13 @@ Select **Create**. The listener and service are registered, and the Service view
 
 Select **+ Add Handler**. The **Select Handler to Add** panel lists the available handlers for this trigger.
 
-![Select Handler to Add panel listing the onMessage and onError handlers](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Select Handler to Add panel listing the onMessage and onError handlers"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 Select **onMessage**.
 
@@ -271,7 +340,13 @@ Select **onMessage**.
 
 In the **New onMessage Configuration** panel, select **Define Value**, then select the **Create Type Schema** tab. Enter `OrderMessage` as the type name and add an `orderId` field of type `string`. Select **Save** to create the type.
 
-![New onMessage Configuration panel showing the OrderMessage type bound to the message parameter](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="New onMessage Configuration panel showing the OrderMessage type bound to the message parameter"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 Select **Save** again to open the flow canvas for the `onMessage` remote function.
 
@@ -279,7 +354,13 @@ Select **Save** again to open the flow canvas for the `onMessage` remote functio
 
 Add a **Log Info** step to the flow, and set its **Msg** field to `message.toJsonString()`.
 
-![onMessage flow canvas with a log : printInfo step configured to log message.toJsonString()](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onMessage flow canvas with a log : printInfo step configured to log message.toJsonString()"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 Select **Save**, then select the back arrow to return to the Service view.
 
@@ -287,7 +368,13 @@ Select **Save**, then select the back arrow to return to the Service view.
 
 The **Event Handlers** list now shows the registered `onMessage` handler.
 
-![Service view with the onMessage handler registered in the Event Handlers list](/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Service view with the onMessage handler registered in the Event Handlers list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace/solace_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

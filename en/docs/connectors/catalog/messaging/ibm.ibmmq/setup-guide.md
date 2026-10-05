@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through setting up an IBM MQ queue manager and creating the queues and topics required to use the IBM MQ connector.
@@ -30,25 +34,55 @@ The default developer configuration creates a user `app` with password `password
 1. Access the IBM MQ console at `https://localhost:9443/ibmmq/console` in your browser.
 2. Select the **Create a queue** link.
 
-   ![Create a queue](/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-create-queue.png)
+   <ThemedImage
+       alt="Create a queue"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-create-queue.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-create-queue.png'),
+       }}
+   />
 
 3. Choose your desired queue type.
 
-   ![Select queue type](/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-queue-type.png)
+   <ThemedImage
+       alt="Select queue type"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-queue-type.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/select-queue-type.png'),
+       }}
+   />
 
 ## Step 3: Create a topic
 
 1. Select the **Manage** link in the sidebar.
 
-   ![Select manage](/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-manage-link.png)
+   <ThemedImage
+       alt="Select manage"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-manage-link.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-manage-link.png'),
+       }}
+   />
 
 2. Navigate to the **Events** tab.
 
-   ![Navigate to events tab](/img/connectors/catalog/messaging/ibm.ibmmq/setup/navigate-to-events-tab.png)
+   <ThemedImage
+       alt="Navigate to events tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/navigate-to-events-tab.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/navigate-to-events-tab.png'),
+       }}
+   />
 
 3. Select **Create** and fill in the topic details.
 
-   ![Create topic](/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-on-create.png)
+   <ThemedImage
+       alt="Create topic"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-on-create.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/ibm.ibmmq/setup/click-on-create.png'),
+       }}
+   />
 
 ## Step 4: Note your connection details
 

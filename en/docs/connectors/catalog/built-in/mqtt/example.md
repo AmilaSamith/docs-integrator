@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 
@@ -40,7 +43,13 @@ Add the MQTT connector connection to provide broker connectivity.
 
 Select **Add Connection** (the **+** button in the **Connections** section) on the integration canvas to open the connector palette.
 
-![MQTT connector palette open with search field before any selection](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_01_palette.png)
+<ThemedImage
+    alt="MQTT connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Select the MQTT connector
 
@@ -57,13 +66,25 @@ Enter the following connection parameters, binding each to a configurable variab
 - **Client Id** : A unique identifier for this MQTT client (bound to a configurable variable)
 - **Connection Name** : The name used to reference this connection on the canvas
 
-![MQTT connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="MQTT connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The `mqttClient` connection node appears on the design canvas.
 
-![MQTT Connections panel showing mqttClient entry after saving](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="MQTT Connections panel showing mqttClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -84,7 +105,13 @@ In the left sidebar under **Entry Points**, select **Add Entry Point** (**+**), 
 1. Select the **+** button between the **Start** node and the **Error Handler** node to open the node panel.
 2. In the **Connections** section of the node panel, select **mqttClient** to expand it.
 
-![MQTT connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="MQTT connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Publish** from the operations list to open the publish operation form.
 4. Configure the following fields:
@@ -92,11 +119,23 @@ In the left sidebar under **Entry Points**, select **Add Entry Point** (**+**), 
    - **Message** : Set to expression mode and enter `{payload: "Hello World".toBytes()}` to create an `mqtt:Message` record with a byte-encoded payload
    - **Result** : Leave the default value `mqttDeliverytoken` (type `mqtt:DeliveryToken`)
 
-![MQTT Publish operation configuration filled with all values](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="MQTT Publish operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the publish step to the automation flow.
 
-![Completed MQTT automation flow](/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed MQTT automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -138,7 +177,13 @@ flowchart LR
 
 Select **Add Artifact** in the WSO2 Integrator panel. In the artifacts palette, expand the **Event Integration** category and locate the **MQTT** trigger card.
 
-![Artifacts palette open with MQTT trigger card visible under Event Integration category](/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open with MQTT trigger card visible under Event Integration category"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the MQTT listener
 
@@ -152,7 +197,13 @@ Select the MQTT card to open the **Create MQTT Event Integration** form. Bind ea
 
 For each field, select the helper panel icon, go to the **Configurables** tab, select **+ New Configurable**, enter the variable name and type `string`, then select **Save**. The configurable badge (`{x}`) appears in the field once bound. The listener name under **Advanced Configurations** is automatically set to `mqttListener`.
 
-![MQTT trigger configuration form with all three fields bound to configurables mqttBrokerUrl, mqttClientId, and mqttTopic](/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="MQTT trigger configuration form with all three fields bound to configurables mqttBrokerUrl, mqttClientId, and mqttTopic"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -162,7 +213,13 @@ In the left panel, select **Configurations** to open the Configurations panel. Y
 - **mqttClientId** (string) : A unique client identifier for this integration
 - **mqttTopic** (string) : The topic to subscribe to
 
-![Configurable Variables panel showing mqttBrokerUrl, mqttClientId, and mqttTopic with empty Required fields](/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurable Variables panel showing mqttBrokerUrl, mqttClientId, and mqttTopic with empty Required fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Create the listener
 
@@ -181,13 +238,25 @@ Navigate back to the **MQTT Event Integration** service view by selecting the en
 
 Select the **+** icon in the flow chart, and in the side panel that opens, choose **Log Info** from the **Logging** section, then enter `message.toJsonString()` as the message.
 
-![onMessage handler flow canvas showing Start node followed by log:printInfo node with message.toJsonString() argument](/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onMessage handler flow canvas showing Start node followed by log:printInfo node with message.toJsonString() argument"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 7: Confirm the handler registration
 
 Return to the **MQTT Event Integration** service view. The **Event Handlers** list now shows the registered `onMessage` handler row, confirming the integration is fully configured.
 
-![MQTT Event Integration service view with onMessage handler row registered under Event Handlers](/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="MQTT Event Integration service view with onMessage handler row registered under Event Handlers"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

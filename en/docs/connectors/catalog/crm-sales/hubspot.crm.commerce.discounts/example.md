@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 1. In the Design view, select **Add Artifact** and select **Connection**.
 2. The connector palette opens. Use the search field to find the connector.
 
-![HubSpot CRM Commerce Discounts connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Discounts connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Search for `hubspot.crm.commerce.discounts` in the search field.
 4. Select the **HubSpot CRM Commerce Discounts** connector from the results.
@@ -47,11 +56,23 @@ Bind each field to a configurable variable so credentials stay out of your sourc
 - **Config** : Reference a configurable variable `hubspotAuthToken` that holds your HubSpot API token
 - **Service Url** : Reference a configurable variable `hubspotServiceUrl` for the API base URL
 
-![HubSpot CRM Commerce Discounts connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Discounts connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_02_connection_form.png'),
+    }}
+/>
 
 Select **Save** to create the connection.
 
-![HubSpot CRM Commerce Discounts Connections panel showing discountsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_03_canvas_after_save.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Discounts Connections panel showing discountsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_03_canvas_after_save.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_03_canvas_after_save.png'),
+    }}
+/>
 
 ### Step 3: Set actual values for your configurables
 
@@ -74,15 +95,33 @@ Select **Save** to create the connection.
 1. In the Automation flow canvas, select the **+** button after the **Start** node to open the step panel.
 2. Expand the **discountsClient** connection under the **Connections** section to see available operations.
 
-![HubSpot CRM Commerce Discounts connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Discounts connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select the **List** operation.
 4. The operation configuration form appears. This operation has no required parameters. Set the **Result** variable name to `listResult`.
 5. Select **Save**.
 
-![HubSpot CRM Commerce Discounts List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Discounts List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_05_operation_config.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Commerce Discounts automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Commerce Discounts automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/hubspot_crm_commerce_discounts_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

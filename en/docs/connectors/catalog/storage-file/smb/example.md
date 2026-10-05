@@ -4,6 +4,9 @@ connector_name: "smb"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -38,7 +41,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![SMB connector palette open before selection](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_01_palette.png)
+<ThemedImage
+    alt="SMB connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SMB connector
 
@@ -56,13 +65,25 @@ Set **Client Config** to **Expression** mode and build a record that binds each 
 - **Client Config** : The host, share, and authentication settings the client uses to reach the server.
 - **Connection Name** : The name the connection is referenced by elsewhere in the integration.
 
-![SMB connection form with all parameters bound before saving](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SMB connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![SMB connection visible after saving](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SMB connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -87,14 +108,26 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **smbClient** to display its operations.
 
-![SMB connection expanded to display operations before selection](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SMB connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List** and enter its required values.
 
 - **Path** : The directory to list, relative to the share root.
 - **Result** : The name of the variable that receives the returned file information.
 
-![SMB List operation with all values entered before saving](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="SMB List operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -102,7 +135,13 @@ Select **Save** and verify that the connection appears in the **Connections** se
 
 Add a log action for the returned value, then return to the visual flow. The completed flow runs the operation, logs the number of entries it found, and routes any failure to the **Error Handler**.
 
-![Completed SMB flow with the configured operation](/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SMB flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/smb/ballerina_smb_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

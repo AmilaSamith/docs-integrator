@@ -5,6 +5,9 @@ title: "Setup Guide"
 description: "How to set up and configure the ballerinax/sap.businessone.sales connector."
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through getting necessary details from the SAP Business One so that the connector can authenticate and communicate with the SAP Business One.
@@ -26,7 +29,13 @@ To connect, you need three values that also appear on the SAP Business One deskt
 
 Click the company name at the top of the SAP Business One desktop application to view the current company database, or contact your administrator.
 
-![SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection](/img/connectors/catalog/erp-business/sap-b1-choose-company.png)
+<ThemedImage
+    alt="SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+    }}
+/>
 
 :::note
 The Service Layer uses a session-based protocol: the connector logs in with the company database, user name, and password, then tracks the `B1SESSION`/`ROUTEID` cookies and re-logs in automatically when the session expires. Never commit these credentials to source control.

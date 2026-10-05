@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Open the WSO2 Integrator side panel and hover over the **Connections** tree item, then select the **+** button that appears to open the **Add Connection** palette.
 
-![Stripe connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_01_palette.png)
+<ThemedImage
+    alt="Stripe connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an automation entry point
 
@@ -48,13 +57,25 @@ In the connection form, bind each field to a configurable variable:
 - **Connection Name** : The display name for this connection instance
 - **token** : The Stripe Bearer token, bound to the `stripeToken` configurable variable
 
-![Stripe connection form fully filled with all parameters before saving](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Stripe connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to create the connection. The connection appears in the **Connections** section of the WSO2 Integrator side panel.
 
-![Stripe Connections panel showing stripeClient entry after saving](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Stripe Connections panel showing stripeClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -71,18 +92,36 @@ Select **Save** to create the connection. The connection appears in the **Connec
 2. In the step selection panel, locate the **Connections** section.
 3. Expand the **stripeClient** connection to reveal all available Stripe operations.
 
-![Stripe connection node expanded showing all available operations before selection](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Stripe connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 4. Search for **customers** to filter the operations list.
 5. Select **Returns a list of your customers** (`get` operation) from the filtered results, then configure the following:
 
 - **Result** : Name of the variable to store the response; set to `customerList`
 
-![Stripe get operation configuration filled with all values](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Stripe get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed Stripe automation flow](/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Stripe automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/stripe/stripe_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

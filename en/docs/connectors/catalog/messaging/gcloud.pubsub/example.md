@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -35,7 +38,13 @@ flowchart LR
 3. Enter `pubsub` in the search box.
 4. Select **Pub/Sub Publisher** (`ballerinax/gcloud.pubsub`).
 
-![Pub/Sub connector palette open with search field before any selection](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_01_palette.png)
+<ThemedImage
+    alt="Pub/Sub connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Pub/Sub connection
 
@@ -51,13 +60,25 @@ After selecting **Pub/Sub Publisher**, the connection configuration form opens. 
 
 The **Connection Name** field defaults to `pubsubPublisher`. Keep this value.
 
-![Pub/Sub connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Pub/Sub connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The canvas updates and the **pubsubPublisher** connection node appears.
 
-![Pub/Sub Connections panel showing pubsubPublisher entry after saving](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Pub/Sub Connections panel showing pubsubPublisher entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -82,7 +103,13 @@ Select **Save** to create the connection. The canvas updates and the **pubsubPub
 
 1. In the node panel on the right side of the Automation canvas, locate the **pubsubPublisher** connection and select it to expand the available operations.
 
-![Pub/Sub connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Pub/Sub connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 2. Select **Publish** to open the operation configuration form.
 3. Configure the operation fields:
@@ -91,9 +118,21 @@ Select **Save** to create the connection. The canvas updates and the **pubsubPub
   - **Result Type** : `string` (the `publish` operation returns the published message ID)
 4. Select **Save** to add the `publish` step to the flow.
 
-![Pub/Sub publish operation configuration filled with all values](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Pub/Sub publish operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Pub/Sub automation flow](/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Pub/Sub automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/gcloud.pubsub/gcloud_pubsub_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

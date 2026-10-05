@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a Zoom app on the Zoom Marketplace and obtaining the OAuth credentials required to use the Zoom Meetings connector.
@@ -10,11 +14,23 @@ This guide walks you through creating a Zoom app on the Zoom Marketplace and obt
 1. Open the [Zoom Marketplace](https://marketplace.zoom.us/).
 2. Select **Develop** → **Build App**.
 
-   ![Zoom Marketplace](/img/connectors/catalog/communication/zoom.meetings/setup/build-app.png)
+   <ThemedImage
+       alt="Zoom Marketplace"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/build-app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/build-app.png'),
+       }}
+   />
 
 3. Choose **General App** as the app type (for user authorization with refresh tokens).
 
-   ![App type](/img/connectors/catalog/communication/zoom.meetings/setup/general-app.png)
+   <ThemedImage
+       alt="App type"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/general-app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/general-app.png'),
+       }}
+   />
 
 4. Fill in the basic information and choose the **Admin-managed** option.
 
@@ -22,13 +38,25 @@ This guide walks you through creating a Zoom app on the Zoom Marketplace and obt
 
 1. In your app's **App Credentials** tab, note down the **Client ID** and **Client Secret**.
 
-   ![App credentials](/img/connectors/catalog/communication/zoom.meetings/setup/app-credentials.png)
+   <ThemedImage
+       alt="App credentials"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/app-credentials.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/app-credentials.png'),
+       }}
+   />
 
 2. Under **Redirect URL for OAuth**, add your application's redirect URI.
 
 3. Navigate to the **Scopes** section and add the following scopes: `meetings:read`, `meetings:write`, and `user:read`.
 
-   ![App scopes](/img/connectors/catalog/communication/zoom.meetings/setup/app-scopes.png)
+   <ThemedImage
+       alt="App scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/app-scopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/setup/app-scopes.png'),
+       }}
+   />
 
 ## Step 3: Activate the app
 

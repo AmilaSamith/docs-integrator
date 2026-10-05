@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating an AWS IAM user and obtaining the access credentials required to use the AWS S3 connector.
@@ -18,31 +22,73 @@ This guide walks you through creating an AWS IAM user and obtaining the access c
 
 1. Open the **IAM** console by searching for "IAM" in the AWS Management Console.
 
-   ![Search for IAM](/img/connectors/catalog/storage-file/aws.s3/setup/create-user-1.jpeg)
+   <ThemedImage
+       alt="Search for IAM"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-1.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-1.jpeg'),
+       }}
+   />
 
 2. In the left navigation pane, select **Users**.
 
-   ![IAM Dashboard - select Users](/img/connectors/catalog/storage-file/aws.s3/setup/create-user-2.jpeg)
+   <ThemedImage
+       alt="IAM Dashboard - select Users"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-2.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-2.jpeg'),
+       }}
+   />
 
 3. Select **Create user**.
 
-   ![Users page - Create user](/img/connectors/catalog/storage-file/aws.s3/setup/create-user-3.jpeg)
+   <ThemedImage
+       alt="Users page - Create user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-3.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-user-3.jpeg'),
+       }}
+   />
 
 4. Enter a **User name** (for example, `S3-USER`) and select **Next**.
 
-   ![Specify user details](/img/connectors/catalog/storage-file/aws.s3/setup/specify-user-details.jpeg)
+   <ThemedImage
+       alt="Specify user details"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/specify-user-details.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/specify-user-details.jpeg'),
+       }}
+   />
 
 5. Under **Set permissions**, select **Attach policies directly**. Search for and select the **AmazonS3FullAccess** managed policy (or a custom policy with the minimum S3 permissions your integration requires).
 
-   ![Set user permissions](/img/connectors/catalog/storage-file/aws.s3/setup/set-user-permissions.jpeg)
+   <ThemedImage
+       alt="Set user permissions"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/set-user-permissions.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/set-user-permissions.jpeg'),
+       }}
+   />
 
 6. Select **Next**, review the details, and select **Create user**.
 
-   ![Review and create user](/img/connectors/catalog/storage-file/aws.s3/setup/review-create-user.jpeg)
+   <ThemedImage
+       alt="Review and create user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/review-create-user.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/review-create-user.jpeg'),
+       }}
+   />
 
 7. You should see a confirmation that the user was created successfully.
 
-   ![User created successfully](/img/connectors/catalog/storage-file/aws.s3/setup/users.jpeg)
+   <ThemedImage
+       alt="User created successfully"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/users.jpeg'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/users.jpeg'),
+       }}
+   />
 
 :::tip
 For production use, follow the principle of least privilege — create a custom IAM policy that grants only the specific S3 actions and resources your integration needs.
@@ -52,17 +98,35 @@ For production use, follow the principle of least privilege — create a custom 
 
 1. In the IAM console, select the user you just created. Under **Access keys**, select **Create access key**.
 
-   ![Create access key](/img/connectors/catalog/storage-file/aws.s3/setup/create-access-key-1.png)
+   <ThemedImage
+       alt="Create access key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-access-key-1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/create-access-key-1.png'),
+       }}
+   />
 
 2. Select the **Application running outside AWS** use case, then select **Next**.
 
-   ![Select use case](/img/connectors/catalog/storage-file/aws.s3/setup/select-usecase.png)
+   <ThemedImage
+       alt="Select use case"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/select-usecase.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/select-usecase.png'),
+       }}
+   />
 
 3. Optionally add a description tag, then select **Create access key**.
 
 4. Copy the **Access key ID** and **Secret access key** — these are your `accessKeyId` and `secretAccessKey`.
 
-   ![Retrieve access keys](/img/connectors/catalog/storage-file/aws.s3/setup/retrieve-access-key.png)
+   <ThemedImage
+       alt="Retrieve access keys"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/retrieve-access-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/setup/retrieve-access-key.png'),
+       }}
+   />
 
 :::warning
 The secret access key is shown only once. Store both keys securely and do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.

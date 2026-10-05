@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select the **+** button in the **Connections** section of the left panel to open the **Add Connection** dialog.
 
-![HubSpot CRM Deals connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Deals connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Deals connection
 
@@ -41,13 +50,25 @@ Search for `hubspot.crm.obj.deals`, select the **Deals** connector card, and bin
 - **Config** : The connection configuration record containing the bearer token auth expression `{auth: {token: hubspotToken}}`
 - **Connection Name** : The name used to reference this connection throughout the integration
 
-![HubSpot CRM Deals connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Deals connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `dealsClient` connection node appears on the canvas and in the **Connections** panel.
 
-![HubSpot CRM Deals Connections panel showing dealsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Deals Connections panel showing dealsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -69,18 +90,36 @@ Select **Save Connection** to persist the connection. The `dealsClient` connecti
 1. Select the **+** button between **Start** and **Error Handler** on the flow canvas to open the node panel.
 2. Expand **dealsClient** in the **Connections** section to reveal available operations.
 
-![HubSpot CRM Deals connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Deals connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create** from the operations list and fill in the operation fields.
 
 - **Payload** : The `SimplePublicObjectInputForCreate` record containing deal properties such as `dealname`, `amount`, `dealstage`, `pipeline`, and `closedate`
 - **Result** : The variable name that stores the returned `SimplePublicObject` response
 
-![HubSpot CRM Deals Create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Deals Create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Select **Save** to add the step to the flow.
 
-![Completed HubSpot CRM Deals automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Deals automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.deals/hubspot_crm_obj_deals_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

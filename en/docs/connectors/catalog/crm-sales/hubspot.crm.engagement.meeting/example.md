@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -28,7 +31,13 @@ flowchart LR
 
 Select **Add Connection** in the left sidebar under **Connections** to open the connector palette.
 
-![HubSpot Meeting connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Meeting connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and select the HubSpot Meeting connector
 
@@ -44,13 +53,25 @@ Bind the connection's **Config** field to a configurable variable so credentials
 
 - **Config** : Set to the HubSpot bearer token auth record using a configurable variable for the token value
 
-![HubSpot Meeting connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Meeting connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection**. The `meetingClient` connection tile now appears on the integration canvas.
 
-![HubSpot Meeting Connections panel showing meetingClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot Meeting Connections panel showing meetingClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,7 +94,13 @@ The flow canvas opens showing a **Start** node, a placeholder step slot, and an 
 1. Select the **+** button between **Start** and **Error Handler** to open the step picker.
 2. Under **Connections → meetingClient**, expand the connection to see all available operations.
 
-![HubSpot Meeting connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Meeting connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create** (maps to `POST /crm/v3/objects/meetings`).
 4. In the operation form, configure the following parameters:
@@ -81,9 +108,21 @@ The flow canvas opens showing a **Start** node, a placeholder step slot, and an 
    - **Result** : Set the result variable name to `result`
 5. Select **Save**.
 
-![HubSpot Meeting Create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Meeting Create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HubSpot Meeting automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Meeting automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/hubspot_crm_engagement_meeting_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -4,6 +4,9 @@ connector_name: "aws.dynamodbstreams"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -37,7 +40,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS DynamoDB Streams connector palette open before selection](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS DynamoDB Streams connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS DynamoDB Streams connector
 
@@ -53,13 +62,25 @@ Switch **Config** to **Expression** mode, then bind its credential and region fi
 - **Config** : Connection configuration holding the authentication details and the AWS region.
 - **Connection Name** : Name that identifies this connection in the project tree.
 
-![AWS DynamoDB Streams connection form with all parameters bound before saving](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS DynamoDB Streams connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![AWS DynamoDB Streams connection visible after saving](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="AWS DynamoDB Streams connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -84,14 +105,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **+** on the automation flow between **Start** and **Error Handler**.
 2. Expand **dynamodbstreamsClient** to display its operations.
 
-![AWS DynamoDB Streams connection expanded to display operations before selection](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="AWS DynamoDB Streams connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Describe Stream** and enter its required values.
 
 - **Request** : Details of the stream to describe, carrying the stream ARN.
 - **Result** : Name of the variable that holds the returned stream description.
 
-![AWS DynamoDB Streams Describe Stream operation with all values entered before saving](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="AWS DynamoDB Streams Describe Stream operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -99,7 +132,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 
 Add a **Log Info** action that reports the returned stream status, then return to the visual flow.
 
-![Completed AWS DynamoDB Streams flow with the configured operation](/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed AWS DynamoDB Streams flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodbstreams/ballerinax_aws_dynamodbstreams_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

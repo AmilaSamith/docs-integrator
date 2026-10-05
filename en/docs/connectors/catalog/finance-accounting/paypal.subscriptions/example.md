@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 3. In the connector search palette, search for **paypal.subscriptions**.
 4. Select the `ballerinax/paypal.subscriptions` connector card to open the connection form.
 
-![PayPal Subscriptions connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_01_palette.png)
+<ThemedImage
+    alt="PayPal Subscriptions connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the PayPal subscriptions connection
 
@@ -45,13 +54,25 @@ Fill in the connection form by binding each field to a configurable variable:
 - **clientId** : Bind to the configurable variable `paypalClientId`
 - **clientSecret** : Bind to the configurable variable `paypalClientSecret`
 
-![PayPal Subscriptions connection form fully filled with all parameters before saving](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="PayPal Subscriptions connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `subscriptionsClient` connection appears in the **Connections** section of the WSO2 Integrator sidebar and on the design canvas.
 
-![PayPal Subscriptions Connections panel showing subscriptionsClient entry after saving](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="PayPal Subscriptions Connections panel showing subscriptionsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -76,7 +97,13 @@ The Automation entry point `main` is created and appears under **Entry Points** 
 2. In the flow diagram, select the **+** button to add a new step.
 3. Select the **subscriptionsClient** connection to view its available operations.
 
-![PayPal Subscriptions connection node expanded showing all available operations before selection](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_04_operations.png)
+<ThemedImage
+    alt="PayPal Subscriptions connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_04_operations.png'),
+    }}
+/>
 
 4. Select the **List plans** operation (`listPlans`).
 5. Review the available parameters (all optional for this operation) and set the **Result Variable** name to `result`.
@@ -84,9 +111,21 @@ The Automation entry point `main` is created and appears under **Entry Points** 
 
 - **Result Variable** : Name of the variable that stores the returned `PlanCollection` response
 
-![PayPal Subscriptions listPlans operation configuration filled with all values](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="PayPal Subscriptions listPlans operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed PayPal Subscriptions automation flow](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed PayPal Subscriptions automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 
 Select the **+** button in the **Connections** section of the WSO2 Integrator side panel to open the Add Connection palette.
 
-![Guidewire InsuranceNow connector palette open with search field before any selection](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_01_palette.png)
+<ThemedImage
+    alt="Guidewire InsuranceNow connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Guidewire InsuranceNow connection
 
@@ -44,13 +53,25 @@ Enter the connection parameters, binding each field to a configurable variable:
 - **Service Url** : URL of the InsuranceNow API endpoint bound to `insnowServiceUrl`
 - **Connection Name** : Identifier for the connection instance
 
-![Guidewire InsuranceNow connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Guidewire InsuranceNow connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the configuration. The `insnowClient` connection appears under the **Connections** node in the project tree and on the design canvas.
 
-![Guidewire InsuranceNow Connections panel showing insnowClient entry after saving](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Guidewire InsuranceNow Connections panel showing insnowClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,15 +94,33 @@ Select **Save Connection** to persist the configuration. The `insnowClient` conn
 1. Select the **+** button on the flow canvas to open the node panel.
 2. Expand the **insnowClient** connection under **Connections** to reveal all available operations.
 
-![Guidewire InsuranceNow connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_04_operations.png)
+<ThemedImage
+    alt="Guidewire InsuranceNow connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_04_operations.png'),
+    }}
+/>
 
 3. Select **Returns a list of supported countries** (`get`) as the operation.
 
 - **Result variable** : `insnowListcountry`; stores the list of countries returned by the API
 
-![Guidewire InsuranceNow get operation configuration filled with all values](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Guidewire InsuranceNow get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed Guidewire InsuranceNow automation flow](/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_06_complete_flow.png)
+<ThemedImage
+    alt="Completed Guidewire InsuranceNow automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_06_complete_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/guidewire.insnow/guidewire_insnow_screenshot_06_complete_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

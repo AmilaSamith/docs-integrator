@@ -4,6 +4,9 @@ connector_name: "aws.ses"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -40,7 +43,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS SES connector palette open before selection](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS SES connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS SES connector
 
@@ -56,13 +65,25 @@ The connector takes its whole connection configuration as one record, so switch 
 - **Config** : The configuration required to initialize the client. Enter `{auth: {accessKeyId: accessKeyId, secretAccessKey: secretAccessKey}, region: region}`, creating each configurable variable with **New Configurable** in the helper panel as you reference it.
 - **Connection Name** : The name the operations refer to this connection by. Enter `sesClient`.
 
-![AWS SES connection form with all parameters bound before saving](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS SES connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![AWS SES connection visible after saving](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="AWS SES connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -88,14 +109,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **Add Step** in the automation flow.
 2. Expand **sesClient** to display its operations.
 
-![AWS SES connection expanded to display operations before selection](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="AWS SES connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Send Email** and enter its required values.
 
 - **Request** : The details of the message to send. Switch to **Expression** mode and enter `{fromEmailAddress: senderEmail, destination: {toAddresses: [recipientEmail]}, content: {simple: {subject: {data: "Hello from the WSO2 Integrator"}, body: {text: {data: "This message was sent with the Amazon SES connector."}}}}}`.
 - **Result** : The name of the variable holding the response. Enter `sendEmailResponse`.
 
-![AWS SES send email operation with all values entered before saving](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="AWS SES send email operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -103,7 +136,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 
 Add a **Log Info** step after the operation and set **Msg** to `Email accepted by Amazon SES with message ID: ${sendEmailResponse.messageId.toString()}`, then return to the visual flow.
 
-![Completed AWS SES flow with the configured operation](/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed AWS SES flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/aws.ses/ballerinax_aws_ses_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

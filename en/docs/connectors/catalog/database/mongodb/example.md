@@ -6,6 +6,9 @@ description: "Build an automation that connects to MongoDB and retrieves a datab
 keywords: [wso2 integrator, mongodb, connector, example, database]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -43,7 +46,13 @@ New to WSO2 Integrator? Follow the [Create a new integration](../../../../develo
 2. Type **MongoDB** in the search box.
 3. Select the **MongoDB** card (`ballerinax/mongodb`).
 
-![MongoDB connector palette open with search field before any selection](/img/connectors/catalog/database/mongodb/mongodb_screenshot_01_palette.png)
+<ThemedImage
+    alt="MongoDB connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the MongoDB connection
 
@@ -75,13 +84,25 @@ Pick `BasicAuthCredential` for `PLAIN`, `ScramSha1AuthCredential` for SCRAM-SHA-
 For X.509 client-certificate or GSSAPI/Kerberos authentication, use `X509Credential` or `GssApiCredential` instead. See [Authentication credentials](actions.md#authentication-credentials) for the field shapes.
 :::
 
-![MongoDB connection form fully filled with all parameters before saving](/img/connectors/catalog/database/mongodb/mongodb_screenshot_02_connection_config.png)
+<ThemedImage
+    alt="MongoDB connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_02_connection_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_02_connection_config.png'),
+    }}
+/>
 
 ### Save the connection
 
 Click **Save Connection** to persist the connection. The `mongodbClient` node appears in the **Connections** section of the left sidebar and on the canvas.
 
-![MongoDB Connections panel showing mongodbClient entry after saving](/img/connectors/catalog/database/mongodb/mongodb_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="MongoDB Connections panel showing mongodbClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Set actual values for your configurables
 
@@ -109,18 +130,36 @@ The automation flow canvas opens, showing a **Start** node and an **Error Handle
 1. Click the **+** button between the Start and Error Handler nodes in the flow.
 2. Under **Connections**, expand **mongodbClient** to reveal available operations.
 
-![MongoDB connection node expanded showing all available operations before selection](/img/connectors/catalog/database/mongodb/mongodb_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="MongoDB connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Click **Get Database** to open its configuration form, then fill in the following parameters:
 
 - **Database Name**: name of the MongoDB database to retrieve (for example, `"hrdb"`)
 - **Result**: variable name for the returned `mongodb:Database` handle (for example, `mongodbDatabase`)
 
-![MongoDB Get Database operation configuration filled with all values](/img/connectors/catalog/database/mongodb/mongodb_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="MongoDB Get Database operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_05_operation_config.png'),
+    }}
+/>
 
 4. Click **Save**. The node is added to the flow.
 
-![Completed Automation flow with mongodb getDatabase node on the canvas](/img/connectors/catalog/database/mongodb/mongodb_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Automation flow with mongodb getDatabase node on the canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mongodb/mongodb_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

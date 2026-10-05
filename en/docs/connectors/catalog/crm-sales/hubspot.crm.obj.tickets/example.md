@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 From the integration overview canvas, select **+ Add Artifact**, then select **Connection**. In the connector search palette, enter `hubspot crm tickets` and select **HubSpot CRM Object Tickets** (`ballerinax/hubspot.crm.obj.tickets` v2.0.1).
 
-![HubSpot CRM Tickets connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Tickets connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Object Tickets connection
 
@@ -42,13 +51,25 @@ The **New Connection** form opens. Fill in the connection parameters, binding ea
 - **Connection Name** : Enter `ticketsClient` as the connection name
 - **Config** : Switch to **Expression** mode and enter `{auth: {token: hubspotAuthToken}}`: this wires the `BearerTokenConfig` authentication using a configurable variable named `hubspotAuthToken`
 
-![HubSpot CRM Tickets connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Tickets connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection**. The `ticketsClient` connector node appears on the integration canvas.
 
-![HubSpot CRM Tickets Connections panel showing ticketsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Tickets Connections panel showing ticketsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -67,18 +88,36 @@ In the WSO2 Integrator sidebar, hover over **Entry Points** to reveal the **+ Ad
 
 Select the **+** node on the canvas (between **Start** and **Error Handler**) to open the node panel. In the **Connections** section, select **ticketsClient** to expand all available operations.
 
-![HubSpot CRM Tickets connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Tickets connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Create** to add the `ticketsClient→post` step. In the **Create** operation form, configure the following fields:
 
 - **Payload** : Switch to **Expression** mode and enter `{properties: {"subject": "Test HubSpot Ticket", "hs_pipeline": "0", "hs_pipeline_stage": "1", "hs_ticket_priority": "HIGH"}}`
 - **Result** : Enter `result` as the result variable name
 
-![HubSpot CRM Tickets create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Tickets create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The canvas updates to show the `tickets : post` node with `result` linked to `ticketsClient`.
 
-![Completed HubSpot CRM Tickets automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Tickets automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.tickets/hubspot_crm_obj_tickets_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

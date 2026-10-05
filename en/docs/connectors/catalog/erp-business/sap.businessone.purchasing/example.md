@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 
 Open **Connections**, select **Add Connection**, and search for the SAP Business One Purchasing package.
 
-![Connector palette showing the Purchasing connector](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-01-palette.png)
+<ThemedImage
+    alt="Connector palette showing the Purchasing connector"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Purchasing connector
 
@@ -50,13 +59,25 @@ Enter the connection values as configurable variables, and keep credential value
 - **Service Url** : Bind the configurable variable containing the SAP Business One Service Layer endpoint.
 - **Connection Name** : Enter `purchasingOrdersClient`.
 
-![Purchasing connection form with configurable values](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="Purchasing connection form with configurable values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save and review the connection
 
 Save the connection, then expand **Connections** and confirm that **purchasingOrdersClient** appears. Review **Configurations** to verify that the generated configurable entries don't contain credential values.
 
-![Saved Purchasing connection in the integration tree](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Saved Purchasing connection in the integration tree"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ## Configuring the Purchasing List Purchase Orders operation
 
@@ -68,7 +89,13 @@ Add an **Automation** entry point and select **Create** to open its flow editor.
 
 Add a node after **Start**, then expand **purchasingOrdersClient** in the node panel to view its available operations.
 
-![Expanded Purchasing connection showing available operations](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-04-expanded-connection.png)
+<ThemedImage
+    alt="Expanded Purchasing connection showing available operations"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-04-expanded-connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-04-expanded-connection.png'),
+    }}
+/>
 
 ### Step 7: Configure List Purchase Orders
 
@@ -77,13 +104,25 @@ Select **List Purchase Orders**. Keep the generated result variable and result t
 - **Result** : Stores the purchase orders collection response.
 - **Result Type** : Uses the generated Purchasing response type.
 
-![List Purchase Orders operation configuration form](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="List Purchase Orders operation configuration form"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-05-operation-form.png'),
+    }}
+/>
 
 ### Step 8: Save the completed flow
 
 Save the operation and confirm that **purchasing : listPurchaseOrders** appears between **Start** and the error handler.
 
-![Completed automation flow with List Purchase Orders](/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed automation flow with List Purchase Orders"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.purchasing/sap-businessone-purchasing-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

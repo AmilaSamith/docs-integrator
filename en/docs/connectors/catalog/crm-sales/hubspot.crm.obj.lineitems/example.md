@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **+ Add Artifact → Connection** on the canvas, or select **Add Connection** in the WSO2 Integrator sidebar to open the connector palette.
 
-![HubSpot CRM Line Items connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Line Items connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an Automation entry point
 
@@ -45,13 +54,25 @@ Enter the connection details by binding each field to a configurable variable. I
 - **Config** : A `ConnectionConfig` record containing the Bearer token for HubSpot API authentication: bind to a configurable variable (for example, `hubspotToken`)
 - **Connection Name** : A name to identify this connection (for example, `lineitemsClient`)
 
-![HubSpot CRM Line Items connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Line Items connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas updates to show the `lineitemsClient` connection node.
 
-![HubSpot CRM Line Items Connections panel showing lineitemsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_03_connection_canvas.png)
+<ThemedImage
+    alt="HubSpot CRM Line Items Connections panel showing lineitemsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_03_connection_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_03_connection_canvas.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -66,7 +87,13 @@ Select **Save Connection** to persist the connection. The canvas updates to show
 
 In the Automation flow view, select the **+** button between the **Start** and **Error Handler** nodes to open the node panel. Expand **Connections → lineitemsClient** to reveal all available operations.
 
-![HubSpot CRM Line Items connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Line Items connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 ### Step 7: Select the create operation and configure its parameters
 
@@ -75,11 +102,23 @@ Select **Create** to add the create line item operation. In the **Create** opera
 - **Payload** : A record containing the line item properties; set `associations` to an empty array and `properties` to include fields such as `hs_product_id`, `quantity`, `price`, and `name`
 - **Result** : The variable name to store the response (for example, `result`)
 
-![HubSpot CRM Line Items create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_05_create_operation.png)
+<ThemedImage
+    alt="HubSpot CRM Line Items create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_05_create_operation.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_05_create_operation.png'),
+    }}
+/>
 
 Select **Save** to apply the configuration.
 
-![Completed HubSpot CRM Line Items automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Line Items automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/hubspot_crm_obj_lineitems_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

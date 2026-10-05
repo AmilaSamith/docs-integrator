@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a DocuSign developer account and obtaining the OAuth 2.0 credentials required to use the DocuSign Admin connector.
@@ -14,18 +18,36 @@ This guide walks you through creating a DocuSign developer account and obtaining
 
 If you do not already have a developer account, [sign up for free](https://go.docusign.com/o/sandbox/).
 
-![Create a DocuSign developer account](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/create-account.png)
+<ThemedImage
+    alt="Create a DocuSign developer account"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/create-account.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/create-account.png'),
+    }}
+/>
 
 ## Step 2: Create an integration key and secret key
 
 1. Log in to the [DocuSign Developer Portal](https://admindemo.docusign.com/apps-and-keys) and navigate to **Apps and Keys**.
 2. Select **Add App and Integration Key**, enter a name, and select **Create App**. This generates an **Integration Key** (your `clientId`).
 
-   ![Apps and integration key](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/app-and-integration-key.png)
+   <ThemedImage
+       alt="Apps and integration key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/app-and-integration-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/app-and-integration-key.png'),
+       }}
+   />
 
 3. Under **Authentication**, select **Add Secret Key**. Copy and save the generated **Secret Key** (your `clientSecret`).
 
-   ![Add secret key](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-secret-key.png)
+   <ThemedImage
+       alt="Add secret key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-secret-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-secret-key.png'),
+       }}
+   />
 
 :::tip
 Store the Integration Key and Secret Key securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
@@ -36,7 +58,13 @@ Store the Integration Key and Secret Key securely. Do not commit them to source 
 1. On the same app configuration page, under **Additional settings**, select **Add URI**.
 2. Enter your redirect URI (for example, `http://www.example.com/callback`).
 
-   ![Add redirect URI](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-redirect-uri.png)
+   <ThemedImage
+       alt="Add redirect URI"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-redirect-uri.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/setup/add-redirect-uri.png'),
+       }}
+   />
 
 3. Save the changes.
 

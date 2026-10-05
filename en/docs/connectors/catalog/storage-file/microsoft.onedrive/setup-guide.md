@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through registering an application in Microsoft Entra ID and obtaining the OAuth 2.0 credentials required to use the Microsoft OneDrive connector.
@@ -15,18 +19,36 @@ This guide walks you through registering an application in Microsoft Entra ID an
 1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/).
 2. Navigate to **App registrations** and select **New registration**.
 
-   ![App registrations](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/1-App-registrations.png)
+   <ThemedImage
+       alt="App registrations"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/1-App-registrations.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/1-App-registrations.png'),
+       }}
+   />
 
 3. Enter a display name for your application.
 
-   ![Register application](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/2-Register-application.png)
+   <ThemedImage
+       alt="Register application"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/2-Register-application.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/2-Register-application.png'),
+       }}
+   />
 
 4. Under **Supported account types**, select the appropriate option for your use case.
 5. Leave **Redirect URI** blank for now.
 6. Select **Register**.
 7. After registration, copy the **Application (client) ID** from the Overview pane.
 
-   ![Application overview](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/3-Application-details.png)
+   <ThemedImage
+       alt="Application overview"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/3-Application-details.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/3-Application-details.png'),
+       }}
+   />
 
 ## Step 2: Configure platform settings
 
@@ -34,7 +56,13 @@ This guide walks you through registering an application in Microsoft Entra ID an
 2. Under **Platform configurations**, select **Add a platform** and select the **Web** tile.
 3. Set the **Redirect URI** to `http://localhost`.
 
-   ![Configure web platform](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/4-Configure-web.png)
+   <ThemedImage
+       alt="Configure web platform"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/4-Configure-web.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/4-Configure-web.png'),
+       }}
+   />
 
 4. Select **Configure** to save.
 
@@ -42,16 +70,34 @@ This guide walks you through registering an application in Microsoft Entra ID an
 
 1. Navigate to **Certificates & secrets > Client secrets** and select **New client secret**.
 
-   ![Add secret](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/5-Add-secret.png)
+   <ThemedImage
+       alt="Add secret"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/5-Add-secret.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/5-Add-secret.png'),
+       }}
+   />
 
 2. Add a description for your client secret.
 
-   ![Add description](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/6-Give-description.png)
+   <ThemedImage
+       alt="Add description"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/6-Give-description.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/6-Give-description.png'),
+       }}
+   />
 
 3. Select an expiration period and select **Add**.
 4. Copy and save the **Value** of the secret immediately — it will not be shown again.
 
-   ![Save secret value](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/7-Note-down-secret.png)
+   <ThemedImage
+       alt="Save secret value"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/7-Note-down-secret.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/7-Note-down-secret.png'),
+       }}
+   />
 
 :::warning
 The client secret value is shown only once. Store it securely. Do not commit it to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply it at runtime.
@@ -74,7 +120,13 @@ The client secret value is shown only once. Store it securely. Do not commit it 
 
 2. Open the URL in a browser, sign in, and select **Accept** to grant access.
 
-   ![Grant access](/img/connectors/catalog/storage-file/microsoft.onedrive/setup/8-Give-access.png)
+   <ThemedImage
+       alt="Grant access"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/8-Give-access.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/setup/8-Give-access.png'),
+       }}
+   />
 
 3. After authorization, you are redirected to a URL like:
 

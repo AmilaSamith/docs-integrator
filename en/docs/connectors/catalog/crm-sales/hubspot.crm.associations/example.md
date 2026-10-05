@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select the **+** button next to **Connections** to open the Add Connection palette.
 
-![HubSpot CRM Associations connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Associations connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Associations connection
 
@@ -41,13 +50,25 @@ Enter the connection parameters, binding each field to a configurable variable:
 - **connectionName** : Enter `associationsClient` as the connection name
 - **config** : Switch to **Expression** mode and enter `{auth: {token: hubspotAuthToken}}` to bind the auth token to a configurable variable
 
-![HubSpot CRM Associations connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Associations connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `associationsClient` connection appears in the project tree under **Connections** and on the design canvas.
 
-![HubSpot CRM Associations Connections panel showing associationsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Connections panel showing associationsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -67,7 +88,13 @@ Select **Add Artifact** in the WSO2 Integrator panel, then select **Automation**
 1. Select the **+** (Add Step) button on the flow between the **Start** node and the **Error Handler**.
 2. Under **Connections**, expand the `associationsClient` connection to reveal available operations.
 
-![HubSpot CRM Associations connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Associations connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List Associations of an Object by Type** and fill in the required fields:
 
@@ -76,11 +103,23 @@ Select **Add Artifact** in the WSO2 Integrator panel, then select **Automation**
 - **toObjectType** : The target association object type (for example, `companies`)
 - **result** : The variable name for the response
 
-![HubSpot CRM Associations List Associations of an Object by Type operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Associations List Associations of an Object by Type operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed HubSpot CRM Associations automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Associations automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations/hubspot_crm_associations_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **+ Add Connection** to open the connector palette. Search for `hubspot.crm.obj.companies` to locate the pre-built connector.
 
-![HubSpot CRM Companies connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Companies connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Companies connection
 
@@ -41,13 +50,25 @@ Select the **Companies** connector card to open the **Configure Companies** form
 - **Config**: Authentication configuration that references the `hubspotToken` configurable variable: enter `{auth: {token: hubspotToken}}` in Expression mode
 - **Connection Name** : Name used to identify this connection on the canvas
 
-![HubSpot CRM Companies connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Companies connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. `companiesClient` appears under **Connections** in the sidebar and as a node on the integration canvas.
 
-![HubSpot CRM Companies Connections panel showing companiesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Companies Connections panel showing companiesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -70,18 +91,36 @@ The Automation entry point (`main`) is added under **Entry Points** in the sideb
 1. Select the **+** (add step) button between **Start** and **Error Handler** on the canvas to open the node panel.
 2. Under **Connections**, select **companiesClient** to expand it and view all available operations.
 
-![HubSpot CRM Companies connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Companies connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List** (`GET /crm/v3/objects/companies`) to open the operation configuration panel.
 4. Set the result variable name to `result`. No required parameters are needed; optional query parameters are available via **Advanced Configurations**.
 
 - **Result** : Variable name that stores the returned collection of companies
 
-![HubSpot CRM Companies List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Companies List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the canvas.
 
-![Completed HubSpot CRM Companies automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Companies automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.companies/hubspot_crm_obj_companies_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

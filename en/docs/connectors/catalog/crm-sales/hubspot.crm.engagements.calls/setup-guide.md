@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Engagements Calls connector.
@@ -19,19 +23,43 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Test accounts section](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/1_test_account.png)
+   <ThemedImage
+       alt="Test accounts section"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/1_test_account.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/1_test_account.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create developer test account](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/2_create_test_account.png)
+   <ThemedImage
+       alt="Create developer test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/2_create_test_account.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/2_create_test_account.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/3_create_account.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/3_create_account.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/3_create_account.png'),
+       }}
+   />
 
 4. The new account appears in the test accounts list.
 
-   ![Test account portal](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/4_test_account_portal.png)
+   <ThemedImage
+       alt="Test account portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/4_test_account_portal.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/4_test_account_portal.png'),
+       }}
+   />
 
 :::note
 Developer test accounts are for development and testing only. Do not use them in production.
@@ -41,37 +69,79 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** in the left sidebar and select **Create app**.
 
-   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/5_create_app.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/5_create_app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/5_create_app.png'),
+       }}
+   />
 
 2. Enter a public app name and description.
 
-   ![App name and description](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/6_app_name_description.png)
+   <ThemedImage
+       alt="App name and description"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/6_app_name_description.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/6_app_name_description.png'),
+       }}
+   />
 
 ## Step 4: Set up authentication
 
 1. Go to the **Auth** tab.
 
-   ![Configure authentication](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/7_config_auth.png)
+   <ThemedImage
+       alt="Configure authentication"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/7_config_auth.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/7_config_auth.png'),
+       }}
+   />
 
 2. Scroll down to **Scopes** and select **Add new scopes**.
 
-   ![Scopes section](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/8_config_scopes.png)
+   <ThemedImage
+       alt="Scopes section"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/8_config_scopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/8_config_scopes.png'),
+       }}
+   />
 
 3. Add the following scopes:
    - `crm.objects.contacts.read`
    - `crm.objects.contacts.write`
 
-   ![Add scopes](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/9_add_scopes.png)
+   <ThemedImage
+       alt="Add scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/9_add_scopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/9_add_scopes.png'),
+       }}
+   />
 
 4. Under **Redirect URL**, add your redirect URL and select **Create App**.
 
-   ![Redirect URL](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/10_redirect_url.png)
+   <ThemedImage
+       alt="Redirect URL"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/10_redirect_url.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/10_redirect_url.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** tab, copy the **Client ID** and **Client Secret**.
 
-![Client ID and client secret](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/11_client_id_secret.png)
+<ThemedImage
+    alt="Client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/11_client_id_secret.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/11_client_id_secret.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 
@@ -83,7 +153,13 @@ In the **Auth** tab, copy the **Client ID** and **Client Secret**.
 
 2. Open the URL in a browser, select your developer test account, and authorize the app.
 
-   ![Auth config screen](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/12-hubspot_auth_config_screen.png)
+   <ThemedImage
+       alt="Auth config screen"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/12-hubspot_auth_config_screen.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup/12-hubspot_auth_config_screen.png'),
+       }}
+   />
 
 3. Copy the authorization code from the redirect URL.
 

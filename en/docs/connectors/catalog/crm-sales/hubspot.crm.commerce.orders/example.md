@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Select the **+** button on the flow connection line to open the **Node Panel**, then expand the **Connections** section and select the **+** (Add Connection) button.
 
-![HubSpot CRM Commerce Orders connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Orders connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Commerce Orders connection
 
@@ -42,13 +51,25 @@ Search for **hubspot.crm.commerce.orders** in the palette and select the **balle
 - **auth.token** : The HubSpot API authentication token, bound to the `hubspotAuthToken` configurable variable
 - **Connection Name** : Set to `ordersClient`
 
-![HubSpot CRM Commerce Orders connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Orders connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `ordersClient` connection appears in the **Connections** section of the left sidebar.
 
-![HubSpot CRM Commerce Orders Connections panel showing ordersClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Orders Connections panel showing ordersClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -63,15 +84,33 @@ Select **Save** to create the connection. The `ordersClient` connection appears 
 
 Select the **+** button on the flow connection line to open the **Node Panel**, then expand the **ordersClient** connection to reveal all available operations.
 
-![HubSpot CRM Commerce Orders connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Orders connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **List** to open the operation configuration form. The operation has no required parameters. In the **Result** field, enter `result`, then select **Save**.
 
 - **Result** : Variable name used to store the list of orders returned by the API
 
-![HubSpot CRM Commerce Orders List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Orders List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Commerce Orders automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Commerce Orders automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.orders/hubspot_crm_commerce_orders_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

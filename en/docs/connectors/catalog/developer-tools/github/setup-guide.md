@@ -4,6 +4,9 @@ description: Create a GitHub Personal Access Token (PAT) or register a GitHub Ap
 keywords: [wso2 integrator, github setup, personal access token, PAT, github app, oauth2, refresh token, github webhook, webhook secret]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through obtaining GitHub credentials required to authenticate with the GitHub connector, and optionally configuring a repository webhook for event-driven integrations.
@@ -22,7 +25,13 @@ A Personal Access Token is the simplest way to authenticate with the GitHub conn
 2. Click on your profile picture in the top-right corner.
 3. Select **Settings** from the dropdown menu, then click **Developer settings** in the left sidebar.
 
-![GitHub Developer Settings](/img/connectors/catalog/developer-tools/github/1-developer-settings.png)
+<ThemedImage
+    alt="GitHub Developer Settings"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/github/1-developer-settings.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/github/1-developer-settings.png'),
+    }}
+/>
 
 ### Generate a new token
 
@@ -42,7 +51,13 @@ A Personal Access Token is the simplest way to authenticate with the GitHub conn
 7. Click **Generate token** at the bottom of the page.
 8. Copy the generated token immediately — it will not be shown again.
 
-![Generate new PAT](/img/connectors/catalog/developer-tools/github/2-generate-token.png)
+<ThemedImage
+    alt="Generate new PAT"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/github/2-generate-token.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/github/2-generate-token.png'),
+    }}
+/>
 
 :::tip
 Fine-grained tokens offer more granular permissions and are recommended for production use. Classic tokens provide broader scope-based access. Both token types work identically with the GitHub connector.

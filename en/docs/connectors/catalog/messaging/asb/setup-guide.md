@@ -3,6 +3,10 @@ title: Setup Guide
 description: Create an Azure Service Bus namespace, queue or topic, and obtain the connection string for use with the Ballerina ballerinax/asb connector.
 keywords: [wso2 integrator, azure service bus, setup, connection string, namespace, queue, topic]
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating an Azure Service Bus namespace and obtaining the connection string required to use the ASB connector.
@@ -16,7 +20,13 @@ This guide walks you through creating an Azure Service Bus namespace and obtaini
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 2. In the left navigation pane, select **All services** > **Integration** > **Service Bus**, then select **Create** on the Service Bus tile.
 
-   ![Create Resource Service Bus menu](/img/connectors/catalog/messaging/asb/setup/create-resource-service-bus-menu.png)
+   <ThemedImage
+       alt="Create Resource Service Bus menu"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/create-resource-service-bus-menu.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/create-resource-service-bus-menu.png'),
+       }}
+   />
 
 3. On the **Create namespace** page, fill in the following fields:
    - **Subscription**: Select your Azure subscription.
@@ -31,7 +41,13 @@ This guide walks you through creating an Azure Service Bus namespace and obtaini
 
 4. Select **Review + create**, review the settings, then select **Create**.
 
-   ![Create namespace](/img/connectors/catalog/messaging/asb/setup/create-namespace.png)
+   <ThemedImage
+       alt="Create namespace"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/create-namespace.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/create-namespace.png'),
+       }}
+   />
 
 ## Step 2: Create a queue or topic
 
@@ -52,7 +68,13 @@ This guide walks you through creating an Azure Service Bus namespace and obtaini
 2. Select the **RootManageSharedAccessKey** policy (or create a custom policy with only the required claims).
 3. Copy the **Primary Connection String**.
 
-   ![Connection string](/img/connectors/catalog/messaging/asb/setup/connection-string.png)
+   <ThemedImage
+       alt="Connection string"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/connection-string.png'),
+           dark: useBaseUrl('/img/connectors/catalog/messaging/asb/setup/connection-string.png'),
+       }}
+   />
 
    The connection string has the following format:
    ```

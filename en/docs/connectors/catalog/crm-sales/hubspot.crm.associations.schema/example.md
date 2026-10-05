@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 In the WSO2 Integrator sidebar, hover over **Connections** and select the **Add Connection** (**+**) button to open the connector palette.
 
-![HubSpot CRM Associations Schema connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Schema connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Associations Schema connection
 
@@ -43,13 +52,25 @@ Search for `hubspot.crm.associations.schema` in the palette, select the **Schema
 - **Service Url** : URL of the target service, bound to the configurable variable `hubspotServiceUrl`
 - **Connection Name** : Name identifier for this connection
 
-![HubSpot CRM Associations Schema connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Schema connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `schemaClient` appears in the **Connections** panel.
 
-![HubSpot CRM Associations Schema Connections panel showing schemaClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Schema Connections panel showing schemaClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -69,7 +90,13 @@ In the WSO2 Integrator sidebar, hover over **Entry Points**, select the **Add En
 
 In the automation flow canvas, select the **+** button after the **Start** node to open the node panel. Under **Connections**, expand **schemaClient** to see all available operations.
 
-![HubSpot CRM Associations Schema connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_04_operations.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Schema connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_04_operations.png'),
+    }}
+/>
 
 Select **Retrieve all association definitions and configurations** (the `get` operation) and configure its parameters:
 
@@ -77,9 +104,21 @@ Select **Retrieve all association definitions and configurations** (the `get` op
 
 Select **Save**.
 
-![HubSpot CRM Associations Schema get operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot CRM Associations Schema get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Associations Schema automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Associations Schema automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.associations.schema/hubspot_crm_associations_schema_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

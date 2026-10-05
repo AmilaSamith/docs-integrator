@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Select **+** next to **Connections** in the WSO2 Integrator sidebar to open the Add Connection palette.
 
-![HubSpot Notes connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Notes connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an automation entry point
 
@@ -46,13 +55,25 @@ Search for **hubspot**, locate the **Notes** connector (`ballerinax/hubspot.crm.
 - **Config** : HubSpot connection configuration with bearer-token auth using the `hubspotToken` configurable variable
 - **Connection Name** : Logical name used to reference this connection throughout the integration
 
-![HubSpot Notes connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Notes connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection**. The integration canvas displays the `notesClient` connection card.
 
-![HubSpot Notes Connections panel showing notesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Notes Connections panel showing notesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -66,18 +87,36 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 
 Select **+** between **Start** and **Error Handler** to open the Node Panel. Expand **Connections → notesClient** to list all available operations.
 
-![HubSpot Notes connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Notes connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Create** to open the operation form, then fill in the fields:
 
 - **Payload** : The note payload including `associations` and `properties` (set `hs_note_body` and `hs_timestamp` in expression mode)
 - **Result** : Variable name to store the returned `SimplePublicObject`
 
-![HubSpot Notes Create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Notes Create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**.
 
-![Completed HubSpot Notes automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Notes automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagement.notes/hubspot_crm_engagement_notes_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

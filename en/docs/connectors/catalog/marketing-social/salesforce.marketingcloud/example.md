@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 In the **Connections** section of the left panel, select **Add Connection** to open the connector palette.
 
-![Salesforce Marketing Cloud connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_01_palette.png)
+<ThemedImage
+    alt="Salesforce Marketing Cloud connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the marketing cloud connector
 
@@ -48,13 +57,25 @@ In the **Configure Marketingcloud** form, bind each field to a configurable vari
 - **clientId** : The OAuth 2.0 client ID of your Marketing Cloud app
 - **clientSecret** : The OAuth 2.0 client secret of your Marketing Cloud app
 
-![Salesforce Marketing Cloud connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Salesforce Marketing Cloud connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The `marketingcloudClient` connection node appears on the design canvas.
 
-![Salesforce Marketing Cloud Connections panel showing marketingcloudClient entry after saving](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Salesforce Marketing Cloud Connections panel showing marketingcloudClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -80,7 +101,13 @@ The `main` automation is created and the flow canvas opens, showing a **Start** 
 1. Select the **+** placeholder node between **Start** and **Error Handler**.
 2. Under **Connections**, expand **`marketingcloudClient`** to see all available operations.
 
-![Salesforce Marketing Cloud connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Salesforce Marketing Cloud connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Send Email Message** to open its configuration form.
 4. Fill in the operation fields:
@@ -88,11 +115,23 @@ The `main` automation is created and the flow canvas opens, showing a **Start** 
 - **payload** : A `SendEmailMessageRequest` record containing the `definitionKey` (the key of the Email Definition in Marketing Cloud) and `recipients` (a list of recipient objects each with a `contactKey` and `to` email address)
 - **Result** : Auto-generated variable name `marketingcloudSendemailmessageresponse`
 
-![Salesforce Marketing Cloud Send Email Message operation configuration filled with all values](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Salesforce Marketing Cloud Send Email Message operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed Salesforce Marketing Cloud automation flow](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Salesforce Marketing Cloud automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 
@@ -36,7 +39,13 @@ flowchart LR
 
 Select **+ Add Connection** from the Artifacts panel and search for **TCP** in the connector palette. Select the **TCP** connector: not "TCP Caller".
 
-![TCP connector palette open with search field before any selection](/img/connectors/catalog/built-in/tcp/tcp_screenshot_01_palette.png)
+<ThemedImage
+    alt="TCP connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configuring the TCP connection
 
@@ -48,13 +57,25 @@ Bind each connection parameter to a configurable variable in the **Configure TCP
 - **Remote Port** : Binds to the `tcpPort` configurable variable (int) representing the remote server port
 - **Connection Name** : Keep the default value `tcpClient`
 
-![TCP connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/tcp/tcp_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="TCP connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 2: Save the TCP connection
 
 Select **Save Connection**. The `tcpClient` connection appears on the integration canvas and in the sidebar under **Connections**.
 
-![TCP Connections panel showing tcpClient entry after saving](/img/connectors/catalog/built-in/tcp/tcp_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="TCP Connections panel showing tcpClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurables
 
@@ -75,15 +96,33 @@ Select **+ Add Artifact** on the canvas, then select **Automation** from the Art
 1. Inside the automation flow, select the **+** button between Start and Error Handler to open the node panel.
 2. Under **Connections → tcpClient**, expand to reveal the available operations.
 
-![TCP connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/tcp/tcp_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="TCP connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Write Bytes** and fill in the operation fields.
 
 - **Data** : Enter `"Hello World".toBytes()` as the byte payload to send to the remote TCP host
 
-![TCP writeBytes operation configuration filled with all values](/img/connectors/catalog/built-in/tcp/tcp_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="TCP writeBytes operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed TCP automation flow](/img/connectors/catalog/built-in/tcp/tcp_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed TCP automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -124,7 +163,13 @@ flowchart LR
 
 Select **Add Artifact** (the **+** icon) in the WSO2 Integrator panel toolbar to open the **Artifacts** palette. Locate the **Integration as API** category and select **TCP Service**.
 
-![Artifacts palette open showing Integration as API category with the TCP Service card visible](/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing Integration as API category with the TCP Service card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the TCP listener
 
@@ -140,7 +185,13 @@ In the **Create TCP Service** form, bind the **TCP Port** field to a `configurab
 
 - **listenerPort** : The port on which the TCP listener accepts client connections
 
-![TCP Service configuration form with the TCP Port field in Expression mode showing "listenerPort" bound to the configurable int variable, before selecting Create](/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt={"TCP Service configuration form with the TCP Port field in Expression mode showing \"listenerPort\" bound to the configurable int variable, before selecting Create"}
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -148,7 +199,13 @@ Select **Configurations** in the left panel of WSO2 Integrator to open the Confi
 
 - **listenerPort** (int) : The port number on which the TCP listener accepts incoming client connections
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Create the TCP service
 
@@ -160,13 +217,25 @@ Select **Create** to register the TCP service. WSO2 Integrator creates a `tcp:Li
 
 Select **TCP Service** under **Entry Points** in the left panel to open the TCP Service view. The `onConnect` handler is auto-registered by the framework-there's no **Add Handler** side panel for the TCP trigger.
 
-![Auto-registered TCP event handlers (no Add Handler side panel for this trigger): Service view showing the onConnect handler row bound to tcpListener](/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Auto-registered TCP event handlers (no Add Handler side panel for this trigger): Service view showing the onConnect handler row bound to tcpListener"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Examine the onConnect handler flow
 
 Select the **onConnect** row to open the handler's flow canvas. The initial flow shows the `TcpEchoService` instantiation and return steps generated by the framework. The `TcpEchoService` type implements `tcp:ConnectionService` and is returned to the TCP listener to route subsequent `onBytes`, `onError`, and `onClose` calls.
 
-![onConnect handler flow canvas (no Define Value modal: the TcpEchoService payload type is provided by the ballerina/tcp library) showing the initial Declare Variable and Return steps](/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="onConnect handler flow canvas (no Define Value modal: the TcpEchoService payload type is provided by the ballerina/tcp library) showing the initial Declare Variable and Return steps"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/tcp/tcp_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Step 7: Log the caller information in the onConnect flow
 

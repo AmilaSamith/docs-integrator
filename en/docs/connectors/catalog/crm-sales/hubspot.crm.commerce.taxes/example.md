@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ Select **Add Connection** in the WSO2 Integrator sidebar to open the connector p
 
 Select the **+** button next to **Connections** in the sidebar to open the connector palette.
 
-![HubSpot CRM Commerce Taxes connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Taxes connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Commerce Taxes connection
 
@@ -45,13 +54,25 @@ Enter the connection details and bind each field to a configurable variable.
 - **Config** : Authentication configuration referencing `hubspotAuthToken` as the OAuth token
 - **Service Url** : The HubSpot API base URL, referencing `hubspotServiceUrl`
 
-![HubSpot CRM Commerce Taxes connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Taxes connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The canvas displays the `taxesClient` connection card, confirming the connection was created successfully.
 
-![HubSpot CRM Commerce Taxes Connections panel showing taxesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Taxes Connections panel showing taxesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -72,15 +93,33 @@ In the left panel, select **Configurations** and set a value for each configurab
 
 Expand **taxesClient** in the **Connections** section of the node panel to view available operations, then select **List** and configure its parameters.
 
-![HubSpot CRM Commerce Taxes connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_04_operations.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Taxes connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_04_operations.png'),
+    }}
+/>
 
 - **Result variable** : Set to `listResult` to store the response containing tax records
 
-![HubSpot CRM Commerce Taxes List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_05_operation_values.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Taxes List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_05_operation_values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_05_operation_values.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed HubSpot CRM Commerce Taxes automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Commerce Taxes automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/hubspot_crm_commerce_taxes_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

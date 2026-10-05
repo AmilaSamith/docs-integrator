@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![SAP Business One CRM connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP Business One CRM connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP Business One CRM connector
 
@@ -51,13 +60,25 @@ Bind each connection field to its corresponding configurable variable.
 - **Service Url** : Supplies the target SAP Business One Service Layer URL.
 - **Connection Name** : Identifies the saved connection as `crmClient`.
 
-![SAP Business One CRM connection form with parameters bound before saving](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP Business One CRM connection form with parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that **crmClient** appears in the **Connections** section.
 
-![SAP Business One CRM connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SAP Business One CRM connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -82,14 +103,26 @@ Select **Save Connection** and verify that **crmClient** appears in the **Connec
 1. Select **Add Step** in the automation flow.
 2. Expand **crmClient** to display its operations.
 
-![SAP Business One CRM connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SAP Business One CRM connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List Sales Opportunities**.
 4. Review the generated result settings. This operation has no required parameters.
 
 - **Result** : Stores the returned sales opportunities collection.
 
-![SAP Business One CRM List Sales Opportunities operation form ready to save](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="SAP Business One CRM List Sales Opportunities operation form ready to save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_05_operation_form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
@@ -104,7 +137,13 @@ Select **Save Connection** and verify that **crmClient** appears in the **Connec
 
 - **Msg** : Converts the returned collection to text for the integration log.
 
-![Completed SAP Business One CRM flow with the connector operation and log action](/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP Business One CRM flow with the connector operation and log action"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.crm/ballerinax_sap_businessone_crm_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

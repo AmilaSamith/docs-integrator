@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 In the WSO2 Integrator sidebar, expand the project tree and select **Add Connection** to open the connector palette.
 
-![SAP S/4HANA connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP S/4HANA connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP S/4HANA API sales organization service connector
 
@@ -47,13 +56,25 @@ Enter the connection parameters, binding each field to a configurable variable:
 - **Hostname** : Bound to the `sapS4HanaHostname` configurable variable representing your SAP S/4HANA system hostname
 - **Connection Name** : A unique name identifying this connection instance
 
-![SAP S/4HANA connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP S/4HANA connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to create the connection. The canvas displays `apiSalesorganizationSrvClient` under the **Connections** section.
 
-![SAP S/4HANA Connections panel showing apiSalesorganizationSrvClient entry after saving](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SAP S/4HANA Connections panel showing apiSalesorganizationSrvClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -77,7 +98,13 @@ In the left panel, select **Configurations** and set a value for each configurab
 2. Under **Connections**, select `apiSalesorganizationSrvClient` to expand its operations.
 3. Select **listA_SalesOrganizations** from the available operations.
 
-![SAP S/4HANA connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SAP S/4HANA connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the operation with the following values:
 
@@ -85,11 +112,23 @@ Configure the operation with the following values:
 - **Result Variable** : Name of the variable that stores the operation response
 - **Result Type** : The response wrapper type for the collection of sales organizations
 
-![SAP S/4HANA listA_SalesOrganizations operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="SAP S/4HANA listA_SalesOrganizations operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed SAP S/4HANA automation flow](/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP S/4HANA automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesorganization_srv/sap_s4hana_apisalesorganizationsrv_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

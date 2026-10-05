@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -28,7 +31,13 @@ flowchart LR
 
 Open the Connections panel and select **+ Add Connection**.
 
-![Mistral connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_01_palette.png)
+<ThemedImage
+    alt="Mistral connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and select the Mistral connector
 
@@ -44,13 +53,25 @@ After selecting the Mistral connector, the **Configure Mistral** form opens. Bin
 - **Config** : Authentication configuration using a bearer token referencing the `mistralApiKey` configurable variable
 - **Connection Name** : The name used to reference this connection in the flow
 
-![Mistral connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Mistral connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The design canvas returns and shows the `mistralClient` connection card.
 
-![Mistral Connections panel showing mistralClient entry after saving](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Mistral Connections panel showing mistralClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,16 +94,34 @@ The canvas switches to the Automation flow view showing **Start** and **Error Ha
 
 Select the **+** button on the flow canvas to open the **Node Panel**. Expand the `mistralClient` connection to view available operations, then select **Chat Completion**. Configure the operation parameters:
 
-![Mistral connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Mistral connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 - **Payload** : The request payload containing the messages array and model name, referencing a user message expression
 - **Result** : The variable name that stores the chat completion response
 
-![Mistral Chat Completion operation configuration filled with all values](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Mistral Chat Completion operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to apply the configuration. The canvas updates to show the Chat Completion node connected to `mistralClient`.
 
-![Completed Mistral automation flow](/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Mistral automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/mistral_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

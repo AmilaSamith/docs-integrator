@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select the **+** (Add) icon in the **Connections** section of the side panel to open the Add Connection palette.
 
-![WSO2 APIM Catalog connector palette open with search field before any selection](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_01_palette.png)
+<ThemedImage
+    alt="WSO2 APIM Catalog connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the WSO2 APIM catalog connection
 
@@ -41,13 +50,25 @@ Enter the connection details, binding each field to a configurable variable so c
 - **Connection Name** : A unique name for this connection instance
 - **Config** : The `ConnectionConfig` record containing the `auth` block with `username` and `password` bound to configurable variables
 
-![WSO2 APIM Catalog connection form fully filled with all parameters before saving](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="WSO2 APIM Catalog connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `catalogClient` entry appears in the **Connections** panel.
 
-![WSO2 APIM Catalog Connections panel showing catalogClient entry after saving](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="WSO2 APIM Catalog Connections panel showing catalogClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -69,14 +90,32 @@ Select **Save Connection** to persist the connection. The `catalogClient` entry 
 
 Expand the **catalogClient** node in the node panel to reveal all available operations, then select **Import a service** and fill in the required fields.
 
-![WSO2 APIM Catalog connection node expanded showing all available operations before selection](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="WSO2 APIM Catalog connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 - **Payload** : A `Services_import_body` record containing `file.fileContent` (byte array of the service definition) and `file.fileName` (name of the service definition file)
 - **Result** : Output variable that holds the `ServiceInfoList` response listing imported services
 
-![WSO2 APIM Catalog Import a service operation configuration filled with all values](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="WSO2 APIM Catalog Import a service operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed WSO2 APIM Catalog automation flow](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed WSO2 APIM Catalog automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

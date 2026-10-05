@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 
 In the left sidebar, hover over **Connections** to reveal the **+** button, then select **+** to open the connector palette.
 
-![Mailchimp Marketing connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_01_palette.png)
+<ThemedImage
+    alt="Mailchimp Marketing connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the connector
 
@@ -49,13 +58,25 @@ In the **Configure Marketing** form, bind each connection parameter to a configu
 - **username** : Bind to a new configurable variable named `mailchimpUsername` of type `string`
 - **password** : Bind to a new configurable variable named `mailchimpPassword` of type `string`
 
-![Mailchimp Marketing connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Mailchimp Marketing connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to create the connection. The `marketingClient` connection node now appears on the design canvas and in the left sidebar under **Connections**.
 
-![Mailchimp Marketing Connections panel showing marketingClient entry after saving](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Mailchimp Marketing Connections panel showing marketingClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -80,7 +101,13 @@ The canvas switches to the Automation flow view, showing a **Start** node, an **
 1. Select the **+** button between **Start** and **Error Handler**.
 2. In the **Node Panel**, select **marketingClient** to expand its list of available operations.
 
-![Mailchimp Marketing connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Mailchimp Marketing connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Scroll to the **Lists** section and select **Add member to list**.
 4. Fill in the required fields:
@@ -89,11 +116,23 @@ The canvas switches to the Automation flow view, showing a **Start** node, an **
 - **Payload** : Member details including email address and subscription status
 - **Result** : Variable name to store the API response
 
-![Mailchimp Marketing add member to list operation configuration filled with all values](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Mailchimp Marketing add member to list operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the automation flow.
 
-![Completed Mailchimp Marketing automation flow](/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_06_automation_flow.png)
+<ThemedImage
+    alt="Completed Mailchimp Marketing automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_06_automation_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/mailchimp.marketing/mailchimp_marketing_screenshot_06_automation_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

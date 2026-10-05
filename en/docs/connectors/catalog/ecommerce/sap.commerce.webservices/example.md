@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 
 Select **Add Connection** (or the **+** icon in the **Connections** section of the sidebar) to open the connector palette, which displays a search field and a list of available connectors.
 
-![SAP Commerce Web Services connector palette open before search](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP Commerce Web Services connector palette open before search"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the SAP commerce web services connector
 
@@ -51,13 +60,25 @@ For each connection field, open the configurables panel, navigate to the **Confi
 - **Service Url** : the base URL of the SAP Commerce Cloud OCC REST API endpoint
 - **Connection Name** : the identifier used to reference this connection throughout the integration
 
-![SAP Commerce Web Services connection form with all parameters bound to configurable variables](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP Commerce Web Services connection form with all parameters bound to configurable variables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the SAP commerce web services connection
 
 Select **Save Connection** to persist the connection configuration. The SAP Commerce Web Services connector node now appears in the **Connections** panel on the low-code canvas.
 
-![SAP Commerce Web Services connector node visible on the low-code canvas after saving](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SAP Commerce Web Services connector node visible on the low-code canvas after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -81,7 +102,13 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 1. Inside the automation body, select the **+** (Add Step) button between the **Start** and **End** nodes to open the right-side step panel.
 2. Under **Connections** in the step panel, select the SAP Commerce Web Services connection node to expand it and reveal all available operations.
 
-![SAP Commerce Web Services connection node expanded showing all available operations before selection](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SAP Commerce Web Services connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Base Sites** (`getBaseSites`) from the list of operations and review the operation fields:
 
@@ -90,9 +117,21 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 
 4. Select **Save** to add the SAP Commerce Web Services remote function call to the automation flow.
 
-![SAP Commerce Web Services getBaseSites operation with all input fields filled](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="SAP Commerce Web Services getBaseSites operation with all input fields filled"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed SAP Commerce Web Services integration flow on the low-code canvas](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP Commerce Web Services integration flow on the low-code canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

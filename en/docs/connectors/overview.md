@@ -3,6 +3,9 @@ title: "Connectors Overview"
 description: "Understand what connectors, connections, actions, and triggers are before building your first integration."
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Connectors Overview
 
 Send a Slack notification when an order ships. Read customer records from Salesforce. Write results to a Google Sheet. Query a database and return the data in an API response.
@@ -13,7 +16,13 @@ Connectors make these integrations possible without writing low-level HTTP or pr
 
 Most integrations follow a similar pattern:
 
-![Integration flow: Trigger leads to Transform & route (map, filter, branch), into a Connector action (call external service), then Handle response (error handling, retry), ending in Output](/img/connectors/overview/connector-flow.png)
+<ThemedImage
+    alt="Integration flow: Trigger leads to Transform & route (map, filter, branch), into a Connector action (call external service), then Handle response (error handling, retry), ending in Output"
+    sources={{
+        light: useBaseUrl('/img/connectors/overview/connector-flow.png'),
+        dark: useBaseUrl('/img/connectors/overview/connector-flow.png'),
+    }}
+/>
 
 The connector action is where WSO2 Integrator communicates with the external service.
 

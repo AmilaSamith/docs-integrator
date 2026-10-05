@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 ### Step 1: Open the add connection palette
 
 Select **+ Add Connection** in the Connections section of the low-code canvas sidebar to open the connector search palette.
-![SCIM connector palette open showing the search field and connector list](/img/connectors/catalog/security-identity/scim/scim_screenshot_01_palette.png)
+<ThemedImage
+    alt="SCIM connector palette open showing the search field and connector list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the ballerinax/scim connector
 
@@ -47,12 +56,24 @@ For each connection field, use the **Helper Panel → Configurables → + New Co
 - **Service Url** : the base URL of the SCIM-compliant identity provider, bound to the configurable variable `scimServiceUrl`
 - **Connection Name** : the name used to reference this connection in the integration, set to `scimClient`
 
-![SCIM connection form with all parameters bound to configurable variables before saving](/img/connectors/catalog/security-identity/scim/scim_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SCIM connection form with all parameters bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the SCIM connection
 
 Select **Save Connection** to persist the SCIM connection. The connector entry appears in the Connections panel on the low-code canvas.
-![SCIM connector saved and visible in the Connections panel on the low-code canvas](/img/connectors/catalog/security-identity/scim/scim_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SCIM connector saved and visible in the Connections panel on the low-code canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -77,17 +98,35 @@ Select **Save Connection** to persist the SCIM connection. The connector entry a
 1. Inside the automation body, select the **+** (Add Step) button between the Start and Error Handler nodes.
 2. In the right-side step panel, locate the **Connections** section and select the **scimClient** connection node to expand it and reveal all available SCIM operations.
 
-![SCIM connection node expanded showing all available operations before selection](/img/connectors/catalog/security-identity/scim/scim_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SCIM connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create User** from the operations list, then fill in the operation fields:
 - **Payload** : the SCIM UserObject record containing the user data to create
 - **Result** : the variable name to store the operation response
 
-![SCIM createUser operation configured with all input fields filled](/img/connectors/catalog/security-identity/scim/scim_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="SCIM createUser operation configured with all input fields filled"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Select **Save** to add the `createUser` step to the automation flow.
 
-![Completed automation flow showing Start, SCIM createUser operation, and Error Handler nodes](/img/connectors/catalog/security-identity/scim/scim_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow showing Start, SCIM createUser operation, and Error Handler nodes"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/scim_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 
