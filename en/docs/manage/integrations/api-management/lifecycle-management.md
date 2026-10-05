@@ -41,13 +41,15 @@ You must have publishing privileges to manage the lifecycle states of an integra
 4. Navigate to the lifecycle management page using one of the following options:
     - In the integration overview page, click **Lifecycle Status**.
     - In the left navigation menu, under **Develop**, click **Lifecycle**.
-   <ThemedImage
-       alt="Open Lifecycle Management"
-       sources={{
-           light: useBaseUrl('/img/manage/cloud/api-management/lifecycle-management-open.png'),
-           dark: useBaseUrl('/img/manage/cloud/api-management/lifecycle-management-open.png'),
-       }}
-   />
+
+      <ThemedImage
+          alt="Open Lifecycle Management"
+          sources={{
+              light: useBaseUrl('/img/manage/cloud/api-management/lifecycle-management-open.png'),
+              dark: useBaseUrl('/img/manage/cloud/api-management/lifecycle-management-open.png'),
+          }}
+      />
+
 5. You will see a lifecycle state transition diagram showing the integration's current state. The possible next states you can apply are displayed above the diagram. If the integration has multiple endpoints, use the endpoint selector on the page to switch between them. The lifecycle state change applies only to the currently selected endpoint. Click on a required lifecycle state to apply it to the integration. For example, if an integration is in the `CREATED` state, you can click either `PRE-RELEASED` or `PUBLISHED`.
 
    <ThemedImage
