@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## Table of Contents
@@ -39,7 +42,13 @@ flowchart LR
 
 Select the **+ Add Connection** button in the **Connections** section of the low-code canvas sidebar to open the connector search palette.
 
-![Connector palette open showing the search field and available connectors](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_01_palette.png)
+<ThemedImage
+    alt="Connector palette open showing the search field and available connectors"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the shopify.admin connector
 
@@ -56,13 +65,25 @@ For each connection field, use the **Configurables** tab to create a new configu
 - **Api Key Config** : API keys for authorization. Contains the `xShopifyAccessToken` field, which represents the Shopify Admin API access token (`X-Shopify-Access-Token` header).
 - **Service Url** : The base URL of the Shopify Admin API endpoint for your store.
 
-![Connection form with all Shopify Admin parameters bound to configurable variables](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Connection form with all Shopify Admin parameters bound to configurable variables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the shopify.admin connection
 
 Select **Save Connection** to persist the connection configuration. The shopify.admin connector now appears as a named connection entry (`adminClient`) in the **Connections** panel on the low-code canvas.
 
-![Low-code canvas showing the saved shopify.admin connection entry](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Low-code canvas showing the saved shopify.admin connection entry"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -85,16 +106,34 @@ Select **Save Connection** to persist the connection configuration. The shopify.
 1. Select the **+** (Add Step) button in the automation flow between the **Start** and **Error Handler** nodes to open the step-addition panel.
 2. Under **Connections** in the node panel, select the **adminClient** connection node to expand it and reveal all available Shopify Admin API operations.
 
-![shopify.admin connection node expanded showing all available operations before selection](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="shopify.admin connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Products** from the list of operations, then verify the operation fields:
    - **Result** : The variable name that will hold the Shopify API response (auto-filled as `adminProductlist`)
    - **Result Type** : The type of the result variable (`admin:ProductList`)
 4. Select **Save** to add the Shopify Admin operation step to the automation flow.
 
-![Operation configuration panel showing all filled values for the Shopify Admin operation](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Operation configuration panel showing all filled values for the Shopify Admin operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed automation flow showing the Shopify Admin operation connected end-to-end](/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow showing the Shopify Admin operation connected end-to-end"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_admin_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -139,7 +178,13 @@ flowchart LR
 1. Select **+ Add Artifact** on the integration canvas to open the artifacts palette.
 2. In the **Event Integration** category, locate and select the **Shopify** card.
 
-![Artifacts palette open showing the Event Integration category with the Shopify trigger card visible](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with the Shopify trigger card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the Shopify listener
 
@@ -150,7 +195,13 @@ For each required listener parameter, open the helper panel next to the field, s
 - **API Secret Key** : The webhook API secret key used to verify that incoming requests originate from Shopify.
 - **Port** : The port on which the Shopify webhook listener accepts incoming HTTP requests.
 
-![Shopify trigger configuration form with all listener parameters bound to configuration variables, before clicking Create](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_02_trigger_config_form.png)
+<ThemedImage
+    alt="Shopify trigger configuration form with all listener parameters bound to configuration variables, before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_02_trigger_config_form.png'),
+    }}
+/>
 
 ### Step 3: Set actual values for your configurations
 
@@ -159,7 +210,13 @@ Select **Configurations** in the left panel of WSO2 Integrator (at the bottom of
 - **shopifyApiSecretKey** (string) : Your Shopify webhook API secret key, copied from the Shopify admin or Partner Dashboard.
 - **shopifyListenerPort** (int) : The port number on which the listener should run.
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_03_configurations_panel.png'),
+    }}
+/>
 
 ### Step 4: Select Create to register the listener and open the Service view
 
@@ -172,7 +229,13 @@ Select **Create** to submit the Shopify trigger listener configuration. Select t
 1. In the Service view, review the **Event Handlers** section: for the **Orders** event channel, all six Orders handlers are pre-registered automatically when the service is created.
 2. Select any handler row (for example, **onOrdersCreate**) to open its flow canvas.
 
-![Service view showing the Event Handlers panel with all Orders event handlers listed](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view showing the Event Handlers panel with all Orders event handlers listed"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_04_add_handler_panel.png'),
+    }}
+/>
 
 ### Step 6: Select the onOrdersCreate handler and review the payload type
 
@@ -187,13 +250,25 @@ Select **Create** to submit the Shopify trigger listener configuration. Select t
 3. In the **Msg*** field, switch to **Expression** mode and enter `event.toJsonString()`.
 4. Select **Save**. The `log:printInfo` node now appears in the flow canvas between **Start** and **Error Handler**, displaying `event.toJsonString()` as its message.
 
-![Handler flow canvas for onOrdersCreate showing the log:printInfo step added between Start and Error Handler](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_06_handler_flow.png)
+<ThemedImage
+    alt="Handler flow canvas for onOrdersCreate showing the log:printInfo step added between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_06_handler_flow.png'),
+    }}
+/>
 
 ### Step 8: Confirm the handler is registered in the Service view
 
 Select the back arrow in the canvas header (or re-select `shopify:OrdersService` in the project tree) to return to the Service view. The Event Handlers list confirms all Orders handlers, including `onOrdersCreate`, are registered and ready.
 
-![Final Service view showing all registered Orders event handlers in the Event Handlers list](/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_07_service_view_final.png)
+<ThemedImage
+    alt="Final Service view showing all registered Orders event handlers in the Event Handlers list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ecommerce/shopify.admin/shopify_screenshot_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

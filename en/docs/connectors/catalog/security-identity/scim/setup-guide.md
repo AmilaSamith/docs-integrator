@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through setting up an Asgardeo Machine-to-Machine (M2M) application and obtaining the OAuth 2.0 client credentials required to use the SCIM connector.
@@ -14,7 +18,13 @@ This guide walks you through setting up an Asgardeo Machine-to-Machine (M2M) app
 1. Log in to the [Asgardeo Console](https://console.asgardeo.io/).
 2. Select **Applications** in the left navigation menu.
 
-   ![Select application type](/img/connectors/catalog/security-identity/scim/setup/1-select-app-type.png)
+   <ThemedImage
+       alt="Select application type"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/1-select-app-type.png'),
+           dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/1-select-app-type.png'),
+       }}
+   />
 
 3. Select **New Application** and select **M2M Application**.
 4. In the **Name** field, enter a unique name to identify your application (for example, `Ballerina SCIM Connector`).
@@ -34,7 +44,13 @@ This guide walks you through setting up an Asgardeo Machine-to-Machine (M2M) app
     - `internal_group_mgt_update`: Update groups
     - `internal_group_mgt_delete`: Delete groups
 
-   ![Authorize APIs](/img/connectors/catalog/security-identity/scim/setup/2-authorize-apis.png)
+   <ThemedImage
+       alt="Authorize APIs"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/2-authorize-apis.png'),
+           dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/2-authorize-apis.png'),
+       }}
+   />
 
 3. Select **Update** to save the authorization settings.
 
@@ -48,7 +64,13 @@ Only authorize the scopes your integration needs. Following the principle of lea
 2. Copy the **Client ID** — this is your `clientId`.
 3. Copy the **Client Secret** — this is your `clientSecret`.
 
-   ![Client ID and secret](/img/connectors/catalog/security-identity/scim/setup/3-client-id-secret-m2m.png)
+   <ThemedImage
+       alt="Client ID and secret"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/3-client-id-secret-m2m.png'),
+           dark: useBaseUrl('/img/connectors/catalog/security-identity/scim/setup/3-client-id-secret-m2m.png'),
+       }}
+   />
 
 :::tip
 Store the Client ID and Client Secret securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.

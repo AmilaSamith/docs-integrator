@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating an Asana personal access token to authenticate with the Asana connector.
@@ -14,7 +18,13 @@ This guide walks you through creating an Asana personal access token to authenti
 1. Log in to your Asana account.
 2. Go to the [Asana Developer Console](https://app.asana.com/0/my-apps).
 
-   ![Asana developer console](/img/connectors/catalog/productivity-collaboration/asana/setup/1-developer-console.png)
+   <ThemedImage
+       alt="Asana developer console"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/1-developer-console.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/1-developer-console.png'),
+       }}
+   />
 
 ## Step 2: Create a personal access token
 
@@ -23,11 +33,23 @@ This guide walks you through creating an Asana personal access token to authenti
 3. Read and accept the **Asana API Terms and Conditions**.
 4. Select **Create token**.
 
-   ![Create token](/img/connectors/catalog/productivity-collaboration/asana/setup/2-create-token.png)
+   <ThemedImage
+       alt="Create token"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/2-create-token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/2-create-token.png'),
+       }}
+   />
 
 5. Copy the generated token immediately — it will not be shown again.
 
-   ![Copy token](/img/connectors/catalog/productivity-collaboration/asana/setup/3-copy-token.png)
+   <ThemedImage
+       alt="Copy token"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/3-copy-token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/setup/3-copy-token.png'),
+       }}
+   />
 
 :::warning
 Store the personal access token securely. Do not commit it to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply it at runtime.

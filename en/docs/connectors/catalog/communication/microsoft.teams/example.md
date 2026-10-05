@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Microsoft Teams connector palette open before selection](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_01_palette.png)
+<ThemedImage
+    alt="Microsoft Teams connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Microsoft Teams connector
 
@@ -48,13 +57,25 @@ Switch **Config** to expression mode, then bind each authentication value to a c
 - **Config** : The configuration used to initialize the connector, holding the OAuth2 client credentials.
 - **Connection Name** : The name that identifies this connection across the integration.
 
-![Microsoft Teams connection form with all parameters bound before saving](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Microsoft Teams connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Microsoft Teams connection visible after saving](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Microsoft Teams connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,7 +100,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select the **+** node between **Start** and **Error Handler**.
 2. Expand **teamsClient** to display its operations.
 
-![Microsoft Teams connection expanded to display operations before selection](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Microsoft Teams connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List Channels** and enter its required values.
 
@@ -87,7 +114,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 - **Result** : The name of the variable that holds the returned channel collection.
 - **Result Type** : The response type of the operation, which the editor sets for you.
 
-![Microsoft Teams List Channels operation with all values entered before saving](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Microsoft Teams List Channels operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -98,7 +131,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 3. Switch **Msg** to expression mode and reference the result variable.
 4. Select **Save** to return to the visual flow.
 
-![Completed Microsoft Teams flow with the configured operation and log step](/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Microsoft Teams flow with the configured operation and log step"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/microsoft.teams/ballerinax_microsoft_teams_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -5,6 +5,9 @@ title: "Setup Guide"
 description: "How to set up and configure the ballerinax/sap.businessone.fixedassets connector."
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through getting necessary details from the SAP Business One so that the connector can authenticate and communicate with the SAP Business One.
@@ -31,7 +34,13 @@ To connect, you need three values taken from the SAP Business One desktop client
 
 Click the company name at the top of the SAP Business One desktop application to view these values, or contact your administrator.
 
-![SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection](/img/connectors/catalog/erp-business/sap-b1-choose-company.png)
+<ThemedImage
+    alt="SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+    }}
+/>
 
 :::note
 Never commit these credentials to source control. Supply them through a `Config.toml` file or environment configuration at runtime.

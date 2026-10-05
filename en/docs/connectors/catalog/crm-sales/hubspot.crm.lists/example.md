@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **Add Artifact → Connection** (or select **+** next to **Connections** in the sidebar) to open the connector search palette.
 
-![HubSpot CRM Lists connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Lists connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an Automation entry point
 
@@ -49,13 +58,25 @@ The **Configure Lists** form opens. Use configurable variables to bind the conne
 - **auth**: Bearer token configuration referencing the `hubspotToken` configurable variable: enter `{auth: {token: hubspotToken}}` in the **Config** expression field
 - **connectionName**: Name for this connection: keep the default `listsClient`
 
-![HubSpot CRM Lists connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Lists connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas returns to the project overview and shows the `listsClient` connection node in the **Design** area.
 
-![HubSpot CRM Lists Connections panel showing listsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Lists Connections panel showing listsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -70,7 +91,13 @@ Select **Save Connection** to persist the connection. The canvas returns to the 
 
 Select the **+** button between **Start** and **Error Handler** to open the step-addition panel.
 
-![HubSpot CRM Lists connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Lists connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 In the **Connections** section of the panel, expand **listsClient** and select **Get Get All** (corresponding to `getAllLists`). Configure the operation fields:
 
@@ -78,11 +105,23 @@ In the **Connections** section of the panel, expand **listsClient** and select *
 - **Result**: The variable to store the response: enter `result`
 - **Result Type**: The type of the response: set to `lists:ListsByIdResponse`
 
-![HubSpot CRM Lists getAllLists operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Lists getAllLists operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the step to the flow.
 
-![Completed HubSpot CRM Lists automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Lists automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.lists/hubspot_crm_lists_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

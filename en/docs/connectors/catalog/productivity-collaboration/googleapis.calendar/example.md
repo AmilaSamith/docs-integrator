@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -28,7 +31,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section of the left sidebar (or select the **+** button next to **Connections**) to open the Add Connection palette.
 
-![Google Calendar connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_01_palette.png)
+<ThemedImage
+    alt="Google Calendar connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and select the Google calendar connector
 
@@ -47,13 +56,25 @@ Bind each OAuth2 field in the **Configure Calendar** form to a configurable vari
 
 Set the **Connection Name** to `calendarClient`.
 
-![Google Calendar connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Google Calendar connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save**. The `calendarClient` connection node appears in the Connections panel.
 
-![Google Calendar Connections panel showing calendarClient entry after saving](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Google Calendar Connections panel showing calendarClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -74,7 +95,13 @@ In the left sidebar under **Entry Points**, select **+** to add a new entry poin
 
 Expand the **calendarClient** connection node on the canvas to view available operations.
 
-![Google Calendar connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Google Calendar connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Create Event** to open the operation configuration form, then fill in the following fields:
 
@@ -82,11 +109,23 @@ Select **Create Event** to open the operation configuration form, then fill in t
 - **event** : A complete `InputEvent` record with `summary`, `start`, and `end` fields (each `Time` record requires `dateTime` and `timeZone`)
 - **result variable** : Leave the default name `calendarEvent`
 
-![createEvent operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="createEvent operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The `calendar : createEvent` node is added to the Automation flow canvas, connected to the `calendarClient` connection.
 
-![Completed Google Calendar automation flow](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Google Calendar automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

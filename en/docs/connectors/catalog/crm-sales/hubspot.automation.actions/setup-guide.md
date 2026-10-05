@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials and developer API key required to use the HubSpot Automation Actions connector.
@@ -23,29 +27,65 @@ Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
 1. Go to the **Auth** tab of your app.
 
-   ![Auth tab](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/auth.png)
+   <ThemedImage
+       alt="Auth tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/auth.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/auth.png'),
+       }}
+   />
 
 2. Under **Redirect URLs**, add your redirect URL.
 
-   ![Add redirect URL](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect_url.png)
+   <ThemedImage
+       alt="Add redirect URL"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect_url.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect_url.png'),
+       }}
+   />
 
 3. Under **Scopes**, add the `automation` scope using the **Add new scopes** button.
 
-   ![Add scopes](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/scopes.png)
+   <ThemedImage
+       alt="Add scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/scopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/scopes.png'),
+       }}
+   />
 
 4. Select **Save**.
 
-   ![Save app](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/save.png)
+   <ThemedImage
+       alt="Save app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/save.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/save.png'),
+       }}
+   />
 
 ## Step 4: Get the access token
 
 1. Copy the app installation URL from the **Auth** tab and open it in a browser.
 
-   ![Copy install URL](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect.png)
+   <ThemedImage
+       alt="Copy install URL"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/redirect.png'),
+       }}
+   />
 
 2. Select your developer test account to authorize the app. An authorization code is displayed in the browser.
 
-   ![Authorization code](/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/authorization_code.png)
+   <ThemedImage
+       alt="Authorization code"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/authorization_code.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/setup/authorization_code.png'),
+       }}
+   />
 
 3. Exchange the code for tokens:
 

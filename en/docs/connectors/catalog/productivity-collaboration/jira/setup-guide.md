@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating an Atlassian API token required to use the Jira connector.
@@ -13,30 +17,66 @@ This guide walks you through creating an Atlassian API token required to use the
 
 1. Go to [id.atlassian.com](https://id.atlassian.com) and log in.
 
-   ![Atlassian login screen](/img/connectors/catalog/productivity-collaboration/jira/setup/login_screen.png)
+   <ThemedImage
+       alt="Atlassian login screen"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/login_screen.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/login_screen.png'),
+       }}
+   />
 
 2. After logging in, you are redirected to your Atlassian account dashboard.
 
-   ![Atlassian account dashboard](/img/connectors/catalog/productivity-collaboration/jira/setup/redirect_login.png)
+   <ThemedImage
+       alt="Atlassian account dashboard"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/redirect_login.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/redirect_login.png'),
+       }}
+   />
 
 ## Step 2: Create an API token
 
 1. Navigate to your profile by selecting your avatar in the top-right corner, then select **Manage account**.
 2. Select **Security** in the left sidebar.
 
-   ![Path to account settings](/img/connectors/catalog/productivity-collaboration/jira/setup/path_account_settings.png)
+   <ThemedImage
+       alt="Path to account settings"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/path_account_settings.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/path_account_settings.png'),
+       }}
+   />
 
 3. Under **API token**, select **Create and manage API tokens**.
 
-   ![Account settings security tab](/img/connectors/catalog/productivity-collaboration/jira/setup/account_settings.png)
+   <ThemedImage
+       alt="Account settings security tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/account_settings.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/account_settings.png'),
+       }}
+   />
 
 4. Select **Create API token**.
 
-   ![Create and manage API tokens](/img/connectors/catalog/productivity-collaboration/jira/setup/click_on_token.png)
+   <ThemedImage
+       alt="Create and manage API tokens"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/click_on_token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/click_on_token.png'),
+       }}
+   />
 
 5. Enter a **Label** for the token (for example, `Ballerina Jira Connector`) and select **Create**.
 
-   ![Create API token dialog](/img/connectors/catalog/productivity-collaboration/jira/setup/create_token.png)
+   <ThemedImage
+       alt="Create API token dialog"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/create_token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/setup/create_token.png'),
+       }}
+   />
 
 6. Copy the generated token — this is your `password` (API token) for authentication.
 

@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through obtaining a Trello API key and token required to use the Trello connector.
@@ -14,23 +18,47 @@ This guide walks you through obtaining a Trello API key and token required to us
 1. Log in to your Trello account.
 2. Navigate to the [Trello Power-Ups admin portal](https://trello.com/power-ups/admin).
 
-   ![Power-Ups admin portal](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-powerups.png)
+   <ThemedImage
+       alt="Power-Ups admin portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-powerups.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-powerups.png'),
+       }}
+   />
 
 3. Select **New** to create a new Power-Up.
 4. Fill in the required fields (name, workspace, and a placeholder iframe connector URL) and select **Create**.
 
-   ![Create Power-Up form](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-form.png)
+   <ThemedImage
+       alt="Create Power-Up form"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-form.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-form.png'),
+       }}
+   />
 
 ## Step 2: Generate an API key
 
 1. After creation, select the Power-Up name to open its settings.
 2. Select the **API Key** tab.
 
-   ![Navigate to API key tab](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-generateKey.png)
+   <ThemedImage
+       alt="Navigate to API key tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-generateKey.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-generateKey.png'),
+       }}
+   />
 
 3. Select **Generate a new API Key** and copy the displayed **API Key**.
 
-   ![API key displayed](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-key.png)
+   <ThemedImage
+       alt="API key displayed"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-key.png'),
+       }}
+   />
 
 :::note
 If you previously generated a key at `trello.com/app-key`, that flow has been replaced by the Power-Up Admin portal.
@@ -40,12 +68,24 @@ If you previously generated a key at `trello.com/app-key`, that flow has been re
 
 1. On the same API Key page, select the **Token** link next to your API key.
 
-   ![Token link on API key page](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-permission.png)
+   <ThemedImage
+       alt="Token link on API key page"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-permission.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-permission.png'),
+       }}
+   />
 
 2. Review the permissions requested and select **Allow**.
 3. Copy the generated **Token**.
 
-   ![Copy the generated token](/img/connectors/catalog/productivity-collaboration/trello/setup/trello-token.png)
+   <ThemedImage
+       alt="Copy the generated token"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/setup/trello-token.png'),
+       }}
+   />
 
 :::tip
 Store the API Key and Token securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.

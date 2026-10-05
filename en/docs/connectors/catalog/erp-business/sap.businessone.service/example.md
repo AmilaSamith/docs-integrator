@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![SAP Business One Service connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Service connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP Business One Service connector
 
@@ -48,13 +57,25 @@ Bind every required connection field to a configurable variable.
 - **Username** : The username for authentication.
 - **Password** : The password for authentication.
 
-![SAP Business One Service connection form with all parameters bound before saving](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP Business One Service connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![SAP Business One Service connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="SAP Business One Service connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,11 +100,23 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **serviceClient** to display its operations.
 
-![SAP Business One Service connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Service connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Contract Templates**. This operation does not require any request parameters.
 
-![SAP Business One Service List Contract Templates operation configuration form](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="SAP Business One Service List Contract Templates operation configuration form"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-05-operation-form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -91,7 +124,13 @@ Select **Save** and verify that the connection appears in the **Connections** se
 
 Verify that the List Contract Templates operation is added to the automation flow.
 
-![Completed SAP Business One Service flow with the configured operation](/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Service flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.service/sap-businessone-service-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

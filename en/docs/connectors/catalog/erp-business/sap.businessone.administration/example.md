@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 2. In the connector search palette, enter `sap.businessone.administration`.
 3. Locate **ballerinax/sap.businessone.administration** and select **Add**.
 
-![SAP Business One Administration connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Administration connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-01-palette.png'),
+    }}
+/>
 
 ## Configuring the SAP Business One Administration connection
 
@@ -45,13 +54,25 @@ Bind each connection field to a configurable variable to keep credentials out of
 - **serviceUrl** : Base URL of the SAP Business One Service Layer — bound to the `sapServiceUrl` configurable variable
 - **connectionName** : Logical name for this connection — leave the default value `administrationClient`
 
-![SAP Business One Administration connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP Business One Administration connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection**. The connection is saved and `administrationClient` appears in the **Connections** section of the project tree.
 
-![SAP Business One Administration Connections panel showing administrationClient entry after saving](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-03-connection-saved.png)
+<ThemedImage
+    alt="SAP Business One Administration Connections panel showing administrationClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-03-connection-saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-03-connection-saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -79,17 +100,35 @@ The automation entry point `main` is added under **Entry Points** in the project
 2. In the step-addition panel, expand **administrationClient** under the **Connections** section.
 3. Scroll to the **Company** group and select **Company Service Get Company Info**.
 
-![SAP Business One Administration connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Administration connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 Configure the operation with the following values:
 
 - **resultVariable** : Auto-generated as `administrationCompanyinfo` — leave the default value
 
-![SAP Business One Administration Company Service Get Company Info operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="SAP Business One Administration Company Service Get Company Info operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-05-operation-form.png'),
+    }}
+/>
 
 Select **Save**. The operation step is added to the automation flow.
 
-![Completed SAP Business One Administration automation flow](/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Administration automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.administration/sap-businessone-administration-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

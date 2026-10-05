@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 
 Select the **Add Connection** button (or the **+** icon next to the Connections section) in the left sidebar of the WSO2 Integrator low-code canvas to open the connector search palette.
 
-![SAP B1 Financials connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP B1 Financials connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the sap.businessone.financials connector
 
@@ -49,13 +58,25 @@ For each field in the Configure Financials form, open the configurables panel, s
 - **Session** : the SAP Business One Service Layer session credentials record, with each field bound to its own configurable variable (company database name, login username, and login password).
 - **Service Url** : the base URL of the target SAP Business One Service Layer endpoint.
 
-![SAP B1 Financials connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP B1 Financials connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the SAP Business One Financials connection
 
 Select **Save Connection** to persist the connection. The `financialsClient` connector entry now appears in the Connections panel on the low-code canvas.
 
-![SAP B1 Financials Connections panel showing financialsClient entry after saving](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="SAP B1 Financials Connections panel showing financialsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,13 +100,25 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 1. Select the **+** (Add Step) button in the automation flow between the Start and Error Handler nodes to open the step-addition panel.
 2. Under **Connections** in the node panel, select the **financialsClient** connection node to expand it and reveal all available operations.
 
-![SAP B1 Financials connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP B1 Financials connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Journal Entries** from the list of operations and fill in the operation fields:
 - **Result** : the name of the local variable that stores the returned `JournalEntriesCollectionResponse`, set to `result`.
 4. Select **Save** to add the step to the automation flow.
 
-![SAP B1 Financials listJournalEntries operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-05-operation-filled.png)
+<ThemedImage
+    alt="SAP B1 Financials listJournalEntries operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-05-operation-filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-05-operation-filled.png'),
+    }}
+/>
 
 ### Step 8: Log the List Journal Entries result
 
@@ -95,7 +128,13 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 4. Enter `result.toJsonString()` to log the returned journal entries collection.
 5. Select **Save** and return to the visual flow.
 
-![Completed SAP B1 Financials automation flow showing Automation trigger, listJournalEntries operation node, log node, and Error Handler all connected](/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP B1 Financials automation flow showing Automation trigger, listJournalEntries operation node, log node, and Error Handler all connected"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.financials/sap-businessone-financials-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

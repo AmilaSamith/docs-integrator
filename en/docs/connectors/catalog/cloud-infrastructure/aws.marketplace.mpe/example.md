@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -34,7 +37,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS Marketplace Entitlement Service connector palette open in WSO2 Integrator before a connector is selected](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS Marketplace Entitlement Service connector palette open in WSO2 Integrator before a connector is selected"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS Marketplace Entitlement Service connector
 
@@ -52,13 +61,25 @@ Bind each required connection field to a configurable variable so that the integ
 - **Auth** : Authentication details that identify the caller to AWS
 - **Region** : AWS region that serves the Entitlement Service requests
 
-![AWS Marketplace Entitlement Service connection form with the Auth and Region parameters bound to configurable variables before saving](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS Marketplace Entitlement Service connection form with the Auth and Region parameters bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Saved Mpe connection listed under Connections and shown on the integration design canvas](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Saved Mpe connection listed under Connections and shown on the integration design canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -83,14 +104,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **+** between **Start** and **Error Handler** in the automation flow.
 2. Expand **mpeClient** to display its operations.
 
-![mpeClient connection expanded in the node panel to display the Get Entitlements and Close operations](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="mpeClient connection expanded in the node panel to display the Get Entitlements and Close operations"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Entitlements** and enter its required values.
 
 - **Product Code** : Product that entitlements are requested for, bound to a configurable variable
 - **Result** : Name of the variable that holds the entitlements response
 
-![Get Entitlements operation form with the product code and result name entered before saving](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Get Entitlements operation form with the product code and result name entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -100,7 +133,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 2. Expand **Logging** and select **Log Info**.
 3. Set **Msg** to the operation result, then select **Save**.
 
-![Completed automation flow running from Start through Get Entitlements and Log Info to Error Handler](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow running from Start through Get Entitlements and Log Info to Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpe/aws_marketplace_mpe_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

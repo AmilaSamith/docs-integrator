@@ -4,6 +4,9 @@ connector_name: "aws.secretmanager"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -38,7 +41,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS Secrets Manager connector palette open in the Add Connection dialog before selection](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS Secrets Manager connector palette open in the Add Connection dialog before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS Secrets Manager connector
 
@@ -56,13 +65,25 @@ Bind each connection field to a configurable variable so that no credential is s
 
 Leave **Endpoint** at its default empty value unless you target a FIPS, dualstack, or custom endpoint.
 
-![AWS Secrets Manager connection form with Auth and Region bound to configurable variables before saving](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS Secrets Manager connection form with Auth and Region bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Saved secretmanagerClient connection shown on the integration design canvas and in the project tree](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Saved secretmanagerClient connection shown on the integration design canvas and in the project tree"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -89,14 +110,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **+** in the automation flow, between **Start** and **Error Handler**.
 2. Expand **secretmanagerClient** to display its operations.
 
-![secretmanagerClient connection expanded in the node panel to display its four operations before selection](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="secretmanagerClient connection expanded in the node panel to display its four operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Secret Value** and enter its required values.
 
 - **Secret Id** : The friendly name or ARN of the secret. Bind it to a configurable variable so the integration isn't tied to one secret
 - **Result** : The name of the variable that holds the retrieved secret
 
-![Get Secret Value operation form with the secret identifier bound and the result variable named before saving](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Get Secret Value operation form with the secret identifier bound and the result variable named before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -106,7 +139,13 @@ Add a **Log Info** action after the operation, and enter a message that reads th
 
 > **Warning:** Log only metadata such as the secret's name, ARN, or version. Never log the `value` field, because it holds the decrypted secret and log output is rarely as well protected as the secret store.
 
-![Completed automation flow with Start, the Get Secret Value operation, the log action, and Error Handler](/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with Start, the Get Secret Value operation, the log action, and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/security-identity/aws.secretmanager/aws_secretmanager_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![SAP Business One Banking connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Banking connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP Business One Banking connector
 
@@ -48,13 +57,25 @@ Enter the SAP Business One session details in **SessionConfig**.
 - **username** : SAP Business One user name.
 - **password** : SAP Business One password.
 
-![SAP Business One Banking connection form with session parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP Business One Banking connection form with session parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that `bankingClient` appears in the **Connections** section.
 
-![SAP Business One Banking connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="SAP Business One Banking connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -78,7 +99,13 @@ Select **Save** and verify that `bankingClient` appears in the **Connections** s
 1. Select **Add Step** in the automation flow.
 2. Expand **bankingClient** to display its operations.
 
-![SAP Business One Banking connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Banking connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Banks**.
 4. Keep the generated result variable and response format.
@@ -86,7 +113,13 @@ Select **Save** and verify that `bankingClient` appears in the **Connections** s
 - **Result** : Stores the Banks collection response.
 - **Response format** : Uses `banking:BanksCollectionResponse` for the response.
 
-![List Banks operation with the generated result before saving](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="List Banks operation with the generated result before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-05-operation-form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
@@ -94,7 +127,13 @@ Select **Save** and verify that `bankingClient` appears in the **Connections** s
 
 Add **Log Info** with the message `List Banks completed.`, then return to the visual flow.
 
-![Completed SAP Business One Banking flow with List Banks and Log Info](/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Banking flow with List Banks and Log Info"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.banking/sap-businessone-banking-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

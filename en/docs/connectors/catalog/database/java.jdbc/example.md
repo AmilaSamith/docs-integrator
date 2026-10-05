@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 2. In the search panel, type `jdbc`.
 3. Select **Jdbc** (`ballerinax/java.jdbc`) from the results.
 
-![Java JDBC connector palette open with search field before any selection](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_01_palette.png)
+<ThemedImage
+    alt="Java JDBC connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Java JDBC connection
 
@@ -48,13 +57,25 @@ After selecting the connector, the **Configure Jdbc** form opens. Bind each fiel
 
 For each field, click the field textbox, open the **Configurables** tab in the helper panel, click **New Configurable**, enter the variable name and type, and click **Save**.
 
-![Java JDBC connection form fully filled with all parameters before saving](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Java JDBC connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Click **Save Connection**. The `jdbcClient` connection node appears on the canvas.
 
-![Java JDBC Connections panel showing jdbcClient entry after saving](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Java JDBC Connections panel showing jdbcClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -79,18 +100,36 @@ The Automation flow opens in the canvas editor with a **Start** node and an **Er
 1. In the Automation flow canvas, click the **+** node (between Start and Error Handler) to open the node selection panel.
 2. In the **Connections** section, click **jdbcClient** to expand it and reveal available operations.
 
-![Java JDBC connection node expanded showing all available operations before selection](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Java JDBC connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Click **Execute** to open the configuration panel, then fill in the following parameters:
    - **SQL query**: the parameterized SQL statement to execute (for example, an INSERT targeting your target table)
    - **Result**: the variable name for the execution result (default: `sqlExecutionresult`)
    - **Result type**: `sql:ExecutionResult` (auto-filled)
 
-![Java JDBC execute operation configuration filled with all values](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Java JDBC execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Click **Save**. The `jdbc : execute` node appears in the Automation flow.
 
-![Completed automation flow showing jdbc:execute node on the canvas](/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow showing jdbc:execute node on the canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/java.jdbc/java_jdbc_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

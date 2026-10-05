@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -33,7 +36,13 @@ flowchart LR
 2. Type **"redis"** in the search field to filter the connector list, or scroll down in the **Pre-built Connectors** section to find Redis.
 3. Click the **Redis** (`ballerinax/redis`) connector card to open its connection configuration form.
 
-![Redis connector palette open showing search field and connector list](/img/connectors/catalog/database/redis/redis_screenshot_01_palette.png)
+<ThemedImage
+    alt="Redis connector palette open showing search field and connector list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Redis connection
 
@@ -57,13 +66,25 @@ Bind these three fields to configurables. You set their actual values in Step 4.
 
 If your Redis server requires TLS, expand the **secureSocket** field as well. See the [Action Reference](actions.md#securesocket) for its sub-fields.
 
-![Redis connection form showing all parameters bound to Configurable variables before saving](/img/connectors/catalog/database/redis/redis_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Redis connection form showing all parameters bound to Configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the Redis connection
 
 Click **Save Connection** to persist the Redis connection configuration. The Redis connector entry (`redisClient`) appears on the design canvas, confirming the connection was successfully created.
 
-![Redis connector visible on the canvas after saving](/img/connectors/catalog/database/redis/redis_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Redis connector visible on the canvas after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -87,7 +108,13 @@ Click **Save Connection** to persist the Redis connection configuration. The Red
 1. Inside the Automation flow canvas, click the **+** add-step button (the dashed placeholder node labelled "Select node from node panel") to open the step-addition panel on the right.
 2. In the right-side panel under **Connections**, locate the **redisClient** entry and click it to expand the full list of available Redis operations.
 
-![Redis connection node expanded showing all available operations before selection](/img/connectors/catalog/database/redis/redis_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Redis connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Scroll down in the operations list and click **Set** to open its configuration panel.
 4. Fill in the operation fields.
@@ -96,7 +123,13 @@ Click **Save Connection** to persist the Redis connection configuration. The Red
 - **`value`**: the string value to store at the specified key
 - **`result`**: variable that holds the operation's return value (for example, `setResult`)
 
-![Redis set operation configuration panel showing key and value fields filled](/img/connectors/catalog/database/redis/redis_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Redis set operation configuration panel showing key and value fields filled"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Click **Save** to confirm the `set` operation configuration.
 
@@ -104,7 +137,13 @@ Click **Save Connection** to persist the Redis connection configuration. The Red
 
 After saving the `set` operation, the Automation canvas displays the complete integration flow: **Start → redis : set (setResult) → redisClient → Error Handler → End**. Confirm all nodes are connected with no error indicators before running the integration.
 
-![Completed canvas showing the full Automation Trigger to Redis set operation flow](/img/connectors/catalog/database/redis/redis_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed canvas showing the full Automation Trigger to Redis set operation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/redis/redis_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

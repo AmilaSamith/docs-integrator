@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 In the project tree, expand your project and select the **+** icon next to **Connections** to open the **Add Connection** palette.
 
-![Zoom Scheduler connector palette open with search field before any selection](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_01_palette.png)
+<ThemedImage
+    alt="Zoom Scheduler connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Zoom scheduler connection
 
@@ -46,13 +55,25 @@ Search for **zoom** in the palette, then select **Scheduler** to open the **Conf
 
 > **Note:** The **Config** field must be in **Expression** mode-not Record mode-when entering the `{auth: {...}}` record constructor. Record mode wraps the value in string quotes, causing a type mismatch error.
 
-![Zoom Scheduler connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Zoom Scheduler connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the configuration. The designer returns to the main canvas and displays the `zoomSchedulerClient` connection node. Confirm the entry appears under **Connections** in the project tree.
 
-![Zoom Scheduler Connections panel showing zoomSchedulerClient entry after saving](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_03_connection_canvas.png)
+<ThemedImage
+    alt="Zoom Scheduler Connections panel showing zoomSchedulerClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_03_connection_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_03_connection_canvas.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -71,13 +92,25 @@ Select **Save Connection** to persist the configuration. The designer returns to
 1. Under **Entry Points**, select **main** (or create a new Automation via **Add Artifact → Automation**).
 2. On the canvas, expand the **Connections** section in the node panel and select **zoomSchedulerClient** to reveal the available operations.
 
-![Zoom Scheduler connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Zoom Scheduler connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **List schedules** from the operations panel. The configuration form opens with no required parameters. The **Result** field is pre-filled with `schedulerInlineresponse2005`, which will hold the paginated list of Zoom booking schedules returned by the API. Select **Save** to insert the operation into the automation flow.
 
 - **result** : Variable name that stores the list of booking schedules returned by the API
 
-![Zoom Scheduler List schedules operation configuration filled with all values](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_05_operation_values.png)
+<ThemedImage
+    alt="Zoom Scheduler List schedules operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_05_operation_values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_05_operation_values.png'),
+    }}
+/>
 
 ## Try it yourself
 

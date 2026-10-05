@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -38,7 +41,13 @@ flowchart LR
 
 In the WSO2 Integrator sidebar, hover over the **Connections** section and select **Add Connection** (the **+** icon) to open the Add Connection palette.
 
-![Twitter connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_01_palette.png)
+<ThemedImage
+    alt="Twitter connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Twitter connector
 
@@ -55,13 +64,25 @@ Enter the connection details, binding each field to a configurable variable:
 - **connectionName** : Enter `twitterClient` as the connection name
 - **config** : Select the **Record** editor icon to open the Record Configuration modal, expand **auth**, select **BearerTokenConfig**, and for the `token` field select **+ New Configurable** to create a new configurable variable named `twitterBearerToken` of type `string`
 
-![Twitter connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Twitter connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to persist the connection. The `twitterClient` connection appears in the Connections panel.
 
-![Twitter Connections panel showing twitterClient entry after saving](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Twitter Connections panel showing twitterClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -87,18 +108,36 @@ The canvas switches to the Automation flow view showing **Start → (empty place
 1. Select the **+** (Add Step) button between the **Start** and **Error Handler** nodes on the canvas.
 2. Under **Connections**, select **twitterClient** to expand it and reveal all available Twitter API operations.
 
-![Twitter connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Twitter connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Scroll to the **Posts** group and select **Creation of a Post**.
 4. Configure the operation fields:
    - **payload** : Select **Record**, check the `text` field checkbox, and enter your tweet text in the Record Configuration modal
    - **result** : Leave as `twitterTweetcreateresponse` (auto-generated)
 
-![Twitter Creation of a Post operation configuration filled with all values](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Twitter Creation of a Post operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed Twitter automation flow](/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Twitter automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/twitter_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

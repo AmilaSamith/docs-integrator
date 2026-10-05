@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -32,7 +35,13 @@ flowchart LR
 2. Search for `hubspot.crm.obj.leads` in the connector palette.
 3. Select the **HubSpot CRM Leads** connector card from the search results.
 
-![HubSpot CRM Leads connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Leads connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Leads connection
 
@@ -43,13 +52,25 @@ Bind the connection field to a configurable variable for secure token management
 - **Config** : Set to Expression mode and enter the record literal binding the `hubspotAuthToken` configurable variable for Bearer Token authentication
 - **Connection Name** : Set to `leadsClient`
 
-![HubSpot CRM Leads connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Leads connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to persist the connection. The `leadsClient` connection node appears on the canvas and is listed under **Connections** in the sidebar.
 
-![HubSpot CRM Leads Connections panel showing leadsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Leads Connections panel showing leadsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -74,7 +95,13 @@ An Automation entry point named `main` appears under **Entry Points**, and the c
 2. Under **Connections**, expand `leadsClient` to reveal available operations.
 3. Select **Create** from the operations list.
 
-![HubSpot CRM Leads connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_04_operations_list.png)
+<ThemedImage
+    alt="HubSpot CRM Leads connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_04_operations_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_04_operations_list.png'),
+    }}
+/>
 
 Configure the operation fields:
 
@@ -83,9 +110,21 @@ Configure the operation fields:
 
 Select **Save**.
 
-![HubSpot CRM Leads Create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot CRM Leads Create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Leads automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Leads automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.leads/hubspot_crm_obj_leads_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

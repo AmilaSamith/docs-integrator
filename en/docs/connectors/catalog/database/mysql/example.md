@@ -6,6 +6,9 @@ description: "Build an automation that inserts a record into a MySQL database us
 keywords: [wso2 integrator, mysql, connector, example, database, insert]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 Build a WSO2 Integrator automation that connects to a MySQL database using configurable connection parameters and executes an INSERT SQL statement. The integration uses the MySQL connector to insert a record into a database table safely, without hardcoding credentials in source code.
@@ -42,7 +45,13 @@ Follow the [Create a new integration](../../../../develop/create-integrations/cr
 2. In the palette search box, enter **MySQL**.
 3. Select the **MySQL** card to open the **Configure MySQL** form.
 
-![MySQL connector palette open with search field before any selection](/img/connectors/catalog/database/mysql/palette.png)
+<ThemedImage
+    alt="MySQL connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/palette.png'),
+    }}
+/>
 
 ## Configure the MySQL connection
 
@@ -62,13 +71,25 @@ In the **Configure MySQL** form, expand **Advanced Configurations** to reveal al
 
 After creating all five configurables, set **Connection Name** to `mysqlClient`.
 
-![MySQL connection form fully filled with all parameters before saving](/img/connectors/catalog/database/mysql/connection-form.png)
+<ThemedImage
+    alt="MySQL connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/connection-form.png'),
+    }}
+/>
 
 ### Save the MySQL connection
 
 Select **Save Connection** to save the connector. The canvas returns to the integration overview and `mysqlClient` is now visible under **Connections** in the left-hand project tree.
 
-![MySQL Connections panel showing mysqlClient entry after saving](/img/connectors/catalog/database/mysql/connections-list.png)
+<ThemedImage
+    alt="MySQL Connections panel showing mysqlClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/connections-list.png'),
+    }}
+/>
 
 ### Set actual values for your configurables
 
@@ -93,7 +114,13 @@ The automation flow canvas opens, showing a **Start** node and an **Error Handle
 
 Select the empty step placeholder in the flow to open the step addition panel. In the right-hand panel, locate the **Connections** section, select **mysqlClient** to expand its available operations, and then select **Execute**.
 
-![MySQL connection node expanded showing all available operations before selection](/img/connectors/catalog/database/mysql/operations-panel.png)
+<ThemedImage
+    alt="MySQL connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/operations-panel.png'),
+    }}
+/>
 
 ### Configure the execute operation parameters and save
 
@@ -102,11 +129,23 @@ Fill in the operation fields, then select **Save** to add the step to the automa
 - **sqlQuery**: A parameterized SQL INSERT statement to execute. Use backtick-templated parameters so values are bound safely (no string concatenation). For example: `` `INSERT INTO users (name, email) VALUES (${name}, ${email})` ``, where `name` and `email` are Ballerina variables (for example, bound to inputs of the automation).
 - **result**: Variable that holds the returned `sql:ExecutionResult`. Pre-filled as `sqlExecutionresult`.
 
-![MySQL Execute operation configuration filled with all values](/img/connectors/catalog/database/mysql/execute-operation-filled.png)
+<ThemedImage
+    alt="MySQL Execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/execute-operation-filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/execute-operation-filled.png'),
+    }}
+/>
 
 The automation flow now contains a single execute step between **Start** and **Error Handler**.
 
-![Completed automation flow with mysql execute step](/img/connectors/catalog/database/mysql/completed-flow.png)
+<ThemedImage
+    alt="Completed automation flow with mysql execute step"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mysql/completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mysql/completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

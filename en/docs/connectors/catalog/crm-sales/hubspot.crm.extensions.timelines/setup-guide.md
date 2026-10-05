@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Extensions Timelines connector.
@@ -19,15 +23,33 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Developer portal](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_1.png)
+   <ThemedImage
+       alt="Developer portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_1.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create test account](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_2.png)
+   <ThemedImage
+       alt="Create test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_2.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_3.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_3.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/test_acc_3.png'),
+       }}
+   />
 
 :::note
 Developer test accounts are for development and testing only. Do not use them in production.
@@ -37,27 +59,57 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** and select **Create App**.
 
-   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_1.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_1.png'),
+       }}
+   />
 
 2. Provide the app name and description.
 
-   ![App name and description](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_2.png)
+   <ThemedImage
+       alt="App name and description"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_2.png'),
+       }}
+   />
 
 ## Step 4: Configure authentication
 
 1. Under **Scopes**, select **Add new scope** and add the required scopes (for example, `crm.objects.contacts.read`, `crm.objects.contacts.write`, `timeline`).
 
-   ![Set scope](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/set_scope.png)
+   <ThemedImage
+       alt="Set scope"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/set_scope.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/set_scope.png'),
+       }}
+   />
 
 2. Add your redirect URI and select **Create App**.
 
-   ![Create app with redirect](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_final.png)
+   <ThemedImage
+       alt="Create app with redirect"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_final.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/create_app_final.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** section, copy the **Client ID** and **Client Secret**. Also note your **App ID** from the app settings page.
 
-![Get credentials](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/get_credentials.png)
+<ThemedImage
+    alt="Get credentials"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/get_credentials.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/get_credentials.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 
@@ -86,7 +138,13 @@ In the **Auth** section, copy the **Client ID** and **Client Secret**. Also note
 
 Some endpoints require a developer API key. Follow the [HubSpot developer tools overview](https://developers.hubspot.com/docs/api/developer-tools-overview#developer-api-keys) to obtain one.
 
-![Developer key](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/developer_key.png)
+<ThemedImage
+    alt="Developer key"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/developer_key.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup/developer_key.png'),
+    }}
+/>
 
 :::tip
 Store the client ID, client secret, refresh token, and developer API key securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.

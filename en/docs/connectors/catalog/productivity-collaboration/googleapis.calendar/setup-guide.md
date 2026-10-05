@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a Google Cloud Platform project and obtaining the OAuth 2.0 credentials required to use the Google Calendar connector.
@@ -17,7 +21,13 @@ This guide walks you through creating a Google Cloud Platform project and obtain
 3. Select an existing project or select **New Project** to create a new one.
 4. Enter a project name (for example, `Ballerina Calendar Integration`) and select **Create**.
 
-   ![GCP console project view](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/gcp-console-project-view.png)
+   <ThemedImage
+       alt="GCP console project view"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/gcp-console-project-view.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/gcp-console-project-view.png'),
+       }}
+   />
 
 ## Step 2: Enable the Google Calendar API
 
@@ -25,7 +35,13 @@ This guide walks you through creating a Google Cloud Platform project and obtain
 2. Search for **Google Calendar API**.
 3. Select the **Google Calendar API** result and select **Enable**.
 
-   ![Enable Calendar API](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/enable-calendar-api.png)
+   <ThemedImage
+       alt="Enable Calendar API"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/enable-calendar-api.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/enable-calendar-api.png'),
+       }}
+   />
 
 ## Step 3: Configure the OAuth consent screen
 
@@ -40,7 +56,13 @@ This guide walks you through creating a Google Cloud Platform project and obtain
    - `https://www.googleapis.com/auth/calendar`
 6. Select **Save and Continue** through the remaining steps.
 
-   ![Configure consent screen](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/consent-screen.png)
+   <ThemedImage
+       alt="Configure consent screen"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/consent-screen.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/consent-screen.png'),
+       }}
+   />
 
 :::note
 For production applications, you need to complete the verification process. For development and testing, you can add test users on the OAuth consent screen.
@@ -56,7 +78,13 @@ For production applications, you need to complete the verification process. For 
 6. Select **Create**.
 7. Copy the **Client ID** and **Client Secret** from the dialog that appears.
 
-   ![Create credentials](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/create-credentials.png)
+   <ThemedImage
+       alt="Create credentials"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/create-credentials.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/create-credentials.png'),
+       }}
+   />
 
 :::tip
 Store the Client ID and Client Secret securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
@@ -68,17 +96,35 @@ Store the Client ID and Client Secret securely. Do not commit them to source con
 2. Select the gear icon in the top-right corner and check **Use your own OAuth credentials**.
 3. Enter your **Client ID** and **Client Secret**.
 
-   ![OAuth Playground settings](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/oauth-playground.png)
+   <ThemedImage
+       alt="OAuth Playground settings"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/oauth-playground.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/oauth-playground.png'),
+       }}
+   />
 
 4. In the left panel under **Step 1: Select & authorize APIs**, find **Calendar API v3** and select the scope `https://www.googleapis.com/auth/calendar`.
 5. Select **Authorize APIs** and sign in with your Google account. Grant the requested permissions.
 
-   ![Authorize Calendar APIs](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/authorize-calendar-apis.png)
+   <ThemedImage
+       alt="Authorize Calendar APIs"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/authorize-calendar-apis.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/authorize-calendar-apis.png'),
+       }}
+   />
 
 6. In **Step 2: Exchange authorization code for tokens**, select **Exchange authorization code for tokens**.
 7. Copy the **Refresh token** from the response.
 
-   ![Exchange tokens](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/exchange-tokens.png)
+   <ThemedImage
+       alt="Exchange tokens"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/exchange-tokens.png'),
+           dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.calendar/setup/exchange-tokens.png'),
+       }}
+   />
 
 :::note
 The refresh URL for Google services is `https://oauth2.googleapis.com/token`.

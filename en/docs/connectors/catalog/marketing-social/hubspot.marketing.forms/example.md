@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **Add Connection** (or the **+** next to **Connections** in the side panel) to open the connector search palette.
 
-![HubSpot Marketing Forms connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Marketing Forms connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the HubSpot marketing forms connector
 
@@ -46,13 +55,25 @@ Bind the connection parameters to configurable variables so credentials aren't h
 - **config** : The connection configuration object containing Bearer Token authentication details
 - **connectionName** : Enter `formsClient` as the name for this connection
 
-![HubSpot Marketing Forms connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Marketing Forms connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to persist the connection. The `formsClient` connection node appears on the canvas.
 
-![HubSpot Marketing Forms Connections panel showing formsClient entry after saving](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Marketing Forms Connections panel showing formsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -76,18 +97,36 @@ The Automation canvas opens showing a **Start** node and an **Error Handler** bl
 1. Select the **+** (Add Step) button between the **Start** node and the **Error Handler** block.
 2. Under **Connections**, select **formsClient** to expand its operations.
 
-![HubSpot Marketing Forms connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Marketing Forms connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get a list of forms**.
 4. In the **Result** field, enter `formsResult`.
 
 - **result** : Name of the result variable that stores the retrieved forms list
 
-![HubSpot Marketing Forms getForms operation configuration filled with all values](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Marketing Forms getForms operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the step to the flow.
 
-![Completed HubSpot Marketing Forms automation flow](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_06_completed_canvas.png)
+<ThemedImage
+    alt="Completed HubSpot Marketing Forms automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_06_completed_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_06_completed_canvas.png'),
+    }}
+/>
 
 ## Try it yourself
 

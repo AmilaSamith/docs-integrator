@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Select **Entry Points > main** to open the low-code flow canvas, then select the **+** button below the **Start** node to open the node panel. Select **Show More Functions** and search for `hubspot.crm.commerce.quotes` to locate the **ballerinax/hubspot.crm.commerce.quotes** connector.
 
-![HubSpot CRM Commerce Quotes connector visible in the connector palette before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Quotes connector visible in the connector palette before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Commerce Quotes connection
 
@@ -43,13 +52,25 @@ After selecting the connector, a **New Connection** form appears. Bind each fiel
 - **Service Url** : Bind to a new configurable variable `hubspotQuotesServiceUrl` of type `string`
 - **Config** : Switch to **Expression** mode and enter `{auth: {token: hubspotQuotesToken}}`, binding `hubspotQuotesToken` as a new `string` configurable variable
 
-![HubSpot CRM Commerce Quotes connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Quotes connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `quotesClient` connection now appears in the **Connections** section of the sidebar and as a badge on the canvas.
 
-![HubSpot CRM Commerce Quotes Connections panel showing quotesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Quotes Connections panel showing quotesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -65,7 +86,13 @@ Select **Save** to create the connection. The `quotesClient` connection now appe
 
 Select the **+** button on the flow canvas to open the node panel, then expand the **quotesClient** connection section to see available operations.
 
-![HubSpot CRM Commerce Quotes connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_04_operations.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Quotes connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_04_operations.png'),
+    }}
+/>
 
 ### Step 6: Select the get operation and configure its parameters
 
@@ -76,9 +103,21 @@ Select the **get** (List) operation to open its configuration form, then fill in
 
 Select **Save** to add the operation to the flow.
 
-![HubSpot CRM Commerce Quotes get operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Quotes get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_05_operation_config.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Commerce Quotes automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Commerce Quotes automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/hubspot_crm_commerce_quotes_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

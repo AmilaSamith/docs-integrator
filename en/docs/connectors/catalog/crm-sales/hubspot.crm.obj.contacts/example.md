@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **+ Add Connection** in the Connections section of the canvas to open the connector palette.
 
-![HubSpot Contacts connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Contacts connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot Contacts connection
 
@@ -42,13 +51,25 @@ Enter the following parameters in the **Configure Contacts** form, binding each 
 - **Service Url**: The HubSpot API base URL: bound to the `hubspotServiceUrl` configurable variable
 - **Connection Name** : A unique name for this connection instance
 
-![HubSpot Contacts connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Contacts connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `contactsClient` node appears on the canvas and under **Connections** in the project tree.
 
-![HubSpot Contacts Connections panel showing contactsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot Contacts Connections panel showing contactsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,7 +94,13 @@ The flow canvas now shows: **Start → (empty slot) → Error Handler**.
 1. Select the **+** (add step) button between **Start** and **Error Handler** in the flow canvas.
 2. Under **Connections**, expand **contactsClient** to reveal all available operations.
 
-![HubSpot Contacts connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_04_operations.png)
+<ThemedImage
+    alt="HubSpot Contacts connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_04_operations.png'),
+    }}
+/>
 
 3. Select **Create** (the `postCrmV3ObjectsContacts` operation).
 4. In the operation form, configure the following parameters:
@@ -81,11 +108,23 @@ The flow canvas now shows: **Start → (empty slot) → Error Handler**.
 - **Payload**: Contact properties to create: enter an expression with `email`, `firstname`, `lastname`, and `phone` fields
 - **Result** : The variable name to store the returned `SimplePublicObject`
 
-![HubSpot Contacts Create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Contacts Create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save** to add the step to the flow.
 
-![Completed HubSpot Contacts automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Contacts automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.contacts/hubspot_crm_obj_contacts_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

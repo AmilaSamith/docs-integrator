@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 Select **+** in the **Connections** section to open the Add Connection panel.
 
-![Microsoft OneDrive connector palette open with search field before any selection](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_01_palette.png)
+<ThemedImage
+    alt="Microsoft OneDrive connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Microsoft OneDrive connection
 
@@ -41,13 +50,25 @@ Enter the connection details, binding each field to a configurable variable:
 - **connectionName** : Enter `onedriveClient` as the connection name
 - **config** : Switch to **Expression** mode and enter `{auth: {token: oneDriveToken}}`, referencing the `oneDriveToken` configurable variable that holds your access token at runtime
 
-![Microsoft OneDrive connection form fully filled with all parameters before saving](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Microsoft OneDrive connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `onedriveClient` entry now appears under the **Connections** section.
 
-![Microsoft OneDrive Connections panel showing onedriveClient entry after saving](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Microsoft OneDrive Connections panel showing onedriveClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -65,18 +86,36 @@ Select **Add Artifact** and choose **Automation** as the entry point type. Enter
 
 Expand the **onedriveClient** connection node on the canvas to view available operations, then select **List Drive** to add it to the flow.
 
-![Microsoft OneDrive connection node expanded showing all available operations before selection](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_04_operations.png)
+<ThemedImage
+    alt="Microsoft OneDrive connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_04_operations.png'),
+    }}
+/>
 
 Configure the operation parameters:
 
 - **resultVariable** : Enter `result` as the variable name to store the response
 - **resultType** : Set to `onedrive:DriveCollectionResponse`
 
-![Microsoft OneDrive listDrive operation configuration filled with all values](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Microsoft OneDrive listDrive operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed Microsoft OneDrive automation flow](/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Microsoft OneDrive automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.onedrive/microsoft_onedrive_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

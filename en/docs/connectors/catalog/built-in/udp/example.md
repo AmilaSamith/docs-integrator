@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -26,7 +29,13 @@ flowchart LR
 
 In the WSO2 Integrator left panel, expand **Connections** and select the **+** (Add Connection) button to open the connector palette.
 
-![UDP connector palette open with search field before any selection](/img/connectors/catalog/built-in/udp/udp_screenshot_01_palette.png)
+<ThemedImage
+    alt="UDP connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the UDP connection
 
@@ -36,13 +45,25 @@ Expand the **Advanced Configurations** section and bind the **Local Host** field
 
 - **localHost** : Binds the UDP client to a specific local network interface using the `udpLocalHost` configurable variable
 
-![UDP connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/udp/udp_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="UDP connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Verify the connection node on the canvas
 
 Confirm the `udpClient` connection node is visible in the **Connections** panel after saving.
 
-![UDP Connections panel showing udpClient entry after saving](/img/connectors/catalog/built-in/udp/udp_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="UDP Connections panel showing udpClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -60,7 +81,13 @@ Select **Add Artifact**, choose **Automation** from the artifact type list, leav
 
 On the Automation canvas, select the placeholder node between **Start** and **Error Handler** to open the node panel. In the **Connections** section, expand **udpClient** to reveal its operations, then select **Send Datagram**.
 
-![UDP connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/udp/udp_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="UDP connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 In the **Datagram** field, switch to **Expression** mode and enter the following record expression with these values:
 
@@ -70,9 +97,21 @@ In the **Datagram** field, switch to **Expression** mode and enter the following
 
 Select **Save** to add the step to the automation flow.
 
-![UDP sendDatagram operation configuration filled with all values](/img/connectors/catalog/built-in/udp/udp_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="UDP sendDatagram operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed UDP automation flow](/img/connectors/catalog/built-in/udp/udp_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed UDP automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/udp/udp_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

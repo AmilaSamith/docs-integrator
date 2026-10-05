@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -31,7 +34,13 @@ flowchart LR
 
 Select **Add Connection** (the **+** next to **Connections**) in the WSO2 Integrator panel to open the connector palette.
 
-![HubSpot CRM Pipelines connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Pipelines connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Pipelines connection
 
@@ -43,13 +52,25 @@ Search for "Pipelines" in the palette, then select the **Pipelines** connector c
 - **serviceUrl** : Expand **Advanced Configurations** and bind to a new configurable variable `hubspotServiceUrl` (type `string`)
 - **connectionName** : Keep the default value `pipelinesClient`
 
-![HubSpot CRM Pipelines connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Pipelines connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `pipelinesClient` entry now appears in the **Connections** panel.
 
-![HubSpot CRM Pipelines Connections panel showing pipelinesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot CRM Pipelines Connections panel showing pipelinesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -74,7 +95,13 @@ The `main` entry point appears under **Entry Points** and the flow canvas opens 
 1. Select the **+** (Add step) button between **Start** and **Error Handler** on the flow canvas.
 2. Select **pipelinesClient** under **Connections** in the node panel to expand its available operations.
 
-![HubSpot CRM Pipelines connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Pipelines connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Retrieve all pipelines** to open the operation form.
 4. Fill in the operation parameters:
@@ -82,11 +109,23 @@ The `main` entry point appears under **Entry Points** and the flow canvas opens 
 - **objectType** : Enter `deals` as the object type to retrieve pipelines for
 - **result** : Enter `result` as the output variable name
 
-![HubSpot CRM Pipelines listPipelines operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot CRM Pipelines listPipelines operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_05_operation_form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed HubSpot CRM Pipelines automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Pipelines automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/hubspot_crm_pipelines_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

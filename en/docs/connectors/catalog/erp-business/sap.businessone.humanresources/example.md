@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -29,7 +32,13 @@ flowchart LR
 
 ### Step 1: Open the connector palette
 Select **Add Connection** in the Connections panel to open the connector palette, then search for and select the **HumanResources** connector.
-![SAP Business One Humanresources connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Humanresources connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-01-palette.png'),
+    }}
+/>
 
 ## Configuring the SAP Business One Human Resources connection
 
@@ -40,11 +49,25 @@ Enter the connection details, binding each field to a configurable variable so v
 - **password** : Password used to authenticate with the SAP Business One Service Layer.
 - **serviceUrl** : Base URL of the SAP Business One Service Layer endpoint.
 - **connectionName** : Name assigned to the generated connection instance.
-![SAP Business One Humanresources connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-02-connection-form.png)
+
+  <ThemedImage
+      alt="SAP Business One Humanresources connection form fully filled with all parameters before saving"
+      sources={{
+          light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-02-connection-form.png'),
+          dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-02-connection-form.png'),
+      }}
+  />
+
 
 ### Step 3: Save the connection
 Select **Save** to persist the connection and confirm it appears in the Connections panel.
-![SAP Business One Humanresources Connections panel showing humanresourcesClient entry after saving](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-03-canvas-connection.png)
+<ThemedImage
+    alt="SAP Business One Humanresources Connections panel showing humanresourcesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-03-canvas-connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-03-canvas-connection.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 Select **Configurations** in the left panel, at the bottom of the project tree under Data Mappers, then enter a value for each configurable variable listed below.
@@ -60,9 +83,21 @@ Select **Add Artifact**, then select **Automation** to create a new automation. 
 
 ### Step 6: Select and configure the List Employees Info operation
 Expand **Connections**, select the saved connection, then select **List Employees Info** to add the operation to the flow.
-![SAP Business One Humanresources connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Humanresources connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-04-operations-panel.png'),
+    }}
+/>
 The operation requires no input parameters and stores its result in a response variable of type `humanresources:EmployeesInfoCollectionResponse`.
-![SAP Business One Humanresources List Employees Info operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-05-operation-values.png)
+<ThemedImage
+    alt="SAP Business One Humanresources List Employees Info operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-05-operation-values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-05-operation-values.png'),
+    }}
+/>
 Rename the response variable to `employeesInfo`, then select **Save** to add the operation node to the flow.
 
 ### Step 7: Log the List Employees Info result
@@ -73,7 +108,13 @@ Rename the response variable to `employeesInfo`, then select **Save** to add the
 4. Enter `employeesInfo.toJsonString()` to log the returned employee collection.
 5. Select **Save** and return to the visual flow.
 
-![Completed SAP Business One Humanresources automation flow](/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Humanresources automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.humanresources/sap-businessone-humanresources-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

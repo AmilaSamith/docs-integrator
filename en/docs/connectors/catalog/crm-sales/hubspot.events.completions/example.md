@@ -4,6 +4,9 @@ connector_name: "hubspot.events.completions"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -37,7 +40,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![HubSpot Events Completions connector palette open before selection](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Events Completions connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the HubSpot Events Completions connector
 
@@ -52,13 +61,25 @@ Bind the required connection field to a configurable variable.
 
 - **Config** : The record that supplies the connector's authentication settings.
 
-![HubSpot Events Completions connection form with all parameters bound before saving](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Events Completions connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![HubSpot Events Completions connection visible after saving](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Events Completions connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -81,13 +102,25 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **completionsClient** to display its operations.
 
-![HubSpot Events Completions connection expanded to display operations before selection](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Events Completions connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Send Event** and enter its required values.
 
 - **Payload** : The event name, contact identifier, and custom properties for the event occurrence.
 
-![HubSpot Events Completions Send Event operation with all values entered before saving](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot Events Completions Send Event operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -95,7 +128,13 @@ Select **Save** and verify that the connection appears in the **Connections** se
 
 Add a log action for the returned value, then return to the visual flow.
 
-![Completed HubSpot Events Completions flow with the configured operation](/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Events Completions flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/ballerinax_hubspot_events_completions_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

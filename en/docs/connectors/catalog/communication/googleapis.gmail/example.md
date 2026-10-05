@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -29,7 +32,13 @@ flowchart LR
 
 Select **+ Add Connection** (or the **+** icon next to **Connections** in the sidebar) to open the connector palette.
 
-![Gmail connector palette open before searching](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_01_palette.png)
+<ThemedImage
+    alt="Gmail connector palette open before searching"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and select the Gmail connector
 
@@ -48,13 +57,25 @@ After selecting the connector, a **New Connection** form appears. Select the **C
 - **clientSecret** : The OAuth2 client secret from your Google Cloud project
 - **Connection Name** : Set to `gmailClient`
 
-![Gmail connection form showing configurable references in the Config expression field](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Gmail connection form showing configurable references in the Config expression field"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to persist the connection. The **Connections** section in the sidebar now lists `gmailClient`.
 
-![Canvas showing the gmailClient connection node](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Canvas showing the gmailClient connection node"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_03_connections_list.png'),
+    }}
+/>
 
 > **Note:** The status bar may show "Errors: 1" at this stage. This is expected: the four configurable variables (`gmailClientId`, `gmailClientSecret`, `gmailRefreshToken`, `gmailRefreshUrl`) are referenced but not yet declared. They're resolved after you add them in the next step.
 
@@ -83,7 +104,13 @@ The sidebar now shows `main` (Automation) under **Entry Points**, and the flow e
 1. In the automation flow canvas, select the **+** (Add Step) button between the **Start** and **Error Handler** nodes to open the step-addition panel.
 2. In the panel, locate the **Connections** section and select **`gmailClient`** to expand it.
 
-![gmailClient connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="gmailClient connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select the **sendMessage** operation-described as "Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers."
 4. Fill in the operation fields as listed below:
@@ -92,11 +119,23 @@ The sidebar now shows `main` (Automation) under **Entry Points**, and the flow e
 - **Payload** : A `gmail:MessageRequest` record with `to` (array), `subject`, and `bodyInText` fields specifying the recipient, subject line, and email body
 - **Result** : Auto-generated as `gmailMessage`
 
-![sendMessage configuration form with all fields filled](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="sendMessage configuration form with all fields filled"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save** to add the step to the flow.
 
-![Completed Gmail automation flow with gmail:post step linked to gmailClient](/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Gmail automation flow with gmail:post step linked to gmailClient"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/googleapis.gmail/gmail_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -4,6 +4,9 @@ description: Step-by-step examples for sending messages, receiving messages, and
 keywords: [wso2 integrator, azure service bus, asb, example, sender, receiver, trigger]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Examples
 
 - [ASB MessageSender Example](#asb-messagesender-example)
@@ -43,7 +46,13 @@ flowchart LR
 
 Select **Add Connection** in the WSO2 Integrator panel to open the connector search palette, then search for **Azure Service Bus**.
 
-![Azure Service Bus connector palette open with search field before any selection](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_01_palette.png)
+<ThemedImage
+    alt="Azure Service Bus connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configuring the ASB connection
 
@@ -54,13 +63,25 @@ Select the **Azure Service Bus** connector card to open the configuration form. 
 - **config** : The `ASBServiceSenderConfig` record expression containing `entityType`, `topicOrQueueName`, and `connectionString`, each bound to a configurable variable
 - **connectionName** : The name used to identify this connection on the canvas
 
-![Azure Service Bus connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Azure Service Bus connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `asbMessagesender` entry now appears under **Connections** in the project tree.
 
-![Azure Service Bus Connections panel showing asbMessagesender entry after saving](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Azure Service Bus Connections panel showing asbMessagesender entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 4: Set actual values for your configurables
 
@@ -85,15 +106,33 @@ The design canvas opens showing a bare flow: **Start → Error Handler**.
 1. On the canvas, select the **⊕** node between **Start** and **Error Handler**.
 2. Under **Connections**, expand **asbMessagesender** to see available operations.
 
-![ASB connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="ASB connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Send** to open the configuration form.
 4. In the **Expression** tab, enter an `asb:Message` record with `body`, `contentType`, and `label` values.
 5. Select **Save**.
 
-![ASB Send operation configuration filled with all values](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="ASB Send operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed ASB automation flow](/img/connectors/catalog/messaging/asb/asb_sender_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed ASB automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_sender_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -149,7 +188,13 @@ Add the ASB MessageReceiver connector to your integration from the **Connections
 2. In the search field, enter `asb` to filter connectors.
 3. Select **ASB MessageReceiver** from the results.
 
-![ASB MessageReceiver connector palette open with search field before any selection](/img/connectors/catalog/messaging/asb/asb_screenshot_01_palette.png)
+<ThemedImage
+    alt="ASB MessageReceiver connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configuring the ASB MessageReceiver connection
 
@@ -163,13 +208,25 @@ Bind each connection parameter to a configurable variable so sensitive values ar
 - **entityConfig** : A `QueueConfig` record specifying the target queue name (`asbQueueName`)
 - **Connection Name** : A unique name for this connection; enter `asbMessagereceiver`
 
-![ASB MessageReceiver connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/asb/asb_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="ASB MessageReceiver connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
 Select **Save** to persist the connection. The canvas refreshes and shows the `asbMessagereceiver` connection node.
 
-![ASB MessageReceiver Connections panel showing asbMessagereceiver entry after saving](/img/connectors/catalog/messaging/asb/asb_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="ASB MessageReceiver Connections panel showing asbMessagereceiver entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 #### Step 4: Set actual values for your configurables
 
@@ -195,17 +252,35 @@ The canvas switches to the Automation flowchart view showing a **Start** node an
 2. Under **Connections**, expand **asbMessagereceiver** to reveal available operations.
 3. Select **Receive** to open the operation configuration panel.
 
-![ASB MessageReceiver connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/asb/asb_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="ASB MessageReceiver connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the output fields:
 - **Result** : Enter `result` as the output variable name
 - **Expected Type** : Select `asb:Message`
 
-![ASB MessageReceiver Receive operation configuration filled with all values](/img/connectors/catalog/messaging/asb/asb_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="ASB MessageReceiver Receive operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the node to the canvas.
 
-![Completed ASB MessageReceiver automation flow](/img/connectors/catalog/messaging/asb/asb_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed ASB MessageReceiver automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -255,7 +330,13 @@ flowchart LR
 
 Select **+ Add Artifact** in the WSO2 Integrator canvas to open the Artifacts palette, then expand the **Event Integration** category to see the available trigger cards.
 
-![Artifacts palette open showing the Event Integration category with Azure Service Bus card visible](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with Azure Service Bus card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the Azure Service Bus listener
 
@@ -275,7 +356,13 @@ In the **Create Azure Service Bus Event Integration** form, bind each field to a
 - **entityConfig** : Expression referencing the `queueName` configurable variable to identify the target queue
 - **listenerName** : The identifier for the listener instance within the integration
 
-![Azure Service Bus trigger configuration form fully filled with all listener parameters before clicking Create](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="Azure Service Bus trigger configuration form fully filled with all listener parameters before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -284,7 +371,13 @@ Select **Configurations** in the left panel of WSO2 Integrator to open the Confi
 - **connectionString** (string) : The full Azure Service Bus namespace connection string, for example `Endpoint=sb://<NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<KEY_NAME>;SharedAccessKey=<KEY_VALUE>`
 - **queueName** (string) : The name of the queue to consume messages from, for example `my-queue`
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Create the trigger
 
@@ -296,7 +389,13 @@ Select **Create** to submit the form and generate the service scaffold.
 
 In the service view, select **+ Add Handler**. The **Select Handler to Add** side panel opens on the right, listing the available handler options.
 
-![Service view with Select Handler to Add side panel open listing Azure Service Bus handler options](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view with Select Handler to Add side panel open listing Azure Service Bus handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Inspect the initial handler flow canvas
 
@@ -310,13 +409,25 @@ Select the **onMessage** row in the service view to open the flow canvas.
 
 Select the **+** icon in the flow chart, and in the side panel that opens, choose **Log Info** from the **Logging** section, then enter `message.toJsonString()` as the message.
 
-![onMessage handler flow canvas showing log:printInfo step added](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onMessage handler flow canvas showing log:printInfo step added"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 8: Return to the service view
 
 Select the back arrow or select **Azure Service Bus Event Integration** in the breadcrumb to return to the service view and confirm the `onMessage` handler row is registered under **Event Handlers**.
 
-![Trigger Service view showing the registered Event onMessage handler row](/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Trigger Service view showing the registered Event onMessage handler row"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/asb/asb_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

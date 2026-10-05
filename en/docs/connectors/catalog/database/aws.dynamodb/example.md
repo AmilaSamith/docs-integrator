@@ -4,6 +4,9 @@ connector_name: "aws.dynamodb"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -38,7 +41,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS DynamoDB connector palette open in the Add Connection dialog before selection](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS DynamoDB connector palette open in the Add Connection dialog before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS DynamoDB connector
 
@@ -53,13 +62,25 @@ This connector takes its whole connection configuration as a single record. Swit
 
 - **Config** : The connection configuration. Its `auth` field takes the AWS credentials and its `region` field takes the AWS region
 
-![AWS DynamoDB connection form with the Config record bound to configurable variables before saving](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS DynamoDB connection form with the Config record bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Saved dynamodbClient connection shown on the integration design canvas and in the project tree](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Saved dynamodbClient connection shown on the integration design canvas and in the project tree"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -87,7 +108,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **+** in the automation flow, between **Start** and **Error Handler**.
 2. Expand **dynamodbClient** to display its operations.
 
-![dynamodbClient connection expanded in the node panel to display its operations before selection](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="dynamodbClient connection expanded in the node panel to display its operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Item** and enter its required values.
 
@@ -96,7 +123,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 
 The key is a map of attribute names to typed attribute values, so a string partition key named `id` is written as `{"id": {S: itemId}}`. Use `N` instead of `S` for a numeric key.
 
-![Get Item operation form with the table name and key bound and the result variable named before saving](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Get Item operation form with the table name and key bound and the result variable named before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -104,7 +137,13 @@ The key is a map of attribute names to typed attribute values, so a string parti
 
 Add a **Log Info** action after the operation, and enter a message that reads the returned item from the result variable. The completed flow runs from **Start**, through the operation and the log action, to **Error Handler**.
 
-![Completed automation flow with Start, the Get Item operation, the log action, and Error Handler](/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with Start, the Get Item operation, the log action, and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.dynamodb/ballerinax_aws_dynamodb_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

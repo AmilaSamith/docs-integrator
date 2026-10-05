@@ -1,6 +1,10 @@
 ---
 title: Setup Guide
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Commerce Discounts connector.
@@ -17,19 +21,43 @@ Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
 1. Select **Create app** from the developer portal.
 
-   ![Create public app](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/build_public_app.png)
+   <ThemedImage
+       alt="Create public app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/build_public_app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/build_public_app.png'),
+       }}
+   />
 
 2. Select **Create app** on the next screen.
 
-   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/create_app.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/create_app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/create_app.png'),
+       }}
+   />
 
 3. Under **App Info**, enter a public app name and an optional logo and description.
 
-   ![Enter app details](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/enter_app_details.png)
+   <ThemedImage
+       alt="Enter app details"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/enter_app_details.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/enter_app_details.png'),
+       }}
+   />
 
 4. Go to the **Auth** tab and add your redirect URLs.
 
-   ![Auth page](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/auth_page.png)
+   <ThemedImage
+       alt="Auth page"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/auth_page.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/auth_page.png'),
+       }}
+   />
 
 5. Select **Create app**.
 
@@ -37,7 +65,13 @@ Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
 In the **Auth** tab, copy the **Client ID** and **Client Secret**.
 
-![Client ID and client secret](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/client_id_secret.png)
+<ThemedImage
+    alt="Client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/client_id_secret.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/client_id_secret.png'),
+    }}
+/>
 
 ## Step 4: Get the refresh token
 
@@ -46,13 +80,25 @@ In the **Auth** tab, copy the **Client ID** and **Client Secret**.
    - `crm.objects.line_items.write`
    - `oauth`
 
-   ![API reference for scopes](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/exmaple_api_reference.png)
+   <ThemedImage
+       alt="API reference for scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/exmaple_api_reference.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/exmaple_api_reference.png'),
+       }}
+   />
 
 2. Under **Sample install URL (OAuth)**, copy the full URL and open it in a browser.
 
 3. Select the account to authorize.
 
-   ![Choose account](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/account_chose.png)
+   <ThemedImage
+       alt="Choose account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/account_chose.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup/account_chose.png'),
+       }}
+   />
 
 4. Copy the authorization code from the redirect URL.
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -34,7 +37,13 @@ Add the Websubhub Publisher connection to your integration project.
 1. In the WSO2 Integrator sidebar, select **+ Add Artifact**.
 2. Search for **websub** in the artifact palette and select **Websubhub Publisher** (from `ballerina/websubhub`).
 
-![Websubhub Publisher connector palette open with search field before any selection](/img/connectors/catalog/built-in/websub/websub_screenshot_01_palette.png)
+<ThemedImage
+    alt="Websubhub Publisher connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Websubhub Publisher connection
 
@@ -45,13 +54,25 @@ In the **Add Connection** form, bind each parameter to a configurable variable:
 - **Connection Name** : A unique name for this connection instance
 - **Hub URL** : The URL of the remote WebSub Hub, bound to the `websubHubUrl` configurable variable
 
-![Websubhub Publisher connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/websub/websub_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Websubhub Publisher connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The new connection appears in the **Connections** panel.
 
-![Websubhub Publisher Connections panel showing websubhubPublisherclient entry after saving](/img/connectors/catalog/built-in/websub/websub_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Websubhub Publisher Connections panel showing websubhubPublisherclient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -75,7 +96,13 @@ Select **Save** to create the connection. The new connection appears in the **Co
 2. Expand the **websubhubPublisherclient** section in the node panel.
 3. Select **Publish Update** to open the operation configuration panel.
 
-![Websubhub Publisher connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/websub/websub_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Websubhub Publisher connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Fill in the operation fields:
 
@@ -83,11 +110,23 @@ Fill in the operation fields:
 - **Payload** : The JSON content to deliver to subscribers
 - **Result** : The variable name that receives the `websubhub:Acknowledgement` response
 
-![Websubhub Publisher publishUpdate operation configuration filled with all values](/img/connectors/catalog/built-in/websub/websub_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Websubhub Publisher publishUpdate operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**; the `publishUpdate` node appears on the flow canvas.
 
-![Completed Websubhub Publisher automation flow](/img/connectors/catalog/built-in/websub/websub_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Websubhub Publisher automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websub/websub_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,7 +33,13 @@ flowchart LR
 
 In the Design canvas, select **+ Add Artifact** → **Connection** to open the connector palette.
 
-![Discord connector palette open with search field before any selection](/img/connectors/catalog/communication/discord/discord_screenshot_01_palette.png)
+<ThemedImage
+    alt="Discord connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Discord connection
 
@@ -41,13 +50,25 @@ Search for `discord`, select the **ballerinax/discord** connector card to open t
 - **auth** : ApiKeysConfig authentication config referencing the `discordToken` configurable variable
 - **Connection Name** : `discordClient`
 
-![Discord connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/discord/discord_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Discord connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Update Connection** to save the connection. The `discordClient` connection node appears on the Design canvas.
 
-![Discord Connections panel showing discordClient entry after saving](/img/connectors/catalog/communication/discord/discord_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Discord Connections panel showing discordClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -67,7 +88,13 @@ Select **+ Add Artifact** and select **Automation** under the Automation categor
 1. Select the **+** button between the **Start** and **Error Handler** nodes to open the node panel.
 2. Under **Connections** in the node panel, select **discordClient** to expand it and reveal all available operations.
 
-![Discord connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/discord/discord_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Discord connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **create_message** from the list of operations, then fill in the operation fields:
 
@@ -78,9 +105,21 @@ Select **+ Add Artifact** and select **Automation** under the Automation categor
 
 4. Select **Save** to add the operation to the Automation flow.
 
-![Discord createMessage operation configuration filled with all values](/img/connectors/catalog/communication/discord/discord_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Discord createMessage operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Automation flow showing Start → discord:post → Error Handler → End](/img/connectors/catalog/communication/discord/discord_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Automation flow showing Start → discord:post → Error Handler → End"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/discord/discord_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -5,6 +5,9 @@ title: "Setup Guide"
 description: "How to set up and configure the ballerinax/sap.businessone.humanresources connector."
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide explains how to prepare your SAP Business One environment and collect the connection details the connector needs.
@@ -31,7 +34,13 @@ To connect, you need three values from the SAP Business One desktop client's log
 
 Click the company name at the top of the SAP Business One desktop application, or contact your administrator, to view these values.
 
-![SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection](/img/connectors/catalog/erp-business/sap-b1-choose-company.png)
+<ThemedImage
+    alt="SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+    }}
+/>
 
 ## Next steps
 

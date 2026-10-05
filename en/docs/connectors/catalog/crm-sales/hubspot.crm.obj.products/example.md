@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -34,7 +37,13 @@ flowchart LR
 4. Locate **Products (ballerinax/hubspot.crm.obj.products)** in the results.
 5. Select the connector card to open the **Configure Products** form.
 
-![HubSpot Products connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Products connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot Products connection
 
@@ -45,13 +54,25 @@ Bind the connection parameters to configurable variables. Select the **Config** 
 - **Config** : Bearer token authentication configuration using `hubspotAuthToken` as the configurable variable; set the full expression to `{auth: {token: hubspotAuthToken}}`
 - **Connection Name** : Defaults to `productsClient`; keep this value
 
-![HubSpot Products connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Products connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas returns to the project overview showing `productsClient` as a **Connection** node.
 
-![HubSpot Products Connections panel showing productsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Products Connections panel showing productsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -76,7 +97,13 @@ An Automation entry point named `main` is created. The canvas switches to the Au
 1. Select the **+** button between the **Start** node and the **Error Handler** node.
 2. The node panel slides in on the right showing available connections and statement types.
 
-![HubSpot Products connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Products connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Under **Connections**, select **productsClient** to expand it.
 4. Select **List** from the available operations.
@@ -85,11 +112,23 @@ An Automation entry point named `main` is created. The canvas switches to the Au
 
 - **Result** : Set to `result` to store the paginated product collection returned by the API
 
-![HubSpot Products List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Products List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 The `products : get` node appears on the canvas with result variable `result`.
 
-![Completed HubSpot Products automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Products automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.products/hubspot_crm_obj_products_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

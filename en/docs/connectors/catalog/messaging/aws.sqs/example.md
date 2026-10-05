@@ -4,6 +4,9 @@ connector_name: "aws.sqs"
 title: "Example"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -38,7 +41,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS SQS connector palette open before selection](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS SQS connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS SQS connector
 
@@ -54,13 +63,25 @@ Switch the **Auth** field to **Expression** mode and enter a record expression t
 - **Auth** : Authentication configuration with static credentials for the AWS account
 - **Region** : AWS region where the SQS queue is hosted
 
-![AWS SQS connection form with all parameters bound before saving](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS SQS connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![AWS SQS connection visible after saving](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="AWS SQS connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -85,14 +106,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select the **+** node in the automation flow.
 2. Expand **sqsClient** to display its operations.
 
-![AWS SQS connection expanded to display operations before selection](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="AWS SQS connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Send Message** and enter its required values.
 
 - **Queue Url** : URL of the Amazon SQS queue to which the message is sent
 - **Message Body** : Content of the message to deliver to the queue
 
-![AWS SQS Send Message operation with all values entered before saving](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="AWS SQS Send Message operation with all values entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -100,7 +133,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 
 Add a log action for the returned value, then return to the visual flow.
 
-![Completed AWS SQS flow with the configured operation](/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed AWS SQS flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/aws.sqs/ballerinax_aws_sqs_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 
