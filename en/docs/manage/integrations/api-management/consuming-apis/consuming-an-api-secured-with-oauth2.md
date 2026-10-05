@@ -6,6 +6,9 @@ keywords: [oauth2, consume api, api security, developer portal, access token, au
 slug: /manage/integrations/api-management/consuming-apis/consuming-an-api-secured-with-oauth2
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Consuming an API Secured with OAuth2
 
 This document provides guidance on how to consume an API that is secured using the OAuth2 security scheme.
@@ -23,17 +26,35 @@ Before you begin, ensure you have the following:
 2. Select your project and navigate to the **Overview** page in the left navigation.
 3. Select the integration as API that you want to consume.
 4. In the integration **Overview** page, on the right side, click the **Developer Portal** icon. This will open the Developer Portal for the selected API.
-  ![Open Developer Portal](/img/manage/cloud/api-management/open-developer-portal.gif)
+  <ThemedImage
+      alt="Open Developer Portal"
+      sources={{
+          light: useBaseUrl('/img/manage/cloud/api-management/open-developer-portal.gif'),
+          dark: useBaseUrl('/img/manage/cloud/api-management/open-developer-portal.gif'),
+      }}
+  />
 5. In the Developer Portal, click **Subscribe** to subscribe the API to an application.
 6. If you already have an application, select it from the list. If not, enter a name for a new application and click **Create Application**.
 7. Once the application is created, click **Subscribe** to complete the subscription process.
-![Subscribe API to Application](/img/manage/cloud/api-management/subscribe-api-to-application.gif)
+<ThemedImage
+    alt="Subscribe API to Application"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/api-management/subscribe-api-to-application.gif'),
+        dark: useBaseUrl('/img/manage/cloud/api-management/subscribe-api-to-application.gif'),
+    }}
+/>
 8. In the left navigation menu, click **Applications** and select your application.
 9. Click **Manage Keys** at the top right of the application page.
 10. Under the **OAuth2 Keys** section, click **Generate Key**.
 11. A dialog box showing the credentials will appear, which you can close after noting down the necessary details (You can modify the **Advanced Configuration** if needed).
 12. To test the API, click **Generate** under the **Token** subsection. This will generate an access token using the OAuth2 client credentials flow.
-![Generate OAuth2 Token](/img/manage/cloud/api-management/oauth2-consumption-generate-token.gif)
+<ThemedImage
+    alt="Generate OAuth2 Token"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/api-management/oauth2-consumption-generate-token.gif'),
+        dark: useBaseUrl('/img/manage/cloud/api-management/oauth2-consumption-generate-token.gif'),
+    }}
+/>
 
 Once you have the access token, you can use it to make authenticated requests to the secured API. Include the token in the `Authorization` header of your HTTP requests as follows:
 

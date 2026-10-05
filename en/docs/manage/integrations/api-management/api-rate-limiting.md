@@ -6,6 +6,9 @@ keywords: [api rate limiting, rate limiting, request limit, api performance, thr
 slug: /manage/integrations/api-management/api-rate-limiting
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # API Rate Limiting
 
 API rate limiting is a technique that allows you to control the rate of requests made to an API. Rate limiting helps prevent system overload and enhances API performance. By limiting the number of requests in a specific time frame, you ensure that your API remains available and responsive to all users while being protected from malicious attacks.
@@ -28,7 +31,13 @@ You can apply rate limiting settings separately for each environment.
 6. In the **Manage** section, click **Rate Limiting** to expand it.
 7. Select a **Rate Limiting Level** based on your requirements and click **Apply**.
 
-![Rate Limiting](/img/manage/cloud/api-management/rate-limiting.gif)
+<ThemedImage
+    alt="Rate Limiting"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/api-management/rate-limiting.gif'),
+        dark: useBaseUrl('/img/manage/cloud/api-management/rate-limiting.gif'),
+    }}
+/>
 
 ## API-level rate limiting
 

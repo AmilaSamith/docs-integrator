@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, project, create project, delete project,
 slug: /manage/projects
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Manage Projects
 
 A project is the top-level container for your integrations on WSO2 Cloud - Integration Platform. This page explains how to create a project from scratch, edit its details, and remove it when it is no longer needed.
@@ -32,7 +35,13 @@ Click **Organization** in the top navigation to open the organization overview. 
 
 3. Optionally, connect a Git repository to embed repository metadata with the project. To import integrations from a repository rather than just linking metadata, use the [Import a project](../deploy-and-run/deploy-to-wso2-cloud/import-project.md) flow instead.
 
-    ![Create Project](/img/manage/cloud/projects/create-project.png)
+    <ThemedImage
+        alt="Create Project"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/projects/create-project.png'),
+            dark: useBaseUrl('/img/manage/cloud/projects/create-project.png'),
+        }}
+    />
 
 4. Click **Create**.
 
@@ -43,7 +52,13 @@ WSO2 Cloud creates the project and navigates you to the project home.
 1. From the project home, go to **Admin** > **Settings**.
 2. Update the **Name** or **Description** as needed by clicking the respective fields.
 
-    ![Project Overview](/img/manage/cloud/projects/manage-project.png)
+    <ThemedImage
+        alt="Project Overview"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/projects/manage-project.png'),
+            dark: useBaseUrl('/img/manage/cloud/projects/manage-project.png'),
+        }}
+    />
 
 3. Save your changes.
 

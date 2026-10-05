@@ -6,6 +6,9 @@ keywords: [wso2 cloud, custom domain, custom URL, CNAME, TLS certificate, Let's 
 slug: /manage/configurations/custom-domain
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Configure a Custom Domain
 
 A custom domain is essential for effective branding, discoverability, and credibility of an integration exposed as an API. WSO2 Cloud - Integration Platform lets you configure custom domains for your organization so that developers can set custom URLs for their integrations.
@@ -53,12 +56,24 @@ To add a custom domain, you must have organization administrator privileges.
 
 7. Review the generated CNAME target value displayed and create a DNS record that maps your domain name to the CNAME target value with your DNS provider.
 
-    ![CNAME target value](/img/manage/cloud/configurations/custom-domain/cname-target-value.png)
+    <ThemedImage
+        alt="CNAME target value"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/custom-domain/cname-target-value.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/custom-domain/cname-target-value.png'),
+        }}
+    />
 
     :::info
     When you select **Developer Portal** as the entity type, the environment is not applicable and the CNAME alias is displayed as follows:
 
-    ![Developer Portal CNAME target value](/img/manage/cloud/configurations/custom-domain/developer-portal-cname-target-value.png)
+    <ThemedImage
+        alt="Developer Portal CNAME target value"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/custom-domain/developer-portal-cname-target-value.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/custom-domain/developer-portal-cname-target-value.png'),
+        }}
+    />
     :::
 
 8. After creating the CNAME DNS record, click **Verify**.
@@ -145,7 +160,13 @@ To add a custom domain, you must have organization administrator privileges.
 
 The custom domain is now listed in the **Active Domains** tab under **URL Settings**.
 
-![Active domains](/img/manage/cloud/configurations/custom-domain/active-domains.png)
+<ThemedImage
+    alt="Active domains"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/configurations/custom-domain/active-domains.png'),
+        dark: useBaseUrl('/img/manage/cloud/configurations/custom-domain/active-domains.png'),
+    }}
+/>
 
 The domain is available for the entity types in the specified environment. You can use it to configure a custom URL for an integration.
 
@@ -170,7 +191,13 @@ Before you configure a custom URL for a specific environment, ensure the integra
 3. In the left navigation menu under **Admin**, click **Settings**. This opens the integration-level settings page.
 4. Click the **URL Settings** tab. This displays the active deployments of the integration across environments and shows whether a custom URL is configured. If a custom domain is available for an environment, the **Edit URL Mapping** icon in the corresponding **Action** column is enabled.
 
-    ![Active deployments](/img/manage/cloud/configurations/custom-domain/active-deployments.png)
+    <ThemedImage
+        alt="Active deployments"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/custom-domain/active-deployments.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/custom-domain/active-deployments.png'),
+        }}
+    />
 
 5. Click the **Edit URL Mapping** icon in the **Action** column for the environment you want to configure. This opens the **URL Settings** dialog.
 6. In the **URL Settings** dialog, select a domain from the **Domain** list.
@@ -182,7 +209,13 @@ Before you configure a custom URL for a specific environment, ensure the integra
 
 7. Click **Deploy**. This creates the custom URL mapping, which appears under the **URL Settings** tab with the status **Approved**.
 
-    ![Approved custom URL](/img/manage/cloud/configurations/custom-domain/approved-custom-url.png)
+    <ThemedImage
+        alt="Approved custom URL"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/custom-domain/approved-custom-url.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/custom-domain/approved-custom-url.png'),
+        }}
+    />
 
 Once deployed, both the custom URL and the default URL can be used to access the integration.
 

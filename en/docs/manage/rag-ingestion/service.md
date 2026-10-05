@@ -6,6 +6,9 @@ keywords: [wso2 integrator, rag, api, service, ingestion]
 slug: /manage/rag-ingestion/service
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # RAG Service
 
 WSO2 Cloud - Integration Platform exposes RESTful API endpoints to support RAG workflows. Use these endpoints to ingest files, parse and chunk content, and retrieve relevant chunks programmatically.
@@ -47,7 +50,13 @@ On the overview page, open the development environment card and click **Test** t
 - Some parameters are prefilled with defaults. Adjust them as needed.
 :::
 
-![RAG service](/img/manage/cloud/rag-ingestion/rag-service-light.gif)
+<ThemedImage
+    alt="RAG service"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-service-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-service-light.gif'),
+    }}
+/>
 
 ## Available API endpoints
 Below are the main endpoints exposed by the service.

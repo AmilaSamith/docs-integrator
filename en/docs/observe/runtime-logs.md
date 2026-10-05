@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, runtime logs, observability, logs]
 slug: /observe/runtime-logs
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Runtime Logs
 
 Runtime logs provide insights into application and gateway activity for integrations deployed on WSO2 Cloud - Integration Platform. They centralize diverse log sources to streamline debugging and troubleshooting across environments.
@@ -18,7 +21,13 @@ All personally identifiable information (PII) is resolved at the frontend servic
 
 For all integration types, go to **Observability** > **Runtime Logs** in the left navigation. This unified view is available at both the project and integration levels, and supports filtering and search across all log entries.
 
-![Runtime logs](/img/observe/cloud/runtime-logs/runtime-logs.png)
+<ThemedImage
+    alt="Runtime logs"
+    sources={{
+        light: useBaseUrl('/img/observe/cloud/runtime-logs/runtime-logs.png'),
+        dark: useBaseUrl('/img/observe/cloud/runtime-logs/runtime-logs.png'),
+    }}
+/>
 
 Depending on the integration type, you can also access runtime logs from the Integration Overview page:
 

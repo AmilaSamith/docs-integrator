@@ -6,6 +6,9 @@ keywords: [wso2 integrator, build configuration, wso2 cloud, unit tests, submodu
 slug: /manage/configurations/build-configurations
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Build Configurations
 
 You can control how your integration is built on WSO2 Cloud - Integration Platform by configuring the build settings. Both settings are enabled by default.
@@ -17,7 +20,13 @@ You can control how your integration is built on WSO2 Cloud - Integration Platfo
 
     The **Build Configurations** panel opens on the right.
 
-    ![Build configurations panel](/img/manage/cloud/configurations/build-configurations/build-config.png)
+    <ThemedImage
+        alt="Build configurations panel"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/build-configurations/build-config.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/build-configurations/build-config.png'),
+        }}
+    />
 
 3. Configure the following settings:
 
