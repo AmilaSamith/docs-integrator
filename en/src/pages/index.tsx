@@ -244,23 +244,22 @@ const quickLinks = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Welcome screenshot -- the real WSO2 Integrator get-started screen,  */
-/*  copied verbatim from wso2-integrator's own homepage (image and all) */
-/*  since this branch otherwise has no real product to screenshot. A    */
-/*  polished mockup export with its own rounded corners/shadow/glow     */
-/*  already baked in, so it's rendered standalone rather than inside a  */
-/*  .productCard browser-chrome frame -- that frame would double up the */
-/*  styling and clip the image's own soft edges (same reasoning as      */
-/*  wso2-integrator's own version of this component).                   */
-/* ------------------------------------------------------------------ */
+/*  Welcome screenshot -- the real WSO2 Integrator get-started screen,
+ *  inside the same browser-chrome frame (.productCard) the saas and
+ *  wso2-integrator heroes use, so every product homepage matches.
+ * ------------------------------------------------------------------ */
 function WelcomeScreenshot(): ReactNode {
   const src = useBaseUrl('/img/landing/wso2-integrator-welcome.png');
   return (
-    <img
-      className={styles.heroScreenshot}
-      src={src}
-      alt="WSO2 Integrator welcome and sign-in screen"
-    />
+    <div className={styles.productCard}>
+      <div className={styles.productCardChrome}>
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardDot} />
+        <span className={styles.productCardTitle}>WSO2 Integrator</span>
+      </div>
+      <img src={src} alt="WSO2 Integrator welcome and sign-in screen" />
+    </div>
   );
 }
 

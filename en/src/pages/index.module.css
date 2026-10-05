@@ -54,12 +54,39 @@
   gap: 1.125rem;
 }
 
-/* The screenshot is a polished mockup export with its own rounded
-   corners/shadow/glow already baked in -- no wrapper chrome here (that
-   would double up the framing and clip its own soft edges). Copied
-   verbatim from wso2-integrator's own homepage -- see WelcomeScreenshot
-   in index.tsx. */
-.heroScreenshot {
+.productCard {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+}
+
+.productCardChrome {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.productCardDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.productCardTitle {
+  margin-left: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #9FB0CC;
+}
+
+.productCard img {
   display: block;
   width: 100%;
   height: auto;
