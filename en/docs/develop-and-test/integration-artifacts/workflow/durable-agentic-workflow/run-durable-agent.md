@@ -38,7 +38,13 @@ The steps below follow one example: a `POST /claim` resource that hands each inc
 
 4. Click **Save**.
 
-![Adding a Run Durable Agent step to the claim resource, selecting claimAgent, setting the query and the payload input, and saving](/img/workflows/agentic/run-durable-agent/run-durable-agent.gif)
+<ThemedImage
+    alt="Adding a Run Durable Agent step to the claim resource, selecting claimAgent, setting the query and the payload input, and saving"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/run-durable-agent/run-durable-agent.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/run-durable-agent/run-durable-agent.gif'),
+    }}
+/>
 
 ## Query or input?
 

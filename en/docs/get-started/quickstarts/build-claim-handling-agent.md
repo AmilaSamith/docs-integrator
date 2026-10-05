@@ -7,6 +7,8 @@ keywords: [wso2 integrator, durable workflow, agentic workflow, durable agent, c
 slug: /get-started/quickstarts/build-durable-agent
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -40,7 +42,13 @@ Creating the agent is also where you describe it: the model it thinks with, its 
 1. In the design view, click **Add Artifact Manually**.
 2. Under **Durable Workflow**, select **Durable Agentic Workflow**. The **Create New Durable Agentic Workflow** form opens.
 
-   ![Create Durable Agent](/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.png)
+   <ThemedImage
+       alt="Create Durable Agent"
+       sources={{
+           light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.png'),
+           dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.png'),
+       }}
+   />
 
 3. Set **Name** to `claimAgent`.
 4. Leave **Model** on **Default WSO2 Model Provider**, the model your Copilot sign-in provides.
@@ -64,7 +72,13 @@ Creating the agent is also where you describe it: the model it thinks with, its 
 
 9. Click **Create Agent**.
 
-![Creating the claimAgent durable agentic workflow, filling in the model, role, instructions, and an ExpenseClaim input type](/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.gif)
+<ThemedImage
+    alt="Creating the claimAgent durable agentic workflow, filling in the model, role, instructions, and an ExpenseClaim input type"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/create-agent.gif'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -110,7 +124,13 @@ Activities are the units of work the agent can call. Each one runs durably — c
 5. Set **Return Type** to `boolean` and click **Save**.
 6. Click the `validateClaim` form under **Current Integration**. Leave **Retry Policy** on **No Automatic Retry** and click **Save**.
 
-![Creating the validateClaim activity and registering it on the claimAgent node](/img/workflows/getting-started/build-a-claim-workflow-agent/attach-validate-claim.gif)
+<ThemedImage
+    alt="Creating the validateClaim activity and registering it on the claimAgent node"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-validate-claim.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-validate-claim.gif'),
+    }}
+/>
 
 `validateClaim` joins the agent node as a capability and appears under **Workflow Activities** in the left sidebar.
 
@@ -159,7 +179,13 @@ Creating the activity gives it a signature but an empty body. The activity is a 
 4. With the cursor after the inserted value, type `> 0d` to require a positive amount.
 5. Click **Save**, then select `claimAgent` under **Workflows** to return to the agent diagram.
 
-![Defining the validateClaim activity body with a Return step](/img/workflows/getting-started/build-a-claim-workflow-agent/validate-claim-body.gif)
+<ThemedImage
+    alt="Defining the validateClaim activity body with a Return step"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/validate-claim-body.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/validate-claim-body.gif'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -191,7 +217,13 @@ Paying out is the risky step, so gate it behind a person. The activity is create
 6. Set **Reviewer Roles** to `Finance`, the roles permitted to decide that approval.
 7. Click **Save**.
 
-![Creating the payClaim activity and registering it with Requires Approval and the Finance reviewer role](/img/workflows/getting-started/build-a-claim-workflow-agent/attach-pay-claim.gif)
+<ThemedImage
+    alt="Creating the payClaim activity and registering it with Requires Approval and the Finance reviewer role"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-pay-claim.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-pay-claim.gif'),
+    }}
+/>
 
 `payClaim` joins the agent node beside `validateClaim`, drawn with a badge marking it as gated. The agent can now propose a payment, but it cannot release one on its own.
 
@@ -249,7 +281,13 @@ An agent does nothing until something starts it. Give the integration an HTTP re
 
 The resource now starts an agent run for every claim it receives and answers with that run's instance ID.
 
-![Adding an HTTP service with a POST claim resource that starts the claimAgent run and returns its instance ID](/img/workflows/getting-started/build-a-claim-workflow-agent/start-agent-from-service.gif)
+<ThemedImage
+    alt="Adding an HTTP service with a POST claim resource that starts the claimAgent run and returns its instance ID"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-agent-from-service.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-agent-from-service.gif'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -298,7 +336,13 @@ Starting ICP Server with configuration: /Applications/WSO2 Integrator.app/Conten
 
 The status bar at the bottom right switches from **ICP: Stopped** to **ICP: Running**.
 
-![Enabling ICP monitoring, expanding Publish to local ICP, and starting the local ICP server from the Deployment Options panel](/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif)
+<ThemedImage
+    alt="Enabling ICP monitoring, expanding Publish to local ICP, and starting the local ICP server from the Deployment Options panel"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
+    }}
+/>
 
 :::info Start ICP before the integration
 **Enable ICP monitoring** writes the runtime bridge configuration that points this integration at the local ICP server. Start ICP first so the integration registers with it as it boots; otherwise the run has no inbox to publish the `payClaim` approval to.
@@ -340,7 +384,13 @@ Once the service is up, a `Tryit.hurl` file opens automatically beside the desig
 
 The generated request already carries the method, URL, and content type, along with the schema the resource expects:
 
-![Running the integration, with the Try It file opening automatically once the service is up](/img/workflows/getting-started/build-a-claim-workflow-agent/run-and-try-it.gif)
+<ThemedImage
+    alt="Running the integration, with the Try It file opening automatically once the service is up"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/run-and-try-it.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/run-and-try-it.gif'),
+    }}
+/>
 
 Replace the `{?}` placeholders with a real claim, then click the run button in the request cell's left gutter to send it.
 
@@ -369,7 +419,13 @@ Status: 201 Created
 01a0b2bd-4405-7694-8b4d-4e3bfb1eeea0
 ```
 
-![Filling in the claim payload and sending it from the Try It file, returning 201 Created with the instance ID](/img/workflows/getting-started/build-a-claim-workflow-agent/submit-claim.gif)
+<ThemedImage
+    alt="Filling in the claim payload and sending it from the Try It file, returning 201 Created with the instance ID"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/submit-claim.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/submit-claim.gif'),
+    }}
+/>
 
 The agent validates the claim, decides to pay it, and **pauses**: the gated `payClaim` created an approval review for the `Finance` role. The workflow now waits durably; you can even restart the integration and nothing is lost.
 
@@ -377,7 +433,13 @@ The agent validates the claim, decides to pay it, and **pauses**: the gated `pay
 
 The run is now sitting on the `payClaim` approval, and the ICP console is where that wait is visible.
 
-![The claimAgent execution timeline, with Thinking and validateClaim completed and review-payClaim still running](/img/workflows/getting-started/build-a-claim-workflow-agent/review-pay-claim-waiting.png)
+<ThemedImage
+    alt="The claimAgent execution timeline, with Thinking and validateClaim completed and review-payClaim still running"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/review-pay-claim-waiting.png'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/review-pay-claim-waiting.png'),
+    }}
+/>
 
 1. In WSO2 Integrator, under **Publish to local ICP**, click **View in ICP**. The console opens in the browser, already signed in as the super admin, on the **All Projects** page.
 2. That page already lists `default-project`, and it holds an integration named `claimhandler`. Neither was created by hand: the integration registered both with ICP when it started, and because it carries a durable workflow it is registered as a workflow integration.
@@ -389,7 +451,13 @@ The run is now sitting on the `payClaim` approval, and the ICP console is where 
    - The timeline below is the run so far: the agent thought, completed `validateClaim`, thought again.
    - At the end of the timeline, you will see that the agent opened **review-payClaim**, which is still running. That open review is the gate holding the payment.
 
-![Opening the ICP console on the auto-registered claimhandler integration and drilling into the running claimAgent execution waiting on review-payClaim](/img/workflows/getting-started/build-a-claim-workflow-agent/view-claim-in-icp.gif)
+<ThemedImage
+    alt="Opening the ICP console on the auto-registered claimhandler integration and drilling into the running claimAgent execution waiting on review-payClaim"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/view-claim-in-icp.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/view-claim-in-icp.gif'),
+    }}
+/>
 
 ## Step 10: Assign the Finance role to your user
 
@@ -400,7 +468,13 @@ The review is on the timeline, but it is not yet addressed to you. `payClaim` wa
 3. Open the **Groups** tab and click **Super Admins**, the group that holds `admin`.
 4. On the **ROLES** tab, click **+ Add Roles**. Select `Finance` in the **Roles** dropdown, leave **Applicable Environments** on **All Environments**, and click **Add**.
 
-![Creating the Finance role under Access Control and adding it to the Super Admins group](/img/workflows/getting-started/build-a-claim-workflow-agent/assign-finance-role.gif)
+<ThemedImage
+    alt="Creating the Finance role under Access Control and adding it to the Super Admins group"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/assign-finance-role.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/assign-finance-role.gif'),
+    }}
+/>
 
 The console confirms **Role(s) added to group successfully**, and the group's role list now holds **Finance** beside **Super Admin**, both mapped at **Organization** level for **All** environments. Roles reach a user through their groups, so `admin` is now a `Finance` reviewer.
 
@@ -419,7 +493,13 @@ The console confirms **Role(s) added to group successfully**, and the group's ro
 
 The console reports **Activity proceeded**, and on the next refresh the list reads **No pending tasks**.
 
-![Opening the payClaim approval under Human Tasks and releasing the payment with Proceed](/img/workflows/getting-started/build-a-claim-workflow-agent/approve-pay-claim.gif)
+<ThemedImage
+    alt="Opening the payClaim approval under Human Tasks and releasing the payment with Proceed"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/approve-pay-claim.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/approve-pay-claim.gif'),
+    }}
+/>
 
 Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim:
 
@@ -427,7 +507,13 @@ Open the run again from **Workflows**. `payClaim` has now completed. The agent t
 The claim has been processed successfully and paid with the ID PAY-2002.
 ```
 
-![The completed claimAgent execution, with its workflow result and an all-green timeline ending in payClaim](/img/workflows/getting-started/build-a-claim-workflow-agent/claim-run-completed.png)
+<ThemedImage
+    alt="The completed claimAgent execution, with its workflow result and an all-green timeline ending in payClaim"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/claim-run-completed.png'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/claim-run-completed.png'),
+    }}
+/>
 
 The timeline is green end to end, and it shows where the time went: the thinking turns and `validateClaim` took seconds, `payClaim` ran in milliseconds once released, and `review-payClaim` accounts for almost the entire run. The claim was not being worked on for 52 of its 53 minutes. It was waiting for a person, and it lost nothing by waiting.
 

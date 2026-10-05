@@ -5,6 +5,8 @@ keywords: [wso2 integrator, connections, connector, database client, http client
 slug: /develop-and-test/integration-artifacts/supportive-artifacts/connections
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,15 +23,33 @@ Connection artifacts centralize the configuration for external systems. Define c
 
 2. Click **+** next to **Connections** in the sidebar. Alternatively, click **+ Add Artifact** in the **Design** panel, then click **Connection** under **Other Artifacts** or **Library Artifacts**.
 
-   ![WSO2 Integrator Add connection via sidebar](/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png)
+   <ThemedImage
+       alt="WSO2 Integrator Add connection via sidebar"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png'),
+       }}
+   />
 
 3. In the **Add Connection** panel, browse the available connectors. The panel groups them into **Create New Connector** and **Pre-built Connectors**. For details on each category and how to choose, see [Connection types](#connection-types).
 
-   ![WSO2 Integrator Add Connection panel](/img/develop/integration-artifacts/supporting/connections/add-connection.png)
+   <ThemedImage
+       alt="WSO2 Integrator Add Connection panel"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/add-connection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/add-connection.png'),
+       }}
+   />
 
 4. Select a connector. A configuration form appears with fields specific to that connector (for example, base URL and authentication for HTTP, host, port, and credentials for a database, or application/vendor-specific attributes).
 
-   ![WSO2 Integrator Connection initialization form](/img/develop/integration-artifacts/supporting/connections/init-connection.png)
+   <ThemedImage
+       alt="WSO2 Integrator Connection initialization form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/init-connection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/init-connection.png'),
+       }}
+   />
 
 5. Fill in the required fields and click **Save Connection**.
 
@@ -88,7 +108,13 @@ final kafka:Producer kafkaProducer = check new (kafkaBrokers, {
 
 To edit an existing connection, click its name in the sidebar under **Connections** to open its configuration form. Update the fields and click **Update Connection**.
 
-![WSO2 Integrator Connection edit form](/img/develop/integration-artifacts/supporting/connections/edit-connection.png)
+<ThemedImage
+    alt="WSO2 Integrator Connection edit form"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/edit-connection.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/edit-connection.png'),
+    }}
+/>
 
 ## Connection types
 

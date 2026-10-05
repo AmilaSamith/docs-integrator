@@ -42,7 +42,13 @@ Like every other durable wait, it holds no thread and no connection while it wai
 4. Click **Add** to commit the **Data Waits** entry. It collapses to a row showing its type and variable. Use **+ Add Data Waits** to wait on more than one event.
 5. Click **Save**.
 
-![Adding an Await Data Event step and bounding the wait with a timeout](/img/workflows/develop/data-events/await-data-event.gif)
+<ThemedImage
+    alt="Adding an Await Data Event step and bounding the wait with a timeout"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/data-events/await-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/develop/data-events/await-data-event.gif'),
+    }}
+/>
 
 The diagram gains a wait node, drawn with an arrow arriving from outside the flow, and the workflow now suspends there.
 

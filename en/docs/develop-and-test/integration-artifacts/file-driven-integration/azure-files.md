@@ -5,6 +5,8 @@ keywords: [wso2 integrator, azure files, file integration, file share, polling, 
 slug: /develop-and-test/integration-artifacts/file-driven-integration/azure-files
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -25,7 +27,13 @@ One flow creates the listener and the service together; the authentication metho
 
 2. Scroll to the **File Integration** category, select the **Azure Files** card, and click **Next**.
 
-   ![New Integration wizard with the Azure Files card selected](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png)
+   <ThemedImage
+       alt="New Integration wizard with the Azure Files card selected"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png'),
+       }}
+   />
 
 3. The **Azure Files Integration** page opens with the **Listener Configurations** form. Fill in:
 
@@ -42,7 +50,13 @@ One flow creates the listener and the service together; the authentication metho
    | **Account Name** | The storage account name. |
    | **Account Key** | A base64-encoded access key of the storage account. |
 
-   ![Azure Files listener configuration form](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png)
+   <ThemedImage
+       alt="Azure Files listener configuration form"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png'),
+       }}
+   />
 
    The selector's other options — SAS token, SAS URL, connection string, and Microsoft Entra ID — reveal the fields of the matching credential record shown on the Ballerina Code tab.
 
@@ -200,7 +214,13 @@ There is no delete handler: the listener dispatches the files present on the sha
 
 1. Open the service view (select **files:Service** under **Entry Points**) and click **+ Add Handler**. The handler picker offers **On Create**, which fires for files appearing on the monitoring path; select it.
 
-   ![Handler picker with the On Create handler](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png)
+   <ThemedImage
+       alt="Handler picker with the On Create handler"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png'),
+       }}
+   />
 
 2. The handler configuration panel opens:
 
@@ -210,11 +230,23 @@ There is no delete handler: the listener dispatches the files present on the sha
    | **After File Processing — On Success** | Action to take when the handler completes without error: **Move** to a destination path or **Delete** the file. See [Post-processing](#post-processing-moving-or-deleting-files). |
    | **After File Processing — On Error** | Action to take when the handler returns an error: **Move** to an error directory or **Delete** the file. It also covers a content-binding failure, unless the service declares an `onError` handler in code, in which case the binding failure's disposition follows `onError`'s own actions instead. See [Post-processing](#post-processing-moving-or-deleting-files). |
 
-   ![On Create handler configuration with the format and post-processing actions](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png)
+   <ThemedImage
+       alt="On Create handler configuration with the format and post-processing actions"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png'),
+       }}
+   />
 
 3. Click **Save** to register the handler. The service view lists it:
 
-   ![Service view with the registered handler](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png)
+   <ThemedImage
+       alt="Service view with the registered handler"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png'),
+       }}
+   />
 
 An `onError` handler for poll, read, and content-binding failures is added in the code view — see the Ballerina Code tab. Declaring one changes how content-binding failures are post-processed; see [Post-processing](#post-processing-moving-or-deleting-files).
 

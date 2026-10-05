@@ -6,6 +6,9 @@ keywords: [wso2 integrator, model provider, llm, large language model, ai, anthr
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Model Providers for LLMs
 
 A **Large Language Model (LLM)** is a neural network trained on large text corpora. You send it a prompt (a text instruction) and it generates a response. LLMs power natural language tasks such as answering questions, summarizing content, extracting structured data, and planning and executing tool calls.
@@ -31,15 +34,33 @@ Per-call overrides are not exposed in the form. Anything that varies per request
 
 - **Add Node** panel > **AI** > **Direct LLM** > **Model Provider** 
 
-![Right-side Model Providers panel showing the search bar and a + Add Model Provider button at the top of an empty list.](/img/genai/develop/components/model-providers/01-panel-empty.png)
+<ThemedImage
+    alt="Right-side Model Providers panel showing the search bar and a + Add Model Provider button at the top of an empty list."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/01-panel-empty.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/01-panel-empty.png'),
+    }}
+/>
 
 - Click **+ Add Model Provider** and the **Select Model Provider** picker opens with a card for each provider type:
 
-![Select Model Provider picker listing Default Model Provider (WSO2), Anthropic, Azure OpenAI, DeepSeek, Google Vertex, Mistral, Ollama, OpenAI, with one-line descriptions for each.](/img/genai/develop/components/model-providers/02-select-list-top.png)
+<ThemedImage
+    alt="Select Model Provider picker listing Default Model Provider (WSO2), Anthropic, Azure OpenAI, DeepSeek, Google Vertex, Mistral, Ollama, OpenAI, with one-line descriptions for each."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/02-select-list-top.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/02-select-list-top.png'),
+    }}
+/>
 
 Scroll to see the remaining options:
 
-![Select Model Provider picker scrolled to show DeepSeek (highlighted), Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter Model Provider entries.](/img/genai/develop/components/model-providers/03-select-list-bottom.png)
+<ThemedImage
+    alt="Select Model Provider picker scrolled to show DeepSeek (highlighted), Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter Model Provider entries."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/03-select-list-bottom.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/03-select-list-bottom.png'),
+    }}
+/>
 
 ## Implementations overview
 
@@ -89,7 +110,13 @@ Provided by the core `ballerina/ai` package. Routes through the WSO2 intelligenc
 
 ### Create form
 
-![Create Model Provider form for the Default WSO2 provider. Header reads 'Creates a default model provider based on the provided wso2ProviderConfig'. Banner: 'This is a simple operation that requires no parameters. Specify where to store the result to finish.' Two fields: Model Provider Name (default aiWso2modelprovider) and Result Type (locked to ai:Wso2ModelProvider). Save button.](/img/genai/develop/components/model-providers/04-wso2-default.png)
+<ThemedImage
+    alt="Create Model Provider form for the Default WSO2 provider. Header reads 'Creates a default model provider based on the provided wso2ProviderConfig'. Banner: 'This is a simple operation that requires no parameters. Specify where to store the result to finish.' Two fields: Model Provider Name (default aiWso2modelprovider) and Result Type (locked to ai:Wso2ModelProvider). Save button."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/04-wso2-default.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/04-wso2-default.png'),
+    }}
+/>
 
 No provider-specific fields. Sign in with your WSO2 account and WSO2 Integrator handles the rest. There are no advanced configurations on this provider.
 
@@ -105,7 +132,13 @@ Official website: [anthropic.com](https://www.anthropic.com/).
 
 ### Create form
 
-![Create Model Provider form for Anthropic showing two required fields: API Key and Model Type. Below: Advanced Configurations Expand link, Model Provider Name anthropicModelprovider, Result Type anthropic:ModelProvider.](/img/genai/develop/components/model-providers/09-anthropic-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for Anthropic showing two required fields: API Key and Model Type. Below: Advanced Configurations Expand link, Model Provider Name anthropicModelprovider, Result Type anthropic:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/09-anthropic-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/09-anthropic-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -114,7 +147,13 @@ Official website: [anthropic.com](https://www.anthropic.com/).
 
 ### Advanced configurations
 
-![Anthropic Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://api.anthropic.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version.](/img/genai/develop/components/model-providers/10-anthropic-advanced.png)
+<ThemedImage
+    alt="Anthropic Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://api.anthropic.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/10-anthropic-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/10-anthropic-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -132,7 +171,13 @@ Official website: [Azure OpenAI Service](https://azure.microsoft.com/services/co
 
 ### Create form
 
-![Create Model Provider form for Azure OpenAI showing four required fields: Service URL, API Key, Deployment ID, API Version. Below: Advanced Configurations Expand link, Model Provider Name azureOpenaimodelprovider, Result Type azure:OpenAiModelProvider.](/img/genai/develop/components/model-providers/07-azure-openai-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for Azure OpenAI showing four required fields: Service URL, API Key, Deployment ID, API Version. Below: Advanced Configurations Expand link, Model Provider Name azureOpenaimodelprovider, Result Type azure:OpenAiModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/07-azure-openai-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/07-azure-openai-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -143,7 +188,13 @@ Official website: [Azure OpenAI Service](https://azure.microsoft.com/services/co
 
 ### Advanced configurations
 
-![Azure OpenAI Create Model Provider form with Advanced Configurations expanded. Visible fields: Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version.](/img/genai/develop/components/model-providers/08-azure-openai-advanced.png)
+<ThemedImage
+    alt="Azure OpenAI Create Model Provider form with Advanced Configurations expanded. Visible fields: Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/08-azure-openai-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/08-azure-openai-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -164,7 +215,13 @@ Official website: [deepseek.com](https://www.deepseek.com/).
 
 ### Create form
 
-![Create Model Provider form for DeepSeek showing one required field: API Key. Below: Advanced Configurations Expand link, Model Provider Name deepseekModelprovider, Result Type deepseek:ModelProvider.](/img/genai/develop/components/model-providers/15-deepseek-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for DeepSeek showing one required field: API Key. Below: Advanced Configurations Expand link, Model Provider Name deepseekModelprovider, Result Type deepseek:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/15-deepseek-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/15-deepseek-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -172,7 +229,13 @@ Official website: [deepseek.com](https://www.deepseek.com/).
 
 ### Advanced configurations
 
-![DeepSeek Create Model Provider form with Advanced Configurations expanded showing Model Type (default DEEPSEEK_CHAT), Service URL (default https://api.deepseek.com), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version, HTTP1 Settings.](/img/genai/develop/components/model-providers/16-deepseek-advanced.png)
+<ThemedImage
+    alt="DeepSeek Create Model Provider form with Advanced Configurations expanded showing Model Type (default DEEPSEEK_CHAT), Service URL (default https://api.deepseek.com), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version, HTTP1 Settings."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/16-deepseek-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/16-deepseek-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -191,7 +254,13 @@ Official website: [Vertex AI](https://cloud.google.com/vertex-ai).
 
 ### Create form
 
-![Create Model Provider form for Google Vertex showing three required fields: Auth (record/expression toggle, with hint 'OAuth2RefreshConfig for OAuth2 refresh token flow, or ServiceAccountConfig for automatic token refresh via service account'), Project ID, Model (with hint 'The model in publisher/model-name format, e.g., google/gemini-2.0-flash'). Below: Advanced Configurations Expand link, Model Provider Name vertexModelprovider, Result Type vertex:ModelProvider.](/img/genai/develop/components/model-providers/11-vertex-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for Google Vertex showing three required fields: Auth (record/expression toggle, with hint 'OAuth2RefreshConfig for OAuth2 refresh token flow, or ServiceAccountConfig for automatic token refresh via service account'), Project ID, Model (with hint 'The model in publisher/model-name format, e.g., google/gemini-2.0-flash'). Below: Advanced Configurations Expand link, Model Provider Name vertexModelprovider, Result Type vertex:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/11-vertex-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/11-vertex-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -201,7 +270,13 @@ Official website: [Vertex AI](https://cloud.google.com/vertex-ai).
 
 ### Advanced configurations
 
-![Google Vertex Create Model Provider form with Advanced Configurations expanded showing Location (default 'global'), Service URL (default 'https://\{location\}-aiplatform.googleapis.com').](/img/genai/develop/components/model-providers/12-vertex-advanced.png)
+<ThemedImage
+    alt="Google Vertex Create Model Provider form with Advanced Configurations expanded showing Location (default 'global'), Service URL (default 'https://{location}-aiplatform.googleapis.com')."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/12-vertex-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/12-vertex-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -232,7 +307,13 @@ Official website: [mistral.ai](https://www.mistral.ai/).
 
 ### Create form
 
-![Create Model Provider form for Mistral showing two required fields: API Key and Model Type. Below: Advanced Configurations Expand link, Model Provider Name mistralModelprovider, Result Type mistral:ModelProvider.](/img/genai/develop/components/model-providers/13-mistral-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for Mistral showing two required fields: API Key and Model Type. Below: Advanced Configurations Expand link, Model Provider Name mistralModelprovider, Result Type mistral:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/13-mistral-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/13-mistral-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -241,7 +322,13 @@ Official website: [mistral.ai](https://www.mistral.ai/).
 
 ### Advanced configurations
 
-![Mistral Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://api.mistral.ai/v1), Maximum Tokens (default 512), Temperature (default 0.7).](/img/genai/develop/components/model-providers/14-mistral-advanced.png)
+<ThemedImage
+    alt="Mistral Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://api.mistral.ai/v1), Maximum Tokens (default 512), Temperature (default 0.7)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/14-mistral-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/14-mistral-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -259,7 +346,13 @@ Official website: [ollama.com](https://ollama.com/).
 
 ### Create form
 
-![Create Model Provider form for Ollama showing one required field: Model Type. Below: Advanced Configurations Expand link, Model Provider Name ollamaModelprovider, Result Type ollama:ModelProvider.](/img/genai/develop/components/model-providers/17-ollama-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for Ollama showing one required field: Model Type. Below: Advanced Configurations Expand link, Model Provider Name ollamaModelprovider, Result Type ollama:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/17-ollama-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/17-ollama-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -269,7 +362,13 @@ Official website: [ollama.com](https://ollama.com/).
 
 Ollama exposes Mirostat sampling and other decoding controls that the hosted providers don't.
 
-![Ollama Create Model Provider form with Advanced Configurations expanded showing Service URL (default http://localhost:11434), Mirostat Sampling (default 0, options 0=disabled, 1=Mirostat, 2=Mirostat 2.0), Mirostat Eta (default 0.1), Mirostat Tau (default 5.0), Context Window Size (default 2048).](/img/genai/develop/components/model-providers/18-ollama-advanced.png)
+<ThemedImage
+    alt="Ollama Create Model Provider form with Advanced Configurations expanded showing Service URL (default http://localhost:11434), Mirostat Sampling (default 0, options 0=disabled, 1=Mirostat, 2=Mirostat 2.0), Mirostat Eta (default 0.1), Mirostat Tau (default 5.0), Context Window Size (default 2048)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/18-ollama-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/18-ollama-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -301,7 +400,13 @@ Official website: [platform.openai.com](https://platform.openai.com/).
 
 ### Create form
 
-![Create Model Provider form for OpenAI showing two required fields: API Key (text/expression toggle) and Model Type (select/expression toggle, value 'No Selection'), then Advanced Configurations Expand link, Model Provider Name set to openaiModelprovider, Result Type set to openai:ModelProvider.](/img/genai/develop/components/model-providers/05-openai-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for OpenAI showing two required fields: API Key (text/expression toggle) and Model Type (select/expression toggle, value 'No Selection'), then Advanced Configurations Expand link, Model Provider Name set to openaiModelprovider, Result Type set to openai:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/05-openai-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/05-openai-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -310,7 +415,13 @@ Official website: [platform.openai.com](https://platform.openai.com/).
 
 ### Advanced configurations
 
-![OpenAI Create Model Provider form with Advanced Configurations expanded. Visible fields: Service URL (default https://api.openai.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version (default http:HTTP_2_0), HTTP1 Settings, HTTP2 Settings, Timeout.](/img/genai/develop/components/model-providers/06-openai-advanced.png)
+<ThemedImage
+    alt="OpenAI Create Model Provider form with Advanced Configurations expanded. Visible fields: Service URL (default https://api.openai.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version (default http:HTTP_2_0), HTTP1 Settings, HTTP2 Settings, Timeout."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/06-openai-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/06-openai-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -332,7 +443,13 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 
 ### Create form
 
-![Create Model Provider form for OpenRouter showing two required fields: API Key (with link to https://openrouter.ai/keys) and Model Type (with example values 'openai/gpt-4o', 'anthropic/claude-3.5-sonnet'). Below: Advanced Configurations Expand link, Model Provider Name openrouterModelprovider, Result Type openrouter:ModelProvider.](/img/genai/develop/components/model-providers/19-openrouter-basic.png)
+<ThemedImage
+    alt="Create Model Provider form for OpenRouter showing two required fields: API Key (with link to https://openrouter.ai/keys) and Model Type (with example values 'openai/gpt-4o', 'anthropic/claude-3.5-sonnet'). Below: Advanced Configurations Expand link, Model Provider Name openrouterModelprovider, Result Type openrouter:ModelProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/19-openrouter-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/19-openrouter-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -341,7 +458,13 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 
 ### Advanced configurations
 
-![OpenRouter Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://openrouter.ai/api/v1), Site URL (sent as HTTP-Referer header), Site Name (sent as X-OpenRouter-Title header), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version.](/img/genai/develop/components/model-providers/20-openrouter-advanced.png)
+<ThemedImage
+    alt="OpenRouter Create Model Provider form with Advanced Configurations expanded showing Service URL (default https://openrouter.ai/api/v1), Site URL (sent as HTTP-Referer header), Site Name (sent as X-OpenRouter-Title header), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/20-openrouter-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/20-openrouter-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -367,17 +490,35 @@ The saved model provider appears in multiple places:
 
 - The integration project's **Design** view wires each artifact to the provider it depends on:
 
-![The integration project Design overview with the left sidebar Connections tree populated with four model-provider connections, and the main canvas wiring three artifacts (chat agent service, HTTP service, MCP service) to their respective model-provider nodes on the right with provider logos.](/img/genai/develop/components/model-providers/22-project-design-multi-providers.png)
+<ThemedImage
+    alt="The integration project Design overview with the left sidebar Connections tree populated with four model-provider connections, and the main canvas wiring three artifacts (chat agent service, HTTP service, MCP service) to their respective model-provider nodes on the right with provider logos."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/22-project-design-multi-providers.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/22-project-design-multi-providers.png'),
+    }}
+/>
 
 - The **Model Providers** panel lists every model provider connection available in the project. Use the **+** button to add a new provider connection, or expand a provider to view its available actions.
 
-![The Model Providers right-side panel listing four model-provider connections - anthropicModelprovider, azureOpenaimodelprovider, openaiModelprovider, wso2ModelProvider - each with a chevron and provider logo.](/img/genai/develop/components/model-providers/21-model-providers-panel-multi.png)
+<ThemedImage
+    alt="The Model Providers right-side panel listing four model-provider connections - anthropicModelprovider, azureOpenaimodelprovider, openaiModelprovider, wso2ModelProvider - each with a chevron and provider logo."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/21-model-providers-panel-multi.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/21-model-providers-panel-multi.png'),
+    }}
+/>
 
 ## Editing or replacing a model provider
 
 To change a provider's API key, model name, or any other field after it's been created, click the provider name in the left **Connections** tree. The **Edit Connection** modal opens:
 
-![Edit Connection modal centered on screen with Variable Name field, Variable Type field with edit pencil icon, Update Connection button at the bottom.](/img/genai/develop/components/model-providers/23-edit-connection-model.png)
+<ThemedImage
+    alt="Edit Connection modal centered on screen with Variable Name field, Variable Type field with edit pencil icon, Update Connection button at the bottom."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/model-providers/23-edit-connection-model.png'),
+        dark: useBaseUrl('/img/genai/develop/components/model-providers/23-edit-connection-model.png'),
+    }}
+/>
 
 | Field | What it does |
 |---|---|

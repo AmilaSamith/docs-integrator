@@ -4,6 +4,9 @@ description: Push your integrations from WSO2 Integrator directly to WSO2 Cloud,
 keywords: [wso2 integrator, wso2 cloud, deploy, push, cloud deployment]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Deploy to WSO2 Cloud from WSO2 Integrator
 
 You can deploy your integrations to WSO2 Cloud directly from WSO2 Integrator. You can deploy the entire project at once or deploy a single integration individually.
@@ -16,7 +19,13 @@ You can deploy your integrations to WSO2 Cloud directly from WSO2 Integrator. Yo
 
 1. In WSO2 Integrator, open the project overview canvas.
 
-    ![Project Overview](/img/deploy/cloud/push-from-ide/project-overview.png)
+    <ThemedImage
+        alt="Project Overview"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/push-from-ide/project-overview.png'),
+            dark: useBaseUrl('/img/deploy/cloud/push-from-ide/project-overview.png'),
+        }}
+    />
 
 2. Under **Deployment Options** in the right column, locate the **Deploy to WSO2 Cloud** box and click **Deploy**.
 3. If you are not already signed in to WSO2 Cloud, WSO2 Integrator prompts you to sign in. Click **Sign In** and complete the authentication in the browser, then return to WSO2 Integrator.
@@ -24,11 +33,23 @@ You can deploy your integrations to WSO2 Cloud directly from WSO2 Integrator. Yo
 
    A new tab opens showing your project's integrations. By default, all integrations are selected for deployment.
 
-    ![Deploying Integrations to WSO2 Cloud - Set up a Repository](/img/deploy/cloud/push-from-ide/deploy-tab.png)
+    <ThemedImage
+        alt="Deploying Integrations to WSO2 Cloud - Set up a Repository"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/push-from-ide/deploy-tab.png'),
+            dark: useBaseUrl('/img/deploy/cloud/push-from-ide/deploy-tab.png'),
+        }}
+    />
 
 5. If your project is not yet connected to a remote repository, you will see a warning as shown below. You will need to set one up before continuing. If it is already connected, skip to step 6.
 
-    ![Deploying Integrations to WSO2 Cloud](/img/deploy/cloud/push-from-ide/deploy-tab-setup-repository.png)
+    <ThemedImage
+        alt="Deploying Integrations to WSO2 Cloud"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/push-from-ide/deploy-tab-setup-repository.png'),
+            dark: useBaseUrl('/img/deploy/cloud/push-from-ide/deploy-tab-setup-repository.png'),
+        }}
+    />
 
     a. In WSO2 Integrator, click **Source Control** in the left sidebar.
 
@@ -48,7 +69,13 @@ You can deploy your integrations to WSO2 Cloud directly from WSO2 Integrator. Yo
 
 A browser opens showing your project on WSO2 Cloud.
 
-![WSO2 Cloud Project Home](/img/deploy/cloud/push-from-ide/project-page-wso2-cloud.png)
+<ThemedImage
+    alt="WSO2 Cloud Project Home"
+    sources={{
+        light: useBaseUrl('/img/deploy/cloud/push-from-ide/project-page-wso2-cloud.png'),
+        dark: useBaseUrl('/img/deploy/cloud/push-from-ide/project-page-wso2-cloud.png'),
+    }}
+/>
 
 ## Deploy a single integration
 

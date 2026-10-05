@@ -6,6 +6,9 @@ keywords: [wso2 integrator, try-it, graphql, graphiql, test graphql service]
 slug: /develop-and-test/test/try-it-tool/try-it-graphql
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Test GraphQL Service
 
 The Try-It tool for GraphQL services opens a built-in GraphiQL editor where you can browse your schema, write queries and mutations, and execute them against your running service. Use it during development to verify your GraphQL operations before writing automated tests.
@@ -16,11 +19,23 @@ The Try-It tool for GraphQL services opens a built-in GraphiQL editor where you 
 2. After the integration starts, a popup appears asking whether you want to open the Try-It panel. Select **Yes**.
 3. If the popup does not appear, open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux), type **Try It**, and select the command. Choose the correct service and port from the list.
 
-![GraphQL Try-It showing the full flow from opening the editor to executing a query](/img/develop/test/try-it/graphql-try-it.gif)
+<ThemedImage
+    alt="GraphQL Try-It showing the full flow from opening the editor to executing a query"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/graphql-try-it.gif'),
+        dark: useBaseUrl('/img/develop/test/try-it/graphql-try-it.gif'),
+    }}
+/>
 
 ## The GraphiQL editor
 
-![GraphiQL editor with Explorer, query editor, Variables and Headers tabs](/img/develop/test/try-it/graphql-try-it.png)
+<ThemedImage
+    alt="GraphiQL editor with Explorer, query editor, Variables and Headers tabs"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/graphql-try-it.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/graphql-try-it.png'),
+    }}
+/>
 
 The editor is divided into three areas:
 

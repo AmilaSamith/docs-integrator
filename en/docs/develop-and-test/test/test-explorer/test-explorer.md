@@ -6,6 +6,8 @@ keywords: [wso2 integrator, test explorer, create test, run tests, test report, 
 slug: /develop-and-test/test/test-explorer
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -37,7 +39,13 @@ When a test belongs to one or more groups, it is nested under the group name rat
 5. Expand **Advanced Configurations** for additional settings, then select **Save**.
 6. Write the test logic in the flow diagram that opens.
 
-![Create a test function in Test Explorer](/img/develop/test/test-explorer/create-test.gif)
+<ThemedImage
+    alt="Create a test function in Test Explorer"
+    sources={{
+        light: useBaseUrl('/img/develop/test/test-explorer/create-test.gif'),
+        dark: useBaseUrl('/img/develop/test/test-explorer/create-test.gif'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|

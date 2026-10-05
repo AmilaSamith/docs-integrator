@@ -6,6 +6,9 @@ sidebar_position: 0
 slug: /develop-and-test/create-workspace
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Create Integration Workspace
 
 WSO2 Integrator organizes your work into three concepts that build on each other:
@@ -16,7 +19,13 @@ WSO2 Integrator organizes your work into three concepts that build on each other
 
 A project can hold any number of integrations and libraries side by side. You can also skip the project wrapper and create a standalone integration or library, then convert it into a project later once you need to add more alongside it.
 
-![How WSO2 Integrator organizes a project, its integrations, and its libraries](/img/develop/organize/integartor-work-organization.png)
+<ThemedImage
+    alt="How WSO2 Integrator organizes a project, its integrations, and its libraries"
+    sources={{
+        light: useBaseUrl('/img/develop/organize/integartor-work-organization.png'),
+        dark: useBaseUrl('/img/develop/organize/integartor-work-organization.png'),
+    }}
+/>
 
 ## Create Your Project
 

@@ -5,6 +5,8 @@ description: Parse, transform, and write CSV and flat file data.
 slug: /develop-and-test/data-transformation/csv-flat-file
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -34,7 +36,13 @@ This flexibility is the foundation for everything that follows: full row mapping
    - **Result***: `summaries`
    - **T***: `EmployeeSummary[]`
 
-   ![Flow designer showing a subset record type used for CSV parsing](/img/develop/transform/csv-flat-file/csv-projection-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a subset record type used for CSV parsing"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-projection-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-projection-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -94,7 +102,13 @@ When you do need every column, declare a record that includes all of them and it
 
 5. **Add println inside the loop**. Inside the Foreach body, click **+** and select **Call Function**. Search under standard library → **io** → select `println`. Use **Add Item** to add three items. For each, search **variables**, expand `emp`, and select `name`, `department`, and `salary` respectively.
 
-   ![Flow designer showing CSV parsing variable and foreach loop](/img/develop/transform/csv-flat-file/csv-reading-flow.png)
+   <ThemedImage
+       alt="Flow designer showing CSV parsing variable and foreach loop"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-reading-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-reading-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -148,7 +162,13 @@ Use `csv:parseBytes()` for byte arrays or `csv:parseStream()` for streaming larg
 
 4. **(Optional) Use a byte block stream as input**. For files larger than the available byte-array buffer, swap `io:fileReadBytes` for `io:fileReadBlocksAsStream` and `csv:parseBytes` for `csv:parseStream`. The result is still a fully-materialized array. To process records one at a time without holding the whole file in memory, see [Processing large files](#processing-large-files).
 
-   ![Flow designer showing file read and CSV parse steps](/img/develop/transform/csv-flat-file/csv-files-streams-flow.png)
+   <ThemedImage
+       alt="Flow designer showing file read and CSV parse steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-files-streams-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-files-streams-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -249,11 +269,23 @@ All of the CSV parser functions (`csv:parseString`, `csv:parseBytes`, `csv:parse
 
 In the visual designer, parser options live under **Advanced Configurations** → **Options** on the parse step. The field is empty by default (`{}`), meaning all defaults apply.
 
-![parseString step with the Options field visible under Advanced Configurations](/img/develop/transform/csv-flat-file/csv-parser-options-field.png)
+<ThemedImage
+    alt="parseString step with the Options field visible under Advanced Configurations"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-parser-options-field.png'),
+        dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-parser-options-field.png'),
+    }}
+/>
 
 Click the **Options** field to open the **Record Configuration** helper. Tick the checkbox next to any option you want to set, fill in the value, and click **Save**. The helper writes the equivalent record literal into the Options field.
 
-![Record Configuration helper listing the available ParseOptions fields with checkboxes](/img/develop/transform/csv-flat-file/csv-parser-options-helper.png)
+<ThemedImage
+    alt="Record Configuration helper listing the available ParseOptions fields with checkboxes"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-parser-options-helper.png'),
+        dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-parser-options-helper.png'),
+    }}
+/>
 
 ### Available options
 
@@ -309,7 +341,13 @@ Configure parsing behavior for TSV (tab-separated values, a CSV-like format that
    Under **Advanced Configurations** → **Options** (see [Parser options](#parser-options)), set:
    - `delimiter`: `"\t"`
 
-   ![Flow designer showing CSV parse with custom delimiter configuration](/img/develop/transform/csv-flat-file/csv-custom-delimiters-flow.png)
+   <ThemedImage
+       alt="Flow designer showing CSV parse with custom delimiter configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-custom-delimiters-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-custom-delimiters-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -362,7 +400,13 @@ When a file has no header row, you have two options:
 
    To parse into a typed `record[]` instead, set the target type (`T`) to your record array (for example, `Employee[]`) and also set `customHeadersIfHeadersAbsent` to the list of column names in the order they appear in the file.
 
-   ![Flow designer showing headerless CSV parsing into string arrays](/img/develop/transform/csv-flat-file/csv-headerless-flow.png)
+   <ThemedImage
+       alt="Flow designer showing headerless CSV parsing into string arrays"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-headerless-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-headerless-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -416,7 +460,13 @@ Write arrays of records directly to CSV files using `io:fileWriteCsv()`.
    - **Path***: `./output/product-catalog.csv`
    - **Content***: `products`
 
-   ![Flow designer showing CSV transform and file write steps](/img/develop/transform/csv-flat-file/csv-writing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing CSV transform and file write steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-writing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-writing-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -477,7 +527,13 @@ Enable fail-safe by setting the [`failSafe`](#available-options) option on the p
    }
    ```
 
-   ![Flow designer showing fail-safe CSV parsing configuration](/img/develop/transform/csv-flat-file/csv-failsafe-flow.png)
+   <ThemedImage
+       alt="Flow designer showing fail-safe CSV parsing configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/csv-flat-file/csv-failsafe-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/csv-flat-file/csv-failsafe-flow.png'),
+       }}
+   />
 
 </TabItem>
 

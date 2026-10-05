@@ -40,7 +40,13 @@ The steps below continue the `POST chat/[string workflowId]` example, reading th
 
 4. Click **Save**.
 
-![Adding a Get Data Event Result step after the send step, setting the instance ID and the eventToken correlation token with Wait For Answer selected](/img/workflows/agentic/get-data-event-result/get-data-event-result.gif)
+<ThemedImage
+    alt="Adding a Get Data Event Result step after the send step, setting the instance ID and the eventToken correlation token with Wait For Answer selected"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/get-data-event-result/get-data-event-result.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/get-data-event-result/get-data-event-result.gif'),
+    }}
+/>
 
 The saved step is drawn as **Get Data Event Result** with a dashed connector to the `claimAgent` it reads from, sitting directly below the **Send to chat** step that produced its token.
 

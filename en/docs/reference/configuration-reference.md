@@ -6,6 +6,9 @@ keywords: [wso2 integrator, configuration, config.toml, ballerina.toml, cloud.to
 slug: /reference/configuration-reference
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Configuration Reference
 
 Everything you can configure in an integration project, in one place:
@@ -36,7 +39,13 @@ A configurable variable is a module-level binding declared with Ballerina's `con
 
 In the Visual Designer, configurable variables appear under **Configurations** in the project sidebar. Use the **Add Configurable Variable** panel to declare a new variable — set the name and type, and either provide a default value (optional) or leave it empty (required).
 
-![Configurable Variables panel in WSO2 Integrator showing dbHost, dbPassword, dbPort, requestTimeoutSeconds, and enableCaching variables with their types and current values](/img/develop/design-logic/configurations/configurable-variables-panel.png)
+<ThemedImage
+    alt="Configurable Variables panel in WSO2 Integrator showing dbHost, dbPassword, dbPort, requestTimeoutSeconds, and enableCaching variables with their types and current values"
+    sources={{
+        light: useBaseUrl('/img/develop/design-logic/configurations/configurable-variables-panel.png'),
+        dark: useBaseUrl('/img/develop/design-logic/configurations/configurable-variables-panel.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -101,7 +110,13 @@ When you have many related settings — for example, the host, port, credentials
 
 Use the Visual Designer's type creator to define a new record type (or the type picker to select an existing one), then add a configurable variable of that record type the same way as any primitive.
 
-![Configurable Variables panel in WSO2 Integrator showing record-typed configurables orderDb (DatabaseConfig) and crmApi (ApiConfig) expanded into their nested fields](/img/develop/design-logic/configurations/structured-configurable-panel.png)
+<ThemedImage
+    alt="Configurable Variables panel in WSO2 Integrator showing record-typed configurables orderDb (DatabaseConfig) and crmApi (ApiConfig) expanded into their nested fields"
+    sources={{
+        light: useBaseUrl('/img/develop/design-logic/configurations/structured-configurable-panel.png'),
+        dark: useBaseUrl('/img/develop/design-logic/configurations/structured-configurable-panel.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">

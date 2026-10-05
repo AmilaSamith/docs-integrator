@@ -6,6 +6,9 @@ keywords: [wso2 integrator, ai agent, evaluation, visual designer, llm-as-judge]
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations/creating-evaluations
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Create Evaluations
 
 An **evaluation** is the function that scores agent behaviour against an evalset. You start by filling a short form, and WSO2 Integrator opens the rest of the configuration in the visual designer.
@@ -20,7 +23,13 @@ For the **From Evalset** path (the most common), have at least one evalset in yo
 2. Click **Add AI Evaluation**.
 3. Fill the **Create New AI Evaluation** form and click **Save**.
 
-![Create New AI Evaluation form with fields for AI Evaluation Name, Minimum Pass Rate, build option, and Evalset File.](/img/genai/develop/agents/evaluations/create-evaluation-form.png)
+<ThemedImage
+    alt="Create New AI Evaluation form with fields for AI Evaluation Name, Minimum Pass Rate, build option, and Evalset File."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form.png'),
+    }}
+/>
 
 ### Form fields
 
@@ -42,7 +51,13 @@ Consider lowering the **Minimum Pass Rate** below 100%. Agent responses are non-
 
 After you click **Save**, the evaluation opens in the visual designer for further configuration. To reopen it later, click the flow icon next to the evaluation in the **Test Explorer**.
 
-![Test Explorer with the flow icon highlighted next to the testToolTrajectory evaluation, opening its visual designer flow on the canvas.](/img/genai/develop/agents/evaluations/open-evaluation-flow.png)
+<ThemedImage
+    alt="Test Explorer with the flow icon highlighted next to the testToolTrajectory evaluation, opening its visual designer flow on the canvas."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/open-evaluation-flow.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/open-evaluation-flow.png'),
+    }}
+/>
 
 ## Build the evaluation logic
 
@@ -68,7 +83,13 @@ Each entry in `thread.traces` is an `ai:Trace`:
 
 Add a **Foreach** node from the **Control** group in the node panel.
 
-![Node panel open in the visual designer with Statement, Control, and AI categories. Foreach is listed under Control.](/img/genai/develop/agents/evaluations/node-panel.png)
+<ThemedImage
+    alt="Node panel open in the visual designer with Statement, Control, and AI categories. Foreach is listed under Control."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/node-panel.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/node-panel.png'),
+    }}
+/>
 
 Configure it to walk through the trace list:
 
@@ -76,7 +97,13 @@ Configure it to walk through the trace list:
 - **Variable Name.** A name for the loop variable, for example, `trace`.
 - **Variable Type.** `ai:Trace`.
 
-![Foreach configuration panel with Collection set to thread.traces, Variable Name set to trace, and Variable Type set to ai:Trace.](/img/genai/develop/agents/evaluations/foreach-config.png)
+<ThemedImage
+    alt="Foreach configuration panel with Collection set to thread.traces, Variable Name set to trace, and Variable Type set to ai:Trace."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/foreach-config.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/foreach-config.png'),
+    }}
+/>
 
 The loop body runs once per trace, ready for the agent call and any checks inside.
 
@@ -84,11 +111,23 @@ The loop body runs once per trace, ready for the agent call and any checks insid
 
 Inside the Foreach, add an **Agent** node from the **AI** group in the node panel.
 
-![Node panel scrolled to the AI category showing Direct LLM, RAG, and an Agent button.](/img/genai/develop/agents/evaluations/agent-node-pick.png)
+<ThemedImage
+    alt="Node panel scrolled to the AI category showing Direct LLM, RAG, and an Agent button."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/agent-node-pick.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/agent-node-pick.png'),
+    }}
+/>
 
 The **Agents** picker opens, listing every agent in the project. Select the one you want to evaluate.
 
-![Agents picker showing the mathTutorAgent listed under Agent.](/img/genai/develop/agents/evaluations/agent-picker.png)
+<ThemedImage
+    alt="Agents picker showing the mathTutorAgent listed under Agent."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/agent-picker.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/agent-picker.png'),
+    }}
+/>
 
 This replays each trace's original input against the current agent build and captures the response for comparison. The **AI Agent** form has the following key fields.
 
@@ -99,7 +138,13 @@ This replays each trace's original input against the current agent build and cap
 | **Type Descriptor** | `ai:Trace` | Sets the expected return format. Under **Advanced Configurations**. |
 | **Result** | `actualTrace` (or any name) | The variable the agent's response is stored in. |
 
-![AI Agent configuration panel with Query, Session ID, Context, Type Descriptor, and Result fields filled in.](/img/genai/develop/agents/evaluations/agent-config.png)
+<ThemedImage
+    alt="AI Agent configuration panel with Query, Session ID, Context, Type Descriptor, and Result fields filled in."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/agent-config.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/agent-config.png'),
+    }}
+/>
 
 The agent runs once per trace and stores its response in `actualTrace`, which the rest of the evaluation can compare against the expected trace.
 
@@ -109,7 +154,13 @@ The agent runs once per trace and stores its response in `actualTrace`, which th
 
 Use the assertion nodes under **Test** in the node panel to score each trace. Available checks include `assertTrue`, `assertFalse`, `assertEquals`, `assertNotEquals`, `assertExactEquals`, `assertNotExactEquals`, `assertFail`, and `mock`.
 
-![Node panel scrolled to the Test category showing the available assertion functions.](/img/genai/develop/agents/evaluations/test-functions.png)
+<ThemedImage
+    alt="Node panel scrolled to the Test category showing the available assertion functions."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/test-functions.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/test-functions.png'),
+    }}
+/>
 
 For tool-selection regressions, **assertEquals** is the most common choice. It verifies the agent picked the same tools, in the same order, with the same arguments.
 
@@ -118,7 +169,13 @@ For tool-selection regressions, **assertEquals** is the most common choice. It v
 | **Actual** | `actualTrace.toolCalls` | Tool calls from the current agent run, captured by the Agent node above. |
 | **Expected** | `trace.toolCalls` | Tool calls recorded in the evalset for this trace. |
 
-![assertEquals form with Actual set to actualTrace.toolCalls and Expected set to trace.toolCalls.](/img/genai/develop/agents/evaluations/assert-equals-tool-calls.png)
+<ThemedImage
+    alt="assertEquals form with Actual set to actualTrace.toolCalls and Expected set to trace.toolCalls."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/assert-equals-tool-calls.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/assert-equals-tool-calls.png'),
+    }}
+/>
 
 Add more asserts inside the loop for any other dimension you want to score, such as response content, tool count, or structured output fields.
 

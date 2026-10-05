@@ -4,6 +4,8 @@ title: Agent Definitions
 description: Reference for agent definitions in WSO2 Integrator, covering how to create a reusable agent template, the Agent Definition Designer, response types, and initialization parameters.
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -50,7 +52,13 @@ Only a definition in a library package can be published and consumed by other pr
 4. The **Add Agent** dialog opens.
 5. Select **Create Agent Definition**.
 
-![The Create Agent Definition form with Name, Description, a Create this definition in selector set to New library package, and a collapsed Advanced Configurations section.](/img/genai/develop/agents/definitions/03-create-agent-definition-library-package.png)
+<ThemedImage
+    alt="The Create Agent Definition form with Name, Description, a Create this definition in selector set to New library package, and a collapsed Advanced Configurations section."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/definitions/03-create-agent-definition-library-package.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/definitions/03-create-agent-definition-library-package.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|
@@ -75,7 +83,13 @@ These fields apply only when **New library package** is selected.
 
 After clicking **Create Agent Definition**, WSO2 Integrator generates the definition and opens the Agent Definition Designer. The designer is where you configure what the agent does. Unlike an agent created directly in an integration, a definition is configured through a form rather than the integration canvas since a definition has no flow of its own, because it runs wherever it is instantiated.
 
-![The Agent Definition Designer for CustomerSupportAgent, showing the name and description header, a Configuration card with Role and Instructions, a Tools section with an Add Tool button, a Response Type set to string, an Initialization Parameters section, and a collapsed Advanced section.](/img/genai/develop/agents/definitions/06-agent-definition-designer.png)
+<ThemedImage
+    alt="The Agent Definition Designer for CustomerSupportAgent, showing the name and description header, a Configuration card with Role and Instructions, a Tools section with an Add Tool button, a Response Type set to string, an Initialization Parameters section, and a collapsed Advanced section."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/definitions/06-agent-definition-designer.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/definitions/06-agent-definition-designer.png'),
+    }}
+/>
 
 | Section | Description |
 |---|---|

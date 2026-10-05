@@ -6,6 +6,9 @@ keywords: [wso2 integrator, copilot, ai, data handling, privacy, byok, anthropic
 slug: /editor/copilot/copilot-architecture
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Copilot Architecture and Data Handling
 
 WSO2 Integrator provides an AI-powered Copilot to enhance developer productivity. This page explains how [WSO2 Integrator Copilot](capabilities.md) works, how user data is handled, and what best practices organizations should follow when using AI features.
@@ -16,7 +19,13 @@ These guidelines are designed to ensure transparency, security, and compliance w
 
 WSO2 Integrator Copilot is integrated into the WSO2 Integrator developer experience. It works as follows:
 
-![WSO2 Integrator Copilot macro architecture](/img/reference/ai-usage/macro-architecture.png)
+<ThemedImage
+    alt="WSO2 Integrator Copilot macro architecture"
+    sources={{
+        light: useBaseUrl('/img/reference/ai-usage/macro-architecture.png'),
+        dark: useBaseUrl('/img/reference/ai-usage/macro-architecture.png'),
+    }}
+/>
 
 - **WSO2 Integrator Copilot**: Provides in-editor assistance such as code completion, explanations, and suggestions.
 - **Language Server**: Powers intelligent features inside the IDE, including syntax awareness and integration with Copilot services.
@@ -41,7 +50,13 @@ Access through the WSO2 Cloud sign-in is subject to a fair usage policy.
 
 The movement of data through Copilot is designed for zero retention at the intermediary layer:
 
-![WSO2 Integrator Copilot data flow](/img/reference/ai-usage/ai-data-flow.png)
+<ThemedImage
+    alt="WSO2 Integrator Copilot data flow"
+    sources={{
+        light: useBaseUrl('/img/reference/ai-usage/ai-data-flow.png'),
+        dark: useBaseUrl('/img/reference/ai-usage/ai-data-flow.png'),
+    }}
+/>
 
 - **Direct forwarding**: WSO2 Intelligence forwards user data directly to Anthropic for processing.
 - **No local storage**: WSO2 Intelligence does not store any user data locally.

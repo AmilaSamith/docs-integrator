@@ -5,6 +5,9 @@ description: Profile integrations to find performance bottlenecks using the Ball
 slug: /develop-and-test/troubleshooting/profiling
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Profiling
 
 The Ballerina profiler samples your integration at runtime and produces an interactive flame graph that shows where execution time is spent. Use it when you have a slow integration and need to find the hot path before tuning anything.
@@ -42,7 +45,13 @@ Press `Ctrl+C` in the first terminal to stop the run. The profiler writes `targe
 
 ## Read the flame graph
 
-![Profiler flame graph report](/img/develop/troubleshooting/profiling/report.png)
+<ThemedImage
+    alt="Profiler flame graph report"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/profiling/report.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/profiling/report.png'),
+    }}
+/>
 
 Each bar in the graph represents a function call.
 

@@ -5,6 +5,9 @@ description: Reference for AI Agents in WSO2 Integrator — the AI Chat Agent Wi
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # AI Agents
 
 AI agents are software components that use large language models (LLMs) to understand requests, make decisions, and perform actions autonomously. They can interact with users, invoke tools, access external systems, and maintain conversation context to complete tasks.
@@ -45,7 +48,13 @@ The agent is represented as a simple integration flow consisting of the followin
 
 The **AI Agent** block provides a centralized configuration interface for defining the agent’s behavior and capabilities.
 
-![The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node.](/img/genai/develop/agents/02-agent-flow-canvas.png)
+<ThemedImage
+    alt="The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+    }}
+/>
 
 The **AI Agent** block allows you to configure the following components of the agent:
 
