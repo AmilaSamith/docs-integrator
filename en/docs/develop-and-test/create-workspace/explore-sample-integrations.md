@@ -5,6 +5,9 @@ description: Browse and open pre-built sample integrations to accelerate your de
 slug: /develop-and-test/create-workspace/explore-sample-integrations
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Explore Sample Integrations
 
 WSO2 Integrator includes a curated collection of pre-built integration samples that you can download and open as ready-to-use projects. Use these samples to learn common integration patterns or as starting points for your own projects.
@@ -13,7 +16,13 @@ WSO2 Integrator includes a curated collection of pre-built integration samples t
 
 On the WSO2 Integrator home screen, click **Explore** on the **Explore Pre-built Integrations and Samples** card.
 
-![WSO2 Integrator home screen](/img/explore-samples/home-screen.png)
+<ThemedImage
+    alt="WSO2 Integrator home screen"
+    sources={{
+        light: useBaseUrl('/img/explore-samples/home-screen.png'),
+        dark: useBaseUrl('/img/explore-samples/home-screen.png'),
+    }}
+/>
 
 The home screen also shows the **Create a Project** card, along with a **Recent Projects** list for projects you've opened recently.
 
@@ -21,7 +30,13 @@ The home screen also shows the **Create a Project** card, along with a **Recent 
 
 The **Browse Samples** view opens with the prompt `Start quickly by downloading a curated integration sample for your selected profile.` Each card shows the sample name, a type tag (for example, **ai-agent**, **service**, **scheduled-task**, **automation**), a brief description, and a **Use** action.
 
-![Browse Samples gallery](/img/explore-samples/browse-samples.png)
+<ThemedImage
+    alt="Browse Samples gallery"
+    sources={{
+        light: useBaseUrl('/img/explore-samples/browse-samples.png'),
+        dark: useBaseUrl('/img/explore-samples/browse-samples.png'),
+    }}
+/>
 
 Use the controls at the top of the view to find samples:
 
@@ -36,7 +51,13 @@ The result count appears below the controls (for example, `25 results`).
 
 Click **Use** on a sample card. A native file browser appears so you can choose the directory where the sample project will be created.
 
-![Select folder](/img/explore-samples/select-folder.png)
+<ThemedImage
+    alt="Select folder"
+    sources={{
+        light: useBaseUrl('/img/explore-samples/select-folder.png'),
+        dark: useBaseUrl('/img/explore-samples/select-folder.png'),
+    }}
+/>
 
 Select a folder and click **Select Folder**. WSO2 Integrator downloads the sample and opens it as an integration.
 
@@ -48,11 +69,23 @@ If you saved the sample inside an existing project folder inside the `WSO2Integr
 
 1. In the side panel, click the **+** icon next to the integration name.
 
-   ![Add to Project icon in the side panel](/img/explore-samples/add-to-project-icon.png)
+   <ThemedImage
+       alt="Add to Project icon in the side panel"
+       sources={{
+           light: useBaseUrl('/img/explore-samples/add-to-project-icon.png'),
+           dark: useBaseUrl('/img/explore-samples/add-to-project-icon.png'),
+       }}
+   />
 
 2. A dialog asks whether to add the integration to the existing project instead of creating a new one. Click **Add to Project**.
 
-   ![Add to Project dialog](/img/explore-samples/add-to-project-dialog.png)
+   <ThemedImage
+       alt="Add to Project dialog"
+       sources={{
+           light: useBaseUrl('/img/explore-samples/add-to-project-dialog.png'),
+           dark: useBaseUrl('/img/explore-samples/add-to-project-dialog.png'),
+       }}
+   />
 
 The integration becomes a member of that project.
 
@@ -62,7 +95,13 @@ If you saved the sample outside a project, convert it to a new project.
 
 1. In the side panel, click the **Convert to Project** icon next to the integration name.
 
-   ![Convert to Project icon in the side panel](/img/explore-samples/convert-to-project-icon.png)
+   <ThemedImage
+       alt="Convert to Project icon in the side panel"
+       sources={{
+           light: useBaseUrl('/img/explore-samples/convert-to-project-icon.png'),
+           dark: useBaseUrl('/img/explore-samples/convert-to-project-icon.png'),
+       }}
+   />
 
 2. In the **Convert to Project** form, enter the following details:
 
@@ -75,7 +114,13 @@ If you saved the sample outside a project, convert it to a new project.
 
 4. Click **Convert to Project**.
 
-   ![Convert to Project form](/img/explore-samples/convert-to-project-form.png)
+   <ThemedImage
+       alt="Convert to Project form"
+       sources={{
+           light: useBaseUrl('/img/explore-samples/convert-to-project-form.png'),
+           dark: useBaseUrl('/img/explore-samples/convert-to-project-form.png'),
+       }}
+   />
 
 The integration now opens inside the new project. An **Overview** link appears at the top of the view, which takes you to the project view. From there, you can [add more integrations and libraries](create-a-project.md#add-more-integrations-and-libraries).
 

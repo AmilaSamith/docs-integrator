@@ -6,6 +6,9 @@ keywords: [wso2 integrator, integration control plane, icp, start workflow, work
 slug: /icp/manage-workflows/start-a-workflow
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Start a Workflow
 
 Workflows usually start from your own integration logic, but during testing, onboarding, and day-to-day operations it is useful to launch one by hand. The Integration Control Plane can start any workflow the runtime advertises and builds the input form for you from the workflow's input type, so you do not have to hand-write JSON.
@@ -29,7 +32,13 @@ Workflows usually start from your own integration logic, but during testing, onb
 
 4. After you select a workflow, the input form for that workflow appears in the dialog.
 
-![Workflow input form showing field validation](/img/workflows/icp/workflow-input-validation.png)
+<ThemedImage
+    alt="Workflow input form showing field validation"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/workflow-input-validation.png'),
+        dark: useBaseUrl('/img/workflows/icp/workflow-input-validation.png'),
+    }}
+/>
 
 5. The form is validated according to the workflow input type. Required fields are marked with an asterisk.
 
@@ -43,7 +52,13 @@ Workflows usually start from your own integration logic, but during testing, onb
 
 8. The workflow starts and appears in the **Workflow Executions** list with a status such as **Running**. You can then inspect the execution, monitor its progress, and review activity details.
 
-![Starting a workflow from the Workflow Executions page and confirming the workflow ID before viewing the running workflow](/img/workflows/icp/start-workflow.gif)
+<ThemedImage
+    alt="Starting a workflow from the Workflow Executions page and confirming the workflow ID before viewing the running workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/start-workflow.gif'),
+        dark: useBaseUrl('/img/workflows/icp/start-workflow.gif'),
+    }}
+/>
 
 ## What's next
 

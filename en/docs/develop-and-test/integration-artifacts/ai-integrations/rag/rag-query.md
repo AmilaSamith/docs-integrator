@@ -6,6 +6,9 @@ keywords: [wso2 integrator, rag, rag query, knowledge base, retrieve, augment, g
 slug: /develop-and-test/integration-artifacts/ai-integrations/rag/rag-query
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # RAG Query
 
 The query integration runs on every user request. It retrieves relevant chunks from the vector knowledge base populated during ingestion, combines them with the user's question, and calls the LLM to produce a grounded response.
@@ -50,27 +53,57 @@ The four nodes — **Retrieve**, **Augment User Query**, **Generate**, and **Ret
 
 1. In the design view, select **+ Add Artifact**.
 
-    ![Artifacts panel showing integration types including HTTP Service under Integration as API.](/img/genai/develop/rag/rag-query/01-add-artifact.png)
+    <ThemedImage
+        alt="Artifacts panel showing integration types including HTTP Service under Integration as API."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/01-add-artifact.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/01-add-artifact.png'),
+        }}
+    />
 
 2. Under **Integration as API**, select **HTTP Service**.
 
-    ![Create HTTP Service form with Service Contract and Service Base Path fields.](/img/genai/develop/rag/rag-query/02-http-service-form-create.png)
+    <ThemedImage
+        alt="Create HTTP Service form with Service Contract and Service Base Path fields."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/02-http-service-form-create.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/02-http-service-form-create.png'),
+        }}
+    />
 
 3. Leave **Design From Scratch** selected, leave the base path as `/`, and select **Create**.
 
 4. In the HTTP Service editor, select **+ Add Resource**. A method selection panel opens on the right.
 
-    ![HTTP Service editor showing no resources and the Select HTTP Method to Add panel.](/img/genai/develop/rag/rag-query/03-http-service-add-resource.png)
+    <ThemedImage
+        alt="HTTP Service editor showing no resources and the Select HTTP Method to Add panel."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/03-http-service-add-resource.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/03-http-service-add-resource.png'),
+        }}
+    />
 
 5. Select **POST** from the method list.
 
-    ![Method selection panel with POST highlighted.](/img/genai/develop/rag/rag-query/04-select-post.png)
+    <ThemedImage
+        alt="Method selection panel with POST highlighted."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/04-select-post.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/04-select-post.png'),
+        }}
+    />
 
 6. In the **New Resource Configuration** panel, set **Resource Path** to `query`.
 
 7. Select **+ Define Payload**, add a parameter named `userQuery` of type `string`, then select **Save**.
 
-    ![New Resource Configuration panel with POST method and query resource path filled in.](/img/genai/develop/rag/rag-query/05-resource-config-query.png)
+    <ThemedImage
+        alt="New Resource Configuration panel with POST method and query resource path filled in."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/05-resource-config-query.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/05-resource-config-query.png'),
+        }}
+    />
 
 ---
 
@@ -85,7 +118,13 @@ The **Retrieve** action queries the Knowledge Base for chunks most similar to th
     If you don't have a Knowledge Base yet, create one first by following [Knowledge Bases](../ai-building-blocks/knowledge-bases.md). Use the same Knowledge Base as ingestion. For the in-memory knowledge base, both ingestion and querying must be done in the same integration.
     :::
 
-    ![Add Node panel showing AI > RAG > Knowledge Base with Retrieve action selected.](/img/genai/develop/rag/rag-query/11-knowledgebase-select.png)
+    <ThemedImage
+        alt="Add Node panel showing AI > RAG > Knowledge Base with Retrieve action selected."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/11-knowledgebase-select.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/11-knowledgebase-select.png'),
+        }}
+    />
 
 3. Configure the node:
 
@@ -99,7 +138,13 @@ The **Retrieve** action queries the Knowledge Base for chunks most similar to th
 
 4. Click **Save**.
 
-    ![Retrieve action form showing Knowledge Base, Query, Top K, Filters, and Result variable fields.](/img/genai/develop/rag/rag-query/02-retrieve-form.png)
+    <ThemedImage
+        alt="Retrieve action form showing Knowledge Base, Query, Top K, Filters, and Result variable fields."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/02-retrieve-form.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/02-retrieve-form.png'),
+        }}
+    />
 
 The result is an array of `ai:QueryMatch` values. Each entry contains a chunk and its similarity score against the query.
 
@@ -107,7 +152,13 @@ The result is an array of `ai:QueryMatch` values. Each entry contains a chunk an
 Retrieve is the read-side counterpart to Ingest. It must point to the same Knowledge Base and the same Embedding Provider. Pointing to a different one returns no useful results.
 :::
 
-![Flow editor showing the Retrieve node added after the HTTP service resource.](/img/genai/develop/rag/rag-query/03-retrieve-node.png)
+<ThemedImage
+    alt="Flow editor showing the Retrieve node added after the HTTP service resource."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/rag/rag-query/03-retrieve-node.png'),
+        dark: useBaseUrl('/img/genai/develop/rag/rag-query/03-retrieve-node.png'),
+    }}
+/>
 
 ---
 
@@ -127,11 +178,23 @@ The **Augment User Query** node combines the retrieved chunks with the original 
 
 4. Click **Save**.
 
-    ![Augment User Query form showing Context, Query, and Result variable fields.](/img/genai/develop/rag/rag-query/04-augment-form.png)
+    <ThemedImage
+        alt="Augment User Query form showing Context, Query, and Result variable fields."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/04-augment-form.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/04-augment-form.png'),
+        }}
+    />
 
 This step handles prompt construction automatically. You do not need to manually interleave chunks and questions.
 
-![Flow editor showing the Augment User Query node added after the Retrieve node.](/img/genai/develop/rag/rag-query/05-augment-node.png)
+<ThemedImage
+    alt="Flow editor showing the Augment User Query node added after the Retrieve node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/rag/rag-query/05-augment-node.png'),
+        dark: useBaseUrl('/img/genai/develop/rag/rag-query/05-augment-node.png'),
+    }}
+/>
 
 ---
 
@@ -142,7 +205,13 @@ This step handles prompt construction automatically. You do not need to manually
 3. Select a model provider, for example **Default Model Provider (WSO2)**, and set the name to `defaultModel`.
 4. Click **Save**.
 
-![Flow editor showing the model provider node added after the Augment User Query node.](/img/genai/develop/rag/rag-query/06-model-provider-node.png)
+<ThemedImage
+    alt="Flow editor showing the model provider node added after the Augment User Query node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/rag/rag-query/06-model-provider-node.png'),
+        dark: useBaseUrl('/img/genai/develop/rag/rag-query/06-model-provider-node.png'),
+    }}
+/>
 
 ---
 
@@ -153,7 +222,13 @@ The **Generate** action calls the LLM with the augmented message and returns the
 1. Click **+** after the model provider node.
 2. Select the `defaultModel` variable and choose the **Generate** action.
 
-    ![Model provider node with the Generate action selected.](/img/genai/develop/rag/rag-query/07-generate-action.png)
+    <ThemedImage
+        alt="Model provider node with the Generate action selected."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/07-generate-action.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/07-generate-action.png'),
+        }}
+    />
 
 3. Configure the node:
 
@@ -165,9 +240,21 @@ The **Generate** action calls the LLM with the augmented message and returns the
 
 4. Click **Save**.
 
-    ![Generate action form showing Prompt, Expected type, and Result variable fields.](/img/genai/develop/rag/rag-query/08-generate-form.png)
+    <ThemedImage
+        alt="Generate action form showing Prompt, Expected type, and Result variable fields."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/08-generate-form.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/08-generate-form.png'),
+        }}
+    />
 
-    ![Flow editor showing the Generate node added after the model provider node.](/img/genai/develop/rag/rag-query/09-final-flow.png)
+    <ThemedImage
+        alt="Flow editor showing the Generate node added after the model provider node."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/rag/rag-query/09-final-flow.png'),
+            dark: useBaseUrl('/img/genai/develop/rag/rag-query/09-final-flow.png'),
+        }}
+    />
 
 ---
 
@@ -178,7 +265,13 @@ The **Generate** action calls the LLM with the augmented message and returns the
 3. Set the expression to `response`.
 4. Click **Save**.
 
-![Complete RAG query integration with HTTP service, Retrieve, Augment User Query, Generate, and Return nodes.](/img/genai/develop/rag/rag-query/10-rag-query-pipeline.png)
+<ThemedImage
+    alt="Complete RAG query integration with HTTP service, Retrieve, Augment User Query, Generate, and Return nodes."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/rag/rag-query/10-rag-query-pipeline.png'),
+        dark: useBaseUrl('/img/genai/develop/rag/rag-query/10-rag-query-pipeline.png'),
+    }}
+/>
 
 ---
 

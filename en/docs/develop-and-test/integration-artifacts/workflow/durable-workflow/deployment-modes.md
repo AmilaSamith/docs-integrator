@@ -6,6 +6,9 @@ keywords: [wso2 integrator, durable workflow, deployment mode, temporal, in memo
 slug: /develop-and-test/integration-artifacts/workflow/durable-workflow/deployment-modes
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Deployment Modes
 
 Every durable workflow keeps its record in a workflow engine, and that record is what a run replays from after a crash or a restart. The `mode` configurable decides which engine the runtime talks to and how it reaches it, from an in-memory engine for trying a workflow out to a managed cloud deployment in production.
@@ -33,7 +36,13 @@ In the designer:
 2. On the **Configurable Variables** page, under **Imported libraries**, click **ballerina/workflow**.
 3. Fill in the box under the variable you want to set, for example `mode`.
 
-![Opening Configurations, selecting ballerina/workflow under Imported libraries, and setting a value on the Configurable Variables page](/img/workflows/deployment-modes/set-deployment-mode.gif)
+<ThemedImage
+    alt="Opening Configurations, selecting ballerina/workflow under Imported libraries, and setting a value on the Configurable Variables page"
+    sources={{
+        light: useBaseUrl('/img/workflows/deployment-modes/set-deployment-mode.gif'),
+        dark: useBaseUrl('/img/workflows/deployment-modes/set-deployment-mode.gif'),
+    }}
+/>
 
 Each setting carries its own documentation, and its box shows the default it falls back to when you leave it empty.
 

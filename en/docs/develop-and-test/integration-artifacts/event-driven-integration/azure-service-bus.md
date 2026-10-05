@@ -4,6 +4,8 @@ description: Consume messages from Azure Service Bus queues and topic subscripti
 slug: /develop-and-test/integration-artifacts/event-driven-integration/azure-service-bus
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,7 +22,13 @@ Azure Service Bus event integrations consume messages from a queue or topic subs
 2. In the **Artifacts** panel, select **Azure Service Bus** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![Azure Service Bus Event Integration creation form](/img/develop/integration-artifacts/event/azure-service-bus/step-creation-form.png)
+   <ThemedImage
+       alt="Azure Service Bus Event Integration creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description |
    |---|---|
@@ -37,7 +45,13 @@ Azure Service Bus event integrations consume messages from a queue or topic subs
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill and the **Event Handlers** section.
 
-   ![Service Designer showing the Azure Service Bus service canvas](/img/develop/integration-artifacts/event/azure-service-bus/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the Azure Service Bus service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-service-designer.png'),
+       }}
+   />
 
 6. Click **+ Add Handler** to add event handlers.
 
@@ -79,7 +93,13 @@ In the **Service Designer**, click the **Configure** icon in the header to open 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![Listener configuration — connection string and entity config](/img/develop/integration-artifacts/event/azure-service-bus/step-listener-config-1.png)
+<ThemedImage
+    alt="Listener configuration — connection string and entity config"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-listener-config-1.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/azure-service-bus/step-listener-config-1.png'),
+    }}
+/>
 
 <!-- ![Listener configuration — receive mode, retry, and concurrency fields](/img/develop/integration-artifacts/event/azure-service-bus/step-listener-config-2.png)
 

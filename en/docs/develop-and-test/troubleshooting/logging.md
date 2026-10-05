@@ -5,6 +5,8 @@ description: Use logs to trace integration execution and diagnose issues.
 slug: /develop-and-test/troubleshooting/logging
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -23,7 +25,13 @@ WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Err
 2. Click **Log Info** (or **Log Warn**, **Log Error**, **Log Debug**) to add the node.
 3. Fill the **Msg** field with the message to log. **Msg** supports Ballerina string templates, so you can embed expressions such as `` `Order ${orderId} received` ``.
 
-![Log Info form with Msg field](/img/develop/flow-design-elements/log-info-form.png)
+<ThemedImage
+    alt="Log Info form with Msg field"
+    sources={{
+        light: useBaseUrl('/img/develop/flow-design-elements/log-info-form.png'),
+        dark: useBaseUrl('/img/develop/flow-design-elements/log-info-form.png'),
+    }}
+/>
 
 See [Logging in the flow diagram editor](../../editor/canvases/flow-canvas/node-palette.md#logging) for the full node and form reference.
 
@@ -91,7 +99,13 @@ When you catch an error, log it with the error value attached so the stack trace
 1. Add a **Log Error** node inside the **On Failure** branch of an `ErrorHandler`, or after a checked call that returned an error.
 2. In **Advanced Configurations**, attach the caught error to the log entry and enable the stack trace option.
 
-![Log Info form with Msg field](/img/develop/troubleshooting/logging/log-error.png)
+<ThemedImage
+    alt="Log Info form with Msg field"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/logging/log-error.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/logging/log-error.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -126,7 +140,13 @@ Use the severity that matches the audience and noise budget for the message:
 
 Open **Configurations** from the project explorer and select **ballerina/log** under **Imported libraries**. Set the **level** field (and any of the other root logger options) without leaving the editor.
 
-![Configurable Variables panel showing the ballerina/log options](/img/develop/troubleshooting/logging/configurable-variables.png)
+<ThemedImage
+    alt="Configurable Variables panel showing the ballerina/log options"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/logging/configurable-variables.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/logging/configurable-variables.png'),
+    }}
+/>
 
 For the meaning of each option (`format`, `level`, `modules`, `keyValues`, `destinations`, `enableSensitiveDataMasking`), see [Ballerina by Example](https://ballerina.io/learn/by-example/).
 

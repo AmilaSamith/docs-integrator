@@ -5,6 +5,8 @@ description: Reference for using MCP servers as tool sources for WSO2 Integrator
 slug: /develop-and-test/integration-artifacts/ai-integrations/mcp/consuming-mcp-from-agent
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -19,7 +21,13 @@ An [AI Agent](../agents/agents.md) in WSO2 Integrator can use any MCP server as 
 
 On the agent canvas, click **+ Add Tool** → **Use MCP Server**. The **Add MCP Server** panel opens:
 
-![The Add MCP Server panel. Tools to Include is set to All. Advanced Configurations expanded showing: Info (name and version), HTTP Version with Select / Expression toggle, HTTP1 Settings, HTTP2 Settings, Timeout (default 30 seconds), Forwarded.](/img/genai/develop/agents/08-add-mcp-server.png)
+<ThemedImage
+    alt="The Add MCP Server panel. Tools to Include is set to All. Advanced Configurations expanded showing: Info (name and version), HTTP Version with Select / Expression toggle, HTTP1 Settings, HTTP2 Settings, Timeout (default 30 seconds), Forwarded."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/08-add-mcp-server.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/08-add-mcp-server.png'),
+    }}
+/>
 
 | Field | What it does |
 |---|---|
@@ -98,7 +106,13 @@ When an MCP server exposes many tools, do not pull them all in. Pick the few you
 
 In the **Edit MCP Server** panel, set **Tools to Include** to **Selected** and check the tools the agent should have access to. The panel queries the server and lists every tool it advertises.
 
-![The Edit MCP Server panel with Tools to Include set to Selected, showing the Available Tools list with searchProducts and submitReturnRequest checked and getOrderStatus unchecked.](/img/genai/develop/agents/29-mcp-filter-tools.png)
+<ThemedImage
+    alt="The Edit MCP Server panel with Tools to Include set to Selected, showing the Available Tools list with searchProducts and submitReturnRequest checked and getOrderStatus unchecked."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/29-mcp-filter-tools.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/29-mcp-filter-tools.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">

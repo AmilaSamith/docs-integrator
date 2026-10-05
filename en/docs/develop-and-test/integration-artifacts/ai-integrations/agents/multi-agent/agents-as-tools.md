@@ -4,6 +4,9 @@ title: Agents as Tools
 description: Attach an agent as a tool of another AI agent in WSO2 Integrator by reusing an existing instance, creating a new agent, or instantiating a shared agent definition.
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Agents as Tools
 
 An agent can be attached to another agent as a tool. The calling agent then treats it like any other tool: it decides when to invoke it, passes it a task, and uses what comes back.
@@ -14,29 +17,59 @@ This page describes how to attach an agent as a tool and how to configure the re
 
 Tools are attached from the agent node, so start by creating an agent or opening an existing one. Select the agent under **Agents** in the project tree to open its canvas.
 
-![The agent node canvas for aiAgent, showing the AI Agent node with an Add Memory button and the agent's role and instructions, and a + button on the edge of the node.](/img/genai/develop/agents/multi-agent/01-agent-node-canvas.png)
+<ThemedImage
+    alt="The agent node canvas for aiAgent, showing the AI Agent node with an Add Memory button and the agent's role and instructions, and a + button on the edge of the node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/01-agent-node-canvas.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/01-agent-node-canvas.png'),
+    }}
+/>
 
 :::note
 If the canvas shows an `agent:run` node, you are looking at the integration flow that *uses* the agent, not the agent node itself. Click **Open Agent** on the to get there.
 
-![The Chat Agent Service flow showing Start, an agent:run node for aiAgent with an Open Agent button, and Return.](/img/genai/develop/agents/multi-agent/02-integration-flow-open-agent.png)
+<ThemedImage
+    alt="The Chat Agent Service flow showing Start, an agent:run node for aiAgent with an Open Agent button, and Return."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/02-integration-flow-open-agent.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/02-integration-flow-open-agent.png'),
+    }}
+/>
 :::
 
 ## Attach an agent as a tool
 
 1. Click the **+** button on the **AI Agent** node. The **Add Tool** panel opens with the available tool types.
 
-![The Add Tool panel listing Use Connection, Use Function, Use Agent, Use MCP Server, and Create Custom Tool.](/img/genai/develop/agents/multi-agent/03-add-tool-panel.png)
+<ThemedImage
+    alt="The Add Tool panel listing Use Connection, Use Function, Use Agent, Use MCP Server, and Create Custom Tool."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/03-add-tool-panel.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/03-add-tool-panel.png'),
+    }}
+/>
 
 2. Select **Use Agent**, which delegates to another agent in your integration by wrapping it as a tool. For the other tool types, see [Tools](../tools.md).
 
-![The Add Tool - Use Agent panel, headed "Pick an agent from your integration to hand off requests to", with a search box and an Agent section containing an Add Agent button.](/img/genai/develop/agents/multi-agent/04-use-agent-panel.png)
+<ThemedImage
+    alt={"The Add Tool - Use Agent panel, headed \"Pick an agent from your integration to hand off requests to\", with a search box and an Agent section containing an Add Agent button."}
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/04-use-agent-panel.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/04-use-agent-panel.png'),
+    }}
+/>
 
 Agents already instantiated in the integration are listed here and can be attached directly.
 
 3. If the agent you want doesn't exist yet, click **+ Add Agent** and choose where the new agent comes from.
 
-![The Add Agent dialog showing Create Agent, Create Agent Definition, and a Pre-built Agents section containing ReturnsPolicyAgent and customer_support_agent.](/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png)
+<ThemedImage
+    alt="The Add Agent dialog showing Create Agent, Create Agent Definition, and a Pre-built Agents section containing ReturnsPolicyAgent and customer_support_agent."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png'),
+    }}
+/>
 
 The options are the same as when adding an agent as an artifact:
 
@@ -65,7 +98,13 @@ Reuse is the simpler default. Create a new instance when the callers must not se
 
 Once an agent is selected, configure how the calling agent sees and invokes it.
 
-![The Use Agent configuration form for returnsPolicyAgent, with Tool Name, Description, the Requires Approval and Pass Agent Context checkboxes, and collapsed OAuth Client Configuration and Result Type sections.](/img/genai/develop/agents/multi-agent/06-configure-tool.png)
+<ThemedImage
+    alt="The Use Agent configuration form for returnsPolicyAgent, with Tool Name, Description, the Requires Approval and Pass Agent Context checkboxes, and collapsed OAuth Client Configuration and Result Type sections."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/06-configure-tool.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/06-configure-tool.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|

@@ -6,6 +6,9 @@ slug: /icp/manage-integrations
 sidebar_position: 8
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Manage Integrations
 
 An integration in ICP represents a deployable Ballerina or MI application that runs in one or more environments. Each integration belongs to a project and is the primary unit for viewing logs, metrics, and runtime status in the ICP console. This page guides you through creating integrations and navigating the integration home.
@@ -122,7 +125,13 @@ When operational, the page provides:
 
 Ballerina listeners (HTTP, TCP, and other transport listeners) appear in the **Entry Points** tab of the integration Overview under the **Listener** type. Each listener shows its package, protocol, host, and port. You can start or stop individual listeners directly from the console, which sends a control command to all runtimes running that listener in the selected environment.
 
-![Listener entry point detail panel showing the enable/disable toggle](/img/manage/icp/listener-control-light.png)
+<ThemedImage
+    alt="Listener entry point detail panel showing the enable/disable toggle"
+    sources={{
+        light: useBaseUrl('/img/manage/icp/listener-control-light.png'),
+        dark: useBaseUrl('/img/manage/icp/listener-control-light.png'),
+    }}
+/>
 
 #### Start or stop a listener
 

@@ -4,6 +4,8 @@ description: Consume messages from Solace PubSub+ queues and topics with configu
 slug: /develop-and-test/integration-artifacts/event-driven-integration/solace
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,7 +22,13 @@ Solace event integrations consume messages from a Solace PubSub+ queue or topic 
 2. In the **Artifacts** panel, select **Solace** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![Solace Event Integration creation form](/img/develop/integration-artifacts/event/solace/step-creation-form.png)
+   <ThemedImage
+       alt="Solace Event Integration creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description | Default |
    |---|---|---|
@@ -75,7 +83,13 @@ Solace event integrations consume messages from a Solace PubSub+ queue or topic 
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill, the queue or topic name pill, and an empty **Event Handlers** section.
 
-   ![Service Designer showing the Solace Event Integration canvas](/img/develop/integration-artifacts/event/solace/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the Solace Event Integration canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-service-designer.png'),
+       }}
+   />
 
 6. Click **+ Add Handler** to add event handlers.
 
@@ -135,7 +149,13 @@ In the **Service Designer**, click the **Configure** icon in the header to open 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![Solace Event Integration Configuration panel — ServiceConfig expression and listener configuration](/img/develop/integration-artifacts/event/solace/step-service-config.png)
+<ThemedImage
+    alt="Solace Event Integration Configuration panel — ServiceConfig expression and listener configuration"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-service-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-service-config.png'),
+    }}
+/>
 
 The **ServiceConfig** field accepts a record expression that sets the destination and message handling options.
 
@@ -262,7 +282,13 @@ In the **Service Designer**, click **+ Add Handler**. The **Select Handler to Ad
 
 **onMessage** — opens a configuration panel before saving:
 
-![onMessage handler configuration panel](/img/develop/integration-artifacts/event/solace/step-add-handler.png)
+<ThemedImage
+    alt="onMessage handler configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-add-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/solace/step-add-handler.png'),
+    }}
+/>
 
 | Option | Description |
 |---|---|

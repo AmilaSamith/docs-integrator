@@ -8,13 +8,22 @@ hide_table_of_contents: true
 wide_layout: true
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Use Developer Tools
 
 Accelerate integration development with Ballerina CLI tools that generate service stubs, client code, schemas, and data converters from industry-standard specifications. These tools eliminate boilerplate and ensure your integrations conform to API contracts, protocol definitions, and data standards.
 
 In WSO2 Integrator, most tools are accessible both from the command line and from the Visual Designer in VS Code.
 
-![VS Code command palette showing bal tool commands](/img/develop/tools/overview/command-palette.png)
+<ThemedImage
+    alt="VS Code command palette showing bal tool commands"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/overview/command-palette.png'),
+        dark: useBaseUrl('/img/develop/tools/overview/command-palette.png'),
+    }}
+/>
 
 ## Integration tools
 

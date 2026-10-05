@@ -4,6 +4,9 @@ description: Define reusable mapping logic inside a data mapper and apply it to 
 slug: /develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/submappings
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Sub Mappings
 
 When the same logic is needed in multiple output fields, define a sub mapping. A sub mapping consolidates the related inputs and logic into a single named expression that can be reused across the data mapper.
@@ -14,13 +17,25 @@ When the same logic is needed in multiple output fields, define a sub mapping. A
 2. Configure the sub mapping name, type, and the inputs to use.
 3. Map the fields inside the sub mapping view as you would in any data mapper.
 
-![Add Sub Mapping action with the ProductMapper canvas open](/img/develop/integration-artifacts/supporting/data-mapper/submapping-creation.gif)
+<ThemedImage
+    alt="Add Sub Mapping action with the ProductMapper canvas open"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/submapping-creation.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/submapping-creation.gif'),
+    }}
+/>
 
 ## Use a sub mapping
 
 Once defined, the sub mapping appears under **Sub Mappings** in the left panel. Map it to any compatible output field as you would any other input.
 
-![Sub Mappings section in the left panel with vendorMapping mapped to output fields](/img/develop/integration-artifacts/supporting/data-mapper/submapping-usage.gif)
+<ThemedImage
+    alt="Sub Mappings section in the left panel with vendorMapping mapped to output fields"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/submapping-usage.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/submapping-usage.gif'),
+    }}
+/>
 
 ## What's next
 

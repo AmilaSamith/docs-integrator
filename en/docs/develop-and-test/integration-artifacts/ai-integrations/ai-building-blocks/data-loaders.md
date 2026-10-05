@@ -6,6 +6,9 @@ keywords: [wso2 integrator, data loader, rag, ai document, sharepoint, microsoft
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/data-loaders
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Data Loaders
 
 A **Data Loader** reads documents from a source and returns them as `ai:Document` values, ready to be chunked, embedded, and indexed by a [Knowledge Base](knowledge-bases.md). It is the entry point of the [RAG ingestion](../rag/rag-ingestion.md) pipeline.
@@ -24,7 +27,13 @@ Every data loader exposes one action.
 
 In the flow editor, open the **Add Node** panel and go to **AI > RAG > Data Loader**, then click **+ Add Data Loader**. The **Data Loaders** picker lists the available types.
 
-![Data Loaders picker listing Text Data Loader (a data loader that loads supported file types as text documents) and Microsoft SharePoint Text Data Loader (a data loader that retrieves documents from SharePoint document libraries as text).](/img/genai/develop/components/data-loaders/01-data-loaders-picker.png)
+<ThemedImage
+    alt="Data Loaders picker listing Text Data Loader (a data loader that loads supported file types as text documents) and Microsoft SharePoint Text Data Loader (a data loader that retrieves documents from SharePoint document libraries as text)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/data-loaders/01-data-loaders-picker.png'),
+        dark: useBaseUrl('/img/genai/develop/components/data-loaders/01-data-loaders-picker.png'),
+    }}
+/>
 
 ## Implementations overview
 
@@ -39,7 +48,13 @@ Reads files from the local file system and wraps their content as `ai:Document` 
 
 ### Create form
 
-![ai Data Loader create form titled 'Initializes the data loader with the given paths' showing Paths (the paths to the files to load), Data Loader Name (default aiTextdataloader), and Result Type (ai:TextDataLoader).](/img/genai/develop/components/data-loaders/03-text-data-loader-form.png)
+<ThemedImage
+    alt="ai Data Loader create form titled 'Initializes the data loader with the given paths' showing Paths (the paths to the files to load), Data Loader Name (default aiTextdataloader), and Result Type (ai:TextDataLoader)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/data-loaders/03-text-data-loader-form.png'),
+        dark: useBaseUrl('/img/genai/develop/components/data-loaders/03-text-data-loader-form.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|
@@ -61,7 +76,13 @@ Each file is returned as an `ai:TextDocument` based on its MIME type / extension
 
 ### Create form
 
-![ai.microsoft.sharepoint Data Loader create form titled 'Initializes the SharePoint data loader' showing SharePoint Connection Configurations (a Record), Data Sources (an Array), Data Loader Name (default sharepointTextdataloaderResult), and Result Type (sharepoint:TextDataLoader).](/img/genai/develop/components/data-loaders/02-sharepoint-data-loader-form.png)
+<ThemedImage
+    alt="ai.microsoft.sharepoint Data Loader create form titled 'Initializes the SharePoint data loader' showing SharePoint Connection Configurations (a Record), Data Sources (an Array), Data Loader Name (default sharepointTextdataloaderResult), and Result Type (sharepoint:TextDataLoader)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/data-loaders/02-sharepoint-data-loader-form.png'),
+        dark: useBaseUrl('/img/genai/develop/components/data-loaders/02-sharepoint-data-loader-form.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|

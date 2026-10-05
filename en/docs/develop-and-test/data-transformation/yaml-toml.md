@@ -5,6 +5,8 @@ description: Parse, construct, and transform YAML and TOML data in Ballerina int
 slug: /develop-and-test/data-transformation/yaml-toml
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -50,7 +52,13 @@ Read YAML content and convert it into Ballerina values with type safety.
 
 5. **Add a Function Call step to print the database pool size**: Click **+** and select **Function Call**. Search for `io:println` and add two arguments: `"DB Pool Size: "` and `config.database.poolSize`.
 
-   ![Flow designer showing YAML file read, typed conversion, and console output steps](/img/develop/transform/yaml-toml/yaml-parsing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing YAML file read, typed conversion, and console output steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-parsing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-parsing-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -113,7 +121,13 @@ Parse YAML content directly from a string value.
 
 4. **Add a Function Call step to print the env vars**: Click **+** and select **Function Call**. Search for `io:println` and add two arguments: `"Env vars: "` and `envVars` (kept separate because `+` cannot mix a string with a `json` value).
 
-   ![Flow designer showing YAML string parsing, nested value access, and console output steps](/img/develop/transform/yaml-toml/yaml-parsing-strings-flow.png)
+   <ThemedImage
+       alt="Flow designer showing YAML string parsing, nested value access, and console output steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-parsing-strings-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-parsing-strings-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -176,7 +190,13 @@ Serialize Ballerina values back to YAML format.
 
 4. **Add a Function Call step to print the YAML**: Click **+** and select **Function Call**. Search for `io:println` and pass `yamlString` as the argument.
 
-   ![Flow designer showing YAML serialization, file write, and console output steps](/img/develop/transform/yaml-toml/yaml-writing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing YAML serialization, file write, and console output steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-writing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-writing-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -234,7 +254,13 @@ Handle YAML files with multiple documents separated by `---`.
 
 7. **Add a Function Call step inside the loop to print the kind**: Click **+** and select **Function Call**. Search for `io:println` and add two arguments: `"Processing: "` and `kind`.
 
-   ![Flow designer showing multi-document YAML parsing with foreach iteration](/img/develop/transform/yaml-toml/yaml-multi-doc-flow.png)
+   <ThemedImage
+       alt="Flow designer showing multi-document YAML parsing with foreach iteration"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-multi-doc-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-multi-doc-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -297,7 +323,13 @@ Read TOML files into Ballerina maps and records.
 
 5. **Add a Function Call step to print the project version**: Click **+** and select **Function Call**. Search for `io:println` and add two arguments: `"Version: "` and `config.version`.
 
-   ![Flow designer showing TOML file read, raw print, typed conversion, and version print steps](/img/develop/transform/yaml-toml/toml-parsing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing TOML file read, raw print, typed conversion, and version print steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/toml-parsing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/toml-parsing-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -359,7 +391,13 @@ Generate TOML content from Ballerina data structures.
 
 2. **Add a Function Call step to write the file**: Click **+** and select **Function Call**. Search for `toml:writeFile` in the library picker and select it (this adds the `ballerina/toml` import). Pass `"pipeline.toml"` as the path argument. For the **TOML structure** field, switch the input to **expression** mode and pick `config` from the variable picker.
 
-   ![Flow designer showing the config map declaration and TOML write step](/img/develop/transform/yaml-toml/toml-writing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the config map declaration and TOML write step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/toml-writing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/toml-writing-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -411,7 +449,13 @@ In the `jsonToYaml` function flow:
 
 5. **Add a Function Call step to write to the file**: Click **+** and select **Function Call**. Search for `io:fileWriteString` in the library picker and select it. Pass `outputPath` as the path argument and `yamlString` as the content argument.
 
-   ![Flow designer showing YAML-to-JSON conversion function flows](/img/develop/transform/yaml-toml/yaml-json-conversion-flow.png)
+   <ThemedImage
+       alt="Flow designer showing YAML-to-JSON conversion function flows"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-json-conversion-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-json-conversion-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -479,7 +523,13 @@ Build a configuration loader that reads from YAML or TOML based on file extensio
 
 10. **Add a Function Call to print the startup message**: Click **+** and select **Function Call**. Search for `io:println` and add two arguments: `"Starting " + config.appName + " on port "` (string concatenation between strings) and `config.port`.
 
-   ![Flow designer showing the dynamic configuration loader with If/Else branching for YAML and TOML formats](/img/develop/transform/yaml-toml/yaml-toml-config-loader-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the dynamic configuration loader with If/Else branching for YAML and TOML formats"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/yaml-toml/yaml-toml-config-loader-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/yaml-toml/yaml-toml-config-loader-flow.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">

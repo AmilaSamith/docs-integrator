@@ -8,6 +8,9 @@ card_summary: Generate email drafts with a direct LLM call
 card_keywords: [content generation, prompt, quick start]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Email Generator with Direct LLM
 
 This tutorial walks through building an **HTTP service that generates professional emails using an LLM**. It's a complete, end-to-end scenario that exercises the [Direct LLM Calls](../../develop-and-test/integration-artifacts/ai-integrations/direct-llm/direct-llm.md) feature surface.
@@ -31,11 +34,23 @@ By the end you will have a `POST /emails/generate` endpoint that takes recipient
 1. From the left sidebar, open the **Artifacts** page.
 2. Under **Integration as API**, click **HTTP Service**.
 
-![Artifacts page with HTTP Service highlighted under Integration as API.](/img/genai/develop/direct-llm/01-artifacts-page.png)
+<ThemedImage
+    alt="Artifacts page with HTTP Service highlighted under Integration as API."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/01-artifacts-page.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/01-artifacts-page.png'),
+    }}
+/>
 
 3. In the **Create HTTP Service** form, select **Design From Scratch**, enter `/api/v1` as the **Service Base Path**, and click the blue **Create** button.
 
-![Create HTTP Service form with Service Base Path set to /api/v1.](/img/genai/develop/direct-llm/02-create-http-service.png)
+<ThemedImage
+    alt="Create HTTP Service form with Service Base Path set to /api/v1."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/02-create-http-service.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/02-create-http-service.png'),
+    }}
+/>
 
 ### Step 1.2: Define the request payload
 
@@ -58,7 +73,13 @@ Click **Define Payload** and:
 3. Set **Type Name** to `EmailGeneratePayload`.
 4. Click **Import Type**.
 
-![Define Payload dialog with sample JSON and type name EmailGeneratePayload.](/img/genai/develop/direct-llm/03-define-payload.png)
+<ThemedImage
+    alt="Define Payload dialog with sample JSON and type name EmailGeneratePayload."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/03-define-payload.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/03-define-payload.png'),
+    }}
+/>
 
 The dialog produces a record with the right fields. There is no need to write the type by hand — the JSON sample drives it.
 
@@ -79,11 +100,23 @@ Still on the resource configuration, click the response type for status `201` (B
 
 4. Click **Import**.
 
-![Create New Type dialog with EmailGenerateResponse and sample JSON.](/img/genai/develop/direct-llm/04-define-response-type.png)
+<ThemedImage
+    alt="Create New Type dialog with EmailGenerateResponse and sample JSON."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/04-define-response-type.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/04-define-response-type.png'),
+    }}
+/>
 
 Click **Save** on the resource. The configuration should now show `EmailGeneratePayload` for the request and `EmailGenerateResponse` for the `201` response.
 
-![Completed resource configuration with both types assigned.](/img/genai/develop/direct-llm/05-resource-complete.png)
+<ThemedImage
+    alt="Completed resource configuration with both types assigned."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/05-resource-complete.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/05-resource-complete.png'),
+    }}
+/>
 
 ---
 
@@ -92,7 +125,13 @@ Click **Save** on the resource. The configuration should now show `EmailGenerate
 After saving, the flow editor opens. Click **+** between **Start** and **Error Handler**. In the **Add Node** panel, scroll to the **AI** section and click **Model Provider**. Then click `Add Model Provider`. The provider list appears on the right side.
 
 
-![Model Provider list showing all supported providers.](/img/genai/develop/direct-llm/06-model-provider-list.png)
+<ThemedImage
+    alt="Model Provider list showing all supported providers."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/06-model-provider-list.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/06-model-provider-list.png'),
+    }}
+/>
 
 Click **Default Model Provider (WSO2)**. In the configuration form:
 
@@ -100,7 +139,13 @@ Click **Default Model Provider (WSO2)**. In the configuration form:
 2. **Result Type** is fixed to the provider's connection type (`ai:Wso2ModelProvider` for the WSO2 default) and cannot be edited.
 3. Click **Save**.
 
-![Model Provider configuration with name emailGenerator.](/img/genai/develop/direct-llm/07-model-provider-config.png)
+<ThemedImage
+    alt="Model Provider configuration with name emailGenerator."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/07-model-provider-config.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/07-model-provider-config.png'),
+    }}
+/>
 
 > **Tip:** The Default WSO2 Model Provider does not require an API key. For a different provider see [AI Connections and Stores → Model Providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md).
 
@@ -110,7 +155,13 @@ Click **Default Model Provider (WSO2)**. In the configuration form:
 
 In the **Model Providers** panel on the right, expand the **emailGenerator** section and click **Generate**.
 
-![emailGenerator expanded with Chat and Generate actions.](/img/genai/develop/direct-llm/08-generate-action.png)
+<ThemedImage
+    alt="emailGenerator expanded with Chat and Generate actions."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/08-generate-action.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/08-generate-action.png'),
+    }}
+/>
 
 ### Step 3.1: Write the prompt
 
@@ -120,7 +171,13 @@ Click the **Prompt** field to open the rich-text editor and enter:
 
 Use the **Insert → Inputs** menu to add each `${...}` reference, or just type the placeholders by hand — the editor stores them as a Ballerina template literal.
 
-![Prompt editor with the email writing assistant instruction.](/img/genai/develop/direct-llm/09-prompt-editor.png)
+<ThemedImage
+    alt="Prompt editor with the email writing assistant instruction."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/09-prompt-editor.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/09-prompt-editor.png'),
+    }}
+/>
 
 The prompt has three natural parts:
 
@@ -143,7 +200,13 @@ In the same form fill in:
 
 Click **Save**.
 
-![emailGenerator > generate form with prompt, Result generatedEmail, and Expected Type EmailGenerateResponse.](/img/genai/develop/direct-llm/10-generate-config.png)
+<ThemedImage
+    alt="emailGenerator > generate form with prompt, Result generatedEmail, and Expected Type EmailGenerateResponse."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/10-generate-config.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/10-generate-config.png'),
+    }}
+/>
 
 The Expected Type is what makes the response come back structured. Without it you'd get a string and have to parse JSON yourself; with it, you get a typed `EmailGenerateResponse` directly.
 
@@ -153,14 +216,26 @@ The Expected Type is what makes the response come back structured. Without it yo
 1. Click **+** below the `ai:generate` node.
 2. In **Add Node** under **Control**, pick **Return**.
 
-![Add Node panel showing Connections, Statement, Control, and AI categories.](/img/genai/develop/direct-llm/11-add-node-panel.png)
+<ThemedImage
+    alt="Add Node panel showing Connections, Statement, Control, and AI categories."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/11-add-node-panel.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/11-add-node-panel.png'),
+    }}
+/>
 
 3. Set the return expression to `generatedEmail` and click **Save**.
 
 The completed flow has three nodes between **Start** and **Error Handler**: the model provider connection, the `ai:generate` node bound to `generatedEmail`, and the **Return** step.
 
 
-![Completed flow with ai:generate connected to emailGenerator and a Return node.](/img/genai/develop/direct-llm/12-flow-complete.png)
+<ThemedImage
+    alt="Completed flow with ai:generate connected to emailGenerator and a Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/12-flow-complete.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/12-flow-complete.png'),
+    }}
+/>
 
 ---
 
@@ -173,7 +248,13 @@ The completed flow has three nodes between **Start** and **Error Handler**: the 
 
 The **Try Service** panel opens with the `POST /emails/generate` endpoint and the request schema.
 
-![Try Service panel showing POST /emails/generate with request body schema.](/img/genai/develop/direct-llm/13-try-service.png)
+<ThemedImage
+    alt="Try Service panel showing POST /emails/generate with request body schema."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/13-try-service.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/13-try-service.png'),
+    }}
+/>
 
 ### Step 4.2: Send a request
 
@@ -199,7 +280,13 @@ The service responds with `201 Created` (Ballerina's default for `POST` resource
 }
 ```
 
-![Response showing 201 Created with the generated email subject and content.](/img/genai/develop/direct-llm/14-response.png)
+<ThemedImage
+    alt="Response showing 201 Created with the generated email subject and content."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/direct-llm/14-response.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm/14-response.png'),
+    }}
+/>
 
 The LLM produced a complete, professionally written email — subject and body — exactly in the shape declared by `EmailGenerateResponse`.
 
