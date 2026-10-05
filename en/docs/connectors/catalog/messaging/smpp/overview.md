@@ -1,6 +1,7 @@
 ---
 connector: true
 connector_name: "smpp"
+hide_category_badge: true
 title: "SMPP"
 description: "Overview of the ballerina/smpp connector for WSO2 Integrator."
 ---
