@@ -27,7 +27,7 @@ A workflow is a step-by-step process that completes a larger task. WSO2 Integrat
 - **Survive crashes and restarts** — every completed step is recorded, and the workflow resumes exactly where it left off. A finished step is never re-executed.
 - **Wait for as long as it takes** — pause for hours, days, or months for a human decision or an external event, consuming no threads or connections while suspended.
 - **Recover from failures** — retry failed steps automatically, or hand the failure to a human who can fix the input and retry.
-- **Keep humans in the loop** — assign role-based tasks that people decide from a task inbox.
+- **Keep humans in the loop** — assign role-based tasks that people decide from the [Integration Control Plane](../../../icp/manage-workflows/complete-human-tasks.md) task inbox.
 
 ## Two ways to build, one durable runtime
 
@@ -63,3 +63,16 @@ Both run on the same durable runtime, so an AI agent gets crash safety, human ta
 - **[Send an agent data event](durable-agentic-workflow/send-agent-data-event.md):** Deliver one turn on a channel the running agent listens on, and keep the correlation token it returns.
 - **[Get a data event result](durable-agentic-workflow/get-data-event-result.md):** Read the agent's answer to a sent turn, using that correlation token.
 - **[Get an agent result](durable-agentic-workflow/get-agent-result.md):** Read what an agent instance finally produced, addressed by its instance ID.
+
+## Manage running workflows
+
+- **[Manage workflows](../../../icp/manage-workflows/manage-workflows.md):** Register an integration so its workflows, tasks, and reviews appear in the console, and find your way around the workflow views.
+- **[Start a workflow](../../../icp/manage-workflows/start-a-workflow.md):** Launch an execution from a form generated out of the workflow's input type.
+- **[Workflow executions](../../../icp/manage-workflows/workflow-executions.md):** Follow a run through its timeline, execution graph, and history, and suspend, resume, or terminate it.
+- **[Complete human tasks](../../../icp/manage-workflows/complete-human-tasks.md):** Complete the tasks a run is waiting on, and approve, correct, or reject a gated or failed activity.
+- **[Workflow permissions](../../../icp/manage-workflows/workflow-permissions.md):** The permissions behind each workflow view, and the roles that decide whose tasks are whose.
+
+## Reference
+
+- **[Management API](durable-workflow/management-api.md):** The REST API behind the Control Plane — list instances, read execution graphs, and complete tasks programmatically.
+- **[Deployment modes](durable-workflow/deployment-modes.md):** Choose the workflow engine a run records to, and configure its connection, authentication, worker, and default retry settings.

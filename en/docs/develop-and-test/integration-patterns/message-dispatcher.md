@@ -19,14 +19,14 @@ The pattern is implemented at the point where the integration receives a message
 
 ## Stateful round-robin dispatch
 
-Use stateful round-robin dispatch when each incoming message should be sent to the next processor in a fixed set. Store the current processor index in the service, update it with a `lock`, and call the selected processor through an [HTTP client connection](../../connectors/catalog/built-in/http/action-reference.md#client). The `lock` keeps the index update consistent when multiple requests arrive at the same time. For constructs that do not have a full visual representation, switch to pro-code through the [Flow Canvas](../../editor/canvases/flow-canvas/flow-canvas.md#configuring-a-node).
+Use stateful round-robin dispatch when each incoming message should be sent to the next processor in a fixed set. Store the current processor index in the service, update it with a `lock`, and call the selected processor through an [HTTP client connection](../../connectors/catalog/built-in/http/action-reference.md#client). The `lock` keeps the index update consistent when multiple requests arrive at the same time. For constructs that do not have a full visual representation, switch to pro-code through the [Flow Diagram editor](../../editor/canvases/flow-canvas/flow-canvas.md#configuring-a-node).
 
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create an [HTTP service](../integration-artifacts/integration-as-api/http.md#creating-an-http-service) for the dispatcher entry point.
 2. Add a `GET` resource, such as `/process`, and define a query parameter that carries the message reference, such as `resourceUrl`. See [resource inputs](../integration-artifacts/integration-as-api/http.md#defining-inputs).
-3. Add the outbound processor [HTTP connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection). Configure its base URL with a configurable variable.
+3. Add the outbound processor [HTTP connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection). Configure its base URL with a [configurable variable](../../reference/configuration-reference.md#configurable-variables).
 4. Add a service-level variable named `nextProcessor` with type `int` and default value `0`.
 5. In the resource flow, add the processor selection logic as a Ballerina code block: read `nextProcessor`, advance it inside a `lock`, and store the selected processor ID.
 6. Add the HTTP connector call that includes the selected processor ID in the request path and passes the message reference as a query parameter.

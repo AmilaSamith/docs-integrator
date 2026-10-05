@@ -6,6 +6,9 @@ keywords: [wso2 integrator, try-it, mcp server, model context protocol, mcp insp
 slug: /develop-and-test/test/try-it-tool/try-it-mcp
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Test MCP Server
 
 The Try-It tool for MCP servers opens the MCP Inspector, an interactive interface for connecting to your server, listing its tools, and invoking them with input parameters. Use it during development to verify that each tool in your MCP server behaves correctly before connecting it to an AI agent.
@@ -14,7 +17,13 @@ The Try-It tool for MCP servers opens the MCP Inspector, an interactive interfac
 
 In the Service Designer, select the button next to the **Configure** button in the service header toolbar, then select **Try It**. The **MCP Inspector** tab opens automatically.
 
-![MCP Inspector showing connection panel, tool list, and tool detail panels](/img/develop/test/try-it/mcp-try-it.png)
+<ThemedImage
+    alt="MCP Inspector showing connection panel, tool list, and tool detail panels"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/mcp-try-it.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/mcp-try-it.png'),
+    }}
+/>
 
 ## The MCP Inspector
 

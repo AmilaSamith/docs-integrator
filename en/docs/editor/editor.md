@@ -8,11 +8,20 @@ wide_layout: true
 slug: /editor
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Understand the Editor
 
 The **WSO2 Integrator editor** brings together everything you need to develop, build, test, debug and deploy your integrations in one place. This tour works outward from the window you see when you open it, to the surfaces you build on, to the tools available throughout. The map below gives you the shape of it before you go deeper into any one piece.
 
-![WSO2 Integrator Editor components: the Editor Window contains Views (Project, Integration, Library) and the surfaces you work on inside a view (Canvases, Panels, Designers), alongside WSO2 Integrator Copilot](/img/editor/editor-components.png)
+<ThemedImage
+    alt="WSO2 Integrator Editor components: the Editor Window contains Views (Project, Integration, Library) and the surfaces you work on inside a view (Canvases, Panels, Designers), alongside WSO2 Integrator Copilot"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-components.png'),
+        dark: useBaseUrl('/img/editor/editor-components.png'),
+    }}
+/>
 
 Explore each part of the editor below.
 
@@ -82,4 +91,4 @@ Explore each part of the editor below.
 
 - [The editor window](editor-window.md) — Explore the shared chrome that surrounds every view.
 - [Flow Canvas](canvases/flow-canvas/flow-canvas.md) — Design integration logic using the visual flow canvas.
-- [Create a new integration](../develop-and-test/organize-workbench/create-a-new-integration.md) — Start building your first integration.
+- [Create a new integration](../develop-and-test/create-workspace/create-a-project.md) — Start building your first integration.

@@ -5,6 +5,8 @@ description: Generate Ballerina services and clients from OpenAPI specifications
 slug: /develop-and-test/developer-tools/integration-tools/openapi-tool
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -23,7 +25,13 @@ Create a service skeleton that matches an OpenAPI specification. The generated c
 2. In the **Artifacts** panel, select **HTTP Service** under **Integration as API**.
 3. Select **Import From OpenAPI Specification** under **Service Contract**.
 
-   ![Select Import From OpenAPI Specification](/img/develop/tools/openapi-tool/step-import-spec.png)
+   <ThemedImage
+       alt="Select Import From OpenAPI Specification"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/openapi-tool/step-import-spec.png'),
+           dark: useBaseUrl('/img/develop/tools/openapi-tool/step-import-spec.png'),
+       }}
+   />
 
 4. Browse or enter the path to your OpenAPI specification file (YAML or JSON).
 5. Configure the **Service Base Path** and listener settings.
@@ -121,14 +129,26 @@ Create a type-safe HTTP client that wraps all API operations defined in the spec
 2. In the **Artifacts** panel, select **Connection** under **Other Artifacts**.
 3. Select **Connect Via API Specification** and provide the OpenAPI spec file.
 
-   ![Client generation from OpenAPI](/img/develop/tools/openapi-tool/step-client-generation.png)
+   <ThemedImage
+       alt="Client generation from OpenAPI"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/openapi-tool/step-client-generation.png'),
+           dark: useBaseUrl('/img/develop/tools/openapi-tool/step-client-generation.png'),
+       }}
+   />
 
 4. In the **Create Connection** step, configure the connection details. Expand **Advanced Configurations** to set the following optional fields:
 
    - **Config**: The configurations to use when initializing the connector.
    - **Service Url**: URL of the target service.
 
-   ![Connection details configuration](/img/develop/tools/openapi-tool/step-connection-details.png)
+   <ThemedImage
+       alt="Connection details configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/openapi-tool/step-connection-details.png'),
+           dark: useBaseUrl('/img/develop/tools/openapi-tool/step-connection-details.png'),
+       }}
+   />
 
 5. Enter a **Connection Name** for the generated client (for example, `openapiClient`).
 6. Click **Save Connection**.
@@ -196,7 +216,13 @@ Generate an OpenAPI specification from an existing Ballerina HTTP service:
 2. Click **Export** in the service header toolbar.
 3. Select **Export OpenAPI Specification**.
 
-   ![Export OpenAPI from service](/img/develop/tools/openapi-tool/step-export.png)
+   <ThemedImage
+       alt="Export OpenAPI from service"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/openapi-tool/step-export.png'),
+           dark: useBaseUrl('/img/develop/tools/openapi-tool/step-export.png'),
+       }}
+   />
 
 4. Choose the output location.
 5. Click **Select OAS Save Location**.
@@ -332,4 +358,4 @@ Once your service is built, export its OpenAPI specification and share it with c
 
 - [GraphQL Tool](graphql-tool.md) — Generate GraphQL services from SDL schemas
 - [gRPC Tool](grpc-tool.md) — Generate gRPC services from Protocol Buffer definitions
-- [Flow Canvas](../../../editor/canvases/flow-canvas/flow-canvas.md) — Build logic visually on top of generated stubs
+- [Flow Diagram editor](../../../editor/canvases/flow-canvas/flow-canvas.md) — Build logic visually on top of generated stubs

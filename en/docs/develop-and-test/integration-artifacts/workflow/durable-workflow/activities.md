@@ -36,7 +36,13 @@ Everything **outside** an activity is ordinary code that runs again on replay. N
 
 To create an activity, click **+** on **Workflow Activities** in the left sidebar.
 
-![The left sidebar with the + button on the Workflow Activities entry](/img/workflows/develop/activities/add-workflow-activity.png)
+<ThemedImage
+    alt="The left sidebar with the + button on the Workflow Activities entry"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/activities/add-workflow-activity.png'),
+        dark: useBaseUrl('/img/workflows/develop/activities/add-workflow-activity.png'),
+    }}
+/>
 
 The **Create Activity** form provides the following fields for defining the activity function:
 
@@ -56,7 +62,13 @@ An activity can also be generated from a connection, so a single operation on an
 1. On the workflow diagram, click **+**, then click **Call Activity**. The **Activities** panel opens.
 2. In the **Current Integration** header, click the plug icon.
 
-   ![The Current Integration header with the plus and plug icons on the right](/img/workflows/develop/activities/current-integration-plug.png)
+   <ThemedImage
+       alt="The Current Integration header with the plus and plug icons on the right"
+       sources={{
+           light: useBaseUrl('/img/workflows/develop/activities/current-integration-plug.png'),
+           dark: useBaseUrl('/img/workflows/develop/activities/current-integration-plug.png'),
+       }}
+   />
 
 3. The **Connections** panel lists the project's connections. Click a connection to expand its operations, or click **+** to [add a connection](../../supportive-artifacts/connections.md) first, `ftpClient` here.
 4. Click the operation the activity should wrap, **Get** here. The activity form opens, headed with the operation it came from, `ftpClient -> get`.
@@ -72,7 +84,13 @@ An activity can also be generated from a connection, so a single operation on an
 
 6. Click **Create Activity**.
 
-![Creating an ftpGet activity from the ftpClient connection's Get operation through the plug icon](/img/workflows/develop/activities/activity-from-connection.gif)
+<ThemedImage
+    alt="Creating an ftpGet activity from the ftpClient connection's Get operation through the plug icon"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/activities/activity-from-connection.gif'),
+        dark: useBaseUrl('/img/workflows/develop/activities/activity-from-connection.gif'),
+    }}
+/>
 
 The activity appears under **Workflow Activities** alongside the ones written by hand, and the call form opens for it so it can be placed in the workflow straight away. Checking **Connection As Parameter** adds a **Connection** field to that call form, where the connection is chosen per call.
 
@@ -94,7 +112,13 @@ The **Call Activity** form provides the following fields for calling an activity
 | **Result Type**        | Only if the output of the activity is not `null` | Type of the resulting data of the activity function.                                                                                                                                               |
 | **Check Error**        | No                                               | Under **Advanced Configurations**. Adds `check` to the call so a failure automatically propagates out from the workflow. Clear it to handle the error yourself. Selected by default. See [Error handling in the workflow logic](review-activity-and-error-handling.md#error-handling-in-the-workflow-logic). |
 
-![Call an activity from a workflow](/img/workflows/develop/activities/activity-call.gif)
+<ThemedImage
+    alt="Call an activity from a workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/activities/activity-call.gif'),
+        dark: useBaseUrl('/img/workflows/develop/activities/activity-call.gif'),
+    }}
+/>
 
 :::tip Idempotent side effects
 A *completed* activity never runs twice, but a *failed* attempt may run again once retries are on. Make the side effect idempotent — pass an idempotency key to the payment gateway, upsert instead of insert — so a repeated attempt cannot double-charge or duplicate a record.
@@ -102,7 +126,7 @@ A *completed* activity never runs twice, but a *failed* attempt may run again on
 
 ## Watching activities run
 
-Each activity call appears as an `ACTIVITY` node in the instance's execution graph in the [Integration Control Plane](../../../../integrator/icp/icp-console-overview.md), so you can see which step an instance is on, which activities have completed, and which one failed.
+Each activity call appears as an `ACTIVITY` node in the instance's execution graph in the [Integration Control Plane](../../../../icp/manage-workflows/workflow-executions.md), so you can see which step an instance is on, which activities have completed, and which one failed. The same graph is available over the [Management API](management-api.md).
 
 ## Next steps
 

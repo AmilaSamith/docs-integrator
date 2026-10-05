@@ -5,6 +5,8 @@ keywords: [wso2 integrator, connections, connector, database client, http client
 slug: /develop-and-test/integration-artifacts/supportive-artifacts/connections
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,15 +23,33 @@ Connection artifacts centralize the configuration for external systems. Define c
 
 2. Click **+** next to **Connections** in the sidebar. Alternatively, click **+ Add Artifact** in the **Design** panel, then click **Connection** under **Other Artifacts** or **Library Artifacts**.
 
-   ![WSO2 Integrator Add connection via sidebar](/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png)
+   <ThemedImage
+       alt="WSO2 Integrator Add connection via sidebar"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/new-connection-sidebar.png'),
+       }}
+   />
 
 3. In the **Add Connection** panel, browse the available connectors. The panel groups them into **Create New Connector** and **Pre-built Connectors**. For details on each category and how to choose, see [Connection types](#connection-types).
 
-   ![WSO2 Integrator Add Connection panel](/img/develop/integration-artifacts/supporting/connections/add-connection.png)
+   <ThemedImage
+       alt="WSO2 Integrator Add Connection panel"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/add-connection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/add-connection.png'),
+       }}
+   />
 
 4. Select a connector. A configuration form appears with fields specific to that connector (for example, base URL and authentication for HTTP, host, port, and credentials for a database, or application/vendor-specific attributes).
 
-   ![WSO2 Integrator Connection initialization form](/img/develop/integration-artifacts/supporting/connections/init-connection.png)
+   <ThemedImage
+       alt="WSO2 Integrator Connection initialization form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/init-connection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/init-connection.png'),
+       }}
+   />
 
 5. Fill in the required fields and click **Save Connection**.
 
@@ -88,7 +108,13 @@ final kafka:Producer kafkaProducer = check new (kafkaBrokers, {
 
 To edit an existing connection, click its name in the sidebar under **Connections** to open its configuration form. Update the fields and click **Update Connection**.
 
-![WSO2 Integrator Connection edit form](/img/develop/integration-artifacts/supporting/connections/edit-connection.png)
+<ThemedImage
+    alt="WSO2 Integrator Connection edit form"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/edit-connection.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/connections/edit-connection.png'),
+    }}
+/>
 
 ## Connection types
 
@@ -98,7 +124,7 @@ The **Add Connection** panel organizes connectors into two categories:
 
 Generate a new connector locally when a pre-built connector isn't available for the system you need to integrate with:
 
-- **Connect via API Specification**: generate a typed HTTP client from an OpenAPI or WSDL file. For more information, see the [OpenAPI tool](../../tools/integration-tools/openapi-tool.md) and the [WSDL tool](../../tools/integration-tools/wsdl-tool.md).
+- **Connect via API Specification**: generate a typed HTTP client from an OpenAPI or WSDL file. For more information, see the [OpenAPI tool](../../developer-tools/integration-tools/openapi-tool.md) and the [WSDL tool](../../developer-tools/integration-tools/wsdl-tool.md).
 - **Connect to a Database**: generate a typed database client by introspecting the schema of a MySQL, MS SQL, or PostgreSQL database.
 
 Connectors created this way are added directly to your project. To make one reusable across projects, publish it to a registry like Ballerina Central. See [Build your own connector](../../../connectors/build-your-own/build-own.md) and [Publish to Ballerina Central](../../../connectors/build-your-own/custom-development.md#step-6-publish-the-connector).
@@ -125,8 +151,8 @@ For the complete list of available connectors, see the [Connector Catalog](../..
 
 ## What's next
 
-- [Connections in the Flow Canvas](../../../editor/canvases/flow-canvas/node-palette.md#connections) — Use connections to invoke actions inside a flow.
-- [Types](./types.md) — Define shared data structures used by your connections.
-- [Configurations](./configurations.md) — Externalize values such as endpoints and credentials.
-- [Functions](./functions.md) — Encapsulate reusable logic in Ballerina functions.
-- [Data mapper](./data-mapper/data-mapper.md) — Map between record types visually.
+- [Connections in the flow diagram editor](../../../editor/canvases/flow-canvas/node-palette.md#connections) — Use connections to invoke actions inside a flow.
+- [Types](types.md) — Define shared data structures used by your connections.
+- [Configurations](configurations.md) — Externalize values such as endpoints and credentials.
+- [Functions](functions.md) — Encapsulate reusable logic in Ballerina functions.
+- [Data mapper](data-mapper/data-mapper.md) — Map between record types visually.

@@ -4,6 +4,8 @@ description: Skip malformed CSV rows at the listener level so the handler only s
 slug: /develop-and-test/integration-artifacts/file-driven-integration/csv-fault-tolerance
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -46,7 +48,13 @@ Fault tolerance is a **listener-level** setting. Turn it on once per listener an
    | **RAW** | The raw row text as it appeared in the source file. |
    | **RAW_AND_METADATA** | Both. |
 
-   ![Record Configuration panel with FailSafeOptions and contentType selected](/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png)
+   <ThemedImage
+       alt="Record Configuration panel with FailSafeOptions and contentType selected"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png'),
+       }}
+   />
 
 4. Close the panel and click **Save**. Every CSV handler on every service attached to this listener now skips malformed rows.
 
@@ -103,7 +111,7 @@ Example entry with `RAW_AND_METADATA`:
 
 The file is opened in **append** mode, so repeated drops for files whose names share a prefix accumulate in the same log.
 
-The `_error.log` filename, location, and JSON layout are the built-in defaults for the `onFileCsv` handler. If you need a different file name, a different directory, or a custom log format, switch to an `onFileText` handler and parse the CSV yourself with `csv:parseString`. This way you control every aspect of error handling from there. See [CSV & Flat File Processing](../../transform/csv-flat-file.md) for the parser reference and the handler pattern.
+The `_error.log` filename, location, and JSON layout are the built-in defaults for the `onFileCsv` handler. If you need a different file name, a different directory, or a custom log format, switch to an `onFileText` handler and parse the CSV yourself with `csv:parseString`. This way you control every aspect of error handling from there. See [CSV & Flat File Processing](../../data-transformation/csv-flat-file.md) for the parser reference and the handler pattern.
 
 :::note[Dropped rows don't flip the file to After Error]
 The listener's **After Success** and **After Error** branches are picked based on whether the handler returned an error. A dropped row is not itself an error. Even if every row in the file gets dropped, the handler still receives an empty typed array and the file takes the **After Success** path by default.
@@ -121,6 +129,6 @@ The listener's **After Success** and **After Error** branches are picked based o
 ## What's next
 
 - [Streaming large files](ftp-sftp.md#streaming-large-files) — combine fault tolerance with row-by-row streaming for large CSVs
-- [CSV & flat file processing](../../transform/csv-flat-file.md) — parse, transform, and write CSV when you need control beyond what the handler offers
+- [CSV & flat file processing](../../data-transformation/csv-flat-file.md) — parse, transform, and write CSV when you need control beyond what the handler offers
 - [FTP / SFTP](ftp-sftp.md) — listener and handler configuration reference
 - [`ftp:Listener` reference](https://central.ballerina.io/ballerina/ftp/latest#Listener) — the full `csvFailSafe` field schema

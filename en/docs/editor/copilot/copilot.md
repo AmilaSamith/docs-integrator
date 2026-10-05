@@ -6,9 +6,12 @@ sidebar_position: 1
 slug: /editor/copilot/getting-started
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # WSO2 Integrator Copilot
 
-If you have already [signed up for WSO2 Cloud](../../get-started/cloud-setup.md) and are working in the cloud editor, WSO2 Integrator Copilot uses the same authentication and is ready to use. Otherwise, sign in from the Copilot welcome screen.
+If you have already [signed up for WSO2 Cloud](../../get-started/setup/setup.md) and are working in the cloud editor, WSO2 Integrator Copilot uses the same authentication and is ready to use. Otherwise, sign in from the Copilot welcome screen.
 
 ## Sign in from the Copilot welcome screen
 
@@ -16,17 +19,35 @@ If you have already [signed up for WSO2 Cloud](../../get-started/cloud-setup.md)
 
    - **New integration**: The overview shows the Copilot composer. Describe what you want to build and send it, or pick one of the examples under **Try one of these**. To open the Copilot panel without a prompt, select the Copilot orb above the composer.
 
-     ![The Copilot composer on the overview of a new integration.](/img/editor/copilot/copilot-composer.png)
+     <ThemedImage
+         alt="The Copilot composer on the overview of a new integration."
+         sources={{
+             light: useBaseUrl('/img/editor/copilot/copilot-composer.png'),
+             dark: useBaseUrl('/img/editor/copilot/copilot-composer.png'),
+         }}
+     />
 
    - **Integration with artifacts**: Select the Copilot orb in the bottom-right corner. Select it once for a quick chat, or double-click it to open the full Copilot panel.
 
-     ![The WSO2 Integrator Copilot orb on the integration overview.](/img/editor/copilot/copilot-orb.png)
+     <ThemedImage
+         alt="The WSO2 Integrator Copilot orb on the integration overview."
+         sources={{
+             light: useBaseUrl('/img/editor/copilot/copilot-orb.png'),
+             dark: useBaseUrl('/img/editor/copilot/copilot-orb.png'),
+         }}
+     />
 
    When a Ballerina file or diagram is open, you can also select the **Open WSO2 Integrator Copilot** icon in the editor toolbar.
 
 2. The Copilot panel opens on the welcome screen with the available sign-in options.
 
-   ![WSO2 Integrator Copilot welcome screen with the sign-in options.](/img/editor/copilot/copilot-sign-in.png)
+   <ThemedImage
+       alt="WSO2 Integrator Copilot welcome screen with the sign-in options."
+       sources={{
+           light: useBaseUrl('/img/editor/copilot/copilot-sign-in.png'),
+           dark: useBaseUrl('/img/editor/copilot/copilot-sign-in.png'),
+       }}
+   />
 
    - **Login using your WSO2 Cloud account** (recommended): Sign in with your WSO2 Cloud account. No API keys are required.
    - Under **Use your own AI provider**:
@@ -36,7 +57,13 @@ If you have already [signed up for WSO2 Cloud](../../get-started/cloud-setup.md)
 
 3. Select one option and complete the sign-in. Once authenticated, Copilot opens its chat view and is ready to use.
 
-   ![WSO2 Integrator Copilot signed in](/img/editor/copilot/copilot-welcome.png)
+   <ThemedImage
+       alt="WSO2 Integrator Copilot signed in"
+       sources={{
+           light: useBaseUrl('/img/editor/copilot/copilot-welcome.png'),
+           dark: useBaseUrl('/img/editor/copilot/copilot-welcome.png'),
+       }}
+   />
 
 :::info Terms of use and data handling
 By signing in, you agree to the WSO2 Integrator Copilot Terms of Use shown on the welcome screen. See [Copilot architecture and data handling](copilot-architecture.md) for how Copilot handles your data.

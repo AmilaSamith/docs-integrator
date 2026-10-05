@@ -72,13 +72,13 @@ service /api/v1 on new http:Listener(8080) {
 
 ## Collection-level filtering
 
-Use collection-level filtering with query expressions when the flow already has a group of messages or records and only a subset should continue. Keep the predicate in the `where` clause so the result is the accepted collection.
+Use collection-level filtering with [query expressions](https://ballerina.io/spec/lang/master/) when the flow already has a group of messages or records and only a subset should continue. Keep the predicate in the `where` clause so the result is the accepted collection.
 
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Open the flow and [add a step](../../editor/canvases/flow-canvas/flow-canvas.md#anatomy-of-the-canvas).
-2. Add a Map Data or Declare Variable step.
+2. Add a [Map Data or Declare Variable step](https://ballerina.io/spec/lang/master/).
 3. Set the output type to the accepted collection type, such as `Message[]`.
 4. Enter a query expression with a `where` clause for the filter predicate.
 5. Use the resulting collection in the next processing or forwarding step.

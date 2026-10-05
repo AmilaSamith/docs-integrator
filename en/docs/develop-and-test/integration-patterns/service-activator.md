@@ -29,7 +29,7 @@ Use request-reply service activation when a message sender expects the activated
 3. Create an [HTTP service](../integration-artifacts/integration-as-api/http.md#creating-an-http-service) for non-messaging callers.
 4. Add a resource function with the typed request payload and add a **Call Function** step that invokes the reusable operation.
 5. Add a [RabbitMQ event integration](../integration-artifacts/event-driven-integration/rabbitmq.md#creating-a-rabbitmq-service) for message-based callers.
-6. Configure the RabbitMQ queue and listener values with configurable variables.
+6. Configure the RabbitMQ queue and listener values with [configurable variables](../../reference/configuration-reference.md#configurable-variables).
 7. Add the `onRequest` handler from [RabbitMQ event handlers](../integration-artifacts/event-driven-integration/rabbitmq.md#event-handlers), define the expected message content, add a **Call Function** step, and return the function result.
 
 </TabItem>
@@ -96,7 +96,7 @@ Use one-way command activation when the message channel only needs to trigger th
 1. Reuse the request and response records from [Types](../integration-artifacts/supportive-artifacts/types.md).
 2. Reuse the same [Function](../integration-artifacts/supportive-artifacts/functions.md) that contains the application operation.
 3. Add a [RabbitMQ event integration](../integration-artifacts/event-driven-integration/rabbitmq.md#creating-a-rabbitmq-service) for the command queue.
-4. Configure the listener, queue, and authentication fields with configurable variables.
+4. Configure the listener, queue, and authentication fields with [configurable variables](../../reference/configuration-reference.md#configurable-variables).
 5. Add the `onMessage` handler from [RabbitMQ event handlers](../integration-artifacts/event-driven-integration/rabbitmq.md#event-handlers) and define the expected message content.
 6. In the handler flow, add a **Call Function** step for the shared operation and add any flow-level error handling required by the command contract.
 

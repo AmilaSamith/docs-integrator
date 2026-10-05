@@ -6,13 +6,16 @@ keywords: [wso2 integrator, vector store, embeddings, knowledge base, in-memory,
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/vector-stores
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Vector Stores
 
 A vector database stores vector embeddings and enables similarity search over them, forming the foundation for semantic search and RAG applications.
 
 A **Vector Store** is WSO2 Integrator's abstraction over these databases, exposing a common interface for every supported backend.
 
-It is the storage half of a [Knowledge Base](./knowledge-bases.md). The [Embedding Provider](./embedding-providers.md) produces the vectors, and the Vector Store abstracts where and how they are persisted and retrieved at query time.
+It is the storage half of a [Knowledge Base](knowledge-bases.md). The [Embedding Provider](embedding-providers.md) produces the vectors, and the Vector Store abstracts where and how they are persisted and retrieved at query time.
 
 ## Available actions
 
@@ -73,7 +76,13 @@ Local stores let you choose the metric. Hosted stores manage it themselves (you 
 
 Inside the **Create Vector Knowledge Base** form click **+ Create New Vector Store**, or open the **Vector Stores** panel from any flow editor. The **Select Vector Store** picker shows the supported stores:
 
-![Select Vector Store picker listing In Memory Vector Store, Milvus Vector Store, pgvector Vector Store, Pinecone Vector Store (highlighted), and Weaviate Vector Store, each with a one-line description.](/img/genai/develop/components/vector-stores/01-select-list.png)
+<ThemedImage
+    alt="Select Vector Store picker listing In Memory Vector Store, Milvus Vector Store, pgvector Vector Store, Pinecone Vector Store (highlighted), and Weaviate Vector Store, each with a one-line description."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/01-select-list.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/01-select-list.png'),
+    }}
+/>
 
 ## Implementations overview
 
@@ -91,13 +100,25 @@ Embeddings live in the running integration's process memory. The store loses all
 
 ### Create form
 
-![Create Vector Store form for In-Memory showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Vector Store Name (default aiInmemoryvectorstore), Result Type (locked to ai:InMemoryVectorStore).](/img/genai/develop/components/vector-stores/02-in-memory-basic.png)
+<ThemedImage
+    alt="Create Vector Store form for In-Memory showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Vector Store Name (default aiInmemoryvectorstore), Result Type (locked to ai:InMemoryVectorStore)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/02-in-memory-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/02-in-memory-basic.png'),
+    }}
+/>
 
 No required fields.
 
 ### Advanced configurations
 
-![In-Memory Vector Store Create form with Advanced Configurations expanded showing Similarity Metric (default COSINE).](/img/genai/develop/components/vector-stores/03-in-memory-advanced.png)
+<ThemedImage
+    alt="In-Memory Vector Store Create form with Advanced Configurations expanded showing Similarity Metric (default COSINE)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/03-in-memory-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/03-in-memory-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -115,7 +136,13 @@ Official website: [Milvus documentation](https://milvus.io/docs).
 
 ### Create form
 
-![Create Vector Store form for Milvus showing three required fields: API Key (The API key for the Milvus service), Milvus Configuration (record/expression toggle, default {}), and Service URL. Below: Advanced Configurations Expand link, Vector Store Name milvusVectorstore, Result Type milvus:VectorStore.](/img/genai/develop/components/vector-stores/04-milvus-basic.png)
+<ThemedImage
+    alt="Create Vector Store form for Milvus showing three required fields: API Key (The API key for the Milvus service), Milvus Configuration (record/expression toggle, default {}), and Service URL. Below: Advanced Configurations Expand link, Vector Store Name milvusVectorstore, Result Type milvus:VectorStore."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/04-milvus-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/04-milvus-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -125,11 +152,17 @@ Official website: [Milvus documentation](https://milvus.io/docs).
 
 ### Advanced configurations
 
-![Milvus Vector Store Create form with Advanced Configurations expanded showing HTTP Configuration (default {}).](/img/genai/develop/components/vector-stores/05-milvus-advanced.png)
+<ThemedImage
+    alt="Milvus Vector Store Create form with Advanced Configurations expanded showing HTTP Configuration (default {})."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/05-milvus-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/05-milvus-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
-| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations). |
+| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). |
 
 :::info
 The connector loads the collection into memory automatically before each search. Milvus converts IDs to integers for the primary key field.
@@ -143,7 +176,13 @@ Official website: [pgvector on GitHub](https://github.com/pgvector/pgvector).
 
 ### Create form
 
-![Create Vector Store form for pgvector showing four required fields: Database Name, Host Name, Password, Username. Below: Advanced Configurations Expand link, Vector Store Name pgvectorVectorstore, Result Type pgvector:VectorStore.](/img/genai/develop/components/vector-stores/06-pgvector-basic.png)
+<ThemedImage
+    alt="Create Vector Store form for pgvector showing four required fields: Database Name, Host Name, Password, Username. Below: Advanced Configurations Expand link, Vector Store Name pgvectorVectorstore, Result Type pgvector:VectorStore."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/06-pgvector-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/06-pgvector-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -154,7 +193,13 @@ Official website: [pgvector on GitHub](https://github.com/pgvector/pgvector).
 
 ### Advanced configurations
 
-![pgvector Vector Store Create form with Advanced Configurations expanded showing Configurations For The Vector Store (default {}), Properties To Configure Connection Pool (default {}), Additional Set Of Configurations For The Database (default {}), Port Number (default 5432), Table Name (default 'vector_store').](/img/genai/develop/components/vector-stores/07-pgvector-advanced.png)
+<ThemedImage
+    alt="pgvector Vector Store Create form with Advanced Configurations expanded showing Configurations For The Vector Store (default {}), Properties To Configure Connection Pool (default {}), Additional Set Of Configurations For The Database (default {}), Port Number (default 5432), Table Name (default 'vector_store')."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/07-pgvector-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/07-pgvector-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -176,7 +221,13 @@ Official website: [Pinecone documentation](https://docs.pinecone.io).
 
 ### Create form
 
-![Create Vector Store form for Pinecone showing two required fields: API Key (Pinecone API key for authentication) and Service URL (URL of the Pinecone API service). Below: Advanced Configurations Expand link, Vector Store Name pineconeVectorstore, Result Type pinecone:VectorStore.](/img/genai/develop/components/vector-stores/08-pinecone-basic.png)
+<ThemedImage
+    alt="Create Vector Store form for Pinecone showing two required fields: API Key (Pinecone API key for authentication) and Service URL (URL of the Pinecone API service). Below: Advanced Configurations Expand link, Vector Store Name pineconeVectorstore, Result Type pinecone:VectorStore."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/08-pinecone-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/08-pinecone-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -185,12 +236,18 @@ Official website: [Pinecone documentation](https://docs.pinecone.io).
 
 ### Advanced configurations
 
-![Pinecone Vector Store Create form with Advanced Configurations expanded showing Pinecone Configuration (default {}), HTTP Configuration (default {}), Query Mode (default ai:DENSE).](/img/genai/develop/components/vector-stores/09-pinecone-advanced.png)
+<ThemedImage
+    alt="Pinecone Vector Store Create form with Advanced Configurations expanded showing Pinecone Configuration (default {}), HTTP Configuration (default {}), Query Mode (default ai:DENSE)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/09-pinecone-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/09-pinecone-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
 | **Pinecone Configuration** | `{}` | Record (`namespace`, `filters`, `sparseVector`) | Pinecone-specific settings. **Namespace** isolates vectors for multi-tenancy. **Filters** sets default metadata filters applied on every query. **Sparse Vector** is needed for hybrid search. |
-| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations). |
+| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). |
 | **Query Mode** | `ai:DENSE` | `ai:DENSE`, `ai:SPARSE`, `ai:HYBRID` | Search mode. |
 
 :::info
@@ -205,7 +262,13 @@ Official website: [Weaviate documentation](https://weaviate.io/developers/weavia
 
 ### Create form
 
-![Create Vector Store form for Weaviate showing three required fields: API Key (The API key for the Weaviate service), Weaviate Configuration (record/expression toggle, default '\{collectionName: ""\}'), and Service URL. Below: Advanced Configurations Expand link, Vector Store Name weaviateVectorstore, Result Type weaviate:VectorStore.](/img/genai/develop/components/vector-stores/10-weaviate-basic.png)
+<ThemedImage
+    alt={"Create Vector Store form for Weaviate showing three required fields: API Key (The API key for the Weaviate service), Weaviate Configuration (record/expression toggle, default '{collectionName: \"\"}'), and Service URL. Below: Advanced Configurations Expand link, Vector Store Name weaviateVectorstore, Result Type weaviate:VectorStore."}
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/10-weaviate-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/10-weaviate-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -215,11 +278,17 @@ Official website: [Weaviate documentation](https://weaviate.io/developers/weavia
 
 ### Advanced configurations
 
-![Weaviate Vector Store Create form with Advanced Configurations expanded showing HTTP Configuration (default {}).](/img/genai/develop/components/vector-stores/11-weaviate-advanced.png)
+<ThemedImage
+    alt="Weaviate Vector Store Create form with Advanced Configurations expanded showing HTTP Configuration (default {})."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/vector-stores/11-weaviate-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/vector-stores/11-weaviate-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
-| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations). |
+| **HTTP Configuration** | `{}` | Record | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). |
 
 :::info
 This connector supports dense vectors only. Weaviate maps the `certainty` score to the `similarityScore` field in the response.
@@ -239,6 +308,6 @@ Selection is based on operational concerns (where your data already lives, what 
 
 ## What's next
 
-- [Knowledge Bases](./knowledge-bases.md) — Combine a vector store with an embedding provider and a chunker.
-- [Chunkers](./chunkers.md) — Split documents into chunks before embedding for ingestion into a vector store.
+- [Knowledge Bases](knowledge-bases.md) — Combine a vector store with an embedding provider and a chunker.
+- [Chunkers](chunkers.md) — Split documents into chunks before embedding for ingestion into a vector store.
 - [RAG](../rag/rag.md) — Visual designer walkthrough for RAG ingestion and query in WSO2 Integrator.

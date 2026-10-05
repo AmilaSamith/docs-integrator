@@ -235,4 +235,4 @@ Generated packages can be published to Ballerina Central and reused across proje
 
 - [Health Tool](health-tool.md) — Generate healthcare integration code
 - [XSD Tool](xsd-tool.md) — Generate types from XML schemas
-- [Data transformation](../../transform/edi.md) — Transform EDI data in Ballerina
+- [Data transformation](../../data-transformation/edi.md) — Transform EDI data in Ballerina

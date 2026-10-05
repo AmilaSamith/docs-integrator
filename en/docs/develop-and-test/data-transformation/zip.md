@@ -5,6 +5,8 @@ description: Create, inspect, and safely extract ZIP archives in Ballerina integ
 slug: /develop-and-test/data-transformation/zip
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -14,7 +16,13 @@ Package a directory into a ZIP before transferring it, read an archive's content
 
 Archive handling shows up wherever integrations move files in bulk: a partner drops a ZIP on an FTP server, a nightly job bundles generated reports before upload, or a service accepts a multi-file upload as a single attachment.
 
-![An automation in the flow designer chaining zip : compress, zip : listEntries, a Foreach over the entries, and zip : decompress](/img/develop/transform/zip/zip-flow.png)
+<ThemedImage
+    alt="An automation in the flow designer chaining zip : compress, zip : listEntries, a Foreach over the entries, and zip : decompress"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/zip/zip-flow.png'),
+        dark: useBaseUrl('/img/develop/transform/zip/zip-flow.png'),
+    }}
+/>
 
 ## Creating an Archive
 
@@ -27,7 +35,13 @@ Archive handling shows up wherever integrations move files in bulk: a partner dr
    - **Source Path***: `./reports` — path of the file or directory to archive
    - **Target Path***: `./reports.zip` — path of the ZIP file to create
 
-   ![The zip : compress configuration form showing Source Path, Target Path, and the Options record under Advanced Configurations](/img/develop/transform/zip/zip-compress-form.png)
+   <ThemedImage
+       alt="The zip : compress configuration form showing Source Path, Target Path, and the Options record under Advanced Configurations"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/zip/zip-compress-form.png'),
+           dark: useBaseUrl('/img/develop/transform/zip/zip-compress-form.png'),
+       }}
+   />
 
 2. **Handle the error return** — `compress` returns `zip:Error?`. Either mark the enclosing function `returns error?` and let the call propagate, or wrap the step in an **ErrorHandler** block from the **Error Handling** section.
 
@@ -108,7 +122,13 @@ Set `overwrite` to `true` for a job that regenerates the same archive on every r
    - **Result***: `entries`
    - **Result Type*** is fixed at `zip:Entry[]`
 
-   ![The zip : listEntries configuration form showing the Path field and the entries result variable typed as zip:Entry[]](/img/develop/transform/zip/zip-listentries-form.png)
+   <ThemedImage
+       alt="The zip : listEntries configuration form showing the Path field and the entries result variable typed as zip:Entry[]"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/zip/zip-listentries-form.png'),
+           dark: useBaseUrl('/img/develop/transform/zip/zip-listentries-form.png'),
+       }}
+   />
 
 2. **Add a Foreach step** — Click **+** and select **Foreach** under **Control**. Set the **Collection** to `entries` and the **Variable Name** to `entry`.
 
@@ -217,7 +237,13 @@ An archive from outside your own system is untrusted input. A small ZIP can expa
    {limits: {maxEntries: 500, maxTotalSize: 104857600, maxCompressionRatio: 100}}
    ```
 
-   ![The zip : decompress configuration form with Advanced Configurations expanded to show the Options record](/img/develop/transform/zip/zip-decompress-form.png)
+   <ThemedImage
+       alt="The zip : decompress configuration form with Advanced Configurations expanded to show the Options record"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/zip/zip-decompress-form.png'),
+           dark: useBaseUrl('/img/develop/transform/zip/zip-decompress-form.png'),
+       }}
+   />
 
 3. **Handle the failure path** — Wrap the step in an **ErrorHandler** block from the **Error Handling** section and route a `zip:LimitExceededError` to your quarantine or alerting logic rather than retrying it.
 

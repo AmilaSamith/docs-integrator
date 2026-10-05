@@ -4,6 +4,8 @@ description: Process files from SMB network shares — Windows file servers, NAS
 slug: /develop-and-test/integration-artifacts/file-driven-integration/smb
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,11 +23,23 @@ The listener speaks SMB dialects 2.0.2 through 3.1.1 and authenticates with NTLM
 1. Select **+ Add Artifact** in the canvas, or select **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **SMB** under **File Integration**.
 
-   ![Artifacts panel showing SMB under File Integration](/img/develop/integration-artifacts/file/smb/step-artifacts-panel.png)
+   <ThemedImage
+       alt="Artifacts panel showing SMB under File Integration"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-artifacts-panel.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-artifacts-panel.png'),
+       }}
+   />
 
 3. In the **Create SMB Integration** form, keep **Create new** selected to define a listener. Choose **Use existing** instead to attach the service to a listener the project already has.
 
-   ![Create SMB Integration form with username and password authentication](/img/develop/integration-artifacts/file/smb/step-creation-form.png)
+   <ThemedImage
+       alt="Create SMB Integration form with username and password authentication"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-creation-form.png'),
+       }}
+   />
 
 4. Fill in the **Listener Configuration**:
 
@@ -48,7 +62,13 @@ The listener speaks SMB dialects 2.0.2 through 3.1.1 and authenticates with NTLM
 
 7. Select **Create**. WSO2 Integrator opens the service with its listener and monitored path shown at the top.
 
-   ![Service designer for a new SMB service before any handler is added](/img/develop/integration-artifacts/file/smb/step-service-designer.png)
+   <ThemedImage
+       alt="Service designer for a new SMB service before any handler is added"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-service-designer.png'),
+       }}
+   />
 
 8. Select [**+ Handler**](#adding-a-file-handler) to define how incoming files are processed.
 
@@ -132,7 +152,13 @@ A file handler is a `remote function` the runtime calls each time a polling cycl
 
 In the service designer, select **+ Handler**, then pick **On Create**, **On Delete**, or **On Error**. The handler configuration panel opens on the right.
 
-![Configure On Create Handler panel with format, file handling options, and advanced parameters](/img/develop/integration-artifacts/file/smb/step-add-handler.png)
+<ThemedImage
+    alt="Configure On Create Handler panel with format, file handling options, and advanced parameters"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-add-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-add-handler.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -153,11 +179,23 @@ Expand **Advanced Parameters** for optional handler parameters:
 
 Select **Save** to add the handler. It appears in the **Event Handlers** list, tagged with its kind.
 
-![Event Handlers list showing the saved onCreate handler](/img/develop/integration-artifacts/file/smb/step-handlers-list.png)
+<ThemedImage
+    alt="Event Handlers list showing the saved onCreate handler"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-handlers-list.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-handlers-list.png'),
+    }}
+/>
 
 Select the handler to implement its body in the flow designer.
 
-![Flow designer for the onFileText handler](/img/develop/integration-artifacts/file/smb/step-handler-flow.png)
+<ThemedImage
+    alt="Flow designer for the onFileText handler"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-handler-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/smb/step-handler-flow.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -295,7 +333,7 @@ afterProcess: {
 
 A handler can take the file content in a generic shape (`json`, `xml`, or a list of raw CSV values), or bound to a **record type** you define. Binding to a record type is what lets you refer to `order.quantity` in the handler instead of picking values out of a raw document, and it catches misspelled fields and wrong value types before the integration ever runs.
 
-> **New to record types?** A record type is just a named shape for your data — a list of the fields it holds and the kind of value in each. If your CSV has the columns `orderId`, `product`, and `quantity`, the record type names those three fields and says which holds text and which holds a number. You build it from a form in the Visual Designer, so there is nothing to write by hand.
+> **New to record types?** A record type is just a named shape for your data — a list of the fields it holds and the kind of value in each. If your CSV has the columns `orderId`, `product`, and `quantity`, the record type names those three fields and says which holds text and which holds a number. You build it from a form in the Visual Designer, so there is nothing to write by hand. For the language-level detail, see [Type System & Records](https://ballerina.io/spec/lang/master/).
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>

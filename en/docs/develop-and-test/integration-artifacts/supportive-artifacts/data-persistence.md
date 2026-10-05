@@ -4,6 +4,9 @@ description: Connect to a database using the visual designer, introspect its sch
 slug: /develop-and-test/integration-artifacts/supportive-artifacts/data-persistence
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Data Persistence
 
 WSO2 Integrator lets you connect directly to a relational database, introspect its schema, and generate a type-safe client with ready-to-use CRUD methods — without writing any boilerplate. This walkthrough shows how to wire up a MySQL database connection and use it inside an automation.
@@ -24,7 +27,7 @@ The example uses an e-commerce order table. A scheduled automation picks up all 
 
 ## Prerequisites
 
-- WSO2 Integrator set up. Refer to [Cloud setup](../../../get-started/cloud-setup.md) for instructions.
+- WSO2 Integrator IDE installed. Refer to [Install WSO2 Integrator](../../../get-started/setup/setup.md) for instructions.
 - A running MySQL instance (version 8.0 or later) accessible on `localhost:3306`.
 
 ### Set up the database
@@ -131,11 +134,23 @@ You should see all four rows with the statuses shown above.
 6. In the **Select Tables** form, select all tables and select **Continue to Connection Details**.
 7. In the **Create Connection** form, set the **Connection Name** to `ordersDB` and select **Save Connection**.
 
-   ![Create the ordersDB connection](/img/develop/integration-artifacts/supporting/data-persistence/create-connector.gif)
+   <ThemedImage
+       alt="Create the ordersDB connection"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/create-connector.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/create-connector.gif'),
+       }}
+   />
 
 8. Select the created `ordersDB` connection and select **View ER Diagram** to verify the schema was introspected correctly.
 
-   ![View ER diagram](/img/develop/integration-artifacts/supporting/data-persistence/view-er-diagram.gif)
+   <ThemedImage
+       alt="View ER diagram"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/view-er-diagram.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/view-er-diagram.gif'),
+       }}
+   />
 
 :::tip
 - Ensure the database user has `SELECT` permission (required for schema introspection and querying rows) and `UPDATE` permission (required for advancing order status).
@@ -167,7 +182,13 @@ You should see all four rows with the statuses shown above.
 2. Set the **Result** name to `placedOrders`.
 3. From **Target Type**, select the fields `orderId` and `status`.
 
-   ![Get PLACED orders](/img/develop/integration-artifacts/supporting/data-persistence/get-orders.gif)
+   <ThemedImage
+       alt="Get PLACED orders"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/get-orders.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/get-orders.gif'),
+       }}
+   />
 
 ### Step 2.2: Handle the case where no orders need processing
 
@@ -185,7 +206,13 @@ You should see all four rows with the statuses shown above.
 
 3. Add a **Return** control node to exit early.
 
-   ![No orders early exit](/img/develop/integration-artifacts/supporting/data-persistence/no-orders-check.gif)
+   <ThemedImage
+       alt="No orders early exit"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/no-orders-check.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/no-orders-check.gif'),
+       }}
+   />
 
 ### Step 2.3: Loop and update each order
 
@@ -211,7 +238,13 @@ Inside the **Foreach** block:
    |---|---|
    | `orderId` | `updatedOrder.orderId` |
 
-   ![Update orders in loop](/img/develop/integration-artifacts/supporting/data-persistence/update-orders.gif)
+   <ThemedImage
+       alt="Update orders in loop"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/update-orders.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/update-orders.gif'),
+       }}
+   />
 
 ### Step 2.4: Log the summary
 
@@ -231,7 +264,13 @@ Under **Advanced Configurations**, set the following **Additional Values**:
 
 Select the **Run** button. WSO2 Integrator prompts you to create the necessary configuration. Select **Create `Config.toml`** and add the database password to the generated `Config.toml` file.
 
-![Run the automation](/img/develop/integration-artifacts/supporting/data-persistence/run-automation.gif)
+<ThemedImage
+    alt="Run the automation"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/run-automation.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-persistence/run-automation.gif'),
+    }}
+/>
 
 On first run (with `ORD-001` and `ORD-002` in `PLACED` status) you should see:
 
@@ -276,3 +315,4 @@ UPDATE orders SET status = 'PLACED' WHERE order_id IN ('ORD-001', 'ORD-002');
 
 - [Connections](connections.md): Manage and reuse database and API connections across your project
 - [Automation](../automation.md): Schedule and trigger automations
+- [Configuration management](../../../reference/configuration-reference.md#configuration-management): Manage database credentials per environment

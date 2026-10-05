@@ -6,6 +6,9 @@ sidebar_position: 2
 slug: /editor/copilot/chat-interface
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Copilot Chat Interface
 
 Once you've [signed in](copilot.md), this is a reference for the chat input bar itself — the controls, slash commands, and modes you'll use every time you talk to Copilot.
@@ -14,7 +17,13 @@ Once you've [signed in](copilot.md), this is a reference for the chat input bar 
 
 The chat input bar is where you type prompts and control how Copilot responds. It groups the following controls:
 
-![Copilot chat controls: the slash palette listing commands and built-in skills, the Edit/Plan mode toggle, web access, attach context, and send.](/img/editor/copilot/copilot-chat-controls.png)
+<ThemedImage
+    alt="Copilot chat controls: the slash palette listing commands and built-in skills, the Edit/Plan mode toggle, web access, attach context, and send."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/copilot-chat-controls.png'),
+        dark: useBaseUrl('/img/editor/copilot/copilot-chat-controls.png'),
+    }}
+/>
 
 | # | Control | Description |
 |---|---|---|
@@ -50,7 +59,13 @@ Copilot has two modes: plan and edit. Switch between them using the toggle in th
 - **Edit Mode**: Copilot starts generating immediately and applies the changes to your integration. Best for quick edits.
 - **Plan Mode**: Copilot first proposes a high-level plan with a step-by-step task breakdown. Review or revise the plan, then approve it to begin generation.
 
-  ![Plan mode showing a structured step-by-step breakdown of execution tasks.](/img/editor/copilot/plan-mode.png)
+  <ThemedImage
+      alt="Plan mode showing a structured step-by-step breakdown of execution tasks."
+      sources={{
+          light: useBaseUrl('/img/editor/copilot/plan-mode.png'),
+          dark: useBaseUrl('/img/editor/copilot/plan-mode.png'),
+      }}
+  />
 
 ## What's next
 

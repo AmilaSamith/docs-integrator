@@ -25,7 +25,7 @@ Use broker-side selection when the broker can evaluate the criteria before the m
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create the JMS-backed event service with the [JMS listener](../../connectors/catalog/messaging/java.jms/triggers.md#listener).
-2. Configure the listener connection with the broker endpoint and credentials through configurable variables.
+2. Configure the listener connection with the broker endpoint and credentials through [configurable variables](../../reference/configuration-reference.md#configurable-variables).
 3. Set the service queue or topic in `@jms:ServiceConfig`.
 4. Set `messageSelector` to the selector expression, such as `eventType = 'OrderCreated' AND priority = 'high'`.
 5. Add processing steps in the `onMessage` flow. The broker delivers only messages that match the selector.

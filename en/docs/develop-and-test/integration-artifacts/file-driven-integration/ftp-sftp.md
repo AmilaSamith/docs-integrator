@@ -4,6 +4,8 @@ description: Process files from FTP, SFTP, and FTPS servers using polling, patte
 slug: /develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -27,11 +29,23 @@ Use this flow for plain (unencrypted) FTP. Default port: `21`. Supports anonymou
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **FTP / SFTP** under **File Integration**.
 
-   ![Artifacts panel showing FTP / SFTP under File Integration](/img/develop/integration-artifacts/file/ftp-sftp/step-2.png)
+   <ThemedImage
+       alt="Artifacts panel showing FTP / SFTP under File Integration"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-2.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-2.png'),
+       }}
+   />
 
 3. In the **Create FTP Integration** form, keep **Protocol** set to **ftp**.
 
-   ![Create FTP Integration form, FTP protocol](/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftp.png)
+   <ThemedImage
+       alt="Create FTP Integration form, FTP protocol"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftp.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftp.png'),
+       }}
+   />
 
 4. Fill in the **Listener Configuration**:
 
@@ -52,7 +66,13 @@ Use this flow for plain (unencrypted) FTP. Default port: `21`. Supports anonymou
 
 7. Click **Create**. WSO2 Integrator opens the service in the **Service Designer** with the listener pill attached.
 
-   ![Service Designer showing the FTP service canvas](/img/develop/integration-artifacts/file/ftp-sftp/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the FTP service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-service-designer.png'),
+       }}
+   />
 
 8. Click [**+ Add File Handler**](#adding-a-file-handler) to define how incoming files are processed.
 
@@ -123,7 +143,13 @@ part of the configuration.
 1. Click **+ Add Artifact** → **FTP / SFTP** under **File Integration**.
 2. In the **Create FTP Integration** form, select **Protocol** → **ftps**.
 
-   ![Create FTP Integration form, FTPS protocol](/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftps.png)
+   <ThemedImage
+       alt="Create FTP Integration form, FTPS protocol"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftps.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-ftps.png'),
+       }}
+   />
 
 3. Fill in the **Listener Configuration**:
 
@@ -213,7 +239,13 @@ Use this flow for SFTP (FTP over SSH). Default port: `22`. The form collects the
 1. Click **+ Add Artifact** → **FTP / SFTP** under **File Integration**.
 2. In the **Create FTP Integration** form, select **Protocol** → **sftp**.
 
-   ![Create FTP Integration form, SFTP protocol](/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-sftp.png)
+   <ThemedImage
+       alt="Create FTP Integration form, SFTP protocol"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-sftp.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-creation-form-sftp.png'),
+       }}
+   />
 
 3. Fill in the **Listener Configuration**:
 
@@ -341,7 +373,13 @@ At least one **onCreate** or **onFileDelete** handler is required — a service 
 
 In the **Service Designer**, click **+ Add File Handler** and pick **onCreate**, **onDelete**, or **onError**. The handler configuration panel opens on the right.
 
-![File handler configuration panel](/img/develop/integration-artifacts/file/ftp-sftp/step-add-file-handler.png)
+<ThemedImage
+    alt="File handler configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-add-file-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-add-file-handler.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -490,7 +528,7 @@ remote function onFileText(string content, ftp:FileInfo fileInfo) returns error?
 
 A handler can take the file content in a generic shape (`json`, `xml`, or a list of raw CSV values), or bound to a **record type** you define. Binding to a record type is what lets you refer to `order.quantity` in the handler instead of picking values out of a raw document, and it catches misspelled fields and wrong value types before the integration ever runs.
 
-> **New to record types?** A record type is just a named shape for your data — a list of the fields it holds and the kind of value in each. If your CSV has the columns `orderId`, `product`, and `quantity`, the record type names those three fields and says which holds text and which holds a number. You build it from a form in the Visual Designer, so there is nothing to write by hand.
+> **New to record types?** A record type is just a named shape for your data — a list of the fields it holds and the kind of value in each. If your CSV has the columns `orderId`, `product`, and `quantity`, the record type names those three fields and says which holds text and which holds a number. You build it from a form in the Visual Designer, so there is nothing to write by hand. For the language-level detail, see [Type System & Records](https://ballerina.io/spec/lang/master/).
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
@@ -569,7 +607,13 @@ Tick **Stream (Large Files)** on the Add File Handler form. The option only appe
 
 **JSON** and **XML** offer no streaming option — both have to be read in full before they can be parsed.
 
-![Add File Handler form with Stream (Large Files) selected](/img/develop/integration-artifacts/file/ftp-sftp/step-stream-option.png)
+<ThemedImage
+    alt="Add File Handler form with Stream (Large Files) selected"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-stream-option.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-stream-option.png'),
+    }}
+/>
 
 Two things to keep in mind:
 
@@ -690,7 +734,13 @@ You can reuse either side of the pair. The same listener can feed several servic
 
 Under **Entry Points**, each service appears as its own **FTP Integration - `<path>`** item. Under **Listeners**, you'll see a single listener shared by all of them:
 
-![Project tree showing two services under Entry Points sharing one listener](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png)
+<ThemedImage
+    alt="Project tree showing two services under Entry Points sharing one listener"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png'),
+    }}
+/>
 
 This is the default path: every FTP service you add after the first one starts on the **Use existing** option, so new services reuse the listener unless you opt out. See [Reusing an existing listener when creating a service](#reusing-an-existing-listener-when-creating-a-service).
 
@@ -731,7 +781,13 @@ service on ftpListener {
 
 A single **FTP Integration - `<path>`** entry lists both (or all) of its listeners under **Attached Listeners** in the **FTP Integration Configuration** panel:
 
-![Service Configuration panel showing two listeners attached to a single service](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png)
+<ThemedImage
+    alt="Service Configuration panel showing two listeners attached to a single service"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png'),
+    }}
+/>
 
 Build this topology by opening the service's Configure panel and clicking **+ Attach Listener** — see [Attaching an additional listener to an existing service](#attaching-an-additional-listener-to-an-existing-service).
 
@@ -763,7 +819,7 @@ service on primaryListener, backupListener {
 </TabItem>
 </Tabs>
 
-For the general concept, see [Integration types](../../../get-started/concepts/concepts.mdx#integration-types).
+For the general concept, see [Services and listeners](../../../get-started/concepts/concepts.mdx#integration-types).
 
 ## Attaching listeners to services
 
@@ -779,17 +835,35 @@ Use this flow to build the **one listener ↔ many services** topology. After th
 1. Click **+ Add Artifact** → **FTP / SFTP** under **File Integration** to open the **Create FTP Integration** form.
 2. When the integration already has at least one FTP listener, the **Select an existing FTP listener or create a new one** picker at the top of the form defaults to **Use existing**. Sharing a listener is the encouraged flow for the second and subsequent services. (**Create new** should only be used when you want a dedicated listener for this service.)
 
-   ![Create new vs Use existing radio selector, with Use existing selected by default](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-enabled.png)
+   <ThemedImage
+       alt="Create new vs Use existing radio selector, with Use existing selected by default"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-enabled.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-enabled.png'),
+       }}
+   />
 
 3. The **Listener Name** field is a dropdown prefilled with the first available listener. Pick a different one if needed. **Protocol**, **Host**, **Port Number**, and the authentication method are locked (they belong to the listener, not to this service) so you can see the settings the new service will inherit but cannot change them here.
 
-   ![Use existing listener — listener fields locked, Monitoring Path editable](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-form.png)
+   <ThemedImage
+       alt="Use existing listener — listener fields locked, Monitoring Path editable"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-use-existing-form.png'),
+       }}
+   />
 
 4. Enter the **Monitoring Path** for the new service (this is service-level, so it stays editable even under **Use existing**) and click **Create**.
 
 5. The project tree now shows both services under **Entry Points** and the single shared listener under **Listeners**:
 
-   ![Project tree showing two services sharing one listener](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png)
+   <ThemedImage
+       alt="Project tree showing two services sharing one listener"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-shared-listener-tree.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -836,7 +910,13 @@ Use this flow to build the **one service ↔ many listeners** topology. It attac
 2. In the **Service Designer**, click **Configure** to open the **FTP Integration Configuration** panel. The left-hand nav pane lists the service's current listeners under **Attached Listeners**.
 3. Scroll to the bottom of the panel and click **+ Attach Listener**. The **Attach Listener** side panel opens with two tabs:
 
-   ![Attach Listener side panel with the Existing Listeners tab](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-listener-panel.png)
+   <ThemedImage
+       alt="Attach Listener side panel with the Existing Listeners tab"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-listener-panel.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-listener-panel.png'),
+       }}
+   />
 
    | Tab | Use when |
    |---|---|
@@ -845,7 +925,13 @@ Use this flow to build the **one service ↔ many listeners** topology. It attac
 
 4. Pick the listener to attach. The panel closes and the **Attached Listeners** list in the left nav now includes both listeners:
 
-   ![Attached Listeners list showing ftpShared and ftpBackup](/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png)
+   <ThemedImage
+       alt="Attached Listeners list showing ftpShared and ftpBackup"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-attach-attached-listeners-list.png'),
+       }}
+   />
 
    Click any listener name in this list to edit its configuration inline on the right.
 
@@ -892,7 +978,13 @@ The `@ftp:ServiceConfig` annotation controls what the service monitors — the d
 
 In the **Service Designer**, click **Configure** to open the **FTP Integration Configuration** panel. The panel has a left-hand navigation that lists the service (**FTP Integration**) and every listener under **Attached Listeners**. Clicking a name pivots the right pane between the service's own configuration fields and the inline configuration for the selected listener — headed **Configuration for `<listenerName>`**.
 
-![Service Configuration panel with Attached Listeners left navigation](/img/develop/integration-artifacts/file/ftp-sftp/step-service-configure-navigation.png)
+<ThemedImage
+    alt="Service Configuration panel with Attached Listeners left navigation"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-service-configure-navigation.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/ftp-sftp/step-service-configure-navigation.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|

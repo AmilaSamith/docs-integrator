@@ -46,7 +46,7 @@ The WSO2 Integrator Scheduler invokes the automation periodically, and each run 
 
 :::info Prerequisites
 
-- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/cloud-setup.md).
+- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/setup/setup.md).
 - An Azure storage account with a file share, and its account name and access key. The [Azure Files connector setup guide](../../connectors/catalog/storage-file/azure.storage.files/setup-guide.md) walks through creating these.
 - The share must already exist. A tracker watches a share, it does not provision one.
 

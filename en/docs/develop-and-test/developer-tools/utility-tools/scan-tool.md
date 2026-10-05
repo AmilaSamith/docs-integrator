@@ -5,6 +5,9 @@ description: Run static code analysis on Ballerina projects to identify code sme
 slug: /develop-and-test/developer-tools/utility-tools/scan-tool
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Scan Tool
 
 The scan tool performs static code analysis on Ballerina projects. It identifies code quality issues, potential bugs, security vulnerabilities, and integration anti-patterns using a configurable set of rules. Scan results can be output to the console or exported as structured reports.
@@ -127,12 +130,24 @@ bal scan --scan-report
 The HTML report and scan results in JSON format are saved in the `target/report` directory. The HTML report includes a summary of the number of code smells, bugs, and vulnerabilities found in each file.
 
 <!-- TODO: Add screenshot — HTML report summary view (scan-report-summary-view) -->
-![HTML report summary view](/img/develop/tools/scan-tool/html-report-summary-view.png)
+<ThemedImage
+    alt="HTML report summary view"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/html-report-summary-view.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/html-report-summary-view.png'),
+    }}
+/>
 
 You can click on a file name to view a detailed breakdown of the issues. This view highlights the exact lines where problems were detected, along with a description and severity level.
 
 <!-- TODO: Add screenshot — HTML report file detail view (scan-report-file-view) -->
-![HTML report file detail view](/img/develop/tools/scan-tool/html-report-file-view.png)
+<ThemedImage
+    alt="HTML report file detail view"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/html-report-file-view.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/html-report-file-view.png'),
+    }}
+/>
 
 
 ## Report formats
@@ -154,7 +169,13 @@ bal scan --list-rules
 This displays a project-specific list of rules determined by your project's dependencies.
 
 <!-- TODO: Add screenshot — output of bal scan --list-rules -->
-![Output of bal scan --list-rules](/img/develop/tools/scan-tool/list-rules.png)
+<ThemedImage
+    alt="Output of bal scan --list-rules"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/list-rules.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/list-rules.png'),
+    }}
+/>
 
 :::note
 The displayed rules are project-specific and determined by your project's dependencies.
