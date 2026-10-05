@@ -6,6 +6,9 @@ keywords: [api security, api key, oauth2, authentication, authorization, securit
 slug: /manage/integrations/api-management/api-security
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # API Security
 
 This document outlines key practices for securing APIs against threats and vulnerabilities. API security relies on authentication, which involves verifying identity with methods like API keys, tokens, or OAuth2, and authorization, which defines user permissions and enforces role-based access.
@@ -30,13 +33,36 @@ Follow the steps given below.
 2. Select your project and navigate to the **Overview** page in the left navigation.
 3. Select the integration as API you want to configure security for.
 4. In the integration **Overview** page, on the right side, click **Configure Security**.
-![Open API Security](/img/manage/cloud/api-management/api-security-open.png)
+
+   <ThemedImage
+       alt="Open API Security"
+       sources={{
+           light: useBaseUrl('/img/manage/cloud/api-management/api-security-open.png'),
+           dark: useBaseUrl('/img/manage/cloud/api-management/api-security-open.png'),
+       }}
+   />
+
 5. In the **Configure Security** pane, select the **Security Scheme** you want to use (API Key or OAuth2).
 
     - With the **API Key** scheme, you can select Resource Level security for the API. By default, security is applied at the API level.
-    ![API Security - API Key](/img/manage/cloud/api-management/api-security-api-key.png)
+
+      <ThemedImage
+          alt="API Security - API Key"
+          sources={{
+              light: useBaseUrl('/img/manage/cloud/api-management/api-security-api-key.png'),
+              dark: useBaseUrl('/img/manage/cloud/api-management/api-security-api-key.png'),
+          }}
+      />
+
     - With the **OAuth2** scheme, in addition to Resource Level security configurations, you can also configure permissions for the API. You can select from the available scopes or create new ones, and then assign them to each resource.
-    ![API Security - OAuth2](/img/manage/cloud/api-management/api-security-oauth2.gif)
+
+      <ThemedImage
+          alt="API Security - OAuth2"
+          sources={{
+              light: useBaseUrl('/img/manage/cloud/api-management/api-security-oauth2.gif'),
+              dark: useBaseUrl('/img/manage/cloud/api-management/api-security-oauth2.gif'),
+          }}
+      />
 
     :::note
         If you select both **API Key** and **OAuth2**, authentication requirements depend on the resource:
@@ -44,11 +70,23 @@ Follow the steps given below.
         - For resources with OAuth2 scopes assigned (permissions), only OAuth2 authentication is permitted.
     :::
 
-    ![Select both API Key and OAuth2](/img/manage/cloud/api-management/api-security-api-key-oauth2.png)
+    <ThemedImage
+        alt="Select both API Key and OAuth2"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/api-management/api-security-api-key-oauth2.png'),
+            dark: useBaseUrl('/img/manage/cloud/api-management/api-security-api-key-oauth2.png'),
+        }}
+    />
     
 6. Click **Apply** to save the changes. The changes will be deployed to the Development environment immediately. For other environments, you need to promote the changes.
 
-    ![Apply API Security](/img/manage/cloud/api-management/api-security-apply.gif)
+    <ThemedImage
+        alt="Apply API Security"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/api-management/api-security-apply.gif'),
+            dark: useBaseUrl('/img/manage/cloud/api-management/api-security-apply.gif'),
+        }}
+    />
    
 To consume the secured API, refer to the relevant documentation for the chosen security scheme:
 

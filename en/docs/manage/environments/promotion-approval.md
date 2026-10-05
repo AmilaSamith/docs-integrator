@@ -6,6 +6,9 @@ keywords: [wso2 integrator, promotion approval, workflow, environments, wso2 clo
 slug: /manage/environments/promotion-approval
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Promotion Approvals
 
 You can configure the **Environment Promotion** workflow to require an approval before any integration is promoted to the next environment. When the workflow is active, promotion requests are gated behind a review step, and the promotion only proceeds after an authorized reviewer approves the request.
@@ -17,11 +20,23 @@ You can configure the **Environment Promotion** workflow to require an approval 
 3. On the **Settings** page, click the **Workflows** tab.
 4. In the **Environment Promotion** row, click the toggle to enable the workflow.
 
-    ![Workflows tab showing the Environment Promotion workflow](/img/manage/cloud/environments/promotion-approvals/enable-promotion-approval-workflow.png)
+    <ThemedImage
+        alt="Workflows tab showing the Environment Promotion workflow"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/enable-promotion-approval-workflow.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/enable-promotion-approval-workflow.png'),
+        }}
+    />
 
 5. In the opened **Configure Workflow** dialog, specify who can review promotion requests.
 
-    ![Configure Workflow dialog showing Roles and Assignees fields](/img/manage/cloud/environments/promotion-approvals/who-can-respond.png)
+    <ThemedImage
+        alt="Configure Workflow dialog showing Roles and Assignees fields"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/who-can-respond.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/who-can-respond.png'),
+        }}
+    />
 
     | Field | Description |
     |---|---|
@@ -43,7 +58,13 @@ Once the workflow is enabled, the **Promote** button in the integration overview
 
     The **Request Approval** drawer opens.
 
-    ![Request Approval drawer with a message field and Submit button](/img/manage/cloud/environments/promotion-approvals/requesting-to-promote.png)
+    <ThemedImage
+        alt="Request Approval drawer with a message field and Submit button"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/requesting-to-promote.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/requesting-to-promote.png'),
+        }}
+    />
 
 3. Optionally, type a message for the reviewer.
 4. Click **Submit**.
@@ -60,7 +81,13 @@ Reviewers can act on pending requests from the organization-level **Approvals** 
 
     The **Review Details** panel opens, showing the project name, integration name, source and target environments, build, and the requester's message.
 
-    ![Approvals page with Review Details panel showing Approve and Reject buttons](/img/manage/cloud/environments/promotion-approvals/approving-promotion.png)
+    <ThemedImage
+        alt="Approvals page with Review Details panel showing Approve and Reject buttons"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/approving-promotion.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/promotion-approvals/approving-promotion.png'),
+        }}
+    />
 
 4. Optionally, type a comment.
 5. Click **Approve** or **Reject**.

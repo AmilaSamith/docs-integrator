@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, cloud editor, deploy, browser, developme
 slug: /deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Deploy from the Cloud Editor
 
 WSO2 Cloud includes a browser-based editor where you can create and develop integrations without installing anything locally. Once your integration is ready, you can deploy it to WSO2 Cloud directly from the editor.
@@ -19,7 +22,13 @@ WSO2 Cloud includes a browser-based editor where you can create and develop inte
 1. Sign in to [WSO2 Cloud](https://console.devant.dev) and open your project.
 2. On the project home page, click **Create on Cloud**.
 
-   ![WSO2 Cloud project home showing the Create on Cloud option](/img/deploy/cloud/deploy-from-cloud-editor/project-home.png)
+   <ThemedImage
+       alt="WSO2 Cloud project home showing the Create on Cloud option"
+       sources={{
+           light: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/project-home.png'),
+           dark: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/project-home.png'),
+       }}
+   />
 
    The cloud editor opens in a new browser tab.
 
@@ -32,7 +41,13 @@ Develop your integration in the cloud editor as you would in the WSO2 Integrator
 1. In the cloud editor, open the integration overview for the integration you want to deploy.
 2. In the **Deploy to WSO2 Cloud** panel on the right, click **Save and Deploy**.
 
-   ![Integration overview in the cloud editor with the Save and Deploy button](/img/deploy/cloud/deploy-from-cloud-editor/integration-overview.png)
+   <ThemedImage
+       alt="Integration overview in the cloud editor with the Save and Deploy button"
+       sources={{
+           light: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/integration-overview.png'),
+           dark: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/integration-overview.png'),
+       }}
+   />
 
    A **Deploy Integration** tab opens within WSO2 Integrator.
 
@@ -42,7 +57,13 @@ Develop your integration in the cloud editor as you would in the WSO2 Integrator
 
    If WSO2 Cloud does not have access to the repository, click **Connect Newly Created Repository** and grant access. This is required only if you have not already authorized WSO2 Cloud to access all repositories in your organization.
 
-   ![Deploy Integration tab showing repository configuration](/img/deploy/cloud/deploy-from-cloud-editor/adding-source-control.png)
+   <ThemedImage
+       alt="Deploy Integration tab showing repository configuration"
+       sources={{
+           light: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/adding-source-control.png'),
+           dark: useBaseUrl('/img/deploy/cloud/deploy-from-cloud-editor/adding-source-control.png'),
+       }}
+   />
 
 4. Click **Deploy**.
 

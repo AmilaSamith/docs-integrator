@@ -6,6 +6,9 @@ keywords: [wso2 integrator, endpoints, networking, endpoint visibility, wso2 clo
 slug: /manage/configurations/endpoint-configurations
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Endpoints and Networking Configuration
 
 When you deploy an Integration as API to the WSO2 Cloud - Integration Platform, each endpoint can be exposed at one or more visibility levels.
@@ -33,13 +36,25 @@ Endpoint visibility is configured through the configurations drawer for each env
 
     The drawer lists all endpoints for the integration, with the current network visibility shown for each.
 
-    ![Endpoint details drawer](/img/manage/cloud/configurations/endpoint-configurations/endpoint-drawer.png)
+    <ThemedImage
+        alt="Endpoint details drawer"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/endpoint-drawer.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/endpoint-drawer.png'),
+        }}
+    />
 
 5. Click the edit icon next to the endpoint you want to configure.
 
     The **Network Visibility** options appear.
 
-    ![Endpoint visibility level settings](/img/manage/cloud/configurations/endpoint-configurations/endpoint-visibility-level.png)
+    <ThemedImage
+        alt="Endpoint visibility level settings"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/endpoint-visibility-level.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/endpoint-visibility-level.png'),
+        }}
+    />
 
 6. Select the visibility levels you want to enable. You can enable multiple levels at the same time.
 7. Click **Update**.
@@ -47,7 +62,13 @@ Endpoint visibility is configured through the configurations drawer for each env
 
 The integration restarts. Once it is active, the environment card displays a URL for each enabled visibility level.
 
-![Environment card showing all endpoint URLs](/img/manage/cloud/configurations/endpoint-configurations/overview-card.png)
+<ThemedImage
+    alt="Environment card showing all endpoint URLs"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/overview-card.png'),
+        dark: useBaseUrl('/img/manage/cloud/configurations/endpoint-configurations/overview-card.png'),
+    }}
+/>
 
 :::info
 Enabling the **Project** or **Organization** visibility levels generates additional internal URLs alongside the public URL. These internal URLs are only accessible from within the defined scope.

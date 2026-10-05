@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ## Deploy and Run
 
 The concepts that apply once an integration leaves the editor. Deployment targets, pipelines, and the managed cloud runtime are covered in [Deploy and Run](../../deploy-and-run/deploy-and-run.md).
@@ -30,13 +33,25 @@ The **data plane** is the infrastructure your integrations actually run on. All 
 
 Which system plays the control plane role depends on the deployment model. For WSO2-managed and private (cloud) deployments, it's the SaaS control plane provided by WSO2 Integration Cloud, which also manages all cloud and private data planes. For self-hosted deployments, it's the [Integration Control Plane (ICP)](#integration-control-plane-icp), or your own tooling and pipelines if you choose not to use ICP.
 
-![WSO2 Integration Cloud high-level view](/img/get-started/concepts/ipaas-concepts/high-level-view.png)
+<ThemedImage
+    alt="WSO2 Integration Cloud high-level view"
+    sources={{
+        light: useBaseUrl('/img/get-started/concepts/ipaas-concepts/high-level-view.png'),
+        dark: useBaseUrl('/img/get-started/concepts/ipaas-concepts/high-level-view.png'),
+    }}
+/>
 
 ### Resource hierarchy
 
 Organizations, data planes, projects, environments, and integrations relate to each other in a fixed hierarchy. Understanding it explains where each resource lives and what it can reach.
 
-![Resource hierarchy](/img/get-started/concepts/ipaas-concepts/resource-hierarchy.png)
+<ThemedImage
+    alt="Resource hierarchy"
+    sources={{
+        light: useBaseUrl('/img/get-started/concepts/ipaas-concepts/resource-hierarchy.png'),
+        dark: useBaseUrl('/img/get-started/concepts/ipaas-concepts/resource-hierarchy.png'),
+    }}
+/>
 
 - **Organizations and data planes.** Data planes are connected to the organization and are available to every project within it. When you create an environment in a project, the data plane connected to the organization is linked with an automatically generated Kubernetes namespace.
 - **Integrations and environments.** An integration belongs to a project, and environments are provisioned per project. When an integration is deployed, it is deployed as a container to the specified environment. From there, you can promote the container image across the other environments available in the project.
@@ -47,13 +62,25 @@ An environment is an isolated deployment area with restricted network and resour
 
 Environments are provisioned per project, and each project is associated with one or more of the environments available in the organization. Two projects in the same organization can use different sets: one might use development, staging, and production, while another uses only development and production. The cloud data plane provides development and production by default; private data plane organizations can define additional environments as needed.
 
-![Environments](/img/get-started/concepts/ipaas-concepts/environments.png)
+<ThemedImage
+    alt="Environments"
+    sources={{
+        light: useBaseUrl('/img/get-started/concepts/ipaas-concepts/environments.png'),
+        dark: useBaseUrl('/img/get-started/concepts/ipaas-concepts/environments.png'),
+    }}
+/>
 
 ### Environments and clusters
 
 An environment can be associated with multiple Kubernetes clusters, which lets you build resilient, resource-efficient deployments. Integrations and workloads are synchronized between the clusters associated with an environment, so a multi-cluster deployment can be performed in a single action.
 
-![Environments and data planes](/img/get-started/concepts/ipaas-concepts/env-n-data-planes.png)
+<ThemedImage
+    alt="Environments and data planes"
+    sources={{
+        light: useBaseUrl('/img/get-started/concepts/ipaas-concepts/env-n-data-planes.png'),
+        dark: useBaseUrl('/img/get-started/concepts/ipaas-concepts/env-n-data-planes.png'),
+    }}
+/>
 
 :::info
 A separate cluster per environment is not required. Multiple environments can run on the same cluster. The arrangement that suits your integration architecture may differ from the example shown above.
@@ -82,7 +109,13 @@ A deployment track is a structured pathway that links a Git branch to deployment
 
 For Integration as APIs, a deployment track also carries the API version, following semantic versioning with major and minor versions prefixed by `v`, such as `v1.2`. Increment the major version for incompatible API changes, and the minor version for backward-compatible additions. Patch-level versioning, which consumers generally do not need to track, can be handled separately through Git tags or releases.
 
-![Deployment tracks and API versioning](/img/get-started/concepts/ipaas-concepts/deployment-tracks-api-versioning.png)
+<ThemedImage
+    alt="Deployment tracks and API versioning"
+    sources={{
+        light: useBaseUrl('/img/get-started/concepts/ipaas-concepts/deployment-tracks-api-versioning.png'),
+        dark: useBaseUrl('/img/get-started/concepts/ipaas-concepts/deployment-tracks-api-versioning.png'),
+    }}
+/>
 
 ### CI/CD
 

@@ -6,6 +6,9 @@ keywords: [wso2 cloud, create environment, production environment]
 slug: /manage/environments/create
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Create an Environment
 
 WSO2 Cloud - Integration Platform provides **Development** and **Production** environments by default. You can create additional environments, such as a staging or regional environment, to match your release pipeline.
@@ -25,7 +28,13 @@ Free-tier organizations can have a maximum of three environments.
 3. In the left navigation menu under **Admin**, click **Environments**.
 4. Click **+ Create**. This opens the environment creation page.
 
-    ![Create environment page](/img/manage/cloud/environments/create-environment/create-environment-page.png)
+    <ThemedImage
+        alt="Create environment page"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/create-environment/create-environment-page.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/create-environment/create-environment-page.png'),
+        }}
+    />
 
 5. Configure the environment using the following fields:
 
@@ -42,7 +51,13 @@ Free-tier organizations can have a maximum of three environments.
 
 6. Click **+ Create**.
 
-    ![Environment creating](/img/manage/cloud/environments/create-environment/environment-creating.png)
+    <ThemedImage
+        alt="Environment creating"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/create-environment/environment-creating.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/create-environment/environment-creating.png'),
+        }}
+    />
 
 The new environment is created and available for use across projects in your organization.
 

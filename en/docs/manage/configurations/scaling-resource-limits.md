@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, scaling, replicas, autoscale, scale to z
 slug: /manage/configurations/scaling-resource-limits
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Scale Integrations
 
 WSO2 Cloud - Integration Platform supports two scaling modes: horizontal autoscaling based on resource consumption, and scale-to-zero for Integration as APIs using HTTP. Both modes can be configured independently per environment.
@@ -13,7 +16,13 @@ WSO2 Cloud - Integration Platform supports two scaling modes: horizontal autosca
 :::info
 Autoscaling is only available in paid plans using private data planes. In the free tier, integrations run in single-replica, low-availability mode. You can still turn off scale-to-zero, but it will automatically shutdown after 3 hours. You will see a view similar to below if you are on the free tier.
 
-![Scaling view in free tier](/img/manage/cloud/configurations/scaling-resource-limits/free-user-scaling-view.png)
+<ThemedImage
+    alt="Scaling view in free tier"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/configurations/scaling-resource-limits/free-user-scaling-view.png'),
+        dark: useBaseUrl('/img/manage/cloud/configurations/scaling-resource-limits/free-user-scaling-view.png'),
+    }}
+/>
 
 :::
 
@@ -32,7 +41,13 @@ Configure the following parameters to control autoscaling:
 | **CPU threshold** | The average CPU utilization across all running replicas. When this threshold is reached, the platform scales up until utilization falls below it. |
 | **Memory threshold** | The average memory usage across all running replicas. The platform scales up when this threshold is reached, until usage falls below it. |
 
-![Scaling view in paid tier](/img/manage/cloud/configurations/scaling-resource-limits/paid-user-scaling-view.png)
+<ThemedImage
+    alt="Scaling view in paid tier"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/configurations/scaling-resource-limits/paid-user-scaling-view.png'),
+        dark: useBaseUrl('/img/manage/cloud/configurations/scaling-resource-limits/paid-user-scaling-view.png'),
+    }}
+/>
 
 :::tip
 Scaling parameter changes can take some time to propagate. The console may not reflect updates immediately after saving.

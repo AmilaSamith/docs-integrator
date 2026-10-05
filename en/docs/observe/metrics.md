@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, metrics, observability, monitoring]
 slug: /observe/metrics
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Metrics
 
 The **Metrics** pane displays graphs for the following metrics:
@@ -17,7 +20,13 @@ The **Metrics** pane displays graphs for the following metrics:
 - Data transfer
 - Disk usage
 
-![Metrics graph](/img/observe/cloud/metrics/metrics.png)
+<ThemedImage
+    alt="Metrics graph"
+    sources={{
+        light: useBaseUrl('/img/observe/cloud/metrics/metrics.png'),
+        dark: useBaseUrl('/img/observe/cloud/metrics/metrics.png'),
+    }}
+/>
 
 By default, the dashboard shows data from the past 24 hours. You can adjust the time window using the time range and zone selectors in the options bar. To drill down into a specific period, click and drag over the relevant section of the graph.
 

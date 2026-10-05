@@ -6,6 +6,9 @@ keywords: [wso2 integrator, rag, retrieval, vector store, query]
 slug: /manage/rag-ingestion/retrieval
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # RAG Retrieval
 
 Retrieval-augmented generation (RAG) retrieval searches a vector store for the most relevant information that answers a user query. Use it after ingestion to find supporting chunks for a response.
@@ -58,7 +61,13 @@ To create a key, see the [OpenAI embeddings documentation](https://platform.open
 WSO2 Cloud - Integration Platform's retrieval process can apply reranking models to return the most contextually relevant chunks.
 :::
 
-![Retrieve relevant chunks from the vector store](/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif)
+<ThemedImage
+    alt="Retrieve relevant chunks from the vector store"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif'),
+    }}
+/>
 
 ### Step 4: Enable reranking (optional)
 

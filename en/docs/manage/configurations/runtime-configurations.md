@@ -6,6 +6,9 @@ keywords: [wso2 integrator, wso2 cloud, configuration, config groups, environmen
 slug: /manage/configurations/runtime-configurations
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Runtime Configurations
 
 WSO2 Cloud - Integration Platform lets you configure each integration's runtime values per environment. For values shared across multiple integrations, you can define configuration groups at the organization level and link them directly to your integrations.
@@ -18,7 +21,13 @@ Each deployed integration exposes a **Configure** button for every environment. 
 2. On the integration overview page, locate the environment you want to configure.
 3. Click **Configure** on that environment card.
 
-    ![Configure Integration](/img/manage/cloud/configurations/configurations/configure.png)
+    <ThemedImage
+        alt="Configure Integration"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/configure.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/configure.png'),
+        }}
+    />
 
 4. Add the configurable values as needed.
 5. Click **Update** to apply the changes.
@@ -47,7 +56,13 @@ Configuration groups let you define a named set of configurable fields at the or
 1. In the top navigation, click your organization name to switch to the organization level.
 2. In the left navigation, go to **Admin** > **Config Groups**.
 
-    ![Config Groups Navigation](/img/manage/cloud/configurations/configurations/config-group-page.png)
+    <ThemedImage
+        alt="Config Groups Navigation"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-page.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-page.png'),
+        }}
+    />
 
 3. Click **Create** to create a configuration group.
 4. Fill in the following fields:
@@ -65,11 +80,23 @@ Configuration groups let you define a named set of configurable fields at the or
     | **Type** | Either **Text** (a plain string value) or **File mount** (a file that the integration mounts at runtime). |
     | **Secret** | Optional. If the value is sensitive, you can mark it as a secret by clicking the padlock icon. [More about secrets](#secrets). |
 
-    ![Config Group Creation](/img/manage/cloud/configurations/configurations/config-group-creation.png)
+    <ThemedImage
+        alt="Config Group Creation"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-creation.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-creation.png'),
+        }}
+    />
 
 6. After adding all fields, assign values to each field.
 
-    ![Assigning values to a config group](/img/manage/cloud/configurations/configurations/config-group-values.png)
+    <ThemedImage
+        alt="Assigning values to a config group"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-values.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/config-group-values.png'),
+        }}
+    />
 
 7. Click **Create** to save the configuration group.
 
@@ -78,7 +105,13 @@ Configuration groups let you define a named set of configurable fields at the or
 
 1. On the **Config Groups** page, click the configuration group you want to edit.
 
-    ![Editing Configuration Group](/img/manage/cloud/configurations/configurations/edit-config-group.png)
+    <ThemedImage
+        alt="Editing Configuration Group"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/edit-config-group.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/edit-config-group.png'),
+        }}
+    />
 
 2. If you only want to update the values of the fields, click the edit icon on the value card.
 2. To edit the fields, click **Edit Configuration Group**.
@@ -98,7 +131,13 @@ Once you have a configuration group, you can link its fields to the configurable
 
     A link icon appears next to each configurable field.
 
-    ![Linking Configuration Group](/img/manage/cloud/configurations/configurations/link-config-group.png)
+    <ThemedImage
+        alt="Linking Configuration Group"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/configurations/link-config-group.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/configurations/link-config-group.png'),
+        }}
+    />
 
 3. Click the link icon next to a configurable field.
 4. Select the configuration group and the specific field within the group that maps to this configurable.
