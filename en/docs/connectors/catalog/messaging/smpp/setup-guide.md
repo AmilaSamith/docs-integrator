@@ -12,7 +12,6 @@ This guide walks you through the SMSC configuration required before using the `b
 ## Prerequisites
 
 - An account with an SMSC, carrier, or aggregator that exposes SMPP v3.4 (either a production short code/sender ID, or a test account from a provider with a free SMPP sandbox)
-- Network reachability from the machine running your Ballerina application to the SMSC host and port (SMPP binds are TCP connections; an aggregator-hosted SMSC typically needs your IP allow-listed)
 
 ## Obtain SMSC connection details
 
@@ -33,10 +32,6 @@ If your SMSC offers SMPP over TLS (recommended — a plaintext bind sends `syste
 
 - A PKCS12/JKS truststore, or a PEM CA certificate, that verifies the SMSC's server certificate
 - For mutual TLS, a PKCS12/JKS keystore containing your client certificate and key
-
-:::note
-A truststore or certificate path is a file path, not its contents. Place the file on the machine running your Ballerina application and reference its path in the connection configuration.
-:::
 
 ## Next steps
 
