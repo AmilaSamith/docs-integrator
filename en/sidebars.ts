@@ -1451,6 +1451,216 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SAP SuccessFactors Employee Central Advances',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecadvances/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecadvances/setup-guide',
+            'catalog/hrms/sap.successfactors.ecadvances/action-reference',
+            'catalog/hrms/sap.successfactors.ecadvances/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Alternative Cost Distribution',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecalternativecostdistribution/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecalternativecostdistribution/setup-guide',
+            'catalog/hrms/sap.successfactors.ecalternativecostdistribution/action-reference',
+            'catalog/hrms/sap.successfactors.ecalternativecostdistribution/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Apprentice Management',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecapprenticemanagement/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecapprenticemanagement/setup-guide',
+            'catalog/hrms/sap.successfactors.ecapprenticemanagement/action-reference',
+            'catalog/hrms/sap.successfactors.ecapprenticemanagement/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Compensation Information',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.eccompensationinformation/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.eccompensationinformation/setup-guide',
+            'catalog/hrms/sap.successfactors.eccompensationinformation/action-reference',
+            'catalog/hrms/sap.successfactors.eccompensationinformation/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Dismissal Protection',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecdismissalprotection/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecdismissalprotection/setup-guide',
+            'catalog/hrms/sap.successfactors.ecdismissalprotection/action-reference',
+            'catalog/hrms/sap.successfactors.ecdismissalprotection/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Payroll',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecemployeecentralpayroll/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecemployeecentralpayroll/setup-guide',
+            'catalog/hrms/sap.successfactors.ecemployeecentralpayroll/action-reference',
+            'catalog/hrms/sap.successfactors.ecemployeecentralpayroll/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Employee Profile',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecemployeeprofile/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecemployeeprofile/setup-guide',
+            'catalog/hrms/sap.successfactors.ecemployeeprofile/action-reference',
+            'catalog/hrms/sap.successfactors.ecemployeeprofile/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Employment Information',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecemploymentinformation/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecemploymentinformation/setup-guide',
+            'catalog/hrms/sap.successfactors.ecemploymentinformation/action-reference',
+            'catalog/hrms/sap.successfactors.ecemploymentinformation/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Foundation Organization',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecfoundationorganization/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecfoundationorganization/setup-guide',
+            'catalog/hrms/sap.successfactors.ecfoundationorganization/action-reference',
+            'catalog/hrms/sap.successfactors.ecfoundationorganization/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Global Assignment',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecglobalassignment/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecglobalassignment/setup-guide',
+            'catalog/hrms/sap.successfactors.ecglobalassignment/action-reference',
+            'catalog/hrms/sap.successfactors.ecglobalassignment/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Global Benefits',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecglobalbenefits/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecglobalbenefits/setup-guide',
+            'catalog/hrms/sap.successfactors.ecglobalbenefits/action-reference',
+            'catalog/hrms/sap.successfactors.ecglobalbenefits/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Income Tax Declaration',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecincometaxdeclaration/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecincometaxdeclaration/setup-guide',
+            'catalog/hrms/sap.successfactors.ecincometaxdeclaration/action-reference',
+            'catalog/hrms/sap.successfactors.ecincometaxdeclaration/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Master Data Replication',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecmasterdatareplication/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecmasterdatareplication/setup-guide',
+            'catalog/hrms/sap.successfactors.ecmasterdatareplication/action-reference',
+            'catalog/hrms/sap.successfactors.ecmasterdatareplication/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Payment Information',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecpaymentinformation/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecpaymentinformation/setup-guide',
+            'catalog/hrms/sap.successfactors.ecpaymentinformation/action-reference',
+            'catalog/hrms/sap.successfactors.ecpaymentinformation/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Payroll Time Sheets',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecpayrolltimesheets/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecpayrolltimesheets/setup-guide',
+            'catalog/hrms/sap.successfactors.ecpayrolltimesheets/action-reference',
+            'catalog/hrms/sap.successfactors.ecpayrolltimesheets/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Personal Information',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecpersonalinformation/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecpersonalinformation/setup-guide',
+            'catalog/hrms/sap.successfactors.ecpersonalinformation/action-reference',
+            'catalog/hrms/sap.successfactors.ecpersonalinformation/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Position Management',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecpositionmanagement/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecpositionmanagement/setup-guide',
+            'catalog/hrms/sap.successfactors.ecpositionmanagement/action-reference',
+            'catalog/hrms/sap.successfactors.ecpositionmanagement/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Skills Management',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecskillsmanagement/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecskillsmanagement/setup-guide',
+            'catalog/hrms/sap.successfactors.ecskillsmanagement/action-reference',
+            'catalog/hrms/sap.successfactors.ecskillsmanagement/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Time Off',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ectimeoff/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ectimeoff/setup-guide',
+            'catalog/hrms/sap.successfactors.ectimeoff/action-reference',
+            'catalog/hrms/sap.successfactors.ectimeoff/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Workflow',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.ecworkflow/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.ecworkflow/setup-guide',
+            'catalog/hrms/sap.successfactors.ecworkflow/action-reference',
+            'catalog/hrms/sap.successfactors.ecworkflow/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP SuccessFactors Employee Central Core',
+          link: { type: 'doc', id: 'catalog/hrms/sap.successfactors.employeecentralec/overview' },
+          items: [
+            'catalog/hrms/sap.successfactors.employeecentralec/setup-guide',
+            'catalog/hrms/sap.successfactors.employeecentralec/action-reference',
+            'catalog/hrms/sap.successfactors.employeecentralec/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Salesforce',
           link: { type: 'doc', id: 'catalog/crm-sales/salesforce/connector-overview' },
           items: [

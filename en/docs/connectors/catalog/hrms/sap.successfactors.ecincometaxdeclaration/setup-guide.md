@@ -5,6 +5,9 @@ title: "Setup Guide"
 description: "How to set up and configure the ballerinax/sap.successfactors.ecincometaxdeclaration connector."
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Setup Guide
 
 This guide walks you through getting the necessary details from SAP SuccessFactors so that the connector can authenticate and communicate with your Employee Central instance.
@@ -56,7 +59,13 @@ In either case, you will also need the API server hostname for your SuccessFacto
 
 After registering, open the application (choose **View** from the application list) to find the **Company ID** and the **API Key** SAP assigned to it.
 
-![View a registered OAuth2 client application](/img/connectors/catalog/hrms/sap.successfactors/view-oauth2-client-application.png)
+<ThemedImage
+    alt="View a registered OAuth2 client application"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/sap.successfactors/view-oauth2-client-application.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/sap.successfactors/view-oauth2-client-application.png'),
+    }}
+/>
 
 You now have everything the connector's SAML Bearer configuration needs: the API Key, the Company ID, the username to authenticate as, your `private_key.pem` and `certificate.pem` files, and the OAuth2 token endpoint (typically `https://<admin-center-host>/oauth/token`).
 
