@@ -8,11 +8,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Using Connectors
 
-The [Overview](overview.md) introduces connectors, connections, actions, and triggers as concepts. This page shows how they come together in practice, once you've picked a connector from the [catalog](catalog/index.mdx).
+The [Overview](overview.md) introduces connectors, connections, actions, and triggers as concepts. This page shows how they come together in practice, once you've picked a connector from the [catalog][...]
 
 ## Create a connection
 
-Before you can call a connector's actions, you need a connection: a named, reusable configuration holding the credentials and endpoint settings for the external service. You create one from the **Artifacts** view or directly from the node palette while building a flow.
+Before you can call a connector's actions, you need a connection: a named, reusable configuration holding the credentials and endpoint settings for the external service. You create one from the **Arti[...]
 
 <ThemedImage
     alt="Add Connection panel"
@@ -32,11 +32,11 @@ Fill in the connection initialization form with the connector's specific configu
     }}
 />
 
-See [Connections](../develop-and-test/integration-artifacts/supportive-artifacts/connections.md) for how to add, edit, and reuse connections across an integration, and the [node palette's connection section](../editor/canvases/flow-canvas/node-palette.md#connection) for adding one without leaving the flow you're building.
+See [Connections](../develop-and-test/integration-artifacts/supportive-artifacts/connections.md) for how to add, edit, and reuse connections across an integration, and the [node palette's connection s[...]
 
 ## Invoke an action
 
-Once a connection exists, it appears in the node palette's **Connections** section. Drag it onto your flow to see its available actions.
+Once a connection exists, it appears in the node palette's **Connections** section. Expand the dropdown of the created connection to see its available actions.
 
 <ThemedImage
     alt="A connection in the node palette's Connections section"
@@ -60,7 +60,7 @@ See the [node palette's connection actions section](../editor/canvases/flow-canv
 
 ## Handle a trigger
 
-Most connectors are action-only, but a select few (primarily databases, messaging systems, and file storage) also support triggers — inbound events the external service pushes into your integration. See [Kafka](../develop-and-test/integration-artifacts/event-driven-integration/kafka.md) and [CDC (MySQL)](../develop-and-test/integration-artifacts/event-driven-integration/cdc-mysql.md) for two worked examples of setting up a trigger-based flow.
+Most connectors are action-only, but a select few (primarily databases, messaging systems, and file storage) also support triggers — inbound events the external service pushes into your integration[...]
 
 ## What's next
 
