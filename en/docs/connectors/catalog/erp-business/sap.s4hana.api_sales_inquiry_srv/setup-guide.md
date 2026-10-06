@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through obtaining SAP S/4HANA system access and enabling the API_SALES_INQUIRY_SRV OData service so you can connect the Ballerina connector to your SAP landscape.
 
-
 ## Prerequisites
 
 - An SAP S/4HANA system (on-premise or private cloud) with Sales and Distribution (SD) configured.

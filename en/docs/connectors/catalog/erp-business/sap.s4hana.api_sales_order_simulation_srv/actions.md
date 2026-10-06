@@ -17,7 +17,6 @@ The `ballerinax/sap.s4hana.api_sales_order_simulation_srv` package exposes the f
 
 Simulates SAP S/4HANA sales order creation and manages associated value-added services, returning pricing, availability, and credit information without persisting any data.
 
-
 ### Configuration
 
 | Field | Type | Default | Description |
@@ -60,7 +59,6 @@ salesOrderSim:Client simClient = check new (
 <div>
 
 Simulates the creation of a sales order and returns pricing details, material availability (confirmed schedule lines), and customer credit limit status. The simulated order is never saved to SAP S/4HANA.
-
 
 Parameters:
 
@@ -393,7 +391,6 @@ HTTP/1.1 204 No Content
 <div>
 
 Sends a group of OData requests in a single HTTP batch call using the `$batch` endpoint, reducing round-trips when multiple operations need to be executed together.
-
 
 Parameters:
 

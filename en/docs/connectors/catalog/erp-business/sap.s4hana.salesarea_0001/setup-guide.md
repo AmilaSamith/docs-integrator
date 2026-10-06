@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through enabling the SAP Sales Area OData API on your SAP S/4HANA system and obtaining the credentials needed to use the connector.
 
-
 ## Prerequisites
 
 - Access to an SAP S/4HANA system (on-premise or private cloud) with administrator or BASIS privileges.

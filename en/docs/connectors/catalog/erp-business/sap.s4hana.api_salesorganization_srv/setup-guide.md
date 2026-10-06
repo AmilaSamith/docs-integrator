@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through obtaining the SAP S/4HANA connection details and credentials required to use the SAP Sales Organization connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA system (on-premise or SAP BTP ABAP Environment) with the `API_SALESORGANIZATION_SRV` OData service enabled.
