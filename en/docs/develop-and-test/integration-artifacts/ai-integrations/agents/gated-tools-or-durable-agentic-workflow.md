@@ -8,7 +8,7 @@ slug: /develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools
 
 # Gated Tools or Durable Agentic Workflow
 
-Both features can pause an AI agent so a person approves a call before it runs. A [gated tool](gated-tools.md) stops there. A [durable agentic workflow](../../workflow/durable-agentic-workflow/durable-agentic-workflow.md) can do everything in the table below. This doc exists to help you pick one, starting with what each can do, then what each costs to set up.
+Both features can pause an AI agent so a person approves a call before it runs. A [gated tool](gated-tools.md) stops there. A [durable agentic workflow](../../workflow/durable-agentic-workflow/durable-agentic-workflow.md) can do far more. This doc exists to help you pick one: the table below shows exactly what each one covers, then what each costs to set up.
 
 ## Capability comparison
 
@@ -31,12 +31,11 @@ Both features can pause an AI agent so a person approves a call before it runs. 
 | Pause for a fixed duration, with no person involved | ✗ | ✓ |
 | Wait for an event from another system | ✗ | ✓ |
 | Retry a failed step automatically | ✗ | ✓ |
-| Resume from the last completed step after a crash | ✗ | ✓ |
 | Run history and execution graph | ✗ | ✓ |
 
 ¹ With a durable memory store (see Infrastructure and setup below).
 
-✗ means not built in. For gated tools, some of these can be built in your own application.
+✗ means not built in. Some of these can be built with your own code.
 
 ## Infrastructure and setup
 
