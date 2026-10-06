@@ -83,7 +83,7 @@ At a high level, the setup involves:
 3. Adding observability configuration to your Ballerina integration (`observabilityIncluded = true`, log file paths).
 4. Configuring Fluent Bit to tail the log files and ship them to OpenSearch.
 
-For the full step-by-step procedure, see [Observability setup](observability-setup.md).
+For the full step-by-step procedure, see [Observability setup](observability-setup/index.md).
 
 ## 6. Configure access control (optional)
 
@@ -99,6 +99,6 @@ For the full access control model and step-by-step procedures, see [Access contr
 
 ## What's next
 
-- [Observability setup](observability-setup.md) — enable centralized logs and metrics for connected runtimes
+- [Observability setup](observability-setup/index.md) — enable centralized logs and metrics for connected runtimes
 - [Access control](access-control.md) — set up roles, groups, and permissions
 - [ICP console overview](icp-console-overview.md) — understand the console layout, scope levels, and navigation

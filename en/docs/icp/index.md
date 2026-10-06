@@ -7,6 +7,8 @@ slug: /icp
 keywords: [wso2 integrator, integration control plane, icp, components, ports, integration profiles]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -58,7 +60,13 @@ This guide will walk you through the steps to connect your integration runtime t
 1. Navigate to the home view of WSO2 Integrator.
 2. Select the **Enable ICP monitoring** checkbox under the **Integration Control Plane** section.
 
-   ![ICP Enable Checkbox](/img/deploy-operate/observe/icp-enable.png)
+   <ThemedImage
+       alt="ICP Enable Checkbox"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/icp-enable.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/icp-enable.png'),
+       }}
+   />
 
 3. Enabling ICP monitoring will generate and add the following configurations to your runtime.
 
@@ -111,15 +119,33 @@ import wso2/icp.runtime.bridge as _;
 
 3. The project will be displayed on the **Home** page of the ICP dashboard.
 
-   ![ICP Projects Dashboard](/img/deploy-operate/observe/icp-projects.png)
+   <ThemedImage
+       alt="ICP Projects Dashboard"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/icp-projects.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/icp-projects.png'),
+       }}
+   />
 
 4. Click on the project to view the integrations.
 
-   ![ICP Integrations View](/img/deploy-operate/observe/icp-integrations.png)
+   <ThemedImage
+       alt="ICP Integrations View"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/icp-integrations.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/icp-integrations.png'),
+       }}
+   />
 
 5. Click on an integration to view integration artifacts.
 
-   ![ICP Integration Artifacts](/img/deploy-operate/observe/icp-artifacts.png)
+   <ThemedImage
+       alt="ICP Integration Artifacts"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/icp-artifacts.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/icp-artifacts.png'),
+       }}
+   />
 
 ## Default ports
 
@@ -144,6 +170,6 @@ See [ICP Runtime API](runtime-api.md) for the full REST endpoint reference.
 - [Install ICP](install-icp.md) — download and configure ICP for your environment
 - [ICP console overview](icp-console-overview.md) — understand the console layout and navigation
 - [Manage Workflows](manage-workflows/manage-workflows.md) — start, follow, and complete durable workflow runs from the console
-- [Observability Setup](observability-setup.md) — set up centralized logs and metrics monitoring
+- [Observability Setup](observability-setup/index.md) — set up centralized logs and metrics monitoring
 - [Logging](../observe/logging.md) — configure structured logging
 - [Metrics](../observe/metrics.md) — Prometheus metrics and Grafana dashboards

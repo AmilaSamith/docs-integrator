@@ -4,6 +4,9 @@ description: Map between generic JSON or XML payloads by pasting a sample struct
 slug: /develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/generic-type-mappings
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Generic Type Mappings
 
 When the input or output is a generic JSON or XML payload, the data mapper can generate compatible record types from sample structures, and then you can map the fields visually.
@@ -19,7 +22,13 @@ Generic type mapping is only available in the reusable data mapper. Inline data 
 3. The data mapper builds compatible record types from the sample and exposes the fields on the canvas.
 4. Map the input fields to the output fields as you would for any record type.
 
-![Data mapper generating record types from a pasted JSON sample and producing XML output](/img/develop/integration-artifacts/supporting/data-mapper/json-to-xml-mapping.gif)
+<ThemedImage
+    alt="Data mapper generating record types from a pasted JSON sample and producing XML output"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/json-to-xml-mapping.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/json-to-xml-mapping.gif'),
+    }}
+/>
 
 ## What's next
 

@@ -5,6 +5,8 @@ keywords: [wso2 integrator, cdc, postgresql, change data capture, event integrat
 slug: /develop-and-test/integration-artifacts/event-driven-integration/cdc-postgresql
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -26,7 +28,13 @@ Logical replication must be enabled on the PostgreSQL database and on each table
 2. In the **Artifacts** panel, select **CDC for PostgreSQL** under **Event Integration**.
 3. In the creation form, select **Create new** to configure a new listener.
 
-   ![PostgreSQL CDC creation form: connection fields](/img/develop/integration-artifacts/event/cdc-postgresql/step-creation-form.png)
+   <ThemedImage
+       alt="PostgreSQL CDC creation form: connection fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-creation-form.png'),
+       }}
+   />
 
    Under **Listener Configurations**, fill in the following fields:
 
@@ -53,7 +61,13 @@ Logical replication must be enabled on the PostgreSQL database and on each table
 
 5. WSO2 Integrator creates the empty service and opens it in the **Service Designer**. The canvas shows the attached listener pill and the table name pill. The service has no handlers yet.
 
-   ![Service Designer showing the PostgreSQL CDC service canvas](/img/develop/integration-artifacts/event/cdc-postgresql/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the PostgreSQL CDC service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-service-designer.png'),
+       }}
+   />
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -135,7 +149,13 @@ In the **Service Designer**, click the **Configure** icon in the header to open 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![PostgreSQL CDC Configuration panel: service config and listener connection](/img/develop/integration-artifacts/event/cdc-postgresql/step-service-config.png)
+<ThemedImage
+    alt="PostgreSQL CDC Configuration panel: service config and listener connection"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-service-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-service-config.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -173,7 +193,13 @@ A single service can be attached to more than one listener. Attach multiple list
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-![Listener configuration: Database, Engine Name, Internal Schema Storage, Offset Storage, Liveness Interval, Options](/img/develop/integration-artifacts/event/cdc-postgresql/step-listener-config.png)
+<ThemedImage
+    alt="Listener configuration: Database, Engine Name, Internal Schema Storage, Offset Storage, Liveness Interval, Options"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-listener-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-listener-config.png'),
+    }}
+/>
 
 | Field | Description | Default |
 |---|---|---|
@@ -255,7 +281,13 @@ In the **Service Designer**, click **+ Add Handler**. The **Select Handler to Ad
 
 `onRead`, `onCreate`, `onUpdate`, and `onDelete` each open a **Message Handler Configuration** panel for the row payload. `onTruncate` and `onError` are added directly without additional configuration.
 
-![Message Handler Configuration panel with Define Database Entry and Advanced Parameters TableName checkbox](/img/develop/integration-artifacts/event/cdc-postgresql/step-add-handler.png)
+<ThemedImage
+    alt="Message Handler Configuration panel with Define Database Entry and Advanced Parameters TableName checkbox"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-add-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-postgresql/step-add-handler.png'),
+    }}
+/>
 
 The configuration panel exposes the following fields:
 

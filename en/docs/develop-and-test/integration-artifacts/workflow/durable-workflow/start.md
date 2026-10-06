@@ -26,7 +26,13 @@ A workflow does not start itself. Something has to launch it. It can be any type
 1. In the trigger artifact flow design, click **+**.
 2. In the node panel, under **Workflow**, click **Run Workflow**.
 
-   ![The node panel with Run Workflow and Send Data Event under the Workflow group](/img/workflows/develop/start-workflow/run-workflow-node.png)
+   <ThemedImage
+       alt="The node panel with Run Workflow and Send Data Event under the Workflow group"
+       sources={{
+           light: useBaseUrl('/img/workflows/develop/start-workflow/run-workflow-node.png'),
+           dark: useBaseUrl('/img/workflows/develop/start-workflow/run-workflow-node.png'),
+       }}
+   />
 
 3. Fill in the form:
 
@@ -37,7 +43,13 @@ A workflow does not start itself. Something has to launch it. It can be any type
 
 4. Click **Save**.
 
-![Adding a Run Workflow step and following its link to the workflow it starts](/img/workflows/develop/start-workflow/add-run-workflow.gif)
+<ThemedImage
+    alt="Adding a Run Workflow step and following its link to the workflow it starts"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/start-workflow/add-run-workflow.gif'),
+        dark: useBaseUrl('/img/workflows/develop/start-workflow/add-run-workflow.gif'),
+    }}
+/>
 
 The step is drawn with an arrow across to the workflow it starts, so an entry point shows at a glance which process it kicks off. Click that marker to open the workflow itself.
 

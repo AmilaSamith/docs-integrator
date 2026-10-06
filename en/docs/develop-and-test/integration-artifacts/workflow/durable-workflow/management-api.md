@@ -6,6 +6,9 @@ keywords: [wso2 integrator, durable workflow, management api, rest, human task a
 slug: /develop-and-test/integration-artifacts/workflow/durable-workflow/management-api
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Management API
 
 Every integration with durable workflows can expose a **Management API**: a REST surface, served by the integration runtime itself, over the runs that integration owns. Enable it to build custom portals, automations, or operational tooling.
@@ -22,7 +25,13 @@ The REST surface lives in its own module, `ballerina/workflow.management.rest`. 
 2. In the right panel, below **Integration Control Plane**, find the **Workflow** section.
 3. Select **Enable Workflow Management REST API**.
 
-![The integration overview with the Workflow section highlighted in the right panel, showing the Enable Workflow Management REST API checkbox below Integration Control Plane](/img/workflows/management-api/enable-management-api.png)
+<ThemedImage
+    alt="The integration overview with the Workflow section highlighted in the right panel, showing the Enable Workflow Management REST API checkbox below Integration Control Plane"
+    sources={{
+        light: useBaseUrl('/img/workflows/management-api/enable-management-api.png'),
+        dark: useBaseUrl('/img/workflows/management-api/enable-management-api.png'),
+    }}
+/>
 
 Selecting it adds the `ballerina/workflow.management.rest` import to `main.bal`.
 

@@ -7,6 +7,9 @@ keywords: [wso2 integrator, integration control plane, icp, workflow runtime, en
 slug: /icp/manage-workflows
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Manage Workflows
 
 The Integration Control Plane (ICP) is where you watch and steer the durable workflows an integration runs. This page covers connecting an integration to ICP and finding your way around the workflow views it opens up.
@@ -23,7 +26,13 @@ For development and evaluation, WSO2 Integrator ships its own ICP server and wri
 2. Expand **Publish to local ICP** and click **Start ICP Server**.
 3. Start the integration. It registers with the server as it boots.
 
-![Enabling ICP monitoring, expanding Publish to local ICP, and starting the bundled ICP server from the deployment options panel](/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif)
+<ThemedImage
+    alt="Enabling ICP monitoring, expanding Publish to local ICP, and starting the bundled ICP server from the deployment options panel"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
+    }}
+/>
 
 Start ICP before the integration, so the integration has somewhere to publish to as it comes up. The project and the integration are both created for you, and because the integration carries a durable workflow it is registered as a workflow integration.
 
@@ -49,7 +58,13 @@ The **Workflow** integration type is what tells ICP that this integration hosts 
 
 3. Click **Create**.
 
-![The Create New Integration form with Technology set to WSO2 Integrator and the Workflow integration type selected](/img/workflows/icp/connect-runtime/create-workflow-integration.png)
+<ThemedImage
+    alt="The Create New Integration form with Technology set to WSO2 Integrator and the Workflow integration type selected"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/connect-runtime/create-workflow-integration.png'),
+        dark: useBaseUrl('/img/workflows/icp/connect-runtime/create-workflow-integration.png'),
+    }}
+/>
 
 #### 2. Add a runtime
 
@@ -75,7 +90,13 @@ Once an integration is registered, the Integration Control Plane provides workfl
 
 Select **Overview** in the console navigation to open the integration overview.
 
-![Integration overview showing workflow definitions, workflow actions, and runtime status](/img/workflows/icp/integration-overview.png)
+<ThemedImage
+    alt="Integration overview showing workflow definitions, workflow actions, and runtime status"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/integration-overview.png'),
+        dark: useBaseUrl('/img/workflows/icp/integration-overview.png'),
+    }}
+/>
 
 From the overview page you can take three actions:
 

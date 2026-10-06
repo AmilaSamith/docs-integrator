@@ -6,60 +6,117 @@ sidebar_position: 3
 slug: /editor/copilot/copilot-capabilities
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Copilot Built-in Capabilities
 
 WSO2 Integrator Copilot builds integrations from natural language prompts. It produces ready-to-use artifacts in your project. Iterate through follow-up prompts to refine logic, add features, or modify behavior.
 
-![WSO2 Integrator Copilot panel open alongside an integration project in the editor.](/img/editor/copilot/copilot-overview.png)
+<ThemedImage
+    alt="WSO2 Integrator Copilot panel open alongside an integration project in the editor."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/copilot-overview.png'),
+        dark: useBaseUrl('/img/editor/copilot/copilot-overview.png'),
+    }}
+/>
 
 ## Clarifying requirements
 
 During the planning or generation phase, Copilot may identify missing information that is critical to the integration. If a requirement is ambiguous, it pauses and presents a list of suggested options. Select one, or select **Other** to type your own answer.
 
-![Clarifying requirements prompt showing selection options.](/img/editor/copilot/clarifying-requirements.png)
+<ThemedImage
+    alt="Clarifying requirements prompt showing selection options."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/clarifying-requirements.png'),
+        dark: useBaseUrl('/img/editor/copilot/clarifying-requirements.png'),
+    }}
+/>
 
 
 ## Using web tools
 
 Copilot can search the internet for external context or up-to-date documentation. It asks for permission before each search unless you enable the web tools toggle in the input bar.
 
-![Web tools permission prompt in the Copilot input bar.](/img/editor/copilot/web-tool.png)
+<ThemedImage
+    alt="Web tools permission prompt in the Copilot input bar."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/web-tool.png'),
+        dark: useBaseUrl('/img/editor/copilot/web-tool.png'),
+    }}
+/>
 
 ## Generating connectors
 
 Copilot can generate a custom connector when a pre-built one is not available. During integration generation, if no pre-built connector exists, Copilot prompts the user for an OpenAPI specification. The user can also directly request to generate a custom connector. Once generated, the connector is available for Copilot to use in the flow.
 
-![Copilot generating custom connector code from an OpenAPI specification.](/img/editor/copilot/connector-generator.png)
+<ThemedImage
+    alt="Copilot generating custom connector code from an OpenAPI specification."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/connector-generator.png'),
+        dark: useBaseUrl('/img/editor/copilot/connector-generator.png'),
+    }}
+/>
 
 ## Review generated artifacts
 
 After generation completes, you can inspect exactly what was built or changed before finalizing the changes. Review the generated artifacts as the flow diagram or as source code with a diff view.
 
-![Review mode showing the generated integration diagram.](/img/editor/copilot/review-mode.png)
+<ThemedImage
+    alt="Review mode showing the generated integration diagram."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/review-mode.png'),
+        dark: useBaseUrl('/img/editor/copilot/review-mode.png'),
+    }}
+/>
 
 ## Configure to Run/Test
 
 When you run or test the integration, Copilot identifies the required configurables and prompts you to enter them.
 
-![Configuration collection prompt showing required fields for the integration.](/img/editor/copilot/config-collection.png)
+<ThemedImage
+    alt="Configuration collection prompt showing required fields for the integration."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/config-collection.png'),
+        dark: useBaseUrl('/img/editor/copilot/config-collection.png'),
+    }}
+/>
 
 ## Generate Integration Tests
 
 Copilot generates tests for your integration and runs them with the built-in test runner, allowing you to verify the generated artifacts immediately.
 
-![Test runner showing generated tests and results.](/img/editor/copilot/running-tests.png)
+<ThemedImage
+    alt="Test runner showing generated tests and results."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/running-tests.png'),
+        dark: useBaseUrl('/img/editor/copilot/running-tests.png'),
+    }}
+/>
 
 ## TryOut your services
 
 Once your integration is running, you can send test requests to your services from Copilot. Describe what you want to test in plain language, and Copilot calls your service and returns the response.
 
-![Copilot calling a running service and showing the response.](/img/editor/copilot/try-it.png)
+<ThemedImage
+    alt="Copilot calling a running service and showing the response."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/try-it.png'),
+        dark: useBaseUrl('/img/editor/copilot/try-it.png'),
+    }}
+/>
 
 ## Debug Runtime Issues
 
 Copilot can run your integrations and read the runtime logs to debug issues as they occur.
 
-![Copilot debugging an integration by reproducing the failing request, inspecting the HTTP response and service logs, and identifying a case-sensitivity bug in the team filter.](/img/editor/copilot/debugging-using-service-logs.png)
+<ThemedImage
+    alt="Copilot debugging an integration by reproducing the failing request, inspecting the HTTP response and service logs, and identifying a case-sensitivity bug in the team filter."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/debugging-using-service-logs.png'),
+        dark: useBaseUrl('/img/editor/copilot/debugging-using-service-logs.png'),
+    }}
+/>
 
 ## Follow-up suggestions
 
@@ -67,7 +124,13 @@ When Copilot finishes a response, it offers a few follow-up suggestions as chips
 
 Select a chip to place its full prompt in the input bar. Copilot doesn't send it, so you can reword the prompt or add detail first.
 
-![Follow-up suggestion chips below a Copilot response.](/img/editor/copilot/followup-suggestions.png)
+<ThemedImage
+    alt="Follow-up suggestion chips below a Copilot response."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/followup-suggestions.png'),
+        dark: useBaseUrl('/img/editor/copilot/followup-suggestions.png'),
+    }}
+/>
 
 Suggestions appear under the most recent response only, and they clear when you send your next message.
 
@@ -81,7 +144,13 @@ Each conversation with Copilot is a session. Copilot saves every session for the
 
 Select **Chats** in the panel header to list the project's sessions, grouped by when you last used them. Each row shows the session name, the number of prompts it holds, and when it was last updated. Select a row to switch to that session.
 
-![The Chats list showing the saved sessions for a project.](/img/editor/copilot/chat-sessions.png)
+<ThemedImage
+    alt="The Chats list showing the saved sessions for a project."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/chat-sessions.png'),
+        dark: useBaseUrl('/img/editor/copilot/chat-sessions.png'),
+    }}
+/>
 
 From this list you can:
 

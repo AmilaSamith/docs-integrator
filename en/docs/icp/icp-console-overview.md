@@ -7,6 +7,9 @@ sidebar_position: 6
 sidebar_custom_props: { "separatorBefore": "Manage with ICP Console" }
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # ICP Console Overview
 
 The ICP console is the web interface for monitoring and managing your integrations across environments. It organizes resources into three nested scope levels, each with its own sidebar and access-control scope. This page explains the console layout and navigation so you can get oriented quickly.
@@ -29,7 +32,13 @@ Environments and roles are defined at the organization level and apply across al
 
 The ICP console has two main navigation elements: the breadcrumb bar at the top and the sidebar on the left.
 
-![ICP console showing the breadcrumb bar and sidebar](/img/manage/icp/icp-console-overview-light.png)
+<ThemedImage
+    alt="ICP console showing the breadcrumb bar and sidebar"
+    sources={{
+        light: useBaseUrl('/img/manage/icp/icp-console-overview-light.png'),
+        dark: useBaseUrl('/img/manage/icp/icp-console-overview-light.png'),
+    }}
+/>
 
 ### Breadcrumb bar
 

@@ -10,8 +10,22 @@ name: Sync shared content to saas
 # `--base` (and the trigger comment below) at `main` once saas has been
 # force-pushed there and main becomes the live development branch.
 #
-# NOT synced (deliberately): deploy/, operate/, manage/, reference/ (all
-# of it except appendix/glossary.md) -- hosting-model-specific, authored
+# Synced: platform-overview/, editor/, develop-and-test/, migrate/,
+# guides/ -- nothing else.
+#
+# Images are synced by reference, not by folder: en/static/img/ folders
+# don't map 1:1 onto doc sections (develop/, workflows/, reference/ are
+# shared with saas-only sections like get-started/ and icp/), so a
+# folder-level replace would delete images saas's own pages still use.
+# Instead: every /img/... path the synced docs reference is checked out
+# from wso2-integrator -- unless saas's copy was edited on saas more
+# recently, in which case it's kept and a warning logged -- and images
+# the synced docs used to reference but no longer do are removed --
+# unless something else on saas (any doc, versioned_docs/, src/,
+# docusaurus.config.ts) still references them.
+#
+# NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
+# get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
 # (lives on its own wso2-connectors branch, referenced by link, not
 # synced). Agent Builder is parked, no sync target exists yet.
@@ -22,27 +36,19 @@ on:
     paths:
       - 'en/docs/platform-overview/**'
       - 'en/docs/editor/**'
-      - 'en/docs/develop/**'
-      - 'en/docs/test/**'
-      - 'en/docs/customize/**'
+      - 'en/docs/develop-and-test/**'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
-      - 'en/docs/get-started/concepts/core.md'
-      - 'en/docs/reference/appendix/glossary.md'
+      - 'en/static/img/**'
   workflow_dispatch:
 
 env:
   SYNC_DIRS: >-
     en/docs/platform-overview
     en/docs/editor
-    en/docs/develop
-    en/docs/test
-    en/docs/customize
+    en/docs/develop-and-test
     en/docs/migrate
     en/docs/guides
-  SYNC_FILES: >-
-    en/docs/get-started/concepts/core.md
-    en/docs/reference/appendix/glossary.md
 
 jobs:
   sync:
@@ -60,6 +66,19 @@ jobs:
           git fetch origin wso2-integrator saas
           git checkout -b sync-content-saas-$(date +%Y%m%d%H%M%S) origin/saas
 
+          # comm needs both inputs sorted the same way.
+          export LC_ALL=C
+
+          # Matches both `/img/...` and relative `../static/img/...` refs,
+          # normalised to `/img/...`.
+          list_img_refs() {
+            grep -rhoE "/img/[^)\"' >]+" "$@" 2>/dev/null | sort -u || true
+          }
+
+          # Captured before the docs are replaced: images saas's current
+          # copy of the synced docs uses -- the stale-cleanup candidates.
+          list_img_refs $SYNC_DIRS > "$RUNNER_TEMP/old-refs"
+
           # Full replace, not overlay: `git checkout <ref> -- <path>` only
           # adds/updates files present in <ref> -- it never removes a path
           # that exists on saas but not on wso2-integrator. Clear each
@@ -69,11 +88,56 @@ jobs:
             rm -rf "$d"
             git checkout origin/wso2-integrator -- "$d" 2>/dev/null || true
           done
-          for f in $SYNC_FILES; do
-            git checkout origin/wso2-integrator -- "$f" 2>/dev/null || true
-          done
 
-          git add -A -- $SYNC_DIRS $SYNC_FILES
+          # Bring over the latest copy of every image the synced docs
+          # reference. Refs with no file on wso2-integrator are already
+          # broken there -- warn, don't fail the sync over them.
+          list_img_refs $SYNC_DIRS > "$RUNNER_TEMP/new-refs"
+          git ls-tree -r --name-only origin/wso2-integrator -- en/static/img \
+            | sed 's#^en/static##' | sort -u > "$RUNNER_TEMP/source-imgs"
+          comm -12 "$RUNNER_TEMP/new-refs" "$RUNNER_TEMP/source-imgs" \
+            | sed 's#^#en/static#' > "$RUNNER_TEMP/to-checkout"
+          comm -23 "$RUNNER_TEMP/new-refs" "$RUNNER_TEMP/source-imgs" \
+            | while read -r p; do
+                echo "::warning::$p is referenced by synced docs but missing on wso2-integrator"
+              done
+
+          # Latest wins, per file: if an image differs between the branches
+          # and saas's copy was edited on saas (by anything other than a
+          # previous sync) more recently than wso2-integrator's, keep saas's
+          # copy and warn instead of overwriting it.
+          git ls-tree -r origin/saas -- en/static/img | awk '{print $4"\t"$3}' | sort > "$RUNNER_TEMP/saas-blobs"
+          git ls-tree -r origin/wso2-integrator -- en/static/img | awk '{print $4"\t"$3}' | sort > "$RUNNER_TEMP/source-blobs"
+          join -t "$(printf '\t')" "$RUNNER_TEMP/saas-blobs" "$RUNNER_TEMP/source-blobs" \
+            | awk -F '\t' '$2 != $3 {print $1}' > "$RUNNER_TEMP/differing"
+          : > "$RUNNER_TEMP/keep-saas"
+          comm -12 "$RUNNER_TEMP/to-checkout" "$RUNNER_TEMP/differing" \
+            | while read -r f; do
+                saas_ts=$(git log -1 --format=%ct -F --invert-grep --grep='content(sync)' origin/saas -- "$f")
+                src_ts=$(git log -1 --format=%ct origin/wso2-integrator -- "$f")
+                if [ -n "$saas_ts" ] && [ "$saas_ts" -gt "$src_ts" ]; then
+                  echo "::warning::kept saas copy of $f -- edited on saas after wso2-integrator's version"
+                  echo "$f" >> "$RUNNER_TEMP/keep-saas"
+                fi
+              done
+          sort -o "$RUNNER_TEMP/keep-saas" "$RUNNER_TEMP/keep-saas"
+          comm -23 "$RUNNER_TEMP/to-checkout" "$RUNNER_TEMP/keep-saas" > "$RUNNER_TEMP/to-checkout.final"
+          mv "$RUNNER_TEMP/to-checkout.final" "$RUNNER_TEMP/to-checkout"
+
+          if [ -s "$RUNNER_TEMP/to-checkout" ]; then
+            git checkout origin/wso2-integrator \
+              --pathspec-from-file="$RUNNER_TEMP/to-checkout" --
+          fi
+
+          # Drop images the synced docs stopped referencing, but only if
+          # nothing on saas still uses them.
+          list_img_refs en/docs en/versioned_docs en/src en/docusaurus.config.ts > "$RUNNER_TEMP/still-used"
+          comm -23 "$RUNNER_TEMP/old-refs" "$RUNNER_TEMP/still-used" \
+            | while read -r p; do
+                git rm -q --ignore-unmatch -- "en/static$p"
+              done
+
+          git add -A -- $SYNC_DIRS en/static/img
 
           if git diff --cached --quiet; then
             echo "No content changes to sync."
@@ -85,7 +149,7 @@ jobs:
 
           gh pr create --base saas --head "$(git branch --show-current)" \
             --title "content(sync): shared docs from wso2-integrator" \
-            --body $'Auto-synced shared content (platform-overview, editor, develop, test, customize, migrate, guides, get-started/concepts/core.md, reference/appendix/glossary.md) from wso2-integrator.\n\n**Review before merging, do not auto-merge.** In particular:\n- `editor/views/integration-view.md`, `editor/views/project-view.md`, and `editor/integrator-app.md` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR\'s diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that\'s this sync clobbering the saas-specific override -- revert those hunks before merging, don\'t accept them as-is.\n- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one.' \
+            --body $'Auto-synced shared content (platform-overview, editor, develop-and-test, migrate, guides, plus every en/static/img/ file they reference) from wso2-integrator. Check the run log for warnings about referenced images missing on wso2-integrator.\n\n**Review before merging, do not auto-merge.** In particular:\n- `editor/views/integration-view.md`, `editor/views/project-view.md`, and `editor/integrator-app.md` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR\'s diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that\'s this sync clobbering the saas-specific override -- revert those hunks before merging, don\'t accept them as-is.\n- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one.\n- The same goes for images: if saas intentionally carries its own version of a screenshot the synced docs reference, this PR keeps saas\'s copy only if it was edited on saas after wso2-integrator\'s version (see the "kept saas copy" warnings in the run log); otherwise it overwrites it -- revert that file before merging if the saas copy should win.' \
             --label "content-sync"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

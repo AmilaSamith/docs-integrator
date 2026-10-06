@@ -6,11 +6,20 @@ keywords: [wso2 integrator, node palette, flow canvas, connections, statement, c
 slug: /editor/canvases/flow-canvas/node-palette
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Node Palette
 
 The node palette is the panel on the right of the [Flow Canvas](flow-canvas.md) that lists every node you can add to a flow. From top to bottom, the palette contains a **Search** field, the project's **Connections**, the category sections below, and a **Show More Functions** action at the bottom that opens the full functions picker.
 
-![Node palette with Search, Connections, and category sections](/img/editor/canvases/flow-canvas/node-palette.png)
+<ThemedImage
+    alt="Node palette with Search, Connections, and category sections"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/node-palette.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/node-palette.png'),
+    }}
+/>
 
 Select a category below to jump to its nodes.
 
@@ -109,7 +118,13 @@ A connection is a reusable, pre-configured client to an external system such as 
 
 Selecting a connection in the node panel adds a step bound to that connection.
 
-![mysqlClient connection in the Connections section](/img/editor/canvases/flow-canvas/connection-node.png)
+<ThemedImage
+    alt="mysqlClient connection in the Connections section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/connection-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/connection-node.png'),
+    }}
+/>
 
 To create a new connection, select **+** next to **Connections**. For details on connection types, scopes, and credential management, see the [Connections](../../../develop-and-test/integration-artifacts/supportive-artifacts/connections.md) reference.
 
@@ -117,7 +132,13 @@ To create a new connection, select **+** next to **Connections**. For details on
 
 Selecting a connection lists every action it supports. Choosing an action drops it into the flow as a step bound to that connection. The action set depends on the connection type. For a database client, the actions are `Query`, `Query Row`, `Execute`, `Batch Execute`, `Call`, and `Close`.
 
-![Actions available on the mysqlClient connection: Query, Query Row, Execute, Batch Execute, Call, Close](/img/editor/canvases/flow-canvas/connection-actions.png)
+<ThemedImage
+    alt="Actions available on the mysqlClient connection: Query, Query Row, Execute, Batch Execute, Call, Close"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/connection-actions.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/connection-actions.png'),
+    }}
+/>
 
 Each action opens its own configuration form when selected. Action forms typically include a query or payload field, parameter bindings, and a result variable. Use the [Expression Panel](../../panels/expression-panel.md) to author parameter expressions, and the [Type Panel](../../panels/type-panel.md) to bind the result to a typed variable.
 
@@ -129,7 +150,13 @@ The **Statement** section of the node panel covers the workhorse operations of a
 
 Creates a typed variable in the current flow scope. Use it whenever a downstream node needs a named value that does not come directly from a previous step's result.
 
-![Declare Variable button in the Statement section](/img/editor/canvases/flow-canvas/declare-variable-node.png)
+<ThemedImage
+    alt="Declare Variable button in the Statement section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/declare-variable-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/declare-variable-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -137,30 +164,60 @@ Creates a typed variable in the current flow scope. Use it whenever a downstream
 | **Type** | Type of the variable. Use a record, enum, primitive, or `json`. Define new types inline with the [Type Panel](../../panels/type-panel.md). |
 | **Expression** | Initialize with a value. Author the expression with assistance in the [Expression Panel](../../panels/expression-panel.md). Leave it empty to declare an unbound variable. |
 
-![Declare Variable form with Name, Type, and Expression fields](/img/editor/canvases/flow-canvas/declare-variable-form.png)
+<ThemedImage
+    alt="Declare Variable form with Name, Type, and Expression fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/declare-variable-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/declare-variable-form.png'),
+    }}
+/>
 
 ### Update Variable
 
 Assigns a new value to an existing variable.
 
-![Update Variable button in the Statement section](/img/editor/canvases/flow-canvas/update-variable-node.png)
+<ThemedImage
+    alt="Update Variable button in the Statement section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/update-variable-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/update-variable-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Variable** | Name of the variable or field to update. |
 | **Expression** | The new value. Use the [Expression Panel](../../panels/expression-panel.md) for type-aware suggestions. |
 
-![Update Variable form with Variable and Expression fields](/img/editor/canvases/flow-canvas/update-variable-form.png)
+<ThemedImage
+    alt="Update Variable form with Variable and Expression fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/update-variable-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/update-variable-form.png'),
+    }}
+/>
 
 ### Call Function
 
 Calls a function defined in the project, an imported library, or the Ballerina standard library. Use it to reuse logic across the integration without copying expressions into every node.
 
-![Call Function button in the Statement section](/img/editor/canvases/flow-canvas/call-function-node.png)
+<ThemedImage
+    alt="Call Function button in the Statement section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/call-function-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/call-function-node.png'),
+    }}
+/>
 
 The function picker lists functions in three sections: **Within Project**, **Imported Functions** (functions from imported libraries such as `log`), and **Standard Library**. Select **Create Function** under **Within Project** to define a new function inline.
 
-![Function picker showing Within Project, Imported Functions, and Standard Library entries](/img/editor/canvases/flow-canvas/call-function-options.png)
+<ThemedImage
+    alt="Function picker showing Within Project, Imported Functions, and Standard Library entries"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/call-function-options.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/call-function-options.png'),
+    }}
+/>
 
 For details on creating, organizing, and reusing functions across artifacts, see the [Functions](../../../develop-and-test/integration-artifacts/supportive-artifacts/functions.md) reference.
 
@@ -168,11 +225,23 @@ For details on creating, organizing, and reusing functions across artifacts, see
 
 Adds a data mapper call that transforms data from one record shape to another. Use it whenever the source data and the downstream consumer expect different record types.
 
-![Map Data button in the Statement section](/img/editor/canvases/flow-canvas/map-data-node.png)
+<ThemedImage
+    alt="Map Data button in the Statement section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/map-data-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/map-data-node.png'),
+    }}
+/>
 
 The picker lists every data mapper in the project under **Within Project**. Select an existing mapper to invoke it from the flow, or select **Create Data Mapper** to define a new one. New and existing mappers open in the [Data Mapper](../../designers/data-mapper.md), where you draw connections between source and target fields, write inline expressions, or use [**Auto Map**](/develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/ai-mapping).
 
-![Data Mappers picker with Create Data Mapper action and existing mappers](/img/editor/canvases/flow-canvas/map-data-view.png)
+<ThemedImage
+    alt="Data Mappers picker with Create Data Mapper action and existing mappers"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/map-data-view.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/map-data-view.png'),
+    }}
+/>
 
 For mapping capabilities, array handling, and sub mappings, see the [Data Mapper](../../../develop-and-test/integration-artifacts/supportive-artifacts/data-mapper/data-mapper.md) reference.
 
@@ -184,7 +253,13 @@ The **Control** section of the node panel shapes the path the flow takes. Use it
 
 Branches the flow on a Boolean condition and runs the matching block. Add **Else If** blocks for additional conditions and an **Else** block for a fallback path when none of the conditions match.
 
-![If button in the Control section](/img/editor/canvases/flow-canvas/if-node.png)
+<ThemedImage
+    alt="If button in the Control section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/if-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/if-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -192,13 +267,25 @@ Branches the flow on a Boolean condition and runs the matching block. Add **Else
 
 The form provides **Add Else IF Block** and **Add Else Block** to extend the branch.
 
-![If form with Condition field and Add Else IF Block and Add Else Block actions](/img/editor/canvases/flow-canvas/if-form.png)
+<ThemedImage
+    alt="If form with Condition field and Add Else IF Block and Add Else Block actions"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/if-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/if-form.png'),
+    }}
+/>
 
 ### Match
 
 Matches a value against one or more patterns and runs the steps under the first matching pattern. Use `Match` instead of a chain of `If`/`Else If` blocks when dispatching on a finite set of values or shapes.
 
-![Match button in the Control section](/img/editor/canvases/flow-canvas/match-node.png)
+<ThemedImage
+    alt="Match button in the Control section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/match-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/match-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -207,25 +294,49 @@ Matches a value against one or more patterns and runs the steps under the first 
 
 The form provides **Add Case Block** to add more patterns and **Add Default Case Block** for a fallback that runs when no pattern matches.
 
-![Match form with Target and Pattern fields](/img/editor/canvases/flow-canvas/match-form.png)
+<ThemedImage
+    alt="Match form with Target and Pattern fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/match-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/match-form.png'),
+    }}
+/>
 
 ### While
 
 Loops over a block of code as long as a Boolean condition holds. The condition is evaluated before each iteration; the loop ends when it becomes `false`.
 
-![While button in the Control section](/img/editor/canvases/flow-canvas/while-node.png)
+<ThemedImage
+    alt="While button in the Control section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/while-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/while-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Condition** | Boolean condition. |
 
-![While form with Condition field](/img/editor/canvases/flow-canvas/while-form.png)
+<ThemedImage
+    alt="While form with Condition field"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/while-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/while-form.png'),
+    }}
+/>
 
 ### Foreach
 
 Iterates over a block of code for each item in a collection. Use it for arrays, query results, ranges, and any other iterable value.
 
-![Foreach button in the Control section](/img/editor/canvases/flow-canvas/for-each-node.png)
+<ThemedImage
+    alt="Foreach button in the Control section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/for-each-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/for-each-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -233,19 +344,37 @@ Iterates over a block of code for each item in a collection. Use it for arrays, 
 | **Variable Name** | Name of the loop variable bound to each element. |
 | **Variable Type** | Type of the loop variable. Define new types inline with the [Type Panel](../../panels/type-panel.md). |
 
-![Foreach form with Collection, Variable Name, and Variable Type fields](/img/editor/canvases/flow-canvas/for-each-form.png)
+<ThemedImage
+    alt="Foreach form with Collection, Variable Name, and Variable Type fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/for-each-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/for-each-form.png'),
+    }}
+/>
 
 ### Return
 
 Ends the current function or service flow and produces a value to the caller. The operation has no required parameters; the optional **Expression** field configures the value to return.
 
-![Return button in the Control section](/img/editor/canvases/flow-canvas/return-node.png)
+<ThemedImage
+    alt="Return button in the Control section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/return-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/return-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Expression** | Return value. Leave it empty for `()` returns. |
 
-![Return form with Expression field](/img/editor/canvases/flow-canvas/return-form.png)
+<ThemedImage
+    alt="Return form with Expression field"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/return-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/return-form.png'),
+    }}
+/>
 
 ## AI
 
@@ -263,7 +392,13 @@ For an end-to-end orientation to the AI building blocks in WSO2 Integrator, see 
 
 A model provider is the connection that abstracts a specific LLM behind a consistent API. Add a `Model Provider` once per project and reference it from any node that needs to call an LLM, such as `Augment Query`, `Agent`, or a `generate` action.
 
-![Model Provider button under Direct LLM](/img/editor/canvases/flow-canvas/model-provider-node.png)
+<ThemedImage
+    alt="Model Provider button under Direct LLM"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/model-provider-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/model-provider-node.png'),
+    }}
+/>
 
 When you add a Model Provider, the picker lists the supported provider implementations. Select one and configure its credentials.
 
@@ -279,7 +414,13 @@ When you add a Model Provider, the picker lists the supported provider implement
 | **OpenAI Model Provider** | Client for OpenAI models. |
 | **OpenRouter Model Provider** | Client for interacting with LLMs via OpenRouter. |
 
-![Model providers list with Default, Anthropic, Azure OpenAI, Deepseek, Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter providers](/img/editor/canvases/flow-canvas/model-providers-offered.png)
+<ThemedImage
+    alt="Model providers list with Default, Anthropic, Azure OpenAI, Deepseek, Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter providers"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/model-providers-offered.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/model-providers-offered.png'),
+    }}
+/>
 
 For provider-specific configuration, model selection, and usage patterns, see [Model providers](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md).
 
@@ -287,7 +428,13 @@ For provider-specific configuration, model selection, and usage patterns, see [M
 
 A knowledge base is the central abstraction for RAG. It owns three things: a **Vector Store** where embeddings live, an **Embedding Provider** that turns text into vectors, and a **Chunker** that splits documents before embedding. Build the knowledge base once per project, and any flow in the project can ingest into it or retrieve from it.
 
-![Knowledge Base button under RAG](/img/editor/canvases/flow-canvas/knowledge-base-node.png)
+<ThemedImage
+    alt="Knowledge Base button under RAG"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/knowledge-base-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/knowledge-base-node.png'),
+    }}
+/>
 
 The picker lists the supported knowledge base implementations.
 
@@ -296,7 +443,13 @@ The picker lists the supported knowledge base implementations.
 | **Vector Knowledge Base** | Generic vector knowledge base for managing chunk indexing and retrieval. Plug in any supported [Vector Store](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/vector-stores.md), [Embedding Provider](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/embedding-providers.md), and [Chunker](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/chunkers.md). |
 | **Azure AI Search Knowledge Base** | Implementation backed by Azure AI Search. |
 
-![Knowledge bases list with Vector Knowledge Base and Azure AI Search Knowledge Base](/img/editor/canvases/flow-canvas/knowledge-bases-offered.png)
+<ThemedImage
+    alt="Knowledge bases list with Vector Knowledge Base and Azure AI Search Knowledge Base"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/knowledge-bases-offered.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/knowledge-bases-offered.png'),
+    }}
+/>
 
 For the full reference, see [Knowledge bases](../../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/knowledge-bases.md).
 
@@ -304,13 +457,25 @@ For the full reference, see [Knowledge bases](../../../develop-and-test/integrat
 
 A data loader reads documents from disk into memory so the knowledge base can ingest them. Place a `Data Loader` at the start of an ingestion flow; the resulting documents are then handed to the knowledge base's `Ingest` action.
 
-![Data Loader button under RAG](/img/editor/canvases/flow-canvas/data-loader-node.png)
+<ThemedImage
+    alt="Data Loader button under RAG"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/data-loader-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/data-loader-node.png'),
+    }}
+/>
 
 | Data loader | Description |
 |---|---|
 | **Text Data Loader** | Loads supported file types as `TextDocument` for indexing. |
 
-![Data loaders list with Text Data Loader](/img/editor/canvases/flow-canvas/data-loaders-offered.png)
+<ThemedImage
+    alt="Data loaders list with Text Data Loader"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/data-loaders-offered.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/data-loaders-offered.png'),
+    }}
+/>
 
 For the ingestion flow, supported formats, and how to point the loader at a directory of documents, see the [RAG ingestion](../../../develop-and-test/integration-artifacts/ai-integrations/rag/rag-ingestion.md).
 
@@ -318,7 +483,13 @@ For the ingestion flow, supported formats, and how to point the loader at a dire
 
 `augmentUserQuery` is the bridge between RAG and the LLM. It takes the chunks already retrieved from a knowledge base and the user's original question, and produces a chat user message that bundles them in a format the LLM understands. Pass the result directly to a `generate` call or to an agent.
 
-![Augment Query button under RAG](/img/editor/canvases/flow-canvas/augment-query-node.png)
+<ThemedImage
+    alt="Augment Query button under RAG"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/augment-query-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/augment-query-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -327,7 +498,13 @@ For the ingestion flow, supported formats, and how to point the loader at a dire
 | **Result** | Name of the result variable. |
 | **Result Type** | Type of the result variable. |
 
-![Augment Query form with Context, Query, Result, and Result Type fields](/img/editor/canvases/flow-canvas/augment-query-form.png)
+<ThemedImage
+    alt="Augment Query form with Context, Query, Result, and Result Type fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/augment-query-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/augment-query-form.png'),
+    }}
+/>
 
 For the full RAG query flow (retrieve, augment, generate), see [RAG query](../../../develop-and-test/integration-artifacts/ai-integrations/rag/rag-query.md).
 
@@ -335,7 +512,13 @@ For the full RAG query flow (retrieve, augment, generate), see [RAG query](../..
 
 An agent runs an autonomous workflow against a model and a set of tools. Given a query, it plans the next step, calls tools or other integrations, observes the results, and iterates until the task is complete or the iteration budget is reached.
 
-![Agent button under Agent](/img/editor/canvases/flow-canvas/agent-node.png)
+<ThemedImage
+    alt="Agent button under Agent"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/agent-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/agent-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -345,7 +528,13 @@ An agent runs an autonomous workflow against a model and a set of tools. Given a
 | **Advanced Configurations** | Tools, model selection, max iterations, and memory settings. |
 | **Result** | Name of the result variable. |
 
-![Agent form with Role, Instructions, Query, Advanced Configurations, and Result fields](/img/editor/canvases/flow-canvas/agent-form.png)
+<ThemedImage
+    alt="Agent form with Role, Instructions, Query, Advanced Configurations, and Result fields"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/agent-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/agent-form.png'),
+    }}
+/>
 
 For tool binding, memory, and observability, see [AI agents](../../../develop-and-test/integration-artifacts/ai-integrations/agents/agents.md). For a stand-alone chat agent service, create the **AI Chat Agent** artifact from the **Artifacts** panel instead of adding the node by hand.
 
@@ -357,11 +546,23 @@ The **Error Handling** section of the node palette covers nodes that catch error
 
 Wraps a section of the flow in a `do { } on fail error err { }` block so that any error raised inside the `do` block is caught and routed to the `on fail` branch. Add the node where you want to start catching errors.
 
-![ErrorHandler button in the Error Handling section](/img/editor/canvases/flow-canvas/error-handler-node.png)
+<ThemedImage
+    alt="ErrorHandler button in the Error Handling section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/error-handler-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/error-handler-node.png'),
+    }}
+/>
 
 The configuration form requires no parameters and does not return a result. The form confirms this with a **Configuration Complete** message.
 
-![ErrorHandler info panel showing Configuration Complete](/img/editor/canvases/flow-canvas/error-handler-info.png)
+<ThemedImage
+    alt="ErrorHandler info panel showing Configuration Complete"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/error-handler-info.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/error-handler-info.png'),
+    }}
+/>
 
 Add steps inside the `ErrorHandler` branch to log, transform, or compensate when an error is caught. For example, log the error with the nodes in [Logging](#logging), transform it into an HTTP error response, or trigger a compensating action.
 
@@ -369,25 +570,49 @@ Add steps inside the `ErrorHandler` branch to log, transform, or compensate when
 
 Raises a Ballerina error value that propagates up the call stack until an enclosing `ErrorHandler` catches it or the error is returned to the caller. Use `Fail` when the integration cannot proceed but you want callers (or an enclosing handler) to recover or report meaningfully.
 
-![Fail button in the Error Handling section](/img/editor/canvases/flow-canvas/fail-node.png)
+<ThemedImage
+    alt="Fail button in the Error Handling section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/fail-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/fail-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Expression** | Fail value. Construct an error with `error("message")`, or pass an existing error variable. Use the [Expression Panel](../../panels/expression-panel.md) for type-aware suggestions. |
 
-![Fail form with Expression field](/img/editor/canvases/flow-canvas/fail-form.png)
+<ThemedImage
+    alt="Fail form with Expression field"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/fail-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/fail-form.png'),
+    }}
+/>
 
 ### Panic
 
 Aborts the current strand and unwinds the call stack. A panic represents an abnormal, unrecoverable condition that should not be handled as a regular error, such as a division by zero or an out-of-memory failure. Unlike a value raised with `Fail`, a panic bypasses the normal `on fail` error path and is not caught by an enclosing `ErrorHandler`. Reserve `Panic` for conditions where the integration genuinely cannot continue, and use `Fail` for expected, recoverable errors. See the [Panics example](https://ballerina.io/learn/by-example/panics/) in the Ballerina documentation for the underlying language semantics.
 
-![Panic button in the Error Handling section](/img/editor/canvases/flow-canvas/panic-node.png)
+<ThemedImage
+    alt="Panic button in the Error Handling section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/panic-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/panic-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Expression** | Panic value. |
 
-![Panic form with Expression field](/img/editor/canvases/flow-canvas/panic-form.png)
+<ThemedImage
+    alt="Panic form with Expression field"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/panic-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/panic-form.png'),
+    }}
+/>
 
 ## Concurrency
 
@@ -397,7 +622,13 @@ The **Concurrency** section of the node palette starts parallel work, waits for 
 
 Spawns one or more named worker strands that execute in parallel with the main flow. Each worker has its own block of steps and runs independently until joined with **Wait**.
 
-![Fork button in the Concurrency section](/img/editor/canvases/flow-canvas/fork-node.png)
+<ThemedImage
+    alt="Fork button in the Concurrency section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/fork-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/fork-node.png'),
+    }}
+/>
 
 Each worker is configured with a name and a return type. Select **Add Worker** to add more workers.
 
@@ -406,7 +637,13 @@ Each worker is configured with a name and a return type. Select **Add Worker** t
 | **Worker** | Name of the worker. |
 | **Return Type** | Type of the value the worker returns. Define new types inline with the [Type Panel](../../panels/type-panel.md). |
 
-![Fork form with Worker 1 and Worker 2 entries and Add Worker action](/img/editor/canvases/flow-canvas/fork-form.png)
+<ThemedImage
+    alt="Fork form with Worker 1 and Worker 2 entries and Add Worker action"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/fork-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/fork-form.png'),
+    }}
+/>
 
 When the `Fork` is added to the flow, the canvas also receives a default `Wait` node that joins every worker in the fork. The generated code is equivalent to:
 
@@ -422,7 +659,13 @@ Use `Fork` to fan out independent calls. For example, hit two different APIs in 
 
 Joins one or more worker strands started by **Fork** and collects their return values into a single result. The matching `Wait` node is the join point for the workers spawned by an earlier `Fork`.
 
-![Wait button in the Concurrency section](/img/editor/canvases/flow-canvas/wait-node.png)
+<ThemedImage
+    alt="Wait button in the Concurrency section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/wait-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/wait-node.png'),
+    }}
+/>
 
 Each row in the form pairs a **Key** with the worker whose result should be bound to that key. Select **+ Add** to add more key/worker pairs.
 
@@ -432,7 +675,13 @@ Each row in the form pairs a **Key** with the worker whose result should be boun
 | **Variable** | Worker whose result is bound to the key. |
 | **Variable Name** | Name of the variable that holds the joined result on the canvas. |
 
-![Wait form with Key and Variable pairs](/img/editor/canvases/flow-canvas/wait-form.png)
+<ThemedImage
+    alt="Wait form with Key and Variable pairs"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/wait-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/wait-form.png'),
+    }}
+/>
 
 The configured pairs generate a wait expression of the form:
 
@@ -446,11 +695,23 @@ Each key in the resulting record holds the return value of its paired worker.
 
 Acquires a lock to serialize access to a block of steps that touches shared mutable state. The lock is released when the block exits. Wrap any code path that mutates a shared variable from multiple strands in a **Lock** to prevent race conditions.
 
-![Lock button in the Concurrency section](/img/editor/canvases/flow-canvas/lock-node.png)
+<ThemedImage
+    alt="Lock button in the Concurrency section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/lock-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/lock-node.png'),
+    }}
+/>
 
 The configuration form requires no parameters and does not return a result. Add the steps that need protection inside the **Lock** block on the canvas.
 
-![Lock info panel showing Configuration Complete](/img/editor/canvases/flow-canvas/lock-form.png)
+<ThemedImage
+    alt="Lock info panel showing Configuration Complete"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/lock-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/lock-form.png'),
+    }}
+/>
 
 For most integration flows, prefer immutable values to avoid the need for locks entirely.
 
@@ -464,49 +725,97 @@ The four logging nodes are shortcuts to the corresponding `log:print*` functions
 
 Prints info logs. Use **Log Info** for routine progress updates such as "request received", "step completed", or a summary metric.
 
-![Log Info button in the Logging section](/img/editor/canvases/flow-canvas/log-info-node.png)
+<ThemedImage
+    alt="Log Info button in the Logging section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-info-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-info-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Msg** | The message to be logged. Supports Ballerina string templates with embedded expressions; author them in the [Expression Panel](../../panels/expression-panel.md). |
 
-![Log Info form with Msg field and Advanced Configurations](/img/editor/canvases/flow-canvas/log-info-form.png)
+<ThemedImage
+    alt="Log Info form with Msg field and Advanced Configurations"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-info-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-info-form.png'),
+    }}
+/>
 
 ### Log Error
 
 Prints error logs. Use **Log Error** for failures that the integration handled or escalated, such as a failed downstream call, a validation failure, or a caught exception.
 
-![Log Error button in the Logging section](/img/editor/canvases/flow-canvas/log-error-node.png)
+<ThemedImage
+    alt="Log Error button in the Logging section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-error-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-error-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Msg** | The message to be logged. |
 
-![Log Error form](/img/editor/canvases/flow-canvas/log-error-form.png)
+<ThemedImage
+    alt="Log Error form"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-error-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-error-form.png'),
+    }}
+/>
 
 ### Log Warn
 
 Prints warn logs. Use **Log Warn** for conditions that are unexpected but recoverable, such as a fallback path being taken, a retry being attempted, or deprecated input being encountered.
 
-![Log Warn button in the Logging section](/img/editor/canvases/flow-canvas/log-warn-node.png)
+<ThemedImage
+    alt="Log Warn button in the Logging section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-warn-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-warn-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Msg** | The message to be logged. |
 
-![Log Warn form](/img/editor/canvases/flow-canvas/log-warn-form.png)
+<ThemedImage
+    alt="Log Warn form"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-warn-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-warn-form.png'),
+    }}
+/>
 
 ### Log Debug
 
 Prints debug logs. Use **Log Debug** for verbose information you want available in development and typically suppressed in production.
 
-![Log Debug button in the Logging section](/img/editor/canvases/flow-canvas/log-debug-node.png)
+<ThemedImage
+    alt="Log Debug button in the Logging section"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-debug-node.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-debug-node.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
 | **Msg** | The message to be logged. |
 
-![Log Debug form](/img/editor/canvases/flow-canvas/log-debug-form.png)
+<ThemedImage
+    alt="Log Debug form"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/log-debug-form.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/log-debug-form.png'),
+    }}
+/>
 
 ## Show More Functions
 
@@ -516,7 +825,13 @@ The node panel surfaces only the most common nodes and shortcut functions for ea
 
 Scroll to the bottom of the node panel and select **Show More Functions**.
 
-![Show More Functions link at the bottom of the node panel](/img/editor/canvases/flow-canvas/show-more-functions.png)
+<ThemedImage
+    alt="Show More Functions link at the bottom of the node panel"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/show-more-functions.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/show-more-functions.png'),
+    }}
+/>
 
 ### What the picker contains
 
@@ -528,7 +843,13 @@ The picker organizes functions in three sections.
 | **Imported Functions** | Functions exposed by libraries imported into the project, grouped by library (for example, `log`). |
 | **Standard Library** | Functions from the Ballerina standard library. |
 
-![Functions picker showing Within Project, Imported Functions, and Standard Library sections](/img/editor/canvases/flow-canvas/show-more-functions-view.png)
+<ThemedImage
+    alt="Functions picker showing Within Project, Imported Functions, and Standard Library sections"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/show-more-functions-view.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/show-more-functions-view.png'),
+    }}
+/>
 
 This is the same picker that opens from the [Call Function](#call-function) node. Use it whenever a node panel shortcut does not expose the function variant you need. For example, every `log:print*` variant beyond the four shortcuts in the **Logging** section is reachable from this picker.
 

@@ -8,6 +8,8 @@ card_summary: A chatbot that remembers context across sessions
 card_keywords: [mssql, database, agent, helpdesk, support]
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -73,7 +75,7 @@ In this section, you will create the integration project and configure the AI ag
 
 ### Step 1: Create the integration project
 
-Create a new integration project by following the instructions in [Create a project](../../develop-and-test/organize-workbench/create-a-project.md).
+Create a new integration project by following the instructions in [Create a project](../../develop-and-test/create-workspace/create-a-project.md).
 
 ### Step 2: Define the data type
 
@@ -123,7 +125,13 @@ Create the AI agent named `itHelpDeskAgent` by following the instructions in [Cr
 
 - Click the created agent and add the instructions.
 
-![Add instruction](/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png)
+<ThemedImage
+    alt="Add instruction"
+    sources={{
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png'),
+    }}
+/>
 
 </TabItem>
 
@@ -185,7 +193,13 @@ Add persistent memory by following the instructions in [Memory](../../develop-an
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
-    ![Agent with inmemory](/img/genai/develop/agents/29-agent-with-inmemory.png)
+    <ThemedImage
+        alt="Agent with inmemory"
+        sources={{
+            light: useBaseUrl('/img/genai/develop/agents/29-agent-with-inmemory.png'),
+            dark: useBaseUrl('/img/genai/develop/agents/29-agent-with-inmemory.png'),
+        }}
+    />
 </TabItem>
 
 <TabItem value="code" label="Ballerina Code">
@@ -234,7 +248,13 @@ final ai:Agent itHelpDeskAgent = check new (
 
 1. Run the agent integration.
 
-![Run integration](/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png)
+<ThemedImage
+    alt="Run integration"
+    sources={{
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png'),
+    }}
+/>
 
 2. Ask a question as an employee:
 

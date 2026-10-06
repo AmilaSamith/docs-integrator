@@ -6,6 +6,9 @@ description: Fix common editor issues.
 slug: /editor/editor-troubleshooting
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Editor Troubleshooting
 
 Use this page when something in the WSO2 Integrator editor isn't behaving the way you expect: a feature doesn't respond, a diagram doesn't load, or an action errors out. Before you file an issue, capture verbose editor output so the team can act on the report.
@@ -18,11 +21,23 @@ If the editor shows **WSO2 Integrator cannot start** or **Your project dependenc
 
 1. Open **Settings** with `Cmd+,` on macOS, or `Ctrl+,` on Windows and Linux.
 
-    ![Open Settings from the command menu](/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png)
+    <ThemedImage
+        alt="Open Settings from the command menu"
+        sources={{
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
+        }}
+    />
 
 2. In the search box, type `ballerina`.
 
-    ![Settings page](/img/editor/troubleshooting/ide-troubleshooting/settings-page.png)
+    <ThemedImage
+        alt="Settings page"
+        sources={{
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
+        }}
+    />
 
 3. Set each of the following to the value shown:
     - `ballerina.traceLog`: enabled (`true`).
@@ -35,7 +50,13 @@ If the editor shows **WSO2 Integrator cannot start** or **Your project dependenc
 2. Run **Output: Focus on Output View**.
 3. In the channel dropdown on the right of the Output panel, select **Ballerina**.
 
-    ![Select the Ballerina output channel](/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png)
+    <ThemedImage
+        alt="Select the Ballerina output channel"
+        sources={{
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
+        }}
+    />
 
 ### 3. Reproduce the issue and read the output
 

@@ -47,7 +47,13 @@ The steps below follow one example: an onboarding workflow where an HR lead assi
 
 4. Click **Save**.
 
-![Adding an Await Human Task step, with its payload, title, description, and a new completion type](/img/workflows/develop/human-task-workflow/await-human-task.gif)
+<ThemedImage
+    alt="Adding an Await Human Task step, with its payload, title, description, and a new completion type"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
+        dark: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
+    }}
+/>
 
 The workflow suspends at this step, and the task appears in the [Integration Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md) inbox for every user holding one of the roles you named.
 

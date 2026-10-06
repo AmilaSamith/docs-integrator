@@ -5,11 +5,20 @@ description: Design HTTP, gRPC, and event-driven service entry points visually.
 slug: /editor/designers/service-designer
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Service Designer
 
 The Service Designer is the surface you open for any service entry point in WSO2 Integrator. It lists every resource or handler the service exposes and gives you one place to add, edit, remove, try out, and export them.
 
-![Service Designer for an HTTP service](/img/editor/designers/service-designer/overview.png)
+<ThemedImage
+    alt="Service Designer for an HTTP service"
+    sources={{
+        light: useBaseUrl('/img/editor/designers/service-designer/overview.png'),
+        dark: useBaseUrl('/img/editor/designers/service-designer/overview.png'),
+    }}
+/>
 
 ## Open the designer
 

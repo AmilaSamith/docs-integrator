@@ -5,6 +5,8 @@ description: Generate Ballerina GraphQL services and clients from GraphQL SDL sc
 slug: /develop-and-test/developer-tools/integration-tools/graphql-tool
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,7 +23,13 @@ The `bal graphql` tool generates Ballerina service skeletons and client code fro
 2. In the **Artifacts** panel, select **GraphQL Service** under **Integration as API**.
 3. Select **Import From GraphQL Schema** under **Service Contract**.
 
-   ![Import GraphQL schema](/img/develop/tools/graphql-tool/step-import-schema.png)
+   <ThemedImage
+       alt="Import GraphQL schema"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/graphql-tool/step-import-schema.png'),
+           dark: useBaseUrl('/img/develop/tools/graphql-tool/step-import-schema.png'),
+       }}
+   />
 
 4. Browse or enter the path to your GraphQL SDL file.
 5. Configure the **Service Base Path** and listener settings.
