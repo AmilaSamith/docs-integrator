@@ -198,7 +198,7 @@ const sections: SectionCard[] = [
 const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
   { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
-  { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-order-processing' },
+  { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
 ];
 
 /* ------------------------------------------------------------------ */
