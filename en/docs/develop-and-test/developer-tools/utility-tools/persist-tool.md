@@ -5,6 +5,8 @@ description: Generate type-safe data persistence clients for multiple data store
 slug: /develop-and-test/developer-tools/utility-tools/persist-tool
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -37,7 +39,13 @@ The Visual Designer provides a guided wizard to connect to an existing database,
 1. In the **Artifacts** page, click **Connection** under **Other Artifacts**.
 2. In the **Add Connection** panel, select **Connect to a Database**. The supported database systems are **MySQL**, **MSSQL**, and **PostgreSQL**.
 
-   ![Add connection panel](/img/develop/tools/persist-tool/add-connection.png)
+   <ThemedImage
+       alt="Add connection panel"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/add-connection.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/add-connection.png'),
+       }}
+   />
 
 ### Step 2: Introspect database
 
@@ -50,14 +58,26 @@ The Visual Designer provides a guided wizard to connect to an existing database,
    - **Password**: Database user password.
 3. Click **Connect & Introspect Database**.
 
-   ![Introspect database credentials](/img/develop/tools/persist-tool/introspect-database.png)
+   <ThemedImage
+       alt="Introspect database credentials"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/introspect-database.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/introspect-database.png'),
+       }}
+   />
 
 ### Step 3: Select tables
 
 1. Choose which tables to include in this connector. You can search for tables or click **Select All**.
 2. Click **Continue to Connection Details**.
 
-   ![Select database tables](/img/develop/tools/persist-tool/select-tables.png)
+   <ThemedImage
+       alt="Select database tables"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/select-tables.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/select-tables.png'),
+       }}
+   />
 
 ### Step 4: Create connection
 
@@ -65,13 +85,25 @@ The Visual Designer provides a guided wizard to connect to an existing database,
 2. Review the **Connection Configurables**. Configurable variables are generated for the connection host, port, username, password, and database name with default values.
 3. Click **Save**.
 
-   ![Connection name and configurables](/img/develop/tools/persist-tool/connection-name.png)
+   <ThemedImage
+       alt="Connection name and configurables"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/connection-name.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/connection-name.png'),
+       }}
+   />
 
 ### Working with the connection
 
 Once the connection is saved, it appears in the design view as a connection artifact.
 
-   ![Design view showing database connection](/img/develop/tools/persist-tool/design-view-connection.png)
+   <ThemedImage
+       alt="Design view showing database connection"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/design-view-connection.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/design-view-connection.png'),
+       }}
+   />
 
 Click **Edit** on the connection to update connection details. From the edit panel, you can:
 
@@ -79,7 +111,13 @@ Click **Edit** on the connection to update connection details. From the edit pan
 - Click **View ER Diagram** to visualize the entity relationships between the selected tables.
 - Update connection settings such as **Host**, **Port**, **User**, **Password**, and **Database**.
 
-   ![Edit connection panel](/img/develop/tools/persist-tool/edit-connection.png)
+   <ThemedImage
+       alt="Edit connection panel"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/edit-connection.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/edit-connection.png'),
+       }}
+   />
 
 ### Use connection functions in integration logic
 
@@ -90,7 +128,13 @@ When designing integration logic in the flow diagram, the connection functions a
 - Update row
 - Delete row
 
-   ![Connection functions in flow designer](/img/develop/tools/persist-tool/connection-functions.png)
+   <ThemedImage
+       alt="Connection functions in flow designer"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/persist-tool/connection-functions.png'),
+           dark: useBaseUrl('/img/develop/tools/persist-tool/connection-functions.png'),
+       }}
+   />
 
 Each function provides advanced configuration options where you can set **Where Clause**, **Order By Clause**, **Limit Clause**, **Result** variable name, and **Target Type** to select specific fields from the table.
 
@@ -280,4 +324,5 @@ bal persist push --datastore <datastore> --module <module>
 ## What's next
 
 - [Scan Tool](scan-tool.md) — Analyze Ballerina code for security and quality issues
+- [Configuration management](../../../reference/configuration-reference.md#configuration-management) — Manage data store credentials with configurable variables
 - [Connector catalog](../../../connectors/catalog/index.mdx) — Browse database connectors and other connectivity options

@@ -91,7 +91,7 @@ Use predicate-based content routing with [if/else statements](../../editor/canva
 
 1. Create or open the resource or function that contains the routing decision.
 2. Add HTTP client connections for the possible recipients. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](../../connectors/catalog/built-in/http/action-reference.md#client).
-3. Add a configurable variable for any route rule that should change by environment, such as `bulkThreshold`.
+3. Add a [configurable variable](../../reference/configuration-reference.md#configurable-variables) for any route rule that should change by environment, such as `bulkThreshold`.
 4. Open the flow and add an [If node](../../editor/canvases/flow-canvas/node-palette.md#if) with a condition such as `order.quantity >= bulkThreshold`.
 5. Add the bulk recipient call inside the **True** branch.
 6. In the **False** branch, add another **If** node with a condition such as `order.priority`.

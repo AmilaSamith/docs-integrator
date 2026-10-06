@@ -6,6 +6,8 @@ keywords: [wso2 integrator, automation, scheduled job, batch processing, main fu
 slug: /develop-and-test/integration-artifacts/automation
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -25,11 +27,23 @@ Only one automation can be configured per integration.
 1. Select the **+ Add Artifact** button in the canvas, or select **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Automation** under **Automation**.
 
-   ![Artifacts panel showing the Automation option](/img/develop/integration-artifacts/automation/add-artifact.png)
+   <ThemedImage
+       alt="Artifacts panel showing the Automation option"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/automation/add-artifact.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/automation/add-artifact.png'),
+       }}
+   />
 
 3. In the creation form, configure the following fields.
 
-   ![Create New Automation form](/img/develop/integration-artifacts/automation/create-form.png)
+   <ThemedImage
+       alt="Create New Automation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/automation/create-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/automation/create-form.png'),
+       }}
+   />
 
    **Advanced Configurations**
 
@@ -42,7 +56,13 @@ Only one automation can be configured per integration.
 
 5. WSO2 Integrator opens the automation in the flow designer. The canvas shows a **Start** node, a **+** button to add steps, and an **Error Handler** node.
 
-   ![Automation flow designer](/img/develop/integration-artifacts/automation/flow-designer.png)
+   <ThemedImage
+       alt="Automation flow designer"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/automation/flow-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/automation/flow-designer.png'),
+       }}
+   />
 
 6. Select **+** to open the node panel and add integration steps such as function calls, connections, and control flow.
 
@@ -77,7 +97,13 @@ Automation configuration controls the startup parameters for the automation func
 
 In the flow designer, select **Configure** in the header to open the **Edit Automation** panel.
 
-![Edit Automation panel opened via the Configure button](/img/develop/integration-artifacts/automation/configure-form.png)
+<ThemedImage
+    alt="Edit Automation panel opened via the Configure button"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/automation/configure-form.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/automation/configure-form.png'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">

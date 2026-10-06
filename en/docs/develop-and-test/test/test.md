@@ -6,9 +6,9 @@ keywords: [wso2 integrator, testing, try-it, test explorer, ai test generation, 
 slug: /develop-and-test/test
 ---
 
-# Test Your Intgeration
+# Test
 
-WSO2 Integrator provides a full testing toolkit built into the editor. You do not need any external testing tool. Interactive verification, automated test authoring, AI-assisted generation, and coverage reporting are all available without leaving your development environment.
+WSO2 Integrator provides a full testing toolkit built into the IDE. You do not need any external testing tool. Interactive verification, automated test authoring, AI-assisted generation, and coverage reporting are all available without leaving your development environment.
 
 ## Testing approaches
 

@@ -6,6 +6,9 @@ keywords: [wso2 integrator, flow canvas, visual designer, node panel]
 slug: /editor/canvases/flow-canvas
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Flow Canvas
 
 The Flow Canvas is the visual designer for an integration's logic. Each step in the integration is a node on the canvas, and the canvas generates valid Ballerina source as you build. Switch to pro-code at any time to read or edit the generated code.
@@ -22,13 +25,25 @@ The canvas shows the flow as a sequence of nodes connected from a **Start** node
 
 To add a step to the flow, select **+** between two nodes (or below **Start**) to open the node palette.
 
-![Canvas with Start, intermediate nodes, and an end terminator](/img/editor/canvases/flow-canvas/canvas.png)
+<ThemedImage
+    alt="Canvas with Start, intermediate nodes, and an end terminator"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/canvas.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/canvas.png'),
+    }}
+/>
 
 ### Node palette
 
 The node palette on the right lists every node you can add to the flow, organized into categories such as **Connections**, **Statement**, **Control**, **AI**, **Error Handling**, **Concurrency**, and **Logging**, plus a **Show More Functions** action at the bottom that opens the full functions picker.
 
-![Node palette with Search, Connections, and category sections](/img/editor/canvases/flow-canvas/node-palette.png)
+<ThemedImage
+    alt="Node palette with Search, Connections, and category sections"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/flow-canvas/node-palette.png'),
+        dark: useBaseUrl('/img/editor/canvases/flow-canvas/node-palette.png'),
+    }}
+/>
 
 See the [Node Palette](node-palette.md) reference for every node in each category and the fields exposed on their configuration forms.
 

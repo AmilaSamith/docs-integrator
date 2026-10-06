@@ -6,6 +6,9 @@ keywords: [wso2 integrator, editor window, activity bar, editor toolbar, status 
 slug: /editor/editor-window
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Editor Window
 
 Every view you open in WSO2 Integrator ([Project view](views/project-view.md), [Integration view](views/integration-view.md), [Library view](views/library-view.md), and so on) renders inside the same window with a top menu bar, an activity bar on the far-left edge, an editor tab area with editor toolbar, and the side panels for the project explorer and deployment options. This page describes the parts of that window that stay the same across views, so the view-specific pages do not need to repeat them.
@@ -14,7 +17,13 @@ Every view you open in WSO2 Integrator ([Project view](views/project-view.md), [
 
 The top menu bar runs across the top edge of the application window and groups the standard application menus.
 
-![Top menu bar](/img/editor/editor-window/top-menu-bar.png)
+<ThemedImage
+    alt="Top menu bar"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/top-menu-bar.png'),
+        dark: useBaseUrl('/img/editor/editor-window/top-menu-bar.png'),
+    }}
+/>
 
 | Menu | Description |
 |---|---|
@@ -35,7 +44,13 @@ The top menu bar covers general application actions. Integrator-specific actions
 
 The activity bar is the narrow vertical strip on the far-left edge of the IDE. Each icon opens a different panel or tool, and the active icon is highlighted.
 
-![Activity bar](/img/editor/editor-window/activity-bar.png)
+<ThemedImage
+    alt="Activity bar"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/activity-bar.png'),
+        dark: useBaseUrl('/img/editor/editor-window/activity-bar.png'),
+    }}
+/>
 
 | Name | Description |
 |---|---|
@@ -53,7 +68,13 @@ Select the **WSO2 Integrator** icon at any time to return to the project explore
 
 The project explorer is the left sidebar that organizes the contents of your project into a structured tree.
 
-![Project explorer](/img/editor/editor-window/project-explorer.png)
+<ThemedImage
+    alt="Project explorer"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/project-explorer.png'),
+        dark: useBaseUrl('/img/editor/editor-window/project-explorer.png'),
+    }}
+/>
 
 - At the **project level**, the project explorer lists all integrations and libraries in the project, grouped by name. Each entry is expandable to reveal its own artifact tree.
 - Inside an **integration or library**, the project explorer organizes its components into sections by artifact type, making it easy to locate and manage the building blocks of your integration.
@@ -76,7 +97,13 @@ For details on each artifact type, see [Integration artifacts](../develop-and-te
 
 The editor tab area sits above the canvas and shows one tab per open editor. The active tab is highlighted, and you can close a tab with the **×** action on it.
 
-![Editor tab area](/img/editor/editor-window/editor-tab-bar.png)
+<ThemedImage
+    alt="Editor tab area"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/editor-tab-bar.png'),
+        dark: useBaseUrl('/img/editor/editor-window/editor-tab-bar.png'),
+    }}
+/>
 
 The **WSO2 Integrator** tab represents the visual designer for the current view. Other tabs, such as a Ballerina source file opened from the explorer, appear alongside it.
 
@@ -84,7 +111,13 @@ The **WSO2 Integrator** tab represents the visual designer for the current view.
 
 The editor toolbar appears on the right side of the editor tab bar and provides quick actions for the active integration.
 
-![Editor toolbar with Run, Debug, Show Source, Split editor, and More actions highlighted](/img/editor/editor-window/editor-toolbar.png)
+<ThemedImage
+    alt="Editor toolbar with Run, Debug, Show Source, Split editor, and More actions highlighted"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/editor-toolbar.png'),
+        dark: useBaseUrl('/img/editor/editor-window/editor-toolbar.png'),
+    }}
+/>
 
 | Action | Description |
 |---|---|
@@ -97,19 +130,24 @@ The editor toolbar appears on the right side of the editor tab bar and provides 
 
 The toolbar is the same across the [Project view](views/project-view.md), [Integration view](views/integration-view.md), and [Library view](views/library-view.md), so the view-specific pages refer back to this section instead of repeating it.
 
-{/* NOTE: this branch's copy intentionally omits the ICP status-bar row present on wso2-integrator -- ICP doesn't exist for WSO2 Cloud users. Don't overwrite this from a sync without re-checking. */}
-
 ## Status bar
 
 The status bar runs across the bottom edge of the IDE and shows the current state of your project, runtime, and tooling at a glance. Select an item to open the related panel or action.
 
-![Status bar](/img/editor/editor-window/status-bar.png)
+<ThemedImage
+    alt="Status bar"
+    sources={{
+        light: useBaseUrl('/img/editor/editor-window/status-bar.png'),
+        dark: useBaseUrl('/img/editor/editor-window/status-bar.png'),
+    }}
+/>
 
 | Item | Description |
 |---|---|
 | **Branch indicator** (for example, `main*`) | Shows the active Git branch for the project. An asterisk indicates uncommitted changes. Select it to switch or manage branches. |
 | **Problems** (error and warning counts) | Shows the number of errors and warnings detected in the current project. Select it to open the Problems panel. |
 | **Ballerina version** | Shows the Ballerina distribution version that the IDE is using to build and run your integration (for example, `Ballerina 2201.13.4 (Swan Lake Update 13)`). |
+| **ICP** | Shows the status of the [Integration Control Plane](../icp/index.md) connection (for example, `ICP: Stopped`). Select it to start, stop, or configure ICP for the project. |
 | **Notifications** | Opens the notifications panel for messages from the IDE and its extensions. |
 
 ## What's next

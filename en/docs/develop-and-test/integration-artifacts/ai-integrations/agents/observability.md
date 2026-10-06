@@ -6,9 +6,12 @@ keywords: [wso2 integrator, observability, tracing, ai agents, dev-time trace, t
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/observability
 ---
 
-# Observe Agent Behavior
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-When you run an agent, you want to see exactly what it did. Which tools it picked, what it sent to the LLM, what came back, and how long each step took. WSO2 Integrator ships with a **dev-time trace server**, a built-in tracing backend that runs alongside the editor and streams spans into a **Traces** panel as your integration executes. With tracing on, the LLM's tool choices and interpretations of each result are visible in the spans, so you can debug agent behavior without adding print statements.
+# Observability
+
+When you run an agent, you want to see exactly what it did. Which tools it picked, what it sent to the LLM, what came back, and how long each step took. WSO2 Integrator ships with a **dev-time trace server**, a built-in tracing backend that runs alongside the IDE and streams spans into a **Traces** panel as your integration executes. With tracing on, the LLM's tool choices and interpretations of each result are visible in the spans, so you can debug agent behavior without adding print statements.
 
 ## Enable tracing
 
@@ -18,11 +21,23 @@ Tracing is off by default. The way you turn it on depends on how the agent is ex
 
 If your agent is built with the [AI Chat Agent wizard](create-an-agent.md), the agent canvas has a **Tracing** toggle in the top-right corner. When it's off, the toggle reads **Tracing: Off**.
 
-![AI Chat Agent canvas with the Tracing toggle in the top-right showing 'Tracing: Off'.](/img/genai/develop/agents/observability/01-tracing-toggle-off.png)
+<ThemedImage
+    alt="AI Chat Agent canvas with the Tracing toggle in the top-right showing 'Tracing: Off'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/01-tracing-toggle-off.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/01-tracing-toggle-off.png'),
+    }}
+/>
 
 Click the toggle to turn it on. The label changes to **Tracing: On** and a confirmation notification appears in the bottom-right.
 
-![AI Chat Agent canvas with the toggle now showing 'Tracing: On' and a 'Tracing enabled.' notification at the bottom-right.](/img/genai/develop/agents/observability/02-tracing-toggle-on.png)
+<ThemedImage
+    alt="AI Chat Agent canvas with the toggle now showing 'Tracing: On' and a 'Tracing enabled.' notification at the bottom-right."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/02-tracing-toggle-on.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/02-tracing-toggle-on.png'),
+    }}
+/>
 
 Click the toggle again at any time to turn tracing back off.
 
@@ -33,11 +48,23 @@ Agents declared inline in source, anywhere outside the AI Chat Agent wizard, don
 1. Open the command palette with `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Windows/Linux).
 2. Run **Ballerina: Enable Tracing**.
 
-![WSO2 Integrator IDE command palette with 'Enable Tracing' typed. The top suggestion is 'Ballerina: Enable Tracing'.](/img/genai/develop/agents/observability/04-enable-tracing-command.png)
+<ThemedImage
+    alt="WSO2 Integrator IDE command palette with 'Enable Tracing' typed. The top suggestion is 'Ballerina: Enable Tracing'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/04-enable-tracing-command.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/04-enable-tracing-command.png'),
+    }}
+/>
 
 To stop tracing, run **Ballerina: Disable Tracing** the same way.
 
-![WSO2 Integrator IDE command palette with 'Disable Tracing' typed. The top suggestion is 'Ballerina: Disable Tracing'.](/img/genai/develop/agents/observability/05-disable-tracing-command.png)
+<ThemedImage
+    alt="WSO2 Integrator IDE command palette with 'Disable Tracing' typed. The top suggestion is 'Ballerina: Disable Tracing'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/05-disable-tracing-command.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/05-disable-tracing-command.png'),
+    }}
+/>
 
 The command works for chat agents too, so you can use it interchangeably with the toggle.
 
@@ -49,25 +76,49 @@ There are two ways to look at traces from a running agent. The **View Trace** li
 
 When you run a chat agent and open its chat panel, every agent response carries a **View Trace** link, and the chat header has a **Session Traces** button.
 
-![The Agent Chat panel on the right side of the IDE showing a math tutor conversation. Each agent reply has an 'Execution Steps (n)' label and a 'View Trace' link below it. The chat header has 'Session Traces' and 'Clear Chat' buttons.](/img/genai/develop/agents/observability/06-chat-view-trace.png)
+<ThemedImage
+    alt="The Agent Chat panel on the right side of the IDE showing a math tutor conversation. Each agent reply has an 'Execution Steps (n)' label and a 'View Trace' link below it. The chat header has 'Session Traces' and 'Clear Chat' buttons."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/06-chat-view-trace.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/06-chat-view-trace.png'),
+    }}
+/>
 
 #### View Trace
 
 Click **View Trace** on any reply to open the detailed trace for that single message.
 
-![The Trace Logs view. The left sidebar lists the spans on a timeline, including Invoke Agent: Math Tutor and alternating Chat and Execute Tool spans. The main pane shows the selected 'Invoke Agent - Math Tutor' span with Latency, Total Input Tokens, Total Output Tokens, Provider, and Start and End times, followed by Input and Output sections.](/img/genai/develop/agents/observability/07-view-trace-detail.png)
+<ThemedImage
+    alt="The Trace Logs view. The left sidebar lists the spans on a timeline, including Invoke Agent: Math Tutor and alternating Chat and Execute Tool spans. The main pane shows the selected 'Invoke Agent - Math Tutor' span with Latency, Total Input Tokens, Total Output Tokens, Provider, and Start and End times, followed by Input and Output sections."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/07-view-trace-detail.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/07-view-trace-detail.png'),
+    }}
+/>
 
 The viewer has three regions: a **span timeline** on the left, **span detail** in the center, and the original chat on the right. The chat stays visible, so you can correlate spans with the message you're investigating without losing context. See [The trace viewer](#the-trace-viewer) below for what each region offers.
 
 To jump straight to a specific span without scanning the timeline, expand the **Execution Steps** dropdown above an agent reply. It lists every Chat and Execute Tool span for that turn with its duration. Click any step to load it in the center pane.
 
-![The Agent Chat with the 'Execution Steps (5)' dropdown expanded above a reply. The list shows alternating Chat gpt-4o-mini and Execute Tool sumTool/subtractTool entries with their durations. The trace viewer's center pane shows a Chat span detail.](/img/genai/develop/agents/observability/19-execution-steps-expanded.png)
+<ThemedImage
+    alt="The Agent Chat with the 'Execution Steps (5)' dropdown expanded above a reply. The list shows alternating Chat gpt-4o-mini and Execute Tool sumTool/subtractTool entries with their durations. The trace viewer's center pane shows a Chat span detail."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/19-execution-steps-expanded.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/19-execution-steps-expanded.png'),
+    }}
+/>
 
 #### Session Traces
 
 Click **Session Traces** in the chat header to open a table of every trace produced in the current chat session.
 
-![The Session Traces view showing '(3 traces)' for a session ID, with an Export button and a search bar. A table lists each trace's Timestamp, Trace ID, Input, and Output.](/img/genai/develop/agents/observability/08-session-traces-list.png)
+<ThemedImage
+    alt="The Session Traces view showing '(3 traces)' for a session ID, with an Export button and a search bar. A table lists each trace's Timestamp, Trace ID, Input, and Output."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/08-session-traces-list.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/08-session-traces-list.png'),
+    }}
+/>
 
 Each row is one chat turn, with its timestamp, trace ID, user input, and the agent's reply. Click a trace ID to open its detail view (the same view as **View Trace**). Use the search bar to filter by message text or trace ID. Use **Export** to save the session for sharing or later analysis (see [Export traces](#export-traces)).
 
@@ -75,13 +126,25 @@ Each row is one chat turn, with its timestamp, trace ID, user input, and the age
 
 For agents without a chat window, or when you want a flat list of every trace the integration has produced, use the **Traces** panel at the bottom of the IDE. Open it with `Cmd+J` (macOS) or `Ctrl+J` (Windows/Linux), then switch to the **Traces** tab. As the integration runs, traces stream in.
 
-![The Traces tab at the bottom of the IDE listing several traces. The expanded one shows a 'post /chat (SERVER)' span with a child 'invoke_agent Math Tutor (CLIENT)' span.](/img/genai/develop/agents/observability/03-traces-panel.png)
+<ThemedImage
+    alt="The Traces tab at the bottom of the IDE listing several traces. The expanded one shows a 'post /chat (SERVER)' span with a child 'invoke_agent Math Tutor (CLIENT)' span."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/03-traces-panel.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/03-traces-panel.png'),
+    }}
+/>
 
 Each row is one trace, typically one chat turn or one request to the integration. Expand a trace to see its span tree. The top-level service handler, the agent invocation, the LLM calls it makes, each tool invocation, and any HTTP calls those tools issue. Click a span to open it in the trace viewer.
 
 By default the panel shows every trace the integration produces, including traces for unrelated services. Click the **agent** icon in the panel's toolbar to filter the list to agent traces only. A "Showing agent traces only" note appears at the top of the list while the filter is active.
 
-![The Traces panel filtered to agent traces only. A 'Showing agent traces only' note appears at the top of the list, with the agent filter icon highlighted in the toolbar.](/img/genai/develop/agents/observability/18-traces-panel-agent-filter.png)
+<ThemedImage
+    alt="The Traces panel filtered to agent traces only. A 'Showing agent traces only' note appears at the top of the list, with the agent filter icon highlighted in the toolbar."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/18-traces-panel-agent-filter.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/18-traces-panel-agent-filter.png'),
+    }}
+/>
 
 ## The trace viewer
 
@@ -100,13 +163,25 @@ Each row shows its duration and token usage where applicable, so the slowest or 
 
 Click **Timeline** at the top of the sidebar to switch from the list view to a Gantt-style chart. Each span becomes a horizontal bar laid out across a time axis, so you can see when each step started and how long it took relative to the rest of the run. This is the fastest way to spot a long Chat span sitting between two quick tool calls, or to confirm that two operations overlapped. Click any bar to load that span's detail in the center pane, just like in the list view.
 
-![The Trace sidebar in Timeline view. Spans are laid out as horizontal bars on a time axis from 0 to about 3.5 seconds. The top bar is Math Tutor spanning the full run, with child bars for three gpt-4o-mini Chat calls interleaved with sumTool and subtractTool Execute Tool spans.](/img/genai/develop/agents/observability/15-timeline-view.png)
+<ThemedImage
+    alt="The Trace sidebar in Timeline view. Spans are laid out as horizontal bars on a time axis from 0 to about 3.5 seconds. The top bar is Math Tutor spanning the full run, with child bars for three gpt-4o-mini Chat calls interleaved with sumTool and subtractTool Execute Tool spans."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/15-timeline-view.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/15-timeline-view.png'),
+    }}
+/>
 
 ### Quick info pills
 
 Each span shows a row of quick info pills under its title, summarizing the metadata you care about most. The exact set depends on the span type.
 
-![A Chat span detail header with a row of pills. Latency 2.04s, Input Tokens 306, Output Tokens 15, Temperature 0.7, Provider WSO2, Model gpt-4o-mini, Start Time, End Time.](/img/genai/develop/agents/observability/09-quick-info-pills.png)
+<ThemedImage
+    alt="A Chat span detail header with a row of pills. Latency 2.04s, Input Tokens 306, Output Tokens 15, Temperature 0.7, Provider WSO2, Model gpt-4o-mini, Start Time, End Time."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/09-quick-info-pills.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/09-quick-info-pills.png'),
+    }}
+/>
 
 For a **Chat** span, you typically see:
 
@@ -122,7 +197,13 @@ For an **Invoke Agent** span, the pills show aggregate totals across the whole t
 
 Below the pills, every span has an **Input** section and an **Output** section, each collapsible. They contain the exact data that flowed in and out of that step.
 
-![The Input section of an Invoke Agent span. SYSTEM INSTRUCTIONS shows Role 'Math Tutor' and the full Instructions text. Below it, a USER subsection shows the user's message 'Hi'.](/img/genai/develop/agents/observability/10-input-section.png)
+<ThemedImage
+    alt="The Input section of an Invoke Agent span. SYSTEM INSTRUCTIONS shows Role 'Math Tutor' and the full Instructions text. Below it, a USER subsection shows the user's message 'Hi'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/10-input-section.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/10-input-section.png'),
+    }}
+/>
 
 What you see depends on the span:
 
@@ -132,11 +213,23 @@ What you see depends on the span:
 
 The Output section behaves the same way.
 
-![The Output section of an Invoke Agent span expanded. MESSAGES shows the agent's reply 'Hello! How can I assist you with your math questions today?'. An 'Advanced Details' section is collapsed below it.](/img/genai/develop/agents/observability/11-output-section.png)
+<ThemedImage
+    alt="The Output section of an Invoke Agent span expanded. MESSAGES shows the agent's reply 'Hello! How can I assist you with your math questions today?'. An 'Advanced Details' section is collapsed below it."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/11-output-section.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/11-output-section.png'),
+    }}
+/>
 
 For an **Execute Tool** span, Input shows the named arguments the agent supplied and Output shows the returned value. The span header also carries a **Tool Description** pill so you can see what the agent thought the tool did.
 
-![The Execute Tool span detail for 'sumTool'. Pills show Latency 11ms and Tool Description 'Calculates the sum of two numbers'. The Input section labeled TOOL ARGUMENTS lists num1 = 3 and num2 = 2. The Output section labeled TOOL OUTPUT shows 5.0.](/img/genai/develop/agents/observability/14-execute-tool-detail.png)
+<ThemedImage
+    alt="The Execute Tool span detail for 'sumTool'. Pills show Latency 11ms and Tool Description 'Calculates the sum of two numbers'. The Input section labeled TOOL ARGUMENTS lists num1 = 3 and num2 = 2. The Output section labeled TOOL OUTPUT shows 5.0."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/14-execute-tool-detail.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/14-execute-tool-detail.png'),
+    }}
+/>
 
 Some spans also expose an **Advanced Details** section with provider-specific metadata, such as raw response headers and finish reasons. Expand it when you need to dig deeper.
 
@@ -146,11 +239,23 @@ Each section has a **Formatted** and **JSON** toggle (labeled **Raw** in some se
 
 **Formatted** renders the payload as an expandable tree, with field names highlighted and nested objects collapsible. Use this view when reading a prompt or scanning a tool definition.
 
-![The AVAILABLE TOOLS section in Formatted view. The first tool is expanded as a tree showing name 'sumTool', description 'Calculates the sum of two numbers', and a parameters tree with required fields and properties.](/img/genai/develop/agents/observability/12-formatted-view.png)
+<ThemedImage
+    alt="The AVAILABLE TOOLS section in Formatted view. The first tool is expanded as a tree showing name 'sumTool', description 'Calculates the sum of two numbers', and a parameters tree with required fields and properties."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/12-formatted-view.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/12-formatted-view.png'),
+    }}
+/>
 
 **JSON** shows the underlying JSON exactly as the agent saw it. Use this view when copying a payload into a bug report or comparing two runs character-for-character.
 
-![The same AVAILABLE TOOLS section in JSON view, showing the raw JSON array of tool definitions with name, description, and parameters fields.](/img/genai/develop/agents/observability/13-raw-view.png)
+<ThemedImage
+    alt="The same AVAILABLE TOOLS section in JSON view, showing the raw JSON array of tool definitions with name, description, and parameters fields."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/13-raw-view.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/13-raw-view.png'),
+    }}
+/>
 
 The toggle is per-section, so within a single span, you can keep Messages formatted while flipping Available Tools to JSON.
 
@@ -171,7 +276,13 @@ You can export a single trace or every trace in a chat session.
 
 In the trace viewer, click the download icon at the top of the **Trace** sidebar. Choose **Export as JSON** or **Export as Evalset**.
 
-![The Trace sidebar with the export menu open. Two options are shown: 'Export as JSON' and 'Export as Evalset'.](/img/genai/develop/agents/observability/16-export-single-trace.png)
+<ThemedImage
+    alt="The Trace sidebar with the export menu open. Two options are shown: 'Export as JSON' and 'Export as Evalset'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/16-export-single-trace.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/16-export-single-trace.png'),
+    }}
+/>
 
 The exported file contains the spans for that one chat turn only.
 
@@ -179,7 +290,13 @@ The exported file contains the spans for that one chat turn only.
 
 In the **Session Traces** view, click **Export** in the top-right and choose **Export as JSON** or **Export as Evalset**.
 
-![The Session Traces view with the Export menu open. Two options are shown: 'Export as JSON' and 'Export as Evalset'.](/img/genai/develop/agents/observability/17-export-session.png)
+<ThemedImage
+    alt="The Session Traces view with the Export menu open. Two options are shown: 'Export as JSON' and 'Export as Evalset'."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/observability/17-export-session.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/observability/17-export-session.png'),
+    }}
+/>
 
 The exported file contains every trace in the current session, in the order they ran. Use this when you want to capture an entire conversation, for example to reproduce an issue end-to-end or to seed a regression suite.
 

@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 :::info Prerequisites
 
-- [WSO2 Integrator set up](../../get-started/cloud-setup.md)
+- [WSO2 Integrator installed](../../get-started/setup/setup.md)
 
 :::
 

@@ -6,6 +6,9 @@ keywords: [wso2 integrator, try-it, chat agent, test ai agent, conversational te
 slug: /develop-and-test/test/try-it-tool/try-it-chat
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Test Chat Agent
 
 AI chat agents respond to natural language rather than structured HTTP requests, so testing them requires a conversational interface. The **Chat** panel lets you send messages to your agent and inspect its responses directly from WSO2 Integrator, without deploying or setting up a separate client.
@@ -14,7 +17,13 @@ AI chat agents respond to natural language rather than structured HTTP requests,
 
 Open the chat agent in the flow diagram view. In the toolbar at the top right of the diagram, select the **Chat** button, next to **Tracing: Off**.
 
-![AI Chat Agent flow diagram showing the Chat button next to Tracing: Off in the toolbar](/img/develop/test/try-it/chat-agent-try-it.png)
+<ThemedImage
+    alt="AI Chat Agent flow diagram showing the Chat button next to Tracing: Off in the toolbar"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/chat-agent-try-it.png'),
+    }}
+/>
 
 The service starts automatically and the **Agent Chat** panel opens on the right side. Type a message in the input field at the bottom and press **Enter** or select the send icon to begin.
 

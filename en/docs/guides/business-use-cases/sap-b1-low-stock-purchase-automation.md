@@ -42,7 +42,7 @@ The WSO2 Integrator Scheduler invokes the automation periodically, and each run 
 
 :::info Prerequisites
 
-- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/cloud-setup.md).
+- A working WSO2 Integrator environment. See [Setup](../../get-started/setup/setup.md).
 - Access to an SAP Business One system with the **Service Layer** component running (SAP Business One for SAP HANA, or SAP Business One on Microsoft SQL Server, version 9.3 PL10 or later). If you do not have one, ask your SAP administrator.
 - An SMTP-enabled email account to send the procurement alerts (for example, Gmail with an App Password).
 
@@ -62,7 +62,7 @@ An [automation](../../develop-and-test/integration-artifacts/automation.md#creat
 1. Create a new integration named `LowStockPurchaseAutomation` in a project named `sap-b1-low-stock-automation`.
 2. Add an **Automation** artifact to the integration.
 
-You land in the [Flow Canvas](../../editor/canvases/flow-canvas/flow-canvas.md) with a single **Start** node, the entry point the scheduler will call.
+You land in the [flow editor](../../editor/canvases/flow-canvas/flow-canvas.md) with a single **Start** node, the entry point the scheduler will call.
 
 <ThemedImage
     alt="Create Integration dialog with the integration name LowStockPurchaseAutomation and project name sap-b1-low-stock-automation filled in"
@@ -107,7 +107,7 @@ The **Current Server** field identifies the SAP HANA or SQL Server instance behi
     | Password | Your SAP Business One **Password** |
 
     :::tip Best practice
-    Don't hardcode credentials into the connection. Click each field and select **Configurables** in the [Expression Panel](../../editor/panels/expression-panel.md)'s helper pane, then click **New Configurable** and set up a configurable, so the value is supplied at runtime instead of stored in the flow.
+    Don't hardcode credentials into the connection. Click each field and select **Configurables** in the [Expression editor](../../editor/panels/expression-panel.md)'s helper pane, then click **New Configurable** and set up a configurable, so the value is supplied at runtime instead of stored in the flow.
     :::
 
     <ThemedImage
@@ -197,7 +197,7 @@ To reach your mail server, add an [**Email Smtp**](../../connectors/catalog/buil
 
     | Field | Value |
     | --- | --- |
-    | DocumentLines | For **ItemCode**, open the field's [Expression Panel](../../editor/panels/expression-panel.md) and select `lowStockItem` → `ItemCode` from the **Variables** list in the helper pane. Set **Quantity** to `50`. |
+    | DocumentLines | For **ItemCode**, open the field's [Expression editor](../../editor/panels/expression-panel.md) and select `lowStockItem` → `ItemCode` from the **Variables** list in the helper pane. Set **Quantity** to `50`. |
     | RequesterEmail | A valid email address, for example `"requester@example.com"` |
     | RequriedDate | A required-by date, for example `"2026-07-13"` |
     | BPL_IDAssignedToInvoice | Required only when your company has multiple branches (Business Places) enabled; the `BPLID` of a branch your user is authorized for |
@@ -384,5 +384,5 @@ The `inventory:Client` and `purchasing:Client` are generated when you add the co
 
 Now that the automation works, you can take it further:
 
-- **Deploy and schedule it.** Ship it to [WSO2 Cloud](../../deploy-and-run/deploy-and-run.md), then schedule periodic runs there.
+- **Deploy and schedule it.** Ship it to [WSO2 Cloud](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md), a [Docker container](../../deploy-and-run/self-hosted/containerized-deployment.md#docker-deployment), [Kubernetes](../../deploy-and-run/self-hosted/containerized-deployment.md#kubernetes-deployment), or a [virtual machine](../../deploy-and-run/self-hosted/vm-deployment.md), then schedule periodic runs there (a `cron` entry, a Kubernetes `CronJob`, a host scheduler, or the WSO2 Integration Platform).
 - **Richen the notification.** The [Email connector](../../connectors/catalog/built-in/email/email.md) also supports HTML bodies, CC/BCC, and attachments, so procurement's plain note can become a formatted daily digest listing every item raised in that run.

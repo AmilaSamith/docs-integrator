@@ -6,6 +6,9 @@ keywords: [wso2 integrator, durable workflow, create workflow, workflow artifact
 slug: /develop-and-test/integration-artifacts/workflow/durable-workflow/create
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Create a Workflow
 
 A **durable workflow** is an artifact in your integration, the same as a service or an automation. You create it once, give it the shape of the data it starts with, and then design its steps on a diagram.
@@ -15,7 +18,13 @@ A **durable workflow** is an artifact in your integration, the same as a service
 1. In the design view, click **+ Add Artifact**.
 2. On the **Artifacts** page, under **Durable Workflow**, click **Durable Workflow**.
 
-   ![The Artifacts page with the Durable Workflow card under the Durable Workflow section](/img/workflows/develop/create-workflow/add-artifact.png)
+   <ThemedImage
+       alt="The Artifacts page with the Durable Workflow card under the Durable Workflow section"
+       sources={{
+           light: useBaseUrl('/img/workflows/develop/create-workflow/add-artifact.png'),
+           dark: useBaseUrl('/img/workflows/develop/create-workflow/add-artifact.png'),
+       }}
+   />
 
    **Durable Agentic Workflow** beside it produces the same kind of artifact, but you describe the goal and let a model choose the steps instead of wiring them yourself. See [Create a Durable Agent](../durable-agentic-workflow/create-durable-agent.md).
 
@@ -27,10 +36,16 @@ A **durable workflow** is an artifact in your integration, the same as a service
    | **Workflow Input Data Type** | No | The type of the data the workflow starts with, usually a record. See [Types](../../supportive-artifacts/types.md). |
 
    :::tip Design it for the launcher
-   Whatever you put in this type is what every caller has to supply, including the form the [Integration Control Plane](../../../../integrator/icp/icp-console-overview.md) generates for starting a run by hand. Keep it to the data the process actually needs.
+   Whatever you put in this type is what every caller has to supply, including the form the [Integration Control Plane](../../../../icp/manage-workflows/start-a-workflow.md) generates for starting a run by hand. Keep it to the data the process actually needs.
    :::
 
-   ![The Create New Durable Workflow form with Name set to orderWorkflow and Workflow Input Data Type set to OrderInfo](/img/workflows/develop/create-workflow/create-workflow-form.png)
+   <ThemedImage
+       alt="The Create New Durable Workflow form with Name set to orderWorkflow and Workflow Input Data Type set to OrderInfo"
+       sources={{
+           light: useBaseUrl('/img/workflows/develop/create-workflow/create-workflow-form.png'),
+           dark: useBaseUrl('/img/workflows/develop/create-workflow/create-workflow-form.png'),
+       }}
+   />
 
 4. Click **Create**.
 

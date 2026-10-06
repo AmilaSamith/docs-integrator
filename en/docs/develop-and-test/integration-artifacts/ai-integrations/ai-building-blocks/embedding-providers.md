@@ -6,6 +6,9 @@ keywords: [wso2 integrator, embedding provider, embedding model, vector, knowled
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/embedding-providers
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Embedding Providers for Embedding Models
 
 An embedding model converts text into a dense numeric vector that captures semantic meaning. An **Embedding Provider** is WSO2 Integrator's abstraction over these models, giving every supported vendor a consistent interface.
@@ -27,7 +30,13 @@ You rarely call these directly. Knowledge Base `ingest` and `retrieve` operation
 
 In the **Create Vector Knowledge Base** form, click **+ Create New Embedding Model**. The **Select Embedding Provider** picker shows the supported providers.
 
-![Select Embedding Provider picker listing Default Embedding Provider (WSO2) at the top, then Azure Embedding Provider, Google Vertex Embedding Provider, OpenAI Embedding Provider, and OpenRouter Embedding Provider, each with a one-line description.](/img/genai/develop/components/embedding-providers/01-select-list.png)
+<ThemedImage
+    alt="Select Embedding Provider picker listing Default Embedding Provider (WSO2) at the top, then Azure Embedding Provider, Google Vertex Embedding Provider, OpenAI Embedding Provider, and OpenRouter Embedding Provider, each with a one-line description."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/01-select-list.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/01-select-list.png'),
+    }}
+/>
 
 ## Implementations overview
 
@@ -40,7 +49,7 @@ In the **Create Vector Knowledge Base** form, click **+ Create New Embedding Mod
 | **OpenRouter** | [`ballerinax/ai.openrouter`](https://central.ballerina.io/ballerinax/ai.openrouter/latest) | Yes | None |
 
 :::info
-The HTTP-level advanced configurations on every external embedding provider use the same set of fields as model providers. For the full reference, see [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations).
+The HTTP-level advanced configurations on every external embedding provider use the same set of fields as model providers. For the full reference, see [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations).
 :::
 
 ## Default WSO2 embedding provider
@@ -49,7 +58,13 @@ Routes through the WSO2 intelligence service. The same WSO2 sign-in that unlocks
 
 ### Create form
 
-![Create Embedding Provider form for the Default WSO2 provider. Banner: 'This is a simple operation that requires no parameters. Specify where to store the result to finish.' Two fields: Embedding Provider Name (default aiWso2embeddingprovider) and Result Type (locked to ai:Wso2EmbeddingProvider). Save button.](/img/genai/develop/components/embedding-providers/02-wso2-default.png)
+<ThemedImage
+    alt="Create Embedding Provider form for the Default WSO2 provider. Banner: 'This is a simple operation that requires no parameters. Specify where to store the result to finish.' Two fields: Embedding Provider Name (default aiWso2embeddingprovider) and Result Type (locked to ai:Wso2EmbeddingProvider). Save button."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/02-wso2-default.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/02-wso2-default.png'),
+    }}
+/>
 
 This provider has no provider-specific fields and no advanced configurations.
 
@@ -59,7 +74,13 @@ Official website: [Azure OpenAI embeddings documentation](https://learn.microsof
 
 ### Create form
 
-![Create Embedding Provider form for Azure OpenAI showing four required fields: Access Token, API Version, Deployment ID, Service URL. Below: Advanced Configurations Expand link, Embedding Provider Name azureEmbeddingprovider, Result Type azure:EmbeddingProvider.](/img/genai/develop/components/embedding-providers/03-azure-basic.png)
+<ThemedImage
+    alt="Create Embedding Provider form for Azure OpenAI showing four required fields: Access Token, API Version, Deployment ID, Service URL. Below: Advanced Configurations Expand link, Embedding Provider Name azureEmbeddingprovider, Result Type azure:EmbeddingProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/03-azure-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/03-azure-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -74,9 +95,15 @@ The model name is implicit in the **deployment** on Azure. There is no **Model T
 
 ### Advanced configurations
 
-![Azure OpenAI Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings.](/img/genai/develop/components/embedding-providers/04-azure-advanced.png)
+<ThemedImage
+    alt="Azure OpenAI Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/04-azure-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/04-azure-advanced.png'),
+    }}
+/>
 
-For standard HTTP configurations, see [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations).
+For standard HTTP configurations, see [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations).
 
 ## Google Vertex
 
@@ -84,16 +111,28 @@ Official website: [Vertex AI embeddings documentation](https://cloud.google.com/
 
 ### Create form
 
-![Create Embedding Provider form for Google Vertex showing two required fields: Auth (record/expression toggle, with hint 'OAuth2RefreshConfig for OAuth2 refresh token flow, or ServiceAccountConfig for automatic token refresh via service account') and Project ID. Below: Advanced Configurations Expand link, Embedding Provider Name vertexEmbeddingprovider, Result Type vertex:EmbeddingProvider.](/img/genai/develop/components/embedding-providers/05-vertex-basic.png)
+<ThemedImage
+    alt="Create Embedding Provider form for Google Vertex showing two required fields: Auth (record/expression toggle, with hint 'OAuth2RefreshConfig for OAuth2 refresh token flow, or ServiceAccountConfig for automatic token refresh via service account') and Project ID. Below: Advanced Configurations Expand link, Embedding Provider Name vertexEmbeddingprovider, Result Type vertex:EmbeddingProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/05-vertex-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/05-vertex-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Auth** | Yes | — | OAuth2 refresh-token record, a service-account record, or a path to a service-account JSON file. See [Vertex auth options](./model-providers.md#vertex-auth-options) on the Model Providers page. |
+| **Auth** | Yes | — | OAuth2 refresh-token record, a service-account record, or a path to a service-account JSON file. See [Vertex auth options](model-providers.md#vertex-auth-options) on the Model Providers page. |
 | **Project ID** | Yes | — | Your Google Cloud project ID. |
 
 ### Advanced configurations
 
-![Google Vertex Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings.](/img/genai/develop/components/embedding-providers/06-vertex-advanced.png)
+<ThemedImage
+    alt="Google Vertex Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/06-vertex-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/06-vertex-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -101,7 +140,7 @@ Official website: [Vertex AI embeddings documentation](https://cloud.google.com/
 | **Model Type** | `text-embedding-005` | `text-embedding-005`, `text-embedding-004`, `textembedding-gecko-multilingual@001`, `textembedding-gecko@001`. | Vertex embedding model. |
 | **Service URL** | `""` (auto-derived) | URL string | Override the regional endpoint. Defaults to `https://\{location\}-aiplatform.googleapis.com`. |
 
-For standard HTTP configurations, see [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations).
+For standard HTTP configurations, see [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations).
 
 ## OpenAI
 
@@ -109,7 +148,13 @@ Official website: [OpenAI Embeddings documentation](https://platform.openai.com/
 
 ### Create form
 
-![Create Embedding Provider form for OpenAI showing two required fields: API Key and Embedding Model Type. Below: Advanced Configurations Expand link, Embedding Provider Name openaiEmbeddingprovider, Result Type openai:EmbeddingProvider.](/img/genai/develop/components/embedding-providers/07-openai-basic.png)
+<ThemedImage
+    alt="Create Embedding Provider form for OpenAI showing two required fields: API Key and Embedding Model Type. Below: Advanced Configurations Expand link, Embedding Provider Name openaiEmbeddingprovider, Result Type openai:EmbeddingProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/07-openai-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/07-openai-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -118,13 +163,19 @@ Official website: [OpenAI Embeddings documentation](https://platform.openai.com/
 
 ### Advanced configurations
 
-![OpenAI Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression (default AUTO), Forwarded (default 'disable'), HTTP1 Settings, HTTP2 Settings.](/img/genai/develop/components/embedding-providers/08-openai-advanced.png)
+<ThemedImage
+    alt="OpenAI Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression (default AUTO), Forwarded (default 'disable'), HTTP1 Settings, HTTP2 Settings."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/08-openai-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/08-openai-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
 | **Service URL** | `https://api.openai.com/v1` | URL string | OpenAI API base URL. |
 
-For standard HTTP configurations, see [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations).
+For standard HTTP configurations, see [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations).
 
 ## OpenRouter
 
@@ -134,7 +185,13 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 
 ### Create form
 
-![Create Embedding Provider form for OpenRouter showing two required fields: API Key (with link to https://openrouter.ai/keys) and Model Type (with example value 'openai/text-embedding-3-small'). Below: Advanced Configurations Expand link, Embedding Provider Name openrouterEmbeddingprovider, Result Type openrouter:EmbeddingProvider.](/img/genai/develop/components/embedding-providers/09-openrouter-basic.png)
+<ThemedImage
+    alt="Create Embedding Provider form for OpenRouter showing two required fields: API Key (with link to https://openrouter.ai/keys) and Model Type (with example value 'openai/text-embedding-3-small'). Below: Advanced Configurations Expand link, Embedding Provider Name openrouterEmbeddingprovider, Result Type openrouter:EmbeddingProvider."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/09-openrouter-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/09-openrouter-basic.png'),
+    }}
+/>
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
@@ -143,7 +200,13 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 
 ### Advanced configurations
 
-![OpenRouter Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings.](/img/genai/develop/components/embedding-providers/10-openrouter-advanced.png)
+<ThemedImage
+    alt="OpenRouter Create Embedding Provider form with Advanced Configurations expanded showing Cache Configuration, Circuit Breaker Configuration, Compression AUTO, Forwarded 'disable', HTTP1 Settings, HTTP2 Settings."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/embedding-providers/10-openrouter-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/embedding-providers/10-openrouter-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -151,7 +214,7 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 | **Site URL** | `()` | URL string or empty | Optional site URL sent as `HTTP-Referer`. |
 | **Site Name** | `()` | String or empty | Optional site name sent as `X-OpenRouter-Title`. |
 
-For standard HTTP configurations, see [Standard HTTP advanced configurations](./model-providers.md#standard-http-advanced-configurations).
+For standard HTTP configurations, see [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations).
 
 :::warning
 OpenRouter's embedding endpoint accepts text-only chunks. Image or audio chunks raise an error.
@@ -171,7 +234,7 @@ The provider selected at ingest time must remain consistent for the lifetime of 
 
 ## What's next
 
-- [Vector Stores](./vector-stores.md) — Where the embeddings live.
-- [Knowledge Bases](./knowledge-bases.md) — The object that ties an embedding provider, a vector store, and a chunker together.
-- [Chunkers](./chunkers.md) — Split documents into chunks before embedding for ingestion into a vector store.
+- [Vector Stores](vector-stores.md) — Where the embeddings live.
+- [Knowledge Bases](knowledge-bases.md) — The object that ties an embedding provider, a vector store, and a chunker together.
+- [Chunkers](chunkers.md) — Split documents into chunks before embedding for ingestion into a vector store.
 - [RAG](../rag/rag.md) — WSO2 Integrator walkthrough for ingestion and query flows.

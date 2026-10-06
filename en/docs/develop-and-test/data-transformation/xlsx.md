@@ -5,6 +5,8 @@ description: Parse, transform, and write Microsoft Excel (XLSX) data.
 slug: /develop-and-test/data-transformation/xlsx
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -38,7 +40,13 @@ This flexibility is the foundation for everything that follows. Full row mapping
    - **Result***: `summaries`
    - **T***: `EmployeeSummary[]`
 
-   ![Flow designer showing a subset record type used for sheet parsing](/img/develop/transform/xlsx/xlsx-projection-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a subset record type used for sheet parsing"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-projection-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-projection-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -90,7 +98,13 @@ When you do need every column, declare a record that includes all of them and it
 
 4. **Add println inside the loop**. Inside the Foreach body, click **+** and select **Call Function**. Search under standard library → **io** → select `println`, and print the fields you need.
 
-   ![Flow designer showing sheet parsing and a foreach loop](/img/develop/transform/xlsx/xlsx-reading-flow.png)
+   <ThemedImage
+       alt="Flow designer showing sheet parsing and a foreach loop"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-reading-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-reading-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -136,7 +150,13 @@ The module loads each workbook fully into memory (the DOM model). There is no ro
    - **Result***: `orders`
    - **T***: `Order[]`
 
-   ![Flow designer showing a file read and a sheet parse step](/img/develop/transform/xlsx/xlsx-files-bytes-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a file read and a sheet parse step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-files-bytes-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-files-bytes-flow.png'),
+       }}
+   />
 
 Reading from a byte array instead uses the Workbook API (`fromBytes`, `getSheet`, `getRows`, `close`), shown in the **Ballerina Code** tab. The **+** menu offers only the four one-shot functions.
 
@@ -194,7 +214,13 @@ The `sheetWriteMode` option controls what happens when the target sheet already 
 
 4. **(Optional) Choose a write mode**. Under **Advanced Configurations** → **Options**, set `sheetWriteMode` to `REPLACE` or `APPEND` to write into a sheet that already exists.
 
-   ![Flow designer showing a writeSheet step](/img/develop/transform/xlsx/xlsx-writing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a writeSheet step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-writing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-writing-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -237,11 +263,23 @@ All of the read functions (`xlsx:parseSheet`, `xlsx:parseTable`, `Sheet.getRows`
 
 In the visual designer, read options live under **Advanced Configurations** → **Options** on the parse step. The field is empty by default (`{}`), meaning all defaults apply.
 
-![parseSheet step with the Options field under Advanced Configurations](/img/develop/transform/xlsx/xlsx-read-options-field.png)
+<ThemedImage
+    alt="parseSheet step with the Options field under Advanced Configurations"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xlsx/xlsx-read-options-field.png'),
+        dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-read-options-field.png'),
+    }}
+/>
 
 Click the **Options** field to open the **Record Configuration** helper. Tick the checkbox next to any option you want to set, fill in the value, and click **Save**.
 
-![Record Configuration helper listing the available ParseOptions fields](/img/develop/transform/xlsx/xlsx-read-options-helper.png)
+<ThemedImage
+    alt="Record Configuration helper listing the available ParseOptions fields"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xlsx/xlsx-read-options-helper.png'),
+        dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-read-options-helper.png'),
+    }}
+/>
 
 ### Available options
 
@@ -294,7 +332,13 @@ An Excel Table (ListObject) is a named, structured range with its own header and
 
 3. **Write the table back**. Call `writeTable` under **xlsx** with the updated rows, the same path, and the table name. The data range resizes to fit.
 
-   ![Flow designer showing a parseTable and writeTable flow](/img/develop/transform/xlsx/xlsx-tables-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a parseTable and writeTable flow"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-tables-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-tables-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -320,7 +364,7 @@ public function main() returns error? {
 </TabItem>
 </Tabs>
 
-For richer operations, such as reading a totals row or renaming or resizing a table, reach the same table through the Workbook API and use the `Table` class. Write these in code (see [Working with multiple sheets](#working-with-multiple-sheets)).
+For richer operations, such as reading a totals row or renaming or resizing a table, reach the same table through the Workbook API and use the `Table` class. Write these in code (see [Working with multiple sheets](#working-with-multiple-sheets)); the full method list is in the [Table methods](../../reference/data-formats/xlsx.md#table) reference.
 
 ```ballerina
 import ballerina/xlsx;
@@ -363,7 +407,13 @@ XLSX is a binary format, so there are no delimiters or encodings to configure. I
    - `headerRowIndex`: `2`
    - `dataStartRowIndex`: `3`
 
-   ![Flow designer showing sheet selection and header-row options](/img/develop/transform/xlsx/xlsx-header-row-flow.png)
+   <ThemedImage
+       alt="Flow designer showing sheet selection and header-row options"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-header-row-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-header-row-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -403,7 +453,13 @@ The binder uses the target field type to decide what shape to produce for a date
 
 3. **(Optional) Write back**. Call `writeSheet` under **xlsx** with the same records to produce date-formatted cells.
 
-   ![Flow designer showing date and time binding to time types](/img/develop/transform/xlsx/xlsx-datetime-flow.png)
+   <ThemedImage
+       alt="Flow designer showing date and time binding to time types"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-datetime-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-datetime-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -447,7 +503,13 @@ When a sheet has no header row, you have two options:
 
 2. **(Alternative) Read into typed records**. Define a record whose fields use `@xlsx:Name` to map the generated `col0`, `col1`, and so on. Under **Advanced Configurations** → **Options** (see [Read options](#read-options)), set `headerRowIndex` to `()`, and set **T** to your record array.
 
-   ![Flow designer showing headerless sheet parsing into string arrays](/img/develop/transform/xlsx/xlsx-headerless-flow.png)
+   <ThemedImage
+       alt="Flow designer showing headerless sheet parsing into string arrays"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-headerless-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-headerless-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -503,7 +565,13 @@ Enable fail-safe by setting the [`failSafe`](#available-options) option. It can 
    }
    ```
 
-   ![Flow designer showing fail-safe sheet parsing configuration](/img/develop/transform/xlsx/xlsx-failsafe-flow.png)
+   <ThemedImage
+       alt="Flow designer showing fail-safe sheet parsing configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xlsx/xlsx-failsafe-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-failsafe-flow.png'),
+       }}
+   />
 
 </TabItem>
 
@@ -551,7 +619,13 @@ The Workbook API gives you a stateful workbook with an explicit lifecycle, so yo
 These steps use the Workbook API (`xlsx:fromFile`, `getSheet`, `getRows`, `createSheet`, `putRows`, and `save`), which is not available from the **+** menu. Implement them using code from the **Ballerina Code** tab. Once they exist in the source, you can find the read, create-sheet, and save flow on the canvas.
 :::
 
-![Designer rendering the Workbook flow from code](/img/develop/transform/xlsx/xlsx-workbook-flow.png)
+<ThemedImage
+    alt="Designer rendering the Workbook flow from code"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xlsx/xlsx-workbook-flow.png'),
+        dark: useBaseUrl('/img/develop/transform/xlsx/xlsx-workbook-flow.png'),
+    }}
+/>
 
 </TabItem>
 
@@ -652,5 +726,6 @@ Formula cells are read according to the [`formulaMode`](#available-options) opti
 
 ## What's next
 
+- [XLSX reference](../../reference/data-formats/xlsx.md) — Functions, options, and types for the `ballerina/xlsx` module
 - [CSV & Flat File Processing](csv-flat-file.md) — Process delimited and fixed-width tabular data
 - [JSON Processing](json.md) — Parse, construct, and transform JSON data

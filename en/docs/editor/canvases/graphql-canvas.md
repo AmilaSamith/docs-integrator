@@ -5,13 +5,22 @@ description: Design GraphQL services visually, with queries, mutations, subscrip
 slug: /editor/canvases/graphql-canvas
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # GraphQL Canvas
 
 The GraphQL Canvas, also known as the **GraphQL diagram**, is the canvas you open for any GraphQL service in WSO2 Integrator. It renders the service as a node on a canvas, lists every query, mutation, and subscription the service exposes, and draws lines from each operation to the types it returns or accepts. Use it to add or remove operations, edit their signatures, and navigate to the resolver implementation, all from a single view.
 
 For end-to-end usage, including how to create a GraphQL service from scratch or import an existing schema, see [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md).
 
-![GraphQL Canvas showing a GraphQL service with its queries, subscription, and referenced types](/img/editor/canvases/graphql-canvas/overview.png)
+<ThemedImage
+    alt="GraphQL Canvas showing a GraphQL service with its queries, subscription, and referenced types"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/graphql-canvas/overview.png'),
+        dark: useBaseUrl('/img/editor/canvases/graphql-canvas/overview.png'),
+    }}
+/>
 
 ## Open the canvas
 
@@ -55,7 +64,13 @@ The three-dot menu (**⋮**) on the service node opens the service-level actions
 
 The **GraphQL Operations** side panel groups every operation the service exposes into **Query**, **Mutation**, and **Subscription** sections. Each section lists the existing operations by name, with an edit icon and a delete icon on each row. When a section has no operations, the panel shows a placeholder, for example **No Mutation fields defined**.
 
-![GraphQL Operations side panel](/img/editor/canvases/graphql-canvas/operations-panel.png)
+<ThemedImage
+    alt="GraphQL Operations side panel"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/graphql-canvas/operations-panel.png'),
+        dark: useBaseUrl('/img/editor/canvases/graphql-canvas/operations-panel.png'),
+    }}
+/>
 
 #### Add an operation
 

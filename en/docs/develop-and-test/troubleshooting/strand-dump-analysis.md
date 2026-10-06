@@ -5,6 +5,9 @@ description: Capture and analyze Ballerina strand dumps to diagnose deadlocks, s
 slug: /develop-and-test/troubleshooting/strand-dump-analysis
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Strand Dump Analysis
 
 A strand dump is a point-in-time snapshot of every strand and strand group running in a Ballerina process. It tells you what each unit of execution is doing (running, waiting on a lock, blocked on an external call, queued on a worker channel) and where in the source code that work is happening. Use it to diagnose deadlocks, data races, livelocks, and integrations that have gone unresponsive.
@@ -44,7 +47,13 @@ bal run . > output.log 2>&1
 
 ## Read a strand dump
 
-![Annotated strand dump output format](/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg)
+<ThemedImage
+    alt="Annotated strand dump output format"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg'),
+        dark: useBaseUrl('/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg'),
+    }}
+/>
 
 ### Header
 

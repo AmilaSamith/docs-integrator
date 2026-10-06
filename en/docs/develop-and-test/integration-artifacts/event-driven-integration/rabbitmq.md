@@ -4,6 +4,8 @@ description: Consume messages from RabbitMQ queues with typed message handling, 
 slug: /develop-and-test/integration-artifacts/event-driven-integration/rabbitmq
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,7 +22,13 @@ RabbitMQ event integrations consume messages from a RabbitMQ queue and trigger e
 2. In the **Artifacts** panel, select **RabbitMQ** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![RabbitMQ Event Integration creation form](/img/develop/integration-artifacts/event/rabbitmq/step-creation-form.png)
+   <ThemedImage
+       alt="RabbitMQ Event Integration creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description | Default |
    |---|---|---|
@@ -33,7 +41,13 @@ RabbitMQ event integrations consume messages from a RabbitMQ queue and trigger e
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The header shows the attached listener pill and the queue name pill.
 
-   ![Service Designer showing the RabbitMQ service canvas](/img/develop/integration-artifacts/event/rabbitmq/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the RabbitMQ service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-service-designer.png'),
+       }}
+   />
 
 6. Click **+ Add Handler** to define how incoming messages are processed.
 
@@ -72,7 +86,13 @@ Service configuration sets the queue the service subscribes to and applies advan
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **RabbitMQ Event Integration Configuration** panel. Select **RabbitMQ Event Integration** in the left panel.
 
-![RabbitMQ Event Integration Configuration panel](/img/develop/integration-artifacts/event/rabbitmq/step-service-config.png)
+<ThemedImage
+    alt="RabbitMQ Event Integration Configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-service-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-service-config.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -113,7 +133,13 @@ The listener connects to the RabbitMQ broker and manages the consumer lifecycle.
 
 In the **RabbitMQ Event Integration Configuration** panel, select **rabbitmqListener** under **Attached Listeners** to configure the listener.
 
-![Listener configuration — connection and authentication fields](/img/develop/integration-artifacts/event/rabbitmq/step-listener-config-1.png)
+<ThemedImage
+    alt="Listener configuration — connection and authentication fields"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-listener-config-1.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-listener-config-1.png'),
+    }}
+/>
 
 <!-- ![Listener configuration — timeout, security, and auth fields](/img/develop/integration-artifacts/event/rabbitmq/step-listener-config-2.png) -->
 
@@ -182,7 +208,13 @@ In the **Service Designer**, click **+ Add Handler**. A **Select Handler to Add*
 
 **onMessage** — opens a configuration panel before saving:
 
-![onMessage handler configuration panel](/img/develop/integration-artifacts/event/rabbitmq/step-add-handler.png)
+<ThemedImage
+    alt="onMessage handler configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-add-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/rabbitmq/step-add-handler.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
