@@ -56,7 +56,7 @@ WSO2 Integrator detects the project structure and opens the [project view](../..
 
 ## Troubleshooting
 
-If the editor shows **WSO2 Integrator cannot start** or **Your project dependencies need to be updated** instead of your project, the project or your Ballerina installation was set up with an earlier Ballerina version. See [Migration troubleshooting](../../editor/troubleshooting/migration-troubleshooting.md) to update, or to stay on your current version.
+If the editor shows **WSO2 Integrator cannot start** or **Your project dependencies need to be updated** instead of your project, the project or your Ballerina installation was set up with an earlier Ballerina version. See [Moving to Ballerina 2201.14.0](../../editor/troubleshooting/moving-to-ballerina-2201-14.md) to update, or to stay on your current version.
 
 ## What's next
 
