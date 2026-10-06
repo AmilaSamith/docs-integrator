@@ -1,6 +1,6 @@
 ---
-sidebar_position: 4
-title: Gated Tools
+sidebar_position: 2.5
+title: Gate Tools for Approval
 description: Gate a tool so a WSO2 Integrator AI agent pauses for approval before it runs, then approve or reject and resume the run.
 keywords: [wso2 integrator, gated tools, tool approval, approval gate, ai agents, tools]
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools
@@ -14,8 +14,8 @@ By default, an agent runs on autopilot. It reasons and calls tools in a loop unt
 
 Gating a tool makes the agent pause immediately before it runs that tool, show what it proposes to do, and continue once a person has approved or rejected the tool call.
 
-:::info When to use something else
-A gated tool answers one question: may this tool call run? The decision isn't recorded. If you need a named approver, a deadline, an audit trail, a supplied value, or failure recovery, use a [human task](../../workflow/durable-workflow/await-human-task.md) in a [durable workflow](../../workflow/workflow.md) instead.
+:::tip Need more than an approval?
+A [durable agentic workflow](../../workflow/durable-agentic-workflow/durable-agentic-workflow.md) keeps the same pause-for-approval, then goes much further: it can ask for a typed value, choose who may answer, set a deadline, retry or hand a failed step to a person, and resume after a crash, at the cost of running on Temporal. See [Gated Tools or Durable Agentic Workflow](gated-tools-or-durable-agentic-workflow.md) for the full comparison.
 :::
 
 ## How it works
