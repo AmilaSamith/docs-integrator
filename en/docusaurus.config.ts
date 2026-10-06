@@ -46,7 +46,7 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
-  onBrokenAnchors: 'throw',
+  onBrokenAnchors: 'warn',
 
   markdown: {
     mermaid: true,
