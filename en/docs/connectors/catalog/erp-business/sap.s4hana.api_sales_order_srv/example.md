@@ -1,3 +1,6 @@
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Example
 
 ## What you'll build
@@ -30,6 +33,14 @@ flowchart LR
 
 Select **Add Connection** in the WSO2 Integrator sidebar to open the connector palette, then search for `api_sales_order_srv` and select the **Api_sales_order_srv** connector card.
 
+<ThemedImage
+    alt="SAP S/4HANA Sales Order connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_01_palette.png'),
+    }}
+/>
+
 ## Configuring the SAP S/4HANA sales order connection
 
 ### Step 2: Fill in the connection parameters
@@ -40,9 +51,25 @@ Enter the connection parameters, binding each field to a configurable variable:
 - **Hostname** : SAP S/4HANA server hostname; bind to a configurable variable
 - **Connection Name** : Set to `apiSalesOrderSrvClient`
 
+<ThemedImage
+    alt="SAP S/4HANA Sales Order connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_02_connection_form.png'),
+    }}
+/>
+
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the configuration and confirm the connector appears in the Connections panel.
+
+<ThemedImage
+    alt="SAP S/4HANA Sales Order Connections panel showing apiSalesOrderSrvClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -65,13 +92,37 @@ Select **Add Artifact**, then select **Automation** from the artifact types and 
 2. Expand the **apiSalesOrderSrvClient** connection under **Connections**.
 3. Select **List A Sales Orders** (`listA_SalesOrders`).
 
+<ThemedImage
+    alt="SAP S/4HANA Sales Order connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_04_operations.png'),
+    }}
+/>
+
 Configure the operation parameters:
 
 - **$top** : Limit results to the first 10 sales orders
 - **$skip** : Start from the beginning of the result set
 - **Result** : Variable name to store the response
 
+<ThemedImage
+    alt="SAP S/4HANA Sales Order listA_SalesOrders operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_05_operation_form.png'),
+    }}
+/>
+
 Select **Save** to add the operation to the flow, then add a **Log Info** step that logs `result.toJsonString()`.
+
+<ThemedImage
+    alt="Completed SAP S/4HANA Sales Order automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_sales_order_srv/sap_s4hana_apisalesordersrv_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 
