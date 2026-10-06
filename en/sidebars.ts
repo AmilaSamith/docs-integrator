@@ -1524,6 +1524,17 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SMPP',
+          link: { type: 'doc', id: 'catalog/messaging/smpp/connector-overview' },
+          items: [
+            'catalog/messaging/smpp/setup-guide',
+            'catalog/messaging/smpp/action-reference',
+            'catalog/messaging/smpp/trigger-reference',
+            'catalog/messaging/smpp/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Snowflake',
           link: { type: 'doc', id: 'catalog/database/snowflake/connector-overview' },
           items: [
