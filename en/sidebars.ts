@@ -1377,6 +1377,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'catalog/erp-business/sap.s4hana.api_sales_order_srv/setup-guide',
             'catalog/erp-business/sap.s4hana.api_sales_order_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_sales_order_srv/example',
           ],
         },
         {
