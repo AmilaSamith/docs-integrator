@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: "Manage Projects"
-description: "Create, edit, and delete projects on WSO2 Cloud - Integration Platform."
-keywords: [wso2 integrator, wso2 cloud, project, create project, delete project, project lifecycle]
+description: "View, edit, and delete projects on WSO2 Cloud - Integration Platform."
+keywords: [wso2 integrator, wso2 cloud, project, edit project, delete project, project lifecycle]
 slug: /manage/projects
 ---
 
@@ -11,41 +11,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Manage Projects
 
-A project is the top-level container for your integrations on WSO2 Cloud - Integration Platform. This page explains how to create a project from scratch, edit its details, and remove it when it is no longer needed.
+A project is the top-level container for your integrations on WSO2 Cloud - Integration Platform. This page explains how to view your projects, edit their details, and remove them when they are no longer needed. To create a project, see [Create a project](../develop-and-test/create-workspace/create-a-project.md). To bring one in from a Git repository, see [Import a project](../develop-and-test/create-workspace/import-a-project.md).
 
 ## View projects
 
 Click **Organization** in the top navigation to open the organization overview. The overview lists all projects in your organization. By default a project named **Default** is automatically created on first sign-up.
-
-## Create a project
-
-1. In the organization overview page, click **+ Create** to create a new project from scratch.
-
-   :::tip
-   To import an existing project from a Git repository instead, click **Import**. See [Import a project](../deploy-and-run/deploy-to-wso2-cloud/import-project.md) for instructions.
-   :::
-
-2. Fill in the project details:
-
-   | Field | Description |
-   |---|---|
-   | **Display name** | A human-readable label shown in the console. |
-   | **Name** | A unique identifier for the project. Must be unique within the organization. |
-   | **Description** | An optional summary of the project's purpose. |
-
-3. Optionally, connect a Git repository to embed repository metadata with the project. To import integrations from a repository rather than just linking metadata, use the [Import a project](../deploy-and-run/deploy-to-wso2-cloud/import-project.md) flow instead.
-
-    <ThemedImage
-        alt="Create Project"
-        sources={{
-            light: useBaseUrl('/img/manage/cloud/projects/create-project.png'),
-            dark: useBaseUrl('/img/manage/cloud/projects/create-project.png'),
-        }}
-    />
-
-4. Click **Create**.
-
-WSO2 Cloud creates the project and navigates you to the project home.
 
 ## Edit a project
 
@@ -80,5 +50,6 @@ The project and all its contents are permanently deleted.
 
 ## What's next
 
-- [Import a project](../deploy-and-run/deploy-to-wso2-cloud/import-project.md) — Bring an existing WSO2 Integrator project from a Git repository into WSO2 Cloud.
+- [Create a project](../develop-and-test/create-workspace/create-a-project.md) — Create a new project.
+- [Import a project](../develop-and-test/create-workspace/import-a-project.md) — Bring an existing WSO2 Integrator project from a Git repository into WSO2 Cloud.
 - [Access control](./users-and-access/access-control.md) — Manage roles and permissions for members of your project.

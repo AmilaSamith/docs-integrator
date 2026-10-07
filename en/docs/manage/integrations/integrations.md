@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: "Manage Integrations"
 description: "View and manage the lifecycle of integrations deployed to WSO2 Cloud - Integration Platform, including scheduling, stopping, scaling, editing, and deleting."
 keywords: [wso2 integrator, wso2 cloud, deployed integrations, view integrations, integration lifecycle]
