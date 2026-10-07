@@ -29,7 +29,7 @@ flowchart LR
 
 ## Prerequisites
 
-- An SMSC, carrier, or aggregator account that exposes SMPP v3.4, reachable from your integration environment on its SMPP port (`2775` is the common default)
+- An SMSC, carrier, or aggregator account that exposes SMPP, reachable from your integration environment on its SMPP port (`2775` is the common default)
 - The bind credentials for that account: the system ID and password
 - An account allowed to bind as `TRANSMITTER` or `TRANSCEIVER`, since the automation sends messages
 

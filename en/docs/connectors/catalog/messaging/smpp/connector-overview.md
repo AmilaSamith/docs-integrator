@@ -2,12 +2,12 @@
 connector: true
 connector_name: "smpp"
 title: "Overview"
-description: "Overview of the SMPP connector: send and receive SMS over SMPP v3.4 with an SMSC, including delivery receipts, TLS and a listener for mobile-originated messages."
+description: "Overview of the SMPP connector: send and receive SMS over SMPP with an SMSC, including delivery receipts, TLS and a listener for mobile-originated messages."
 ---
 
 # Overview
 
-The SMPP connector provides native Ballerina access to an SMSC (Short Message Service Centre) over **SMPP v3.4** (Short Message Peer-to-Peer), the protocol an ESME (External Short Messaging Entity) uses to exchange SMS traffic with a carrier or aggregator. It wraps the Java library [`org.jsmpp:jsmpp`](https://jsmpp.org/) through Ballerina's Java interoperability.
+The SMPP connector provides native Ballerina access to an SMSC (Short Message Service Centre) over **SMPP** (Short Message Peer-to-Peer), the protocol an ESME (External Short Messaging Entity) uses to exchange SMS traffic with a carrier or aggregator. It wraps the Java library [`org.jsmpp:jsmpp`](https://jsmpp.org/) through Ballerina's Java interoperability.
 
 ## Key features
 
