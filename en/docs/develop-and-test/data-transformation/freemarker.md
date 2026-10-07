@@ -60,7 +60,7 @@ You have ${count} new messages.
        }}
    />
 
-1. **Render the template**: Click **+** and select **Call Function**. Search for `renderFromFile` under **freemarker** and configure:
+2. **Render the template**: Click **+** and select **Call Function**. Search for `renderFromFile` under **freemarker** and configure:
    - **templatePath\***: `"templates/sample.ftl"`
    - **data\***: `check jsonResult.cloneWithType()`
    - **Result\***: `output`
@@ -74,7 +74,7 @@ You have ${count} new messages.
        }}
    />
 
-1. **Use the result**: Print the result to the console using `io:println()`, or pass it to a downstream step such as an HTTP response or log statement.
+3. **Use the result**: Click **+** and select **Call Function**. Search for the `println()` method and add `output` variables into the `Values` input.
 
    <ThemedImage
        alt="The println function call step printing the rendered output"
@@ -83,6 +83,17 @@ You have ${count} new messages.
            dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-result.png'),
        }}
    />
+
+Output:
+
+```text
+Hello, Alice!
+
+You have 3 new messages.
+  - Bob: Meeting tomorrow
+  - Carol: Project update
+  - Dave: Lunch plans
+```
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -149,7 +160,7 @@ Use `freemarker:render` when the template is short, lives in code, or is assembl
        }}
    />
 
-3. **Use the result**: Print the result to the console using `io:println()`, or pass it to a downstream step such as an HTTP response or log statement.
+3. **Use the result**: Click **+** and select **Call Function**. Search for the `println()` method and add `output` variables into the `Values` input.
 
    <ThemedImage
        alt="The println function call step printing the inline render result"
@@ -158,6 +169,12 @@ Use `freemarker:render` when the template is short, lives in code, or is assembl
            dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-inline-result.png'),
        }}
    />
+
+Output:
+
+```text
+Hello, Alice! You have 5 new messages.
+```
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
