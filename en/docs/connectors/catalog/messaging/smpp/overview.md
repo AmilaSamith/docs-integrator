@@ -44,13 +44,13 @@ See the **[Trigger Reference](trigger-reference.md)** for listener configuration
 
 ## Documentation
 
-* **[Setup Guide](setup-guide.md)**: How to obtain the SMSC connection details and credentials the connector needs.
+* **[Setup Guide](setup-guide.md)**: This guide walks you through obtaining SMPP access from an SMSC, carrier, or aggregator and collecting the connection details the connector needs.
 
-* **[Action Reference](action-reference.md)**: Full reference for the client — operations, parameters, return types, and sample code.
+* **[Action Reference](action-reference.md)**: Full reference for the `Client`: operations, parameters, return types, and sample code.
 
-* **[Trigger Reference](trigger-reference.md)**: Reference for event-driven integration using the listener and service model.
+* **[Trigger Reference](trigger-reference.md)**: Reference for event-driven integration using the `Listener`, `Service`, and `Caller` model.
 
-* **[Example](example.md)**: Learn how to build and configure an integration using the **Smpp** connector, including connection setup, operation configuration, and execution flow.
+* **[Example](example.md)**: Learn how to build and configure an integration using the **SMPP** connector, including connection setup, operation configuration, and execution flow.
 
 ## How to contribute
 

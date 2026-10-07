@@ -125,7 +125,7 @@ smpp:MultiSubmitResult result = check smppClient->submitMulti(
 
 <div>
 
-Submits a message via `data_sm` instead of `submit_sm` — the alternative MT transfer PDU some SMSCs prefer for binary/WAP-push payloads. Requires `bindType: TRANSMITTER` or `TRANSCEIVER`.
+Submits a message via `data_sm` instead of `submit_sm`, the alternative MT transfer PDU some SMSCs prefer for binary/WAP-push payloads. Requires `bindType: TRANSMITTER` or `TRANSCEIVER`.
 
 **Parameters:**
 
@@ -235,7 +235,7 @@ check smppClient->replace(messageId, "94771234567",
 
 <div>
 
-Unbinds and releases the underlying SMSC session. Idempotent: closing an already-closed client is a no-op. A closed client cannot be reused — create a new one.
+Unbinds and releases the underlying SMSC session. Idempotent: closing an already-closed client is a no-op. A closed client cannot be reused; create a new one.
 
 **Parameters:**
 

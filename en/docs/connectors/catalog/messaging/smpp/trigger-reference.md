@@ -64,7 +64,7 @@ A service attached to an `smpp:Listener` implements one or more of the callbacks
 In `SYNC` response mode (the default), an error returned from `onDeliverSm`/`onDataSm` becomes a negative response telling the SMSC the message was not handled; most SMSCs treat this as a signal to redeliver. In `ASYNC` mode, the SMSC is acknowledged immediately and a later handler failure is only logged, never reflected back to the SMSC.
 :::
 
-### Full example — receive only
+### Full example: receive only
 
 ```ballerina
 import ballerina/io;
@@ -100,7 +100,7 @@ service on smsListener {
 ```
 
 :::note
-Correlate a later delivery receipt against a submit using `sms.receiptedMessageId` (the `receipted_message_id` TLV) — the only field SMPP guarantees for this; the Appendix-B receipt body's own `id` is vendor specific.
+Correlate a later delivery receipt against a submit using `sms.receiptedMessageId` (the `receipted_message_id` TLV), the only field SMPP guarantees for this; the Appendix-B receipt body's own `id` is vendor specific.
 :::
 
 ## Supporting types
