@@ -27,7 +27,13 @@ A durable agentic workflow flips the authoring model: instead of wiring steps to
 1. In the design view, click **+ Add Artifact**.
 2. On the **Artifacts** page, under **Durable Workflow**, click **Durable Agentic Workflow**.
 
-   ![The Artifacts page with the Durable Agentic Workflow card under the Durable Workflow section](/img/workflows/agentic/create-durable-agent/add-agent-artifact.png)
+   <ThemedImage
+       alt="The Artifacts page with the Durable Agentic Workflow card under the Durable Workflow section"
+       sources={{
+           light: useBaseUrl('/img/workflows/agentic/create-durable-agent/add-agent-artifact.png'),
+           dark: useBaseUrl('/img/workflows/agentic/create-durable-agent/add-agent-artifact.png'),
+       }}
+   />
 
    **Durable Workflow** beside it produces the same kind of artifact with the steps wired by hand instead of chosen by a model. See [Create a workflow](../durable-workflow/create.md).
 
@@ -46,7 +52,13 @@ Click the agent node to open the **Configure Agent** form, which holds the agent
 
 **Role** and **Instructions** each take either a prompt or an expression. Keep the field on **Prompt** to write the text directly, and switch it to **Expression** to build the value in code, for example from a configurable.
 
-![The Configure Agent form with Role set to Expense claim assistant and the claim handling instructions filled in](/img/workflows/agentic/create-durable-agent/configure-agent.png)
+<ThemedImage
+    alt="The Configure Agent form with Role set to Expense claim assistant and the claim handling instructions filled in"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/create-durable-agent/configure-agent.png'),
+        dark: useBaseUrl('/img/workflows/agentic/create-durable-agent/configure-agent.png'),
+    }}
+/>
 
 ## Capabilities
 
@@ -54,7 +66,7 @@ Click the agent node to open the **Configure Agent** form, which holds the agent
 
 A durable agent uses the same activities as durable workflows. Instead of you wiring the call order, the model chooses which activity to call and when, and each call is recorded exactly as it is in a hand-wired workflow.
 
-In addition, you can enable **Requires Approval** on sensitive activities, so a person approves the execution before the agent runs the activity. Those approval requests are listed on the **Human Tasks** page of the [Control Plane](../../../../integrator/icp/icp-console-overview.md).
+In addition, you can enable **Requires Approval** on sensitive activities, so a person approves the execution before the agent runs the activity. Those approval requests are listed on the **Human Tasks** page of the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md).
 
 To register an activity with the agent:
 
@@ -72,7 +84,13 @@ To register an activity with the agent:
 
 5. Click **Save**.
 
-![Registering payClaim as a durable agent activity, gating it with Requires Approval and setting Reviewer Roles to Finance](/img/workflows/agentic/create-durable-agent/register-activity.gif)
+<ThemedImage
+    alt="Registering payClaim as a durable agent activity, gating it with Requires Approval and setting Reviewer Roles to Finance"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-activity.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-activity.gif'),
+    }}
+/>
 
 The activity joins the agent node as a capability, drawn with a shield badge while it is gated. Registering it is what makes it available to the model, so an activity the agent never needs is best left off the list.
 
@@ -99,11 +117,17 @@ To register a data event:
 
 3. Click **Save**.
 
-![Registering the chat data event with a string request type, a string response type, and MULTI_EVENT cardinality](/img/workflows/agentic/create-durable-agent/register-data-event.gif)
+<ThemedImage
+    alt="Registering the chat data event with a string request type, a string response type, and MULTI_EVENT cardinality"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-data-event.gif'),
+    }}
+/>
 
 ### Human tasks
 
-A human task is an escalation point the agent raises on its own judgment, for example when a claim looks unusual or its documents need a second pair of eyes. The task lands in the [Control Plane](../../../../integrator/icp/icp-console-overview.md) inbox of the roles you name, and the agent suspends durably until someone submits a decision, exactly like an [Await Human Task](../durable-workflow/await-human-task.md) step in a hand-wired workflow.
+A human task is an escalation point the agent raises on its own judgment, for example when a claim looks unusual or its documents need a second pair of eyes. The task lands in the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md) inbox of the roles you name, and the agent suspends durably until someone submits a decision, exactly like an [Await Human Task](../durable-workflow/await-human-task.md) step in a hand-wired workflow.
 
 To register a human task with the agent:
 
@@ -121,7 +145,13 @@ To register a human task with the agent:
 
 3. Click **Save**.
 
-![Registering ReviewDocuments as a durable agent human task, with the Finance role, a description, a four-hour timeout, and a boolean completion type](/img/workflows/agentic/create-durable-agent/register-human-task.gif)
+<ThemedImage
+    alt="Registering ReviewDocuments as a durable agent human task, with the Finance role, a description, a four-hour timeout, and a boolean completion type"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-human-task.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/create-durable-agent/register-human-task.gif'),
+    }}
+/>
 
 The task joins the agent node as a capability, drawn to the left of the node under its task name. **Task Name**, **User Roles**, and **Title** each take either text or an expression, so any of them can be built in code, for example from a configurable.
 
@@ -136,4 +166,4 @@ Reach for an agentic workflow when the logic is branchy and judgment-heavy ("req
 
 - [Run a Durable Agent](run-durable-agent.md) — starting an instance of the agent from an integration flow.
 - [Build a Claim Handling Durable Agent](../../../../get-started/quickstarts/build-claim-handling-agent.md) — the end-to-end getting started guide.
-- [Complete human tasks](../../../../integrator/icp/icp-console-overview.md) — approving the agent's gated steps and reading its progress.
+- [Complete human tasks](../../../../icp/manage-workflows/complete-human-tasks.md) — approving the agent's gated steps and reading its progress.

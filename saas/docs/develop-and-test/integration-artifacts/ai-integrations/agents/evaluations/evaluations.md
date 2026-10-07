@@ -2,7 +2,7 @@
 title: Evaluate Agent Behavior
 ---
 
-# Evaluate Agent Behavior
+# Evaluations
 
 **Evaluations** are how you keep an AI agent's quality from regressing. Unlike unit tests with deterministic outputs, agent behaviour has to be judged across several dimensions: correctness, tool selection, groundedness, safety, and tone. Evaluations in WSO2 Integrator give you a structured way to measure those dimensions, see why a run regressed, and watch the trend across builds.
 

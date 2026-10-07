@@ -19,4 +19,4 @@ If logs and error output don't explain the problem, step through the code intera
 
 - [Debug Your Integration](../debugging/debugging.md) — set breakpoints and inspect state interactively
 - [Test Your Integration](../test/test.md) — catch issues before they reach this stage
-- [Troubleshoot Deployment](../../deploy-and-run/deploy-to-wso2-cloud/troubleshoot-deployment.md) — issues that only appear once the integration ships
+- [Troubleshoot Deployment](deployment.md) — issues that only appear once the integration ships

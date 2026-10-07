@@ -8,11 +8,23 @@ Create a reusable data mapper from the **Artifacts** page or the left sidebar. C
 
 1. Open the **Artifacts** page and select **Data Mapper** under **Other Artifacts**, or select **+** next to **Data Mappers** in the left sidebar.
 
-   ![Artifacts page with the Data Mapper option highlighted under Other Artifacts](/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-selection.png)
+   <ThemedImage
+       alt="Artifacts page with the Data Mapper option highlighted under Other Artifacts"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-selection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-selection.png'),
+       }}
+   />
 
 2. Fill in the **Create New Data Mapper** form.
 
-   ![Create New Data Mapper form with Name, Public, Inputs, and Output fields](/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-form.png)
+   <ThemedImage
+       alt="Create New Data Mapper form with Name, Public, Inputs, and Output fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/reusable-datamapper-form.png'),
+       }}
+   />
 
    | Field | Description |
    |---|---|
@@ -23,12 +35,18 @@ Create a reusable data mapper from the **Artifacts** page or the left sidebar. C
 
 3. Select **Create**. The data mapper canvas opens with input fields on the left and output fields on the right.
 
-   ![Data mapper canvas with input record on the left and output record on the right](/img/develop/integration-artifacts/supporting/data-mapper/datamapper-view.png)
+   <ThemedImage
+       alt="Data mapper canvas with input record on the left and output record on the right"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/datamapper-view.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/datamapper-view.png'),
+       }}
+   />
 
 4. Use the data mapper canvas to map fields. See [Mapping capabilities](../mapping-capabilities.md) for connecting fields, writing expressions, and AI-assisted mapping.
 
 ## What's next
 
-- [Inline data mapper](./inline.md) — Open the data mapper from a **Declare Variable** node.
+- [Inline data mapper](inline.md) — Open the data mapper from a **Declare Variable** node.
 - [Mapping capabilities](../mapping-capabilities.md) — Connect fields, write expressions, and use AI-assisted mapping.
 - [Array mappings](../array-mappings/array-mappings.md) — Map between arrays using iteration, joins, and aggregation.

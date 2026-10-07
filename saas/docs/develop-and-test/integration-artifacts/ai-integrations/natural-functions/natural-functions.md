@@ -17,7 +17,13 @@ Natural functions are an experimental feature. Enable experimental features in W
 
 A finished natural function is a single **Prompt** node sitting between **Start** and the end of the flow. The cog on the right binds a model provider; the pencil at the top edits the English body.
 
-![Overview of a natural function in the Flow Designer showing the Prompt node with a saved prompt body.](/img/genai/develop/natural-functions/42-how-a-natural-function-looks-like.png)
+<ThemedImage
+    alt="Overview of a natural function in the Flow Designer showing the Prompt node with a saved prompt body."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/42-how-a-natural-function-looks-like.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/42-how-a-natural-function-looks-like.png'),
+    }}
+/>
 
 What you do in the visual designer:
 
@@ -49,17 +55,35 @@ There are two equivalent entry points; both open the same form.
 
 **From the project sidebar.** Hover the **Natural Functions** node and click the **+** that appears.
 
-![Project sidebar showing the Natural Functions section with the + button to add a new natural function.](/img/genai/develop/natural-functions/43-add-natural-function-from-left-sidebar.png)
+<ThemedImage
+    alt="Project sidebar showing the Natural Functions section with the + button to add a new natural function."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/43-add-natural-function-from-left-sidebar.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/43-add-natural-function-from-left-sidebar.png'),
+    }}
+/>
 
 **From the Artifacts panel.** Click **+ Add Artifact** on the integration overview, then under **Other Artifacts** pick **Natural Function** (badged *Beta*).
 
-![Add Artifact panel with the Natural Function tile highlighted under Other Artifacts.](/img/genai/develop/natural-functions/44-add-natural-function-from-add-artifact-menu.png)
+<ThemedImage
+    alt="Add Artifact panel with the Natural Function tile highlighted under Other Artifacts."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/44-add-natural-function-from-add-artifact-menu.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/44-add-natural-function-from-add-artifact-menu.png'),
+    }}
+/>
 
 ### The create form
 
 The form has three fields and a **Create** button.
 
-![Create New Natural Function form with Name, Parameters, Return Type fields and a Create button.](/img/genai/develop/natural-functions/45-create-natural-function-menu.png)
+<ThemedImage
+    alt="Create New Natural Function form with Name, Parameters, Return Type fields and a Create button."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/45-create-natural-function-menu.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/45-create-natural-function-menu.png'),
+    }}
+/>
 
 | Field | What it does |
 |---|---|
@@ -71,27 +95,57 @@ The form has three fields and a **Create** button.
 
 Click **+ Add Parameter**. The inline dialog asks for a type, a name, and a short description that is surfaced both to the LLM (as part of the schema) and to callers in WSO2 Integrator when they bind arguments.
 
-![Add Parameter dialog with Type, Name, and Description fields.](/img/genai/develop/natural-functions/46-create-natural-function-add-parameter.png)
+<ThemedImage
+    alt="Add Parameter dialog with Type, Name, and Description fields."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/46-create-natural-function-add-parameter.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/46-create-natural-function-add-parameter.png'),
+    }}
+/>
 
 ### Choosing a Return Type
 
 Click **Return Type**. The picker offers primitives, plus **Create New Type** and **Open Type Browser**.
 
-![Return Type dropdown showing primitive types and options to create or browse types.](/img/genai/develop/natural-functions/47-create-natural-function-return-type.png)
+<ThemedImage
+    alt="Return Type dropdown showing primitive types and options to create or browse types."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/47-create-natural-function-return-type.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/47-create-natural-function-return-type.png'),
+    }}
+/>
 
 For most natural functions you want a **record** so each output field is named and typed. The **Create New Type** dialog has two tabs:
 
 - **Create from scratch**: pick `Record`, name the type, and add fields with types and descriptions.
 
-  ![Create New Type dialog on the Create from scratch tab with Kind set to Record and a Fields section.](/img/genai/develop/natural-functions/48-create-new-type-record.png)
+  <ThemedImage
+      alt="Create New Type dialog on the Create from scratch tab with Kind set to Record and a Fields section."
+      sources={{
+          light: useBaseUrl('/img/genai/develop/natural-functions/48-create-new-type-record.png'),
+          dark: useBaseUrl('/img/genai/develop/natural-functions/48-create-new-type-record.png'),
+      }}
+  />
 
 - **Import**: paste a JSON sample (or load a `.json` file) and WSO2 Integrator infers the record type, including nested records and arrays. This is the fastest path when you already have an example response.
 
-  ![Create New Type dialog on the Import tab with a JSON sample pasted into the textarea.](/img/genai/develop/natural-functions/49-create-new-type-import.png)
+  <ThemedImage
+      alt="Create New Type dialog on the Import tab with a JSON sample pasted into the textarea."
+      sources={{
+          light: useBaseUrl('/img/genai/develop/natural-functions/49-create-new-type-import.png'),
+          dark: useBaseUrl('/img/genai/develop/natural-functions/49-create-new-type-import.png'),
+      }}
+  />
 
 The new type is selected automatically as the function's return type. With at least a name, one parameter, and a return type, click **Create**.
 
-![Create New Natural Function form filled in with name, parameter, and return type, with the Create button enabled.](/img/genai/develop/natural-functions/50-create-natural-function-all-configured.png)
+<ThemedImage
+    alt="Create New Natural Function form filled in with name, parameter, and return type, with the Create button enabled."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/50-create-natural-function-all-configured.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/50-create-natural-function-all-configured.png'),
+    }}
+/>
 
 WSO2 Integrator generates the source and opens the function in the **Flow Designer** with three additions in the sidebar: a `_<functionName>Model` connection, the type(s) under **Types**, and the function under **Natural Functions**. The flow itself is just a single **Prompt** node between **Start** and the end.
 
@@ -113,7 +167,13 @@ Adding a provider, the per-provider form fields, the supported models, and the a
 
 Click the pencil icon at the top-right of the Prompt node. An inline editor opens; click **Expand Editor** for the full Markdown editor with formatting tools.
 
-![Prompt editor open on the Prompt node, ready to write the prompt body.](/img/genai/develop/natural-functions/51-natural-function-add-prompt.png)
+<ThemedImage
+    alt="Prompt editor open on the Prompt node, ready to write the prompt body."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/51-natural-function-add-prompt.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/51-natural-function-add-prompt.png'),
+    }}
+/>
 
 | Toolbar action | Effect |
 |---|---|
@@ -124,7 +184,13 @@ Click the pencil icon at the top-right of the Prompt node. An inline editor open
 
 Click **Save**. The body collapses back into the Prompt node.
 
-![Prompt node with the saved prompt body shown inline.](/img/genai/develop/natural-functions/52-natural-function-with-prompt.png)
+<ThemedImage
+    alt="Prompt node with the saved prompt body shown inline."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/52-natural-function-with-prompt.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/52-natural-function-with-prompt.png'),
+    }}
+/>
 
 ---
 
@@ -154,7 +220,13 @@ If the model produces something that doesn't match the type, the runtime asks it
 - **Use enum unions for fixed-set values**, such as `"positive"|"negative"|"neutral"`. The model is constrained to pick one.
 - **Add field descriptions.** Each field in the type editor takes a short description; that description is included in the JSON schema sent to the LLM. Visualised in the Types editor, a record with a nested array (`Topics`) and a row record (`TopicsItem`) looks like this:
 
-    ![Types editor showing a record type with field descriptions filled in.](/img/genai/develop/natural-functions/53-add-field-description-to-types.png)
+    <ThemedImage
+        alt="Types editor showing a record type with field descriptions filled in."
+        sources={{
+            light: useBaseUrl('/img/genai/develop/natural-functions/53-add-field-description-to-types.png'),
+            dark: useBaseUrl('/img/genai/develop/natural-functions/53-add-field-description-to-types.png'),
+        }}
+    />
 
 - **Keep nesting shallow.** One level of records and arrays is fine; two starts to confuse smaller models; three usually benefits from being split.
 
@@ -172,17 +244,35 @@ Once the function exists, calling it from a flow is one step.
 2. Click **+** between two nodes.
 3. In the **Add Node** panel, expand the **AI** category and click **Call Natural Function**.
 
-![Add Node panel with the AI category showing the Call Natural Function option highlighted.](/img/genai/develop/natural-functions/54-add-natural-function-in-a-flow.png)
+<ThemedImage
+    alt="Add Node panel with the AI category showing the Call Natural Function option highlighted."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/54-add-natural-function-in-a-flow.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/54-add-natural-function-in-a-flow.png'),
+    }}
+/>
 
 4. The **Natural Functions** picker lists every natural function in the current integration. Pick one.
 
 5. The configuration form opens. Each parameter on the function becomes a row; bind it to an in-scope value. **Result** is the variable name that holds the typed return; **Variable Type** is locked to the function's declared return type.
 
-![Call Natural Function configuration form with parameters bound to in-scope variables and the Save button enabled.](/img/genai/develop/natural-functions/55-select-and-configure-input.png)
+<ThemedImage
+    alt="Call Natural Function configuration form with parameters bound to in-scope variables and the Save button enabled."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/55-select-and-configure-input.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/55-select-and-configure-input.png'),
+    }}
+/>
 
 6. Click **Save**. A new node appears in the flow, named after the bound result variable. Use that variable like any other typed value: return it from an HTTP resource (it becomes the JSON response), branch on a field with `Match`, transform it with `Map Data`, or pass it to another node.
 
-![Final resource flow showing the natural function call node connected between Start and the Return node.](/img/genai/develop/natural-functions/56-final-flow-view-with-a-natural-function.png)
+<ThemedImage
+    alt="Final resource flow showing the natural function call node connected between Start and the Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/natural-functions/56-final-flow-view-with-a-natural-function.png'),
+        dark: useBaseUrl('/img/genai/develop/natural-functions/56-final-flow-view-with-a-natural-function.png'),
+    }}
+/>
 
 ### Calling from Another Function or Agent
 

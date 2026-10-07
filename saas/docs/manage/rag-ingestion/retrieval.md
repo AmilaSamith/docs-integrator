@@ -45,7 +45,13 @@ To create a key, see the [OpenAI embeddings documentation](https://platform.open
 
 WSO2 Cloud - Integration Platform's retrieval process can apply reranking models to return the most contextually relevant chunks.
 
-![Retrieve relevant chunks from the vector store](/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif)
+<ThemedImage
+    alt="Retrieve relevant chunks from the vector store"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-light.gif'),
+    }}
+/>
 
 ### Step 4: Enable reranking (optional)
 

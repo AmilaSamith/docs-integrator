@@ -12,7 +12,13 @@ Add an `AGENTS.md` file to your project root to give Copilot standing instructio
 
 To create or edit the file, open **Settings** in the Copilot panel and select the file icon on the **Agent instructions** row under **Customize Copilot**. If `AGENTS.md` does not exist yet, selecting the file icon creates it from a starter template; otherwise, it opens the existing file for editing.
 
-![The Customize Copilot section in Settings with the Agent instructions row.](/img/editor/copilot/agents-md-settings-row.png)
+<ThemedImage
+    alt="The Customize Copilot section in Settings with the Agent instructions row."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/agents-md-settings-row.png'),
+        dark: useBaseUrl('/img/editor/copilot/agents-md-settings-row.png'),
+    }}
+/>
 
 ## Skills
 
@@ -30,7 +36,13 @@ Open **Settings** in the Copilot panel and select the **Skills** row under **Cus
 
 Some built-in skills are always active and cannot be disabled.
 
-![The Skills panel listing built-in, project, and user skills with enable toggles.](/img/editor/copilot/skills-manager-panel.png)
+<ThemedImage
+    alt="The Skills panel listing built-in, project, and user skills with enable toggles."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/skills-manager-panel.png'),
+        dark: useBaseUrl('/img/editor/copilot/skills-manager-panel.png'),
+    }}
+/>
 
 ### Add your own skill
 
@@ -41,13 +53,25 @@ Select **Add skill** to define a custom skill.
 
 Choose the **Type** to control where the skill lives: **Project** saves it to your project, while **User** makes it available across all your projects.
 
-![The Add skill dialog with the Create new and Import tabs.](/img/editor/copilot/add-skill-modal.png)
+<ThemedImage
+    alt="The Add skill dialog with the Create new and Import tabs."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/add-skill-modal.png'),
+        dark: useBaseUrl('/img/editor/copilot/add-skill-modal.png'),
+    }}
+/>
 
 ### How Copilot uses skills
 
 When a skill is enabled and your request matches its trigger, Copilot applies the skill automatically. If a matching skill is disabled, Copilot pauses and asks whether to enable it. Select **Enable** to turn it on, or **Skip** to continue without it for that message.
 
-![The prompt asking whether to enable a matching skill for the current request.](/img/editor/copilot/enable-skill-prompt.png)
+<ThemedImage
+    alt="The prompt asking whether to enable a matching skill for the current request."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/enable-skill-prompt.png'),
+        dark: useBaseUrl('/img/editor/copilot/enable-skill-prompt.png'),
+    }}
+/>
 
 ## Copilot MCP tools
 
@@ -63,7 +87,13 @@ To enable MCP tools, open **Copilot** > **Settings** > **Customize Copilot** > *
 
 Once enabled, the MCP chip appears in the Copilot chat input and you can add and manage servers. While MCP is off, the chip stays hidden and no servers connect.
 
-![Customize Copilot settings showing the MCP servers entry.](/img/editor/copilot/mcp-customize-copilot.png)
+<ThemedImage
+    alt="Customize Copilot settings showing the MCP servers entry."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-customize-copilot.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-customize-copilot.png'),
+    }}
+/>
 
 ### Add a server
 
@@ -76,7 +106,13 @@ In the manager panel, select **+ Add server** and choose a transport:
 
 Enter a name, then select **Add**. Copilot connects to the server and lists its tools. The status dot shows the result: connecting, connected, or failed with an error tooltip.
 
-![Add MCP server form with scope, name, transport, command, and arguments fields.](/img/editor/copilot/mcp-add-server.png)
+<ThemedImage
+    alt="Add MCP server form with scope, name, transport, command, and arguments fields."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-add-server.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-add-server.png'),
+    }}
+/>
 
 ### Server scopes
 
@@ -92,7 +128,13 @@ The project file uses the bare filename `.mcp.json`, following a common conventi
 
 Built-in servers are provided by WSO2, so you add them from the manager rather than defining them in a config file. They appear in their own group when available.
 
-![MCP servers manager grouping servers under Project and User scopes.](/img/editor/copilot/mcp-server-scopes.png)
+<ThemedImage
+    alt="MCP servers manager grouping servers under Project and User scopes."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-server-scopes.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-server-scopes.png'),
+    }}
+/>
 
 #### Workspace trust
 
@@ -109,13 +151,25 @@ From the manager, you can:
 - **Reload**: Retry servers that failed or disconnected.
 - **Edit raw JSON**: Select the file icon next to a scope to open its config file directly in the editor, for advanced changes such as custom headers or environment variables.
 
-![Edit MCP server form pre-filled with a stdio command and arguments.](/img/editor/copilot/mcp-edit-server.png)
+<ThemedImage
+    alt="Edit MCP server form pre-filled with a stdio command and arguments."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-edit-server.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-edit-server.png'),
+    }}
+/>
 
 If a config file contains invalid JSON, a warning banner appears for that scope. Select it to open the file and fix the error. The rest of the servers keep working.
 
 The MCP chip in the chat input mirrors these controls in a popover: the global toggle, per-server toggles, reload, and a **Manage** button that opens the full panel.
 
-![MCP chip popover in the chat input with per-scope server toggles and a Manage button.](/img/editor/copilot/mcp-chip-popover.png)
+<ThemedImage
+    alt="MCP chip popover in the chat input with per-scope server toggles and a Manage button."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-chip-popover.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-chip-popover.png'),
+    }}
+/>
 
 ### Pass secrets safely
 
@@ -138,7 +192,13 @@ Copilot prefers its built-in integration tools for core work and uses MCP tools 
 
 Servers live in a `mcpServers` object. The `type` field is optional and is inferred from `command` (stdio) or `url` (HTTP). Open the file directly from the manager with the file icon, or edit it in your own editor.
 
-![A project .mcp.json file open in the editor with a stdio server entry.](/img/editor/copilot/mcp-config-json.png)
+<ThemedImage
+    alt="A project .mcp.json file open in the editor with a stdio server entry."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/mcp-config-json.png'),
+        dark: useBaseUrl('/img/editor/copilot/mcp-config-json.png'),
+    }}
+/>
 
 Stdio server:
 

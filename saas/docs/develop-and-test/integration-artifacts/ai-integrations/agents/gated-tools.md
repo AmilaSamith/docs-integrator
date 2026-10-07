@@ -36,11 +36,23 @@ Gating is configured on the tool, not on the agent.
 2. Click the **+** button to open the **Add Tool** panel.
 3. Choose how you want to add the tool. For details on each option, see [Tools](tools.md).
 
-![Add tool](/img/genai/develop/agents/29-tool.png)
+<ThemedImage
+    alt="Add tool"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/29-tool.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/29-tool.png'),
+    }}
+/>
 
 4. In the tool configuration panel, tick **Requires Approval**.
 
-![Tool configuration panel with Requires Approval ticked and Approval Function empty](/img/genai/develop/agents/gated-tools/required-approval-field.png)
+<ThemedImage
+    alt="Tool configuration panel with Requires Approval ticked and Approval Function empty"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/required-approval-field.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/required-approval-field.png'),
+    }}
+/>
 
 5. Configure the following fields.
 
@@ -85,17 +97,35 @@ The function you pick for **Approval Function** must take the same parameters as
 
 Typing a new name has WSO2 Integrator generate a function next to the tool with the correct signature and a placeholder body. Generating a function this way is only available while you are creating the tool. If you edit a tool that already exists, **Approval Function** offers only your project's functions to pick from, so create the function first, then select it.
 
-![Approval Function field with a new function name typed in](/img/genai/develop/agents/gated-tools/approval-function-field.png)
+<ThemedImage
+    alt="Approval Function field with a new function name typed in"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-field.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-field.png'),
+    }}
+/>
 
 3. Open the generated function and replace the placeholder body with the real condition. When the condition holds, that call is gated and pauses for approval. When it doesn't, the call is ungated and runs immediately.
 
 1. Click the generated function in the left panel to open it.
 
-![The project's function list in the left panel, with refundNeedsReview listed and about to be clicked](/img/genai/develop/agents/gated-tools/approval-function-panel-view.png)
+<ThemedImage
+    alt="The project's function list in the left panel, with refundNeedsReview listed and about to be clicked"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-panel-view.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-panel-view.png'),
+    }}
+/>
 
 2. Click the **Return** step. The right panel shows the return expression, starting with the default placeholder value, `true`. Change it to the real condition, for example `amount > 100d`.
 
-![refundNeedsReview's Return step selected, with the right panel showing the expression changed to amount > 100d](/img/genai/develop/agents/gated-tools/approval-function-edit.png)
+<ThemedImage
+    alt="refundNeedsReview's Return step selected, with the right panel showing the expression changed to amount > 100d"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-edit.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/approval-function-edit.png'),
+    }}
+/>
 
 Generated for you, with a placeholder body:
 
@@ -124,7 +154,13 @@ Keep the following constraints in mind.
 
 Gated tools are marked with a badge in the bottom-right corner of the tool in the **AI Agent** node. Hover over the badge to see the **Requires Approval** tooltip. The badge is informational, and it gives you a way to confirm at a glance which tools can pause the agent.
 
-![Agent node showing the approval badge and its tooltip](/img/genai/develop/agents/gated-tools/tool-approval-badge.png)
+<ThemedImage
+    alt="Agent node showing the approval badge and its tooltip"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/tool-approval-badge.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/tool-approval-badge.png'),
+    }}
+/>
 
 ## 4. Make pauses survive a restart {#make-pauses-survive-a-restart}
 
@@ -137,7 +173,13 @@ A paused run is stored as a checkpoint in the agent's memory store, keyed by the
 
 The default is fine while you develop and test. For production, where a person may take hours to respond, attach a durable store to the agent's memory. See [Memory](memory.md#add-memory-store).
 
-![Agent node with a database-backed short-term memory store attached](/img/genai/develop/agents/gated-tools/memory-store-attached.png)
+<ThemedImage
+    alt="Agent node with a database-backed short-term memory store attached"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/gated-tools/memory-store-attached.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/gated-tools/memory-store-attached.png'),
+    }}
+/>
 
 ## Choose what to gate
 

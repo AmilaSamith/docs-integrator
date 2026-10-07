@@ -12,7 +12,13 @@ MQTT event integrations subscribe to one or more MQTT topics and trigger an `onM
 2. In the **Artifacts** panel, select **MQTT** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![MQTT Event Integration creation form](/img/develop/integration-artifacts/event/mqtt/step-creation-form.png)
+   <ThemedImage
+       alt="MQTT Event Integration creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description | Default |
    |---|---|---|
@@ -30,7 +36,13 @@ MQTT event integrations subscribe to one or more MQTT topics and trigger an `onM
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill and the **Event Handlers** section.
 
-   ![Service Designer showing the MQTT service canvas](/img/develop/integration-artifacts/event/mqtt/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the MQTT service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-service-designer.png'),
+       }}
+   />
 
 6. Click **+ Add Handler** to add the `onMessage` handler.
 
@@ -57,7 +69,13 @@ service mqtt:Service on mqttListener {
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **MQTT Event Integration Configuration** panel. Select **mqttListener** under **Attached Listeners** to configure the listener.
 
-![MQTT Event Integration Configuration panel](/img/develop/integration-artifacts/event/mqtt/step-listener-config.png)
+<ThemedImage
+    alt="MQTT Event Integration Configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-listener-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/mqtt/step-listener-config.png'),
+    }}
+/>
 
 | Field | Description | Default |
 |---|---|---|

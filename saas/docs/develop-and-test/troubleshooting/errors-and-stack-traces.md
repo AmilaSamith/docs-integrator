@@ -214,4 +214,4 @@ If a panic's stack trace contains no frame from your own code, the failure is in
 - [Strand dump analysis](strand-dump-analysis.md) - for hangs, deadlocks, and concurrency diagnosis.
 - [Logging](logging.md) - when logs are the right tool for the job.
 - [Profiling](profiling.md) - for performance issues.
-- [Debug Your Integration](../debugging/debugging.md) - step through the code interactively.
+- [Editor Debugging](../debugging/debugging.md) - step through the code interactively.

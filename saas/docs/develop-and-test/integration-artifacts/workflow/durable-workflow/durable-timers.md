@@ -33,7 +33,13 @@ The `emailChangeRequest` workflow puts that rule in one place. It validates the 
 4. On **Record**, click the field to open the **Record Configuration** editor, select the units the wait is expressed in, and fill in their values. The cooling-off period here is one day, so **days** is selected and set to `1`.
 5. Click **Save**.
 
-![Adding a Sleep step between validateEmailChange and performEmailChange, selecting days in the Record Configuration editor and setting it to 1](/img/workflows/develop/durable-timers/add-sleep-step.gif)
+<ThemedImage
+    alt="Adding a Sleep step between validateEmailChange and performEmailChange, selecting days in the Record Configuration editor and setting it to 1"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
+        dark: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
+    }}
+/>
 
 ### Duration units
 
@@ -74,7 +80,7 @@ Use a timer for a delay you always want, and a timeout when you are waiting on s
 
 ## Watching timers
 
-A pending timer appears as a `TIMER` node in the instance's execution graph in the [Integration Control Plane](../../../../integrator/icp/icp-console-overview.md), so a workflow that looks stalled can be identified as simply waiting, and you can see what it is waiting for and until when.
+A pending timer appears as a `TIMER` node in the instance's execution graph in the [Integration Control Plane](../../../../icp/manage-workflows/workflow-executions.md), so a workflow that looks stalled can be identified as simply waiting, and you can see what it is waiting for and until when. The same graph is available over the [Management API](management-api.md).
 
 ## Next steps
 

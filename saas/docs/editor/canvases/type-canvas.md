@@ -8,13 +8,25 @@ The Type Canvas, also known as the **type diagram**, is the canvas you open to s
 
 For background on what types are and how to define them field by field, see the [Type Panel](../panels/type-panel.md).
 
-![Type Canvas for an integration with records and enums](/img/editor/canvases/type-canvas/02-overview.png)
+<ThemedImage
+    alt="Type Canvas for an integration with records and enums"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/02-overview.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/02-overview.png'),
+    }}
+/>
 
 ## Open the canvas
 
 The project explorer groups every type in the current integration under **Types**, so the diagram is one click away from any type in the project.
 
-![Types listed under the project explorer](/img/editor/canvases/type-canvas/03-type-panel.png)
+<ThemedImage
+    alt="Types listed under the project explorer"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/03-type-panel.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/03-type-panel.png'),
+    }}
+/>
 
 You have two ways to open the canvas:
 
@@ -47,13 +59,25 @@ When a field, member, or method type points to another type defined in the integ
 
 Select a type card to open the side panel for that type. The panel lists every field with its name and type, and lets you rename the type, add or remove fields, change a field's type, and configure advanced options. Any change you save in the side panel updates the card on the canvas and the underlying Ballerina source.
 
-![Edit type side panel for a record](/img/editor/canvases/type-canvas/04-edit-type.png)
+<ThemedImage
+    alt="Edit type side panel for a record"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/04-edit-type.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/04-edit-type.png'),
+    }}
+/>
 
 ## Add a type
 
 Select **Add Type** at the top right of the canvas to add a new type to the integration. The canvas opens the new type form where you choose the kind of type (record, enum, union, and so on), give it a name, and define its fields or members. The new type appears as a card on the canvas as soon as you save it, ready to be referenced from other types.
 
-![Add Type button on the Type Canvas](/img/editor/canvases/type-canvas/02-add-type.png)
+<ThemedImage
+    alt="Add Type button on the Type Canvas"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/02-add-type.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/02-add-type.png'),
+    }}
+/>
 
 To add a field that references an existing type, set the field type to the name of that type. The canvas draws the connecting line for you when you save. For the full set of options (records, enums, unions, arrays, service classes, and JSON or XML import), see the [Type Panel](../panels/type-panel.md).
 
@@ -68,7 +92,13 @@ The three-dot menu (**⋮**) on a type card opens the actions for that type.
 | **Delete** | Removes the type from the integration. The canvas asks you to confirm first. |
 | **Focused View** | Hides every other card on the canvas and centers the diagram on this type and the types it references. |
 
-![Three-dot menu on a type card](/img/editor/canvases/type-canvas/06-type-context-menu.png)
+<ThemedImage
+    alt="Three-dot menu on a type card"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/06-type-context-menu.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/06-type-context-menu.png'),
+    }}
+/>
 
 ## Focused view
 
@@ -76,13 +106,25 @@ The three-dot menu (**⋮**) on a type card opens the actions for that type.
 
 For example, opening **Focused View** on `LeaveRequest` shows the `LeaveRequest` record alongside the `LeaveType` and `TimeEntryStatus` enums it points to, with the lines between them. Other types in the integration are hidden until you return to the full diagram from the breadcrumb.
 
-![Focused view for the LeaveRequest type](/img/editor/canvases/type-canvas/05-focused-view.png)
+<ThemedImage
+    alt="Focused view for the LeaveRequest type"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/05-focused-view.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/05-focused-view.png'),
+    }}
+/>
 
 ## Source view
 
 **Source** opens the Ballerina source for `types.bal` next to the diagram, so you can edit the type definition as code while still seeing the cards and lines update on the canvas. Use this view when you want to copy a type definition, jump to a specific field, or make a change that is faster to type than to click through the side panel.
 
-![Type diagram and types.bal side by side](/img/editor/canvases/type-canvas/07-source-view.png)
+<ThemedImage
+    alt="Type diagram and types.bal side by side"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/07-source-view.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/07-source-view.png'),
+    }}
+/>
 
 ## Delete a type
 
@@ -91,7 +133,13 @@ Select **Delete** from the three-dot menu on a type card. The canvas opens a con
 :::warning References are not cleaned up
 Fields, parameters, and return types in other types or flows that pointed at the deleted type are left in the source and will produce compile errors. Review every type, data mapper, and service that referenced the deleted type, and update or remove those references before running the integration.
 
-![Delete confirmation for a type](/img/editor/canvases/type-canvas/08-delete-confirmation.png)
+<ThemedImage
+    alt="Delete confirmation for a type"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/08-delete-confirmation.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/08-delete-confirmation.png'),
+    }}
+/>
 
 ## Canvas controls
 
@@ -105,7 +153,13 @@ Use the controls in the bottom-left corner of the canvas to adjust the view.
 | **+** | Zooms in. |
 | **−** | Zooms out. |
 
-![Canvas controls in the bottom-left corner](/img/editor/canvases/type-canvas/09-canvas-controls.png)
+<ThemedImage
+    alt="Canvas controls in the bottom-left corner"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/type-canvas/09-canvas-controls.png'),
+        dark: useBaseUrl('/img/editor/canvases/type-canvas/09-canvas-controls.png'),
+    }}
+/>
 
 To move around the canvas, scroll up and down to pan vertically and scroll left and right to pan horizontally. Use **Fit to screen** at any time to bring every type card back into view.
 

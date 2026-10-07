@@ -32,7 +32,13 @@ The steps below follow one example: a `POST chat/[string workflowId]` resource t
 
 4. Click **Save**.
 
-![Adding a Send Agent Data Event step to the chat resource, setting the instance ID from workflowId, the chat channel, and the msg payload](/img/workflows/agentic/send-agent-data-event/send-agent-data-event.gif)
+<ThemedImage
+    alt="Adding a Send Agent Data Event step to the chat resource, setting the instance ID from workflowId, the chat channel, and the msg payload"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/send-agent-data-event/send-agent-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/send-agent-data-event/send-agent-data-event.gif'),
+    }}
+/>
 
 The saved step is drawn as **Send to chat**, named for the channel it sends on, with a dashed connector across to the `claimAgent` it delivers into. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable.
 

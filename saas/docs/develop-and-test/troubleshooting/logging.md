@@ -6,7 +6,7 @@ title: Logging
 
 Logs are the everyday tool for tracing what an integration did and diagnosing what went wrong. Reach for them when you want a persistent record across runs, when the issue only reproduces in a long-running deployment, or when [editor debugging](../debugging/debugging.md) is too heavyweight for the question you have.
 
-WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Error**, and **Debug**. For the field-by-field reference of the Log nodes, see [Logging in the Flow Canvas](../../editor/canvases/flow-canvas/node-palette.md#logging). For runtime configuration (log level, output format, file rotation, aggregation), see Logging & structured logs.
+WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Error**, and **Debug**. For the field-by-field reference of the Log nodes, see [Logging in the flow diagram editor](../../editor/canvases/flow-canvas/node-palette.md#logging). For runtime configuration (log level, output format, file rotation, aggregation), see [Logging & structured logs](/observe/logging).
 
 ## Add a log statement
 
@@ -14,9 +14,15 @@ WSO2 Integrator supports the four standard severities: **Info**, **Warn**, **Err
 2. Click **Log Info** (or **Log Warn**, **Log Error**, **Log Debug**) to add the node.
 3. Fill the **Msg** field with the message to log. **Msg** supports Ballerina string templates, so you can embed expressions such as `` `Order ${orderId} received` ``.
 
-![Log Info form with Msg field](/img/editor/canvases/flow-canvas/log-info-form.png)
+<ThemedImage
+    alt="Log Info form with Msg field"
+    sources={{
+        light: useBaseUrl('/img/develop/flow-design-elements/log-info-form.png'),
+        dark: useBaseUrl('/img/develop/flow-design-elements/log-info-form.png'),
+    }}
+/>
 
-See [Logging in the Flow Canvas](../../editor/canvases/flow-canvas/node-palette.md#logging) for the full node and form reference.
+See [Logging in the flow diagram editor](../../editor/canvases/flow-canvas/node-palette.md#logging) for the full node and form reference.
 
 Import the `log` library and call the function that matches the severity you need.
 
@@ -64,7 +70,13 @@ When you catch an error, log it with the error value attached so the stack trace
 1. Add a **Log Error** node inside the **On Failure** branch of an `ErrorHandler`, or after a checked call that returned an error.
 2. In **Advanced Configurations**, attach the caught error to the log entry and enable the stack trace option.
 
-![Log Info form with Msg field](/img/develop/troubleshooting/logging/log-error.png)
+<ThemedImage
+    alt="Log Info form with Msg field"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/logging/log-error.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/logging/log-error.png'),
+    }}
+/>
 
 ```ballerina
 do {
@@ -90,9 +102,15 @@ Use the severity that matches the audience and noise budget for the message:
 
 Open **Configurations** from the project explorer and select **ballerina/log** under **Imported libraries**. Set the **level** field (and any of the other root logger options) without leaving the editor.
 
-![Configurable Variables panel showing the ballerina/log options](/img/develop/troubleshooting/logging/configurable-variables.png)
+<ThemedImage
+    alt="Configurable Variables panel showing the ballerina/log options"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/logging/configurable-variables.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/logging/configurable-variables.png'),
+    }}
+/>
 
-For the meaning of each option (`format`, `level`, `modules`, `keyValues`, `destinations`, `enableSensitiveDataMasking`), see [Ballerina by Example](/reference/ballerina-by-example).
+For the meaning of each option (`format`, `level`, `modules`, `keyValues`, `destinations`, `enableSensitiveDataMasking`), see [Ballerina by Example](https://ballerina.io/learn/by-example/).
 
 Set the level in `Config.toml` before running the integration:
 
@@ -101,7 +119,7 @@ Set the level in `Config.toml` before running the integration:
 level = "DEBUG"
 ```
 
-For module-specific levels, file rotation, and the JSON output format, see Logging & structured logs.
+For module-specific levels, file rotation, and the JSON output format, see [Logging & structured logs](/observe/logging).
 
 ## Reuse context across calls with child loggers
 
@@ -180,11 +198,11 @@ Ballerina libraries emit their own logs at the module level. The most common one
 accessLogConfig.console = true
 ```
 
-Other modules (such as `ballerina/sql` or `ballerina/grpc`) emit logs under their own module names. To raise or lower their verbosity independently of your integration code, configure module-specific levels as described in Logging & structured logs.
+Other modules (such as `ballerina/sql` or `ballerina/grpc`) emit logs under their own module names. To raise or lower their verbosity independently of your integration code, configure module-specific levels as described in [Logging & structured logs](/observe/logging).
 
 ## What's next
 
-- [Troubleshoot Deployment](../../deploy-and-run/deploy-to-wso2-cloud/troubleshoot-deployment.md) - diagnose issues that surface only after the integration ships.
+- [Deployment](deployment.md) - diagnose issues that surface only after the integration ships.
 - [Profiling](profiling.md) - investigate slow paths once logs point at the area.
 - [Strand dump analysis](strand-dump-analysis.md) - inspect runtime strand state when an integration hangs.
 - [IDE troubleshooting](../../editor/troubleshooting/troubleshooting.md) - resolve editor and tooling problems.

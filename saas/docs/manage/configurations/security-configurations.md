@@ -23,11 +23,23 @@ When both schemes are enabled:
 1. Open your integration from the project home.
 2. On the integration overview page, click **Configure Security** in the top-right panel.
 
-    ![Integration overview page with Configure Security button](/img/manage/cloud/configurations/security-configurations/configure-security.png)
+    <ThemedImage
+        alt="Integration overview page with Configure Security button"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/security-configurations/configure-security.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/security-configurations/configure-security.png'),
+        }}
+    />
 
 3. In the **Configure Security** panel, select the endpoint you want to secure from the **Endpoints** dropdown.
 
-    ![Configure Security panel](/img/manage/cloud/configurations/security-configurations/configure-security-panel.png)
+    <ThemedImage
+        alt="Configure Security panel"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/configurations/security-configurations/configure-security-panel.png'),
+            dark: useBaseUrl('/img/manage/cloud/configurations/security-configurations/configure-security-panel.png'),
+        }}
+    />
 
 4. Enable the security schemes you want to apply:
 

@@ -31,7 +31,13 @@ You almost always pick one of these in the **Vector Knowledge Base** form's **Ch
 
 Inside the **Create Vector Knowledge Base** form click **+ Create New Chunker**. The **Select Chunker** picker shows the available types:
 
-![Select Chunker picker listing three chunkers: Generic Recursive Chunker (Represents a Generic document chunker. Provides functionality to recursively chunk a text), Markdown Chunker (Represents a Markdown document chunker. Provides functionality to recursively chunk a Markdown document), and Html Chunker (Represents an HTML document chunker. Provides functionality to recursively chunk a HTML document).](/img/genai/develop/components/chunkers/01-select-list.png)
+<ThemedImage
+    alt="Select Chunker picker listing three chunkers: Generic Recursive Chunker (Represents a Generic document chunker. Provides functionality to recursively chunk a text), Markdown Chunker (Represents a Markdown document chunker. Provides functionality to recursively chunk a Markdown document), and Html Chunker (Represents an HTML document chunker. Provides functionality to recursively chunk a HTML document)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/01-select-list.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/01-select-list.png'),
+    }}
+/>
 
 ## Implementations overview
 
@@ -52,13 +58,25 @@ For plain text. Begins splitting using the chosen strategy and recursively falls
 
 ### Create form
 
-![Create Chunker form for Generic Recursive showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiGenericrecursivechunker, Result Type ai:GenericRecursiveChunker.](/img/genai/develop/components/chunkers/02-generic-recursive-basic.png)
+<ThemedImage
+    alt="Create Chunker form for Generic Recursive showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiGenericrecursivechunker, Result Type ai:GenericRecursiveChunker."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/02-generic-recursive-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/02-generic-recursive-basic.png'),
+    }}
+/>
 
 No required fields. Sensible defaults work for most prose.
 
 ### Advanced configurations
 
-![Generic Recursive Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default PARAGRAPH).](/img/genai/develop/components/chunkers/03-generic-recursive-advanced.png)
+<ThemedImage
+    alt="Generic Recursive Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default PARAGRAPH)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/03-generic-recursive-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/03-generic-recursive-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -84,13 +102,25 @@ Header-aware chunker for Markdown. Starts at heading level `##` and walks down b
 
 ### Create form
 
-![Create Chunker form for Markdown showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiMarkdownchunker, Result Type ai:MarkdownChunker.](/img/genai/develop/components/chunkers/04-markdown-basic.png)
+<ThemedImage
+    alt="Create Chunker form for Markdown showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiMarkdownchunker, Result Type ai:MarkdownChunker."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/04-markdown-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/04-markdown-basic.png'),
+    }}
+/>
 
 No required fields.
 
 ### Advanced configurations
 
-![Markdown Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default MARKDOWN_HEADER).](/img/genai/develop/components/chunkers/05-markdown-advanced.png)
+<ThemedImage
+    alt="Markdown Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default MARKDOWN_HEADER)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/05-markdown-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/05-markdown-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -113,13 +143,25 @@ Tag-aware chunker for HTML. Starts at heading tags and falls back through paragr
 
 ### Create form
 
-![Create Chunker form for HTML showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiHtmlchunker, Result Type ai:HtmlChunker.](/img/genai/develop/components/chunkers/06-html-basic.png)
+<ThemedImage
+    alt="Create Chunker form for HTML showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiHtmlchunker, Result Type ai:HtmlChunker."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/06-html-basic.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/06-html-basic.png'),
+    }}
+/>
 
 No required fields.
 
 ### Advanced configurations
 
-![HTML Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default HTML_HEADER).](/img/genai/develop/components/chunkers/07-html-advanced.png)
+<ThemedImage
+    alt="HTML Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default HTML_HEADER)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers/07-html-advanced.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers/07-html-advanced.png'),
+    }}
+/>
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -159,7 +201,7 @@ The Devant Chunker is added from the same **Select Chunker** picker. Its create 
 | **Maximum Overlap Size in Characters** | `50` | Any non-negative integer | Overlap characters between adjacent chunks. |
 | **Chunking Strategy** | `RECURSIVE` | `RECURSIVE`, `PARAGRAPH`, `SENTENCE`, `CHARACTER` | The chunking strategy WSO2 Integration Platform uses. |
 
-Plus the [Standard HTTP Advanced Configurations](./model-providers.md#standard-http-advanced-configurations).
+Plus the [Standard HTTP Advanced Configurations](model-providers.md#standard-http-advanced-configurations).
 
 > Only binary documents are accepted. The document's metadata must include a file name so WSO2 Integration Platform can detect the source format.
 
@@ -180,7 +222,7 @@ The defaults (`200` / `40`) are tuned for prose. Code-heavy or table-heavy conte
 
 ## What's next
 
-- [Embedding Providers](./embedding-providers.md) - Configure the model that converts chunks into vectors.
-- [Vector Stores](./vector-stores.md) - Set up the store that indexes and retrieves those vectors.
-- [Knowledge Bases](./knowledge-bases.md) - Combine a chunker, embedding provider, and vector store into a single ingest-and-retrieve component.
+- [Embedding Providers](embedding-providers.md) - Configure the model that converts chunks into vectors.
+- [Vector Stores](vector-stores.md) - Set up the store that indexes and retrieves those vectors.
+- [Knowledge Bases](knowledge-bases.md) - Combine a chunker, embedding provider, and vector store into a single ingest-and-retrieve component.
 - [RAG](../rag/rag.md) - End-to-end walkthrough of the ingestion and query flows.

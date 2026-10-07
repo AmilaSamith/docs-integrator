@@ -83,7 +83,13 @@ You can find the folder ID in the Google Drive URL, after `/folders/`.
 - When you create a scheduled RAG ingestion automation, WSO2 Cloud increases container CPU and memory for stable execution.
 - For very large files or high ingestion volume, scale resources in **Admin** > **Containers**.
 
-![RAG ingestion configuration form](/img/manage/cloud/rag-ingestion/rag-configure-light.gif)
+<ThemedImage
+    alt="RAG ingestion configuration form"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-configure-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-configure-light.gif'),
+    }}
+/>
 
 ### Step 6: Schedule ingestion
 
@@ -93,11 +99,23 @@ After creation, the automation is deployed to the development environment with y
 2. Click **Schedule** to configure recurring ingestion.
 3. Check automation logs to verify successful ingestion.
 
-![Run ingestion and view logs](/img/manage/cloud/rag-ingestion/rag-ingest-light.gif)
+<ThemedImage
+    alt="Run ingestion and view logs"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-ingest-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-ingest-light.gif'),
+    }}
+/>
 
 You can run ingestion at intervals such as minutely, hourly, daily, monthly, or yearly. In each run, the system detects new files in the data source and ingests them into the vector store.
 
-![Schedule recurring ingestion](/img/manage/cloud/rag-ingestion/rag-schedule-light.gif)
+<ThemedImage
+    alt="Schedule recurring ingestion"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-schedule-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-schedule-light.gif'),
+    }}
+/>
 
 ### Step 7: Verify
 
@@ -115,7 +133,13 @@ Once processing is complete, execute test queries to ensure proper data retrieva
 
 If the **Send** button is unavailable, use the [RAG retrieval](./retrieval.md) to verify retrieval.
 
-![Configure retrieval values and verify results in the Retrieval tab](/img/manage/cloud/rag-ingestion/rag-retrieval-verification.gif)
+<ThemedImage
+    alt="Configure retrieval values and verify results in the Retrieval tab"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-verification.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-retrieval-verification.gif'),
+    }}
+/>
 
 A component named **RAG Retrieval Service** is automatically created alongside the ingestion automation. This component is used internally by the ingestion automation and is not intended for external use.
 

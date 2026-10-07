@@ -61,11 +61,23 @@ The `get` resource at the base path handles the WebSocket upgrade. It returns th
 
 Although WebSocket service creation is not supported in the visual designer, you can use it to implement logic for connection handlers defined in code. Once the service exists in the project, it appears in the **Entry Points** sidebar and on the design canvas.
 
-![Design canvas showing the /chat websocket:Service node connected to wsListener](../../../../static/img/develop/integration-artifacts/service/websocket-service/step-designer.png)
+<ThemedImage
+    alt="Design canvas showing the /chat websocket:Service node connected to wsListener"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-designer.png'),
+    }}
+/>
 
 Click the service node (or the service name in the sidebar) to open the **WebSocket Service** designer, which lists the upgrade resource handler and the attached listener.
 
-![WebSocket Service designer showing Event Handlers with the upgrade resource](../../../../static/img/develop/integration-artifacts/service/websocket-service/step-service-designer.png)
+<ThemedImage
+    alt="WebSocket Service designer showing Event Handlers with the upgrade resource"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-service-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-service-designer.png'),
+    }}
+/>
 
 Not all WebSocket service configuration options are available through the visual designer. For full control — including listener configuration and idle timeout settings — use Ballerina code directly.
 
@@ -77,13 +89,25 @@ The `onTextMessage`, `onBinaryMessage`, `onClose`, `onError`, and `onIdleTimeout
 
 In the upgrade resource flow designer, click the **Return** step. The right panel shows the return expression, including the connection service class being instantiated (for example, `new ChatService()`).
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websocket-service/step-flow.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-flow.png'),
+    }}
+/>
 
 **Opening the type diagram**
 
 In the sidebar, expand **Types** and click the connection service class name (for example, `ChatService`). This opens the **Types** view, which shows the type diagram for that class with its methods listed.
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websocket-service/step-type-diagram.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-type-diagram.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-type-diagram.png'),
+    }}
+/>
 
 **Opening the Service Class Designer**
 
@@ -92,7 +116,13 @@ Click the Service Class type node in the diagram to open the **Service Class Des
 - **Class Variables** — shared state available across all handler methods; use **+ Variable** to add one.
 - **Methods** — the remote functions generated for the connection service.
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websocket-service/step-service-class.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-service-class.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websocket-service/step-service-class.png'),
+    }}
+/>
 
 Click any method row (for example, `onTextMessage`) to open the **flow designer view** for that handler, where you can define the logic for processing messages, handling errors, or cleaning up on close.
 

@@ -10,11 +10,23 @@ Function artifacts encapsulate reusable logic that can be called from any integr
 
 1. Click **+** next to **Functions** in the sidebar. Alternatively, click **+ Add Artifact** in the **Design** panel, then click **Function** under **Other Artifacts** or **Library Artifacts**.
 
-   ![Artifacts page with the Function option highlighted under Other Artifacts](/img/develop/integration-artifacts/supporting/functions/functions-artifact-selection.png)
+   <ThemedImage
+       alt="Artifacts page with the Function option highlighted under Other Artifacts"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/functions-artifact-selection.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/functions-artifact-selection.png'),
+       }}
+   />
 
 2. Fill in the **Create New Function** form.
 
-   ![Create New Function form with Name, Description, Public, Parameters, and Return Type fields](/img/develop/integration-artifacts/supporting/functions/create-new-function-form.png)
+   <ThemedImage
+       alt="Create New Function form with Name, Description, Public, Parameters, and Return Type fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/create-new-function-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/create-new-function-form.png'),
+       }}
+   />
 
    | Field | Description |
    |---|---|
@@ -47,7 +59,13 @@ To open and edit a function's flow view, click its name in the sidebar under **F
 
 To change the function's name, description, parameters, or return type, click **Configure** in the top-right of the flow view.
 
-![Function flow view with a function selected in the sidebar and the Configure button highlighted](/img/develop/integration-artifacts/supporting/functions/function-configure.png)
+<ThemedImage
+    alt="Function flow view with a function selected in the sidebar and the Configure button highlighted"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/function-configure.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/functions/function-configure.png'),
+    }}
+/>
 
 ## Project organization
 
@@ -83,7 +101,7 @@ my-integration/
 
 ## What's next
 
-- [Types](./types.md) — Define record types for function parameters and return values.
-- [Data mapper](./data-mapper/data-mapper.md) — Transform data between record types using a visual canvas.
-- [Connections](./connections.md) — Reuse connection configurations across integration artifacts.
-- [Configurations](./configurations.md) — Externalize values such as endpoints and credentials.
+- [Types](types.md) — Define record types for function parameters and return values.
+- [Data mapper](data-mapper/data-mapper.md) — Transform data between record types using a visual canvas.
+- [Connections](connections.md) — Reuse connection configurations across integration artifacts.
+- [Configurations](configurations.md) — Externalize values such as endpoints and credentials.

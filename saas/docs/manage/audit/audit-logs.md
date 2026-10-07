@@ -56,11 +56,23 @@ You must be the organization administrator to perform this action.
 3. On the **Access Control** tab, click **Roles**, then click **+ Create Role**.
 4. Enter a name and description for the role.
 
-    ![Create Role dialog with name and description fields filled in.](/img/manage/cloud/audit/create-role-to-view-audit-logs.png)
+    <ThemedImage
+        alt="Create Role dialog with name and description fields filled in."
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/audit/create-role-to-view-audit-logs.png'),
+            dark: useBaseUrl('/img/manage/cloud/audit/create-role-to-view-audit-logs.png'),
+        }}
+    />
 
 5. Under the **Permissions** list, select **LOG-MANAGEMENT**.
 
-    ![Permissions list with the LOG-MANAGEMENT permission selected.](/img/manage/cloud/audit/log-management-permission.png)
+    <ThemedImage
+        alt="Permissions list with the LOG-MANAGEMENT permission selected."
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/audit/log-management-permission.png'),
+            dark: useBaseUrl('/img/manage/cloud/audit/log-management-permission.png'),
+        }}
+    />
 
 6. Click **Create**.
 
@@ -69,16 +81,34 @@ You must be the organization administrator to perform this action.
 1. On the **Access Control** tab, click **Groups**, then click **+ Create Group**.
 2. Enter a name and description for the group, then click **Create**.
 
-    ![Create Group dialog with name and description fields filled in.](/img/manage/cloud/audit/create-user-group.png)
+    <ThemedImage
+        alt="Create Group dialog with name and description fields filled in."
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/audit/create-user-group.png'),
+            dark: useBaseUrl('/img/manage/cloud/audit/create-user-group.png'),
+        }}
+    />
 
 3. On the **Groups** view, on the group you just created, click **Edit**.
 
-    ![Groups list with the Edit option highlighted on the new group.](/img/manage/cloud/audit/edit-user-group.png)
+    <ThemedImage
+        alt="Groups list with the Edit option highlighted on the new group."
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/audit/edit-user-group.png'),
+            dark: useBaseUrl('/img/manage/cloud/audit/edit-user-group.png'),
+        }}
+    />
 
 4. Add the user to the group by clicking **+ Add Users**.
 5. Assign the role you created in [Step 1](#step-1-create-a-role-with-audit-log-access-permissions) to the group.
 
-    ![Edit Group panel showing assigned users and the audit log role attached to the group.](/img/manage/cloud/audit/assign-user-role-to-group.png)
+    <ThemedImage
+        alt="Edit Group panel showing assigned users and the audit log role attached to the group."
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/audit/assign-user-role-to-group.png'),
+            dark: useBaseUrl('/img/manage/cloud/audit/assign-user-role-to-group.png'),
+        }}
+    />
 
     :::tip
     If you want to invite one or more users and add them to the Auditor group, follow these steps:

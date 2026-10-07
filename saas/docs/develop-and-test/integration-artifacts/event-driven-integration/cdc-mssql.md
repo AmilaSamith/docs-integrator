@@ -16,7 +16,13 @@ CDC must be enabled on the SQL Server database and on each table you want to tra
 2. In the **Artifacts** panel, select **CDC for Microsoft SQL Server** under **Event Integration**.
 3. In the creation form, select **Create new** to configure a new listener.
 
-   ![Microsoft SQL Server CDC creation form: connection fields](/img/develop/integration-artifacts/event/cdc-mssql/step-creation-form.png)
+   <ThemedImage
+       alt="Microsoft SQL Server CDC creation form: connection fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-creation-form.png'),
+       }}
+   />
 
    Under **Listener Configurations**, fill in the following fields:
 
@@ -44,7 +50,13 @@ CDC must be enabled on the SQL Server database and on each table you want to tra
 
 5. WSO2 Integrator creates the empty service and opens it in the **Service Designer**. The canvas shows the attached listener pill and the table name pill. The service has no handlers yet.
 
-   ![Service Designer showing the Microsoft SQL Server CDC service canvas](/img/develop/integration-artifacts/event/cdc-mssql/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the Microsoft SQL Server CDC service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-service-designer.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/log;
@@ -117,7 +129,13 @@ To accept any row shape without defining a record type, declare handler paramete
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **CDC for Microsoft SQL Server Configuration** panel. Select **CDC for Microsoft SQL Server** in the left panel.
 
-![Microsoft SQL Server CDC Configuration panel: service config and listener connection](/img/develop/integration-artifacts/event/cdc-mssql/step-service-config.png)
+<ThemedImage
+    alt="Microsoft SQL Server CDC Configuration panel: service config and listener connection"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-service-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-service-config.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -146,7 +164,13 @@ In the **CDC for Microsoft SQL Server Configuration** panel, select **mssqlCdcLi
 
 A single service can be attached to more than one listener. Attach multiple listeners when one service needs to process change events from more than one SQL Server source. For example, you can capture changes from two separate SQL Server instances, or from two databases with different connection settings, and route every event through the same handler logic.
 
-![Listener configuration: Database, Engine Name, Internal Schema Storage, Offset Storage, Liveness Interval, Options](/img/develop/integration-artifacts/event/cdc-mssql/step-listener-config.png)
+<ThemedImage
+    alt="Listener configuration: Database, Engine Name, Internal Schema Storage, Offset Storage, Liveness Interval, Options"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-listener-config.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-listener-config.png'),
+    }}
+/>
 
 | Field | Description | Default |
 |---|---|---|
@@ -217,7 +241,13 @@ In the **Service Designer**, click **+ Add Handler**. The **Select Handler to Ad
 
 `onRead`, `onCreate`, `onUpdate`, and `onDelete` each open a **Message Handler Configuration** panel for the row payload. `onError` is added directly without additional configuration.
 
-![Message Handler Configuration panel with Define Database Entry and Advanced Parameters TableName checkbox](/img/develop/integration-artifacts/event/cdc-mssql/step-add-handler.png)
+<ThemedImage
+    alt="Message Handler Configuration panel with Define Database Entry and Advanced Parameters TableName checkbox"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-add-handler.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-add-handler.png'),
+    }}
+/>
 
 The configuration panel exposes the following fields:
 
@@ -228,7 +258,13 @@ The configuration panel exposes the following fields:
 
 Click **Save** to add the handler. Added handlers appear in the **Event Handlers** list on the Service Designer, where you can edit or remove each one.
 
-![Service Designer for a CDC for Microsoft SQL Server service showing the Event Handlers list with onCreate, onUpdate, onDelete, and onError entries.](/img/develop/integration-artifacts/event/cdc-mssql/step-event-handlers.png)
+<ThemedImage
+    alt="Service Designer for a CDC for Microsoft SQL Server service showing the Event Handlers list with onCreate, onUpdate, onDelete, and onError entries."
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-event-handlers.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/event/cdc-mssql/step-event-handlers.png'),
+    }}
+/>
 
 ```ballerina
 // Typed record that mirrors the columns of the `customers` table.

@@ -13,7 +13,13 @@ The **Metrics** pane displays graphs for the following metrics:
 - Data transfer
 - Disk usage
 
-![Metrics graph](/img/observe/cloud/metrics/metrics.png)
+<ThemedImage
+    alt="Metrics graph"
+    sources={{
+        light: useBaseUrl('/img/observe/cloud/metrics/metrics.png'),
+        dark: useBaseUrl('/img/observe/cloud/metrics/metrics.png'),
+    }}
+/>
 
 By default, the dashboard shows data from the past 24 hours. You can adjust the time window using the time range and zone selectors in the options bar. To drill down into a specific period, click and drag over the relevant section of the graph.
 

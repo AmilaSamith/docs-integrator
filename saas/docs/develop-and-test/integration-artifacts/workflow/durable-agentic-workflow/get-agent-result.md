@@ -32,7 +32,13 @@ The steps below follow one example: a `GET claim/[string workflowId]/status` res
 
 4. Click **Save**.
 
-![Adding a Get Agent Result step to the claim status resource, selecting claimAgent and setting the instance ID from workflowId](/img/workflows/agentic/get-agent-result/get-agent-result.gif)
+<ThemedImage
+    alt="Adding a Get Agent Result step to the claim status resource, selecting claimAgent and setting the instance ID from workflowId"
+    sources={{
+        light: useBaseUrl('/img/workflows/agentic/get-agent-result/get-agent-result.gif'),
+        dark: useBaseUrl('/img/workflows/agentic/get-agent-result/get-agent-result.gif'),
+    }}
+/>
 
 The saved step is drawn as **Get Agent Result** with a dashed connector to the `claimAgent` it reads from. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable. Follow it with a **Return** step on the result variable and the status endpoint is complete: it reads what the instance concluded and hands that straight back to the caller.
 
@@ -43,7 +49,7 @@ The saved step is drawn as **Get Agent Result** with a dashed connector to the `
 - **Selected**, the default, waits until the instance finishes.
 - **Cleared** reads without waiting. While the instance is still working the step returns a `workflow:AgentBusyError`, which the flow can handle and report as "still running". This is what a status endpoint usually wants, because the caller gets an answer immediately either way.
 
-A gated activity or a human task counts as still working: the instance is suspended waiting on a person, so a run that looks stalled is often one that needs a decision in the [Control Plane](../../../../integrator/icp/icp-console-overview.md).
+A gated activity or a human task counts as still working: the instance is suspended waiting on a person, so a run that looks stalled is often one that needs a decision in the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md).
 
 ## Final result or one turn's answer?
 
@@ -56,4 +62,4 @@ Both reads are addressed by the instance ID, but they answer different questions
 
 - [Get a Data Event Result](get-data-event-result.md) — reading one turn's answer instead of the final outcome.
 - [Run a Durable Agent](run-durable-agent.md) — starting the instance and binding the ID this step needs.
-- [Workflow executions](../../../../integrator/icp/icp-console-overview.md) — seeing why an instance is still working.
+- [Workflow executions](../../../../icp/manage-workflows/workflow-executions.md) — seeing why an instance is still working.

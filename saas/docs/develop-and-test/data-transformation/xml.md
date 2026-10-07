@@ -16,11 +16,23 @@ Create XML values directly in WSO2 Integrator using backtick templates. The `xml
 
 2. **Use embedded expressions**: Insert dynamic values into XML templates using `${variableName}` syntax. Each XML variable is represented as a separate **Declare Variable** step in the flow, allowing you to visually manage XML construction.
 
-   ![Flow designer showing Declare Variable for XML literal construction including dynamic expressions](/img/develop/transform/xml/xml-literals-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable for XML literal construction including dynamic expressions"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-literals-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-literals-flow.png'),
+       }}
+   />
 
 3. **Configure the expression**: Select a variable node to view and edit the XML template expression from the side panel.
 
-   ![Side panel showing the dynamic XML variable with embedded expression](/img/develop/transform/xml/xml-literals-dynamic-panel.png)
+   <ThemedImage
+       alt="Side panel showing the dynamic XML variable with embedded expression"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-literals-dynamic-panel.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-literals-dynamic-panel.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -60,7 +72,13 @@ Create XML text nodes, comments, and processing instructions directly using XML 
 
 3. **View the flow representation**: Each XML node appears as an individual **Declare Variable** step in the integration flow.
 
-![Flow designer showing Declare Variable for XML text, comment, and processing instruction nodes](/img/develop/transform/xml/xml-text-comments-flow.png)
+<ThemedImage
+    alt="Flow designer showing Declare Variable for XML text, comment, and processing instruction nodes"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xml/xml-text-comments-flow.png'),
+        dark: useBaseUrl('/img/develop/transform/xml/xml-text-comments-flow.png'),
+    }}
+/>
 
 ```ballerina
 import ballerina/io;
@@ -95,11 +113,23 @@ Access child elements, attributes, and text content using XML navigation express
 
 5. **Filter descendants**: Use descendant navigation expressions such as `catalog/**/<name>` to find matching elements at any level of the XML hierarchy.
 
-   ![Flow designer showing Declare Variable for XML navigation including child access, text content, attributes, and descendant filtering](/img/develop/transform/xml/xml-navigating-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable for XML navigation including child access, text content, attributes, and descendant filtering"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-navigating-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-navigating-flow.png'),
+       }}
+   />
 
 6. **View and edit expressions**: Select a variable node to view or modify the XML navigation expression from the side panel.
 
-   ![Side panel showing the products variable with catalog child access expression](/img/develop/transform/xml/xml-navigating-child-panel.png)
+   <ThemedImage
+       alt="Side panel showing the products variable with catalog child access expression"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-navigating-child-panel.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-navigating-child-panel.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -148,7 +178,13 @@ Handle namespaced XML using `xmlns` declarations in Ballerina.
 
 2. **Navigate namespaced elements**: Add a **Declare Variable** and use the namespace prefix in the expression (for example, `nsOrder/<cmn:customer>`).
 
-   ![Flow designer showing Declare Variable for namespaced XML construction and navigation](/img/develop/transform/xml/xml-namespaces-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable for namespaced XML construction and navigation"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-namespaces-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-namespaces-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -183,7 +219,13 @@ Use `foreach` loops or query expressions to process XML sequences in WSO2 Integr
 
 3. **Use query expressions for filtering**: Add a **Declare Variable** step with a query expression to filter or transform XML sequences based on conditions.
 
-   ![Flow designer showing a Foreach node iterating over XML items with variable extraction steps inside the loop body](/img/develop/transform/xml/xml-iterating-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a Foreach node iterating over XML items with variable extraction steps inside the loop body"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-iterating-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-iterating-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -220,9 +262,21 @@ Modify XML structures by updating child elements or attributes. XML mutation is 
 
 2. **Mutate the XML element**: Click **+** and select **Call Function**. In the right-side panel, search for `setChildren` and select it from the `lang.xml` module. Provide `doc` as the target and the replacement XML literal as the argument.
 
-   ![Right-side panel showing the setChildren function search result from the lang.xml module](/img/develop/transform/xml/xml-mutation-function.png)
+   <ThemedImage
+       alt="Right-side panel showing the setChildren function search result from the lang.xml module"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-mutation-function.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-mutation-function.png'),
+       }}
+   />
 
-   ![Flow designer showing a Declare Variable for the XML document followed by a Call Function step for setChildren](/img/develop/transform/xml/xml-mutation-flow.png)
+   <ThemedImage
+       alt="Flow designer showing a Declare Variable for the XML document followed by a Call Function step for setChildren"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-mutation-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-mutation-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -254,11 +308,23 @@ Use the `data.xmldata` module to convert XML data into typed Ballerina records f
 
 2. **Parse XML into the record type**: In the flow designer, click **+** and select **Call Function**. In the right-side panel, search for `parseAsType` and select it from the `data.xmldata` module.
 
-   ![right-side panel showing parseAsType search results with the data.xmldata module entry highlighted](/img/develop/transform/xml/xml-parseAsType.png)
+   <ThemedImage
+       alt="right-side panel showing parseAsType search results with the data.xmldata module entry highlighted"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-parseAsType.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-parseAsType.png'),
+       }}
+   />
 
    Provide the XML value `product` as the argument and set `PurchaseOrder` as the target record type.
 
-   ![Flow designer showing the parseAsType function call step with PurchaseOrder as the result type](/img/develop/transform/xml/flow-xml-parse-step.png)
+   <ThemedImage
+       alt="Flow designer showing the parseAsType function call step with PurchaseOrder as the result type"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/flow-xml-parse-step.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/flow-xml-parse-step.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/data.xmldata;
@@ -311,11 +377,23 @@ Convert Ballerina records into XML using the `data.xmldata` module. Record-to-XM
 
 2. **Convert the record to XML**: In the flow designer, click **+** and select **Call Function**. In the right-side panel, search for `toXml` and select it from the `data.xmldata` module. Provide the `Invoice` record `inv` as the argument and set the result type to `xml`.
 
-![right-side panel showing toXml search results with the data.xmldata module entry highlighted](/img/develop/transform/xml/toXml-function.png)
+<ThemedImage
+    alt="right-side panel showing toXml search results with the data.xmldata module entry highlighted"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xml/toXml-function.png'),
+        dark: useBaseUrl('/img/develop/transform/xml/toXml-function.png'),
+    }}
+/>
 
 3. **Use the generated XML**: The resulting XML value can be returned from a service, sent to external systems, or further transformed within the integration flow.
 
-![Flow designer showing the toXml function call step with xml as the result type](/img/develop/transform/xml/toXml-flow.png)
+<ThemedImage
+    alt="Flow designer showing the toXml function call step with xml as the result type"
+    sources={{
+        light: useBaseUrl('/img/develop/transform/xml/toXml-flow.png'),
+        dark: useBaseUrl('/img/develop/transform/xml/toXml-flow.png'),
+    }}
+/>
 
 ```ballerina
 import ballerina/data.xmldata;
@@ -351,7 +429,13 @@ Convert XML data to JSON by first parsing the XML into a typed record using the 
 
 3. **Convert the record to JSON**: Click **+** and select **Call Function**. In the right-side panel, search for `toJson` and select it from the `lang.value` module. Provide the parsed record as the argument. The return value is a `json` value.
 
-   ![Flow designer showing the XML parse, mapOrder, and toJson return steps in sequence](/img/develop/transform/xml/xml-to-json.png)
+   <ThemedImage
+       alt="Flow designer showing the XML parse, mapOrder, and toJson return steps in sequence"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/xml/xml-to-json.png'),
+           dark: useBaseUrl('/img/develop/transform/xml/xml-to-json.png'),
+       }}
+   />
 
 4. **Map fields visually**: Use the [Visual Data Mapper](../integration-artifacts/supportive-artifacts/data-mapper/data-mapper.md) to map or transform fields between record structures before converting the result into JSON.
 

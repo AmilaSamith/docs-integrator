@@ -119,11 +119,23 @@ bal scan --scan-report
 
 The HTML report and scan results in JSON format are saved in the `target/report` directory. The HTML report includes a summary of the number of code smells, bugs, and vulnerabilities found in each file.
 
-![HTML report summary view](/img/develop/tools/scan-tool/html-report-summary-view.png)
+<ThemedImage
+    alt="HTML report summary view"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/html-report-summary-view.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/html-report-summary-view.png'),
+    }}
+/>
 
 You can click on a file name to view a detailed breakdown of the issues. This view highlights the exact lines where problems were detected, along with a description and severity level.
 
-![HTML report file detail view](/img/develop/tools/scan-tool/html-report-file-view.png)
+<ThemedImage
+    alt="HTML report file detail view"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/html-report-file-view.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/html-report-file-view.png'),
+    }}
+/>
 
 ## Report formats
 
@@ -143,7 +155,13 @@ bal scan --list-rules
 
 This displays a project-specific list of rules determined by your project's dependencies.
 
-![Output of bal scan --list-rules](/img/develop/tools/scan-tool/list-rules.png)
+<ThemedImage
+    alt="Output of bal scan --list-rules"
+    sources={{
+        light: useBaseUrl('/img/develop/tools/scan-tool/list-rules.png'),
+        dark: useBaseUrl('/img/develop/tools/scan-tool/list-rules.png'),
+    }}
+/>
 
 The displayed rules are project-specific and determined by your project's dependencies.
 

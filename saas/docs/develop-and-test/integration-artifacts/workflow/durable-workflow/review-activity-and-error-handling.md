@@ -16,7 +16,13 @@ Every activity call takes a **Retry Policy**, which says what the workflow shoul
 | **Auto Retry**                   | The engine re-executes the activity with configurable attempts, delay, and backoff.                                              |
 | **Human Review**                 | A **review task** is created for the roles you name. The reviewer can retry as-is, retry with corrected input, or fail the step. |
 
-![The activity call form with the Retry Policy dropdown open on No Automatic Retry, Auto Retry, and Human Review](/img/workflows/develop/review-activity/retry-policy.png)
+<ThemedImage
+    alt="The activity call form with the Retry Policy dropdown open on No Automatic Retry, Auto Retry, and Human Review"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/review-activity/retry-policy.png'),
+        dark: useBaseUrl('/img/workflows/develop/review-activity/retry-policy.png'),
+    }}
+/>
 
 ## Auto retry — for transient failures
 
@@ -29,19 +35,31 @@ Choosing **Auto Retry** adds the backoff fields to the form. Every one of them i
 | **Retry Backoff**   | No       | Multiplier applied to the delay after each retry. Defaults to `2.0`.                                 |
 | **Max Retry Delay** | No       | Cap on the delay between retries, in seconds. Left empty, the delay keeps growing by the multiplier. |
 
-![The activity call form with Auto Retry chosen, showing Max Retries, Retry Delay, Retry Backoff, and Max Retry Delay](/img/workflows/develop/review-activity/auto-retry.png)
+<ThemedImage
+    alt="The activity call form with Auto Retry chosen, showing Max Retries, Retry Delay, Retry Backoff, and Max Retry Delay"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/review-activity/auto-retry.png'),
+        dark: useBaseUrl('/img/workflows/develop/review-activity/auto-retry.png'),
+    }}
+/>
 
 ## Human review — when a person should fix it
 
 Choosing **Human Review** hands a failure to a person instead of to the engine. The workflow does not fail along with the activity, and the engine does not retry on its own: the run parks at that step, and a review task is raised carrying the failing input and the error it produced. The task takes its name from the activity being called, so there is nothing to name in the form.
 
-The review is listed on the **Human Tasks** page of the [Control Plane](../../../../integrator/icp/icp-console-overview.md) for the roles you name below, matched by exact role name. Until one of them decides it, the run waits there durably and holds no threads or connections, the same as any other durable wait. The decision is what resumes it.
+The review is listed on the **Human Tasks** page of the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md) for the roles you name below, matched by exact role name. Until one of them decides it, the run waits there durably and holds no threads or connections, the same as any other durable wait. The decision is what resumes it.
 
 | Field              | Required | Description                                                                                                                                          |
 |--------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Reviewer Roles** | No       | The role permitted to decide the review, for example `"Finance"`, or a list of roles such as `["finance", "manager"]`. Leave it empty to let any role decide. |
 
-![The activity call form with Human Review chosen, showing the Reviewer Roles field set to Finance](/img/workflows/develop/review-activity/human-review.png)
+<ThemedImage
+    alt="The activity call form with Human Review chosen, showing the Reviewer Roles field set to Finance"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/review-activity/human-review.png'),
+        dark: useBaseUrl('/img/workflows/develop/review-activity/human-review.png'),
+    }}
+/>
 
 ## Approval gates — review *before* the step runs
 
@@ -52,9 +70,15 @@ Some steps should never run without sign-off, even when nothing has failed. A ga
 | **Requires Approval** | No       | Gates the activity. Cleared by default, so an activity runs unattended unless you say otherwise.                                                                |
 | **Reviewer Roles**    | No       | The role permitted to decide this activity's approval reviews, for example `"Finance"`, or a list of roles such as `["finance", "manager"]`. Left empty, the agent's own approval roles apply. |
 
-![The payClaim activity registration form with Requires Approval selected and Reviewer Roles set to Finance](/img/workflows/develop/review-activity/requires-approval.png)
+<ThemedImage
+    alt="The payClaim activity registration form with Requires Approval selected and Reviewer Roles set to Finance"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/review-activity/requires-approval.png'),
+        dark: useBaseUrl('/img/workflows/develop/review-activity/requires-approval.png'),
+    }}
+/>
 
-With the gate on, the agent suspends durably before every call to that activity and raises a review activity showing the arguments it *proposes*. Gates are decided on the **Human Tasks** page of the Control Plane. See [Decide a review activity](../../../../integrator/icp/icp-console-overview.md).
+With the gate on, the agent suspends durably before every call to that activity and raises a review activity showing the arguments it *proposes*. Gates are decided on the **Human Tasks** page of the Control Plane. See [Decide a review activity](../../../../icp/manage-workflows/complete-human-tasks.md#decide-a-review-activity).
 
 ## Error handling in the workflow logic
 
@@ -74,13 +98,25 @@ To handle an activity failure inside the workflow, as in the diagram above:
 2. Expand **Advanced Configurations** and clear **Check Error**. A **Result** field appears.
 3. Name the **Result** variable, for example `emailResult`, and click **Save**. The variable holds the error the activity failed with, or nil when it succeeded, and the node now shows the variable under the activity name.
 
-   ![The activity call's Advanced Configurations with Check Error cleared and the Result variable named emailResult](/img/workflows/develop/review-activity/check-error-result.png)
+   <ThemedImage
+       alt="The activity call's Advanced Configurations with Check Error cleared and the Result variable named emailResult"
+       sources={{
+           light: useBaseUrl('/img/workflows/develop/review-activity/check-error-result.png'),
+           dark: useBaseUrl('/img/workflows/develop/review-activity/check-error-result.png'),
+       }}
+   />
 
 4. Click **+** below the activity and, in the node panel under **Control**, click **If**.
 5. In **Condition**, write the error check, `emailResult is error`. Selecting the variable under **Variables** in the expression helper saves typing it. Click **Save**.
 6. Click **+** on the branch taken when the condition holds and add the steps that deal with the failure, here a **Call Activity** step calling `notifyFailedEmail`. Click **Save**.
 
-![Clearing Check Error on an activity call, naming its result variable, and branching on emailResult is error to call notifyFailedEmail](/img/workflows/develop/review-activity/handle-error-in-logic.gif)
+<ThemedImage
+    alt="Clearing Check Error on an activity call, naming its result variable, and branching on emailResult is error to call notifyFailedEmail"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/review-activity/handle-error-in-logic.gif'),
+        dark: useBaseUrl('/img/workflows/develop/review-activity/handle-error-in-logic.gif'),
+    }}
+/>
 
 Both branches rejoin the flow after the **If**, so `startShipment` runs whether or not the email failed. Leave the else branch empty when there is nothing to do on success.
 
@@ -105,7 +141,7 @@ Everything above rests on one guarantee: the engine writes down the outcome of e
 | A durable timer   | The original deadline, so an elapsed wait does not restart its clock.                                             |
 | Current time      | The instant the run first reached that step. The workflow always works with the time at which it first got there. |
 
-This is why a durable workflow needs no state management of its own. You write no checkpoint rows, no status columns, and no resume logic, and you do not reload progress when a run picks back up: the variables in the workflow body are rebuilt from the record, so the code after a wait sees exactly what the code before it left behind. The recorded events for a run are listed on the **History** tab in the [Control Plane](../../../../integrator/icp/icp-console-overview.md).
+This is why a durable workflow needs no state management of its own. You write no checkpoint rows, no status columns, and no resume logic, and you do not reload progress when a run picks back up: the variables in the workflow body are rebuilt from the record, so the code after a wait sees exactly what the code before it left behind. The recorded events for a run are listed on the **History** tab in the [Control Plane](../../../../icp/manage-workflows/workflow-executions.md).
 
 What this asks of you in return is a deterministic workflow body, since that is the part that runs again on every replay. See [Activities](activities.md#why-the-split-matters).
 

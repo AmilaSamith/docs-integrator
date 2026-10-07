@@ -18,13 +18,25 @@ The Expression Panel appears in every side panel and form that takes a value, in
 - Default values for configurable variables.
 - Any field marked with the `fx` icon.
 
-![Expression Panel in the Declare Variable panel](/img/editor/panels/expression-panel/declare-variable-panel.png)
+<ThemedImage
+    alt="Expression Panel in the Declare Variable panel"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/declare-variable-panel.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/declare-variable-panel.png'),
+    }}
+/>
 
 ## Helper pane
 
 The helper pane is a side menu that lists everything you can drop into the current expression. It opens automatically when you start typing in the Expression Panel, and you can also open or close it manually using the helper pane toggle next to the field. The pane groups available items into four categories: **Inputs**, **Variables**, **Configurables**, and **Functions**. This grouping helps you locate the right reference without leaving the panel.
 
-![Expression Panel helper pane](/img/editor/panels/expression-panel/helper-pane.png)
+<ThemedImage
+    alt="Expression Panel helper pane"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/helper-pane.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/helper-pane.png'),
+    }}
+/>
 
 ### Inputs
 
@@ -48,25 +60,49 @@ Lists standard library functions and user-defined functions available for the cu
 
 The Expression Panel offers context-aware suggestions as you type. Typing `.` after a variable opens a list of the methods, fields, and remote functions available on that variable's type. Selecting one inserts the call at the cursor. Suggestions are filtered by the expected type at the cursor, so only compatible options appear first.
 
-![Suggestions triggered after typing a dot](/img/editor/panels/expression-panel/suggestions.png)
+<ThemedImage
+    alt="Suggestions triggered after typing a dot"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/suggestions.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/suggestions.png'),
+    }}
+/>
 
 ### Chips
 
 Variables render as compact chips inside the expression, whether they are variables you declared, service inputs, configurables, or function parameters. Chips keep long expressions readable and let you click a reference to inspect or replace it without editing the surrounding text.
 
-![A variable rendered as a chip in the Score field](/img/editor/panels/expression-panel/chips.png)
+<ThemedImage
+    alt="A variable rendered as a chip in the Score field"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/chips.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/chips.png'),
+    }}
+/>
 
 ### Function parameter type suggestions
 
 While filling a function call, the panel surfaces the expected type for the current parameter and offers values that match it. The suggestion popup also shows the function name and the parameter list, so you can see which argument you are filling without leaving the panel.
 
-![Function parameter type suggestions for calculateZScore](/img/editor/panels/expression-panel/function-parameter-type-suggestions.png)
+<ThemedImage
+    alt="Function parameter type suggestions for calculateZScore"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/function-parameter-type-suggestions.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/function-parameter-type-suggestions.png'),
+    }}
+/>
 
 ### Diagnostics
 
 The panel validates the expression as you type and reports problems inline beneath the field. Diagnostics cover issues such as missing required arguments, incompatible types, undefined references, and syntax errors, so you can correct the value before saving the form.
 
-![Inline diagnostic for a missing required parameter](/img/editor/panels/expression-panel/diagnostics.png)
+<ThemedImage
+    alt="Inline diagnostic for a missing required parameter"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/diagnostics.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/diagnostics.png'),
+    }}
+/>
 
 ## Variations
 
@@ -88,7 +124,13 @@ If you change the field's type after the expression has already been filled, the
 
 Most fields support more than one variation. The current variation is shown by the toggle at the top right of the field (for example, **Record / Expression** for a record-typed field, or **Text / Expression** for a `string`-typed field). Select the toggle to switch between the form-style variation and free-form expression entry. For instance, a record field can be filled through the Record Configuration form, or, after switching to **Expression**, written directly as a record literal.
 
-![Score field switched to the Expression variation](/img/editor/panels/expression-panel/variation-toggle.png)
+<ThemedImage
+    alt="Score field switched to the Expression variation"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/variation-toggle.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/variation-toggle.png'),
+    }}
+/>
 
 ### Text mode
 
@@ -128,7 +170,13 @@ Renders in the Record Configuration editor as:
 - `value` is a **nested record**. The panel expands the inner record's fields directly inside the parent form, so the `name` field of the inner record appears as a `string` input under `value`.
 - `isGenerated` is a **boolean**. The panel shows a dropdown you can toggle between `true` and `false`.
 
-![Record Configuration editor for the genValue record](/img/editor/panels/expression-panel/record-config-editor.png)
+<ThemedImage
+    alt="Record Configuration editor for the genValue record"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/record-config-editor.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/record-config-editor.png'),
+    }}
+/>
 
 ### Union mode
 
@@ -150,10 +198,16 @@ Appears when you author SQL queries, for example in database connector parameter
 
 Appears when you author natural-language prompts for AI nodes. The panel is optimized for multi-line text and supports inserting variables as chips so prompt templates remain readable. It also accepts Markdown formatting (headings, bold, italics, lists, links, tables, and quotes) through a built-in toolbar, and you can switch between the rendered **Preview** and the raw **Source** view from the same toolbar.
 
-![Prompt variation with Markdown toolbar](/img/editor/panels/expression-panel/prompt.png)
+<ThemedImage
+    alt="Prompt variation with Markdown toolbar"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/expression-panel/prompt.png'),
+        dark: useBaseUrl('/img/editor/panels/expression-panel/prompt.png'),
+    }}
+/>
 
 ## What's next
 
 - [Flow Canvas](../canvases/flow-canvas/flow-canvas.md): author expressions in flow nodes such as conditions, variable declarations, and function calls.
 - [Data Mapper](../designers/data-mapper.md): use expressions to transform and map individual fields.
-- [Type Panel](../panels/type-panel.md): define the types that determine which expression variation appears for a field.
+- [Type Panel](type-panel.md): define the types that determine which expression variation appears for a field.

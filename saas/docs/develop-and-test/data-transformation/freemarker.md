@@ -41,7 +41,13 @@ You have ${count} new messages.
    - **path\***: `"resources/sample.json"`
    - **Result\***: `jsonResult`
 
-   ![The fileReadJson function call step reading sample.json](/img/develop/transform/freemarker/freemarker-file-read-json.png)
+   <ThemedImage
+       alt="The fileReadJson function call step reading sample.json"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-file-read-json.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-file-read-json.png'),
+       }}
+   />
 
 1. **Render the template**: Click **+** and select **Call Function**. Search for `renderFromFile` under **freemarker** and configure:
    - **templatePath\***: `"templates/sample.ftl"`
@@ -49,11 +55,23 @@ You have ${count} new messages.
    - **Result\***: `output`
    - **Type**: `string`
 
-   ![The renderFromFile function call step with template path and data configured](/img/develop/transform/freemarker/freemarker-render-from-file.png)
+   <ThemedImage
+       alt="The renderFromFile function call step with template path and data configured"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-render-from-file.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-render-from-file.png'),
+       }}
+   />
 
 1. **Use the result**: Print the result to the console using `io:println()`, or pass it to a downstream step such as an HTTP response or log statement.
 
-   ![The println function call step printing the rendered output](/img/develop/transform/freemarker/freemarker-print-result.png)
+   <ThemedImage
+       alt="The println function call step printing the rendered output"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-result.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-result.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -89,7 +107,13 @@ Use `freemarker:render` when the template is short, lives in code, or is assembl
 
 1. **Declare a variable for JSON content**: In the flow designer, click **+** and select **Declare Variable**. Set the type to `map<json>` and name it `jsonValue`. And set the expression value as `{name: "Alice", count: 5}`.
 
-   ![The Declare Variable step with map of json type for jsonValue](/img/develop/transform/freemarker/freemarker-json-variable.png)
+   <ThemedImage
+       alt="The Declare Variable step with map of json type for jsonValue"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-json-variable.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-json-variable.png'),
+       }}
+   />
 
 2. **Add a Function Call step**: Click **+** and select **Call Function**. Search for `render` under **freemarker** and configure:
    - **template\***: Select **Expression** and enter the FreeMarker template string, for example `"Hello, ${name}! You have ${count} new messages."`
@@ -97,11 +121,23 @@ Use `freemarker:render` when the template is short, lives in code, or is assembl
    - **Result\***: `output`
    - **Type**: `string`
 
-   ![The render function call step with inline template and jsonValue data](/img/develop/transform/freemarker/freemarker-render-inline.png)
+   <ThemedImage
+       alt="The render function call step with inline template and jsonValue data"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-render-inline.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-render-inline.png'),
+       }}
+   />
 
 3. **Use the result**: Print the result to the console using `io:println()`, or pass it to a downstream step such as an HTTP response or log statement.
 
-   ![The println function call step printing the inline render result](/img/develop/transform/freemarker/freemarker-print-inline-result.png)
+   <ThemedImage
+       alt="The println function call step printing the inline render result"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-inline-result.png'),
+           dark: useBaseUrl('/img/develop/transform/freemarker/freemarker-print-inline-result.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -185,5 +221,5 @@ ${user.name} lives in ${user.address.city}, ${user.address.country}.
 ## What's next
 
 - [ballerinax/freemarker API reference](https://central.ballerina.io/ballerinax/freemarker/latest) — full function signatures and the `Error` type.
-- [PDF Processing](./pdf.md) — convert rendered HTML output to PDF bytes.
+- [PDF Processing](pdf.md) — convert rendered HTML output to PDF bytes.
 - [HTTP Service](../integration-artifacts/integration-as-api/http.md) — return rendered content from an HTTP resource.

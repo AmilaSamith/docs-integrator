@@ -328,3 +328,4 @@ bal health fhir -m <mode> [options]
 
 - [EDI Tool](edi-tool.md) — Generate B2B data exchange code
 - [OpenAPI Tool](openapi-tool.md) — Expose healthcare services as REST APIs
+- [Configuration management](../../../reference/configuration-reference.md#configuration-management) — Manage healthcare endpoint configuration

@@ -22,7 +22,13 @@ You can apply rate limiting settings separately for each environment.
 6. In the **Manage** section, click **Rate Limiting** to expand it.
 7. Select a **Rate Limiting Level** based on your requirements and click **Apply**.
 
-![Rate Limiting](/img/manage/cloud/api-management/rate-limiting.gif)
+<ThemedImage
+    alt="Rate Limiting"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/api-management/rate-limiting.gif'),
+        dark: useBaseUrl('/img/manage/cloud/api-management/rate-limiting.gif'),
+    }}
+/>
 
 ## API-level rate limiting
 

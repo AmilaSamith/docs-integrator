@@ -14,7 +14,13 @@ GitHub event integrations receive webhook callbacks from GitHub and trigger hand
 2. In the **Artifacts** panel, select **GitHub** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![GitHub Webhook creation form](/img/develop/integration-artifacts/event/github-webhooks/step-creation-form.png)
+   <ThemedImage
+       alt="GitHub Webhook creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description | Default |
    |---|---|---|
@@ -32,7 +38,13 @@ GitHub event integrations receive webhook callbacks from GitHub and trigger hand
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill, the active event channel pill, and the **Event Handlers** section with all handlers for the selected channel pre-added.
 
-   ![Github Service Designer View](/img/develop/integration-artifacts/event/github-webhooks/step-service-designer.png)
+   <ThemedImage
+       alt="Github Service Designer View"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-service-designer.png'),
+       }}
+   />
 
    All event handlers for the selected channel are added automatically. Click any handler to open it in the flow diagram view and implement the logic.
 
@@ -91,7 +103,13 @@ Save this as `main.bal` and run `bal run` from the project directory. Configure 
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **GitHub Event Integration Configuration** panel.
 
-   ![Github Connection Configure View](/img/develop/integration-artifacts/event/github-webhooks/step-configuration.png)
+   <ThemedImage
+       alt="Github Connection Configure View"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-configuration.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/github-webhooks/step-configuration.png'),
+       }}
+   />
 
 | Field | Description | Default |
 |---|---|---|

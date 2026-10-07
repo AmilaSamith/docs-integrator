@@ -19,7 +19,18 @@ An AI agent is composed of four core components that enable reasoning, action ex
 
 Without tools, the agent is limited to generating responses without interacting with external systems. Without memory, the agent cannot maintain context across multi-turn conversations.
 
-In WSO2 Integrator, AI agents can be visually designed, configured with tools and memory, connected to model providers, and exposed through APIs or listeners.
+In WSO2 Integrator, AI agents can be visually designed, configured with tools and memory, connected to model providers, and exposed through APIs or listeners. An agent can also be attached as a tool of another agent, so one agent delegates part of its work to another. See [Multi-Agent Systems](multi-agent/multi-agent.md).
+
+## Ways to create an agent
+
+| You want | Use | You get |
+|---|---|---|
+| An agent reachable over HTTP as a chat endpoint | **+ Add Artifact** → **AI Integration** → **AI Chat Agent** | An agent, a listener, and a service |
+| An agent used inside one integration | **+ Add Artifact** → **Other Artifacts** → **Agent** → **Create Agent** | A single agent instance |
+| An agent reused across integrations or projects | **+ Add Artifact** → **Other Artifacts** → **Agent** → **Create Agent Definition** | A reusable template in a library package |
+| An agent someone has already built | **Add Agent** → **Pre-built Agents** | An instance of an existing definition |
+
+The last two are covered in [Agent Definitions](definitions/definitions.md).
 
 ## What an agent looks like in the canvas
 
@@ -31,14 +42,20 @@ The agent is represented as a simple integration flow consisting of the followin
 
 The **AI Agent** block provides a centralized configuration interface for defining the agent’s behavior and capabilities.
 
-![The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node.](/img/genai/develop/agents/02-agent-flow-canvas.png)
+<ThemedImage
+    alt="The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+    }}
+/>
 
 The **AI Agent** block allows you to configure the following components of the agent:
 
 - **System prompt and agent behavior**: Click the **AI Agent** block to open the configuration panel, where you can configure the agent role, instructions, query input, and response mapping.
-- **Memory configuration**: Use the **Add Memory** option to configure conversational or persistent memory for the agent. For more information, see [Memory](./memory.md).
-- **Tools**: Use the **+** button on the AI Agent block to add tools and integrations that the agent can invoke during execution. For more information, see [Tools](./tools.md).
-- **Gated tools**: Mark a tool as requiring approval so the agent pauses and asks a person before it runs. For more information, see [Gated Tools](./gated-tools.md).
+- **Memory configuration**: Use the **Add Memory** option to configure conversational or persistent memory for the agent. For more information, see [Memory](memory.md).
+- **Tools**: Use the **+** button on the AI Agent block to add tools and integrations that the agent can invoke during execution. For more information, see [Tools](tools.md).
+- **Gated tools**: Mark a tool as requiring approval so the agent pauses and asks a person before it runs. For more information, see [Gated Tools](gated-tools.md).
 - **Model Provider Configuration**: Click the attached model provider node (for example, `wso2ModelProvider`) to configure the LLM provider and model settings used by the agent. For more information, see [Model Providers](../ai-building-blocks/model-providers.md).
 
 ## Try it and run
@@ -65,7 +82,9 @@ The chat interface reuses the same session across interactions, enabling memory-
 ## What's next
 
 - **[Creating an Agent](create-an-agent.md)** - Learn how to create and configure agents using the AI Chat Agent Wizard.
+- **[Agent Definitions](definitions/definitions.md)** - Build a reusable agent template and share it across projects.
 - **[Tools](tools.md)** - Add functions, connectors, and integrations to your agents.
+- **[Multi-Agent Systems](multi-agent/multi-agent.md)** - Delegate work from one agent to another.
 - **[Gated Tools](gated-tools.md)** - Pause a tool call for approval before it runs.
 - **[Memory](memory.md)** - Configure conversational and persistent memory.
 - **[Observability](observability.md)** - Monitor traces, logs, and execution details.

@@ -12,9 +12,21 @@ If your integration is exposed as an API, see [API Management](api-management/ap
 
 1. Log in to [WSO2 Cloud](https://console.devant.dev). The default project opens automatically.
 2. On the project home, all integrations within the project are listed.
-    ![Project Overview](/img/deploy/cloud/deploy-from-editor/project-page-wso2-cloud.png)
+    <ThemedImage
+        alt="Project Overview"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/deploy-from-editor/project-page-wso2-cloud.png'),
+            dark: useBaseUrl('/img/deploy/cloud/deploy-from-editor/project-page-wso2-cloud.png'),
+        }}
+    />
 3. Click an integration to open its overview page, where you can view its build status, deployment status, and configuration options.
-    ![Integration Overview](/img/manage/cloud/integrations/integration-overview.png)
+    <ThemedImage
+        alt="Integration Overview"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/integrations/integration-overview.png'),
+            dark: useBaseUrl('/img/manage/cloud/integrations/integration-overview.png'),
+        }}
+    />
 
 To work with a different project, use the project navigator at the top of the console to switch between projects.
 
@@ -66,7 +78,24 @@ Deleting an integration is permanent. All deployment history and configuration f
 
 1. Click the project name in the top navigation to go to the project view.
 2. In the list of integrations, hover over the integration you want to delete. A **Delete** button appears.
-3. Click **Delete**, then enter the integration name to confirm.
+
+    <ThemedImage
+        alt="Delete button shown when hovering over an integration in the project overview"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/integrations/delete-integration-hover.png'),
+            dark: useBaseUrl('/img/manage/cloud/integrations/delete-integration-hover.png'),
+        }}
+    />
+
+3. Click **Delete**, then enter the integration name to confirm and click **Delete**.
+
+    <ThemedImage
+        alt="Confirmation dialog for removing an integration"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/integrations/delete-integration-confirm.png'),
+            dark: useBaseUrl('/img/manage/cloud/integrations/delete-integration-confirm.png'),
+        }}
+    />
 
 The integration is permanently deleted.
 

@@ -10,7 +10,7 @@ gRPC service creation is not available through **+ Add Artifact** in the Visual 
 
 ## Step 1: Place the proto file in your project
 
-Copy your `.proto` file into a `resources/` folder inside your integrator project. For a full example proto file, see the [example proto file](../../tools/integration-tools/grpc-tool.md#example-proto-file) in the gRPC Tool reference.
+Copy your `.proto` file into a `resources/` folder inside your integrator project. For a full example proto file, see the [example proto file](../../developer-tools/integration-tools/grpc-tool.md#example-proto-file) in the gRPC Tool reference.
 
 ```
 my-integration/
@@ -30,7 +30,7 @@ ls Ballerina.toml
 
 ## Step 3: Run the code generation command
 
-See [Generating a service stub from a proto file](../../tools/integration-tools/grpc-tool.md#generating-a-service-stub-from-a-proto-file) in the gRPC Tool reference for the full command options. For a service stub, run:
+See [Generating a service stub from a proto file](../../developer-tools/integration-tools/grpc-tool.md#generating-a-service-stub-from-a-proto-file) in the gRPC Tool reference for the full command options. For a service stub, run:
 
 ```bash
 bal grpc --input resources/order_service.proto --mode service --output .
@@ -108,15 +108,33 @@ The `@grpc:Descriptor` annotation and the descriptor constant (`ORDER_SERVICE_DE
 
 Once a gRPC service exists in the project, it appears in the **Entry Points** sidebar and on the design canvas.
 
-![Design canvas showing OrderService as a grpc:Service node](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-designer.png)
+<ThemedImage
+    alt="Design canvas showing OrderService as a grpc:Service node"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-designer.png'),
+    }}
+/>
 
 Click the service node on the canvas (or the service name in the sidebar) to open the **gRPC Service** designer, which lists all remote functions as event handlers.
 
-![GRPC Service designer showing event handlers](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png)
+<ThemedImage
+    alt="GRPC Service designer showing event handlers"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png'),
+    }}
+/>
 
 Click any handler row (for example, `getOrder`) to open its **flow designer view**, where you can define the integration logic visually.
 
-![Flow designer for the getOrder remote function](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-flow.png)
+<ThemedImage
+    alt="Flow designer for the getOrder remote function"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/grpc-service/step-flow.png'),
+    }}
+/>
 
 Not all gRPC service configuration options are available through the visual designer. For full control including listener configuration and descriptor settings, use Ballerina code directly.
 
@@ -134,5 +152,5 @@ bal grpc --input resources/order_service.proto --mode service --output .
 
 ## For more details
 
-- [gRPC Tool](../../tools/integration-tools/grpc-tool.md) — full command reference including client generation and proto import paths.
+- [gRPC Tool](../../developer-tools/integration-tools/grpc-tool.md) — full command reference including client generation and proto import paths.
 - [Ballerina gRPC specification](https://ballerina.io/spec/grpc/) — advanced configuration, TLS, authentication, and interceptors.

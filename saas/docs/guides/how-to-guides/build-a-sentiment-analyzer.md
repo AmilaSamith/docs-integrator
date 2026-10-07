@@ -11,7 +11,7 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 :::info Prerequisites
 
 - [Model Providers for LLMs](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md)
-- A project to work in. If you do not have one, see [Create a new integration](../../develop-and-test/organize-workbench/create-a-new-integration.md).
+- A project to work in. If you do not have one, see [Create a new integration](../../develop-and-test/create-workspace/create-a-project.md).
 
 ## Step 1: Add an HTTP service
 
@@ -49,7 +49,7 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 
 ## Step 3: Add a POST resource
 
-1. In the HTTP Service Designer, select **+ Add Resource**.
+1. In the HTTP Service Design editor, select **+ Add Resource**.
 2. Select **POST**.
 3. Set **Resource Path** to `analyze`.
 4. Select **+ Define Payload**.

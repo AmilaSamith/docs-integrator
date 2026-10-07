@@ -25,8 +25,13 @@ New to WSO2 Integration Platform? Start here: set up your WSO2 Cloud account, le
     <PaletteChip href="/get-started/quickstarts/build-file-driven-integration">File-Driven
 
 
+<PaletteCard icon="template" href="/get-started/prebuilt-integrations">
+  <h3 class="palette-card-title">Try Pre-built Integrations</h3>
+  <p class="palette-card-desc">Skip the build. Pick a ready-made integration between two applications, configure it, and deploy it to WSO2 Cloud in minutes.</p>
+
 ## What's next
 
 - [Cloud setup](cloud-setup.md) — Sign up for WSO2 Cloud and open the cloud editor.
 - [Concepts](concepts/concepts.mdx) — Learn the vocabulary before you dive into the docs.
 - [Build an Integration as API](quickstarts/build-integration-api.md) — The fastest way to see WSO2 Integrator in action.
+- [Try prebuilt integrations](prebuilt-integrations.md) — Deploy a ready-made integration without building anything.

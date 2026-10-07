@@ -11,11 +11,23 @@ Local file services monitor a directory on the local file system and trigger eve
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Local Files** under **File Integration**.
 
-   ![Artifacts panel showing Local Files under File Integration](/img/develop/integration-artifacts/file/local-files/step-2.png)
+   <ThemedImage
+       alt="Artifacts panel showing Local Files under File Integration"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-2.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-2.png'),
+       }}
+   />
 
 3. In the creation form, fill in the following fields:
 
-   ![Local Files creation form](/img/develop/integration-artifacts/file/local-files/step-creation-form.png)
+   <ThemedImage
+       alt="Local Files creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description | Default |
    |---|---|---|
@@ -32,7 +44,13 @@ Local file services monitor a directory on the local file system and trigger eve
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill and the **Event Handlers** section.
 
-   ![Service Designer showing the local file service canvas](/img/develop/integration-artifacts/file/local-files/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the local file service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-service-designer.png'),
+       }}
+   />
 
 6. Click [**+ Add Handler**](#adding-a-file-handler) to define how file events are processed.
 
@@ -68,7 +86,13 @@ service on fileListener {
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **Local Files Configuration** panel.
 
-![Local Files Configuration panel](/img/develop/integration-artifacts/file/local-files/step-configure.png)
+<ThemedImage
+    alt="Local Files Configuration panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-configure.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-configure.png'),
+    }}
+/>
 
 Select **Local Files** in the left panel to view service-level settings, or select **fileListener** under **Attached Listeners** to configure the listener.
 
@@ -108,7 +132,13 @@ A file handler is a `remote function` that WSO2 Integrator calls each time a mat
 
 In the **Service Designer**, click **+ Add Handler**. A **Select Handler to Add** panel opens on the right listing the available event types. Click the event type to add it directly. No further configuration is required.
 
-![Select Handler to Add panel showing onCreate, onDelete, and onModify event types](/img/develop/integration-artifacts/file/local-files/step-handler-picker.png)
+<ThemedImage
+    alt="Select Handler to Add panel showing onCreate, onDelete, and onModify event types"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-handler-picker.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-handler-picker.png'),
+    }}
+/>
 
 | Handler | Triggered when |
 |---|---|
@@ -172,11 +202,23 @@ In the **Service Designer**, open the handler and build the flow with two nodes:
 
 2. Set `event.name` as an **Expression** in the **Path** field, `content` as the **Result**, and `string` as the **Result Type**. Save the node.
 
-![Add fileReadString function](/img/develop/integration-artifacts/file/local-files/add-file-read-string-function.png)
+<ThemedImage
+    alt="Add fileReadString function"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/add-file-read-string-function.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/add-file-read-string-function.png'),
+    }}
+/>
 
 3. Click **+** after the Call Function node, pick **Log** → **Log Info**, switch the **Msg** field to **Expression** mode, and enter `content`. Save the node.
 
-![Handler canvas showing the Call Function and Log Info nodes wired up to read and log file content](/img/develop/integration-artifacts/file/local-files/step-read-flow.png)
+<ThemedImage
+    alt="Handler canvas showing the Call Function and Log Info nodes wired up to read and log file content"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-read-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-read-flow.png'),
+    }}
+/>
 
 ```ballerina
 import ballerina/file;
@@ -213,11 +255,23 @@ Use a **Call Function** node to invoke an `io` write function, then add a **Log*
 
 2. Set the **Path** to `/data/outgoing/report.txt` and the **Content** to `"Processing complete."`. Save the node.
 
-![Add file write string function](/img/develop/integration-artifacts/file/local-files/add-file-write-function.png)
+<ThemedImage
+    alt="Add file write string function"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/add-file-write-function.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/add-file-write-function.png'),
+    }}
+/>
 
 3. Click **+** after the Call Function node, pick **Log** → **Log Info**, and enter a confirmation message such as `"Output written"`. Save the node.
 
-![Handler canvas showing the Call Function and Log Info nodes wired up to write a file and log a confirmation](/img/develop/integration-artifacts/file/local-files/step-write-flow.png)
+<ThemedImage
+    alt="Handler canvas showing the Call Function and Log Info nodes wired up to write a file and log a confirmation"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-write-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-write-flow.png'),
+    }}
+/>
 
 ```ballerina
 import ballerina/file;

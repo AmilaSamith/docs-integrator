@@ -110,7 +110,7 @@ Authorizing with an Azure DevOps personal access token grants the following perm
 
 ## What's next
 
-- [Import a project](import-project.md) or [Import an integration](import-integration.md) — Bring the connected repository into WSO2 Cloud.
+- [Import a project](../../develop-and-test/create-workspace/import-a-project.md) or [Import an integration](../../develop-and-test/create-workspace/import-an-integration.md) — Bring the connected repository into WSO2 Cloud.
 - [Configure promotion pipelines](../../manage/environments/configure-promotion-pipelines.md) — Define the ordered sequence of environments a commit is promoted through.
 - [Configurations overview](../../manage/configurations/configurations.md) — Manage runtime values and build settings for deployed integrations.
 - [Environments overview](../../manage/environments/environments.md) — Control how integrations are promoted across environments.

@@ -38,7 +38,13 @@ On the overview page, open the development environment card and click **Test** t
 
 - Some parameters are prefilled with defaults. Adjust them as needed.
 
-![RAG service](/img/manage/cloud/rag-ingestion/rag-service-light.gif)
+<ThemedImage
+    alt="RAG service"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-service-light.gif'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/rag-service-light.gif'),
+    }}
+/>
 
 ## Available API endpoints
 Below are the main endpoints exposed by the service.

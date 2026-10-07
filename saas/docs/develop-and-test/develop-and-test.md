@@ -4,18 +4,18 @@ title: Develop and Test
 
 # Build your integration
 
-This section covers the Develop and Test phase of the [integration lifecycle](../platform-overview/platform-overview.md#4-wso2-integration-platform-across-the-lifecycle): building integrations in the WSO2 Integrator editor before anything ships. We assume you're already familiar with the editor's surfaces from the [Editor Tour](../editor/editor.md).
+This section covers the Develop and Test phase of the [integration lifecycle](../platform-overview/index.md#4-wso2-integration-platform-across-the-lifecycle): building integrations in the WSO2 Integrator editor before anything ships. We assume you're already familiar with the editor's surfaces from the [Editor Tour](../editor/editor.md).
 
 Start building your integration by prompting [WSO2 Integrator Copilot](../editor/copilot/copilot.md) to generate a first working version of your integration flow, refine it on the visual designer, and drop into Ballerina pro-code only when you need more precise control; everything stays in sync throughout.
 
-## Create Integration Workbench
+## Create Integration Workspace
 
-<PaletteCard icon="quickstart" href="/develop-and-test/organize-workbench">
+<PaletteCard icon="quickstart" href="/develop-and-test/create-workspace">
   <h3 class="palette-card-title">Create integrations</h3>
   <ul class="palette-card-list">
-    <li>Start new integration project</li>
-    <li>Explore samples</li>
-    <li>Build libraries</li>
+    <li>Create new project</li>
+    <li>Add intgerations to project</li>
+    <li>Start with sample integrations</li>
   </ul>
 
 <PaletteCard icon="editor-window" href="/editor">
@@ -26,7 +26,7 @@ Start building your integration by prompting [WSO2 Integrator Copilot](../editor
     <li>WSO2 Integrator Copilot</li>
   </ul>
 
-Moving from another platform? See [Migrate](../migrate/migrate.md).
+Moving from another platform? See [Migrate](../migrate/index.md).
 
 ## Build Integration
 
@@ -109,6 +109,6 @@ Moving from another platform? See [Migrate](../migrate/migrate.md).
 
 ## What's next
 
-- [Create a new integration](organize-workbench/create-a-new-integration.md) — Start a project in the WSO2 Integrator IDE or from the CLI
+- [Create a new integration](create-workspace/create-a-project.md) — Start a project in the WSO2 Integrator IDE or from the CLI
 - [Design integration logic](../editor/canvases/flow-canvas/flow-canvas.md) — Wire up the flow between request and response
 - [Deploy and operate](../deploy-and-run/deploy-and-run.md) — Ship your integration once it's ready

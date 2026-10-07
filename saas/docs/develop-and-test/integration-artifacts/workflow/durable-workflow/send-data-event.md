@@ -31,7 +31,13 @@ The delivery does not create a run. It resumes one, so it needs the workflow ID 
 
 4. Click **Save**.
 
-![Adding a Send Data Event step and choosing the workflow and its data event](/img/workflows/develop/send-data-event/add-send-data-event.gif)
+<ThemedImage
+    alt="Adding a Send Data Event step and choosing the workflow and its data event"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/send-data-event/add-send-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/develop/send-data-event/add-send-data-event.gif'),
+    }}
+/>
 
 ## Anyone with the ID can deliver
 

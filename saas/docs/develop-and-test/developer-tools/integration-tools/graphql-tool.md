@@ -12,7 +12,13 @@ The `bal graphql` tool generates Ballerina service skeletons and client code fro
 2. In the **Artifacts** panel, select **GraphQL Service** under **Integration as API**.
 3. Select **Import From GraphQL Schema** under **Service Contract**.
 
-   ![Import GraphQL schema](/img/develop/tools/graphql-tool/step-import-schema.png)
+   <ThemedImage
+       alt="Import GraphQL schema"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/graphql-tool/step-import-schema.png'),
+           dark: useBaseUrl('/img/develop/tools/graphql-tool/step-import-schema.png'),
+       }}
+   />
 
 4. Browse or enter the path to your GraphQL SDL file.
 5. Configure the **Service Base Path** and listener settings.
@@ -248,4 +254,4 @@ Client generation from GraphQL schemas is currently supported only through the B
 
 - [AsyncAPI Tool](asyncapi-tool.md) — Generate event-driven services from AsyncAPI specs
 - [OpenAPI Tool](openapi-tool.md) — Generate REST services and clients
-- [Flow Canvas](../../../editor/canvases/flow-canvas/flow-canvas.md) — Switch to pro-code to write advanced GraphQL resolver logic
+- [Flow Diagram Editor](../../../editor/canvases/flow-canvas/flow-canvas.md) — Switch to pro-code to write advanced GraphQL resolver logic

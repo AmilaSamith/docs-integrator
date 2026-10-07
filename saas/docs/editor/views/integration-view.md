@@ -6,13 +6,25 @@ title: Integration View
 
 The Integration view is the primary development interface in WSO2 Integrator. Use it to build, test, and deploy a single integration. It combines a project explorer, a visual design canvas, and deployment options in one unified workspace.
 
-![Integration view overview](/img/editor/views/integration-view/overview.png)
+<ThemedImage
+    alt="Integration view overview"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+    }}
+/>
 
 ## Design canvas
 
 The design canvas is the central area of the Integration view. It displays a visual overview of your integration, showing how entry points, listeners, connections, and services relate to each other.
 
-![Design canvas](/img/editor/views/integration-view/design-canvas.png)
+<ThemedImage
+    alt="Design canvas"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+    }}
+/>
 
 ### Service diagram
 
@@ -54,7 +66,13 @@ Click the **+ Add Artifact** button at the top of the canvas to add a new compon
 
 The toolbar sits at the top of the Integration view and provides quick access to common actions for building, running, and debugging your integration.
 
-![Toolbar](/img/editor/views/integration-view/toolbar.png)
+<ThemedImage
+    alt="Toolbar"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+    }}
+/>
 
 | Action | Description |
 |---|---|
@@ -65,21 +83,36 @@ The toolbar sits at the top of the Integration view and provides quick access to
 
 ## Deployment options panel
 
-{/* NOTE: this branch's copy intentionally lists only Deploy to WSO2 Cloud, omitting Containerized/VM/ICP from wso2-integrator's copy -- those targets don't exist for WSO2 Cloud users. Don't overwrite this from a sync without re-checking. */}
-
 The deployment options panel appears on the right sidebar and provides shortcuts to deploy the integration to different environments.
 
-![Deployment options](/img/editor/views/integration-view/deployment-options.png)
+<ThemedImage
+    alt="Deployment options"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+    }}
+/>
 
 | Option | Target |
 |---|---|
-| [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-and-run.md) | Fully managed cloud platform for hosting and running integrations. |
+| [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) | Fully managed cloud platform for hosting and running integrations. |
+| [**Containerized Deployment**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
+| [**VM Deployment**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
+| [**Integration Control Plane (ICP)**](../../icp/index.md) | Monitor and manage running integrations from a centralized dashboard. |
+
+Select **Enable ICP monitoring** to activate ICP for this integration, or expand **Publish to local ICP** to push the integration to a local Integration Control Plane instance.
 
 ## README section
 
 The README section at the bottom of the Integration view displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
 
-![Readme](/img/editor/views/integration-view/readme.png)
+<ThemedImage
+    alt="Readme"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+    }}
+/>
 
 Click **Edit** to modify the README directly. You can also click **Generate with AI** to create a README automatically based on your project's components and configuration.
 
@@ -87,4 +120,4 @@ Click **Edit** to modify the README directly. You can also click **Generate with
 
 - [Flow Canvas](../canvases/flow-canvas/flow-canvas.md) — Build logic using the visual designer.
 - [Integration artifacts](../../develop-and-test/integration-artifacts/integration-artifacts.md) — Learn about artifact types and their configuration.
-- [Deploy to WSO2 Cloud](../../deploy-and-run/deploy-and-run.md) — Deploy your integration to the cloud.
+- [Deploy to WSO2 Cloud](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) — Deploy your integration to the cloud.

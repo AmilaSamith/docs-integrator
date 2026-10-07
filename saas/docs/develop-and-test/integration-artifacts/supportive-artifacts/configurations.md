@@ -11,7 +11,7 @@ title: Configurations
 
 Because the values live outside the code, the same integration implementation runs unchanged in every environment.
 
-WSO2 Integrator's configuration support is built on Ballerina's configurable variable model. For the complete configuration reference, see the [Ballerina documentation](https://ballerina.io/learn/).
+WSO2 Integrator's configuration support is built on Ballerina's configurable variable model. For the complete configuration reference, see [Configuration management](../../../reference/configuration-reference.md#configuration-management).
 
 ## Adding a configuration
 
@@ -19,7 +19,13 @@ WSO2 Integrator's configuration support is built on Ballerina's configurable var
 
 2. Click **+** next to **Configurations** in the sidebar. Alternatively, click **+ Add Artifact** in the **Design** panel, then click **Configuration** under **Other Artifacts** or **Library Artifacts**.
 
-   ![WSO2 Integrator sidebar showing add Configuration](/img/develop/integration-artifacts/supporting/configurations/add-configuration.png)
+   <ThemedImage
+       alt="WSO2 Integrator sidebar showing add Configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/add-configuration.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/add-configuration.png'),
+       }}
+   />
 
 3. In the **Add Configurable Variable** panel, fill in the following fields:
 
@@ -30,7 +36,13 @@ WSO2 Integrator's configuration support is built on Ballerina's configurable var
    | **Default Value** | An optional default value. Leave empty to make the variable required. The integration fails to start unless you supply a value at runtime. |
    | **Documentation** | Optional description set as variable documentation. |
 
-   ![Add Configurable Variable form showing Variable Name, Variable Type, Default Value, and Documentation fields](/img/develop/integration-artifacts/supporting/configurations/create-configuration.png)
+   <ThemedImage
+       alt="Add Configurable Variable form showing Variable Name, Variable Type, Default Value, and Documentation fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/create-configuration.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/create-configuration.png'),
+       }}
+   />
 
 4. Click **Save**. The variable is written to a `config.bal` file at the project root and appears under **Configurations** in the sidebar.
 
@@ -67,7 +79,13 @@ The `?` placeholder marks a configurable variable as required. The integration f
 
 Click the icon next to **Configurations** in the sidebar to open the **Configurable Variables** panel.
 
-![Configurable Variables panel showing variables grouped by Integration and Imported libraries](/img/develop/integration-artifacts/supporting/configurations/configurable-variables.png)
+<ThemedImage
+    alt="Configurable Variables panel showing variables grouped by Integration and Imported libraries"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/configurable-variables.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/configurable-variables.png'),
+    }}
+/>
 
 The panel organizes variables into two groups:
 
@@ -80,7 +98,13 @@ Use the **Search Configurables** box to filter by name. Click the Pencil icon on
 
 Use the **Configurable Variables** panel to set values for your configurable variables. The editor writes them to the project's `Config.toml` file. To open the panel, see [Viewing configurations](#viewing-configurations).
 
-![Providing values in the Configurable Variables panel](/img/develop/integration-artifacts/supporting/configurations/provide-values.png)
+<ThemedImage
+    alt="Providing values in the Configurable Variables panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/provide-values.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/configurations/provide-values.png'),
+    }}
+/>
 
 Place a `Config.toml` file at the project root (alongside `Ballerina.toml`) to supply values for configurable variables. The runtime reads it automatically at startup.
 
@@ -108,7 +132,7 @@ final http:Client weatherEP = check new ("http://localhost:8080", timeout = time
 ```
 
 :::tip Learn more
-For the complete configuration reference (supported types, value sources, resolution priority), see the [Ballerina documentation](https://ballerina.io/learn/).
+For the complete configuration reference (supported types, value sources, resolution priority), see [Configuration management](../../../reference/configuration-reference.md#configuration-management).
 
 ## Best practices
 
@@ -121,5 +145,6 @@ For the complete configuration reference (supported types, value sources, resolu
 
 ## What's next
 
+- [Configuration management](../../../reference/configuration-reference.md#configuration-management) — Complete configuration reference: value sources, precedence, and environment variables.
 - [Secrets and encryption](../../../deploy-and-run/secure/secrets-encryption.md) — Securely manage credentials and other sensitive values.
 - [Connections](connections.md) — Use configurable variables to parameterize connections.

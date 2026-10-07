@@ -23,7 +23,7 @@ Three are available today:
 3. In the **Activities** panel, expand **Prebuilt Activities** and click the one you need.
 4. Choose the **Connection** to call through, fill in the call's fields, and click **Save**.
 
-The call appears on the diagram as an ordinary activity node, and it behaves like one: recorded on success, retryable on failure, and visible as an `ACTIVITY` node in the [Integration Control Plane](../../../../../integrator/icp/icp-console-overview.md) execution graph.
+The call appears on the diagram as an ordinary activity node, and it behaves like one: recorded on success, retryable on failure, and visible as an `ACTIVITY` node in the [Integration Control Plane](../../../../../icp/manage-workflows/workflow-executions.md) execution graph.
 
 ## Fields shared by all three
 

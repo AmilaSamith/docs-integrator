@@ -16,7 +16,7 @@ Real processes wait on people: a manager approves an expense, a reviewer checks 
 
 ## Add the step
 
-The steps below follow one example: an onboarding workflow where an HR lead assigns a new joiner to a team. The task lands in the [Control Plane](../../../../integrator/icp/icp-console-overview.md) inbox of the matching role, as a form rendered with the information needed to answer it. The workflow starts with the employee's details, so its [input type](create.md) is an `EmployeeDetails` record:
+The steps below follow one example: an onboarding workflow where an HR lead assigns a new joiner to a team. The task lands in the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md) inbox of the matching role, as a form rendered with the information needed to answer it. The workflow starts with the employee's details, so its [input type](create.md) is an `EmployeeDetails` record:
 
 | Field | Type |
 |---|---|
@@ -40,9 +40,15 @@ The steps below follow one example: an onboarding workflow where an HR lead assi
 
 4. Click **Save**.
 
-![Adding an Await Human Task step, with its payload, title, description, and a new completion type](/img/workflows/develop/human-task-workflow/await-human-task.gif)
+<ThemedImage
+    alt="Adding an Await Human Task step, with its payload, title, description, and a new completion type"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
+        dark: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
+    }}
+/>
 
-The workflow suspends at this step, and the task appears in the [Integration Control Plane](../../../../integrator/icp/icp-console-overview.md) inbox for every user holding one of the roles you named.
+The workflow suspends at this step, and the task appears in the [Integration Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md) inbox for every user holding one of the roles you named.
 
 ## Show the decider what they need
 
@@ -81,10 +87,11 @@ Use a human task when a person is making a **decision** the Control Plane should
 
 A workflow never exposes its own endpoint for finishing a task. Completion happens outside the workflow:
 
-- **[Complete human tasks](../../../../integrator/icp/icp-console-overview.md)** in the Integration Control Plane, where the task appears in the inbox of everyone holding a matching role, rendered as a form built from the completion type with the task input shown beside it. This is the route for the people actually deciding.
+- **[Complete human tasks](../../../../icp/manage-workflows/complete-human-tasks.md)** in the Integration Control Plane, where the task appears in the inbox of everyone holding a matching role, rendered as a form built from the completion type with the task input shown beside it. This is the route for the people actually deciding.
+- **[Management API](management-api.md)**, whose `POST /human-tasks/{taskId}/complete` accepts the same decision as JSON, for building your own portal or automating a decision.
 
 ## Next steps
 
-- [Complete human tasks](../../../../integrator/icp/icp-console-overview.md) — decide a waiting task from the Control Plane inbox.
+- [Complete human tasks](../../../../icp/manage-workflows/complete-human-tasks.md) — decide a waiting task from the Control Plane inbox.
 - [Await data events](data-events.md) — wait for data delivered by a system or a person instead of a decision.
 - [Error handling and review activities](review-activity-and-error-handling.md) — approvals attached to activities rather than free-standing tasks.

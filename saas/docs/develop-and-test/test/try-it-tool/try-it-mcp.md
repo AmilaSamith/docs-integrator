@@ -10,7 +10,13 @@ The Try-It tool for MCP servers opens the MCP Inspector, an interactive interfac
 
 In the Service Designer, select the button next to the **Configure** button in the service header toolbar, then select **Try It**. The **MCP Inspector** tab opens automatically.
 
-![MCP Inspector showing connection panel, tool list, and tool detail panels](/img/develop/test/try-it/mcp-try-it.png)
+<ThemedImage
+    alt="MCP Inspector showing connection panel, tool list, and tool detail panels"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/mcp-try-it.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/mcp-try-it.png'),
+    }}
+/>
 
 ## The MCP Inspector
 

@@ -31,7 +31,13 @@ Follow the WSO2 deployment guides for step-by-step instructions covering publish
 - [Deploy from Cloud editor](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md)
 - [Deploy from the editor](../../deploy-and-run/deploy-to-wso2-cloud/deploy-from-editor.md)
 
-![Deploy the agent](/img/manage/cloud/rag-ingestion/deploy-agent.png)
+<ThemedImage
+    alt="Deploy the agent"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/deploy-agent.png'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/deploy-agent.png'),
+    }}
+/>
 
 ### Step 3: Configure environment variables and secrets
 
@@ -39,7 +45,13 @@ Follow the WSO2 deployment guides for step-by-step instructions covering publish
 2. Click **Configure** and add API keys and any required secrets.
 3. Apply the configuration and wait for the redeploy to complete.
 
-![Configure secrets and environment variables](/img/manage/cloud/rag-ingestion/configure-agent.png)
+<ThemedImage
+    alt="Configure secrets and environment variables"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/configure-agent.png'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/configure-agent.png'),
+    }}
+/>
 
 ### Step 4: Test and query the agent
 
@@ -53,7 +65,13 @@ Example queries to exercise RAG and tools:
 1. "What is the leave policy for new hires?"
 2. "What is the annual performance review?"
 
-![Chat with the agent](/img/manage/cloud/rag-ingestion/query-agent.png)
+<ThemedImage
+    alt="Chat with the agent"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/rag-ingestion/query-agent.png'),
+        dark: useBaseUrl('/img/manage/cloud/rag-ingestion/query-agent.png'),
+    }}
+/>
 
 ### Troubleshooting and verification
 

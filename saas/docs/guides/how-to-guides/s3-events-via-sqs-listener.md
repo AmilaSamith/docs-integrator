@@ -24,7 +24,7 @@ S3 Bucket  ──(ObjectCreated)──►  SQS Queue  ──(poll)──►  sqs
 :::info Prerequisites
 
 - An AWS account with permissions to manage S3, SQS, and IAM.
-- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/cloud-setup.md).
+- A working WSO2 Integrator environment. See [Setup](../../get-started/setup/setup.md).
 - AWS Access Key ID and Secret Access Key for an IAM user who has the necessary `sqs:ReceiveMessage`, `sqs:DeleteMessage`, and `sqs:GetQueueAttributes` permissions on your SQS queue. See the [AWS SQS Setup Guide](../../connectors/catalog/messaging/aws.sqs/setup-guide.md) if you need to create credentials.
 
 ## Part 1: Configure AWS
@@ -425,4 +425,4 @@ Now that your listener is consuming S3 events, extend the integration further:
 - **Read the CSV from S3** — use the `ballerinax/aws.s3` connector's `getObject` action to download the file content inside `onMessage`, then parse it with `ballerina/data.csv`.
 - **Filter by prefix** — add a prefix filter (for example `uploads/`) to the S3 event notification configuration in Step 4 so only files under that path trigger events.
 - **Fan out to multiple consumers** — subscribe additional SQS queues to an SNS topic and have the S3 bucket notify the topic instead. Each downstream queue can run a separate Ballerina listener.
-- **Deploy the integration** — ship it to [WSO2 Cloud](../../deploy-and-run/deploy-and-run.md) for production use.
+- **Deploy the integration** — ship to [WSO2 Cloud](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md), a [Docker container](../../deploy-and-run/self-hosted/containerized-deployment.md#docker-deployment), or [Kubernetes](../../deploy-and-run/self-hosted/containerized-deployment.md#kubernetes-deployment) for production use.

@@ -55,9 +55,9 @@ The MCP feature surface is split between the artifact catalogue and the agent's 
 
 | Surface | What it does | Created where |
 |---|---|---|
-| **MCP Service** artifact | A top-level artifact that publishes tools over MCP. Listed under **AI Integration** alongside AI Chat Agent. | Artifacts > AI Integration > MCP Service |
-| **`mcp:Listener`** | The listener an MCP service runs on. Created when you add the first MCP service, and reusable across services. | Listeners > `mcpListener` |
-| **`mcp:Service` and `mcp:AdvancedService`** | The service body. `mcp:Service` derives tools from `remote function`s. `mcp:AdvancedService` lets you implement `onListTools` and `onCallTool` for dynamic tool sets. | Inside the MCP Service editor |
+| **MCP Service** artifact | A top-level artifact that publishes tools over MCP. Listed under **AI Integration** alongside Chat Agent Service, Durable Agentic Workflow, and Voice Agent Service. | Artifacts > AI Integration > MCP Service |
+| **`mcp:StreamableHttpListener`** | The listener an MCP service runs on. Created when you add the first MCP service, and reusable across services. | Listeners > `mcpListener` |
+| **`mcp:StreamableHttpService` and `mcp:StreamableHttpAdvancedService`** | The service body. `mcp:StreamableHttpService` derives tools from `remote function`s and is what the MCP Service editor creates. `mcp:StreamableHttpAdvancedService` lets you implement `onListTools` and `onCallTool` for dynamic tool sets, and is written in code. | Inside the MCP Service editor |
 | **Add MCP Server panel** | The tool-source picker on the agent canvas. Generates an `ai:McpBaseToolKit` that pulls tools from a remote MCP server. | Agent canvas > + Add Tool > Use MCP Server |
 | **Tool Configuration panel** | Per-tool editor inside an MCP service. Sets name, description, parameters, and return type. | MCP Service editor > + Add Tool |
 
@@ -71,7 +71,7 @@ Because the transport is HTTP, the listener accepts any `http:ListenerConfigurat
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| MCP client connects but sees no tools. | The `mcp:Service` has no `remote function`s yet, or no tools were added through the editor. | Click **+ Add Tool** in the MCP Service editor. |
+| MCP client connects but sees no tools. | The `mcp:StreamableHttpService` has no `remote function`s yet, or no tools were added through the editor. | Click **+ Add Tool** in the MCP Service editor. |
 | Client gets HTTP 404. | Wrong URL. Base path or listener port mismatch. | Check the listener port (`mcpListener` in the project sidebar) and the service base path (`/mcp` by default). |
 | Tool call returns `Invalid parameters: ...`. | The arguments sent by the client do not match the tool's parameter types, so the framework rejects the call before invoking the tool. | Loosen the parameter type if it is too strict, or sharpen the parameter description so the model sends the right shape. |
 | Agent picks the wrong MCP tool. | Tool descriptions are too generic or overlap. | Tighten each tool's first sentence. State *what* and *when*. See [Writing a good tool description](exposing-as-mcp.md#writing-a-good-tool-description). |

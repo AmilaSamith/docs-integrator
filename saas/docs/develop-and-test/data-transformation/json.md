@@ -16,7 +16,13 @@ Construct JSON directly using Ballerina types. The `json` type accepts null, boo
 
 2. **Build nested structures**: Add additional **Declare Variable** steps for nested JSON objects and arrays. Each variable appears as a separate **Declare Variable** step in the flow.
 
-   ![Flow designer showing Declare Variable steps for JSON value construction including nested objects and arrays](/img/develop/transform/json/json-creating-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable steps for JSON value construction including nested objects and arrays"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-creating-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-creating-flow.png'),
+       }}
+   />
 
 3. **Configure the expression**: Click a variable node to view and edit the JSON expression in the side panel.
 
@@ -64,7 +70,13 @@ Access JSON fields with field access. Since `json` is dynamically shaped, most a
 
 4. **Narrow to a specific type**: Set the variable type to `string`, `int`, or another concrete type and use `check` in the expression to perform type narrowing.
 
-   ![Flow designer showing Declare Variable steps for JSON field access, optional access, and type narrowing](/img/develop/transform/json/json-accessing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable steps for JSON field access, optional access, and type narrowing"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-accessing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-accessing-flow.png'),
+       }}
+   />
 
 ```ballerina
 public function main() returns error? {
@@ -108,7 +120,13 @@ Use `fromJsonString()` when you need a quick untyped `json` value without defini
 
 3. **Extract typed values**: Add a **Declare Variable** step with a concrete type (for example, `string`) and use a field access expression such as `check parsed.name` to extract values from the parsed JSON.
 
-   ![Flow designer showing the fromJsonString function call step and variable extraction steps](/img/develop/transform/json/json-parsing-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the fromJsonString function call step and variable extraction steps"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-parsing-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-parsing-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -129,19 +147,43 @@ Use `jsondata:parseString()` when the JSON structure is known. Define a matching
 
 1. **Define the target record type**: Navigate to **Types** in the sidebar and click **+** to add a new type. Define the `Product` record. For details on creating types, see [Types](../integration-artifacts/supportive-artifacts/types.md).
 
-   ![New Type panel showing the Product record fields defined from scratch](/img/develop/transform/json/json-types-panel.png)
+   <ThemedImage
+       alt="New Type panel showing the Product record fields defined from scratch"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-types-panel.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-types-panel.png'),
+       }}
+   />
 
 2. **Add a Declare Variable step for the JSON string**: In the flow designer, click **+** and select **Declare Variable**. Set the type to `string` and enter the JSON string as the expression. Name the variable `jsonStr`.
 
 3. **Parse into the record type**: Click **+** and select **Call Function**. In the right-side panel, search for `parseString` and select it from the `data.jsondata` module.
 
-   ![Right-side panel showing parseString search results with the data.jsondata module entry highlighted](/img/develop/transform/json/json-parsestring-search.png)
+   <ThemedImage
+       alt="Right-side panel showing parseString search results with the data.jsondata module entry highlighted"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-parsestring-search.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-parsestring-search.png'),
+       }}
+   />
 
    Pass `jsonStr` as the argument. The module is automatically imported into your file.
 
-   ![Right-side panel showing the parseString function form with jsonStr as the argument and Product as the return type](/img/develop/transform/json/json-parsestring-form.png)
+   <ThemedImage
+       alt="Right-side panel showing the parseString function form with jsonStr as the argument and Product as the return type"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-parsestring-form.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-parsestring-form.png'),
+       }}
+   />
 
-   ![Flow designer showing the parseString function call step with Product as the result type](/img/develop/transform/json/json-typed-parse-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the parseString function call step with Product as the result type"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-typed-parse-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-typed-parse-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/data.jsondata;
@@ -180,9 +222,21 @@ Use `jsondata:parseAsType()` when you already have a `json` value and want to co
 
 3. **Convert to the record type**: Click **+** and select **Call Function**. In the right-side panel, search for `parseAsType` and select it from the `data.jsondata` module. Pass `jsonInput` as the argument and set the result type to your defined record.
 
-   ![right-side panel showing parseAsType search results with the data.jsondata module entry highlighted](/img/develop/transform/json/json-parseastype-search.png)
+   <ThemedImage
+       alt="right-side panel showing parseAsType search results with the data.jsondata module entry highlighted"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-parseastype-search.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-parseastype-search.png'),
+       }}
+   />
 
-   ![Flow designer showing the parseAsType function call step with jsonInput as the argument and Product as the result type](/img/develop/transform/json/json-parseastype-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the parseAsType function call step with jsonInput as the argument and Product as the result type"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-parseastype-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-parseastype-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/data.jsondata;
@@ -213,7 +267,13 @@ Use `jsondata:parseString()` to parse a JSON array string directly into a typed 
 
 3. **Parse the array**: Click **+** and select **Call Function**. In the right-side panel, search for `parseString` and select it from the `data.jsondata` module. Pass `itemsJson` as the argument and set the result type to `OrderItem[]`.
 
-   ![Flow designer showing the jsondata parseString function call step for parsing a JSON array into typed records](/img/develop/transform/json/json-array-parse-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the jsondata parseString function call step for parsing a JSON array into typed records"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-array-parse-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-array-parse-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/data.jsondata;
@@ -244,7 +304,13 @@ Combine multiple JSON objects using the `mergeJson` function.
 
 2. **Merge the objects**: Click **+** and select **Call Function**. In the right-side panel, search for `mergeJson` and select it from the `lang.value` module. Pass two `json` values as arguments.
 
-   ![Flow designer showing two Declare Variable steps for order1 and order2 followed by a mergeJson function call step](/img/develop/transform/json/json-merging-flow.png)
+   <ThemedImage
+       alt="Flow designer showing two Declare Variable steps for order1 and order2 followed by a mergeJson function call step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-merging-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-merging-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/lang.value;
@@ -284,7 +350,13 @@ Use optional types (?) to represent fields that may be missing or contain null v
 
 2. **Apply the Elvis operator**: Add another **Declare Variable** step with a concrete type (for example, `string`) and use a conditional expression such as `desc is string ? desc : "No description provided"` to provide a default value.
 
-   ![Flow designer showing Declare Variable steps for optional access and Elvis operator for null handling](/img/develop/transform/json/json-null-handling-flow.png)
+   <ThemedImage
+       alt="Flow designer showing Declare Variable steps for optional access and Elvis operator for null handling"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-null-handling-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-null-handling-flow.png'),
+       }}
+   />
 
 ```ballerina
 public function main() returns error? {
@@ -302,7 +374,13 @@ public function main() returns error? {
 
 For large JSON payloads, use `jsondata:parseStream()` to process JSON data directly from a byte stream without loading the entire payload into memory. This approach improves memory efficiency and is useful when handling large API responses, files, or streaming data sources.
 
-   ![Flow designer showing a parseStream function call step reading a byte stream into a typed Product array](/img/develop/transform/json/json-streaming.png)
+   <ThemedImage
+       alt="Flow designer showing a parseStream function call step reading a byte stream into a typed Product array"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/json/json-streaming.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-streaming.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/data.jsondata;
@@ -349,3 +427,4 @@ Create a `products.json` file in the project directory.
 ## What's next
 
 - [XML Processing](xml.md) - Work with XML data
+- [Type System & Records](https://ballerina.io/spec/lang/master/) - Type-safe data handling

@@ -17,13 +17,25 @@ A WSO2 Cloud account gives you access to:
 
 Go to [WSO2 Cloud](https://console.devant.dev/signup) and choose your preferred sign-up option.
 
-![WSO2 Cloud sign-up page with available sign-up options](/img/get-started/setup/sign-up-sign-in/sign-up.png)
+<ThemedImage
+    alt="WSO2 Cloud sign-up page with available sign-up options"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/sign-up-sign-in/sign-up.png'),
+        dark: useBaseUrl('/img/get-started/setup/sign-up-sign-in/sign-up.png'),
+    }}
+/>
 
 ## Step 2: Create an organization
 
 Enter a unique name for your organization.
 
-![Creating an organization](/img/get-started/setup/sign-up-sign-in/org-creation.png)
+<ThemedImage
+    alt="Creating an organization"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/sign-up-sign-in/org-creation.png'),
+        dark: useBaseUrl('/img/get-started/setup/sign-up-sign-in/org-creation.png'),
+    }}
+/>
 
 The name must:
 
@@ -50,7 +62,13 @@ Select the cloud region where you want to deploy your integrations and click **C
 
 You land on the **Overview** page of the default project in your new organization.
 
-![Project overview page after creating an organization](/img/get-started/setup/sign-up-sign-in/project-home.png)
+<ThemedImage
+    alt="Project overview page after creating an organization"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/sign-up-sign-in/project-home.png'),
+        dark: useBaseUrl('/img/get-started/setup/sign-up-sign-in/project-home.png'),
+    }}
+/>
 
 :::info Invite others
 To give teammates access, an organization admin can invite them from the organization settings. Invited users can only see resources within that organization. See [Users and access control](../manage/users-and-access/users-and-access.md) for more information.
@@ -59,10 +77,22 @@ To give teammates access, an organization admin can invite them from the organiz
 
 On the project overview page, click **Create on Cloud**. WSO2 Integrator provisions a cloud editor instance for you, showing progress through each setup stage.
 
-![Cloud editor instance being created](/img/get-started/setup/cloud-editor-setup.png)
+<ThemedImage
+    alt="Cloud editor instance being created"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/cloud-editor-setup.png'),
+        dark: useBaseUrl('/img/get-started/setup/cloud-editor-setup.png'),
+    }}
+/>
 
 Once the instance is ready, the WSO2 Integrator cloud editor opens in your browser, using the same visual designer and pro-code editor available in the desktop IDE. Add an artifact to your integration, then deploy it to WSO2 Cloud from the **Deploy to WSO2 Cloud** panel on the right.
 
-![WSO2 Integrator cloud editor landing page showing an empty integration and the Deploy to WSO2 Cloud panel](/img/get-started/setup/cloud-editor-landing.png)
+<ThemedImage
+    alt="WSO2 Integrator cloud editor landing page showing an empty integration and the Deploy to WSO2 Cloud panel"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/cloud-editor-landing.png'),
+        dark: useBaseUrl('/img/get-started/setup/cloud-editor-landing.png'),
+    }}
+/>
 
 To work on a different project, go to the organization overview page by clicking your organization name in the top navigation, then create a new project from there.

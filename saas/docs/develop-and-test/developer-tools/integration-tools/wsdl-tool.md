@@ -20,7 +20,13 @@ bal wsdl --help
 2. In the **Artifacts** panel, select **Connection** under **Other Artifacts**.
 3. Select **Connect Via API Specification** and provide the WSDL file or URL.
 
-   ![Import WSDL file](/img/develop/tools/wsdl-tool/step-import-wsdl.png)
+   <ThemedImage
+       alt="Import WSDL file"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/wsdl-tool/step-import-wsdl.png'),
+           dark: useBaseUrl('/img/develop/tools/wsdl-tool/step-import-wsdl.png'),
+       }}
+   />
 
 4. Configure the Specification Type to **WSDL** and click **Next**.
 5. In the **Create Connection** step, configure the connection details. Expand **Advanced Configurations** to set the following optional fields:
@@ -30,7 +36,13 @@ bal wsdl --help
    - **Outbound Security**: Web service security configurations for SOAP requests.
    - **Inbound Security**: Web service security configurations to decrypt and verify SOAP responses.
 
-   ![Connection details configuration](/img/develop/tools/wsdl-tool/step-connection-details.png)
+   <ThemedImage
+       alt="Connection details configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/wsdl-tool/step-connection-details.png'),
+           dark: useBaseUrl('/img/develop/tools/wsdl-tool/step-connection-details.png'),
+       }}
+   />
 
 6. Enter a **Connection Name** for the generated client (for example, `orderServiceClient`).
 7. Click **Save Connection**.
@@ -260,3 +272,4 @@ bal wsdl -i service.wsdl --soap-version 1.2
 
 - [XSD Tool](xsd-tool.md) -- Generate record types from XML Schema definitions
 - [OpenAPI Tool](openapi-tool.md) -- Generate REST services and clients
+- [Configuration Management](../../../reference/configuration-reference.md#configuration-management) -- Manage SOAP endpoint configuration per environment

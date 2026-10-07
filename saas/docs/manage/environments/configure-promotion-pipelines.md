@@ -20,7 +20,13 @@ To view and manage promotion pipelines, navigate to the organization level.
 
 This page lists all existing pipelines in your organization.
 
-![Deployment pipelines](/img/manage/cloud/environments/pipeline-configuration/deployment-pipelines.png)
+<ThemedImage
+    alt="Deployment pipelines"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/deployment-pipelines.png'),
+        dark: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/deployment-pipelines.png'),
+    }}
+/>
 
 ### Create a pipeline
 
@@ -32,7 +38,13 @@ This page lists all existing pipelines in your organization.
     | **Name** | A display name for the pipeline. |
     | **Promotion hierarchy** | The ordered sequence of environments through which integrations are promoted. Add environments and arrange them to define the promotion flow. If you need a new environment, [create one first](./create.md) before configuring the pipeline. |
 
-    ![Configure pipeline](/img/manage/cloud/environments/pipeline-configuration/configure-pipeline.png)
+    <ThemedImage
+        alt="Configure pipeline"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/configure-pipeline.png'),
+            dark: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/configure-pipeline.png'),
+        }}
+    />
 
 3. Click **Create**.
 
@@ -61,7 +73,13 @@ When multiple pipelines are assigned to a project, you can choose which pipeline
 1. Open the integration and go to its **Deploy** page.
 2. Switch the active pipeline using the pipeline selector on the **Deploy** page.
 
-![Switch pipeline](/img/manage/cloud/environments/pipeline-configuration/deploy-page-integration.png)
+<ThemedImage
+    alt="Switch pipeline"
+    sources={{
+        light: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/deploy-page-integration.png'),
+        dark: useBaseUrl('/img/manage/cloud/environments/pipeline-configuration/deploy-page-integration.png'),
+    }}
+/>
 
 ## What's next
 

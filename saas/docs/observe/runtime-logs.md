@@ -12,7 +12,13 @@ All personally identifiable information (PII) is resolved at the frontend servic
 
 For all integration types, go to **Observability** > **Runtime Logs** in the left navigation. This unified view is available at both the project and integration levels, and supports filtering and search across all log entries.
 
-![Runtime logs](/img/observe/cloud/runtime-logs/runtime-logs.png)
+<ThemedImage
+    alt="Runtime logs"
+    sources={{
+        light: useBaseUrl('/img/observe/cloud/runtime-logs/runtime-logs.png'),
+        dark: useBaseUrl('/img/observe/cloud/runtime-logs/runtime-logs.png'),
+    }}
+/>
 
 Depending on the integration type, you can also access runtime logs from the Integration Overview page:
 
