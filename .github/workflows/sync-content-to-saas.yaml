@@ -24,6 +24,14 @@ name: Sync shared content to saas
 # unless something else on saas (any doc, versioned_docs/, src/,
 # docusaurus.config.ts) still references them.
 #
+# Carved out of develop-and-test/: create-workspace/ is authored
+# independently on saas (see SAAS_OWNED_DIRS). The sync restores saas's copy
+# after the full replace and skips it when collecting image references, so
+# the self-hosted screenshots it used on this branch are never synced and
+# saas's own screenshots (create-project/, import-project/, explore-samples/
+# `*-saas-*` files) are never touched. The shared-content-guard on saas
+# excludes the same path.
+#
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
@@ -37,6 +45,7 @@ on:
       - 'en/docs/platform-overview/**'
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
+      - '!en/docs/develop-and-test/create-workspace/**'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
       - 'en/static/img/**'
@@ -49,6 +58,10 @@ env:
     en/docs/develop-and-test
     en/docs/migrate
     en/docs/guides
+  # Authored independently on saas (WSO2 Cloud create/import project,
+  # import integration, and sample flows), so never overwritten by a sync.
+  SAAS_OWNED_DIRS: >-
+    en/docs/develop-and-test/create-workspace
 
 jobs:
   sync:
@@ -71,8 +84,10 @@ jobs:
 
           # Matches both `/img/...` and relative `../static/img/...` refs,
           # normalised to `/img/...`.
+          # create-workspace/ is skipped: its docs are saas-owned, so the
+          # images they reference must not drive the sync in either direction.
           list_img_refs() {
-            grep -rhoE "/img/[^)\"' >]+" "$@" 2>/dev/null | sort -u || true
+            grep -rhoE --exclude-dir=create-workspace "/img/[^)\"' >]+" "$@" 2>/dev/null | sort -u || true
           }
 
           # Captured before the docs are replaced: images saas's current
@@ -87,6 +102,16 @@ jobs:
           for d in $SYNC_DIRS; do
             rm -rf "$d"
             git checkout origin/wso2-integrator -- "$d" 2>/dev/null || true
+          done
+
+          # Put saas's copy of the saas-owned directories back, before any
+          # image refs are collected. Only if it exists on saas, so a missing
+          # directory never gets wiped by this step.
+          for d in $SAAS_OWNED_DIRS; do
+            if git cat-file -e "origin/saas:$d" 2>/dev/null; then
+              rm -rf "$d"
+              git checkout origin/saas -- "$d"
+            fi
           done
 
           # Bring over the latest copy of every image the synced docs
@@ -149,7 +174,7 @@ jobs:
 
           gh pr create --base saas --head "$(git branch --show-current)" \
             --title "content(sync): shared docs from wso2-integrator" \
-            --body $'Auto-synced shared content (platform-overview, editor, develop-and-test, migrate, guides, plus every en/static/img/ file they reference) from wso2-integrator. Check the run log for warnings about referenced images missing on wso2-integrator.\n\n**Review before merging, do not auto-merge.** In particular:\n- `editor/views/integration-view.md`, `editor/views/project-view.md`, and `editor/integrator-app.md` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR\'s diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that\'s this sync clobbering the saas-specific override -- revert those hunks before merging, don\'t accept them as-is.\n- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one.\n- The same goes for images: if saas intentionally carries its own version of a screenshot the synced docs reference, this PR keeps saas\'s copy only if it was edited on saas after wso2-integrator\'s version (see the "kept saas copy" warnings in the run log); otherwise it overwrites it -- revert that file before merging if the saas copy should win.' \
+            --body $'Auto-synced shared content (platform-overview, editor, develop-and-test, migrate, guides, plus every en/static/img/ file they reference) from wso2-integrator. develop-and-test/create-workspace/ is saas-owned and is not synced. Check the run log for warnings about referenced images missing on wso2-integrator.\n\n**Review before merging, do not auto-merge.** In particular:\n- `editor/views/integration-view.md`, `editor/views/project-view.md`, and `editor/integrator-app.md` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR\'s diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that\'s this sync clobbering the saas-specific override -- revert those hunks before merging, don\'t accept them as-is.\n- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one.\n- The same goes for images: if saas intentionally carries its own version of a screenshot the synced docs reference, this PR keeps saas\'s copy only if it was edited on saas after wso2-integrator\'s version (see the "kept saas copy" warnings in the run log); otherwise it overwrites it -- revert that file before merging if the saas copy should win.' \
             --label "content-sync"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
