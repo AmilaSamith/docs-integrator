@@ -41,6 +41,8 @@ See the [Setup Guide](setup-guide.md) for how to obtain these from your provider
 
 ## Adding the SMPP connector
 
+Add a connection to the SMSC first; the automation you build later sends through it.
+
 ### Step 1: Open the connector palette and search for the connector
 
 1. Select **Add Artifact** on the integration's **Design** view, then select **Connection** under **Other Artifacts**.
@@ -58,6 +60,8 @@ See the [Setup Guide](setup-guide.md) for how to obtain these from your provider
 />
 
 ## Configuring the SMPP connection
+
+The connection form takes the SMSC endpoint and the bind credentials. Bind each value to a configurable so the same flow works against any provider.
 
 ### Step 2: Fill in the connection parameters
 
@@ -101,6 +105,8 @@ Select **Save** on the connection form. The `smppClient` connection appears in t
 - **destinationNumber** (string) : The recipient's number in international format without a leading `+`, for example `94771234567`
 
 ## Configuring the SMPP Submit operation
+
+With the connection saved, create an automation and add the Submit operation to its flow.
 
 ### Step 5: Add an automation entry point
 
