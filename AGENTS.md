@@ -12,7 +12,10 @@ pre-flight checklist for any change that adds, moves, or renames a doc:
       `wso2-integrator` — a direct edit here gets silently reverted and
       the CI guard (`shared-content-guard.yaml`) rejects the PR. If the
       task touches one of these, the PR belongs on `wso2-integrator`,
-      not here — say so rather than making the edit.
+      not here — say so rather than making the edit. **Exception:**
+      `develop-and-test/create-workspace/` (and its images under
+      `static/img/create-project/`, `import-project/`, `explore-samples/`)
+      is authored independently on `saas` — edit it here directly.
 - [ ] **New/moved doc has an explicit `slug:`** in frontmatter, matching
       its actual route — never rely on the path-derived default.
 - [ ] **New folder with 2+ docs has an index page** at

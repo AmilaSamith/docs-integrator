@@ -87,7 +87,24 @@ Deleting an integration is permanent. All deployment history and configuration f
 
 1. Click the project name in the top navigation to go to the project view.
 2. In the list of integrations, hover over the integration you want to delete. A **Delete** button appears.
-3. Click **Delete**, then enter the integration name to confirm.
+
+    <ThemedImage
+        alt="Delete button shown when hovering over an integration in the project overview"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/integrations/delete-integration-hover.png'),
+            dark: useBaseUrl('/img/manage/cloud/integrations/delete-integration-hover.png'),
+        }}
+    />
+
+3. Click **Delete**, then enter the integration name to confirm and click **Delete**.
+
+    <ThemedImage
+        alt="Confirmation dialog for removing an integration"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/integrations/delete-integration-confirm.png'),
+            dark: useBaseUrl('/img/manage/cloud/integrations/delete-integration-confirm.png'),
+        }}
+    />
 
 The integration is permanently deleted.
 

@@ -69,7 +69,17 @@ Click **Source** on a card to read the sample's code in its GitHub repository be
 
 ## Deploy a sample
 
-Click **Quick Deploy** on the sample you want (or **Deploy** from the **Get Started Quickly** panel). WSO2 Cloud creates the integration in your project and opens its overview page. It shows the integration type, description, source repository, and latest commit, and starts the first build immediately.
+Click **Quick Deploy** on the sample you want (or **Deploy** from the **Get Started Quickly** panel). WSO2 Cloud starts creating the integration in your project and shows its progress.
+
+<ThemedImage
+    alt="Progress page shown while the sample integration is being created"
+    sources={{
+        light: useBaseUrl('/img/explore-samples/sample-integration-saas-first-deploy.png'),
+        dark: useBaseUrl('/img/explore-samples/sample-integration-saas-first-deploy.png'),
+    }}
+/>
+
+When creation completes, WSO2 Cloud opens the integration's overview page. It shows the integration type, description, source repository, and latest commit, and starts the first build immediately.
 
 When the build finishes, the sample is deployed to the **Development** environment, like any other integration on WSO2 Cloud. The overview page then shows the build as **Completed**, the deployment as **Active**, and the endpoint URL. Select **Test** on the **Development** environment to try the sample out.
 

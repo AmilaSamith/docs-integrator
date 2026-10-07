@@ -26,6 +26,14 @@ see [Section Ownership](#section-ownership) and the scenarios below.
    direct edit on `saas` gets silently reverted by the next sync — the CI
    guard (`shared-content-guard.yaml`) rejects such a PR outright. Send
    the PR to `wso2-integrator` instead.
+   **Exception:** `develop-and-test/create-workspace/` is independently
+   authored on `saas` (create/import project, import integration, and
+   sample flows for WSO2 Cloud) and is excluded from both the sync and
+   the guard. Edit it directly on `saas`. Its screenshots live under
+   `en/static/img/create-project/`, `import-project/`, and
+   `explore-samples/` and are saas-owned too. The sync workflow on
+   `wso2-integrator` must skip all of these, or the next sync overwrites
+   them.
    (`develop-and-test/` was `develop/` + `test/` before the deploy-and-run
    /observe/manage reorg; `get-started/concepts/core.md` was replaced by
    `concepts.mdx` plus per-topic partials — see the note in
@@ -127,6 +135,7 @@ including required frontmatter that's build-enforced — see
 | Path | Branch | Owner |
 |---|---|---|
 | `en/docs/icp/` | `wso2-integrator` | ICP team (`@wso2/icp-team` — placeholder, needs a real team slug) |
+| `en/docs/develop-and-test/create-workspace/` | `saas` | Authored independently per branch; not synced |
 | `en/docs/` (all) | `wso2-connectors` | Library team (`@wso2/library-team` — placeholder, needs a real team slug) |
 | Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
 

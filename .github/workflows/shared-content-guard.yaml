@@ -37,6 +37,12 @@ name: Shared content guard
 # prose, as opposed to the partials' links, may still be meant to stay
 # in sync) before adding it back.
 #
+# `develop-and-test/create-workspace/` is excluded: it is independently
+# authored on saas (the create/import project, import integration, and
+# sample flows differ from the self-hosted editor), so PRs may edit it
+# directly. The sync workflow on wso2-integrator must skip it too, or the
+# next sync overwrites it.
+#
 # The sync bot's own PRs are exempt (matched by head branch name prefix,
 # set in sync-content-to-saas.yaml) -- everything else touching a shared
 # path fails this check.
@@ -53,6 +59,7 @@ on:
       - 'en/docs/platform-overview/**'
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
+      - '!en/docs/develop-and-test/create-workspace/**'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
       - 'en/docs/reference/glossary.md'
