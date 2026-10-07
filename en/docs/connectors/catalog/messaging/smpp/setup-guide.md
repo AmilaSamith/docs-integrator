@@ -11,7 +11,7 @@ This guide walks you through the SMSC configuration required before using the SM
 
 ## Prerequisites
 
-- An account with an SMSC, carrier, or aggregator that exposes SMPP v3.4 (either a production short code/sender ID, or a test account from a provider with a free SMPP sandbox)
+- An account with an SMSC, carrier, or aggregator that exposes SMPP (either a production short code/sender ID, or a test account from a provider with a free SMPP sandbox)
 
 ## Obtain SMSC connection details
 

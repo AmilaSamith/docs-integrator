@@ -6,7 +6,7 @@ title: "SMPP"
 description: "Overview of the SMPP connector for WSO2 Integrator."
 ---
 
-The SMPP connector provides native Ballerina access to an SMSC (Short Message Service Centre) over **SMPP v3.4** (Short Message Peer-to-Peer), the protocol an ESME (External Short Messaging Entity) uses to exchange SMS traffic with a carrier or aggregator. It wraps the Java library [`org.jsmpp:jsmpp`](https://jsmpp.org/) through Ballerina's Java interoperability.
+The SMPP connector provides native Ballerina access to an SMSC (Short Message Service Centre) over **SMPP** (Short Message Peer-to-Peer), the protocol an ESME (External Short Messaging Entity) uses to exchange SMS traffic with a carrier or aggregator. It wraps the Java library [`org.jsmpp:jsmpp`](https://jsmpp.org/) through Ballerina's Java interoperability.
 
 ## Key features
 

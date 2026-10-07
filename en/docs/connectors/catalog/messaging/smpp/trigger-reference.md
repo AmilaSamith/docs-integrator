@@ -105,6 +105,8 @@ Correlate a later delivery receipt against a submit using `sms.receiptedMessageI
 
 ## Supporting types
 
+The records below are what the listener hands to your service callbacks.
+
 ### Sms
 
 | Field | Type | Description |

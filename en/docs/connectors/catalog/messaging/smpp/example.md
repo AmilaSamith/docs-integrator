@@ -25,7 +25,7 @@ flowchart LR
 
 ## Prerequisites
 
-- An SMSC, carrier, or aggregator account that exposes SMPP v3.4, reachable from your integration environment on its SMPP port (`2775` is the common default)
+- An SMSC, carrier, or aggregator account that exposes SMPP, reachable from your integration environment on its SMPP port (`2775` is the common default)
 - The bind credentials for that account: the system ID and password
 - An account allowed to bind as `TRANSMITTER` or `TRANSCEIVER`, since the automation sends messages
 
@@ -36,6 +36,8 @@ See the [Setup Guide](setup-guide.md) for how to obtain these from your provider
 > **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the SMPP connector
+
+Add a connection to the SMSC first; the automation you build later sends through it.
 
 ### Step 1: Open the connector palette and search for the connector
 
@@ -48,6 +50,8 @@ See the [Setup Guide](setup-guide.md) for how to obtain these from your provider
 ![Add Connection palette filtered to smpp, showing the Smpp and Smpp Caller connector cards before selection](/img/connectors/catalog/messaging/smpp/ballerina_smpp_screenshot_01_palette.png)
 
 ## Configuring the SMPP connection
+
+The connection form takes the SMSC endpoint and the bind credentials. Bind each value to a configurable so the same flow works against any provider.
 
 ### Step 2: Fill in the connection parameters
 
@@ -79,6 +83,8 @@ Select **Save** on the connection form. The `smppClient` connection appears in t
 - **destinationNumber** (string) : The recipient's number in international format without a leading `+`, for example `94771234567`
 
 ## Configuring the SMPP Submit operation
+
+With the connection saved, create an automation and add the Submit operation to its flow.
 
 ### Step 5: Add an automation entry point
 
