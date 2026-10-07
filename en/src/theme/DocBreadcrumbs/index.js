@@ -177,8 +177,6 @@ export default function DocBreadcrumbsWrapper(props) {
   const pageSlug = pathSegments[pathSegments.length - 1];
   const parentSegment = pathSegments[pathSegments.length - 2];
   const isDefaultPage = !availableVersions.includes(parentSegment);
-  // A connector page can opt out of the category badge with `hide_category_badge: true`.
-  const showCategoryBadge = pageSlug === 'overview' && !frontMatter.hide_category_badge;
 
   // Page version: from frontmatter if set, otherwise derive from URL or use latest.
   const isSharedPage = sharedPages.includes(pageSlug);
@@ -262,7 +260,7 @@ export default function DocBreadcrumbsWrapper(props) {
       <div className={styles.breadcrumbRow}>
         <div className={styles.breadcrumbsLeft}>
           <DocBreadcrumbs {...props} />
-          {showCategoryBadge && <CategoryBadge categorySlug={categorySlug} />}
+          {pageSlug === 'overview' && <CategoryBadge categorySlug={categorySlug} />}
         </div>
         {markdownUrl && <MarkdownButton markdownUrl={markdownUrl} />}
       </div>
@@ -274,7 +272,7 @@ export default function DocBreadcrumbsWrapper(props) {
       <div className={styles.breadcrumbRow}>
         <div className={styles.breadcrumbsLeft}>
           <DocBreadcrumbs {...props} />
-          {showCategoryBadge && <CategoryBadge categorySlug={categorySlug} />}
+          {pageSlug === 'overview' && <CategoryBadge categorySlug={categorySlug} />}
         </div>
         {markdownUrl && <MarkdownButton markdownUrl={markdownUrl} />}
       </div>
@@ -322,7 +320,7 @@ export default function DocBreadcrumbsWrapper(props) {
   return (
     <div className={styles.breadcrumbRow}>
       <nav className={styles.breadcrumbsLeft} aria-label="Breadcrumbs">
-        {showCategoryBadge && <CategoryBadge categorySlug={categorySlug} />}
+        {pageSlug === 'overview' && <CategoryBadge categorySlug={categorySlug} />}
         {beforeConnector.map((crumb, i) => (
           <React.Fragment key={i}>
             <span className={styles.breadcrumbItem}>
