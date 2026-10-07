@@ -6,7 +6,7 @@ toc_max_heading_level: 4
 
 # Actions
 
-The `ballerina/smpp` package exposes the following clients:
+The SMPP connector exposes the following clients:
 
 Available clients:
 

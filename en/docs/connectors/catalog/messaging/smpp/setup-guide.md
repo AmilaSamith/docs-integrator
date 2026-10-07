@@ -2,12 +2,12 @@
 connector: true
 connector_name: "smpp"
 title: "Setup Guide"
-description: "How to set up and configure the ballerina/smpp connector."
+description: "How to set up and configure the SMPP connector."
 ---
 
 # Setup Guide
 
-This guide walks you through the SMSC configuration required before using the `ballerina/smpp` connector.
+This guide walks you through the SMSC configuration required before using the SMPP connector.
 
 ## Prerequisites
 
