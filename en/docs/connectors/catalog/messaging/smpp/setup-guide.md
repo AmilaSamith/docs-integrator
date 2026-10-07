@@ -7,7 +7,7 @@ description: "Obtain SMPP access from an SMSC, carrier, or aggregator and collec
 
 # Setup Guide
 
-This guide walks you through the SMSC configuration required before using the `ballerina/smpp` connector.
+This guide walks you through the SMSC configuration required before using the SMPP connector.
 
 ## Prerequisites
 

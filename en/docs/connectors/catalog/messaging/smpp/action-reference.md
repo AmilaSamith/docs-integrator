@@ -7,7 +7,7 @@ description: "Full reference for the SMPP Client operations: submit, submitMulti
 
 # Actions
 
-The `ballerina/smpp` package exposes the following clients:
+The SMPP connector exposes the following clients:
 
 Available clients:
 
