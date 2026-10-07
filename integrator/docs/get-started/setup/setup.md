@@ -35,7 +35,13 @@ After installation, launch the IDE:
 - **macOS**: Open the **Applications** folder and double-click **WSO2 Integrator**.
 - **Linux**: Launch **WSO2 Integrator** from your applications menu (after a `.deb` or `.rpm` install), or run the binary from the extracted directory if you used the `.tar.gz` archive.
 
-![WSO2 Integrator IDE](/img/get-started/setup/wso2-integrator-ide.png)
+<ThemedImage
+    alt="WSO2 Integrator IDE"
+    sources={{
+        light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
+        dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
+    }}
+/>
 
 ### Step 4: Sign in to WSO2 Integrator
 
@@ -43,16 +49,34 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
 
 1. On the **Get Started** page, click **Sign In** in the top-right corner.
 
-   ![WSO2 Integrator Get Started page with the Sign In button in the top-right corner](/img/get-started/setup/sign-in/integrator-get-started.png)
+   <ThemedImage
+       alt="WSO2 Integrator Get Started page with the Sign In button in the top-right corner"
+       sources={{
+           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
+       }}
+   />
 
 2. The WSO2 Integration Platform sign-in page opens up in your default browser. Sign in using your preferred method.
 
-   ![WSO2 Integration Platform sign-in page](/img/get-started/setup/sign-in/sign-in-providers.png)
+   <ThemedImage
+       alt="WSO2 Integration Platform sign-in page"
+       sources={{
+           light: useBaseUrl('/img/get-started/setup/sign-in/sign-in-providers.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/sign-in-providers.png'),
+       }}
+   />
 
 3. When the browser prompts you, click **Open WSO2 Integrator** to return to the IDE.
 4. The IDE shows a **Successfully signed into WSO2 Integration Platform** notification, and your account avatar appears in the top-right corner.
 
-   ![WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification](/img/get-started/setup/sign-in/signed-in.png)
+   <ThemedImage
+       alt="WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification"
+       sources={{
+           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
+       }}
+   />
 
 :::info Don't have a WSO2 Cloud account?
 Create one and set up your organization by following <CloudDocsLink to="/get-started/cloud-setup">Cloud setup in the WSO2 Cloud documentation, then return here to sign in.

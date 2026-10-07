@@ -12,23 +12,53 @@ For the Data Mapper editor and manual mapping, see [Data Mapper editor](../../..
 
 1. Define the input and output record types in the **Types** panel. Define inner records first, then compose them into the parent input and output records. For details on creating records, see [Type editor](../../../../editor/panels/type-panel.md).
 
-    ![Types canvas with child record cards visible, and the New Type panel open for defining a parent record that references them](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-define-personal-profile.png)
+    <ThemedImage
+        alt="Types canvas with child record cards visible, and the New Type panel open for defining a parent record that references them"
+        sources={{
+            light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-define-personal-profile.png'),
+            dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-define-personal-profile.png'),
+        }}
+    />
 
 2. Create the data mapper. Under **Data Mappers** in the project explorer, select **+**. Set a name, add the input type with a parameter name, set the output type, and select **Create**.
 
-    ![Create New Data Mapper form with fields for data mapper name, input type with parameter name, and output type](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-create-form.png)
+    <ThemedImage
+        alt="Create New Data Mapper form with fields for data mapper name, input type with parameter name, and output type"
+        sources={{
+            light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-create-form.png'),
+            dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-create-form.png'),
+        }}
+    />
 
 3. The Data Mapper editor opens with the input schema on the left and the output schema on the right.
 
-    ![Data Mapper canvas with the input schema on the left and the output schema on the right with no mappings](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-canvas.png)
+    <ThemedImage
+        alt="Data Mapper canvas with the input schema on the left and the output schema on the right with no mappings"
+        sources={{
+            light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-canvas.png'),
+            dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-canvas.png'),
+        }}
+    />
 
 4. In the top-right corner of the canvas, select **Auto Map**. The WSO2 Integrator Copilot panel opens alongside the canvas with the `/data-map` skill preloaded.
 
-    ![WSO2 Integrator Copilot panel open alongside the Data Mapper canvas with the /data-map skill preloaded in the input field](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-copilot-command.png)
+    <ThemedImage
+        alt="WSO2 Integrator Copilot panel open alongside the Data Mapper canvas with the /data-map skill preloaded in the input field"
+        sources={{
+            light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-copilot-command.png'),
+            dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-copilot-command.png'),
+        }}
+    />
 
 5. Submit it. The Copilot reads the project files, generates field mappings based on the input and output types, and integrates them into your workspace. When complete, mapping lines appear between the matched fields on the canvas.
 
-    ![Data Mapper canvas with generated field mapping lines connecting the input and output fields, with the completion message in the Copilot panel](/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-result.png)
+    <ThemedImage
+        alt="Data Mapper canvas with generated field mapping lines connecting the input and output fields, with the completion message in the Copilot panel"
+        sources={{
+            light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-result.png'),
+            dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/ai-data-mapper-result.png'),
+        }}
+    />
 
 <h2>Define data types</h2>
 

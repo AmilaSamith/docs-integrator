@@ -118,7 +118,13 @@ When operational, the page provides:
 
 Ballerina listeners (HTTP, TCP, and other transport listeners) appear in the **Entry Points** tab of the integration Overview under the **Listener** type. Each listener shows its package, protocol, host, and port. You can start or stop individual listeners directly from the console, which sends a control command to all runtimes running that listener in the selected environment.
 
-![Listener entry point detail panel showing the enable/disable toggle](/img/manage/icp/listener-control-light.png)
+<ThemedImage
+    alt="Listener entry point detail panel showing the enable/disable toggle"
+    sources={{
+        light: useBaseUrl('/img/manage/icp/listener-control-light.png'),
+        dark: useBaseUrl('/img/manage/icp/listener-control-light.png'),
+    }}
+/>
 
 #### Start or stop a listener
 

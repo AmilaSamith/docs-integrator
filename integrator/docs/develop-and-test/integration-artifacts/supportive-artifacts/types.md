@@ -14,11 +14,23 @@ The visual designer exposes five type kinds: **Record**, **Enum**, **Service Cla
 
 2. Click **+** next to **Types** in the sidebar (or click **+ Add Type** from the Types canvas).
 
-   ![WSO2 Integrator sidebar showing the project structure with Types listed](/img/develop/integration-artifacts/supporting/types/step-1.png)
+   <ThemedImage
+       alt="WSO2 Integrator sidebar showing the project structure with Types listed"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-1.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-1.png'),
+       }}
+   />
 
 3. In the **New Type** panel, choose **Create from scratch** or **Import** to generate a type from sample JSON or XML.
 
-   ![New Type creation form showing Kind and Name fields](/img/develop/integration-artifacts/supporting/types/step-2.png)
+   <ThemedImage
+       alt="New Type creation form showing Kind and Name fields"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-2.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-2.png'),
+       }}
+   />
 
    | Field | Description |
    |---|---|
@@ -45,7 +57,13 @@ type Address record {|
 
 Click **View Type Diagram** next to **Types** in the sidebar to open the visual type diagram. The canvas renders all types in your project as nodes, with arrows showing relationships between the types.
 
-![Type diagram canvas showing the visual representation of types in the project](/img/develop/integration-artifacts/supporting/types/step-3.png)
+<ThemedImage
+    alt="Type diagram canvas showing the visual representation of types in the project"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-3.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/step-3.png'),
+    }}
+/>
 
 Use the toolbar buttons at the bottom left to zoom in, zoom out, fit the diagram to the screen, or export it as an image.
 
@@ -101,7 +119,13 @@ Expand a field row to set:
 | **Description** | Documentation for the field. Added as Ballerina field documentation. |
 | **Readonly** | Marks the field as immutable. The value set to the field must be immutable and the field cannot be assigned to once a value of this type is created. |
 
-![Record type creation field options](/img/develop/integration-artifacts/supporting/types/record-type-creation-field-options.png)
+<ThemedImage
+    alt="Record type creation field options"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/record-type-creation-field-options.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/record-type-creation-field-options.png'),
+    }}
+/>
 
 **Advanced Options**:
 
@@ -194,7 +218,13 @@ Use the pencil and trash icons next to each existing method to edit or remove it
 
 Click on **Constructor: init** to modify the initializer method.
 
-![Service Class Designer showing Class Variables and Methods sections](/img/develop/integration-artifacts/supporting/types/service-class-designer.png)
+<ThemedImage
+    alt="Service Class Designer showing Class Variables and Methods sections"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/service-class-designer.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/service-class-designer.png'),
+    }}
+/>
 
 `types.bal`
 
@@ -338,7 +368,13 @@ Types can be generated from sample JSON or XML values instead of manually defini
    | **Format** | The source data format: **JSON** or **XML**. |
    | **Name** | A unique name for the type (for example, `Employees`). |
 
-   ![New Type creation form showing type generation from JSON](/img/develop/integration-artifacts/supporting/types/type-from-json.png)
+   <ThemedImage
+       alt="New Type creation form showing type generation from JSON"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/supporting/types/type-from-json.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/supporting/types/type-from-json.png'),
+       }}
+   />
 
 3. Click **Save**. The types are added to your project and appear in the type diagram.
 

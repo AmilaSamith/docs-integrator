@@ -42,7 +42,13 @@ The agent is represented as a simple integration flow consisting of the followin
 
 The **AI Agent** block provides a centralized configuration interface for defining the agent’s behavior and capabilities.
 
-![The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node.](/img/genai/develop/agents/02-agent-flow-canvas.png)
+<ThemedImage
+    alt="The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+    }}
+/>
 
 The **AI Agent** block allows you to configure the following components of the agent:
 

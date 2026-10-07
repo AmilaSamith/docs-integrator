@@ -17,7 +17,13 @@ Select **Workflows** in the console navigation. The console opens the **Workflow
 
 The page header shows the integration name and an environment selector. Use the selector to switch between environments such as `dev` and `prod`.
 
-![Workflow Executions page showing the environment selector, filters, auto-refresh control, and execution list](/img/workflows/icp/workflow-executions.png)
+<ThemedImage
+    alt="Workflow Executions page showing the environment selector, filters, auto-refresh control, and execution list"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/workflow-executions.png'),
+        dark: useBaseUrl('/img/workflows/icp/workflow-executions.png'),
+    }}
+/>
 
 ## Browse executions
 
@@ -57,7 +63,13 @@ Each row in the list is one workflow execution, listed newest first. The columns
 
 Select an execution in the list to open the **Execution Details** panel.
 
-![Execution details showing the controls for resetting and managing a workflow](/img/workflows/icp/execution-details.gif)
+<ThemedImage
+    alt="Execution details showing the controls for resetting and managing a workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/execution-details.gif'),
+        dark: useBaseUrl('/img/workflows/icp/execution-details.gif'),
+    }}
+/>
 
 The panel header holds the action buttons, which are covered in [Manage an execution](#manage-an-execution). Below the header, the panel shows the execution's status and details, its input, and its flow.
 
@@ -73,7 +85,13 @@ The **Execution** card shows the current status of the run and the details that 
 | **Started** | The date and time the execution began. |
 | **Closed** | The date and time the execution finished. This field appears only after the execution is no longer running. |
 
-![Execution details card showing the instance ID, workflow name, and started time](/img/workflows/icp/execution_details.png)
+<ThemedImage
+    alt="Execution details card showing the instance ID, workflow name, and started time"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/execution_details.png'),
+        dark: useBaseUrl('/img/workflows/icp/execution_details.png'),
+    }}
+/>
 
 ### Workflow input
 
@@ -81,7 +99,13 @@ The **Workflow Input** card shows the data that was provided when the execution 
 
 Use the **`{}`** icon to switch between the structured view and the raw JSON view. Select the **copy** icon to copy the workflow input.
 
-![Workflow Input card showing the data provided when the execution started](/img/workflows/icp/workflowInput.png)
+<ThemedImage
+    alt="Workflow Input card showing the data provided when the execution started"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/workflowInput.png'),
+        dark: useBaseUrl('/img/workflows/icp/workflowInput.png'),
+    }}
+/>
 
 ### Execution flow
 
@@ -95,11 +119,23 @@ The **Execution Flow** section shows the steps in a workflow execution and how t
 
 The timeline next to the flow shows when each step ran, how long it took, and the total execution time.
 
-![Execution flow diagram and timeline showing each step's status, duration, and the total running time](/img/workflows/icp/execution-flow-timeline.png)
+<ThemedImage
+    alt="Execution flow diagram and timeline showing each step's status, duration, and the total running time"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/execution-flow-timeline.png'),
+        dark: useBaseUrl('/img/workflows/icp/execution-flow-timeline.png'),
+    }}
+/>
 
 Select a step to view its details, including the input and execution status.
 
-![Execution flow diagram, timeline, and step details panel for a selected step](/img/workflows/icp/step-details.png)
+<ThemedImage
+    alt="Execution flow diagram, timeline, and step details panel for a selected step"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/step-details.png'),
+        dark: useBaseUrl('/img/workflows/icp/step-details.png'),
+    }}
+/>
 
 The execution flow is generated from workflow checkpoints and is an approximation of the execution. It may not show every action performed during the workflow run.
 
@@ -122,7 +158,13 @@ Select **Reset** to open the **Reset Workflow** dialog, and then choose where to
 - **From the beginning** reruns the whole workflow with its original input.
 - **A specific point in this run's history** starts the replay from a history point you select.
 
-![Reset Workflow dialog showing the available history points for replay](/img/workflows/icp/reset-workflow-history.png)
+<ThemedImage
+    alt="Reset Workflow dialog showing the available history points for replay"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/reset-workflow-history.png'),
+        dark: useBaseUrl('/img/workflows/icp/reset-workflow-history.png'),
+    }}
+/>
 
 Optionally, enter a **Reason**. Then select **Reset Workflow** to confirm, or **Back** to cancel.
 
@@ -130,7 +172,13 @@ Optionally, enter a **Reason**. Then select **Reset Workflow** to confirm, or **
 
 The status doesn't change the moment you select **Suspend**. It can still read **Running** for a short time, because the console sends the suspension to the workflow as a signal instead of applying it immediately. Once the workflow engine confirms that the run has paused, the status changes to **Suspended** and **Resume** replaces **Suspend**.
 
-![Execution details of a suspended execution with the Suspended status and the Resume button highlighted](/img/workflows/icp/suspended-execution.png)
+<ThemedImage
+    alt="Execution details of a suspended execution with the Suspended status and the Resume button highlighted"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/suspended-execution.png'),
+        dark: useBaseUrl('/img/workflows/icp/suspended-execution.png'),
+    }}
+/>
 
 ### Cancel or terminate an execution
 

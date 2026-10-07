@@ -105,7 +105,13 @@ Create the AI agent named `itHelpDeskAgent` by following the instructions in [Cr
 
 - Click the created agent and add the instructions.
 
-![Add instruction](/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png)
+<ThemedImage
+    alt="Add instruction"
+    sources={{
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/28-add-instruction.png'),
+    }}
+/>
 
 ```ballerina
 # agents.bal
@@ -154,7 +160,13 @@ isolated function searchKnowledgeBase(string query) returns string {
 
 Add persistent memory by following the instructions in [Memory](../../develop-and-test/integration-artifacts/ai-integrations/agents/memory.md).
 
-    ![Agent with inmemory](/img/genai/develop/agents/29-agent-with-inmemory.png)
+    <ThemedImage
+        alt="Agent with inmemory"
+        sources={{
+            light: useBaseUrl('/img/genai/develop/agents/29-agent-with-inmemory.png'),
+            dark: useBaseUrl('/img/genai/develop/agents/29-agent-with-inmemory.png'),
+        }}
+    />
 
 ```ballerina
 # agents.bal
@@ -199,7 +211,13 @@ final ai:Agent itHelpDeskAgent = check new (
 
 1. Run the agent integration.
 
-![Run integration](/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png)
+<ThemedImage
+    alt="Run integration"
+    sources={{
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag/29-run-integration.png'),
+    }}
+/>
 
 2. Ask a question as an employee:
 

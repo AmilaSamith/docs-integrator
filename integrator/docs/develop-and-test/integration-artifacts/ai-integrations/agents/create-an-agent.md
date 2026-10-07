@@ -14,7 +14,13 @@ The AI Agent node acts as the core execution component. It enables the agent to 
 2. Click **+ Add Artifact** from the project view, or right-click the project tree.
 3. The **Artifacts** page opens.
 
-![Artifacts page in WSO2 Integrator showing all artifact categories — Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL).](/img/genai/develop/shared/07-artifacts-page-full.png)
+<ThemedImage
+    alt="Artifacts page in WSO2 Integrator showing all artifact categories — Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/shared/07-artifacts-page-full.png'),
+        dark: useBaseUrl('/img/genai/develop/shared/07-artifacts-page-full.png'),
+    }}
+/>
 
 4. Under **AI Integration**, select **AI Chat Agent**.
 
@@ -22,7 +28,13 @@ The AI Agent node acts as the core execution component. It enables the agent to 
 
 The wizard initially displays a single input field. The **Create** button remains disabled until a valid agent name is provided.
 
-![The empty AI Chat Agent wizard with a Name field and a disabled Create button. The placeholder shows example names: Customer Support Assistant, Sales Advisor, Data Analyst.](/img/genai/develop/agents/01-create-ai-chat-agent-wizard.png)
+<ThemedImage
+    alt="The empty AI Chat Agent wizard with a Name field and a disabled Create button. The placeholder shows example names: Customer Support Assistant, Sales Advisor, Data Analyst."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/01-create-ai-chat-agent-wizard.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/01-create-ai-chat-agent-wizard.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|
@@ -39,7 +51,13 @@ When the wizard completes, WSO2 Integrator automatically generates the following
 - An AI Agent node
 - An integration flow that handles incoming requests and generates responses
 
-![The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node.](/img/genai/develop/agents/02-agent-flow-canvas.png)
+<ThemedImage
+    alt="The AI Agent canvas showing Start, an AI Agent node with the agent name and an Add Memory button, and a Return node."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/02-agent-flow-canvas.png'),
+    }}
+/>
 
 The generated Ballerina source for an agent named `blogReviewer` is similar to the following:
 

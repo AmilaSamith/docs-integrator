@@ -16,7 +16,13 @@ If you don't have an existing project and would like to get started on a new pro
 
 1. Sign in to [WSO2 Cloud](https://console.devant.dev).
 2. Navigate to the organization overview page by clicking on the organization name at the top. The organization overview lists all your projects.
-    ![Organization Overview](/img/deploy/cloud/import-project/organization-overview.png)
+    <ThemedImage
+        alt="Organization Overview"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/import-project/organization-overview.png'),
+            dark: useBaseUrl('/img/deploy/cloud/import-project/organization-overview.png'),
+        }}
+    />
 3. Click **Import** to import an existing WSO2 Integrator project.
 4. Select your Git provider and complete the authorization flow in the browser, then return to WSO2 Cloud.
 
@@ -31,15 +37,33 @@ If you don't have an existing project and would like to get started on a new pro
 3. Set the path to the folder where your project lives within the repository.
 4. Optionally, give the project a name.
 5. Add the integrations you want to import. For each integration, click **+** next to each integration to add it individually, or click **+** next to the project name to add all integrations in the project at once.
-    ![Import Project](/img/deploy/cloud/import-project/import-project.png)
+    <ThemedImage
+        alt="Import Project"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/import-project/import-project.png'),
+            dark: useBaseUrl('/img/deploy/cloud/import-project/import-project.png'),
+        }}
+    />
 6. For each integration, set the integration name, an optional description, and the integration type.
 7. Click **Save** for each integration once configured.
-    ![Configure Integration](/img/deploy/cloud/import-project/configure-integration.png)
+    <ThemedImage
+        alt="Configure Integration"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/import-project/configure-integration.png'),
+            dark: useBaseUrl('/img/deploy/cloud/import-project/configure-integration.png'),
+        }}
+    />
 8. After configuring all integrations, click **Import**.
 
 WSO2 Cloud creates all the integrations and navigates you to the newly created project home.
 
-![Project Home](/img/deploy/cloud/import-project/project-home.png)
+<ThemedImage
+    alt="Project Home"
+    sources={{
+        light: useBaseUrl('/img/deploy/cloud/import-project/project-home.png'),
+        dark: useBaseUrl('/img/deploy/cloud/import-project/project-home.png'),
+    }}
+/>
 
 ## What's next
 

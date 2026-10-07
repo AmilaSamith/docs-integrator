@@ -23,7 +23,13 @@ Use `pdf:extractText` when the PDF is already in memory. For example, when it ar
 
 3. **Add a Foreach step**: Click **+** and select **Foreach** under **Control**. Set the **Collection** to `pages` and the **Variable Name** to `pageText`. Inside the loop, process each page's text, index it, search it, or forward it to a downstream service.
 
-   ![Flow designer showing the pdfBytes variable, extractText function call, and foreach loop over pages](/img/develop/transform/pdf/extract-bytes-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the pdfBytes variable, extractText function call, and foreach loop over pages"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/extract-bytes-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/extract-bytes-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -47,7 +53,13 @@ When the PDF lives on disk or behind a URL, skip the intermediate `byte[]` and u
 
 2. **Add a Function Call step for URL extraction**: For PDFs served over HTTP, search for `urlExtractText` under **pdf** instead. Set the input to the URL string. The module fetches the document and returns the same `string[]` shape.
 
-   ![Flow designer showing fileExtractText and urlExtractText function call steps for PDF text extraction from a file path and a URL](/img/develop/transform/pdf/extract-file-url-flow.png)
+   <ThemedImage
+       alt="Flow designer showing fileExtractText and urlExtractText function call steps for PDF text extraction from a file path and a URL"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/extract-file-url-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/extract-file-url-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/pdf;
@@ -82,7 +94,13 @@ The three variants mirror text extraction: bytes, file path, or URL. Each return
 
 3. **Decode and write each image**: Inside the loop, click **+** and select **Call Function**. Call `array:fromBase64(pageImages[i])` to obtain the raw PNG bytes for the current page, then call `io:fileWriteBytes` with the path expression `` string `./page-${i + 1}.png` `` to save each page as a separate, numbered PNG file.
 
-   ![Flow designer showing the fileToImages function call, an index-range foreach, and the fromBase64 plus fileWriteBytes steps inside the loop](/img/develop/transform/pdf/image-conversion-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the fileToImages function call, an index-range foreach, and the fromBase64 plus fileWriteBytes steps inside the loop"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/image-conversion-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/image-conversion-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -116,7 +134,13 @@ Read or build an HTML string, then pass it to `pdf:parseHtml` to obtain the PDF 
 
 3. **Add a Function Call step for output**: Click **+** and select **Call Function**. Call `io:fileWriteBytes("./output.pdf", pdfBytes)` to save the PDF to disk, or assign `pdfBytes` to an `http:Response` payload to return it from a service.
 
-   ![Flow designer showing the html variable, parseHtml function call producing pdfBytes, and fileWriteBytes save step](/img/develop/transform/pdf/html-string-render-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the html variable, parseHtml function call producing pdfBytes, and fileWriteBytes save step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/html-string-render-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/html-string-render-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -156,7 +180,13 @@ public function main() returns error? {
 
 3. **Add a Function Call step for output**: Click **+** and select **Call Function**. Call `io:fileWriteBytes("./invoice.pdf", pdfBytes)` to save the PDF to disk.
 
-   ![Flow designer showing the fontBytes load, parseHtml call with pageSize, margins, customFonts, and maxPages options, and the fileWriteBytes save step](/img/develop/transform/pdf/customize-options-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the fontBytes load, parseHtml call with pageSize, margins, customFonts, and maxPages options, and the fileWriteBytes save step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/customize-options-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/customize-options-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/io;
@@ -217,7 +247,13 @@ Build an HTTP service that renders a parameterized template into a PDF and retur
 
 6. **Return the response**: Click **+** and, under **Control**, select **Return**. Set the return value to `response`.
 
-   ![Flow designer showing the GET /render resource flow: buildInvoiceHtml, parseHtml, http:Response setup with setBinaryPayload and setContentType, and the Return step](/img/develop/transform/pdf/pdf-generation-service-flow.png)
+   <ThemedImage
+       alt="Flow designer showing the GET /render resource flow: buildInvoiceHtml, parseHtml, http:Response setup with setBinaryPayload and setContentType, and the Return step"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/pdf/pdf-generation-service-flow.png'),
+           dark: useBaseUrl('/img/develop/transform/pdf/pdf-generation-service-flow.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/http;

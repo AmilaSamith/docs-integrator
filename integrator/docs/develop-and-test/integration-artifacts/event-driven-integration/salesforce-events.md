@@ -12,7 +12,13 @@ Salesforce event integrations subscribe to Change Data Capture (CDC) channels an
 2. In the **Artifacts** panel, select **Salesforce** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![Salesforce Events creation form](/img/develop/integration-artifacts/event/salesforce-events/step-creation-form.png)
+   <ThemedImage
+       alt="Salesforce Events creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/step-creation-form.png'),
+       }}
+   />
 
    | Field | Description |
    |---|---|
@@ -28,7 +34,13 @@ Salesforce event integrations subscribe to Change Data Capture (CDC) channels an
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill and the **Event Handlers** section with all four handlers pre-added.
 
-   ![Service Designer showing the Salesforce Events service canvas](/img/develop/integration-artifacts/event/salesforce-events/step-service-designer.png)
+   <ThemedImage
+       alt="Service Designer showing the Salesforce Events service canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/step-service-designer.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/step-service-designer.png'),
+       }}
+   />
 
    The four event handlers - `onCreate`, `onUpdate`, `onDelete`, and `onRestore` - are added automatically when the service is created. Click any handler to open it in the flow diagram view and implement the logic.
 
@@ -76,7 +88,13 @@ service salesforce:CdcService on salesforceListener {
 
 In the **Configure** panel, set **Auth** to a record expression with relevant fields with optional values to set any of the values below. Click **Save Changes** to apply.
 
-   ![Salesforce Configuration](/img/develop/integration-artifacts/event/salesforce-events/salesforce-configuration.gif)
+   <ThemedImage
+       alt="Salesforce Configuration"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/salesforce-configuration.gif'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/event/salesforce-events/salesforce-configuration.gif'),
+       }}
+   />
 
 ```ballerina
 listener salesforce:Listener salesforceListener = new ({

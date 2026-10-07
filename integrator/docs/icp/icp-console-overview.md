@@ -24,7 +24,13 @@ Environments and roles are defined at the organization level and apply across al
 
 The ICP console has two main navigation elements: the breadcrumb bar at the top and the sidebar on the left.
 
-![ICP console showing the breadcrumb bar and sidebar](/img/manage/icp/icp-console-overview-light.png)
+<ThemedImage
+    alt="ICP console showing the breadcrumb bar and sidebar"
+    sources={{
+        light: useBaseUrl('/img/manage/icp/icp-console-overview-light.png'),
+        dark: useBaseUrl('/img/manage/icp/icp-console-overview-light.png'),
+    }}
+/>
 
 ### Breadcrumb bar
 

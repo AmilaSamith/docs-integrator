@@ -6,13 +6,25 @@ title: Integration View
 
 The Integration view is the primary development interface in WSO2 Integrator. Use it to build, test, and deploy a single integration. It combines a project explorer, a visual design canvas, and deployment options in one unified workspace.
 
-![Integration view overview](/img/editor/views/integration-view/overview.png)
+<ThemedImage
+    alt="Integration view overview"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+    }}
+/>
 
 ## Design canvas
 
 The design canvas is the central area of the Integration view. It displays a visual overview of your integration, showing how entry points, listeners, connections, and services relate to each other.
 
-![Design canvas](/img/editor/views/integration-view/design-canvas.png)
+<ThemedImage
+    alt="Design canvas"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+    }}
+/>
 
 ### Service diagram
 
@@ -54,7 +66,13 @@ Click the **+ Add Artifact** button at the top of the canvas to add a new compon
 
 The toolbar sits at the top of the Integration view and provides quick access to common actions for building, running, and debugging your integration.
 
-![Toolbar](/img/editor/views/integration-view/toolbar.png)
+<ThemedImage
+    alt="Toolbar"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+    }}
+/>
 
 | Action | Description |
 |---|---|
@@ -67,7 +85,13 @@ The toolbar sits at the top of the Integration view and provides quick access to
 
 The deployment options panel appears on the right sidebar and provides shortcuts to deploy the integration to different environments.
 
-![Deployment options](/img/editor/views/integration-view/deployment-options.png)
+<ThemedImage
+    alt="Deployment options"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+    }}
+/>
 
 | Option | Target |
 |---|---|
@@ -82,7 +106,13 @@ Select **Enable ICP monitoring** to activate ICP for this integration, or expand
 
 The README section at the bottom of the Integration view displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
 
-![Readme](/img/editor/views/integration-view/readme.png)
+<ThemedImage
+    alt="Readme"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+    }}
+/>
 
 Click **Edit** to modify the README directly. You can also click **Generate with AI** to create a README automatically based on your project's components and configuration.
 

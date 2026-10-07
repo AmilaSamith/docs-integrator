@@ -10,7 +10,13 @@ Projects group related integrations under a shared context. Every integration be
 
 After signing in, the **All Projects** page is the default landing view. Projects display as cards in a grid layout. Use the icons at the top right to switch between grid and list views.
 
-![All Projects page showing three project cards — Order Service, Payment Service, and Shipping Service — in a grid layout with a Create Project button at the top right.](/img/manage/icp/all-projects-light.png)
+<ThemedImage
+    alt="All Projects page showing three project cards — Order Service, Payment Service, and Shipping Service — in a grid layout with a Create Project button at the top right."
+    sources={{
+        light: useBaseUrl('/img/manage/icp/all-projects-light.png'),
+        dark: useBaseUrl('/img/manage/icp/all-projects-light.png'),
+    }}
+/>
 
 Each project card shows:
 
@@ -53,7 +59,13 @@ Deleting a project removes all associated integrations and their data. This acti
 
 Clicking a project card opens the project home. It shows all integrations belonging to the project.
 
-![Order Service project home showing the integrations list with Order Create and Order Process entries, a Create Integration button, and an Integration Types summary card on the right.](/img/manage/icp/project-integrations-light.png)
+<ThemedImage
+    alt="Order Service project home showing the integrations list with Order Create and Order Process entries, a Create Integration button, and an Integration Types summary card on the right."
+    sources={{
+        light: useBaseUrl('/img/manage/icp/project-integrations-light.png'),
+        dark: useBaseUrl('/img/manage/icp/project-integrations-light.png'),
+    }}
+/>
 
 The page includes:
 

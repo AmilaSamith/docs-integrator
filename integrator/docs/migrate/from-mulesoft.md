@@ -24,7 +24,13 @@ The migration wizard guides you through a 5-step process to convert your MuleSof
 
 1. Open WSO2 Integrator, click **More Actions**, and select **Migrate Integrations from Other Vendors**.
 
-   ![Migrate Integrations from Other Vendors option](/img/develop/tools/migration-tools/more-actions-migrate.png)
+   <ThemedImage
+       alt="Migrate Integrations from Other Vendors option"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/more-actions-migrate.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/more-actions-migrate.png'),
+       }}
+   />
 
 2. Select **MuleSoft** as the source platform.
 3. Under **Select a Project Folder or Directory**, click **Browse** and select your MuleSoft project directory or a directory containing multiple projects.
@@ -38,7 +44,13 @@ The migration wizard guides you through a 5-step process to convert your MuleSof
    - **Force Version** — Select a specific Mule version or use **Auto Detect** to let the tool determine it from your project.
 6. Click **Generate Report**.
 
-   ![Configure source step](/img/develop/tools/migration-tools/mule-configure-source.png)
+   <ThemedImage
+       alt="Configure source step"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/mule-configure-source.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/mule-configure-source.png'),
+       }}
+   />
 
 ### Step 2: Report generation
 
@@ -51,7 +63,13 @@ When the dry run completes, the wizard displays a summary of the migration cover
 - **Migratable code lines** — Lines successfully converted to Ballerina.
 - **Non-migratable code lines** — Lines that require manual attention.
 
-   ![Report generation step](/img/develop/tools/migration-tools/mule-report-generation.png)
+   <ThemedImage
+       alt="Report generation step"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/mule-report-generation.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/mule-report-generation.png'),
+       }}
+   />
 
 Click **View Full Report** to open the full HTML report. The report includes:
 
@@ -61,7 +79,13 @@ Click **View Full Report** to open the full HTML report. The report includes:
 - **Currently Unsupported Elements** — List of elements that could not be automatically migrated.
 - **Element Blocks that Require Manual Conversion** — Specific code blocks that need manual implementation.
 
-   ![Full migration report](/img/develop/tools/migration-tools/mule-sample-migration-report.png)
+   <ThemedImage
+       alt="Full migration report"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/mule-sample-migration-report.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/mule-sample-migration-report.png'),
+       }}
+   />
 
 Click **Save Report** to download the report for future reference.
 
@@ -76,7 +100,13 @@ Click **Configure Destination** to proceed, or **Done** to exit the wizard.
    - **Select Path** — Choose where to create the migrated project.
 3. Click **Start Migration**.
 
-   ![Configure destination step](/img/develop/tools/migration-tools/mule-configure-destination.png)
+   <ThemedImage
+       alt="Configure destination step"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/mule-configure-destination.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/mule-configure-destination.png'),
+       }}
+   />
 
 ### Step 4: Rule-based migration
 
@@ -89,7 +119,13 @@ After the migration completes successfully, the **AI Enhancement (Recommended)**
 
 Click **Start AI Enhancement** to proceed to Step 5, or if you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
 
-   ![Rule-based migration step](/img/develop/tools/migration-tools/rule-based-migration.png)
+   <ThemedImage
+       alt="Rule-based migration step"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/rule-based-migration.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/rule-based-migration.png'),
+       }}
+   />
 
 ### Step 5: AI enhancement
 
@@ -103,7 +139,13 @@ The wizard first checks whether you are signed in. If not, a sign-in panel appea
    - **Enter your Google Vertex AI credentials**
 2. To skip AI enhancement and exit, click **Skip and Done**.
 
-   ![Sign-in panel](/img/develop/tools/migration-tools/sign-in-for-ai-enhancement.png)
+   <ThemedImage
+       alt="Sign-in panel"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/sign-in-for-ai-enhancement.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/sign-in-for-ai-enhancement.png'),
+       }}
+   />
 
 After signing in, the AI agent runs automatically and streams its progress. The agent resolves unmapped elements, fixes build errors, and improves the overall quality of the migrated code.
 
@@ -112,7 +154,13 @@ While the agent is running:
 - Click **Pause** to pause the AI enhancement. Click **Resume** to continue.
 - Click **Done** to exit the wizard, or **Open Project** to open the project without waiting for the agent to finish.
 
-   ![Enhancing with ai-agent](/img/develop/tools/migration-tools/mule-ai-enhancement.png)
+   <ThemedImage
+       alt="Enhancing with ai-agent"
+       sources={{
+           light: useBaseUrl('/img/develop/tools/migration-tools/mule-ai-enhancement.png'),
+           dark: useBaseUrl('/img/develop/tools/migration-tools/mule-ai-enhancement.png'),
+       }}
+   />
 
 When the AI enhancement completes, the status shows **AI Enhancement completed**. Click **Open Project** to open the migrated project or **Done** to exit.
 

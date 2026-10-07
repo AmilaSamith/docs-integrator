@@ -8,7 +8,13 @@ The GraphQL Canvas, also known as the **GraphQL diagram**, is the canvas you ope
 
 For end-to-end usage, including how to create a GraphQL service from scratch or import an existing schema, see [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md).
 
-![GraphQL Canvas showing a GraphQL service with its queries, subscription, and referenced types](/img/editor/canvases/graphql-canvas/overview.png)
+<ThemedImage
+    alt="GraphQL Canvas showing a GraphQL service with its queries, subscription, and referenced types"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/graphql-canvas/overview.png'),
+        dark: useBaseUrl('/img/editor/canvases/graphql-canvas/overview.png'),
+    }}
+/>
 
 ## Open the canvas
 
@@ -52,7 +58,13 @@ The three-dot menu (**⋮**) on the service node opens the service-level actions
 
 The **GraphQL Operations** side panel groups every operation the service exposes into **Query**, **Mutation**, and **Subscription** sections. Each section lists the existing operations by name, with an edit icon and a delete icon on each row. When a section has no operations, the panel shows a placeholder, for example **No Mutation fields defined**.
 
-![GraphQL Operations side panel](/img/editor/canvases/graphql-canvas/operations-panel.png)
+<ThemedImage
+    alt="GraphQL Operations side panel"
+    sources={{
+        light: useBaseUrl('/img/editor/canvases/graphql-canvas/operations-panel.png'),
+        dark: useBaseUrl('/img/editor/canvases/graphql-canvas/operations-panel.png'),
+    }}
+/>
 
 #### Add an operation
 

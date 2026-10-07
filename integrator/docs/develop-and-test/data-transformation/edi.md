@@ -48,7 +48,13 @@ This writes a ready-to-use JSON schema to `schema/ORDERS.json`. Then generate Ba
 1. After creating a new integration, click the **+ Add** icon.
 2. Select **Library** as the type, enter `orders` as the library name, and click **Add Library**.
 
-   ![Add New Library](/img/develop/transform/edi/add-new-library.png)
+   <ThemedImage
+       alt="Add New Library"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/add-new-library.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/add-new-library.png'),
+       }}
+   />
 
 3. Open the terminal and navigate to the `orders` directory.
 
@@ -195,37 +201,85 @@ UNT+8+1'
 1. Open your main integration and click **+ Add Artifact** on the canvas.
 2. Select **Automation** from the artifacts panel.
 
-   ![Artifacts panel with Automation selected](/img/develop/transform/edi/automation.png)
+   <ThemedImage
+       alt="Artifacts panel with Automation selected"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/automation.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/automation.png'),
+       }}
+   />
 
 3. Click **+** and select **Call Function**.
 
-   ![Call Function in the Statement panel](/img/develop/transform/edi/call-function.png)
+   <ThemedImage
+       alt="Call Function in the Statement panel"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/call-function.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/call-function.png'),
+       }}
+   />
 
 4. In the **Functions** panel, scroll down to the **io** section and select **fileReadString**.
 
-   ![Select fileReadString from io functions](/img/develop/transform/edi/file-read-string.png)
+   <ThemedImage
+       alt="Select fileReadString from io functions"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/file-read-string.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/file-read-string.png'),
+       }}
+   />
 
 5. Set **Path** to the path of your EDI file (e.g., `orders.edi`) and **Result** to `ediContent`, then click **Save**.
 
-   ![Configure fileReadString inputs](/img/develop/transform/edi/add-inputs-file-read-string.png)
+   <ThemedImage
+       alt="Configure fileReadString inputs"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/add-inputs-file-read-string.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/add-inputs-file-read-string.png'),
+       }}
+   />
 
 6. Click **+** again and select **Call Function**. In the **Functions** panel under **Within Project**, select **fromEdiString**.
 
-   ![Select fromEdiString from the orders library](/img/develop/transform/edi/from-edi-string.png)
+   <ThemedImage
+       alt="Select fromEdiString from the orders library"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/from-edi-string.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/from-edi-string.png'),
+       }}
+   />
 
 7. Set **Edi Text** to `ediContent` and **Result** to `orders`, then click **Save**.
 
-   ![Configure fromEdiString inputs](/img/develop/transform/edi/convert-from-edi-string.png)
+   <ThemedImage
+       alt="Configure fromEdiString inputs"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/convert-from-edi-string.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/convert-from-edi-string.png'),
+       }}
+   />
 
 8. Click **+** again. In the right panel, expand the **Logging** section and select **Log Info**.
 
 9. In the **Msg** field, select **Expression**, enter `orders.toString()`, and click **Save**.
 
-   ![Select Log Info from the Logging panel](/img/develop/transform/edi/add-log-info.png)
+   <ThemedImage
+       alt="Select Log Info from the Logging panel"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/add-log-info.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/add-log-info.png'),
+       }}
+   />
 
 10. Run the integration and observe the logs.
 
-    ![Final EDI view](/img/develop/transform/edi/final-edi-view.png)
+    <ThemedImage
+        alt="Final EDI view"
+        sources={{
+            light: useBaseUrl('/img/develop/transform/edi/final-edi-view.png'),
+            dark: useBaseUrl('/img/develop/transform/edi/final-edi-view.png'),
+        }}
+    />
 
 ```ballerina
 import ballerina/io;
@@ -288,19 +342,43 @@ Build an EDIFACT ORDERS message from Ballerina records and serialize it to EDI t
 
     ```
 
-   ![Declare order variable](/img/develop/transform/edi/declare-document-var.png)
+   <ThemedImage
+       alt="Declare order variable"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/declare-document-var.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/declare-document-var.png'),
+       }}
+   />
 
 3. Click **+** and select **Call Function**. Under the **orders** section, select **toEdiString**. Set **Data** to `orders` and **Result** to `ediResult`, then click **Save**.
 
-   ![Configure toEdiString inputs](/img/develop/transform/edi/populate-to-edi-string.png)
+   <ThemedImage
+       alt="Configure toEdiString inputs"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/populate-to-edi-string.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/populate-to-edi-string.png'),
+       }}
+   />
 
 4. Click **+** and select **Log Info**. Set **Msg** to `ediResult`, then click **Save**.
 
-   ![Configure Log Info with ediResult](/img/develop/transform/edi/log-print-info.png)
+   <ThemedImage
+       alt="Configure Log Info with ediResult"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/log-print-info.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/log-print-info.png'),
+       }}
+   />
 
 5. Run the integration and observe the logs.
 
-   ![Final EDI Output](/img/develop/transform/edi/final-edi-output.png)
+   <ThemedImage
+       alt="Final EDI Output"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/final-edi-output.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/final-edi-output.png'),
+       }}
+   />
 
 ```ballerina
 import ballerina/log;
@@ -334,21 +412,45 @@ A common integration pattern is converting EDI documents to JSON for downstream 
 
 3. Add the [EDI content](#parsing-edi-documents) into **Edi Text** and `orders` as **Result** and **Save**.
 
-   ![Add EDI method](/img/develop/transform/edi/add-from-edi-string-method.png)
+   <ThemedImage
+       alt="Add EDI method"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/add-from-edi-string-method.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/add-from-edi-string-method.png'),
+       }}
+   />
 
 4. In the **Automation**, click **+** and select **Declare Variable**.
 
 5. Set **Name** to `jsonOrder`, **Type** to `json`, and **Expression** to `orders.toJson()`, then click **Save**.
 
-   ![Declare JSON variable](/img/develop/transform/edi/declare-json-variable.png)
+   <ThemedImage
+       alt="Declare JSON variable"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/declare-json-variable.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/declare-json-variable.png'),
+       }}
+   />
 
 6. Click **+** and select **Call Function**. Under the `io` section, select **fileWriteJson**.
 
-   ![Add file write JSON method](/img/develop/transform/edi/file-write-json-method.png)
+   <ThemedImage
+       alt="Add file write JSON method"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/file-write-json-method.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/file-write-json-method.png'),
+       }}
+   />
 
 7. Set **Path** to `order.json` and **Content** to `jsonOrder`, then click **Save**.
 
-   ![Configure file write JSON inputs](/img/develop/transform/edi/populate-file-write-json.png)
+   <ThemedImage
+       alt="Configure file write JSON inputs"
+       sources={{
+           light: useBaseUrl('/img/develop/transform/edi/populate-file-write-json.png'),
+           dark: useBaseUrl('/img/develop/transform/edi/populate-file-write-json.png'),
+       }}
+   />
 
 8. Run the integration and check the created `order.json` file.
 

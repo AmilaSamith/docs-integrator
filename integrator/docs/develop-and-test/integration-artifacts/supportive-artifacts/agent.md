@@ -12,13 +12,25 @@ An Agent artifact is a standalone AI agent definition — the same model, system
 2. In the editor, open the **AI** section in the side panel and select **Agent**.
 3. Click **+ Add Agent** to open the agent creation panel.
 
-![Agent creation form](/img/genai/develop/agents/39-agent-creation-form.png)
+<ThemedImage
+    alt="Agent creation form"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/39-agent-creation-form.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/39-agent-creation-form.png'),
+    }}
+/>
 
 4. Configure the **Role** and **Instructions** fields to define the agent’s behavior.
 5. Specify the query or prompt to the agent in the **Query** field. Note that this can also be an expression (e.g., a parameter, a variable, etc.).
 6. Click **Save**.
 
-![Agent creation form](/img/genai/develop/agents/40-agent.png)
+<ThemedImage
+    alt="Agent creation form"
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/40-agent.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/40-agent.png'),
+    }}
+/>
 
 ```ballerina
 import ballerina/ai;

@@ -19,7 +19,14 @@ Then follow the steps below to set up your Datadog account to view metrics and t
 
    You need to add Prometheus in the Integrations. Please go to the **Integrations** tab and search for Prometheus.
 
-   ![Adding Prometheus in Datadog Integrations](/img/deploy-operate/observe/datadog-add-prometheus.png "Adding Prometheus in Datadog Integrations")
+   <ThemedImage
+       alt="Adding Prometheus in Datadog Integrations"
+       title="Adding Prometheus in Datadog Integrations"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/datadog-add-prometheus.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/datadog-add-prometheus.png'),
+       }}
+   />
 
 2. Create an API key
 
@@ -27,7 +34,14 @@ Then follow the steps below to set up your Datadog account to view metrics and t
 
    > **Click Profile → Organization Settings → API keys**
 
-   ![Creating an API key in Datadog](/img/deploy-operate/observe/datadog-creating-api-key.png "Creating an API key in Datadog")
+   <ThemedImage
+       alt="Creating an API key in Datadog"
+       title="Creating an API key in Datadog"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/datadog-creating-api-key.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/datadog-creating-api-key.png'),
+       }}
+   />
 
 ## Step 2: Set Up the Datadog Agent
 
@@ -43,7 +57,14 @@ Then follow the steps below to configure metrics and tracing data publishing to 
 
    Once you add Prometheus by following step 1, you will get a guide to configure a Datadog agent in your instance.
 
-   ![Prometheus configurations for Datadog agent](/img/deploy-operate/observe/datadog-agent-prometheus-configurations.png "Prometheus configurations for Datadog agent")
+   <ThemedImage
+       alt="Prometheus configurations for Datadog agent"
+       title="Prometheus configurations for Datadog agent"
+       sources={{
+           light: useBaseUrl('/img/deploy-operate/observe/datadog-agent-prometheus-configurations.png'),
+           dark: useBaseUrl('/img/deploy-operate/observe/datadog-agent-prometheus-configurations.png'),
+       }}
+   />
 
    You can follow the instructions given in the above configuration to set up a Datadog agent.
 
@@ -192,7 +213,14 @@ curl -X GET http://localhost:8090/shop/order/0
 
 You can observe the metrics in the Datadog platform under the **Metrics** tab in the left navigation.
 
-![Metrics Explorer in Datadog](/img/deploy-operate/observe/datadog-metrics-explorer.png "Metrics Explorer in Datadog")
+<ThemedImage
+    alt="Metrics Explorer in Datadog"
+    title="Metrics Explorer in Datadog"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-explorer.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-explorer.png'),
+    }}
+/>
 
 You can add filters and use functions in the Datadog to visualize what you want with the metrics provided by Ballerina.
 
@@ -200,26 +228,68 @@ Ballerina provides a [dashboard](https://raw.githubusercontent.com/ballerina-pla
 
 You can add a new dashboard in the Datadog under the **Dashboards** tab in the left navigation. After creating the new dashboard, go to the **Configure** tab in the dashboard. Import the `dashboard.json` file provided above.
 
-![Importing a dashboard json](/img/deploy-operate/observe/datadog-importing-dashboard.png "Importing a dashboard json")
+<ThemedImage
+    alt="Importing a dashboard json"
+    title="Importing a dashboard json"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-importing-dashboard.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-importing-dashboard.png'),
+    }}
+/>
 
 The Ballerina Dashboard in the Datadog will be displayed as below.
 
-![Ballerina Dashboard in Datadog](/img/deploy-operate/observe/datadog-metrics-dashboard-1.png "Ballerina Dashboard in Datadog")
-![Ballerina Dashboard in Datadog](/img/deploy-operate/observe/datadog-metrics-dashboard-2.png "Ballerina Dashboard in Datadog")
+<ThemedImage
+    alt="Ballerina Dashboard in Datadog"
+    title="Ballerina Dashboard in Datadog"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-dashboard-1.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-dashboard-1.png'),
+    }}
+/>
+<ThemedImage
+    alt="Ballerina Dashboard in Datadog"
+    title="Ballerina Dashboard in Datadog"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-dashboard-2.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-metrics-dashboard-2.png'),
+    }}
+/>
 
 ## Step 7: View Tracing on Datadog
 
 To view traces of the Ballerina application, go to **APM → Traces** in the Datadog.
 
-![Trace Explorer in Datadog](/img/deploy-operate/observe/datadog-trace-explorer.png "Trace Explorer in Datadog")
+<ThemedImage
+    alt="Trace Explorer in Datadog"
+    title="Trace Explorer in Datadog"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-trace-explorer.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-trace-explorer.png'),
+    }}
+/>
 
 You can filter the traces with the service name, resource, operation name, span kind, etc.
 
-![Filter traces in Datadog](/img/deploy-operate/observe/datadog-filter-traces.png "Filter traces in Datadog")
+<ThemedImage
+    alt="Filter traces in Datadog"
+    title="Filter traces in Datadog"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-filter-traces.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-filter-traces.png'),
+    }}
+/>
 
 Once you select a trace, you can get more information with the tags attached to the span.
 
-![Span tags for a given span](/img/deploy-operate/observe/datadog-span-tags.png "Span tags for a given span")
+<ThemedImage
+    alt="Span tags for a given span"
+    title="Span tags for a given span"
+    sources={{
+        light: useBaseUrl('/img/deploy-operate/observe/datadog-span-tags.png'),
+        dark: useBaseUrl('/img/deploy-operate/observe/datadog-span-tags.png'),
+    }}
+/>
 
 ## What's next
 

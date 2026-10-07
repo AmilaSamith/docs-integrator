@@ -25,7 +25,13 @@ The pattern is **active-passive**: at most one node polls at a time. Per-file lo
 1. Open the listener by clicking its name under **Listeners** in the sidebar, or under **Attached Listeners** in the **FTP Integration Configuration** panel.
 2. Scroll to the **Coordination** field and click **Record** to open the builder.
 
-   ![Coordination Record builder opened from the listener configuration panel](/img/develop/integration-artifacts/file/high-availability-and-coordination/step-coordination-builder.png)
+   <ThemedImage
+       alt="Coordination Record builder opened from the listener configuration panel"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/high-availability-and-coordination/step-coordination-builder.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/high-availability-and-coordination/step-coordination-builder.png'),
+       }}
+   />
 
 3. Fill in the three required fields:
 

@@ -184,15 +184,33 @@ service /hub on hubListener {
 
 Although WebSub hub service creation is not supported in the visual designer, you can use it to implement logic for event handlers defined in code. Once the service exists in the project, it appears in the **Entry Points** sidebar and on the design canvas.
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websubhub-service/step-canvas.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-canvas.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-canvas.png'),
+    }}
+/>
 
 Click the service node (or the service name in the sidebar) to open the **WebSub Hub Service** designer, which lists the event handlers.
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websubhub-service/step-service.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-service.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-service.png'),
+    }}
+/>
 
 Click any handler row (for example, `onUpdateMessage`) to open its **flow designer view**, where you can define the integration logic visually.
 
-![Flow designer for the GET upgrade resource showing the Return step with new ChatService()](../../../../static/img/develop/integration-artifacts/service/websubhub-service/step-flow.png)
+<ThemedImage
+    alt="Flow designer for the GET upgrade resource showing the Return step with new ChatService()"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-flow.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/websubhub-service/step-flow.png'),
+    }}
+/>
 
 Not all WebSub hub service configuration options are available through the visual designer. For full control — including listener configuration and content distribution settings — use Ballerina code directly.
 

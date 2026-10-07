@@ -15,7 +15,13 @@ GraphQL service support is currently in beta.
 2. In the **Artifacts** panel, select **GraphQL Service** under **Integration as API**.
 3. In the **Create GraphQL Service** form, fill in the following fields:
 
-   ![GraphQL Service creation form](/img/develop/integration-artifacts/service/graphql-service/step-creation-form.png)
+   <ThemedImage
+       alt="GraphQL Service creation form"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-creation-form.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-creation-form.png'),
+       }}
+   />
 
    **Service Contract**
 
@@ -44,7 +50,13 @@ GraphQL service support is currently in beta.
 
 5. WSO2 Integrator opens the service in the **GraphQL diagram**, an interactive canvas where you define types, fields, and resolvers. The diagram shows the service card labeled with the base path (for example, `/graphql`) and a **+ Create Operations** button. Use the **Configure** button at the top right to edit service and listener settings, and the toolbar at the bottom left to zoom, fit, refresh, or export the diagram.
 
-   ![GraphQL diagram canvas](/img/develop/integration-artifacts/service/graphql-service/step-graphql-diagram.png)
+   <ThemedImage
+       alt="GraphQL diagram canvas"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-graphql-diagram.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-graphql-diagram.png'),
+       }}
+   />
 
 6. Select **+ Create Operations** on the service card to add a **Query**, **Mutation**, or **Subscription** field.
 7. Select the field row to open the **flow designer** and define the resolver logic.
@@ -243,7 +255,13 @@ Operations define the entry points to your GraphQL service. GraphQL has three ro
 1. On the **GraphQL diagram**, select **+ Create Operations** on the service card.
 2. Choose **Query**, **Mutation**, or **Subscription**.
 
-   ![GraphQL operations panel](/img/develop/integration-artifacts/service/graphql-service/step-create-operations.png)
+   <ThemedImage
+       alt="GraphQL operations panel"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-create-operations.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-create-operations.png'),
+       }}
+   />
 
 ### Add a field
 
@@ -256,7 +274,13 @@ Select the **+** next to an operation type to open the **Add Field** panel.
 | **Arguments** | Input arguments. Select **+ Add Argument** to add an argument. |
 | **Field Type** | Return type of the field |
 
-![Add Field panel](/img/develop/integration-artifacts/service/graphql-service/step-add-field.png)
+<ThemedImage
+    alt="Add Field panel"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-add-field.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-add-field.png'),
+    }}
+/>
 
 ### Add an argument
 
@@ -279,7 +303,13 @@ A type is the fundamental unit of a GraphQL schema. Each field returns a value o
 2. Choose a pre-defined scalar, or select **Create New Type** to define a custom type.
 3. In the **Create New Type** dialog, choose **Create from scratch** to define the type inline, or **Import** to import it from an existing source. Select the **Kind**, give the type a **Name**, add its fields, and select **Save**.
 
-   ![Create new type dialog](/img/develop/integration-artifacts/service/graphql-service/step-create-new-type.png)
+   <ThemedImage
+       alt="Create new type dialog"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-create-new-type.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/service/graphql-service/step-create-new-type.png'),
+       }}
+   />
 
 The available kinds depend on where the type is used:
 

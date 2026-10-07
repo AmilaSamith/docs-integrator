@@ -12,7 +12,13 @@ The `fileNamePattern` field accepts a regex that filters which files trigger the
 
 On the **FTP Integration Configuration** panel, open the **Record Configuration** builder for the **Service Configuration** field, tick **fileNamePattern**, and enter a regex (for example, `.*\\.csv`).
 
-![Record Configuration builder with fileNamePattern ticked and a regex entered](/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-name-pattern.png)
+<ThemedImage
+    alt="Record Configuration builder with fileNamePattern ticked and a regex entered"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-name-pattern.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-name-pattern.png'),
+    }}
+/>
 
 ```ballerina
 @ftp:ServiceConfig {
@@ -39,7 +45,13 @@ The `fileAgeFilter` field prevents processing files that are too new (still bein
 
 On the **FTP Integration Configuration** panel, open the **Record Configuration** builder for the **Service Configuration** field, tick **fileAgeFilter**, and set **minAge** and/or **maxAge** in seconds.
 
-![Record Configuration builder with fileAgeFilter ticked and minAge and maxAge set](/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-age-filter.png)
+<ThemedImage
+    alt="Record Configuration builder with fileAgeFilter ticked and minAge and maxAge set"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-age-filter.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-age-filter.png'),
+    }}
+/>
 
 ```ballerina
 @ftp:ServiceConfig {
@@ -68,7 +80,13 @@ The `fileDependencyConditions` field blocks processing until one or more related
 
 On the **FTP Integration Configuration** panel, open the **Record Configuration** builder for the **Service Configuration** field, tick **fileDependencyConditions**, and add an entry. Set the target pattern to match the data file, and list the required files that must be present before processing triggers.
 
-![Record Configuration builder with fileDependencyConditions ticked and a target pattern and required files entered](/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-dependency-conditions.png)
+<ThemedImage
+    alt="Record Configuration builder with fileDependencyConditions ticked and a target pattern and required files entered"
+    sources={{
+        light: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-dependency-conditions.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/dependency-and-trigger-conditions/step-file-dependency-conditions.png'),
+    }}
+/>
 
 ```ballerina
 @ftp:ServiceConfig {

@@ -32,9 +32,21 @@ The finished flow has three steps:
 4. Set **Integration Name** to `OrderProcessor`.
 5. Click **Create**.
 
-![WSO2 Integrator home page with the Create a Project card](/img/workflows/getting-started/build-an-order-processing-workflow/wso2-integrator.png)
+<ThemedImage
+    alt="WSO2 Integrator home page with the Create a Project card"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/wso2-integrator.png'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/wso2-integrator.png'),
+    }}
+/>
 
-![Create a new project with project and integration names set](/img/workflows/getting-started/build-an-order-processing-workflow/create-project.png)
+<ThemedImage
+    alt="Create a new project with project and integration names set"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/create-project.png'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/create-project.png'),
+    }}
+/>
 
 ## Step 2: Add the durable workflow artifact
 
@@ -58,7 +70,13 @@ The finished flow has three steps:
 10. Click **Save**. The record is added to your project and appears under **Types** in the sidebar.
 11. Click **Create**. The workflow is generated and its diagram opens with a single **Start** node, ready for the first step.
 
-![Creating the orderWorkflow durable workflow and its OrderInfo input type](/img/workflows/getting-started/build-an-order-processing-workflow/create-workflow.gif)
+<ThemedImage
+    alt="Creating the orderWorkflow durable workflow and its OrderInfo input type"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/create-workflow.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/create-workflow.gif'),
+    }}
+/>
 
 ```ballerina
 type OrderInfo record {|
@@ -102,7 +120,13 @@ The first step of the order process reserves stock. You create the activity and 
 10. Give the activity something to do. Click the open icon on the node to open its own diagram. To keep it simple, mock the implementation with a log line.
 11. Click **+**, then **Log Info** under **Logging**. Set **Msg** to `Inventory reserved` and click **Save**.
 
-![Creating the reserveInventory activity and calling it from the workflow](/img/workflows/getting-started/build-an-order-processing-workflow/add-activity.gif)
+<ThemedImage
+    alt="Creating the reserveInventory activity and calling it from the workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/add-activity.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/add-activity.gif'),
+    }}
+/>
 
 ```ballerina
 import ballerina/log;
@@ -145,7 +169,13 @@ Payment is confirmed by something outside the workflow, such as a payment gatewa
 The diagram gains a **Wait for payment** node, drawn with an incoming arrow from outside the flow, because that is where the value comes from.
 The workflow now suspends at this line, and only at this line. It holds no thread and no connection while it waits, and it survives a restart of the runtime.
 
-![Adding the payment data event to the workflow](/img/workflows/getting-started/build-an-order-processing-workflow/await-data-event.gif)
+<ThemedImage
+    alt="Adding the payment data event to the workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/await-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/await-data-event.gif'),
+    }}
+/>
 
 ```ballerina
 # Data record for workflow function
@@ -178,7 +208,13 @@ The value that arrived decides what happens next, so split the flow in two.
 
 The diagram splits into a `payment` path and an **Else** path, each with its own **+**.
 
-![Branching the workflow on the payment result](/img/workflows/getting-started/build-an-order-processing-workflow/branch-on-payment.gif)
+<ThemedImage
+    alt="Branching the workflow on the payment result"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/branch-on-payment.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/branch-on-payment.gif'),
+    }}
+/>
 
 ```ballerina
 if payment {
@@ -211,7 +247,13 @@ The `payment` path tells the customer the order is confirmed. Create that activi
 
 9. Click **Save**.
 
-![Creating the sendEmail activity, calling it, and logging the customer address](/img/workflows/getting-started/build-an-order-processing-workflow/send-email.gif)
+<ThemedImage
+    alt="Creating the sendEmail activity, calling it, and logging the customer address"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/send-email.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/send-email.gif'),
+    }}
+/>
 
 ```ballerina
 @workflow:Activity
@@ -239,7 +281,13 @@ The **Else** path releases the hold instead.
 
 Both branches now end in an activity, and the workflow is complete.
 
-![Creating the cancelOrder activity and calling it on the else path](/img/workflows/getting-started/build-an-order-processing-workflow/cancel-order.gif)
+<ThemedImage
+    alt="Creating the cancelOrder activity and calling it on the else path"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/cancel-order.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/cancel-order.gif'),
+    }}
+/>
 
 ```ballerina
 @workflow:Activity
@@ -279,7 +327,13 @@ A workflow does not start itself. It is launched from an entry point such as a s
 
 The resource now starts a run for every order it receives and answers with that run's workflow ID.
 
-![Adding an HTTP service with a POST order resource that starts the workflow](/img/workflows/getting-started/build-an-order-processing-workflow/step-8-start-workflow.gif)
+<ThemedImage
+    alt="Adding an HTTP service with a POST order resource that starts the workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-8-start-workflow.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-8-start-workflow.gif'),
+    }}
+/>
 
 ```ballerina
 import ballerina/http;
@@ -331,7 +385,13 @@ The run is now waiting on the `payment` data event, and it will wait forever unt
 
 The node reads **Send to payment** and is drawn with a dashed arrow across to `orderWorkflow`, because it hands a value to a run rather than calling something.
 
-![Adding a payment resource that sends the data event into the running workflow](/img/workflows/getting-started/build-an-order-processing-workflow/step-9-send-data-event.gif)
+<ThemedImage
+    alt="Adding a payment resource that sends the data event into the running workflow"
+    sources={{
+        light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-9-send-data-event.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-9-send-data-event.gif'),
+    }}
+/>
 
 ```ballerina
 resource function post [string orderId]/payment() returns json|error {
@@ -350,7 +410,13 @@ A durable workflow keeps its record in a workflow engine, and by default the run
 2. On the **Configurable Variables** page, under **Imported libraries**, click **ballerina/workflow**.
 3. In the box under `mode`, enter `"IN_MEMORY"`.
 
-   ![Setting the workflow mode to IN_MEMORY in Configurable Variables](/img/workflows/getting-started/build-an-order-processing-workflow/set-in-memory-mode.gif)
+   <ThemedImage
+       alt="Setting the workflow mode to IN_MEMORY in Configurable Variables"
+       sources={{
+           light: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/set-in-memory-mode.gif'),
+           dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/set-in-memory-mode.gif'),
+       }}
+   />
 
    :::warning `IN_MEMORY` does not survive a restart
    The in-memory engine keeps the record in the integration's own memory, so stopping the integration loses every run that was in flight. It is meant for trying a workflow out, not for the crash safety this guide is about. To see a suspended order survive a restart, set `mode` back to `"LOCAL"` and start a Temporal server with `temporal server start-dev` before running.

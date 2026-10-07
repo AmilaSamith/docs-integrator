@@ -12,11 +12,23 @@ The Try-It tool for GraphQL services opens a built-in GraphiQL editor where you 
 2. After the integration starts, a popup appears asking whether you want to open the Try-It panel. Select **Yes**.
 3. If the popup does not appear, open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux), type **Try It**, and select the command. Choose the correct service and port from the list.
 
-![GraphQL Try-It showing the full flow from opening the editor to executing a query](/img/develop/test/try-it/graphql-try-it.gif)
+<ThemedImage
+    alt="GraphQL Try-It showing the full flow from opening the editor to executing a query"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/graphql-try-it.gif'),
+        dark: useBaseUrl('/img/develop/test/try-it/graphql-try-it.gif'),
+    }}
+/>
 
 ## The GraphiQL editor
 
-![GraphiQL editor with Explorer, query editor, Variables and Headers tabs](/img/develop/test/try-it/graphql-try-it.png)
+<ThemedImage
+    alt="GraphiQL editor with Explorer, query editor, Variables and Headers tabs"
+    sources={{
+        light: useBaseUrl('/img/develop/test/try-it/graphql-try-it.png'),
+        dark: useBaseUrl('/img/develop/test/try-it/graphql-try-it.png'),
+    }}
+/>
 
 The editor is divided into three areas:
 

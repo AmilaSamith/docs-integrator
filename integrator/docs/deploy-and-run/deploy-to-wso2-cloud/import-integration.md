@@ -18,7 +18,13 @@ If your integration is already in a Git repository, you can import it directly i
 
 2. On the project home page, click **Import an Integration** and select your Git provider. Alternatively, click your Git provider's icon directly on the home page to authorize it with WSO2 Cloud.
 
-    ![Project Home in WSO2 Cloud](/img/deploy/cloud/import-integration/project-home.png)
+    <ThemedImage
+        alt="Project Home in WSO2 Cloud"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/import-integration/project-home.png'),
+            dark: useBaseUrl('/img/deploy/cloud/import-integration/project-home.png'),
+        }}
+    />
 
     :::warning
     One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git repository](connect-git-provider.md) for instructions.
@@ -35,7 +41,13 @@ If your integration is already in a Git repository, you can import it directly i
 5. Select the integration type. WSO2 Cloud detects the technology automatically.
 6. Click **Create**.
 
-    ![Import Integration](/img/deploy/cloud/import-integration/import-integration.png)
+    <ThemedImage
+        alt="Import Integration"
+        sources={{
+            light: useBaseUrl('/img/deploy/cloud/import-integration/import-integration.png'),
+            dark: useBaseUrl('/img/deploy/cloud/import-integration/import-integration.png'),
+        }}
+    />
 
 WSO2 Cloud starts the build immediately. Once the build completes, the integration is automatically deployed to the **Development** environment.
 

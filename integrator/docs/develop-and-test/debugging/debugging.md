@@ -12,7 +12,13 @@ Editor debugging lets you pause an integration mid-run and inspect the values fl
 - Confirm the integration has an executable entry point, such as a service or an automation.
 - Open the **Problems** panel at the bottom of the editor and make sure the workspace is free of compile errors.
 
-![Problems panel showing a clean workspace](/img/develop/troubleshooting/editor-debugging/problems-panel.png)
+<ThemedImage
+    alt="Problems panel showing a clean workspace"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/editor-debugging/problems-panel.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/editor-debugging/problems-panel.png'),
+    }}
+/>
 
 ## Set a breakpoint
 
@@ -24,14 +30,26 @@ Breakpoints tell the debugger where to pause. Set one on the line or node where 
 
 A red dot appears on the node to confirm the breakpoint is active.
 
-![Breakpoint set on a node in the visual designer](/img/develop/troubleshooting/editor-debugging/flow-diagram.png)
+<ThemedImage
+    alt="Breakpoint set on a node in the visual designer"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/editor-debugging/flow-diagram.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/editor-debugging/flow-diagram.png'),
+    }}
+/>
 
 1. Open the `.bal` file.
 2. Click in the gutter to the left of the line number where you want to pause.
 
 A red dot appears next to the line.
 
-![Breakpoint set in the Ballerina code editor](/img/develop/troubleshooting/editor-debugging/bal-code.png)
+<ThemedImage
+    alt="Breakpoint set in the Ballerina code editor"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/editor-debugging/bal-code.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/editor-debugging/bal-code.png'),
+    }}
+/>
 
 ### Breakpoint types
 
@@ -47,7 +65,13 @@ A conditional breakpoint pauses only when a Ballerina expression evaluates to `t
 2. Select **Edit Breakpoint**.
 3. Enter a condition, for example `order.total > 1000` or `customer.tier == "premium"`.
 
-![Editing a breakpoint to add a hit condition](/img/develop/troubleshooting/debugging-features/expression.png)
+<ThemedImage
+    alt="Editing a breakpoint to add a hit condition"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression.png'),
+    }}
+/>
 
 #### Logpoints
 
@@ -57,13 +81,25 @@ A logpoint prints a message to the **Debug Console** without pausing execution. 
 2. Select **Add Logpoint**.
 3. Enter a message. Wrap expressions in braces, for example `Processing order {order.id} with {items.length()} items`.
 
-![Logpoint printing a templated message without pausing](/img/develop/troubleshooting/debugging-features/log.png)
+<ThemedImage
+    alt="Logpoint printing a templated message without pausing"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/log.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/log.png'),
+    }}
+/>
 
 ## Start a debug session
 
 Click **Debug** on the [editor toolbar](../../editor/editor-window.md#editor-toolbar), or open the **Run and Debug** view from the [activity bar](../../editor/editor-window.md#activity-bar) and select **Ballerina Debug**. Either path works for most integrations.
 
-![Debug session paused at a breakpoint](/img/develop/troubleshooting/editor-debugging/debug-session.gif)
+<ThemedImage
+    alt="Debug session paused at a breakpoint"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/editor-debugging/debug-session.gif'),
+        dark: useBaseUrl('/img/develop/troubleshooting/editor-debugging/debug-session.gif'),
+    }}
+/>
 
 Execution pauses at the first breakpoint it hits. Output streams to the **Debug Console**.
 
@@ -71,7 +107,13 @@ Execution pauses at the first breakpoint it hits. Output streams to the **Debug 
 
 Once execution is paused, the debug toolbar appears at the top of the editor. Use it to move through the integration one step at a time.
 
-![Debug toolbar with continue, pause, step over, step into, step out, restart, and stop controls](/img/develop/troubleshooting/debugging-features/debug-toolbar.png)
+<ThemedImage
+    alt="Debug toolbar with continue, pause, step over, step into, step out, restart, and stop controls"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/debug-toolbar.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/debug-toolbar.png'),
+    }}
+/>
 
 | Action | Shortcut | What it does |
 |--------|----------|--------------|
@@ -95,7 +137,13 @@ While paused, use the side panels and the debug console to see what data the int
 
 The **Variables** panel groups data into **Local** (current function scope) and **Global** (module-level) sections. Expand records, arrays, and maps to drill into nested fields.
 
-![Variables panel showing local and global scopes](/img/develop/troubleshooting/debugging-features/variable-section.png)
+<ThemedImage
+    alt="Variables panel showing local and global scopes"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/variable-section.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/variable-section.png'),
+    }}
+/>
 
 ### Hover inspection
 
@@ -109,13 +157,25 @@ Use the **Watch** panel to track specific expressions across breakpoints. Add an
 - `order.items.length()`. Count items in the order.
 - `response.statusCode`. Check the current HTTP status.
 
-![Watch panel evaluating expressions during a paused session](/img/develop/troubleshooting/debugging-features/watch-panel.png)
+<ThemedImage
+    alt="Watch panel evaluating expressions during a paused session"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/watch-panel.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/watch-panel.png'),
+    }}
+/>
 
 ### Debug console
 
 The **Debug Console** evaluates any Ballerina expression in the current scope while the session is paused. Use it for one-off checks that do not warrant a watch expression. The console is also where program output and logpoint messages appear.
 
-![Debug console evaluating a Ballerina expression](/img/develop/troubleshooting/debugging-features/debug-console.png)
+<ThemedImage
+    alt="Debug console evaluating a Ballerina expression"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/debug-console.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/debug-console.png'),
+    }}
+/>
 
 ### Call stack and strands
 
@@ -133,7 +193,13 @@ You can evaluate expressions in three places:
 
 Expressions run in the scope of the selected stack frame, so switching frames in the **Call Stack** panel changes what is in scope.
 
-![Evaluating a Ballerina expression in the Debug Console](/img/develop/troubleshooting/debugging-features/expression-evaluation.png)
+<ThemedImage
+    alt="Evaluating a Ballerina expression in the Debug Console"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression-evaluation.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression-evaluation.png'),
+    }}
+/>
 
 ## Advanced debugging methods
 

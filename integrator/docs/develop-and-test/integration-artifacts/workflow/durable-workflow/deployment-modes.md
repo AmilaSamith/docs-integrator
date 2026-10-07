@@ -28,7 +28,13 @@ In the designer:
 2. On the **Configurable Variables** page, under **Imported libraries**, click **ballerina/workflow**.
 3. Fill in the box under the variable you want to set, for example `mode`.
 
-![Opening Configurations, selecting ballerina/workflow under Imported libraries, and setting a value on the Configurable Variables page](/img/workflows/deployment-modes/set-deployment-mode.gif)
+<ThemedImage
+    alt="Opening Configurations, selecting ballerina/workflow under Imported libraries, and setting a value on the Configurable Variables page"
+    sources={{
+        light: useBaseUrl('/img/workflows/deployment-modes/set-deployment-mode.gif'),
+        dark: useBaseUrl('/img/workflows/deployment-modes/set-deployment-mode.gif'),
+    }}
+/>
 
 Each setting carries its own documentation, and its box shows the default it falls back to when you leave it empty.
 

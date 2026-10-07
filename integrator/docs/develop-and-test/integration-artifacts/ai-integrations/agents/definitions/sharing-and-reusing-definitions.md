@@ -23,11 +23,23 @@ Publishing makes the library available to the entire Ballerina community. Anyone
 
 1. Open the library package. Its **Overview** page lists the agent definitions in the library and the library's README.
 
-![The library Overview page for CustomerSupportAgent, with Configure and Publish buttons in the header, an Artifacts section listing Agent Definitions, and an editable README section.](/img/genai/develop/agents/definitions/07-library-overview.png)
+<ThemedImage
+    alt="The library Overview page for CustomerSupportAgent, with Configure and Publish buttons in the header, an Artifacts section listing Agent Definitions, and an editable README section."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/definitions/07-library-overview.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/definitions/07-library-overview.png'),
+    }}
+/>
 
 2. Click **Publish**.
 
-![The publish dialog showing the organization, package name, version, and description file, with Publish to Central, Edit Package Details, Open Description File, and Cancel options.](/img/genai/develop/agents/definitions/08-publish-dialog.png)
+<ThemedImage
+    alt="The publish dialog showing the organization, package name, version, and description file, with Publish to Central, Edit Package Details, Open Description File, and Cancel options."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/definitions/08-publish-dialog.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/definitions/08-publish-dialog.png'),
+    }}
+/>
 
 The dialog confirms what will be published:
 
@@ -53,7 +65,13 @@ The description file is what consumers read on Ballerina Central, and a new libr
 
 Shared definitions appear under **Pre-built Agents** in the **Add Agent** dialog, wherever that dialog is opened from.
 
-![The Add Agent dialog showing the Pre-built Agents section with entries labelled by their organization and package name.](/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png)
+<ThemedImage
+    alt="The Add Agent dialog showing the Pre-built Agents section with entries labelled by their organization and package name."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/multi-agent/05-add-agent-dialog.png'),
+    }}
+/>
 
 Each entry shows the definition name and the organization and package it comes from, so definitions with the same name from different sources stay distinguishable.
 

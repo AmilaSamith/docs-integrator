@@ -49,7 +49,13 @@ Before looking at each part of WSO2 Integration Platform individually, it helps 
 
 An integration does not simply get written and then exist. It is agreed on, built, packaged, moved through a series of environments, released, operated, refined, and eventually decommissioned. Understanding that path first makes it much easier to see where each part of the platform fits:
 
-![Integration lifecycle from Design through Develop and Test, Build, Deploy, Validate, Promote, Manage and Observe, to Improve or Retire](/img/platform-overview/integration-lifecycle.png)
+<ThemedImage
+    alt="Integration lifecycle from Design through Develop and Test, Build, Deploy, Validate, Promote, Manage and Observe, to Improve or Retire"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/integration-lifecycle.png'),
+        dark: useBaseUrl('/img/platform-overview/integration-lifecycle.png'),
+    }}
+/>
 
 The table below walks through each stage, using the order-system-to-shipping-partner example from the introduction. ("Artifact" here means the packaged, deployable version of the integration, the output of the Build stage.)
 
@@ -81,11 +87,23 @@ The platform consists of four core components:
 
 WSO2 Integrator is the primary environment for developing integrations. It's available both as an **installable desktop application** and as a **browser-based cloud editor** provided as SaaS through WSO2 Integration Cloud, so you can start without installing anything if you prefer. Either way, it supports both visual design and direct code editing, and the two representations remain synchronized, so a developer can construct a flow visually and then refine it in code without the two views falling out of step.
 
-![WSO2 Integrator editor](/img/platform-overview/wso2-integrator.png)
+<ThemedImage
+    alt="WSO2 Integrator editor"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/wso2-integrator.png'),
+        dark: useBaseUrl('/img/platform-overview/wso2-integrator.png'),
+    }}
+/>
 
 The underlying programming foundation is **Ballerina**, a language designed specifically for integration work. **Prior knowledge of Ballerina is not required** to begin using WSO2 Integrator. Developers can start with familiar integration concepts such as APIs, connectors, data mappings, conditions, events, and workflows, then move into the underlying source code only when more precise control is needed.
 
-![You build the integration, WSO2 Integrator handles the underlying Ballerina representation](/img/platform-overview/do-i-need-ballerina.png)
+<ThemedImage
+    alt="You build the integration, WSO2 Integrator handles the underlying Ballerina representation"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/do-i-need-ballerina.png'),
+        dark: useBaseUrl('/img/platform-overview/do-i-need-ballerina.png'),
+    }}
+/>
 
 WSO2 Integrator also provides **AI-assisted development** alongside access to pre-built connectors. You can describe an integration in natural language and have it generate parts of the flow, create data mappings, or help troubleshoot an error.
 
@@ -105,7 +123,13 @@ Rather than building this connectivity from scratch, you typically start from an
 
 Once a connector is in place, calling an external service behaves similarly to calling local code. For the shipping partner integration from the introduction, this means calling the partner's API through a connector rather than hand-writing HTTP requests and parsing responses yourself.
 
-![Integration Store showing available connectors](/img/platform-overview/integration-store.png)
+<ThemedImage
+    alt="Integration Store showing available connectors"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/integration-store.png'),
+        dark: useBaseUrl('/img/platform-overview/integration-store.png'),
+    }}
+/>
 
 WSO2 Connector Store : https://wso2.com/integration-platform/connectors/.
 
@@ -117,7 +141,13 @@ Rather than setting up infrastructure before you can start, you sign in and begi
 
 For the shipping partner integration from the introduction, this means the same flow built in WSO2 Integrator can run entirely on WSO2 Cloud, with WSO2 responsible for keeping the environment it runs in available and up to date, rather than your own team operating that infrastructure.
 
-![WSO2 Integration Cloud (iPaaS)](/img/platform-overview/ipaas.png)
+<ThemedImage
+    alt="WSO2 Integration Cloud (iPaaS)"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/ipaas.png'),
+        dark: useBaseUrl('/img/platform-overview/ipaas.png'),
+    }}
+/>
 
 ### 3.4 WSO2 Integration Control Plane (ICP)
 
@@ -127,7 +157,13 @@ From ICP, you can see every integration running across your projects, deploy new
 
 For the shipping partner integration, this means that once it's deployed to your own infrastructure, ICP is where you'd go to check whether it's running, redeploy it after a change, and see whether the partner's API has been responding slowly, all from a single dashboard.
 
-![WSO2 Integration Control Plane (ICP)](/img/platform-overview/icp.png)
+<ThemedImage
+    alt="WSO2 Integration Control Plane (ICP)"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/icp.png'),
+        dark: useBaseUrl('/img/platform-overview/icp.png'),
+    }}
+/>
 
 ---
 
@@ -139,7 +175,13 @@ To show where each platform component fits, let's look at this same integration 
 
 **Develop and Test → Deploy and Run → Manage → Observe → Improve**
 
-![WSO2 Integration Engineering Lifecycle](/img/platform-overview/Integration-engineering-lifecycle.png)
+<ThemedImage
+    alt="WSO2 Integration Engineering Lifecycle"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/Integration-engineering-lifecycle.png'),
+        dark: useBaseUrl('/img/platform-overview/Integration-engineering-lifecycle.png'),
+    }}
+/>
 
 The table below shows where each WSO2 Integration Platform component fits in these phases. It is a simplified view rather than a catalogue of everything the platform does, and the **toolset you use depends on where the integration runs and who operates it**:
 
@@ -199,11 +241,23 @@ On the surface, these look like different kinds of work. Underneath, they rely o
 
 The shipping partner integration from the introduction is itself an example of Integration as API: it calls the partner's API directly and handles the response, including what happens if the call fails.
 
-![Integration styles supported by WSO2 Integration Platform](/img/platform-overview/integration-styles.png)
+<ThemedImage
+    alt="Integration styles supported by WSO2 Integration Platform"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/integration-styles.png'),
+        dark: useBaseUrl('/img/platform-overview/integration-styles.png'),
+    }}
+/>
 
 The clearest force reshaping this picture right now is AI, though not in the way it's often framed: **AI does not reduce the need for integration, it depends on it**. An agent can only act on what it can reach, and reaching enterprise systems, whether that's an API, a database, an application, a knowledge base, or a running business process, is exactly what integration provides. WSO2 Integration Platform treats AI as part of the same integration landscape rather than a separate concern, so deterministic logic (validation, transformation, routing) can coexist with non-deterministic AI reasoning inside the same integration flow.
 
-![AI in integration: AI assists development and AI participates in execution](/img/platform-overview/ai-in-integration.png)
+<ThemedImage
+    alt="AI in integration: AI assists development and AI participates in execution"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/ai-in-integration.png'),
+        dark: useBaseUrl('/img/platform-overview/ai-in-integration.png'),
+    }}
+/>
 
 ---
 
@@ -217,7 +271,13 @@ Once an integration is built, its architecture spans three planes, each responsi
 
 For the shipping partner integration from the introduction, this means the flow itself executes in the data plane, gets deployed and operated through the control plane, and its behavior, including whether the partner's API is responding slowly, becomes visible through the observability plane.
 
-![WSO2 Integration Platform architecture: data, control, and observability planes](/img/platform-overview/platform-architecture.png)
+<ThemedImage
+    alt="WSO2 Integration Platform architecture: data, control, and observability planes"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/platform-architecture.png'),
+        dark: useBaseUrl('/img/platform-overview/platform-architecture.png'),
+    }}
+/>
 
 The specific responsibilities of the control plane and observability plane are described in detail in [Management and Observability](#8-management-and-observability). The physical location in which these planes run is addressed in [Deployment Models](#7-deployment-models).
 
@@ -233,7 +293,13 @@ In practice, this results in three deployment models:
 2. **Fully managed iPaaS:** WSO2 manages the control plane, the observability plane, and the data plane, all as part of the same managed cloud experience.
 3. **Private or hybrid:** WSO2 manages the control plane and observability plane centrally, while integrations run on a private data plane on dedicated infrastructure.
 
-![WSO2 Integration Platform deployment models: fully self-hosted, fully managed iPaaS, and private/hybrid](/img/platform-overview/deployment-models.png)
+<ThemedImage
+    alt="WSO2 Integration Platform deployment models: fully self-hosted, fully managed iPaaS, and private/hybrid"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/deployment-models.png'),
+        dark: useBaseUrl('/img/platform-overview/deployment-models.png'),
+    }}
+/>
 
 In summary: **the control plane determines how integrations are managed, the observability plane determines how their behavior is understood, and the data plane determines where they run.** Regardless of which deployment model is used, the development process remains the same, and integrations can follow a standard delivery lifecycle: build, test, commit to source control, deploy through CI/CD, validate, and promote toward production.
 
@@ -265,13 +331,25 @@ Two distinct activities sit under **observability**, and it is worth keeping the
 
 Monitoring tells a team that the shipping partner integration has slowed down. Diagnosis tells them the delay is coming from the partner's API rather than from their own transformation logic. WSO2 supports both, and can feed this data into an organization's existing or third-party observability tools rather than requiring a separate stack.
 
-![Observability: logs, metrics, and distributed traces feeding monitoring and diagnosis](/img/platform-overview/observability.png)
+<ThemedImage
+    alt="Observability: logs, metrics, and distributed traces feeding monitoring and diagnosis"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/observability.png'),
+        dark: useBaseUrl('/img/platform-overview/observability.png'),
+    }}
+/>
 
 ---
 
 ## 9. Summary
 
-![WSO2 Integration Platform at a glance: develop, build, deploy and run, manage and observe](/img/platform-overview/integration-paltform-glance.png)
+<ThemedImage
+    alt="WSO2 Integration Platform at a glance: develop, build, deploy and run, manage and observe"
+    sources={{
+        light: useBaseUrl('/img/platform-overview/integration-paltform-glance.png'),
+        dark: useBaseUrl('/img/platform-overview/integration-paltform-glance.png'),
+    }}
+/>
 
 Viewed individually, the capabilities of WSO2 Integration Platform, including a visual designer, an AI assistant, a programming language, connectors, deployment options, a control plane, and observability tooling, each address a specific concern. Their combined value lies in how they work together, allowing a developer to start from a business requirement, such as connecting two systems, exposing a capability as an API, or enabling an AI agent to act on enterprise data, and carry it through design, development, deployment, and production operation within a single, consistent platform.
 

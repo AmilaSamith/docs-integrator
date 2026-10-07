@@ -13,11 +13,23 @@ WSO2 Integrator MCP services run over the **Streamable HTTP** transport. The gen
 1. In the design view, select **Add Artifact manually**.
 2. Under the **AI Integration** category, select **MCP Service**.
 
-   ![Artifacts page showing the AI Integration category with Chat Agent Service, Durable Agentic Workflow, Voice Agent Service, and MCP Service. Above are Automation and Durable Workflow; below is Integration as API.](/img/genai/develop/mcp/mcp-add-artifact.png)
+   <ThemedImage
+       alt="Artifacts page showing the AI Integration category with Chat Agent Service, Durable Agentic Workflow, Voice Agent Service, and MCP Service. Above are Automation and Durable Workflow; below is Integration as API."
+       sources={{
+           light: useBaseUrl('/img/genai/develop/mcp/mcp-add-artifact.png'),
+           dark: useBaseUrl('/img/genai/develop/mcp/mcp-add-artifact.png'),
+       }}
+   />
 
 3. Choose how to create the service, fill in the creation form fields, and click **Create**.
 
-   ![Create MCP Service form with the Design From Scratch and Import From OpenAPI Specification options, and fields for Service Name, Version, Port (default 8080), Base Path (/mcp), and an expandable Advanced Configurations section.](/img/genai/develop/mcp/mcp-create-service.png)
+   <ThemedImage
+       alt="Create MCP Service form with the Design From Scratch and Import From OpenAPI Specification options, and fields for Service Name, Version, Port (default 8080), Base Path (/mcp), and an expandable Advanced Configurations section."
+       sources={{
+           light: useBaseUrl('/img/genai/develop/mcp/mcp-create-service.png'),
+           dark: useBaseUrl('/img/genai/develop/mcp/mcp-create-service.png'),
+       }}
+   />
 
 | Field | Description |
 |---|---|
@@ -30,7 +42,13 @@ WSO2 Integrator MCP services run over the **Streamable HTTP** transport. The gen
 
 After clicking **Create**, WSO2 Integrator opens the service in the **MCP Service Editor**. The header shows the listener and base path, a **Tools** section, and **Configure** / **Try It** buttons in the top-right.
 
-![The MCP Service editor showing the listener and base path chips, and the Tools section with 'No tools found. Add a new tool.' and a + Add Tool button.](/img/genai/develop/mcp/mcp-service-editor.png)
+<ThemedImage
+    alt="The MCP Service editor showing the listener and base path chips, and the Tools section with 'No tools found. Add a new tool.' and a + Add Tool button."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-service-editor.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-service-editor.png'),
+    }}
+/>
 
 | Element | What it does |
 |---|---|
@@ -76,7 +94,13 @@ In the **MCP Service Editor**, click **Configure** in the header to open the **M
 
 The same form also shows the configuration of the attached listener. See [Listener configuration](#listener-configuration).
 
-![Record Configuration editor for StreamableHttpServiceConfiguration showing the info field (with version and name), httpConfig, sessionMode (auto), and the optional options field.](/img/genai/develop/mcp/mcp-service-configuration.png)
+<ThemedImage
+    alt="Record Configuration editor for StreamableHttpServiceConfiguration showing the info field (with version and name), httpConfig, sessionMode (auto), and the optional options field."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-service-configuration.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-service-configuration.png'),
+    }}
+/>
 
 | Field | Description |
 |---|---|
@@ -142,7 +166,13 @@ The listener binds to a port and handles incoming MCP connections over Streamabl
 
 In the **MCP Service Configuration** form, select the listener under **Attached Listeners** to configure it.
 
-![Configuration for mcpListener showing Name, Listen To (8080), Host, HTTP1 Settings, Secure Socket, HTTP Version, and Timeout fields.](/img/genai/develop/mcp/mcp-listener-configuration.png)
+<ThemedImage
+    alt="Configuration for mcpListener showing Name, Listen To (8080), Host, HTTP1 Settings, Secure Socket, HTTP Version, and Timeout fields."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-listener-configuration.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-listener-configuration.png'),
+    }}
+/>
 
 For standard HTTP setups, only **Listen To** (the port) is required. Configure **Secure Socket** to enable HTTPS.
 
@@ -215,7 +245,13 @@ Tools are the operations the MCP service exposes. Each tool has a name, a descri
 
 Click **+ Add Tool** in the editor to open the **New Tool Configuration** panel.
 
-![The New Tool Configuration panel showing Tool Name, Tool Description, Parameters, Return Type, and a collapsed Advanced Configurations section, with the MCP Service editor visible behind it.](/img/genai/develop/mcp/mcp-tool-configuration.png)
+<ThemedImage
+    alt="The New Tool Configuration panel showing Tool Name, Tool Description, Parameters, Return Type, and a collapsed Advanced Configurations section, with the MCP Service editor visible behind it."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-tool-configuration.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-tool-configuration.png'),
+    }}
+/>
 
 | Field | Required | Description |
 |---|---|---|
@@ -227,7 +263,13 @@ Click **+ Add Tool** in the editor to open the **New Tool Configuration** panel.
 
 After clicking **Save**, WSO2 Integrator generates a `remote function` within the service and opens the tool's flow diagram, where you implement the tool logic. The tool also appears under the MCP service in the project sidebar and as a row under **Tools** in the MCP Service Editor.
 
-![The flow diagram of the add remote function, showing an empty flow with a Start node, with add listed under MCP Service in the project sidebar.](/img/genai/develop/mcp/mcp-tool-flow-diagram.png)
+<ThemedImage
+    alt="The flow diagram of the add remote function, showing an empty flow with a Start node, with add listed under MCP Service in the project sidebar."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-tool-flow-diagram.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-tool-flow-diagram.png'),
+    }}
+/>
 
 Each `remote function` on an `mcp:StreamableHttpService` becomes one tool. The function name becomes the tool name, the doc comment becomes the description, parameter doc lines become parameter descriptions, and the parameter types become the tool's input schema.
 
@@ -334,7 +376,13 @@ These parameters are excluded from the tool's input schema, so MCP clients never
 
 In the **New Tool Configuration** panel, expand **Advanced Configurations**.
 
-![The Advanced Configurations section of the New Tool Configuration panel showing the Meta checkbox, Transport Parameters with HTTP Headers and a + Header button, and Request Access with Request and Headers checkboxes.](/img/genai/develop/mcp/mcp-tool-advanced-configurations.png)
+<ThemedImage
+    alt="The Advanced Configurations section of the New Tool Configuration panel showing the Meta checkbox, Transport Parameters with HTTP Headers and a + Header button, and Request Access with Request and Headers checkboxes."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/mcp/mcp-tool-advanced-configurations.png'),
+        dark: useBaseUrl('/img/genai/develop/mcp/mcp-tool-advanced-configurations.png'),
+    }}
+/>
 
 | Field | Generated parameter | Description |
 |---|---|---|

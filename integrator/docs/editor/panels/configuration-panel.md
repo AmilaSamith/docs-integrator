@@ -6,7 +6,13 @@ title: Configuration Panel
 
 The Configuration Panel is the side panel you open whenever you select **Configure** in the IDE. It groups the settings that apply to the current artifact (an integration, a service, or a function) into a single form, so you can review and update them without editing source code. The panel adapts its content to the level you opened it from.
 
-![Service configuration in the Configuration Panel](/img/editor/panels/configuration-panel/service-configuration.png)
+<ThemedImage
+    alt="Service configuration in the Configuration Panel"
+    sources={{
+        light: useBaseUrl('/img/editor/panels/configuration-panel/service-configuration.png'),
+        dark: useBaseUrl('/img/editor/panels/configuration-panel/service-configuration.png'),
+    }}
+/>
 
 ## Where to open it
 

@@ -14,7 +14,13 @@ To start creating a new project:
 2. Locate the **Create a Project** card on the main dashboard.
 3. Click **Create** to open the project creation form.
 
-![WSO2 Integrator](/img/create-project/wso2-integrator.png)
+<ThemedImage
+    alt="WSO2 Integrator"
+    sources={{
+        light: useBaseUrl('/img/create-project/wso2-integrator.png'),
+        dark: useBaseUrl('/img/create-project/wso2-integrator.png'),
+    }}
+/>
 
 If you have an existing project, click **Open Existing** on the **Create a Project** card or select the project from the **Recent Projects** list. For details, see [Open a project](open-a-project.md).
 
@@ -40,7 +46,13 @@ In the **Create a Project** form, define the core properties of your workspace a
 
 3. Enter a name for your initial component in the **Integration name** (or **Library Name**) field.
 
-![Create Project form](/img/create-project/create-project.png)
+<ThemedImage
+    alt="Create Project form"
+    sources={{
+        light: useBaseUrl('/img/create-project/create-project.png'),
+        dark: useBaseUrl('/img/create-project/create-project.png'),
+    }}
+/>
 
 ### Advanced configurations
 
@@ -54,7 +66,13 @@ Expand the **Advanced Configurations** panel to specify the Ballerina Package de
 
 4. Click **Create** to generate the project and open the workspace.
 
-![Advanced Configuration form](/img/create-project/advanced-configuration-form.png)
+<ThemedImage
+    alt="Advanced Configuration form"
+    sources={{
+        light: useBaseUrl('/img/create-project/advanced-configuration-form.png'),
+        dark: useBaseUrl('/img/create-project/advanced-configuration-form.png'),
+    }}
+/>
 
 ## Add more integrations and libraries
 
@@ -62,11 +80,23 @@ To add more components, switch to the **Project view** by clicking **Overview** 
 
 Click **+ Add** under the **Integrations & Libraries** card. Then Add an Integration or Library form opens.
 
-![Project view](/img/create-project/add-integration.png)
+<ThemedImage
+    alt="Project view"
+    sources={{
+        light: useBaseUrl('/img/create-project/add-integration.png'),
+        dark: useBaseUrl('/img/create-project/add-integration.png'),
+    }}
+/>
 
 Every project, integration, and library view has its own **README** file. Use it to document that specific project, integration, or library.
 
-![Add Integration form](/img/create-project/add-integration-library-form.png)
+<ThemedImage
+    alt="Add Integration form"
+    sources={{
+        light: useBaseUrl('/img/create-project/add-integration-library-form.png'),
+        dark: useBaseUrl('/img/create-project/add-integration-library-form.png'),
+    }}
+/>
 
 ### Add an integration
 
@@ -84,7 +114,13 @@ Every project, integration, and library view has its own **README** file. Use it
 
 4. Click **Add**.
 
-![Add New Integration form](/img/create-project/choose-integration.png)
+<ThemedImage
+    alt="Add New Integration form"
+    sources={{
+        light: useBaseUrl('/img/create-project/choose-integration.png'),
+        dark: useBaseUrl('/img/create-project/choose-integration.png'),
+    }}
+/>
 
 ### Add a library
 
@@ -96,7 +132,13 @@ Every project, integration, and library view has its own **README** file. Use it
 
 4. Click **Add**.
 
-![Add New Library form](/img/create-project/choose-library.png)
+<ThemedImage
+    alt="Add New Library form"
+    sources={{
+        light: useBaseUrl('/img/create-project/choose-library.png'),
+        dark: useBaseUrl('/img/create-project/choose-library.png'),
+    }}
+/>
 
 ## What's next
 

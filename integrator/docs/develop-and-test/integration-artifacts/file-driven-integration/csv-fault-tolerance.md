@@ -37,7 +37,13 @@ Fault tolerance is a **listener-level** setting. Turn it on once per listener an
    | **RAW** | The raw row text as it appeared in the source file. |
    | **RAW_AND_METADATA** | Both. |
 
-   ![Record Configuration panel with FailSafeOptions and contentType selected](/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png)
+   <ThemedImage
+       alt="Record Configuration panel with FailSafeOptions and contentType selected"
+       sources={{
+           light: useBaseUrl('/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png'),
+           dark: useBaseUrl('/img/develop/integration-artifacts/file/csv-fault-tolerance/step-record-configuration.png'),
+       }}
+   />
 
 4. Close the panel and click **Save**. Every CSV handler on every service attached to this listener now skips malformed rows.
 

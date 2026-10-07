@@ -39,7 +39,13 @@ bal run . > output.log 2>&1
 
 ## Read a strand dump
 
-![Annotated strand dump output format](/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg)
+<ThemedImage
+    alt="Annotated strand dump output format"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg'),
+        dark: useBaseUrl('/img/develop/troubleshooting/strand-dump-analysis/strand-dump-output-format.svg'),
+    }}
+/>
 
 ### Header
 

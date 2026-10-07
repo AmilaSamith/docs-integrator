@@ -29,7 +29,13 @@ Permissions and roles do different jobs. A permission decides whether you may op
 
 In the integration view, open **Human Tasks** in the sidebar and pick an environment. The page holds one queue of the work waiting on a person: human tasks and the review activities raised by gated or failed activities. Only the items applicable to you are listed.
 
-![The Human Tasks page listing three pending items for one integration: a review failure, a human task, and an approval gate review](/img/workflows/icp/human-tasks/human-tasks-page.png)
+<ThemedImage
+    alt="The Human Tasks page listing three pending items for one integration: a review failure, a human task, and an approval gate review"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/human-tasks-page.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/human-tasks-page.png'),
+    }}
+/>
 
 ### Filter the queue
 
@@ -77,7 +83,13 @@ Only a pending item can be decided. A completed, failed, canceled, or terminated
 
 Open a human task from the queue. The panel gathers what you need in order to answer it.
 
-![The detail panel of the Validate Order human task, showing its task fields including Eligible Roles and Administrators, its read-only input, the Complete Task and Mark as Failed actions, and the Administer card](/img/workflows/icp/human-tasks/human-task-detail.png)
+<ThemedImage
+    alt="The detail panel of the Validate Order human task, showing its task fields including Eligible Roles and Administrators, its read-only input, the Complete Task and Mark as Failed actions, and the Administer card"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/human-task-detail.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/human-task-detail.png'),
+    }}
+/>
 
 | Card | What it holds |
 | --- | --- |
@@ -91,7 +103,13 @@ Open a human task from the queue. The panel gathers what you need in order to an
 
 **Complete Task** opens the form the workflow expects, under the line *The result the workflow resumes with*.
 
-![The Validate Order task with Complete Task selected, opening the result form with a Valid Yes/No toggle, a Reason box, the Edit as JSON link, and the Review before completion button](/img/workflows/icp/human-tasks/human-task-complete-form.png)
+<ThemedImage
+    alt="The Validate Order task with Complete Task selected, opening the result form with a Valid Yes/No toggle, a Reason box, the Edit as JSON link, and the Review before completion button"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/human-task-complete-form.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/human-task-complete-form.png'),
+    }}
+/>
 
 The fields come from the result type the workflow declared for the task. See [Await Human Task](../../develop-and-test/integration-artifacts/workflow/durable-workflow/await-human-task.md).
 
@@ -137,7 +155,13 @@ A review activity names the activity it guards, and its **Trigger** says why it 
 | **Approval gate — review before the activity runs** | Before a gated activity runs, including every activity a durable agent registered with **Requires Approval** | Whether the call should be made at all, and with which arguments |
 | **Review failure — decide the failed activity's retry** | After an activity failed | Whether to run it again, with the original or corrected arguments, or to let the failure reach the workflow |
 
-![The detail panel of an approval gate on the payClaim activity, with its activity fields, its read-only arguments, and the Proceed, Proceed with Changes, and Reject decisions](/img/workflows/icp/human-tasks/approval-gate-review.png)
+<ThemedImage
+    alt="The detail panel of an approval gate on the payClaim activity, with its activity fields, its read-only arguments, and the Proceed, Proceed with Changes, and Reject decisions"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/approval-gate-review.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/approval-gate-review.png'),
+    }}
+/>
 
 | Card | What it holds |
 | --- | --- |
@@ -154,7 +178,13 @@ A review activity names the activity it guards, and its **Trigger** says why it 
 
 **Proceed with Changes** opens the arguments for editing, in a form generated from the activity's parameters and pre-filled with the proposed values. It is how you correct a bad argument before the step runs, or fix the input that made it fail.
 
-![The payClaim approval gate with Proceed with Changes selected, opening the Claim Id and Amount arguments for editing above the Review Changes button](/img/workflows/icp/human-tasks/approval-gate-edit-arguments.png)
+<ThemedImage
+    alt="The payClaim approval gate with Proceed with Changes selected, opening the Claim Id and Amount arguments for editing above the Review Changes button"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/approval-gate-edit-arguments.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/approval-gate-edit-arguments.png'),
+    }}
+/>
 
 ### Reject
 
@@ -166,7 +196,13 @@ Rejecting completes the review as a failure and propagates that failure to the w
 
 A failure review reads the same way as an approval gate, with one addition: the **Error** row and the description carry the message the attempt failed with, so you can tell whether a retry is worth it.
 
-![The detail panel of a failure review on the processBatch activity, showing the Error row reading Incorrect offset and the Proceed, Proceed with Changes, and Reject retry decisions](/img/workflows/icp/human-tasks/failed-activity-review.png)
+<ThemedImage
+    alt="The detail panel of a failure review on the processBatch activity, showing the Error row reading Incorrect offset and the Proceed, Proceed with Changes, and Reject retry decisions"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/failed-activity-review.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/failed-activity-review.png'),
+    }}
+/>
 
 Because the activity has already run, the decisions read as a retry: **Proceed** retries with the original arguments, **Proceed with Changes** retries with corrected ones, and **Reject** lets the failure reach the workflow.
 
@@ -191,7 +227,13 @@ The **Administer** card reaches you only when you hold an ICP role whose name ma
 
 **Reassign** hands the task to a new audience. The form opens pre-filled with the audience the task currently carries, so an unedited field keeps what it had.
 
-![The Administer card on the Validate Order task with Reassign selected, showing the Roles, Users, Excluded roles, and Excluded users boxes above the Reassign button](/img/workflows/icp/human-tasks/administer-reassign.png)
+<ThemedImage
+    alt="The Administer card on the Validate Order task with Reassign selected, showing the Roles, Users, Excluded roles, and Excluded users boxes above the Reassign button"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/administer-reassign.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/administer-reassign.png'),
+    }}
+/>
 
 | Field | What it takes |
 | --- | --- |
@@ -206,7 +248,13 @@ The task needs at least one role or user, so you cannot reassign it to nobody. *
 
 **Change Deadline** replaces the deadline the task is carrying, under the line *The new deadline, counted from now*.
 
-![The Administer card on the Validate Order task with Change Deadline selected, showing the Days, Hours, and Minutes steppers above the Clear deadline and Extend buttons](/img/workflows/icp/human-tasks/administer-change-deadline.png)
+<ThemedImage
+    alt="The Administer card on the Validate Order task with Change Deadline selected, showing the Days, Hours, and Minutes steppers above the Clear deadline and Extend buttons"
+    sources={{
+        light: useBaseUrl('/img/workflows/icp/human-tasks/administer-change-deadline.png'),
+        dark: useBaseUrl('/img/workflows/icp/human-tasks/administer-change-deadline.png'),
+    }}
+/>
 
 Set **Days**, **Hours**, and **Minutes**, and **Extend** applies that span measured from now, not from when the task was created or from its existing deadline. **Clear deadline** removes the deadline instead, which leaves the task open until someone decides it. **Cancel** closes the form without changing anything.
 

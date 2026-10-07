@@ -33,7 +33,13 @@ The `emailChangeRequest` workflow puts that rule in one place. It validates the 
 4. On **Record**, click the field to open the **Record Configuration** editor, select the units the wait is expressed in, and fill in their values. The cooling-off period here is one day, so **days** is selected and set to `1`.
 5. Click **Save**.
 
-![Adding a Sleep step between validateEmailChange and performEmailChange, selecting days in the Record Configuration editor and setting it to 1](/img/workflows/develop/durable-timers/add-sleep-step.gif)
+<ThemedImage
+    alt="Adding a Sleep step between validateEmailChange and performEmailChange, selecting days in the Record Configuration editor and setting it to 1"
+    sources={{
+        light: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
+        dark: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
+    }}
+/>
 
 ### Duration units
 

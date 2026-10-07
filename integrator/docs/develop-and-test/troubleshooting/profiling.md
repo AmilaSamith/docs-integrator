@@ -37,7 +37,13 @@ Press `Ctrl+C` in the first terminal to stop the run. The profiler writes `targe
 
 ## Read the flame graph
 
-![Profiler flame graph report](/img/develop/troubleshooting/profiling/report.png)
+<ThemedImage
+    alt="Profiler flame graph report"
+    sources={{
+        light: useBaseUrl('/img/develop/troubleshooting/profiling/report.png'),
+        dark: useBaseUrl('/img/develop/troubleshooting/profiling/report.png'),
+    }}
+/>
 
 Each bar in the graph represents a function call.
 
