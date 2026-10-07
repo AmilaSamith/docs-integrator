@@ -30,7 +30,13 @@ flowchart LR
 
 In the WSO2 Integrator panel, expand your project and select the **+** button next to **Connections** to open the Add Connection palette.
 
-![NATS connector palette open with search field before any selection](/img/connectors/catalog/messaging/nats/nats_screenshot_01_palette.png)
+<ThemedImage
+    alt="NATS connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the NATS connector
 
@@ -46,13 +52,25 @@ Fill in the **Configure Nats** form, binding each field to a configurable variab
 - **Connection Name** : Enter `natsClient` as the connection identifier
 - **Url** : Bind to a new configurable variable named `natsUrl` of type `string` using the **Configurables** tab in the helper panel
 
-![NATS connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/nats/nats_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="NATS connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to persist the connection. The `natsClient` connection node appears on the canvas.
 
-![NATS Connections panel showing natsClient entry after saving](/img/connectors/catalog/messaging/nats/nats_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="NATS Connections panel showing natsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -75,18 +93,36 @@ The Automation canvas opens showing a **Start** node and an **Error Handler** no
 1. On the Automation canvas, select the **+** button between **Start** and **Error Handler**.
 2. Under the **Connections** section, expand **natsClient** to reveal available operations.
 
-![NATS connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/nats/nats_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="NATS connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Publish Message** to open the `natsClient → publishMessage` form.
 4. In the **Message** field, select the **Expression** tab and enter the message record with `content` and `subject` fields.
 
 - **Message** : An `AnydataMessage` record containing `content` (the byte-encoded payload) and `subject` (`integrations.events`)
 
-![NATS Publish Message operation configuration filled with all values](/img/connectors/catalog/messaging/nats/nats_screenshot_05_operation_values.png)
+<ThemedImage
+    alt="NATS Publish Message operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_05_operation_values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_05_operation_values.png'),
+    }}
+/>
 
 Select **Save**. The `nats : publishMessage` node is added to the Automation flow.
 
-![Completed NATS automation flow](/img/connectors/catalog/messaging/nats/nats_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed NATS automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/nats/nats_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

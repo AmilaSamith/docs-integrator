@@ -20,15 +20,33 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Test accounts section](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test1.png)
+   <ThemedImage
+       alt="Test accounts section"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test1.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create developer test account](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test2.png)
+   <ThemedImage
+       alt="Create developer test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test2.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test3.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test3.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test3.png'),
+       }}
+   />
 
 Developer test accounts are for development and testing only. Do not use them in production.
 
@@ -36,7 +54,13 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** and select **Create App**.
 
-   ![Create app](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test4.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test4.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test4.png'),
+       }}
+   />
 
 2. Provide the app name and description.
 
@@ -44,24 +68,48 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Go to the **Auth** tab.
 
-   ![Auth tab](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test5.png)
+   <ThemedImage
+       alt="Auth tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test5.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test5.png'),
+       }}
+   />
 
 2. Under **Scopes**, select **Add new scope** and add:
    - `communication_preferences.read_write`
    - `communication_preferences.statuses.batch.read`
    - `communication_preferences.statuses.batch.write`
 
-   ![Set scope](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test6.png)
+   <ThemedImage
+       alt="Set scope"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test6.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test6.png'),
+       }}
+   />
 
 3. Add your redirect URI and select **Create App**.
 
-   ![Redirect URL](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test7.png)
+   <ThemedImage
+       alt="Redirect URL"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test7.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test7.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** section, copy the **Client ID** and **Client Secret**.
 
-![Client ID and client secret](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test8.png)
+<ThemedImage
+    alt="Client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test8.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test8.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 
@@ -73,7 +121,13 @@ In the **Auth** section, copy the **Client ID** and **Client Secret**.
 
 2. Open the URL in a browser and select your developer test account.
 
-   ![Select account](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test9.png)
+   <ThemedImage
+       alt="Select account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test9.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/setup/Test9.png'),
+       }}
+   />
 
 3. Copy the authorization code from the redirect URL.
 

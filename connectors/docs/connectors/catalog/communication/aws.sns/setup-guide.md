@@ -19,40 +19,94 @@ After logging into your AWS account, create a user group and IAM user with SNS p
 1. Navigate to the **Identity and Access Management (IAM)** service.
 2. Select **Groups**, then **Create New Group**.
 
-   ![Create user group](/img/connectors/catalog/communication/aws-sns/setup/create-group.png)
+   <ThemedImage
+       alt="Create user group"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-group.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-group.png'),
+       }}
+   />
 
 3. Enter a group name and attach the necessary policies (for example, **AmazonSNSFullAccess** for full SNS access).
 
-   ![Attach policy](/img/connectors/catalog/communication/aws-sns/setup/create-group-policies.png)
+   <ThemedImage
+       alt="Attach policy"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-group-policies.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-group-policies.png'),
+       }}
+   />
 
 ### Create an IAM user
 
 1. In the IAM console, navigate to **Users** and select **Add user**.
 
-   ![Add user](/img/connectors/catalog/communication/aws-sns/setup/create-user.png)
+   <ThemedImage
+       alt="Add user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user.png'),
+       }}
+   />
 
 2. Enter a username and select **Provide user access to the AWS Management Console** (optional). Then select **I want to create an IAM user** for programmatic access through access keys.
 
-   ![Create IAM user](/img/connectors/catalog/communication/aws-sns/setup/create-user-iam-user.png)
+   <ThemedImage
+       alt="Create IAM user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-iam-user.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-iam-user.png'),
+       }}
+   />
 
 3. Complete the permission setup and add the user to the group you created.
 
-   ![Attach user group](/img/connectors/catalog/communication/aws-sns/setup/create-user-set-permission.png)
+   <ThemedImage
+       alt="Attach user group"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-set-permission.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-set-permission.png'),
+       }}
+   />
 
 4. Review the details and select **Create user**.
 
-   ![Review user](/img/connectors/catalog/communication/aws-sns/setup/create-user-review.png)
+   <ThemedImage
+       alt="Review user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-review.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-user-review.png'),
+       }}
+   />
 
 ### Generate access key ID and secret access key
 
 1. After user creation, navigate to the **Users** tab and select your new user.
 
-   ![View user](/img/connectors/catalog/communication/aws-sns/setup/view-user.png)
+   <ThemedImage
+       alt="View user"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/view-user.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/view-user.png'),
+       }}
+   />
 
 2. Select **Create access key** to generate credentials.
 
-   ![Create access key](/img/connectors/catalog/communication/aws-sns/setup/create-access-key.png)
+   <ThemedImage
+       alt="Create access key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-access-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/create-access-key.png'),
+       }}
+   />
 
 3. Follow the steps and download the CSV file containing your credentials.
 
-   ![Download credentials](/img/connectors/catalog/communication/aws-sns/setup/download-access-key.png)
+   <ThemedImage
+       alt="Download credentials"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/download-access-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/setup/download-access-key.png'),
+       }}
+   />

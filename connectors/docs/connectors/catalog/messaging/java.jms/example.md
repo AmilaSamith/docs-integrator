@@ -37,7 +37,13 @@ flowchart LR
 
 Select the **+ Add Connection** button on the integration canvas to open the connector palette.
 
-![Java JMS connector palette open with search field before any selection](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_01_palette.png)
+<ThemedImage
+    alt="Java JMS connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Select the Java JMS connector
 
@@ -52,13 +58,25 @@ Bind each connection parameter to a configurable variable so credentials stay ou
 - **initialContextFactory** : The fully qualified class name of the JMS initial context factory
 - **providerUrl** : The URL of the JMS provider (e.g., the ActiveMQ broker URL)
 
-![Java JMS connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Java JMS connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 Select **Save** to persist the connection. The `jmsMessageproducer` entry appears in the **Connections** panel.
 
-![Java JMS Connections panel showing jmsMessageproducer entry after saving](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Java JMS Connections panel showing jmsMessageproducer entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -85,15 +103,33 @@ The canvas opens for the new `main` automation, showing a **Start** node and an 
 3. Select **Send** to open the `jmsMessageproducer → send` form.
 4. In the **Message** field, select the **Expression** tab and enter the message record value.
 
-![Java JMS connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_04_operations_list.png)
+<ThemedImage
+    alt="Java JMS connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_04_operations_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_04_operations_list.png'),
+    }}
+/>
 
 - **message** : A `jms:TextMessage` record literal, for example `{"content": "Hello from WSO2 Integrator!"}`
 
-![Java JMS send operation configuration filled with all values](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_05_send_operation.png)
+<ThemedImage
+    alt="Java JMS send operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_05_send_operation.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_05_send_operation.png'),
+    }}
+/>
 
 Select **Save** to add the step to the canvas.
 
-![Completed Java JMS automation flow](/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Java JMS automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_producer_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -136,7 +172,13 @@ flowchart LR
 
 Open the connector palette by selecting the connector icon in the sidebar. Search for **JMS** or **java.jms** to locate the `ballerinax/java.jms` connector.
 
-![java.jms connector palette open with search field before any selection](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_01_palette.png)
+<ThemedImage
+    alt="java.jms connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Add an automation entry point
 
@@ -155,13 +197,25 @@ Select the **JMS MessageConsumer** connector entry to open its connection config
 - **session** : The `jms:Session` object used to create the consumer
 - **acknowledgementMode** : The session acknowledgement mode (e.g., `AUTO_ACKNOWLEDGE`)
 
-![java.jms connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="java.jms connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 Select **Save** to persist the connection. The connector is now visible in the **Connections** panel on the canvas.
 
-![java.jms connection saved confirmation showing the saved connection entry](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="java.jms connection saved confirmation showing the saved connection entry"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -180,17 +234,35 @@ Select **Save** to persist the connection. The connector is now visible in the *
 2. In the **Connections** section, expand **jmsMessageconsumer** and select **Receive**.
 3. In the **Result** field, clear the default value and enter `result`.
 
-![java.jms Connections panel showing jmsMessageconsumer entry with available operations](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_04_connection_operations.png)
+<ThemedImage
+    alt="java.jms Connections panel showing jmsMessageconsumer entry with available operations"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_04_connection_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_04_connection_operations.png'),
+    }}
+/>
 
 The **Result Type** is automatically set to `jms:Message|()`.
 
 - **result** : The variable name that holds the received message
 
-![java.jms Receive operation configuration filled with all values](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_05_receive_form.png)
+<ThemedImage
+    alt="java.jms Receive operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_05_receive_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_05_receive_form.png'),
+    }}
+/>
 
 Select **Save**. The canvas shows a new `jms : receive` node with the label `result` connected to the `jmsMessageconsumer` icon.
 
-![Canvas showing the complete flow after Receive operation added with jms receive node and result variable](/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_06_complete_flow.png)
+<ThemedImage
+    alt="Canvas showing the complete flow after Receive operation added with jms receive node and result variable"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_06_complete_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/java.jms/java_jms_consumer_screenshot_06_complete_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 

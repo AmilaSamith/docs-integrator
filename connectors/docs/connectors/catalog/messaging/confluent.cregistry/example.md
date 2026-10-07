@@ -33,7 +33,13 @@ flowchart LR
 3. Enter `confluent.cregistry` in the search box.
 4. Select the **Cregistry** connector tile to open the connection configuration form.
 
-![Confluent Schema Registry connector palette open with search field before any selection](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_01_palette.png)
+<ThemedImage
+    alt="Confluent Schema Registry connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Confluent Schema Registry connection
 
@@ -43,13 +49,25 @@ Enter the connection parameters, binding each field to a configurable variable:
 
 - **baseUrl** : The URL of the Confluent Schema Registry service
 
-![Confluent Schema Registry connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Confluent Schema Registry connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `cregistryClient` connection node appears in the WSO2 Integrator project.
 
-![Confluent Schema Registry Connections panel showing cregistryClient entry after saving](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Confluent Schema Registry Connections panel showing cregistryClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -72,7 +90,13 @@ Select **Save** to create the connection. The `cregistryClient` connection node 
 2. Under **Connections**, expand **cregistryClient**.
 3. Select **Register** to open the operation configuration form.
 
-![Confluent Schema Registry connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Confluent Schema Registry connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the following fields:
 
@@ -83,9 +107,21 @@ Configure the following fields:
 
 Select **Save** to add the operation to the flow.
 
-![Confluent Schema Registry Register operation configuration filled with all values](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Confluent Schema Registry Register operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Confluent Schema Registry automation flow](/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Confluent Schema Registry automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/confluent.cregistry/confluent_cregistry_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

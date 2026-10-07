@@ -40,7 +40,13 @@ flowchart LR
 
 Select **Add Connection** from the low-code canvas to open the connector palette.
 
-![Kafka Producer connector palette open with search field before any selection](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_01_palette.png)
+<ThemedImage
+    alt="Kafka Producer connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_01_palette.png'),
+    }}
+/>
 
 #### Step 1: Search for and select the Kafka producer connector
 
@@ -56,13 +62,25 @@ Bind the bootstrap servers field to a configurable variable rather than entering
 - **Bootstrap Servers** : The Kafka broker address, bound to a configurable variable
 - **Connection Name** : A unique name identifying this connection on the canvas
 
-![Kafka Producer connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_02_connection_form.png)
+<ThemedImage
+    alt="Kafka Producer connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
 Select **Save** on the connection form. The canvas updates to show the `kafkaProducer` connection node.
 
-![Kafka Producer Connections panel showing kafkaProducer entry after saving](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_03_connections_list.png)
+<ThemedImage
+    alt="Kafka Producer Connections panel showing kafkaProducer entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_03_connections_list.png'),
+    }}
+/>
 
 #### Step 4: Set actual values for your configurables
 
@@ -85,7 +103,13 @@ The canvas switches to the Automation flow view, showing a **Start** node, an **
 
 Select the **+** drop zone between **Start** and **Error Handler** on the canvas to open the **Add Step** panel. Expand the **kafkaProducer** connection to reveal all available operations.
 
-![Kafka Producer connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_04_operations_panel.png)
+<ThemedImage
+    alt="Kafka Producer connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_04_operations_panel.png'),
+    }}
+/>
 
 Select **Send** to open the **kafkaProducer → send** configuration form, then configure the **Producer Record** field with the following values:
 
@@ -94,9 +118,21 @@ Select **Send** to open the **kafkaProducer → send** configuration form, then 
 
 Select **Save**. The `kafka : send` node is added to the Automation flow.
 
-![Kafka Producer Send operation configuration filled with all values](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_05_operation_filled.png)
+<ThemedImage
+    alt="Kafka Producer Send operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Kafka Producer automation flow](/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Kafka Producer automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_producer_screenshots_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -149,7 +185,13 @@ flowchart LR
 
 Select **Connections** in the project tree, then select the **+** icon next to **Connections** to open the **Add Connection** palette.
 
-![Kafka connector palette open with search field before any selection](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_01_palette.png)
+<ThemedImage
+    alt="Kafka connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Search for and select the Kafka connector
 
@@ -166,13 +208,25 @@ Set the **Connection Name** to `kafkaConsumer`, then bind each parameter to a co
 - **groupId** : The consumer group ID that identifies this consumer within a group
 - **clientId** : A unique identifier for this Kafka client instance
 
-![Kafka connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_02_connection_form.png)
+<ThemedImage
+    alt="Kafka connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 Select **Save** to persist the connection. The `kafkaConsumer` connection node appears on the Connections canvas.
 
-![Kafka Connections panel showing kafkaConsumer entry after saving](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_03_connections_list.png)
+<ThemedImage
+    alt="Kafka Connections panel showing kafkaConsumer entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_03_connections_list.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -196,7 +250,13 @@ The canvas switches to the Automation flow view, showing a **Start** node, an **
 
 Select the **+** button on the flow connector between **Start** and the placeholder node to open the node panel. Under **Connections**, select **kafkaConsumer** to expand its operations list, then select **Poll**.
 
-![Kafka connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_04_operations_panel.png)
+<ThemedImage
+    alt="Kafka connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_04_operations_panel.png'),
+    }}
+/>
 
 Fill in the Poll operation fields:
 
@@ -204,11 +264,23 @@ Fill in the Poll operation fields:
 - **Result** : Name of the variable that holds the consumed records; enter `pollResult`
 - **T** : Type descriptor for the returned records; enter `kafka:AnydataConsumerRecord[]`
 
-![Kafka Poll operation configuration filled with all values](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_05_operation_filled.png)
+<ThemedImage
+    alt="Kafka Poll operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The canvas updates to show the complete Automation flow with **Start** → `kafka : poll` → **Error Handler** → **End**.
 
-![Completed Kafka Consumer automation flow](/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Kafka Consumer automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_consumer_screenshots_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -262,7 +334,13 @@ flowchart LR
 1. Select **+ Add Artifact** on the canvas to open the Artifacts palette.
 2. In the **Event Integration** category, locate and select the **Kafka** card.
 
-![Artifacts palette open showing the Event Integration category with the Kafka trigger card visible](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with the Kafka trigger card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the Kafka listener
 
@@ -275,7 +353,13 @@ For each required listener parameter field, open the inline helper, select the *
 
 Leave the **Listener Name** field under **Advanced Configurations** at its default value (e.g., `kafkaListener`). For enum-typed fields, select the appropriate value directly from the dropdown; no configurable variable is needed. For boolean fields, select the value directly from the dropdown.
 
-![Trigger configuration form with all Kafka listener parameters bound to configuration variables, before clicking Create](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="Trigger configuration form with all Kafka listener parameters bound to configuration variables, before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Select Create to register the listener and open the Service view
 
@@ -288,7 +372,13 @@ Before running the integration, provide real values for the configurations you c
 - **kafkaBootstrapServers** (string) : The hostname and port of your Kafka broker.
 - **kafkaTopic** (string) : The name of the Kafka topic to subscribe to, e.g. `test-topic`.
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 ### Handling Kafka events
 
@@ -297,7 +387,13 @@ Before running the integration, provide real values for the configurations you c
 1. In the Service view, select **+ Add Handler** on the right of the Event Handlers section.
 2. The **Select Handler to Add** side panel opens, listing the available Kafka handler options including `onConsumerRecord` and `onError`.
 
-![Service view with the Select Handler to Add side panel open, listing onConsumerRecord and onError handler options](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view with the Select Handler to Add side panel open, listing onConsumerRecord and onError handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Select the onConsumerRecord handler and define the message payload type
 
@@ -307,7 +403,13 @@ Before running the integration, provide real values for the configurations you c
 4. Select the **+** icon next to **Fields** to add each payload field, entering a field name and a type for every field, for example: `topic` (`string`) and `value` (`string`).
 5. Select **Save** to create the record type and bind it to the handler.
 
-![Define Value modal on the Create Type Schema tab showing the KafkaConsumerRecord name and payload fields filled in before Save](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Define Value modal on the Create Type Schema tab showing the KafkaConsumerRecord name and payload fields filled in before Save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Step 7: Save the handler configuration and add a log statement to the flow
 
@@ -315,13 +417,25 @@ Before running the integration, provide real values for the configurations you c
 2. In the handler body, add a `log:printInfo(messages.toJsonString())` step using the canvas.
 3. Verify the `log:printInfo` node appears between Start and Error Handler on the canvas.
 
-![Handler flow canvas showing the log:printInfo step added between Start and Error Handler](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="Handler flow canvas showing the log:printInfo step added between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 8: Confirm the handler is registered in the Service view
 
 Select the back arrow in the canvas header (or re-select the Kafka trigger service in the project tree) to return to the Service view. The Event Handlers list now shows the registered `Event onConsumerRecord` handler row.
 
-![Final Service view showing the registered Event onConsumerRecord handler row in the Event Handlers list](/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Final Service view showing the registered Event onConsumerRecord handler row in the Event Handlers list"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/kafka/kafka_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

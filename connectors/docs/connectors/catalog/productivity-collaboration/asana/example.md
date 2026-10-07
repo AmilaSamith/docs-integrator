@@ -31,7 +31,13 @@ flowchart LR
 ### Step 1: Open the connector palette
 
 Select **Add Connection** in the Connections section of the left sidebar to open the connector search palette, which displays a search field and a list of pre-built connectors.
-![Asana connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_01_palette.png)
+<ThemedImage
+    alt="Asana connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the Asana connector
 
@@ -44,12 +50,24 @@ Enter "asana" in the search box to filter the connector list, then select the **
 In the connection configuration form, bind each required field to a configurable variable. The following parameters were configured:
 - **Config** : The connection configuration record containing the authentication settings for the Asana connector. The `auth.token` field is bound to the `asanaToken` configurable variable.
 
-![Asana connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Asana connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the Asana connection
 
 Select **Save Connection** to persist the Asana connection configuration. The `asanaClient` connector node now appears on the integration design canvas.
-![Asana Connections panel showing asanaClient entry after saving](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Asana Connections panel showing asanaClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -71,18 +89,36 @@ Select **Save Connection** to persist the Asana connection configuration. The `a
 1. In the automation flow body on the canvas, select the **+** (Add Step) button between the Start and Error Handler nodes to open the step-addition panel.
 2. Under **Connections** in the step panel, select the **asanaClient** connection node to expand it and reveal all available Asana API operations.
 
-![Asana connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Asana connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get multiple workspaces** from the list, then fill in the operation fields:
   - **Result** : Name of the result variable that stores the response from the Get multiple workspaces operation.
 4. Select **Save** to add the Asana operation step to the automation flow.
 
-![Asana Get multiple workspaces operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Asana Get multiple workspaces operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 ### Step 8: Verify the completed automation flow
 
 The completed canvas flow shows the Automation entry point → asana : get (Get multiple workspaces) → Error Handler → End, with the `asanaClient` connection linked to the operation node.
-![Completed Asana automation flow on the low-code canvas](/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Asana automation flow on the low-code canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/asana/asana_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

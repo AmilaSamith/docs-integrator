@@ -31,7 +31,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Connector palette open before selecting SAP Business One Sales](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-01-palette.png)
+<ThemedImage
+    alt="Connector palette open before selecting SAP Business One Sales"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP Business One Sales connector
 
@@ -46,13 +52,25 @@ Bind the required SAP Business One credentials to configurable variables.
 
 - **Session** : Bind the company database, user name, and password variables in the session record
 
-![SAP Business One Sales connection form with the Session record bound to configurables before saving](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP Business One Sales connection form with the Session record bound to configurables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![Saved SAP Business One Sales connection visible in the Connections section](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Saved SAP Business One Sales connection visible in the Connections section"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -76,13 +94,25 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **salesClient** to display its operations.
 
-![SAP Business One Sales connection expanded to display available operations](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Sales connection expanded to display available operations"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 Select **List Blanket Agreements** and enter `blanketAgreements` as the result variable name.
 
 - **Result** : Name the response variable that receives the BlanketAgreements collection
 
-![List Blanket Agreements operation form with the result variable configured](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="List Blanket Agreements operation form with the result variable configured"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-05-operation-form.png'),
+    }}
+/>
 
 Select **Save**.
 
@@ -90,7 +120,13 @@ Select **Save**.
 
 Add a log action for `blanketAgreements`, then return to the visual flow.
 
-![Completed automation flow with the SAP Business One Sales operation](/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed automation flow with the SAP Business One Sales operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.sales/sap-businessone-sales-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

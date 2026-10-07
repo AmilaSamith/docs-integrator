@@ -31,7 +31,13 @@ flowchart LR
 
 Select the **+** button next to **Connections** in the left sidebar to open the **Add Connection** palette.
 
-![HubSpot CRM Schemas connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Schemas connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Schemas connection
 
@@ -49,13 +55,25 @@ Search for `hubspot.crm.obj.schemas`, select the **Schemas** connector card, and
 - **Service Url** : The HubSpot API base URL bound to the `hubspotServiceUrl` configurable variable
 - **Connection Name** : The name used to reference this connection in the integration flow
 
-![HubSpot CRM Schemas connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Schemas connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to register the `schemasClient` connection in your project.
 
-![HubSpot CRM Schemas Connections panel showing schemasClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Schemas Connections panel showing schemasClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -74,7 +92,13 @@ Select **+ Add Artifact** in the Design section of the integration overview, the
 
 Expand the `schemasClient` connection node on the canvas to view available operations, then select **Get all schemas** and configure its parameters.
 
-![HubSpot CRM Schemas connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Schemas connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 1. Select the **+** button in the Automation canvas flow to open the node panel.
 2. Under **Connections**, expand **schemasClient**.
@@ -84,9 +108,21 @@ Expand the `schemasClient` connection node on the canvas to view available opera
 
 - **Result** : The variable that stores the retrieved collection of custom object schemas
 
-![HubSpot CRM Schemas Get all schemas operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Schemas Get all schemas operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Schemas automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Schemas automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.schemas/hubspot_crm_obj_schemas_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

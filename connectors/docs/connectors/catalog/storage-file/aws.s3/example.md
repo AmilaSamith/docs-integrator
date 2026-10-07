@@ -34,7 +34,13 @@ flowchart LR
 2. In the palette search box, enter **AWS S3**.
 3. Select the **ballerinax/aws.s3** connector card to open the connection configuration form.
 
-![Connector palette open showing the search field and connector list before any search is entered](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_01_palette.png)
+<ThemedImage
+    alt="Connector palette open showing the search field and connector list before any search is entered"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the AWS S3 connection
 
@@ -48,13 +54,25 @@ Select the **Config** field, switch to **Expression** mode, then use the **Confi
 
 After creating all three configurables, bind each connection field to its configurable variable and set **Connection Name** to `s3Client`.
 
-![Connection form showing all three parameters bound to configurable variables before saving](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Connection form showing all three parameters bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the AWS S3 connection
 
 Select **Save Connection** to persist the connection. The S3 connector entry (`s3Client`) appears on the canvas.
 
-![Integration design canvas showing the S3 connector node in the Connections panel after saving](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Integration design canvas showing the S3 connector node in the Connections panel after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -80,17 +98,35 @@ The automation entry point appears in the sidebar under **Entry Points**, and th
 1. Inside the automation flow body, select the **+** (Add Step) button between the **Start** and **End/Error Handler** nodes to open the step-addition panel.
 2. In the step-addition panel, locate the **Connections** section and select the S3 connection entry (**s3Client**) to expand it and reveal all available operations.
 
-![S3 connection node expanded in the step-addition panel showing all available operations before selection](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="S3 connection node expanded in the step-addition panel showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create Bucket** from the list of operations to open its configuration form, then fill in the operation fields.
 
 - **Bucket Name** : the name of the new Amazon S3 bucket to create
 
-![createBucket operation configuration form with all input fields filled before saving](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="createBucket operation configuration form with all input fields filled before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Select **Save** to add the `createBucket` step to the automation flow.
 
-![Completed automation canvas flow showing Start, s3:createBucket connected to s3Client, Error Handler, and End nodes](/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation canvas flow showing Start, s3:createBucket connected to s3Client, Error Handler, and End nodes"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/aws.s3/aws_s3_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -42,7 +42,13 @@ flowchart LR
 3. In the search field, enter `salesforce`.
 4. Select **Salesforce** from the results.
 
-![Salesforce connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_01_palette.png)
+<ThemedImage
+    alt="Salesforce connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configuring the Salesforce connection
 
@@ -58,13 +64,25 @@ In the **Configure Salesforce** form, bind each field to a configurable variable
 - **Config** : Full `salesforce:ConnectionConfig` record expression referencing `salesforceServiceUrl` and `salesforceToken`
 - **Connection Name** : Logical name used to reference this connection on the canvas
 
-![Salesforce connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Salesforce connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The dialog closes and `salesforceClient` appears as a connection node on the canvas.
 
-![Salesforce Connections panel showing salesforceClient entry after saving](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Salesforce Connections panel showing salesforceClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 4: Set actual values for your configurables
 
@@ -89,7 +107,13 @@ The Automation flow view opens showing a **Start** node and an **Error Handler**
 1. Select the **+** button between the **Start** and **Error Handler** nodes to add a step.
 2. In the node panel, under **Connections**, expand **salesforceClient** to see its operations.
 
-![Salesforce connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Salesforce connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create** from the list of operations.
 4. In the **salesforceClient → create** form, fill in the fields:
@@ -99,11 +123,23 @@ The Automation flow view opens showing a **Start** node and an **Error Handler**
 - **Result** : Enter `result` as the variable name
 - **Result Type** : Auto-filled as `salesforce:CreationResponse`
 
-![Salesforce create operation configuration filled with all values](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Salesforce create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The `salesforce : create` node now appears in the flow between **Start** and **Error Handler**.
 
-![Completed Salesforce automation flow](/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Salesforce automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -156,7 +192,13 @@ flowchart LR
 
 Select **+ Add Artifact** in the low-code canvas to open the **Artifacts** palette.
 
-![Artifacts palette open showing the Event Integration category with the Salesforce Event Integration card visible](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with the Salesforce Event Integration card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the Salesforce Event Integration listener
 
@@ -176,7 +218,13 @@ In the **Create Salesforce Event Integration** form, bind the **Auth** field to 
 
 - **Auth** : the `salesforce:CredentialsConfig` record containing the Salesforce username and password used to authenticate the listener
 
-![Salesforce Event Integration trigger configuration form fully filled with all listener parameters before clicking Create](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="Salesforce Event Integration trigger configuration form fully filled with all listener parameters before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -185,7 +233,13 @@ Select **Configurations** in the left panel to open the Configurations panel and
 - **sfUsername** (string) : Salesforce account username (for example, `user@example.com`)
 - **sfPassword** (string) : Salesforce account password with security token appended if required
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Create the listener
 
@@ -202,7 +256,13 @@ Navigate to the **Salesforce Event Integration** service view in the left panel.
 - **onDelete** : Salesforce record deleted
 - **onRestore** : Salesforce record restored
 
-![Auto-registered Salesforce event handlers, with no Add Handler side panel for this trigger. Service view showing onCreate, onUpdate, onDelete, and onRestore handler rows with salesforceListener attached.](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Auto-registered Salesforce event handlers, with no Add Handler side panel for this trigger. Service view showing onCreate, onUpdate, onDelete, and onRestore handler rows with salesforceListener attached."
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Open the onCreate handler canvas
 
@@ -212,13 +272,25 @@ Select the **onCreate** row to open its flow canvas. The canvas shows the initia
 
 Select the **+** icon in the flow chart, and in the side panel that opens, choose **Log Info** from the **Logging** section, then enter `payload.toJsonString()` as the message.
 
-![onCreate handler flow canvas showing the log:printInfo node with payload.toJsonString()](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onCreate handler flow canvas showing the log:printInfo node with payload.toJsonString()"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 8: Confirm the registered handlers in the service view
 
 Navigate back to **Salesforce Event Integration** in the left panel to confirm the complete service with all four registered handlers.
 
-![Final service view showing all four Salesforce event handler rows: onCreate, onUpdate, onDelete, onRestore: with the salesforceListener attached](/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Final service view showing all four Salesforce event handler rows: onCreate, onUpdate, onDelete, onRestore: with the salesforceListener attached"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/salesforce_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

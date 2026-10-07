@@ -33,7 +33,13 @@ flowchart LR
 2. Select the **+** button next to **Connections** to open the connector palette.
 3. Search for **sap** in the search box.
 
-![SAP connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap/sap_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_01_palette.png'),
+    }}
+/>
 
 4. Select the **SAP** connector card from the results.
 
@@ -47,13 +53,25 @@ Enter the connection parameters below, binding each field to a configurable vari
 - **Config** : Optional HTTP client configuration record for authentication, TLS, and timeouts
 - **Connection Name** : The identifier for this connection instance
 
-![SAP connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap/sap_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `sapClient` connection appears in the project tree under **Connections**.
 
-![SAP Connections panel showing sapClient entry after saving](/img/connectors/catalog/erp-business/sap/sap_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SAP Connections panel showing sapClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,7 +91,13 @@ Select **Save** to create the connection. The `sapClient` connection appears in 
 
 Expand the **sapClient** connection node in the right-side panel to view available operations, then select **Post**.
 
-![SAP connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap/sap_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SAP connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the operation with the following values:
 
@@ -84,9 +108,21 @@ Configure the operation with the following values:
 
 Select **Save** to add the operation to the automation flow.
 
-![SAP Post operation configuration filled with all values](/img/connectors/catalog/erp-business/sap/sap_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="SAP Post operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed SAP automation flow](/img/connectors/catalog/erp-business/sap/sap_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap/sap_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

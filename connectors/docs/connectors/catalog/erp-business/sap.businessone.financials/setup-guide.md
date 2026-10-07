@@ -25,7 +25,13 @@ To connect, you need three values from the SAP Business One desktop client's log
 
 Click the company name at the top of the SAP Business One desktop application, or contact your administrator, to view the **Choose Company** window.
 
-![SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection](/img/connectors/catalog/erp-business/sap-b1-choose-company.png)
+<ThemedImage
+    alt="SAP Business One Choose Company window showing the User ID, Password, and Database fields used to configure the connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap-b1-choose-company.png'),
+    }}
+/>
 
 Record the **Database** (company database), **User ID**, and **Password** shown on this screen. These map directly to the session credentials the connector requires.
 

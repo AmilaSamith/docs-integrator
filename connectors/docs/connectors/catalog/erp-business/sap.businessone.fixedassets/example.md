@@ -30,7 +30,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section of the sidebar to open the connector palette.
 
-![SAP Business One Fixed Assets connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Fixed Assets connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the connector
 
@@ -46,13 +52,25 @@ Bind each connection field to a new configurable variable using the helper panel
 - **Service Url** : URL of the target SAP Business One Service Layer service, bound to a configurable variable.
 - **Connection Name** : identifier used for the connection in the flow.
 
-![SAP Business One Fixed Assets connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="SAP Business One Fixed Assets connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to persist the connection. The canvas returns to the integration design view, showing the new connection card next to the Automation entry point.
 
-![SAP Business One Fixed Assets Connections panel showing fixedassetsClient entry after saving](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="SAP Business One Fixed Assets Connections panel showing fixedassetsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -75,7 +93,13 @@ Add an **Automation** artifact to create the entry point with its default Start 
 1. Select the **+** icon between **Start** and **Error Handler**.
 2. Select the **fixedassetsClient** connection under **Connections** to expand its list of operations.
 
-![SAP Business One Fixed Assets connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="SAP Business One Fixed Assets connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 ### Step 8: Select the Create Asset Capitalization operation and configure its input fields
 
@@ -87,9 +111,21 @@ Select **Create Asset Capitalization**, then configure the payload fields listed
 
 Select **Save** to add the Create Asset Capitalization operation to the automation flow.
 
-![SAP Business One Fixed Assets Create Asset Capitalization operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-05-operation-values.png)
+<ThemedImage
+    alt="SAP Business One Fixed Assets Create Asset Capitalization operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-05-operation-values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-05-operation-values.png'),
+    }}
+/>
 
-![Completed SAP Business One Fixed Assets automation flow](/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Fixed Assets automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.fixedassets/sap-businessone-fixedassets-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

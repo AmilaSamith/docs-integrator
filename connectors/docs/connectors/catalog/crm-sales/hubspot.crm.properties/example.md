@@ -30,7 +30,13 @@ flowchart LR
 
 Select **+ Add Artifact** on the canvas, then under **Other Artifacts**, select **Connection** to open the connector search palette.
 
-![HubSpot CRM Properties connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Properties connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Properties connection
 
@@ -42,13 +48,25 @@ Search for `hubspot` in the connector palette and select **ballerinax/hubspot.cr
 - **ServiceUrl** : Bind to the `hubspotServiceUrl` configurable variable (defaults to `https://api.hubapi.com/crm/v3/properties`)
 - **Connection name** : Set to `propertiesClient`
 
-![HubSpot CRM Properties connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Properties connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `propertiesClient` appears in the **Connections** panel on the canvas.
 
-![HubSpot CRM Properties Connections panel showing propertiesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Properties Connections panel showing propertiesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -67,7 +85,13 @@ Select **+ Add Artifact** on the canvas, then select **Automation** under the Au
 
 In the flow canvas, select the **+** button between **Start** and **Error Handler**. In the node panel, expand **Connections → propertiesClient** to see all available operations.
 
-![HubSpot CRM Properties connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Properties connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Read all properties** (the `getAll` operation) and fill in the operation parameters:
 
@@ -76,9 +100,21 @@ Select **Read all properties** (the `getAll` operation) and fill in the operatio
 
 Select **Save**.
 
-![HubSpot CRM Properties getAll operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Properties getAll operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Properties automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Properties automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.properties/hubspot_crm_properties_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

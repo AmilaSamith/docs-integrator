@@ -30,7 +30,13 @@ flowchart LR
 
 Select the **+** button next to the **Connections** section in the WSO2 Integrator side panel to open the **Add Connection** panel.
 
-![HubSpot Marketing Campaigns connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Marketing Campaigns connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the HubSpot marketing campaigns connector
 
@@ -46,11 +52,23 @@ Bind each connection parameter to a configurable variable, then select **Save** 
 - **Config** : The `ConnectionConfig` record containing authentication details: expand `ConnectionConfig → auth → BearerTokenConfig`, select the `token` field, navigate to the **Configurables** tab, and create a new configurable named `hubspotBearerToken` of type `string`
 - **Connection Name** : The variable name for this connector client instance; enter `campaignsClient`
 
-![HubSpot Marketing Campaigns connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Marketing Campaigns connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_02_connection_form.png'),
+    }}
+/>
 
 The connection `campaignsClient` now appears under the **Connections** section in the project tree.
 
-![HubSpot Marketing Campaigns Connections panel showing campaignsClient entry after saving](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Marketing Campaigns Connections panel showing campaignsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -70,7 +88,13 @@ Select **Add Artifact** in the WSO2 Integrator side panel and choose **Automatio
 1. On the automation canvas, select the **+** (Add Step) button between the **Start** node and the **Error Handler** node.
 2. In the node panel, locate the **Connections** section and expand **campaignsClient** to reveal all available operations.
 
-![HubSpot Marketing Campaigns connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Marketing Campaigns connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Create a campaign** (`campaignsClient → post`) to open the operation form.
 4. Configure the following fields:
@@ -80,9 +104,21 @@ Select **Add Artifact** in the WSO2 Integrator side panel and choose **Automatio
 
 Select **Save** to add the step to the canvas.
 
-![HubSpot Marketing Campaigns Create a campaign operation configuration filled with all values](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Marketing Campaigns Create a campaign operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HubSpot Marketing Campaigns automation flow](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Marketing Campaigns automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

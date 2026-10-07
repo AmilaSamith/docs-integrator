@@ -30,7 +30,13 @@ flowchart LR
 
 Select **Add Connection** (or the **+** icon in the Connections section of the side panel) to open the connector palette.
 
-![HubSpot Communications connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Communications connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the HubSpot Communications connector
 
@@ -45,13 +51,25 @@ In the **Configure Communications** form, set the following parameters. Switch t
 - **Connection Name** : The identifier used to reference this connection throughout the integration
 - **Config** : The `ConnectionConfig` record wrapping a `BearerTokenConfig`; set to `{auth: {token: hubspotToken}}`
 
-![HubSpot Communications connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Communications connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to create the connection. The canvas updates to show the `communicationsClient` connection node.
 
-![HubSpot Communications Connections panel showing communicationsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Communications Connections panel showing communicationsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -72,18 +90,36 @@ Select **Save** to create the connection. The canvas updates to show the `commun
 
 Select the **+** (Add Step) button between the **Start** and **Error Handler** nodes. In the **Connections** section of the step panel, expand **communicationsClient** to reveal all available operations.
 
-![HubSpot Communications connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_04_operations.png)
+<ThemedImage
+    alt="HubSpot Communications connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_04_operations.png'),
+    }}
+/>
 
 Select **Create a communication**, then configure the following parameters in the operation form:
 
 - **Payload** : The communication record to create; set to `{associations: [], properties: {"hs_communication_channel_type": "EMAIL", "hs_communication_logged_from": "CRM", "hs_communication_body": "Hello from WSO2 Integrator"}}`
 - **Result** : The variable name for the returned object; set to `result`
 
-![HubSpot Communications Create a communication operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot Communications Create a communication operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save** to add the step to the flow.
 
-![Completed HubSpot Communications automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Communications automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.communications/hubspot_crm_engagements_communications_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

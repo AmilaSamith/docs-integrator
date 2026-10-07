@@ -31,7 +31,13 @@ flowchart LR
 
 In the left sidebar under your project, expand **Connections** and select the **+** icon to open the connector palette.
 
-![AWS SNS connector palette open with search field before any selection](/img/connectors/catalog/communication/aws-sns/sns_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS SNS connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the AWS SNS connection
 
@@ -49,13 +55,25 @@ Fill in the following fields, binding each to a configurable variable:
 - **secretAccessKey** : Your AWS secret access key, bound to a configurable variable
 - **region** : AWS region where your SNS topic resides, bound to a configurable variable
 
-![AWS SNS connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/aws-sns/sns_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS SNS connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection**. The `snsClient` connection node appears on the design canvas and is listed under **Connections** in the left sidebar.
 
-![AWS SNS Connections panel showing snsClient entry after saving](/img/connectors/catalog/communication/aws-sns/sns_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="AWS SNS Connections panel showing snsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -80,7 +98,13 @@ The automation flow canvas opens with a **Start** node and an **Error Handler** 
 
 Select the **+** button between the **Start** node and the **Error Handler** node to open the node selection panel. Under **Connections**, expand **snsClient** to view all available operations.
 
-![AWS SNS connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/aws-sns/sns_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="AWS SNS connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Publish** to open the configuration form, then fill in the following fields:
 
@@ -89,11 +113,23 @@ Select **Publish** to open the configuration form, then fill in the following fi
 - **Target Type** : Leave as `TOPIC` (default) for publishing to a topic
 - **Result variable** : Auto-generated variable that stores the `sns:PublishMessageResponse`
 
-![AWS SNS publish operation configuration filled with all values](/img/connectors/catalog/communication/aws-sns/sns_screenshot_05_publish_form_filled.png)
+<ThemedImage
+    alt="AWS SNS publish operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_05_publish_form_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_05_publish_form_filled.png'),
+    }}
+/>
 
 Select **Save**. The publish node is added to the flow canvas, connected to `snsClient`.
 
-![Completed AWS SNS automation flow](/img/connectors/catalog/communication/aws-sns/sns_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed AWS SNS automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/aws-sns/sns_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

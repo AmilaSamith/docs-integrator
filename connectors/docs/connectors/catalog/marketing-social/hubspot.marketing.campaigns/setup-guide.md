@@ -20,19 +20,43 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Test accounts section](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccount.png)
+   <ThemedImage
+       alt="Test accounts section"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccount.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccount.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create developer test account](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/developmentTestAccount.png)
+   <ThemedImage
+       alt="Create developer test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/developmentTestAccount.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/developmentTestAccount.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/createAccount.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/createAccount.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/createAccount.png'),
+       }}
+   />
 
    The new account appears in the list.
 
-   ![Test account portal](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccountPortal.png)
+   <ThemedImage
+       alt="Test account portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccountPortal.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/testAccountPortal.png'),
+       }}
+   />
 
 Developer test accounts are for development and testing only. Do not use them in production.
 
@@ -40,34 +64,70 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** in the left sidebar and select **Create app**.
 
-   ![Apps section](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/appSection.png)
+   <ThemedImage
+       alt="Apps section"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/appSection.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/appSection.png'),
+       }}
+   />
 
 2. Enter a public app name and an optional description.
 
-   ![App name and description](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/namingApp.png)
+   <ThemedImage
+       alt="App name and description"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/namingApp.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/namingApp.png'),
+       }}
+   />
 
 ## Step 4: Configure authentication
 
 1. Go to the **Auth** tab.
 
-   ![Auth tab](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/auth.png)
+   <ThemedImage
+       alt="Auth tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/auth.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/auth.png'),
+       }}
+   />
 
 2. Under **Scopes**, select **Add new scopes** and add:
    - `marketing.campaigns.read`
    - `marketing.campaigns.revenue.read`
    - `marketing.campaigns.write`
 
-   ![Marketing scopes](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/marketingScopes.png)
+   <ThemedImage
+       alt="Marketing scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/marketingScopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/marketingScopes.png'),
+       }}
+   />
 
 3. Under **Redirect URL**, add your redirect URL and select **Create App**.
 
-   ![Redirect URL](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/redirectURL.png)
+   <ThemedImage
+       alt="Redirect URL"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/redirectURL.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/redirectURL.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** tab, copy the **Client ID** and **Client Secret**.
 
-![Client ID and client secret](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/clientId_secretId.png)
+<ThemedImage
+    alt="Client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/clientId_secretId.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/clientId_secretId.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 
@@ -79,7 +139,13 @@ In the **Auth** tab, copy the **Client ID** and **Client Secret**.
 
 2. Open the URL in a browser and select your developer test account.
 
-   ![Select account](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/accountSelect.png)
+   <ThemedImage
+       alt="Select account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/accountSelect.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/setup/accountSelect.png'),
+       }}
+   />
 
 3. Copy the authorization code from the redirect URL.
 

@@ -30,7 +30,13 @@ flowchart LR
 
 Select **Add Connection** (the **+** next to the **Connections** section) in the WSO2 Integrator side panel to open the connector palette.
 
-![HubSpot Email connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Email connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Engagements Email connection
 
@@ -41,13 +47,25 @@ Enter the connection details in the **Configure Email** form, binding the `Confi
 - **Config** : Set to the expression `{auth: {token: hubspotToken}}`, referencing the `hubspotToken` configurable variable
 - **Connection Name** : Defaults to `emailClient`
 
-![HubSpot Email connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_02_connection_config.png)
+<ThemedImage
+    alt="HubSpot Email connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_02_connection_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_02_connection_config.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `emailClient` node appears on the integration canvas.
 
-![HubSpot Email Connections panel showing emailClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot Email Connections panel showing emailClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -65,18 +83,36 @@ Select **+ Add Artifact** on the integration overview canvas, then select **Auto
 
 Expand the **emailClient** connection node in the flow canvas to reveal available operations, then select **Create** (the `post` operation) and fill in the payload fields.
 
-![HubSpot Email connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Email connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the following parameters:
 
 - **Payload** : An `email:SimplePublicObjectInputForCreate` value containing `associations` (empty array) and `properties` with keys `hs_timestamp`, `hubspot_owner_id`, `hs_email_direction`, `hs_email_status`, `hs_email_subject`, and `hs_email_text`
 - **Result variable** : Automatically named `emailSimplepublicobject`
 
-![HubSpot Email create operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="HubSpot Email create operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_05_operation_config.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow. The completed automation flow shows: Start → email:post (create email engagement) → Error Handler.
 
-![Completed HubSpot Email automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Email automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.email/hubspot_crm_engagements_email_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

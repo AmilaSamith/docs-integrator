@@ -37,7 +37,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS Redshift Data connector palette open in the Add Connection dialog before selection](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS Redshift Data connector palette open in the Add Connection dialog before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS Redshift Data connector
 
@@ -58,13 +64,25 @@ Leave **Endpoint** at its default empty value unless you target a FIPS, dualstac
 
 > **Note:** This example targets a provisioned cluster. The connector also supports serverless workgroups: select the `WorkGroup` variant for **Db Access Config**, which takes the workgroup `name` and `database` in place of the cluster `id` and `database`. A workgroup needs `redshift-serverless:GetCredentials` instead of `redshift:GetClusterCredentials`.
 
-![AWS Redshift Data connection form with Auth and Region bound to configurable variables before saving](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_02_connection_form_filled.png)
+<ThemedImage
+    alt="AWS Redshift Data connection form with Auth and Region bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_02_connection_form_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_02_connection_form_filled.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Saved redshiftdataClient connection shown on the integration design canvas and in the project tree](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Saved redshiftdataClient connection shown on the integration design canvas and in the project tree"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -92,14 +110,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **+** in the automation flow, between **Start** and **Error Handler**.
 2. Expand **redshiftdataClient** to display its operations.
 
-![redshiftdataClient connection expanded in the node panel to display its five operations before selection](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="redshiftdataClient connection expanded in the node panel to display its five operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Execute** and enter its required values.
 
 - **Statement** : The SQL statement to run. This example uses a read-only query that returns at most 10 rows
 - **Result** : The name of the variable that holds the returned execution response
 
-![Execute operation form with the SQL statement entered and the result variable named before saving](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_05_execute_form_filled.png)
+<ThemedImage
+    alt="Execute operation form with the SQL statement entered and the result variable named before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_05_execute_form_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_05_execute_form_filled.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -107,7 +137,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 
 Add a **Log Info** action after the operation, and enter a message that reads the statement ID from the result variable. The completed flow runs from **Start**, through the operation and the log action, to **Error Handler**.
 
-![Completed automation flow with Start, the Execute operation, the log action, and Error Handler](/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_06_execute_added.png)
+<ThemedImage
+    alt="Completed automation flow with Start, the Execute operation, the log action, and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_06_execute_added.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshiftdata/redshiftdata_screenshot_06_execute_added.png'),
+    }}
+/>
 
 ## Try it yourself
 

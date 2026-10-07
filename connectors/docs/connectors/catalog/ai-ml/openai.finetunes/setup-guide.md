@@ -17,21 +17,45 @@ OpenAI is winding down the fine-tuning platform. It is no longer available to ne
 1. Open the [OpenAI Platform Dashboard](https://platform.openai.com).
 2. Navigate to **Dashboard > API keys** in the left sidebar.
 
-   ![Navigate to API keys dashboard](/img/connectors/catalog/ai-ml/openai.finetunes/setup/navigate-api-key-dashboard.png)
+   <ThemedImage
+       alt="Navigate to API keys dashboard"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/navigate-api-key-dashboard.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/navigate-api-key-dashboard.png'),
+       }}
+   />
 
 ## Step 2: Create a new secret key
 
 1. Select **Create new secret key**.
 
-   ![API keys dashboard](/img/connectors/catalog/ai-ml/openai.finetunes/setup/api-key-dashboard.png)
+   <ThemedImage
+       alt="API keys dashboard"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/api-key-dashboard.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/api-key-dashboard.png'),
+       }}
+   />
 
 2. Fill in the required details and select **Create secret key**.
 
-   ![Create new secret key dialog](/img/connectors/catalog/ai-ml/openai.finetunes/setup/create-new-secret-key.png)
+   <ThemedImage
+       alt="Create new secret key dialog"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/create-new-secret-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/create-new-secret-key.png'),
+       }}
+   />
 
 3. Copy the generated API key immediately — it will not be shown again.
 
-   ![Copy and save the API key](/img/connectors/catalog/ai-ml/openai.finetunes/setup/saved-key.png)
+   <ThemedImage
+       alt="Copy and save the API key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/saved-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/setup/saved-key.png'),
+       }}
+   />
 
 Store the API key securely. Do not commit it to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply it at runtime.
 

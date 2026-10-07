@@ -11,11 +11,23 @@ This guide walks you through creating a Zoom app on the Zoom Marketplace and obt
 1. Open the [Zoom Marketplace](https://marketplace.zoom.us/).
 2. Select **Develop** → **Build App**.
 
-   ![Zoom Marketplace](/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-marketplace.png)
+   <ThemedImage
+       alt="Zoom Marketplace"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-marketplace.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-marketplace.png'),
+       }}
+   />
 
 3. Choose **General App** as the app type (for user authorization with refresh tokens).
 
-   ![App type](/img/connectors/catalog/communication/zoom.scheduler/setup/app-type.png)
+   <ThemedImage
+       alt="App type"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/app-type.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/app-type.png'),
+       }}
+   />
 
 4. Fill in the basic information.
 
@@ -23,22 +35,46 @@ This guide walks you through creating a Zoom app on the Zoom Marketplace and obt
 
 1. In your app's credentials, note down the **Client ID** and **Client Secret**.
 
-   ![App credentials](/img/connectors/catalog/communication/zoom.scheduler/setup/app-credentials.png)
+   <ThemedImage
+       alt="App credentials"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/app-credentials.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/app-credentials.png'),
+       }}
+   />
 
 2. Set your **Redirect URI** (for example, `http://localhost:8080/callback`).
 
-   ![Redirect URI](/img/connectors/catalog/communication/zoom.scheduler/setup/redirect-URI.png)
+   <ThemedImage
+       alt="Redirect URI"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/redirect-URI.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/redirect-URI.png'),
+       }}
+   />
 
 3. Add the following scopes for the Scheduler API: `scheduler:read`, `scheduler:write`, and `user:read`.
 
-   ![Zoom scopes](/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-scopes.png)
+   <ThemedImage
+       alt="Zoom scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-scopes.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/zoom-scopes.png'),
+       }}
+   />
 
 ## Step 3: Activate the app
 
 1. Complete all required information fields.
 2. Select **Activate** to publish the app.
 
-   ![Activate app](/img/connectors/catalog/communication/zoom.scheduler/setup/activate-app.png)
+   <ThemedImage
+       alt="Activate app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/activate-app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/zoom.scheduler/setup/activate-app.png'),
+       }}
+   />
 
 ## Step 4: Get user authorization
 

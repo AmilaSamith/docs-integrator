@@ -31,7 +31,13 @@ flowchart LR
 
 Select **+ Add Artifact** → **Connection** on the integration overview canvas to open the connector search palette.
 
-![HubSpot connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an Automation entry point
 
@@ -46,13 +52,25 @@ Search for `hubspot` in the palette and select the `ballerinax/hubspot.crm.obj.f
 - **Config** : Authentication configuration using `{auth: {token: hubspotToken}}`, where `hubspotToken` is a configurable string variable
 - **Connection Name** : A unique name for this connection instance
 
-![HubSpot Feedback connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Feedback connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas displays the `feedbackClient` connection node confirming the connection was created successfully.
 
-![HubSpot Feedback Connections panel showing feedbackClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Feedback Connections panel showing feedbackClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -69,15 +87,33 @@ Select **Save Connection** to persist the connection. The canvas displays the `f
 2. In the right-hand step panel, expand **feedbackClient** under **Connections**.
 3. Select **List** to open the operation form.
 
-![HubSpot Feedback connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Feedback connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the operation with the following value:
 
 - **Result** : The variable name to store the returned feedback submissions collection
 
-![HubSpot Feedback List operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot Feedback List operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Complete Flow](/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_06_completed_canvas.png)
+<ThemedImage
+    alt="Complete Flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_06_completed_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.obj.feedback/hubspot_crm_obj_feedback_screenshot_06_completed_canvas.png'),
+    }}
+/>
 
 ## Try it yourself
 

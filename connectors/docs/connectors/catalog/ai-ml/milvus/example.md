@@ -33,7 +33,13 @@ Select the **+ (Add Connection)** button next to **Connections** in the sidebar 
 2. Search for "milvus" in the search field.
 3. Select the **Milvus** connector card.
 
-![Milvus connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_01_palette.png)
+<ThemedImage
+    alt="Milvus connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Milvus connection
 
@@ -47,13 +53,25 @@ Enter the connection details, binding each field to a configurable variable:
 - **authConfig** : Authentication token for Milvus, bound to a configurable variable
 - **connectionName** : The name used to identify this connection on the canvas
 
-![Milvus connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Milvus connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 2: Save the connection
 
 Select **Save Connection** to persist the connection. The `milvusClient` connection appears on the project design canvas.
 
-![Milvus Connections panel showing milvusClient entry after saving](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Milvus Connections panel showing milvusClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 3: Set actual values for your configurables
 
@@ -78,18 +96,36 @@ The canvas switches to the Automation flow view, showing a **Start** node connec
 1. Select the **+** (add step) button between **Start** and the **Error Handler** node.
 2. Under **Connections**, expand **milvusClient** to reveal available operations.
 
-![Milvus connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Milvus connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Upsert** from the operations list.
 4. In the **milvusClient → upsert** form, select the **Expression** tab for the **Request** field and enter your upsert payload, specifying the collection name and vector data.
 
 - **request** : An `milvus:UpsertRequest` value containing the target collection name and the vector data to upsert
 
-![Milvus Upsert operation configuration filled with all values](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Milvus Upsert operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed Milvus automation flow](/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Milvus automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/milvus_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

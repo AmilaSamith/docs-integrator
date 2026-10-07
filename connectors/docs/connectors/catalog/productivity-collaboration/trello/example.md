@@ -30,7 +30,13 @@ flowchart LR
 
 In the WSO2 Integrator sidebar, expand your project and select **Connections → + Add Connection** to open the connector palette.
 
-![Trello connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_01_palette.png)
+<ThemedImage
+    alt="Trello connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Trello connector
 
@@ -45,13 +51,25 @@ In the **Configure Trello** form, bind each field to a configurable variable:
 - **connectionName** : Enter `trelloClient` as the connection name
 - **apiKeyConfig** : Set to the `ApiKeysConfig` record referencing `trelloApiKey` and `trelloApiToken` configurable variables
 
-![Trello connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Trello connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `trelloClient` appears in the **Connections** panel and on the canvas.
 
-![Trello Connections panel showing trelloClient entry after saving](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Trello Connections panel showing trelloClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -75,7 +93,13 @@ Select **Save Connection** to persist the connection. Confirm that `trelloClient
 
 On the Automation canvas, select the **+** button between **Start** and **Error Handler** to open the node panel. Expand **trelloClient** to see available operations, then select **Create a new Card** (`post`).
 
-![Trello connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Trello connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 In the configuration form, fill in the following fields:
 
@@ -86,9 +110,21 @@ In the configuration form, fill in the following fields:
 
 Select **Save** to add the operation to the canvas flow.
 
-![Trello post operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Trello post operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Trello automation flow](/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Trello automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/trello/trello_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

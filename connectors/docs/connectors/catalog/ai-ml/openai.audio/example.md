@@ -32,7 +32,13 @@ Search for the OpenAI Audio connector in the connector palette and add it to you
 
 Select **+ Add Artifact** → **Connection** from the project overview canvas to open the connector search palette.
 
-![OpenAI Audio connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_01_palette.png)
+<ThemedImage
+    alt="OpenAI Audio connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the OpenAI Audio connection
 
@@ -43,13 +49,25 @@ Enter the connection details by binding the auth token to a configurable variabl
 - **Config** : Authentication configuration using a bearer token; bind to the `openaiApiToken` configurable variable
 - **Connection Name** : Name used to reference this connection throughout the integration
 
-![OpenAI Audio connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="OpenAI Audio connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `audioClient` appears in the Connections panel.
 
-![OpenAI Audio Connections panel showing audioClient entry after saving](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="OpenAI Audio Connections panel showing audioClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -69,7 +87,13 @@ Select **+ Add Artifact** → **Automation** from the project canvas, then selec
 1. Select the **+** button on the flow canvas to open the node panel.
 2. Expand **Connections → audioClient** to see available operations.
 
-![OpenAI Audio connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="OpenAI Audio connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Transcribes audio into the input language** (`createTranscription`) and fill in the operation parameters.
 
@@ -78,11 +102,23 @@ Select **+ Add Artifact** → **Automation** from the project canvas, then selec
 - **model** : The transcription model to use; set to `whisper-1`
 - **Result** : Variable name that stores the transcription response
 
-![OpenAI Audio createTranscription operation configuration filled with all values](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="OpenAI Audio createTranscription operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**.
 
-![Completed OpenAI Audio automation flow](/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed OpenAI Audio automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.audio/openai_audio_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

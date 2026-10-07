@@ -30,7 +30,13 @@ flowchart LR
 
 Select **+ Add Connection** in the **Connections** section of the WSO2 Integrator sidebar to open the connector palette.
 
-![HTTP connector palette open with search field before any selection](/img/connectors/catalog/built-in/http/http_screenshot_01_palette.png)
+<ThemedImage
+    alt="HTTP connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configuring the HTTP connection
 
@@ -41,13 +47,25 @@ In the **New Connection** form, bind the connection parameters to configurable v
 - **connectionName**: Set to `httpClient` as the name for this connection
 - **url**: Bind to a new configurable variable named `httpServiceUrl` (type: `string`) using the variable binding icon
 
-![HTTP connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/http/http_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HTTP connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 2: Save the connection
 
 Select **Save** to create the connection. The connection `httpClient` now appears under **Connections** in the WSO2 Integrator sidebar.
 
-![HTTP Connections panel showing httpClient entry after saving](/img/connectors/catalog/built-in/http/http_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HTTP Connections panel showing httpClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurables
 
@@ -75,9 +93,21 @@ An Automation entry point named `main` is created and the visual designer opens,
 - **result**: Set the result variable name to `result`
 - **targetType**: Enter `http:Response` as the expected response type
 
-![HTTP get operation configuration filled with all values](/img/connectors/catalog/built-in/http/http_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HTTP get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HTTP automation flow](/img/connectors/catalog/built-in/http/http_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HTTP automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -118,7 +148,13 @@ flowchart LR
 1. Select **+ Add Artifact** on the canvas to open the Artifacts palette.
 2. In the **Integration as API** category, locate and select the **HTTP Service** card.
 
-![Artifacts palette open showing the Integration as API category with the HTTP Service card visible](/img/connectors/catalog/built-in/http/http_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Integration as API category with the HTTP Service card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the HTTP Service listener
 
@@ -129,7 +165,13 @@ In the **Create HTTP Service** form, expand **Advanced Configurations** and sele
 - **Port**: The TCP port the HTTP listener binds to; bound to a `configurable int` variable so the port can be set at runtime without modifying the integration source.
 - **Listener Name**: The identifier used for the `http:Listener` variable in the generated source; kept as `httpListener`.
 
-![HTTP Service trigger configuration form with the Port field bound to the httpListenerPort configuration variable, before selecting Create](/img/connectors/catalog/built-in/http/http_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="HTTP Service trigger configuration form with the Port field bound to the httpListenerPort configuration variable, before selecting Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -138,7 +180,13 @@ In the **Create HTTP Service** form, expand **Advanced Configurations** and sele
 
 - **httpListenerPort** (int): The actual TCP port number the HTTP listener should bind to at runtime (for example, `8090`).
 
-![Configurable Variables panel open showing the httpListenerPort variable listed with an empty Required value field](/img/connectors/catalog/built-in/http/http_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurable Variables panel open showing the httpListenerPort variable listed with an empty Required value field"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Select Create to register the listener and open the Service view
 
@@ -151,7 +199,13 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 1. In the HTTP Service view, locate the **Resources** section.
 2. Select **+ Add Resource** on the right of the section header. The **Select HTTP Method to Add** side panel opens, listing the available HTTP methods (GET, POST, PUT, DELETE, PATCH, DEFAULT).
 
-![HTTP Service view with the Select HTTP Method to Add side panel open listing available resource handler options](/img/connectors/catalog/built-in/http/http_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="HTTP Service view with the Select HTTP Method to Add side panel open listing available resource handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Select the primary resource handler and define the message payload type
 
@@ -161,7 +215,13 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 4. Optionally add path params, query parameters, or headers using the **+ Path Param**, **+ Query Parameter**, and **+ Header** links if your handler needs them.
 5. Select **Save** to register the resource.
 
-![Define Value modal on the Create Type Schema tab showing the record name and fields filled in before Save](/img/connectors/catalog/built-in/http/http_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Define Value modal on the Create Type Schema tab showing the record name and fields filled in before Save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Step 7: Save the handler and add a log statement to the flow
 
@@ -170,13 +230,25 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 3. Add a JSON payload declaration followed by `log:printInfo(payload.toJsonString());` inside the handler body.
 4. Confirm the canvas renders **Start → Declare Variable (payload) → log:printInfo → Return → Error Handler → End**, confirming the log step is wired into the flow.
 
-![Handler flow canvas showing the Declare Variable, log:printInfo, Return, and Error Handler nodes between Start and End](/img/connectors/catalog/built-in/http/http_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="Handler flow canvas showing the Declare Variable, log:printInfo, Return, and Error Handler nodes between Start and End"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 8: Confirm the handler is registered in the Service view
 
 Select the back arrow in the canvas header (or re-select the **HTTP Service** entry in the left project tree) to return to the HTTP Service view. The **Resources** list now shows the registered `GET /messages` resource handler row.
 
-![Final HTTP Service view showing the registered GET messages resource row in the Resources section](/img/connectors/catalog/built-in/http/http_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Final HTTP Service view showing the registered GET messages resource row in the Resources section"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

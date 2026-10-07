@@ -28,7 +28,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section of the WSO2 Integrator sidebar. The connector palette opens.
 
-![HubSpot Timelines connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Timelines connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_01_palette.png'),
+    }}
+/>
 
 Search for **hubspot.crm.extensions.timelines** in the search field, then select the **Timelines** connector card to open the connection configuration form.
 
@@ -42,13 +48,25 @@ In the **Configure Timelines** form, bind each connection parameter to a configu
 
 Keep the **Connection Name** as `timelinesClient`.
 
-![HubSpot Timelines connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Timelines connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 2: Save the connection
 
 Select **Save Connection** to persist the connection. The connector is added to the canvas and appears under **Connections** in the sidebar.
 
-![HubSpot Timelines Connections panel showing timelinesClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="HubSpot Timelines Connections panel showing timelinesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 3: Set actual values for your configurables
 
@@ -67,7 +85,13 @@ On the canvas overview, select **+ Add Artifact**. In the **Artifacts** panel, s
 
 Select the **+** placeholder node between **Start** and **Error Handler** on the Automation canvas. The node panel opens. Under **Connections**, select **timelinesClient** to expand all available operations.
 
-![HubSpot Timelines connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Timelines connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Create an event template for the app** (maps to `createEventType`). In the operation form, fill in the following fields:
 
@@ -75,11 +99,23 @@ Select **Create an event template for the app** (maps to `createEventType`). In 
 - **payload** : A `TimelineEventTemplateCreateRequest` record specifying the template name, an empty `tokens` list, and the target `objectType` (for example, `"contacts"`, `"companies"`, or `"deals"`)
 - **result** : The variable name for the returned `TimelineEventTemplate`
 
-![HubSpot Timelines createEventType operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Timelines createEventType operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation node to the canvas.
 
-![Completed HubSpot Timelines automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Timelines automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/hubspot_crm_extensions_timelines_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -31,7 +31,13 @@ flowchart LR
 
 Select **+ Add Connection** in the **Connections** section to open the connector palette.
 
-![DS Admin connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_01_palette.png)
+<ThemedImage
+    alt="DS Admin connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the DS admin connector
 
@@ -48,13 +54,25 @@ Bind each connection parameter to a configurable variable so no secrets are hard
 - **auth** : Set to the bearer token expression referencing the `docusignBearerToken` configurable variable using `BearerTokenConfig`
 - **connectionName** : Pre-filled as `dsadminClient`; no change required
 
-![DS Admin connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="DS Admin connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The `dsadminClient` node appears on the integration canvas.
 
-![DS Admin Connections panel showing dsadminClient entry after saving](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="DS Admin Connections panel showing dsadminClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -77,16 +95,34 @@ Select **Save Connection** to persist the connection. The `dsadminClient` node a
 1. Select the **+** button between **Start** and **Error Handler** to open the step-addition panel.
 2. Under **Connections**, expand **dsadminClient** to see all available operations.
 
-![DS Admin connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="DS Admin connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **"Returns a list of organizations that the authenticated user belongs to."** (maps to `get()`).
 4. In the operation configuration panel, set the result variable to `dsAdminResult`. This operation requires no additional parameters.
 
-![DS Admin get operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="DS Admin get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed DS Admin automation flow](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_06_completed_canvas.png)
+<ThemedImage
+    alt="Completed DS Admin automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_06_completed_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_06_completed_canvas.png'),
+    }}
+/>
 
 ## Try it yourself
 

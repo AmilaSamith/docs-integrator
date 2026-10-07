@@ -32,7 +32,13 @@ flowchart LR
 2. The connector palette opens. In the search field, enter `hubspot.crm.owners`.
 3. Select **ballerinax/hubspot.crm.owners** from the results.
 
-![HubSpot CRM Owners connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Owners connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot CRM Owners connection
 
@@ -43,13 +49,25 @@ Bind the connection parameters to configurable variables so credentials aren't h
 - **Config** : The connection configuration record containing the bearer token, bound to the `hubspotToken` configurable variable
 - **Connection Name** : Set to `ownersClient`
 
-![HubSpot CRM Owners connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot CRM Owners connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `ownersClient` connection node appears on the canvas.
 
-![HubSpot CRM Owners Connections panel showing ownersClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Owners Connections panel showing ownersClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -71,15 +89,33 @@ Select **Save Connection** to persist the connection. The `ownersClient` connect
 1. Select the **+** (Add Step) button between the **Start** node and **Error Handler**.
 2. Under **Connections**, select **ownersClient** to expand it and reveal available operations.
 
-![HubSpot CRM Owners connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Owners connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get a page of owners**.
 4. In the **Result** field, enter `result`.
 5. Select **Save**.
 
-![HubSpot CRM Owners Get a page of owners operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="HubSpot CRM Owners Get a page of owners operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_05_operation_config.png'),
+    }}
+/>
 
-![Completed HubSpot CRM Owners automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot CRM Owners automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.owners/hubspot_crm_owners_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

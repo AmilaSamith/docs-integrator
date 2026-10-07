@@ -32,7 +32,13 @@ flowchart LR
 
 Select **+** next to **Connections** in the WSO2 Integrator sidebar to open the **Add Connection** palette.
 
-![Google Sheets connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_01_palette.png)
+<ThemedImage
+    alt="Google Sheets connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Google sheets connector card
 
@@ -49,13 +55,25 @@ In the **Config** field, switch to expression mode and use the **Configurations*
 - **refreshToken** : The OAuth2 Refresh Token, bound to a configurable variable
 - **refreshUrl** : The token endpoint URL, bound to a configurable variable
 
-![Google Sheets connection form fully filled with all OAuth2 parameters before saving](/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_02_config.png)
+<ThemedImage
+    alt="Google Sheets connection form fully filled with all OAuth2 parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_02_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_02_config.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Enter `sheetsClient` in the **Connection Name** field, then select **Save Connection** to persist the connection.
 
-![Google Sheets Connections panel showing sheetsClient entry after saving](/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_03_connection.png)
+<ThemedImage
+    alt="Google Sheets Connections panel showing sheetsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_03_connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_03_connection.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -84,9 +102,21 @@ Select **+** in the flow between **Start** and **Error Handler**, then expand **
 
 > **Note:** Create `sheetsSpreadsheetId` as a fifth configurable variable using the same Configurations panel flow before saving.
 
-![Google Sheets operations panel showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_04_operations.png)
+<ThemedImage
+    alt="Google Sheets operations panel showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_04_operations.png'),
+    }}
+/>
 
-![appendRowToSheet operation configuration filled with spreadsheet ID, worksheet name, and row values](/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_05_operation.png)
+<ThemedImage
+    alt="appendRowToSheet operation configuration filled with spreadsheet ID, worksheet name, and row values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_05_operation.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/googleapis.sheets/googleapis_sheets_screenshot_05_operation.png'),
+    }}
+/>
 
 Select **Save** to add the step to the automation flow.
 

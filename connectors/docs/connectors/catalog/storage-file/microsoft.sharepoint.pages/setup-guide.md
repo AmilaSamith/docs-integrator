@@ -25,27 +25,63 @@ To use the Microsoft SharePoint Pages connector, you must register an applicatio
 
 3. In the left panel, navigate to **App registrations** and click **New registration**.
 
-   ![New application registration](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/new-application-registration.png)
+   <ThemedImage
+       alt="New application registration"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/new-application-registration.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/new-application-registration.png'),
+       }}
+   />
 
 4. Enter a name for your application, select the appropriate **Supported account types** (e.g., "Single tenant only"), and click **Register**.
 
-   ![Application registration details](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/application-registration-details.png)
+   <ThemedImage
+       alt="Application registration details"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/application-registration-details.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/application-registration-details.png'),
+       }}
+   />
 
 5. Once the application is registered, note down the **Application (client) ID** and **Directory (tenant) ID** from the Overview page.
 
-   ![Client ID and Tenant ID](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/client-id-and-tenant-id.png)
+   <ThemedImage
+       alt="Client ID and Tenant ID"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/client-id-and-tenant-id.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/client-id-and-tenant-id.png'),
+       }}
+   />
 
 6. Navigate to **Certificates & secrets** in the left panel, click **New client secret**, provide a description and expiry period, then click **Add**. Copy the generated **client secret value** immediately.
 
-   ![Create client secret](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/create-client-secret.png)
+   <ThemedImage
+       alt="Create client secret"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/create-client-secret.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/create-client-secret.png'),
+       }}
+   />
 
 7. Navigate to **API permissions** in the left panel and click **Add a permission**.
 
-   ![Add API permission](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/add-api-permission.png)
+   <ThemedImage
+       alt="Add API permission"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/add-api-permission.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/add-api-permission.png'),
+       }}
+   />
 
 8. Select **Microsoft Graph** from the available API options.
 
-   ![Microsoft Graph API permission](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/microsoft-graph-api-permission.png)
+   <ThemedImage
+       alt="Microsoft Graph API permission"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/microsoft-graph-api-permission.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/microsoft-graph-api-permission.png'),
+       }}
+   />
 
 9. Select **Application permissions**, then search for and add the following permissions depending on your use case, then click **Add permissions**.
 
@@ -56,13 +92,25 @@ To use the Microsoft SharePoint Pages connector, you must register an applicatio
    | `Sites.Manage.All` | Update site properties, create/delete columns and content types |
    | `Sites.FullControl.All` | Manage site permissions |
 
-   ![API site permissions](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/api-site-permissions.png)
+   <ThemedImage
+       alt="API site permissions"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/api-site-permissions.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/api-site-permissions.png'),
+       }}
+   />
 
 Grant only the permissions your application actually requires. For read-only use cases, `Sites.Read.All` is sufficient. For full connector coverage, add all four.
 
 10. Click **Grant admin consent** to approve the permissions for your organization.
 
-    ![Grant admin consent](/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/grant-admin-consent.png)
+    <ThemedImage
+        alt="Grant admin consent"
+        sources={{
+            light: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/grant-admin-consent.png'),
+            dark: useBaseUrl('/img/connectors/catalog/storage-file/microsoft.sharepoint.pages/grant-admin-consent.png'),
+        }}
+    />
 
 11. Construct the `tokenUrl` using the **Directory (tenant) ID** obtained earlier:
 

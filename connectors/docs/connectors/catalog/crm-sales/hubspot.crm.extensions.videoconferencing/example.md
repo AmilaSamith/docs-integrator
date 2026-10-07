@@ -32,7 +32,13 @@ flowchart LR
 
 Select **+ Add Artifact → Connection** (or select the **+** next to **Connections** in the sidebar) to open the connector palette.
 
-![HubSpot Videoconferencing connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Videoconferencing connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the videoconferencing connector
 
@@ -49,13 +55,25 @@ Bind all connection fields to configurable variables so credentials are never ha
 - **serviceUrl** : The HubSpot Videoconferencing API base URL, bound to a configurable variable
 - **connectionName** : Keep the default `videoconferencingClient`
 
-![HubSpot Videoconferencing connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Videoconferencing connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `videoconferencingClient` appears in the **Connections** panel.
 
-![HubSpot Videoconferencing Connections panel showing videoconferencingClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Videoconferencing Connections panel showing videoconferencingClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -81,13 +99,31 @@ Select the **+** button between **Start** and **Error Handler**, then expand **C
 
 - **appId** : The video conference application ID, bound to the `hubspotVideoconfAppId` configurable variable (cast to `int:Signed32`)
 
-![HubSpot Videoconferencing connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Videoconferencing connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_04_operations_panel.png'),
+    }}
+/>
 
-![HubSpot Videoconferencing Get settings operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Videoconferencing Get settings operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to apply the configuration.
 
-![Completed HubSpot Videoconferencing automation flow](/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Videoconferencing automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/hubspot_crm_extensions_videoconferencing_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

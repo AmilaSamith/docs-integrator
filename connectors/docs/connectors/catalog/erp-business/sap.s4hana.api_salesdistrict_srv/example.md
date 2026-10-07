@@ -30,7 +30,13 @@ flowchart LR
 
 Select **Add Connection** in the WSO2 Integrator sidebar to open the connector search palette.
 
-![SAP S/4HANA Sales District connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP S/4HANA Sales District connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the connector
 
@@ -46,13 +52,25 @@ Enter the connection parameters using configurable variables to avoid hardcoding
 - **Hostname** : SAP S/4HANA server hostname, bound to the `sapHostname` configurable variable
 - **Connection Name** : Set to `apiSalesdistrictSrvClient`
 
-![SAP S/4HANA Sales District connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP S/4HANA Sales District connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The connection `apiSalesdistrictSrvClient` now appears in the **Connections** panel and on the project canvas.
 
-![SAP S/4HANA Sales District Connections panel showing apiSalesdistrictSrvClient entry after saving](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="SAP S/4HANA Sales District Connections panel showing apiSalesdistrictSrvClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -72,13 +90,31 @@ Select **Add Artifact** on the project overview, then select **Automation** from
 
 In the flow canvas, select the **+** button after the **Start** node to open the node panel. Expand `apiSalesdistrictSrvClient` under **Connections** to see available operations.
 
-![SAP S/4HANA Sales District connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_04_operations.png)
+<ThemedImage
+    alt="SAP S/4HANA Sales District connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_04_operations.png'),
+    }}
+/>
 
 Select **List A Sales Districts** to add it to the flow. The operation requires no mandatory parameters; the result is stored in the variable `apiSalesdistrictSrvCollectionofaSalesdistrictwrapper` of type `api_salesdistrict_srv:CollectionOfA_SalesDistrictWrapper`. Select **Save** to confirm.
 
-![SAP S/4HANA Sales District listA_SalesDistricts operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="SAP S/4HANA Sales District listA_SalesDistricts operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_05_operation_config.png'),
+    }}
+/>
 
-![Completed SAP S/4HANA Sales District automation flow](/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP S/4HANA Sales District automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_salesdistrict_srv/sap_s4hana_apisalesdistrictsrv_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

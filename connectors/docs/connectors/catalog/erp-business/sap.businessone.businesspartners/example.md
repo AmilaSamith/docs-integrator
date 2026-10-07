@@ -28,7 +28,13 @@ flowchart LR
 
 ### Step 1: Open the Add Connection palette
 Select **Add Connection** in the **Connections** section of the sidebar to open the connector palette. The palette shows options to create a connector from an OpenAPI or WSDL spec, connect to a database, or select a pre-built connector.
-![SAP Business One Business Partners connector palette open with search field before any selection](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-01-palette.png)
+<ThemedImage
+    alt="SAP Business One Business Partners connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Locate and select the connector
 1. Enter `sap.businessone.businesspartners` in the palette's search field.
@@ -41,11 +47,24 @@ Bind each field of the required **Session** record to a new configurable variabl
 - **companyDb** : the SAP Business One company database name
 - **username** : the Service Layer username
 - **password** : the Service Layer password
-![SAP Business One Business Partners connection form fully filled with all parameters before saving](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-02-connection-form.png)
+
+  <ThemedImage
+      alt="SAP Business One Business Partners connection form fully filled with all parameters before saving"
+      sources={{
+          light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-02-connection-form.png'),
+          dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-02-connection-form.png'),
+      }}
+  />
 
 ### Step 4: Save the connection
 Select **Save Connection** to add the **businesspartnersClient** connection node to the Connections panel and the design canvas.
-![SAP Business One Business Partners Connections panel showing businesspartnersClient entry after saving](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-03-connection-saved.png)
+<ThemedImage
+    alt="SAP Business One Business Partners Connections panel showing businesspartnersClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-03-connection-saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-03-connection-saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 Select **Configurations** in the left panel, at the bottom of the project tree under Data Mappers, and set a value for each configurable variable.
@@ -62,7 +81,13 @@ Select the **Automation** pattern from the entry-point palette to create a `main
 1. Select the **+** node beneath **Start** to open the node panel.
 2. Expand the **businesspartnersClient** connection entry to reveal every available operation, including Business Partner Groups, Contacts, Industries, Payment Terms, Relationships, Territories, and the primary Create, Get, List, Update, and Delete Business Partners operations.
 
-![SAP Business One Business Partners connection node expanded showing all available operations before selection](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-04-operations.png)
+<ThemedImage
+    alt="SAP Business One Business Partners connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-04-operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-04-operations.png'),
+    }}
+/>
 
 ### Step 8: Configure the Create Business Partners operation
 1. Select **Create Business Partners** to open the `businesspartnersClient → createBusinessPartners` configuration form.
@@ -73,11 +98,23 @@ Select the **Automation** pattern from the entry-point palette to create a `main
 - **CardType** : `"cCustomer"`, selected from the enum dropdown for a customer-type Business Partner
 
 Close the **Record Configuration** panel and rename the operation's result variable to `result` (type `businesspartners:BusinessPartner`).
-![SAP Business One Business Partners Create Business Partners operation configuration filled with all values](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-05-operation-values.png)
+<ThemedImage
+    alt="SAP Business One Business Partners Create Business Partners operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-05-operation-values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-05-operation-values.png'),
+    }}
+/>
 
 ### Step 9: Save the operation node
 Select **Save** to add the `businesspartners : createBusinessPartners` node to the canvas, wired between **Start** and **Error Handler**, with the **businesspartnersClient** connection as its target.
-![Completed SAP Business One Business Partners automation flow](/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed SAP Business One Business Partners automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.businesspartners/sap-businessone-businesspartners-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -20,15 +20,33 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Developer portal](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_1.png)
+   <ThemedImage
+       alt="Developer portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_1.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create test account](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_2.png)
+   <ThemedImage
+       alt="Create test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_2.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_3.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_3.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_developer_account_3.png'),
+       }}
+   />
 
 Developer test accounts are for development and testing only. Do not use them in production.
 
@@ -36,7 +54,13 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** and select **Create App**.
 
-   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_app.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/create_app.png'),
+       }}
+   />
 
 2. Provide the app name and description.
 
@@ -44,23 +68,47 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Go to the **Auth** tab.
 
-   ![Auth tab](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_1.png)
+   <ThemedImage
+       alt="Auth tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_1.png'),
+       }}
+   />
 
 2. Under **Scopes**, select **Add new scope** and add:
    - `crm.objects.quotes.read`
    - `crm.objects.quotes.write`
 
-   ![Add scopes](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_2.png)
+   <ThemedImage
+       alt="Add scopes"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_2.png'),
+       }}
+   />
 
 3. Add your redirect URI and select **Create App**.
 
-   ![Create app with redirect](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_3.png)
+   <ThemedImage
+       alt="Create app with redirect"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_3.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/authentication_3.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** section, copy the **Client ID** and **Client Secret**.
 
-![Get credentials](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/clientId_clientSecret.png)
+<ThemedImage
+    alt="Get credentials"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/clientId_clientSecret.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/clientId_clientSecret.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 
@@ -72,7 +120,13 @@ In the **Auth** section, copy the **Client ID** and **Client Secret**.
 
 2. Open the URL in a browser and select your developer test account.
 
-   ![Install app](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/setup_auth_flow.png)
+   <ThemedImage
+       alt="Install app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/setup_auth_flow.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup/setup_auth_flow.png'),
+       }}
+   />
 
 3. Copy the authorization code from the redirect URL.
 

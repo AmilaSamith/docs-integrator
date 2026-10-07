@@ -45,7 +45,13 @@ Follow the [Create a new integration](../../../../develop/create-integrations/cr
 2. In the palette search box, enter **PostgreSQL**.
 3. Select the **PostgreSQL** card to open the **Configure PostgreSQL** form.
 
-![PostgreSQL connector in the Add Connection palette](/img/connectors/catalog/database/postgresql/postgresql_screenshot_01_palette.png)
+<ThemedImage
+    alt="PostgreSQL connector in the Add Connection palette"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configure the PostgreSQL connection
 
@@ -65,13 +71,25 @@ In the **Configure PostgreSQL** form, expand **Advanced Configurations** to reve
 
 After creating all five configurables, set **Connection Name** to `postgresqlClient`.
 
-![Connection form with all 5 fields bound to configurables](/img/connectors/catalog/database/postgresql/postgresql_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Connection form with all 5 fields bound to configurables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Save the PostgreSQL connection
 
 Select **Save Connection** to save the connector. The canvas returns to the integration overview, and `postgresqlClient` is now visible under **Connections** in the left project tree.
 
-![Canvas showing postgresqlClient connection card](/img/connectors/catalog/database/postgresql/postgresql_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Canvas showing postgresqlClient connection card"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 #### Set actual values for your configurables
 
@@ -96,7 +114,13 @@ The automation flow canvas opens, showing a **Start** node and an **Error Handle
 
 Select the empty step placeholder in the flow to open the step addition panel. In the right panel, locate the **Connections** section, select **postgresqlClient** to expand its available operations, and then select **Execute**.
 
-![Automation flow with operations panel showing PostgreSQL operations](/img/connectors/catalog/database/postgresql/postgresql_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Automation flow with operations panel showing PostgreSQL operations"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 #### Configure the execute operation parameters and save
 
@@ -105,11 +129,23 @@ Fill in the operation fields, then select **Save** to add the step to the automa
 - **sqlQuery**: A parameterized SQL INSERT statement to execute. Use backtick-templated parameters so values are bound safely (no string concatenation). For example: `` `INSERT INTO Customers (firstName, lastName, country) VALUES (${firstName}, ${lastName}, ${country})` ``, where `firstName`, `lastName`, and `country` are Ballerina variables.
 - **result**: Variable that holds the returned `sql:ExecutionResult`. Pre-filled as `sqlExecutionresult`.
 
-![Execute operation form with SQL query filled in](/img/connectors/catalog/database/postgresql/postgresql_screenshot_05_execute_operation.png)
+<ThemedImage
+    alt="Execute operation form with SQL query filled in"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_05_execute_operation.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_05_execute_operation.png'),
+    }}
+/>
 
 The automation flow now contains a single execute step between **Start** and **Error Handler**.
 
-![Completed automation flow with postgresql execute node](/img/connectors/catalog/database/postgresql/postgresql_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with postgresql execute node"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -151,7 +187,13 @@ Follow the [Create a new integration](../../../../develop/create-integrations/cr
 
 Select **+ Add Artifact** in the WSO2 Integrator side panel to open the Artifacts palette. Locate the **Event Integration** category and select the **CDC for PostgreSQL** trigger card.
 
-![Artifacts palette open showing the Event Integration category with CDC for PostgreSQL card visible](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with CDC for PostgreSQL card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configure the PostgreSQL CDC listener
 
@@ -166,7 +208,13 @@ Fill in the trigger configuration form, binding every connection field to a `con
 - **Database Name**: Name of the database that contains the monitored table.
 - **Table Name**: Fully-qualified table name to watch for CDC events.
 
-![PostgreSQL CDC trigger configuration form fully filled with all listener parameters before clicking Create](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="PostgreSQL CDC trigger configuration form fully filled with all listener parameters before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Set actual values for your configurations
 
@@ -179,7 +227,13 @@ Select **Configurations** in the left panel of WSO2 Integrator to verify that al
 - **postgresDatabase** (`string`): Name of the database that contains the monitored table.
 - **postgresTable** (`string`): Fully-qualified table name to watch for CDC events (for example, `public.orders`).
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Create the trigger
 
@@ -191,25 +245,49 @@ Select **Create** to submit the trigger configuration and generate the listener.
 
 In the Service view, select **+ Add Handler** to open the handler selection panel. Select **onCreate** to handle row-insert CDC events.
 
-![Service view with Select Handler to Add side panel open listing PostgreSQL CDC handler options](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view with Select Handler to Add side panel open listing PostgreSQL CDC handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Define the entry type schema
 
 Select the **onCreate** handler, then open **Message Configuration** > **Define Value** on the `afterEntry` parameter. On the **Create Type Schema** tab, enter `PostgreSQLInsertEntry` as the **Name**. Select the **+** icon next to **Fields** to add each field: for example, `id` of type `string` and `name` of type `string`. The fields should mirror the columns in your target table. Select **Save** when done.
 
-![Define Value modal on the Create Type Schema tab showing the PostgreSQLInsertEntry name and fields filled in before Save](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Define Value modal on the Create Type Schema tab showing the PostgreSQLInsertEntry name and fields filled in before Save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Add a log step to the handler body
 
 After saving, the `onCreate` handler body is generated with an **Error Handler** node. Select the **+** icon in the flow chart and choose **Log Info** from the **Logging** section in the side panel. Enter `afterEntry.toJsonString()` as the message to log every received CDC entry as JSON.
 
-![onCreate handler flow canvas showing log:printInfo step added](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onCreate handler flow canvas showing log:printInfo step added"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Confirm the registered handler
 
 Navigate back to the **CDC for PostgreSQL** Service view. The **Event Handlers** section now lists the `onCreate` handler row, confirming the integration is fully wired and ready to receive insert events from the configured PostgreSQL table.
 
-![Trigger Service view showing the registered Event onCreate handler row](/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Trigger Service view showing the registered Event onCreate handler row"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/postgresql/postgresql_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Run the integration
 

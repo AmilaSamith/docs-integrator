@@ -28,7 +28,13 @@ flowchart LR
 
 Select **+** in the **Connections** section of the left panel to open the connector search panel.
 
-![PeopleHR connector palette open with search field before any selection](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_01_palette.png)
+<ThemedImage
+    alt="PeopleHR connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Add an automation entry point
 
@@ -45,13 +51,25 @@ Open the **Configure Peoplehr** form and bind each field to a configurable varia
 - **apiKey** : Your PeopleHR API key, bound to a new configurable variable
 - **connectionName** : `peoplehrClient`
 
-![PeopleHR connection form fully filled with all parameters before saving](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="PeopleHR connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `peoplehrClient` connection appears under **Connections** in the left panel and as a node on the integration canvas.
 
-![PeopleHR Connections panel showing peoplehrClient entry after saving](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="PeopleHR Connections panel showing peoplehrClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -67,18 +85,36 @@ Select **Save Connection** to persist the connection. The `peoplehrClient` conne
 1. On the automation flow canvas, select the **+** button between the **Start** node and the **Error Handler** node.
 2. Under **Connections**, select **peoplehrClient** to expand its operations.
 
-![PeopleHR connection node expanded showing all available operations before selection](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="PeopleHR connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Get Employee By Id** from the list of operations.
 4. Fill in the operation fields:
    - **Employee Request Detail** : Enter the employee request record, for example `{EmployeeId: "EMP001"}`
    - **Result** : Auto-filled as `peoplehrEmployeeresponse`
 
-![PeopleHR getEmployeeById operation configuration filled with all values](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="PeopleHR getEmployeeById operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the operation to the flow.
 
-![Completed PeopleHR automation flow](/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed PeopleHR automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/hrms/peoplehr/peoplehr_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

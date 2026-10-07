@@ -16,20 +16,38 @@ This guide walks you through creating a Salesforce Connected App and obtaining t
 2. Select the gear icon in the top-right corner and select **Setup**.
 3. In the Quick Find box, type `App Manager` and select **App Manager**.
 
-   ![Setup side panel](/img/connectors/catalog/crm-sales/salesforce/setup/side-panel.png)
+   <ThemedImage
+       alt="Setup side panel"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/side-panel.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/side-panel.png'),
+       }}
+   />
 
 ## Step 2: Create a connected app
 
 1. Select **New Connected App** in the top-right corner.
 
-   ![Create connected apps](/img/connectors/catalog/crm-sales/salesforce/setup/create-connected-apps.png)
+   <ThemedImage
+       alt="Create connected apps"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/create-connected-apps.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/create-connected-apps.png'),
+       }}
+   />
 
 2. Fill in the required fields under **Basic Information**:
    - **Connected App Name**: Enter a name (for example, `Ballerina Salesforce Connector`).
    - **API Name**: Auto-populated from the name.
    - **Contact Email**: Enter your email address.
 
-   ![Connected app details](/img/connectors/catalog/crm-sales/salesforce/setup/create_connected_app.png)
+   <ThemedImage
+       alt="Connected app details"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/create_connected_app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/create_connected_app.png'),
+       }}
+   />
 
 ## Step 3: Enable OAuth settings
 
@@ -48,7 +66,13 @@ It may take 2–10 minutes for the Connected App to become active after saving.
 2. Copy the **Consumer Key** — this is your `clientId`.
 3. Copy the **Consumer Secret** — this is your `clientSecret`.
 
-   ![Consumer secrets](/img/connectors/catalog/crm-sales/salesforce/setup/crdentials.png)
+   <ThemedImage
+       alt="Consumer secrets"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/crdentials.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/salesforce/setup/crdentials.png'),
+       }}
+   />
 
 Store the Consumer Key and Consumer Secret securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 

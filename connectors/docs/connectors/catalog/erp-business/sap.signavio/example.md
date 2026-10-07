@@ -34,7 +34,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![SAP Signavio connector palette open before selection](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_01_palette.png)
+<ThemedImage
+    alt="SAP Signavio connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the SAP Signavio connector
 
@@ -49,13 +55,25 @@ Bind the required connection fields to configurable variables.
 - **Username** : The account's user name (typically an email address).
 - **Password** : The account's password.
 
-![SAP Signavio connection form with the username and password bound before saving](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="SAP Signavio connection form with the username and password bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![SAP Signavio connection visible after saving](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="SAP Signavio connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ## Configuring the SAP Signavio List Dictionary Categories operation
 
@@ -80,13 +98,25 @@ The canvas switches to the Automation flow view, showing a Start node, an Error 
 1. In the automation flow body on the canvas, select the **+** (Add Step) button between the Start and Error Handler nodes to open the step-addition panel.
 2. Under **Connections** in the step panel, select the **signavioClient** connection node to expand it and reveal all available SAP Signavio API operations.
 
-![SAP Signavio connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="SAP Signavio connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List Dictionary Categories** from the list. This operation has no required parameters, so only the result variable needs a name.
 
 - **Result** : The name of the variable that holds the returned dictionary categories.
 
-![SAP Signavio List Dictionary Categories operation with the result variable set before saving](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="SAP Signavio List Dictionary Categories operation with the result variable set before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save** to add the SAP Signavio operation step to the automation flow.
 
@@ -94,7 +124,13 @@ The canvas switches to the Automation flow view, showing a Start node, an Error 
 
 Add a log action for the returned value, then return to the visual flow.
 
-![Completed SAP Signavio flow with the configured operation](/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed SAP Signavio flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.signavio/example/ballerinax_sap.signavio_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

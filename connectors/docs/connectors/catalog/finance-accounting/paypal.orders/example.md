@@ -30,7 +30,13 @@ flowchart LR
 
 In the project overview, select **Add Artifact**, then under **Other Artifacts** select **Connection** to open the connector palette.
 
-![PayPal Orders connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_01_palette.png)
+<ThemedImage
+    alt="PayPal Orders connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Add an automation entry point
 
@@ -45,13 +51,25 @@ Search for **Orders** (PayPal) in the connector palette, select the **Orders** c
 - **config** : Set to Expression mode referencing `paypalClientId` and `paypalClientSecret` configurable variables for OAuth2 authentication
 - **connectionName** : The name used to reference this connection in the flow
 
-![PayPal Orders connection form fully filled with all parameters before saving](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="PayPal Orders connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The connection is now visible in the project overview under **Connections**.
 
-![PayPal Orders Connections panel showing ordersClient entry after saving](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="PayPal Orders Connections panel showing ordersClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -67,18 +85,36 @@ In the left panel, select **Configurations** and set a value for each configurab
 1. Select the **+** button on the flow canvas to open the node panel.
 2. Expand the **ordersClient** connection under **Connections** to see available operations.
 
-![PayPal Orders connection node expanded showing all available operations before selection](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_04_operations.png)
+<ThemedImage
+    alt="PayPal Orders connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_04_operations.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_04_operations.png'),
+    }}
+/>
 
 3. Select **Create order** to add it to the flow, then configure the following parameters:
 
 - **payload** : An `OrderRequest` value specifying the purchase units and intent for the new order
 - **result** : The variable that stores the returned order details
 
-![PayPal Orders Create order operation configuration filled with all values](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="PayPal Orders Create order operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save** to apply the configuration.
 
-![Completed PayPal Orders automation flow](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed PayPal Orders automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

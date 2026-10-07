@@ -14,15 +14,33 @@ Navigate to [app.ardoq.com](https://app.ardoq.com) (or your organization's custo
 
 1. Click your organization name in the top-left corner and select **Admin** > **Access control**.
 
-   ![Access control](/img/connectors/catalog/erp-business/ardoq/setup/access-control.png)
+   <ThemedImage
+       alt="Access control"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/access-control.png'),
+           dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/access-control.png'),
+       }}
+   />
 
 2. Select **Service accounts** and click **+ Create new**.
 
-   ![Service accounts](/img/connectors/catalog/erp-business/ardoq/setup/service-accounts.png)
+   <ThemedImage
+       alt="Service accounts"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/service-accounts.png'),
+           dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/service-accounts.png'),
+       }}
+   />
 
 3. Give the service account a name and a token description, then confirm. Copy the generated token.
 
-   ![Generate token](/img/connectors/catalog/erp-business/ardoq/setup/generate-token.png)
+   <ThemedImage
+       alt="Generate token"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/generate-token.png'),
+           dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/setup/generate-token.png'),
+       }}
+   />
 
 The token is only shown once. If you lose it, you can regenerate a new one from the same **Service accounts** page.
 

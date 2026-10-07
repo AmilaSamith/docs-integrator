@@ -46,7 +46,13 @@ Follow the [Create a new integration](../../../../develop/create-integrations/cr
 3. In the connector search palette, type `mssql`.
 4. Select the **MS SQL** card to open the **Configure MS SQL** form.
 
-![MSSQL connector palette open with search results before selection](/img/connectors/catalog/database/mssql/mssql_screenshot_01_palette.png)
+<ThemedImage
+    alt="MSSQL connector palette open with search results before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Configure the MSSQL connection
 
@@ -66,13 +72,25 @@ The **Configure MS SQL** form opens. All connection parameters are under **Advan
 
 After creating all five configurables, set **Connection Name** to `mssqlClient`.
 
-![MSSQL connection form fully filled with all parameters before saving](/img/connectors/catalog/database/mssql/mssql_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="MSSQL connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Save the MSSQL connection
 
 Select **Save Connection** to save the connector. The canvas returns to the main integration view and displays the `mssqlClient` connection node. The left-hand sidebar lists it under **Connections > mssqlClient**.
 
-![MSSQL Connections panel showing mssqlClient entry after saving](/img/connectors/catalog/database/mssql/mssql_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="MSSQL Connections panel showing mssqlClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Set actual values for your configurables
 
@@ -100,18 +118,36 @@ The automation flow editor opens, showing a **Start** node and an **Error Handle
 1. In the automation flow, select the **+** button between **Start** and **Error Handler**.
 2. In the node panel, under **Connections**, select **mssqlClient** to expand its available operations.
 
-![MSSQL connection node expanded showing all available operations before selection](/img/connectors/catalog/database/mssql/mssql_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="MSSQL connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Execute** to add it to the flow and configure the following parameters:
 
 - **sqlQuery**: The SQL INSERT statement to run against the database.
 - **result**: The variable that stores the execution result (auto-generated as `sqlExecutionresult`).
 
-![MSSQL execute operation configuration filled with all values](/img/connectors/catalog/database/mssql/mssql_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="MSSQL execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 4. Select **Save**.
 
-![Completed automation flow with mssql execute step](/img/connectors/catalog/database/mssql/mssql_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with mssql execute step"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -155,7 +191,13 @@ Follow the [Create a new integration](../../../../develop/create-integrations/cr
 1. On the integration canvas, select **+ Add Artifact** to open the Artifacts palette.
 2. In the **Event Integration** category, locate and select the **CDC for Microsoft SQL Server** card.
 
-![Artifacts palette open showing the Event Integration category with the CDC for Microsoft SQL Server card visible](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with the CDC for Microsoft SQL Server card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configure the CDC listener
 
@@ -170,7 +212,13 @@ For each connection parameter in the trigger configuration form, open the **Help
 - **Databases**: The database to capture changes from (add one entry and bind it), bound to a `string` configurable.
 - **Table**: Fully-qualified table name to capture events from (format `<database>.<schema>.<table>`), bound to a `string` configurable.
 
-![CDC for Microsoft SQL Server trigger configuration form fully filled with all listener parameters before clicking Create](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="CDC for Microsoft SQL Server trigger configuration form fully filled with all listener parameters before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Set actual values for your configurations
 
@@ -183,7 +231,13 @@ In the left panel of WSO2 Integrator, select **Configurations** (at the bottom o
 - **mssqlDatabase** (`string`): Name of the CDC-enabled database (for example, `SalesDB`).
 - **mssqlTableName** (`string`): Fully-qualified table to watch for changes (for example, `SalesDB.dbo.Orders`).
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Create the trigger
 
@@ -196,7 +250,13 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 1. In the Service view, locate the **Event Handlers** section and select **+ Add Handler**.
 2. The **Select Handler to Add** side panel opens, listing the available CDC handler options: `onRead`, `onCreate`, `onUpdate`, `onDelete`, and `onError`.
 
-![Service view with Select Handler to Add side panel open listing available CDC handler options](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view with Select Handler to Add side panel open listing available CDC handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Select the onCreate handler and define the message payload type
 
@@ -206,7 +266,13 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 4. Select the **+** icon next to **Fields** to add each payload field, entering a field name and a Ballerina type for every field, for example, `id` (`int`) and `tableName` (`string`).
 5. Select **Save** to create the record type and bind it to the handler.
 
-![Define Value modal on the Create Type Schema tab showing the MssqlInsertRecord name and fields filled in before Save](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Define Value modal on the Create Type Schema tab showing the MssqlInsertRecord name and fields filled in before Save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Save the handler and add a log statement to the flow
 
@@ -214,13 +280,25 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 2. In the handler flow canvas, add a **log:printInfo** step with `after.toJsonString()` as the message.
 3. Verify the `log:printInfo` node appears between **Start** and **Error Handler** on the canvas.
 
-![onCreate handler flow canvas showing the log:printInfo step added](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onCreate handler flow canvas showing the log:printInfo step added"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Confirm the handler is registered in the Service view
 
 Select the back arrow in the canvas header to return to the Service view. The Event Handlers list now shows the registered **Event onCreate** handler row.
 
-![Trigger Service view showing the registered Event onCreate handler row](/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Trigger Service view showing the registered Event onCreate handler row"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/mssql/mssql_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Run the integration
 

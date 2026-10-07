@@ -30,7 +30,13 @@ flowchart LR
 ### Step 1: Open the Add Connection palette
 
 Select **Add Connection** (or the **+** icon next to the Connections section) in the low-code canvas to open the connector search palette.
-![Connector palette open showing the search field and available connectors](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_01_palette.png)
+<ThemedImage
+    alt="Connector palette open showing the search field and available connectors"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the HubSpot CRM Engagements Calls connector
 
@@ -45,14 +51,27 @@ Select **Add Connection** (or the **+** icon next to the Connections section) in
 For each non-boolean field in the **Configure HubSpot CRM Engagements Calls** form, select **Open Helper Panel**, go to the **Configurables** tab, select **+ New Configurable**, enter a descriptive variable name and type, and select **Save** to auto-inject the configurable reference into the field. Repeat for every visible non-boolean field.
 - **Config** : The connection configuration record containing authentication credentials
 - **Service Url** : The base URL for the HubSpot CRM Engagements Calls API endpoint
-![Connection form showing all parameters bound to configurable variables before saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_02_connection_form.png)
+
+  <ThemedImage
+      alt="Connection form showing all parameters bound to configurable variables before saving"
+      sources={{
+          light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_02_connection_form.png'),
+          dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_02_connection_form.png'),
+      }}
+  />
 
 ### Step 4: Save the HubSpot CRM Engagements Calls connection
 
 Select **Save** to persist the connection.
 
 Use `hubspot.crm.engagements.calls` as the exact connection name. On the low-code canvas, confirm that a connection node named `hubspot.crm.engagements.calls` appears in the **Connections** panel.
-![Canvas showing the hubspot.crm.engagements.calls connector node in the Connections panel after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Canvas showing the hubspot.crm.engagements.calls connector node in the Connections panel after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -73,13 +92,35 @@ Use `hubspot.crm.engagements.calls` as the exact connection name. On the low-cod
 
 1. Select **+** (Add Step) in the automation flow between the Start and Error Handler nodes.
 2. Under **Connections** in the node panel, select the **hubspot.crm.engagements.calls** node to expand it and reveal all available operations.
-![hubspot.crm.engagements.calls connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_04_operations.png)
+
+   <ThemedImage
+       alt="hubspot.crm.engagements.calls connection node expanded showing all available operations before selection"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_04_operations.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_04_operations.png'),
+       }}
+   />
+
 3. Select **Create a call** (the `post /crm/v3/engagements/calls` operation) from the list, then fill in the operation fields:
 - **Payload** : The `SimplePublicObjectInputForCreate` record containing the call engagement data, including `hs_timestamp`, `hs_call_title`, `hs_call_body`, `hs_call_duration`, and `hs_call_status`
 - **Result** : The variable name to capture the returned `SimplePublicObject`; enter `result`
 4. Select **Save** to add the step to the automation flow.
-![Operation configuration panel showing all fields filled for post /crm/v3/engagements/calls](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_05_operation_form.png)
-![Completed flow showing Automation trigger, post /crm/v3/engagements/calls node, log:printInfo node, and Error Handler connected on the canvas](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_06_complete_canvas.png)
+
+   <ThemedImage
+       alt="Operation configuration panel showing all fields filled for post /crm/v3/engagements/calls"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_05_operation_form.png'),
+           dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_05_operation_form.png'),
+       }}
+   />
+
+<ThemedImage
+    alt="Completed flow showing Automation trigger, post /crm/v3/engagements/calls node, log:printInfo node, and Error Handler connected on the canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_06_complete_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_06_complete_canvas.png'),
+    }}
+/>
 
 ## Try it yourself
 

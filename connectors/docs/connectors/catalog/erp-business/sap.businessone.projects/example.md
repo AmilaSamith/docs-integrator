@@ -32,7 +32,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Projects connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-01-palette.png)
+<ThemedImage
+    alt="Projects connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Projects connector
 
@@ -49,13 +55,25 @@ Select **Add Connection** in the **Connections** section.
 
 - **Session** : Provides the company database, username, and password for the Service Layer session.
 
-![Projects connection form with the session fields bound before saving](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="Projects connection form with the session fields bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that `projectsClient` appears under **Connections**.
 
-![Projects connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Projects connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,7 +97,13 @@ Select **Save Connection** and verify that `projectsClient` appears under **Conn
 1. Select the **+** node between **Start** and **Error Handler**.
 2. Expand **projectsClient** to display its operations.
 
-![Projects connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="Projects connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Project Managements**.
 4. Enter `projectManagements` in **Result**.
@@ -87,7 +111,13 @@ Select **Save Connection** and verify that `projectsClient` appears under **Conn
 - **Result** : Names the variable that stores the returned collection.
 - **Result T&#121;pe** : Uses the generated response structure for project management records.
 
-![Projects List Project Managements operation with its result configured](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="Projects List Project Managements operation with its result configured"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-05-operation-form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
@@ -97,7 +127,13 @@ Select **Save Connection** and verify that `projectsClient` appears under **Conn
 2. Log the returned `projectManagements` value.
 3. Return to the automation flow.
 
-![Completed Projects flow with the configured operation](/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed Projects flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.projects/sap-businessone-projects-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

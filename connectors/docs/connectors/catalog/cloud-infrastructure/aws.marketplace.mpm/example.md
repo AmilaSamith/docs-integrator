@@ -32,7 +32,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![AWS Marketplace Metering Service connector palette open before any connector is selected](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS Marketplace Metering Service connector palette open before any connector is selected"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS Marketplace Metering Service connector
 
@@ -48,13 +54,25 @@ Bind each required connection field to a configurable variable, and keep the def
 - **Auth** : Credentials that sign every metering request.
 - **Region** : AWS region that serves the metering requests.
 
-![AWS Marketplace Metering Service connection form with the auth record and region bound to configurable variables before saving](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS Marketplace Metering Service connection form with the auth record and region bound to configurable variables before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection**, then verify that `mpmClient` appears in the **Connections** section.
 
-![Saved mpmClient connection shown in the project tree and on the integration design canvas](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Saved mpmClient connection shown in the project tree and on the integration design canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,14 +97,26 @@ Select **Save Connection**, then verify that `mpmClient` appears in the **Connec
 1. Select the **+** node between **Start** and **Error Handler** in the automation flow.
 2. Expand **mpmClient** to display its operations.
 
-![mpmClient connection expanded in the node panel to display its operations before one is selected](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="mpmClient connection expanded in the node panel to display its operations before one is selected"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Resolve Customer** and enter its required values.
 
 - **Registration Token** : Buyer registration token to resolve into a customer identifier.
 - **Result** : Name of the variable that receives the resolved customer details.
 
-![Resolve Customer operation form with the registration token bound and the result variable renamed before saving](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Resolve Customer operation form with the registration token bound and the result variable renamed before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save**.
 
@@ -94,7 +124,13 @@ Select **Save Connection**, then verify that `mpmClient` appears in the **Connec
 
 Add a **Log Info** action after the operation to surface the resolved customer details, then return to the visual flow.
 
-![Completed automation flow running from Start through Resolve Customer and Log Info to Error Handler](/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow running from Start through Resolve Customer and Log Info to Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/aws.marketplace.mpm/aws_marketplace_mpm_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -12,7 +12,13 @@ Connectors make these integrations possible without writing low-level HTTP or pr
 
 Most integrations follow a similar pattern:
 
-![Integration flow: Trigger leads to Transform & route (map, filter, branch), into a Connector action (call external service), then Handle response (error handling, retry), ending in Output](/img/connectors/overview/connector-flow.png)
+<ThemedImage
+    alt="Integration flow: Trigger leads to Transform & route (map, filter, branch), into a Connector action (call external service), then Handle response (error handling, retry), ending in Output"
+    sources={{
+        light: useBaseUrl('/img/connectors/overview/connector-flow.png'),
+        dark: useBaseUrl('/img/connectors/overview/connector-flow.png'),
+    }}
+/>
 
 The connector action is where WSO2 Integrator communicates with the external service.
 

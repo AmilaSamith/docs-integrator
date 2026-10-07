@@ -18,15 +18,33 @@ HubSpot Service Keys are the recommended way to authorize single-account API acc
 2. Go to **Settings** > **Account Setup** > **Integrations** > **Service Keys**, and click **Create service key**.
 3. Give it a name (e.g. `hubspot-events-completions`), then click **Add new scope** and search for `behavioral_events.send`. Select `analytics.behavioral_events.send`.
 
-![Selecting the analytics.behavioral_events.send scope](/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-select-scope.jpg)
+<ThemedImage
+    alt="Selecting the analytics.behavioral_events.send scope"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-select-scope.jpg'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-select-scope.jpg'),
+    }}
+/>
 
 4. Click **Create**. Copy the generated **service key** — this is the bearer token the connector uses to authenticate. Treat it like a password; it is only shown in full once.
 
-![Service key created with scopes assigned](/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-created.jpg)
+<ThemedImage
+    alt="Service key created with scopes assigned"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-created.jpg'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-key-created.jpg'),
+    }}
+/>
 
 All your service keys are listed under **Service Keys** for future reference.
 
-![Service Keys list page](/img/connectors/catalog/crm-sales/hubspot.events.completions/service-keys-list.jpg)
+<ThemedImage
+    alt="Service Keys list page"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-keys-list.jpg'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.events.completions/service-keys-list.jpg'),
+    }}
+/>
 
 Service Keys are currently in **public beta** and are subject to change. They are HubSpot's recommended replacement for legacy Private App tokens for single-account access.
 

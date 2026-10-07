@@ -38,7 +38,13 @@ flowchart LR
 
 In the left sidebar, under **Connections**, select **+ Add Connection** to open the connector palette.
 
-![RabbitMQ connector palette open with search field before any selection](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_01_palette.png)
+<ThemedImage
+    alt="RabbitMQ connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_01_palette.png'),
+    }}
+/>
 
 #### Step 2: Add an Automation entry point
 
@@ -60,13 +66,25 @@ Search for `RabbitMQ`, select the **ballerinax/rabbitmq** connector card, and bi
 
 Set the **Connection Name** to `rabbitmqClient`.
 
-![RabbitMQ connection form fully filled with all parameters before saving](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="RabbitMQ connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 4: Save the connection
 
 Select **Save Connection**. The canvas returns to the overview, showing the `rabbitmqClient` connection node.
 
-![RabbitMQ Connections panel showing rabbitmqClient entry after saving](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="RabbitMQ Connections panel showing rabbitmqClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_03_connections_list.png'),
+    }}
+/>
 
 #### Step 5: Set actual values for your configurables
 
@@ -85,18 +103,36 @@ Select **Save Connection**. The canvas returns to the overview, showing the `rab
 
 On the flow canvas, select the **+** button between **Start** and **Error Handler**. Under **Connections → rabbitmqClient**, expand the connection to see all available operations.
 
-![RabbitMQ connection node expanded showing all available operations before selection](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="RabbitMQ connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Publish Message** and configure the **Message** field by switching to **Expression** mode and entering the record literal with the fields below.
 
 - **content** : The message payload to publish; set to `"Hello, RabbitMQ!"`
 - **routingKey** : The target queue name; set to `"myQueue"`
 
-![RabbitMQ publishMessage operation configuration filled with all values](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="RabbitMQ publishMessage operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save**. The `publishMessage` node appears on the canvas connected to `rabbitmqClient`.
 
-![Completed RabbitMQ automation flow](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed RabbitMQ automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -136,7 +172,13 @@ flowchart LR
 
 Select **Add Artifact** in the WSO2 Integrator panel. In the artifacts palette, expand the **Event Integration** category and locate the **RabbitMQ** trigger card.
 
-![Artifacts palette open showing the Event Integration category with RabbitMQ card visible](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_01_artifact_palette.png)
+<ThemedImage
+    alt="Artifacts palette open showing the Event Integration category with RabbitMQ card visible"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_01_artifact_palette.png'),
+    }}
+/>
 
 ### Configuring the RabbitMQ listener
 
@@ -148,7 +190,13 @@ Select the **RabbitMQ** trigger card to open the trigger configuration form. Bin
 - **Port** : the RabbitMQ broker port number
 - **Queue Name** : the name of the queue to subscribe to
 
-![RabbitMQ trigger configuration form fully filled with all listener parameters before clicking Create](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_02_trigger_config_form.png)
+<ThemedImage
+    alt="RabbitMQ trigger configuration form fully filled with all listener parameters before clicking Create"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_02_trigger_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -158,7 +206,13 @@ In the left panel, select **Configurations** to open the Configurations panel. S
 - **rabbitmqPort** (int) : the port your RabbitMQ broker listens on
 - **queueName** (string) : the name of the queue the listener subscribes to
 
-![Configurations panel open showing the configurable variables listed with empty value fields](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_03_configurations_panel.png)
+<ThemedImage
+    alt="Configurations panel open showing the configurable variables listed with empty value fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_03_configurations_panel.png'),
+    }}
+/>
 
 #### Step 4: Create the trigger service
 
@@ -170,7 +224,13 @@ Select **Create** to generate the trigger service.
 
 In the **RabbitMQ Event Integration** service view, select **+ Add Handler**. The **Select Handler to Add** side panel opens and lists the available handlers.
 
-![Service view with Select Handler to Add side panel open listing RabbitMQ handler options](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_04_add_handler_panel.png)
+<ThemedImage
+    alt="Service view with Select Handler to Add side panel open listing RabbitMQ handler options"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_04_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 6: Define the message type schema
 
@@ -181,19 +241,37 @@ Select **onMessage** from the side panel. The **Message Handler Configuration** 
 
 Select **Save** to create the `RabbitMQMessage` type, then select **Save** on the handler configuration panel to register the handler.
 
-![Define Value modal on the Create Type Schema tab showing the record name and fields filled in before Save](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_05_message_define_value.png)
+<ThemedImage
+    alt="Define Value modal on the Create Type Schema tab showing the record name and fields filled in before Save"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_05_message_define_value.png'),
+    }}
+/>
 
 #### Step 7: Add a log statement to the handler
 
 Select the **+** icon in the flow chart, and in the side panel that opens, choose **Log Info** from the **Logging** section, then enter `message.toJsonString()` as the message.
 
-![onMessage handler flow canvas showing log:printInfo step added](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_06_handler_flow.png)
+<ThemedImage
+    alt="onMessage handler flow canvas showing log:printInfo step added"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_06_handler_flow.png'),
+    }}
+/>
 
 #### Step 8: Confirm the registered handler in the service view
 
 Navigate back to the **RabbitMQ Event Integration** service view. Confirm that the `Event: onMessage` handler row appears under **Event Handlers**, with the listener and queue name badges visible.
 
-![Trigger Service view showing the registered Event onMessage handler row](/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_07_service_view_final.png)
+<ThemedImage
+    alt="Trigger Service view showing the registered Event onMessage handler row"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/rabbitmq/rabbitmq_trigger_screenshots_07_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

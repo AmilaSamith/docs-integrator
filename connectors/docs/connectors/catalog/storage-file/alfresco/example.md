@@ -31,7 +31,13 @@ flowchart LR
 ### Step 1: Open the connector palette
 
 Select the **+ Add Connection** button in the Connections section of the low-code canvas sidebar to open the connector search palette.
-![Connector palette open showing search field and available connectors](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_01_palette.png)
+<ThemedImage
+    alt="Connector palette open showing search field and available connectors"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the Alfresco connector
 
@@ -47,12 +53,25 @@ For each connection field, open the helper panel, navigate to the **Configurable
 - **Config** : The `ConnectionConfig` record containing authentication credentials, configured as an expression referencing the `alfrescoUsername` and `alfrescoPassword` configurables
 - **Service Url** : The base URL of your Alfresco Content Services instance
 - **Connection Name** : The identifier for this connection instance
-![Alfresco connection form with all parameters bound to configurable variables](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_02_connection_form.png)
+
+  <ThemedImage
+      alt="Alfresco connection form with all parameters bound to configurable variables"
+      sources={{
+          light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_02_connection_form.png'),
+          dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_02_connection_form.png'),
+      }}
+  />
 
 ### Step 4: Save the Alfresco connection
 
 Select **Save** to persist the connection configuration. The Alfresco connector node now appears in the Connections panel on the low-code canvas.
-![Low-code canvas showing the saved Alfresco connector in the Connections panel](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Low-code canvas showing the saved Alfresco connector in the Connections panel"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -76,14 +95,36 @@ Select **Save** to persist the connection configuration. The Alfresco connector 
 
 1. Inside the automation flow body, select the **+** (Add Step) button between the Start and End nodes to open the step-addition panel.
 2. Under **Connections** in the step panel, expand the **alfrescoClient** connection node to reveal all available Alfresco operations.
-![Alfresco connection node expanded showing all available operations before selection](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_04_operations_panel.png)
+
+   <ThemedImage
+       alt="Alfresco connection node expanded showing all available operations before selection"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_04_operations_panel.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_04_operations_panel.png'),
+       }}
+   />
+
 3. Select **createNode** from the list of operations, then fill in the operation fields:
   - **Node Id** : The configurable variable `alfrescoParentNodeId` referencing the parent folder's node UUID
   - **Payload** : The `NodeBodyCreate` record containing `name` (set to `"IntegrationTestDocument"`) and `nodeType` (set to `"cm:content"` for a document)
   - **Result** : The output variable that holds the created node response
 4. Select **Save** to add the `createNode` step to the automation flow.
-![createNode operation configuration form with all fields filled](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_05_operation_filled.png)
-![Completed Alfresco integration flow on the low-code canvas](/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_06_completed_flow.png)
+
+   <ThemedImage
+       alt="createNode operation configuration form with all fields filled"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_05_operation_filled.png'),
+           dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_05_operation_filled.png'),
+       }}
+   />
+
+<ThemedImage
+    alt="Completed Alfresco integration flow on the low-code canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/alfresco/alfresco_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

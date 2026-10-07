@@ -30,7 +30,13 @@ flowchart LR
 
 Select **+ Add Artifact → Connection** from the Integration overview canvas to open the connector palette.
 
-![HubSpot Marketing Events connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Marketing Events connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the connector
 
@@ -51,13 +57,25 @@ In the **Add Connection** form, bind the connection parameters to configurable v
 - **Config** : Connector configuration holding the bearer token authentication details, bound to the `hubspotBearerToken` configurable variable
 - **Connection Name** : Logical name for the connection instance
 
-![HubSpot Marketing Events connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Marketing Events connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The integration canvas shows the `eventsClient` connection node, and the left sidebar lists it under **Connections → eventsClient**.
 
-![HubSpot Marketing Events Connections panel showing eventsClient entry after saving](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Marketing Events Connections panel showing eventsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -81,7 +99,13 @@ The automation flow is created with a **Start** node and an **Error Handler** no
 1. Select the **+** button between the **Start** and **Error Handler** nodes to open the node panel.
 2. Select **eventsClient** under the **Connections** section to expand it and reveal all available operations.
 
-![HubSpot Marketing Events connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Marketing Events connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Post Events Create** to open the configuration panel.
 4. Switch to the **Expression** tab for the **Payload** field and enter your event details.
@@ -89,11 +113,23 @@ The automation flow is created with a **Start** node and an **Error Handler** no
 - **Payload** : `MarketingEventCreateRequestParams` record containing the event details; required fields include `externalAccountId`, `eventOrganizer`, `externalEventId`, and `eventName`
 - **Result** : Variable name for the returned `events:MarketingEventDefaultResponse`; defaults to `eventsMarketingeventdefaultresponse`
 
-![HubSpot Marketing Events postEventsCreate operation configuration filled with all values](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Marketing Events postEventsCreate operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save** to add the operation to the automation flow.
 
-![Completed HubSpot Marketing Events automation flow](/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Marketing Events automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.events/hubspot_marketing_events_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

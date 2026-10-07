@@ -32,7 +32,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, navigate to **Connections**.
 2. Select **Add Connection** to open the connection palette.
 
-![PayPal Payments connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_01_palette.png)
+<ThemedImage
+    alt="PayPal Payments connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Search for and select the **Payments** connector from the list of available connectors.
 
@@ -45,13 +51,25 @@ Bind each credential field to a configurable variable so that sensitive values a
 - **Config** : The configurations for initializing the connector, including OAuth2 credentials
 - **Connection Name** : Name of the connection instance
 
-![PayPal Payments connection form fully filled with all parameters before saving](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="PayPal Payments connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `paymentsClient` connection now appears on the design canvas and in the sidebar under **Connections**.
 
-![PayPal Payments Connections panel showing paymentsClient entry after saving](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_03_connector_on_canvas.png)
+<ThemedImage
+    alt="PayPal Payments Connections panel showing paymentsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_03_connector_on_canvas.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_03_connector_on_canvas.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -73,7 +91,13 @@ In the left panel, select **Configurations** and set a value for each configurab
 1. Select the **+** button on the flow canvas to open the node panel.
 2. Under **Connections**, expand **paymentsClient** to see all available operations.
 
-![PayPal Payments connection node expanded showing all available operations before selection](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="PayPal Payments connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Show details for authorized payment**.
 4. Fill in the operation parameters:
@@ -83,9 +107,21 @@ In the left panel, select **Configurations** and set a value for each configurab
 
 5. Select **Save** to add the operation to the flow.
 
-![PayPal Payments Show details for authorized payment operation configuration filled with all values](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="PayPal Payments Show details for authorized payment operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_05_operation_config.png'),
+    }}
+/>
 
-![Completed PayPal Payments automation flow](/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed PayPal Payments automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.payments/paypal_payments_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

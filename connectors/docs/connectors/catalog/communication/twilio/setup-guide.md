@@ -18,11 +18,23 @@ Trial project phone number selection may be limited. Upgrade your Twilio project
 
 1. Access the **Buy a Number** page in the Console.
 
-   ![Get phone number](/img/connectors/catalog/communication/twilio/setup/get-phone-number.png)
+   <ThemedImage
+       alt="Get phone number"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/get-phone-number.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/get-phone-number.png'),
+       }}
+   />
 
 2. Enter the criteria for the phone number you need and select **Search**.
 
-   ![Configure phone number](/img/connectors/catalog/communication/twilio/setup/phone-number-config.png)
+   <ThemedImage
+       alt="Configure phone number"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/phone-number-config.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/phone-number-config.png'),
+       }}
+   />
 
    - **Country**: Select the desired country.
    - **Number or Location**: Search by digits/phrases, or a specific city or region.
@@ -30,7 +42,13 @@ Trial project phone number selection may be limited. Upgrade your Twilio project
 
 3. Select **Buy** to purchase a phone number for your project or sub-account.
 
-   ![Search results](/img/connectors/catalog/communication/twilio/setup/search-phone-number.png)
+   <ThemedImage
+       alt="Search results"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/search-phone-number.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/search-phone-number.png'),
+       }}
+   />
 
 Many countries require identity documentation for phone number compliance. See Twilio's [Phone Number Regulations](https://www.twilio.com/guidelines/regulatory) for details.
 
@@ -38,11 +56,23 @@ Many countries require identity documentation for phone number compliance. See T
 
 1. Go to [API keys & tokens](https://console.twilio.com/us1/account/keys-credentials/api-keys) in the Twilio Console and select **Create API key**.
 
-   ![Twilio API key](/img/connectors/catalog/communication/twilio/setup/api-key-config.png)
+   <ThemedImage
+       alt="Twilio API key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/api-key-config.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/api-key-config.png'),
+       }}
+   />
 
 2. Enter the criteria for the API key and select **Create**.
 
-   ![Create API key](/img/connectors/catalog/communication/twilio/setup/create-api-key.png)
+   <ThemedImage
+       alt="Create API key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/create-api-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/create-api-key.png'),
+       }}
+   />
 
    - **Friendly name**: A human-readable name to identify the key.
    - **Region**: The geographical region where the key will be used.
@@ -50,7 +80,13 @@ Many countries require identity documentation for phone number compliance. See T
 
 3. Save the **API key SID** and **Secret** in a secure location.
 
-   ![API key info](/img/connectors/catalog/communication/twilio/setup/api-key-info.png)
+   <ThemedImage
+       alt="API key info"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/api-key-info.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/api-key-info.png'),
+       }}
+   />
 
    :::warning
    The secret is shown only once. Store it immediately in a safe location.
@@ -58,4 +94,10 @@ Many countries require identity documentation for phone number compliance. See T
 
 4. To find your **Account SID**, visit the [Twilio Console](https://www.twilio.com/console).
 
-   ![Twilio credentials](/img/connectors/catalog/communication/twilio/setup/get-credentails.png)
+   <ThemedImage
+       alt="Twilio credentials"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/get-credentails.png'),
+           dark: useBaseUrl('/img/connectors/catalog/communication/twilio/setup/get-credentails.png'),
+       }}
+   />

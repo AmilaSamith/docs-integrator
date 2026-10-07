@@ -36,7 +36,13 @@ In the design canvas, open the connector palette and search for the HubSpot Auto
 3. In the search field, enter `hubspot.automation.actions` to filter the list.
 4. Locate **Actions** under `ballerinax / hubspot.automation.actions` and select the connector card.
 
-![HubSpot Automation Actions connector palette open with search field before any selection](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Automation Actions connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot Automation Actions connection
 
@@ -47,13 +53,25 @@ Configure the connection by binding the authentication token to a configurable v
 1. Set the **Connection Name** to `actionsClient`.
 2. For the **Config** field, switch to **Expression** mode and enter `{auth: {token: hubspotAuthToken}}` to reference the configurable token variable.
 
-![HubSpot Automation Actions connection form fully filled with all parameters before saving](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Automation Actions connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to persist the connection. The `actionsClient` connection now appears in the **Connections** panel on the canvas.
 
-![HubSpot Automation Actions Connections panel showing actionsClient entry after saving](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Automation Actions Connections panel showing actionsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -71,7 +89,13 @@ Select **Add Artifact** in the WSO2 Integrator sidebar and select **Automation**
 
 Select the **+** button on the flow line between **Start** and **Error Handler** to open the node panel. Under **Connections**, expand `actionsClient` to view available operations, then select **Get paged extension definitions**.
 
-![HubSpot Automation Actions connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Automation Actions connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Configure the operation parameters:
 
@@ -80,9 +104,21 @@ Configure the operation parameters:
 
 Select **Save** to add the operation to the flow.
 
-![HubSpot Automation Actions Get paged extension definitions operation configuration filled with all values](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="HubSpot Automation Actions Get paged extension definitions operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed HubSpot Automation Actions automation flow](/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Automation Actions automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.automation.actions/hubspot_automation_actions_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

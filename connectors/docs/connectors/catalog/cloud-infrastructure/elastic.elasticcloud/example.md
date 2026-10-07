@@ -30,7 +30,13 @@ flowchart LR
 
 Select **+ Add Artifact** on the canvas toolbar, then select **Connection** to open the Add Connection search palette.
 
-![Elastic Cloud connector palette open with search field before any selection](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_01_palette.png)
+<ThemedImage
+    alt="Elastic Cloud connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the Elastic cloud connection
 
@@ -41,13 +47,25 @@ Enter `elastic` in the search box and select the **Elasticcloud** connector card
 - **apiKeyConfig**: The `ApiKeysConfig` record holding the Elastic Cloud API key used for authentication: bind to a new configurable variable of type `string`
 - **serviceUrl**: The base URL for the Elastic Cloud API: bind to a new configurable variable of type `string`
 
-![Elastic Cloud connection form fully filled with all parameters before saving](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Elastic Cloud connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The **`elasticcloudClient`** connection node appears on the canvas and under **Connections** in the sidebar.
 
-![Elastic Cloud Connections panel showing elasticcloudClient entry after saving](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_03_canvas_connection.png)
+<ThemedImage
+    alt="Elastic Cloud Connections panel showing elasticcloudClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_03_canvas_connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_03_canvas_connection.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -66,13 +84,31 @@ Select **+ Add Artifact** on the canvas toolbar, select **Automation**, then sel
 
 In the Automation flow canvas, select the **+** (Add Step) button below the **Start** node to open the step panel. Expand **`elasticcloudClient`** under **Connections**, enter `deployment` in the search box to filter the list, then select **List Deployments**.
 
-![Elastic Cloud connection node expanded showing all available operations before selection](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Elastic Cloud connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 The **List Deployments** operation form opens. This operation requires no mandatory parameters. The result is stored in the auto-generated variable `elasticcloudDeploymentslistresponse`. Select **Save** to add the step to the flow.
 
-![Elastic Cloud listDeployments operation configuration filled with all values](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Elastic Cloud listDeployments operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_05_operation_form.png'),
+    }}
+/>
 
-![Completed Elastic Cloud automation flow](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Elastic Cloud automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

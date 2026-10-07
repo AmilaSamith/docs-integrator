@@ -15,11 +15,23 @@ This guide walks you through creating a PayPal sandbox business account and obta
 1. Open the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard).
 2. Under **Testing Tools**, select **Sandbox Accounts**.
 
-   ![Sandbox accounts](/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/sandbox-accounts.png)
+   <ThemedImage
+       alt="Sandbox accounts"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/sandbox-accounts.png'),
+           dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/sandbox-accounts.png'),
+       }}
+   />
 
 3. Select **Create account** and choose **Business** as the account type.
 
-   ![Create business account](/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-account.png)
+   <ThemedImage
+       alt="Create business account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-account.png'),
+           dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-account.png'),
+       }}
+   />
 
 Some PayPal options and features may vary by region or country — check availability before creating an account.
 
@@ -28,13 +40,25 @@ Some PayPal options and features may vary by region or country — check availab
 1. Navigate to the **Apps & Credentials** tab.
 2. Select **Create App**, provide a name, and select the sandbox business account you created.
 
-   ![Create app](/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-app.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-app.png'),
+           dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/create-app.png'),
+       }}
+   />
 
 ## Step 3: Get the client ID and client secret
 
 After creating the app, copy the **Client ID** and **Client Secret** displayed on the app details page.
 
-![Client ID and client secret](/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/get-credentials.png)
+<ThemedImage
+    alt="Client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/get-credentials.png'),
+        dark: useBaseUrl('/img/connectors/catalog/finance-accounting/paypal.subscriptions/setup/get-credentials.png'),
+    }}
+/>
 
 Store the Client ID and Client Secret securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 

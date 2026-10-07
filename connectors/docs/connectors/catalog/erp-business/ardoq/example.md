@@ -34,7 +34,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Ardoq connector palette open before selection](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_01_palette.png)
+<ThemedImage
+    alt="Ardoq connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Ardoq connector
 
@@ -49,13 +55,25 @@ Bind the required connection field to a configurable variable.
 - **Token** : The Ardoq API token used to authenticate every request.
 - **Service URL** : The base URL of the Ardoq API. Defaults to `https://app.ardoq.com/api/v2`; override it if your organization uses a dedicated Ardoq subdomain.
 
-![Ardoq connection form with the token bound before saving](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Ardoq connection form with the token bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![Ardoq connection visible after saving](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Ardoq connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -78,13 +96,25 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. In the automation flow body on the canvas, select the **+** (Add Step) button between the Start and Error Handler nodes to open the step-addition panel.
 2. Under **Connections** in the step panel, select the **ardoqClient** connection node to expand it and reveal all available Ardoq API operations.
 
-![Ardoq connection expanded to display operations before selection](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Ardoq connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List Workspaces** from the list. This operation has no required parameters, so only the result variable needs a name.
 
 - **Result** : The name of the variable that holds the returned workspaces.
 
-![Ardoq List Workspaces operation with the result variable set before saving](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Ardoq List Workspaces operation with the result variable set before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_05_operation_form.png'),
+    }}
+/>
 
 4. Select **Save** to add the Ardoq operation step to the automation flow.
 
@@ -92,7 +122,13 @@ Select **Save** and verify that the connection appears in the **Connections** se
 
 Add a log action for the returned value, then return to the visual flow.
 
-![Completed Ardoq flow with the configured operation](/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Ardoq flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/ardoq/example/ballerinax_ardoq_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

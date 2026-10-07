@@ -30,7 +30,13 @@ flowchart LR
 
 In the left-hand sidebar tree, expand **Connections**, then select the **+** (Add Connection) button. The Add Connection palette opens on the right.
 
-![Smartsheet connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_01_palette.png)
+<ThemedImage
+    alt="Smartsheet connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the Smartsheet connector
 
@@ -54,13 +60,25 @@ To create the `smartsheetAccessToken` configurable variable:
 4. Set **Name** to `smartsheetAccessToken` and **Type** to `string`.
 5. Select **Save**.
 
-![Smartsheet connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Smartsheet connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection**. WSO2 Integrator saves the connection definition and returns to the integration design canvas. The `smartsheetClient` node is now visible on the canvas.
 
-![Smartsheet Connections panel showing smartsheetClient entry after saving](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Smartsheet Connections panel showing smartsheetClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -85,17 +103,35 @@ WSO2 Integrator adds an Automation entry point named `main` under **Entry Points
 2. In the **Connections** section of the node panel, select **smartsheetClient** to expand it.
 3. Select **List Sheets** to open the operation configuration panel.
 
-![Smartsheet connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_04_operations_list.png)
+<ThemedImage
+    alt="Smartsheet connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_04_operations_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_04_operations_list.png'),
+    }}
+/>
 
 Configure the following parameter:
 
 - **Result** : Enter `listSheetsResult` as the result variable name
 
-![Smartsheet listSheets operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="Smartsheet listSheets operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_05_operation_config.png'),
+    }}
+/>
 
 Select **Save** to add the node to the flow.
 
-![Completed Smartsheet automation flow](/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Smartsheet automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/smartsheet/smartsheet_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

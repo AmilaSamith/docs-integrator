@@ -32,7 +32,13 @@ flowchart LR
 
 Select **Add Connection** (or the **+** icon in the **Connections** panel) from the integration overview. A connector palette appears showing pre-built connectors.
 
-![Azure AI Search connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_01_palette.png)
+<ThemedImage
+    alt="Azure AI Search connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Azure AI Search connector
 
@@ -48,13 +54,25 @@ In the **Configure Search** panel, bind each field to a configurable variable:
 - **apiKey** : The Azure Search Admin API key, bound to the `azureSearchApiKey` configurable variable.
 - **connectionName** : Keep the default value `searchClient`.
 
-![Azure AI Search connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Azure AI Search connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The integration canvas updates to show the `searchClient` connection node under **Connections**.
 
-![Azure AI Search Connections panel showing searchClient entry after saving](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="Azure AI Search Connections panel showing searchClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -74,18 +92,36 @@ Select **+ Add Artifact** in the **Design** panel. From the artifact picker, sel
 
 Select the **+** node between **Start** and **Error Handler**. Expand **Connections → searchClient** to view all available operations.
 
-![Azure AI Search connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Azure AI Search connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Get Service Statistics** and fill in the operation fields:
 
 - **Api-version** : The Azure REST API version string, for example `2023-11-01`.
 - **Result** : The variable name to store the returned `search:ServiceStatistics` record, set to `result`.
 
-![Azure AI Search Get Service Statistics operation configuration filled with all values](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Azure AI Search Get Service Statistics operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save**. The completed automation flow now shows the full **Start → Get Service Statistics → Error Handler** sequence on the canvas.
 
-![Completed Azure AI Search automation flow](/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Azure AI Search automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/azure.ai.search/azure_ai_search_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

@@ -30,7 +30,13 @@ flowchart LR
 
 In the left sidebar, hover over **Connections** to reveal the toolbar and select the **Add Connection** (**+**) button to open the connector palette.
 
-![AWS Redshift connector palette open with search field before any selection](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_01_palette.png)
+<ThemedImage
+    alt="AWS Redshift connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the AWS Redshift connector
 
@@ -47,13 +53,25 @@ Set the **Connection Name** to `redshiftClient`. Bind each field to a configurab
 - **User** : Database username
 - **Password** : Database password
 
-![AWS Redshift connection form fully filled with all parameters before saving](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="AWS Redshift connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The `redshiftClient` connection node appears on the canvas and is listed under **Connections** in the left sidebar.
 
-![AWS Redshift Connections panel showing redshiftClient entry after saving](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="AWS Redshift Connections panel showing redshiftClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set values for your configurables
 
@@ -76,7 +94,13 @@ Select **Save Connection** to persist the connection. The `redshiftClient` conne
 1. Select the **+** (Add Step) button in the automation flow between the Start and Error Handler nodes.
 2. Under **Connections** in the node panel, select **redshiftClient** to expand it and reveal all available operations.
 
-![AWS Redshift connection node expanded showing all available operations before selection](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="AWS Redshift connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 ### Step 8: Configure the execute operation
 
@@ -88,9 +112,21 @@ Select **Execute** from the list of operations under `redshiftClient`, then fill
 
 Select **Save** to add the step to the automation flow.
 
-![AWS Redshift execute operation configuration filled with all values](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="AWS Redshift execute operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![AWS Redshift connector flow completed](/img/connectors/catalog/database/aws.redshift/redshift_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="AWS Redshift connector flow completed"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/aws.redshift/redshift_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

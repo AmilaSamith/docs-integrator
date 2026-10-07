@@ -28,7 +28,13 @@ flowchart LR
 
 Select **+ Add Artifact → Connection** from the design canvas to open the Add Connection panel.
 
-![Intercom connector palette open with search field before any selection](/img/connectors/catalog/communication/intercom/intercom_screenshot_01_palette.png)
+<ThemedImage
+    alt="Intercom connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and add the Intercom connector
 
@@ -43,13 +49,25 @@ Bind the connection's `auth` token to a configurable variable. In the **Config**
 
 - **Config** : Set to `{auth: {token: intercomToken}}`, where `intercomToken` is a `string` configurable variable holding your Intercom bearer token.
 
-![Intercom connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/intercom/intercom_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Intercom connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. `intercomClient` now appears under **Connections** in the left sidebar and as a node on the design canvas.
 
-![Intercom Connections panel showing intercomClient entry after saving](/img/connectors/catalog/communication/intercom/intercom_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Intercom Connections panel showing intercomClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -70,7 +88,13 @@ Select **+ Add Artifact** on the canvas, then select **Automation** from the art
 1. Select the **+** (add step) button on the canvas between **Start** and **Error Handler**.
 2. Under **Connections**, select **intercomClient** to expand its operations.
 
-![Intercom connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/intercom/intercom_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Intercom connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Enter `contact` in the search box to filter, then select **Create contact**.
 4. Configure the operation fields:
@@ -78,7 +102,13 @@ Select **+ Add Artifact** on the canvas, then select **Automation** from the art
 - **Payload** : Set to `{email: contactEmail, role: "user"}`, where `contactEmail` is a `string` configurable variable holding the contact's email address.
 - **Result** : Set the result variable name to `result`.
 
-![Intercom Create contact operation configuration filled with all values](/img/connectors/catalog/communication/intercom/intercom_screenshot_05_operation_config.png)
+<ThemedImage
+    alt="Intercom Create contact operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_05_operation_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/intercom/intercom_screenshot_05_operation_config.png'),
+    }}
+/>
 
 ## Try it yourself
 

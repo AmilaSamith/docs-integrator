@@ -26,15 +26,33 @@ If you prefer a cloud-hosted instance:
 3. Navigate to your MongoDB Atlas cluster.
 4. Select **Database** from the left navigation pane under the **Deployment** section and select **Connect** to open the connection instructions.
 
-   ![MongoDB Atlas database page](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-database-page.png)
+   <ThemedImage
+       alt="MongoDB Atlas database page"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-database-page.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-database-page.png'),
+       }}
+   />
 
 5. Add your IP address to the IP access list, or select **Allow access from anywhere** to allow all IP addresses.
 
-   ![MongoDB Atlas IP access list](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-ip-access-list.png)
+   <ThemedImage
+       alt="MongoDB Atlas IP access list"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-ip-access-list.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-ip-access-list.png'),
+       }}
+   />
 
 6. Select **Choose a connection method** and select **Drivers** under **Connect your application** to find the connection string.
 
-   ![MongoDB Atlas connection method](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-connection-method.png)
+   <ThemedImage
+       alt="MongoDB Atlas connection method"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-connection-method.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-connection-method.png'),
+       }}
+   />
 
 Allowing access from all IP addresses (`0.0.0.0/0`) is suitable for development only. In production, restrict access to specific IP addresses or CIDR ranges.
 

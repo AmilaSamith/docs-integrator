@@ -33,7 +33,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Production connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-01-palette.png)
+<ThemedImage
+    alt="Production connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Production connector
 
@@ -51,13 +57,25 @@ Bind the required connection fields to configurable variables, and set the conne
 - **Service Url** : Supplies the Service Layer endpoint through a required configurable variable.
 - **Connection Name** : Identifies the saved connection in the automation flow.
 
-![Production connection form with all parameters bound before saving](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="Production connection form with all parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![Production connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Production connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -82,14 +100,26 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **sapProductionClient** to display its operations.
 
-![Production connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="Production connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Production Orders**. This operation has no required request parameters.
 4. Review the generated result settings.
 
 - **Result** : Names the result variable used by the following log action.
 
-![Production List Production Orders operation with its result configured before saving](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="Production List Production Orders operation with its result configured before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-05-operation-form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
@@ -102,7 +132,13 @@ Select **Save** and verify that the connection appears in the **Connections** se
 5. Enter `productionOrders.toJsonString()`.
 6. Select **Save** and return to the visual flow.
 
-![Completed Production automation with the connector operation and info log](/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed Production automation with the connector operation and info log"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.production/sap-businessone-production-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

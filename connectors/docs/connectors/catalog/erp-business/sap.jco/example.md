@@ -38,7 +38,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, select **+** next to **Connections** to open the **Add Connection** palette.
 2. Enter `sap.jco` in the search field.
 
-![Add Connection palette filtered to sap.jco, listing the Jco connector under ballerinax / sap.jco](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Connection palette filtered to sap.jco, listing the Jco connector under ballerinax / sap.jco"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Select the **Jco** connector card.
 
@@ -50,13 +56,25 @@ For each SAP credential, open the helper panel of the **Config** field, select t
 
 - **Config** : `<jco:DestinationConfig>{ashost: sapAshost, sysnr: sapSysnr, jcoClient: sapJcoClientNum, user: sapUsername, passwd: sapPassword}`, with `sapAshost`, `sapSysnr`, `sapJcoClientNum`, `sapUsername`, and `sapPassword` each bound to a configurable variable. The explicit cast resolves the type ambiguity between `DestinationConfig` and the raw property-map alternative.
 
-![Configure Jco form with the Config field set to a DestinationConfig cast expression referencing five configurable variables](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Configure Jco form with the Config field set to a DestinationConfig cast expression referencing five configurable variables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
 Select **Save Connection**. The **Connections** section now lists `jcoClient` as an available connection in the project.
 
-![Connections section listing jcoClient after saving the connection](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_03_saved_connection.png)
+<ThemedImage
+    alt="Connections section listing jcoClient after saving the connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_03_saved_connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_03_saved_connection.png'),
+    }}
+/>
 
 #### Step 4: Set actual values for your configurables
 
@@ -79,13 +97,25 @@ Select **+** next to **Entry Points**, select **Automation**, and select **Creat
 
 Select **+** on the flow canvas, then expand `jcoClient` under **Connections** to display its operations: **Execute**, **Send IDoc**, and **Close**.
 
-![Connections panel expanded to show the jcoClient operations Execute, Send IDoc, and Close](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Connections panel expanded to show the jcoClient operations Execute, Send IDoc, and Close"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Send IDoc** to open the `jcoClient → sendIDoc` form, then enter:
 
 - **IDoc** : An IDoc XML payload, for example an `ORDERS05` document with an `EDI_DC40` control record segment.
 
-![Send IDoc operation form with the IDoc field set to an ORDERS05 IDoc payload](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Send IDoc operation form with the IDoc field set to an ORDERS05 IDoc payload"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_05_operation_form.png'),
+    }}
+/>
 
 Select **Save**. The `jco : sendIDoc` node connects between **Start** and **Error Handler**.
 
@@ -104,7 +134,13 @@ Select **Save**. The `jco : execute` node connects between `jco : sendIDoc` and 
 
 Add a **Log Info** step after `jco : execute`, setting its **Msg** field to `"RFC execute result"` with `result` set to `executeResult`.
 
-![Completed automation flow with jco : sendIDoc, jco : execute, and log : printInfo nodes between Start and Error Handler](/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with jco : sendIDoc, jco : execute, and log : printInfo nodes between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_client_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -148,7 +184,13 @@ flowchart LR
 
 Select **+ Add Artifact**, then select the **SAP JCo** card in the **Event Integration** category. The **Create SAP JCo Event Integration** form opens.
 
-![Add Artifact palette showing the SAP JCo card under Event Integration](/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Artifact palette showing the SAP JCo card under Event Integration"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_01_palette.png'),
+    }}
+/>
 
 For each field, open its helper panel, select the **Configurables** tab, select **+ New Configurable**, and save a `configurable string` variable for it.
 
@@ -168,7 +210,13 @@ With **Destination Configurations** selected, bind the remaining fields to confi
 - **Password** : The SAP logon password.
 - **Service Type** : Select **IDocService**. This walkthrough receives IDocs; for inbound RFC calls, select **RfcService** and use the [Trigger Reference](trigger-reference.md#service).
 
-![Create SAP JCo Event Integration form showing the Gateway Host, Gateway Service, Program ID, and Destination Configurations fields bound to configurable variables](/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_02_listener_form.png)
+<ThemedImage
+    alt="Create SAP JCo Event Integration form showing the Gateway Host, Gateway Service, Program ID, and Destination Configurations fields bound to configurable variables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_02_listener_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_02_listener_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -188,7 +236,13 @@ With **Destination Configurations** selected, bind the remaining fields to confi
 
 Select **Create**. The listener and `IDocService` are registered, and the Service view opens with `onReceive` and `onError` event handlers listed.
 
-![Service view showing jcoListener with onReceive and onError event handlers listed](/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_03_saved_listener.png)
+<ThemedImage
+    alt="Service view showing jcoListener with onReceive and onError event handlers listed"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_03_saved_listener.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_03_saved_listener.png'),
+    }}
+/>
 
 ### Handling SAP JCo events
 
@@ -196,7 +250,13 @@ Select **Create**. The listener and `IDocService` are registered, and the Servic
 
 Select **onReceive** to open its flow canvas, select the **+** node, and select **Log Info**. Set its **Msg** field, in expression mode, to `"Received IDoc: " + iDoc.toString()`.
 
-![onReceive flow canvas with a log : printInfo step logging the received IDoc between Start and end](/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_04_onreceive_handler.png)
+<ThemedImage
+    alt="onReceive flow canvas with a log : printInfo step logging the received IDoc between Start and end"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_04_onreceive_handler.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.jco/sap_jco_trigger_screenshot_04_onreceive_handler.png'),
+    }}
+/>
 
 Select **Save**, then select the back arrow to return to the Service view.
 

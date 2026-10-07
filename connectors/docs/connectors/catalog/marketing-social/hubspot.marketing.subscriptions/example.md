@@ -30,7 +30,13 @@ flowchart LR
 
 In the project overview, expand **Connections** in the left panel and select **+ Add Connection**.
 
-![HubSpot Marketing Subscriptions connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Marketing Subscriptions connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the connector
 
@@ -46,13 +52,25 @@ Enter the connection details and bind the auth token to a configurable variable:
 - **connectionName** : Enter `subscriptionsClient` as the connection name.
 - **auth.token** : Select **+ New Configurable** to create a new configurable variable named `hubspotAuthToken` of type `string`, then save the configurable dialog.
 
-![HubSpot Marketing Subscriptions connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Marketing Subscriptions connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas updates to show the `subscriptionsClient` connection node in the **Connections** section.
 
-![HubSpot Marketing Subscriptions Connections panel showing subscriptionsClient entry after saving](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Marketing Subscriptions Connections panel showing subscriptionsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -76,17 +94,35 @@ In the left sidebar under **Entry Points**, select **+** and choose **Automation
 - **resultVariable** : Enter `result` as the variable name to store the operation output.
 - **resultType** : Set to `subscriptions:ActionResponseWithResultsSubscriptionDefinition`.
 
-![HubSpot Marketing Subscriptions connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Marketing Subscriptions connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 After selecting the operation, the configuration panel opens. Enter the output variable details as shown below.
 
-![HubSpot Marketing Subscriptions getCommunicationPreferencesV4Definitions operation configuration filled with all values](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_05_operation_values.png)
+<ThemedImage
+    alt="HubSpot Marketing Subscriptions getCommunicationPreferencesV4Definitions operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_05_operation_values.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_05_operation_values.png'),
+    }}
+/>
 
 Select **Save** to apply the operation settings and return to the canvas.
 
 You should now see the completed flow with the operation placed between **Start** and **Error Handler**.
 
-![Completed HubSpot Marketing Subscriptions automation flow](/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Marketing Subscriptions automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.subscriptions/hubspot_marketing_subscriptions_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

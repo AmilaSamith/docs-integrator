@@ -16,21 +16,45 @@ This guide walks you through creating a Mistral AI account and generating an API
 2. Navigate to the **API Keys** panel in the left sidebar.
 3. Select a plan based on your requirements.
 
-   ![Choose a plan](/img/connectors/catalog/ai-ml/mistral/setup/choose-plan.png)
+   <ThemedImage
+       alt="Choose a plan"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/choose-plan.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/choose-plan.png'),
+       }}
+   />
 
 ## Step 2: Create an API key
 
 1. Select **Create new key**.
 
-   ![Create key](/img/connectors/catalog/ai-ml/mistral/setup/create-key.png)
+   <ThemedImage
+       alt="Create key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/create-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/create-key.png'),
+       }}
+   />
 
 2. Enter a name for the key and fill in any required details, then select **Create new key**.
 
-   ![Key details panel](/img/connectors/catalog/ai-ml/mistral/setup/details-panel.png)
+   <ThemedImage
+       alt="Key details panel"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/details-panel.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/details-panel.png'),
+       }}
+   />
 
 3. Copy the generated API key immediately — it will not be shown again.
 
-   ![Copy key](/img/connectors/catalog/ai-ml/mistral/setup/copy-key.png)
+   <ThemedImage
+       alt="Copy key"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/copy-key.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/mistral/setup/copy-key.png'),
+       }}
+   />
 
 Store the API key securely. Do not commit it to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply it at runtime.
 

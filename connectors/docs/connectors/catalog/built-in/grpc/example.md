@@ -28,7 +28,13 @@ flowchart LR
 
 Select **Connections** in the WSO2 Integrator sidebar, then select the **+** button to open the connector palette.
 
-![gRPC connector palette open with search field before any selection](/img/connectors/catalog/built-in/grpc/grpc_screenshot_01_palette.png)
+<ThemedImage
+    alt="gRPC connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 1: Search for and select the gRPC connector
 
@@ -46,13 +52,25 @@ Bind the connection parameters to configurable variables. Select the grid icon n
 - **Connection Name** : Name used to identify this connection in the integration
 - **Url** : The gRPC service endpoint URL, bound to the `grpcServiceUrl` configurable variable
 
-![gRPC connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/grpc/grpc_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="gRPC connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** at the bottom of the connection form. The `grpcClient` connection node appears on the canvas and in the sidebar under **Connections**.
 
-![gRPC Connections panel showing grpcClient entry after saving](/img/connectors/catalog/built-in/grpc/grpc_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="gRPC Connections panel showing grpcClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -75,7 +93,13 @@ The `main` automation entry point is created and the canvas shows a flow with **
 1. Select the **+** (Add Step) button inside the automation flow body.
 2. Under **Connections**, expand **grpcClient** to reveal its operations list.
 
-![gRPC connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/grpc/grpc_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="gRPC connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Execute Simple Rpc** and fill in the operation form.
 
@@ -83,11 +107,23 @@ The `main` automation entry point is created and the canvas shows a flow with **
 - **Payload** : The request message sent to the gRPC service
 - **Result** : The variable name used to store the response tuple
 
-![gRPC Execute Simple Rpc operation configuration filled with all values](/img/connectors/catalog/built-in/grpc/grpc_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="gRPC Execute Simple Rpc operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The `grpc : executeSimpleRPC` node appears on the canvas between **Start** and **Error Handler**.
 
-![Completed gRPC automation flow](/img/connectors/catalog/built-in/grpc/grpc_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed gRPC automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

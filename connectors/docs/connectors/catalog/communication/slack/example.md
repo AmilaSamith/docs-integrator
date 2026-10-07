@@ -31,7 +31,13 @@ flowchart LR
 
 In the WSO2 Integrator sidebar, hover over **Connections** to reveal the **Add Connection** button. Select it to open the connector palette.
 
-![Slack connector palette open with search field before any selection](/img/connectors/catalog/communication/slack/slack_screenshot_01_palette.png)
+<ThemedImage
+    alt="Slack connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_01_palette.png'),
+    }}
+/>
 
 In the search box, enter `slack` to filter connectors, then select **ballerinax/slack** from the results to open the **Add Connection** form.
 
@@ -44,13 +50,25 @@ In the connection configuration form, bind each field to a configurable variable
 - **connectionName** : Enter `slackClient` as the connection name
 - **auth.token** : Set to the `slackAuthToken` configurable variable of type `string`
 
-![Slack connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/slack/slack_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Slack connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save** to create the connection. The `slackClient` connection node appears on the canvas and under **Connections** in the sidebar.
 
-![Slack Connections panel showing slackClient entry after saving](/img/connectors/catalog/communication/slack/slack_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Slack Connections panel showing slackClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -70,7 +88,13 @@ The automation flow opens in the canvas, showing **Start**, a placeholder node, 
 
 Select the **+** button between the **Start** and **Error Handler** nodes to open the node selection panel. Under **Connections**, select **slackClient** to expand its available operations.
 
-![Slack connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/slack/slack_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Slack connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **post** from the list to open the operation configuration form, then fill in the fields:
 
@@ -78,11 +102,23 @@ Select **post** from the list to open the operation configuration form, then fil
 - **text** : The message text to send
 - **result** : The variable name to store the response (default `slackChatpostmessageresponse`)
 
-![Slack post operation configuration filled with all values](/img/connectors/catalog/communication/slack/slack_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Slack post operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to add the step to the flow.
 
-![Completed Slack automation flow](/img/connectors/catalog/communication/slack/slack_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Slack automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/slack/slack_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

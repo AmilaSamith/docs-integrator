@@ -20,15 +20,33 @@ Developer test accounts let you test apps and integrations without affecting rea
 
 1. Select **Test accounts** in the left sidebar.
 
-   ![Developer portal](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_1.png)
+   <ThemedImage
+       alt="Developer portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_1.png'),
+       }}
+   />
 
 2. Select **Create developer test account**.
 
-   ![Create test account](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_2.png)
+   <ThemedImage
+       alt="Create test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_2.png'),
+       }}
+   />
 
 3. Provide a name and select **Create**.
 
-   ![Name the test account](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_3.png)
+   <ThemedImage
+       alt="Name the test account"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_3.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/test_acc_3.png'),
+       }}
+   />
 
 Developer test accounts are for development and testing only. Do not use them in production.
 
@@ -36,7 +54,13 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Navigate to **Apps** and select **Create App**.
 
-   ![Create app](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_1.png)
+   <ThemedImage
+       alt="Create app"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_1.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_1.png'),
+       }}
+   />
 
 2. Provide the app name and description.
 
@@ -44,21 +68,45 @@ Developer test accounts are for development and testing only. Do not use them in
 
 1. Go to the **Auth** tab.
 
-   ![Auth tab](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_2.png)
+   <ThemedImage
+       alt="Auth tab"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_2.png'),
+       }}
+   />
 
 2. Under **Scopes**, select **Add new scope** and add the scopes your use case requires.
 
-   ![Set scope](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/set_scope.png)
+   <ThemedImage
+       alt="Set scope"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/set_scope.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/set_scope.png'),
+       }}
+   />
 
 3. Add your redirect URI and select **Create App**.
 
-   ![Create app with redirect](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_final.png)
+   <ThemedImage
+       alt="Create app with redirect"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_final.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/create_app_final.png'),
+       }}
+   />
 
 ## Step 5: Get the client ID and client secret
 
 In the **Auth** section, copy the **Client ID** and **Client Secret**.
 
-![Get credentials](/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/get_credentials.png)
+<ThemedImage
+    alt="Get credentials"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/get_credentials.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.transactional/setup/get_credentials.png'),
+    }}
+/>
 
 ## Step 6: Get the refresh token
 

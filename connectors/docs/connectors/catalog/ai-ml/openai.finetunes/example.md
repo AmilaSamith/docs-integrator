@@ -30,7 +30,13 @@ flowchart LR
 
 Select **+ Add Artifact** and then select the **Connections** node to open the **Add Connection** palette.
 
-![OpenAI Fine-Tunes connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_01_palette.png)
+<ThemedImage
+    alt="OpenAI Fine-Tunes connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the OpenAI Fine-Tunes connection
 
@@ -41,13 +47,25 @@ Search for `openai` in the palette and select **Finetunes** to open the **Config
 - **config** : Bind to a configurable variable of type `string` to hold the OpenAI Bearer token (`openaiFineTunesApiToken`)
 - **connectionName** : Enter `finetunesClient` as the connection name
 
-![OpenAI Fine-Tunes connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="OpenAI Fine-Tunes connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The `finetunesClient` connection now appears under **Connections** in the project tree and on the design canvas.
 
-![OpenAI Fine-Tunes Connections panel showing finetunesClient entry after saving](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="OpenAI Fine-Tunes Connections panel showing finetunesClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -65,17 +83,35 @@ Select **+ Add Artifact** on the design canvas. Under **Automation**, select **A
 
 In the automation flow canvas, select the **+** (Add Step) button between **Start** and **Error Handler**. Expand **finetunesClient** under **Connections** to reveal all available operations.
 
-![OpenAI Fine-Tunes connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="OpenAI Fine-Tunes connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **List your organization's fine-tuning jobs** (`listFineTunes`) to open the operation form, then configure the following:
 
 - **result** : Enter `result` as the output variable name to capture the list of fine-tuning jobs
 
-![OpenAI Fine-Tunes listFineTunes operation configuration filled with all values](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="OpenAI Fine-Tunes listFineTunes operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save** to apply the configuration.
 
-![Completed OpenAI Fine-Tunes automation flow](/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed OpenAI Fine-Tunes automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai.finetunes/openai_finetunes_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

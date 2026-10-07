@@ -32,23 +32,53 @@ This guide walks you through setting up a Milvus instance and obtaining the conn
 
 1. Visit [Zilliz Cloud](https://cloud.zilliz.com/) and create an account.
 
-   ![Zilliz Cloud sign up](/img/connectors/catalog/ai-ml/milvus/setup/sign_up.png)
+   <ThemedImage
+       alt="Zilliz Cloud sign up"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/sign_up.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/sign_up.png'),
+       }}
+   />
 
 2. Complete the account setup process.
 
-   ![Account setup](/img/connectors/catalog/ai-ml/milvus/setup/setup_account.png)
+   <ThemedImage
+       alt="Account setup"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/setup_account.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/setup_account.png'),
+       }}
+   />
 
 3. From the welcome page, select **Create Cluster**.
 
-   ![Welcome page](/img/connectors/catalog/ai-ml/milvus/setup/welcome_page.png)
+   <ThemedImage
+       alt="Welcome page"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/welcome_page.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/welcome_page.png'),
+       }}
+   />
 
 4. Configure cluster details including cluster name, cloud provider, and region.
 
-   ![Configure cluster](/img/connectors/catalog/ai-ml/milvus/setup/create_cluster.png)
+   <ThemedImage
+       alt="Configure cluster"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/create_cluster.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/create_cluster.png'),
+       }}
+   />
 
 5. Once the cluster is created, download the connection details and credentials.
 
-   ![Cluster creation complete](/img/connectors/catalog/ai-ml/milvus/setup/cluster_creation.png)
+   <ThemedImage
+       alt="Cluster creation complete"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/cluster_creation.png'),
+           dark: useBaseUrl('/img/connectors/catalog/ai-ml/milvus/setup/cluster_creation.png'),
+       }}
+   />
 
 6. Navigate to the **API Keys** section in your cluster dashboard and generate an API key for authentication.
 

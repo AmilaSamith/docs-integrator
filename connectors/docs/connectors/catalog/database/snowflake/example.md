@@ -33,7 +33,13 @@ Set up a new WSO2 Integrator project by following the [project creation guide](.
 
 On the low-code canvas, click **+ Add Connection** (or the **＋** icon in the Connections section of the left sidebar) to open the Add Connection palette, which shows a searchable grid of available connectors.
 
-![Snowflake connector palette open with search field before any selection](/img/connectors/catalog/database/snowflake/snowflake_screenshot_01_palette.png)
+<ThemedImage
+    alt="Snowflake connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the Snowflake connector
 
@@ -49,13 +55,25 @@ Fill in the connection form by binding each required field to a Configurable var
 - **user**: the Snowflake username
 - **password**: the Snowflake account password
 
-![Snowflake connection form fully filled with all parameters before saving](/img/connectors/catalog/database/snowflake/snowflake_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Snowflake connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Click **Save** at the bottom of the connection form. The canvas refreshes, and the new connection node, **snowflakeClient**, appears in the Connections section of the left sidebar and as a node on the canvas.
 
-![Snowflake Connections panel showing snowflakeClient entry after saving](/img/connectors/catalog/database/snowflake/snowflake_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Snowflake Connections panel showing snowflakeClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -75,7 +93,13 @@ In the left sidebar, locate the **Entry Points** section, click **＋ Add Entry 
 
 In the Add Step panel, locate **snowflakeClient** under the Connections section and click it to expand the node and reveal all available operations, including Query, Query Row, Execute, Batch Execute, Call, and Close.
 
-![Snowflake connection node expanded showing all available operations before selection](/img/connectors/catalog/database/snowflake/snowflake_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Snowflake connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 ### Step 8: Select and configure the query operation
 
@@ -85,9 +109,21 @@ Click **Query** to open the Query operation configuration form and fill in the f
 - **Result Variable**: the name for the result stream variable (for example, `queryResult`)
 - **Row Type**: the record type used for flexible column mapping (for example, `record {| anydata...; |}`)
 
-![Snowflake Query operation configuration filled with all values](/img/connectors/catalog/database/snowflake/snowflake_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Snowflake Query operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed flow on the canvas showing Start → snowflake:query → Error Handler → End](/img/connectors/catalog/database/snowflake/snowflake_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed flow on the canvas showing Start → snowflake:query → Error Handler → End"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/database/snowflake/snowflake_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 [![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/snowflake_db_connector)
 

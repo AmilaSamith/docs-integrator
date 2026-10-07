@@ -32,7 +32,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Localization connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-01-palette.png)
+<ThemedImage
+    alt="Localization connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Localization connector
 
@@ -48,13 +54,25 @@ Bind every required connection field to a configurable variable.
 - **Session** : Bind the SAP Business One session settings to configurable variables.
 - **Connection Name** : Enter `localizationClient` as the connection name.
 
-![Localization connection form with session parameters bound before saving](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="Localization connection form with session parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** and verify that the connection appears in the **Connections** section.
 
-![Localization connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Localization connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -78,18 +96,36 @@ Select **Save** and verify that the connection appears in the **Connections** se
 1. Select **Add Step** in the automation flow.
 2. Expand **localizationClient** to display its operations.
 
-![Localization connection expanded to display operations before selection](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="Localization connection expanded to display operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Bem Replication Periods**.
 4. Review the generated result variable for the returned collection.
 
 - **Result** : Keep the generated result variable for the `BEMReplicationPeriodsCollectionResponse` value.
 
-![Localization listBEMReplicationPeriods operation form with the result variable configured](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="Localization listBEMReplicationPeriods operation form with the result variable configured"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-05-operation-form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
-![Completed Localization flow with the configured operation](/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed Localization flow with the configured operation"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.localization/sap-businessone-localization-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

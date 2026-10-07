@@ -15,13 +15,25 @@ This guide walks you through creating a Twitter developer project and obtaining 
 1. Open the [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard).
 2. Select the **Projects & Apps** tab and select an existing project or create a new one.
 
-   ![Twitter Developer Portal](/img/connectors/catalog/marketing-social/twitter/setup/twitter-developer-portal.png)
+   <ThemedImage
+       alt="Twitter Developer Portal"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/twitter-developer-portal.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/twitter-developer-portal.png'),
+       }}
+   />
 
 ## Step 2: Set up user authentication
 
 1. In your project or app settings, select **Set up** to configure user authentication.
 
-   ![Set up user authentication](/img/connectors/catalog/marketing-social/twitter/setup/set-up.png)
+   <ThemedImage
+       alt="Set up user authentication"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/set-up.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/set-up.png'),
+       }}
+   />
 
 2. Complete the user authentication setup by filling in the required fields (app permissions, callback URI, website URL).
 
@@ -29,7 +41,13 @@ This guide walks you through creating a Twitter developer project and obtaining 
 
 After completing authentication setup, copy the **Client ID** and **Client Secret**.
 
-![Get client ID and client secret](/img/connectors/catalog/marketing-social/twitter/setup/get-keys.png)
+<ThemedImage
+    alt="Get client ID and client secret"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/get-keys.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/get-keys.png'),
+    }}
+/>
 
 Store the Client ID and Client Secret securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 
@@ -51,7 +69,13 @@ Twitter uses OAuth 2.0 with PKCE. You need a **code verifier** (a random string)
 
 2. Open the URL in a browser and authorize the app when prompted.
 
-   ![Twitter authorization page](/img/connectors/catalog/marketing-social/twitter/setup/authorize.png)
+   <ThemedImage
+       alt="Twitter authorization page"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/authorize.png'),
+           dark: useBaseUrl('/img/connectors/catalog/marketing-social/twitter/setup/authorize.png'),
+       }}
+   />
 
 3. After authorization, you are redirected to your callback URI with an authorization `code` in the URL. Copy the code.
 

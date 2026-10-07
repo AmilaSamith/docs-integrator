@@ -54,7 +54,13 @@ The connection form references configurable variables for the share name and cre
 - **accountKey** (string) : An access key of the storage account
 - **shareName** (string) : The name of the file share to bind the client to
 
-![Add Configurable Variable panel with the accountName variable](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png)
+<ThemedImage
+    alt="Add Configurable Variable panel with the accountName variable"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png'),
+    }}
+/>
 
 ### Adding the Azure Files connector
 
@@ -66,7 +72,13 @@ Select **Add Connection** in the WSO2 Integrator sidebar to open the connector p
 2. In the connector palette search box, enter `azure.storage.files`.
 3. The palette lists three cards under `ballerinax / azure.storage.files`: **Files** (the share client this example uses), **Files Admin** (the account-level `AdminClient`), and **Files Caller** (passed to trigger handlers, not used as a connection). Select the **Files** card.
 
-![Connector palette with the azure.storage.files search results](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_02_palette.png)
+<ThemedImage
+    alt="Connector palette with the azure.storage.files search results"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_02_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_02_palette.png'),
+    }}
+/>
 
 ### Configuring the Azure Files connection
 
@@ -74,7 +86,13 @@ Select **Add Connection** in the WSO2 Integrator sidebar to open the connector p
 
 Selecting the **Files** card opens the **Configure Files** form. Switch **Share Name** to **Expression** and enter `shareName`, switch **Auth** to **Expression** and enter `{accountName, accountKey}`, and set **Connection Name** to `azFilesClient`.
 
-![Azure Files connection form with all parameters set](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_03_connection_form.png)
+<ThemedImage
+    alt="Azure Files connection form with all parameters set"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_03_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_03_connection_form.png'),
+    }}
+/>
 
 #### Step 5: Save the connection
 
@@ -97,7 +115,13 @@ Select **Save Connection** to persist the connection. The form closes and `azFil
 2. Select the **+** button on the canvas between **Start** and **Error Handler**.
 3. In the right-side node panel, expand **Connections → azFilesClient**.
 
-![Azure Files operations panel](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Azure Files operations panel"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 4. Select **Upload From File** and fill in the operation form:
 
@@ -106,7 +130,13 @@ Select **Save Connection** to persist the connection. The form closes and `azFil
 
 5. Select **Save**.
 
-![uploadFromFile operation configuration](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_05_uploadfile_form.png)
+<ThemedImage
+    alt="uploadFromFile operation configuration"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_05_uploadfile_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_05_uploadfile_form.png'),
+    }}
+/>
 
 #### Step 8: Confirm the upload and log the result
 
@@ -115,7 +145,13 @@ Select **Save Connection** to persist the connection. The form closes and `azFil
 
 `hasFile` returns `true` once the file is present on the share, so the log output confirms the upload.
 
-![Completed Azure Files automation flow](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Azure Files automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -162,7 +198,13 @@ In the left panel, select **Configurations**. In the Configurable Variables pane
 - **accountKey** (string) : An access key of the storage account
 - **shareName** (string) : The file share to watch
 
-![Add Configurable Variable panel with the accountName variable](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png)
+<ThemedImage
+    alt="Add Configurable Variable panel with the accountName variable"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_screenshot_01_configurables_panel.png'),
+    }}
+/>
 
 ### Adding the Azure Files trigger
 
@@ -171,7 +213,13 @@ In the left panel, select **Configurations**. In the Configurable Variables pane
 1. Select the **+** button in the WSO2 Integrator side panel header to open the **New Integration** wizard (on an empty project, the **+ Add Integration or Library** button in the project view opens the same wizard), and continue to the **Type** step.
 2. Scroll to the **File Integration** category, select the **Azure Files** card, and select **Next**.
 
-![New Integration wizard with the Azure Files card selected](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png)
+<ThemedImage
+    alt="New Integration wizard with the Azure Files card selected"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_01_new_integration_wizard.png'),
+    }}
+/>
 
 #### Step 3: Configure the listener
 
@@ -184,7 +232,13 @@ The **Azure Files Integration** page opens with the **Listener Configurations** 
 - **Account Key** : Switch to **Expression** and enter `accountKey`
 - **Monitoring Path** : `/incoming`. This is the watched path the service attaches to; `/` watches the share root.
 
-![Azure Files listener configuration form](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png)
+<ThemedImage
+    alt="Azure Files listener configuration form"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_02_listener_config_form.png'),
+    }}
+/>
 
 #### Step 4: Create the trigger
 
@@ -208,7 +262,13 @@ In the left panel, select **Configurations** again, and set a value for each con
 
 Return to the integration service view (select **files:Service** under **Entry Points**) and select **+ Add Handler**. The handler picker offers **On Create**, which fires for files appearing on the monitoring path; select it. The handler's **Format** setting then selects how the content is delivered: **JSON**, **XML**, **CSV**, **Text**, or **Raw Bytes**, generating the `onFileJson`, `onFileXml`, `onFileCsv`, `onFileText`, or `onFile` callback respectively. An `onError` handler for poll, read, and content-binding failures can be added in code; see the [Trigger Reference](trigger-reference.md). Note that declaring one moves the disposal of content-binding failures onto `onError`'s own `@files:FunctionConfig`, so the **On Error** action configured here would no longer apply to them.
 
-![Handler picker with the On Create handler](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png)
+<ThemedImage
+    alt="Handler picker with the On Create handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_03_add_handler_panel.png'),
+    }}
+/>
 
 #### Step 7: Configure the JSON handler
 
@@ -220,7 +280,13 @@ In the **New On Create Configuration** panel, set:
 
 These options generate the `onFileJson` handler carrying the `@files:FunctionConfig` annotation's `afterProcess` and `afterError` actions. See the [Trigger Reference](trigger-reference.md) for the full annotation surface.
 
-![On Create handler configuration with the JSON format and post-processing actions](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png)
+<ThemedImage
+    alt="On Create handler configuration with the JSON format and post-processing actions"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_04_handler_config.png'),
+    }}
+/>
 
 Select **Save** to register the `onFileJson` handler on the service.
 
@@ -231,13 +297,25 @@ After the handler is saved, WSO2 Integrator opens the handler's flow canvas. The
 1. Select the **+** inside the handler flow and choose **Log Info** from the **Logging** section in the side panel.
 2. In the expression editor, select `content` from the **Inputs** list, then append `.toJsonString()`.
 
-![onFileJson handler flow with the log statement](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_05_handler_flow.png)
+<ThemedImage
+    alt="onFileJson handler flow with the log statement"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_05_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_05_handler_flow.png'),
+    }}
+/>
 
 #### Step 9: Verify the final service view
 
 Navigate back to the integration service view. The handler section now displays the registered `onFileJson` handler.
 
-![Final service view with the registered onFileJson handler](/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png)
+<ThemedImage
+    alt="Final service view with the registered onFileJson handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.files/azure_files_trigger_screenshots_06_service_view_final.png'),
+    }}
+/>
 
 ### Running the integration
 

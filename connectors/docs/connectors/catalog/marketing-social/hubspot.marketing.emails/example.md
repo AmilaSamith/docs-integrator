@@ -29,7 +29,13 @@ flowchart LR
 
 Select the **+** (Add Connection) button in the **Connections** section of the WSO2 Integrator side panel to open the connector palette.
 
-![HubSpot Marketing Emails connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot Marketing Emails connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the HubSpot marketing emails connection
 
@@ -49,9 +55,21 @@ In the connection form, select **Expand** next to **Advanced Configurations** to
 
 Verify the completed connection form and select **Save Connection** to persist the connection. The canvas returns to the integration overview, showing the `emailsClient` connection card.
 
-![HubSpot Marketing Emails connection form fully filled with all parameters before saving](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="HubSpot Marketing Emails connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_02_connection_form.png'),
+    }}
+/>
 
-![HubSpot Marketing Emails Connections panel showing emailsClient entry after saving](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot Marketing Emails Connections panel showing emailsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -71,13 +89,31 @@ Select **+ Add Artifact** on the canvas, then select **Automation** from the art
 
 Select the **+** node in the flow to open the node panel, then expand **emailsClient** under **Connections** and select **Get all marketing emails for a HubSpot account**. In the operation form, enter `emailsResponse` in the **Result** field, then select **Save**.
 
-![HubSpot Marketing Emails connection node expanded showing all available operations before selection](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot Marketing Emails connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 - **Result** : The variable name that stores the paginated response containing the list of marketing emails
 
-![HubSpot Marketing Emails get operation configuration filled with all values](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot Marketing Emails get operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed HubSpot Marketing Emails automation flow](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed HubSpot Marketing Emails automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

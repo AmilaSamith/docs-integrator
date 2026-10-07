@@ -31,7 +31,13 @@ flowchart LR
 
 In the **WSO2 Integrator** sidebar, hover over the **Connections** tree item and select the **Add Connection** (➕) button to open the connector palette.
 
-![Jira connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_01_palette.png)
+<ThemedImage
+    alt="Jira connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Jira connector
 
@@ -49,13 +55,25 @@ In the **Configure Jira** form, bind each field to a configurable variable:
 - **Service Url** : Expand **Advanced Configurations**, open the helper panel for **Service Url**, and create a new configurable variable `jiraServiceUrl` (type `string`)
 - **Connection Name** : Leave the default value `jiraClient`
 
-![Jira connection form fully filled with all parameters before saving](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Jira connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection**. The form closes and `jiraClient` appears under **Connections** in the left sidebar and as a connection node on the integration canvas.
 
-![Jira Connections panel showing jiraClient entry after saving](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Jira Connections panel showing jiraClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,7 +97,13 @@ The Automation (`main`) appears under **Entry Points** in the sidebar and the fl
 1. Select the **+** (add step) button between **Start** and **Error Handler** on the canvas.
 2. The node panel opens on the right, showing all available connections and statement types.
 
-![Jira connection node expanded showing all available operations before selection](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Jira connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Enter `issue` in the **Search** box to filter operations.
 4. Select **Create issue** from the `jiraClient` group.
@@ -92,11 +116,23 @@ Configure the following parameters:
 
 > **Tip:** Replace `"PROJ"` with your actual Jira project key and update `summary` for your use case.
 
-![Jira Create issue operation configuration filled with all values](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Jira Create issue operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 Select **Save**. The canvas updates to show the completed automation flow with **Start → jira:post → Error Handler → End**.
 
-![Completed Jira automation flow](/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Jira automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/productivity-collaboration/jira/jira_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

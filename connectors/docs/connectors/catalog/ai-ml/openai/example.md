@@ -33,7 +33,13 @@ Add the OpenAI connector to your integration from the **Connections** panel.
 1. In the side-bar, expand the project tree and select **+** next to **Connections**.
 2. The **Add Connection** palette opens on the right.
 
-![OpenAI connector palette open with search field before any selection](/img/connectors/catalog/ai-ml/openai/openai_screenshot_01_palette.png)
+<ThemedImage
+    alt="OpenAI connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_01_palette.png'),
+    }}
+/>
 
 ## Configuring the OpenAI connection
 
@@ -53,13 +59,25 @@ Enter the connection details by binding the API token to a configurable variable
 - **Config** : The OpenAI connection configuration record; binds the `auth.token` sub-field to the `openaiApiKey` configurable variable
 - **Connection Name** : The name used to reference this connection on the canvas
 
-![OpenAI connection form fully filled with all parameters before saving](/img/connectors/catalog/ai-ml/openai/openai_screenshot_02_connection_filled.png)
+<ThemedImage
+    alt="OpenAI connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_02_connection_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_02_connection_filled.png'),
+    }}
+/>
 
 ### Step 3: Save the connection
 
 Select **Save Connection** to persist the connection. The canvas now shows the `openaiClient` connection node.
 
-![OpenAI Connections panel showing openaiClient entry after saving](/img/connectors/catalog/ai-ml/openai/openai_screenshot_03_connection_saved.png)
+<ThemedImage
+    alt="OpenAI Connections panel showing openaiClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_03_connection_saved.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_03_connection_saved.png'),
+    }}
+/>
 
 ### Step 4: Set actual values for your configurables
 
@@ -84,7 +102,13 @@ Select the `createChatCompletion` operation from the **openaiClient** connection
 1. Select the dashed placeholder on the canvas to open the node panel.
 2. Select **openaiClient** to expand its operations.
 
-![OpenAI connection node expanded showing all available operations before selection](/img/connectors/catalog/ai-ml/openai/openai_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="OpenAI connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Find **createChatCompletion** and select it.
 4. Select **Expression** mode for the **Payload** field and enter `{model: "gpt-4o", messages: [{role: "user", content: "Hello, OpenAI!"}]}`.
@@ -93,9 +117,21 @@ Select the `createChatCompletion` operation from the **openaiClient** connection
 - **Payload** : The chat completion request body, including the model name and the list of messages to send
 - **Result** : The variable name that stores the `CreateChatCompletionResponse` returned by the API
 
-![OpenAI createChatCompletion operation configuration filled with all values](/img/connectors/catalog/ai-ml/openai/openai_screenshot_05_operation_configured.png)
+<ThemedImage
+    alt="OpenAI createChatCompletion operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_05_operation_configured.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_05_operation_configured.png'),
+    }}
+/>
 
-![Completed OpenAI automation flow](/img/connectors/catalog/ai-ml/openai/openai_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed OpenAI automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/ai-ml/openai/openai_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

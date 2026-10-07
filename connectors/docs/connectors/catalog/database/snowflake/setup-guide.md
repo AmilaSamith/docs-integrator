@@ -15,17 +15,41 @@ This guide walks you through creating a Snowflake warehouse and database, and co
 1. Log in to your Snowflake account.
 2. Navigate to the **Warehouses** tab under the **Admin** section.
 
-   ![Navigate to warehouses](/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse.png)
+   <ThemedImage
+       alt="Navigate to warehouses"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse.png'),
+       }}
+   />
 
 3. Select **+ Warehouse** and enter a name and type for the new warehouse.
 
-   ![Create warehouse](/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse_2.png)
+   <ThemedImage
+       alt="Create warehouse"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse_2.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_warehouse_2.png'),
+       }}
+   />
 
 4. Optionally, set the warehouse as the default for your account by editing the profile settings.
 
-   ![Edit profile](/img/connectors/catalog/database/snowflake/setup/snokeflakes_user_profile.png)
+   <ThemedImage
+       alt="Edit profile"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snokeflakes_user_profile.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snokeflakes_user_profile.png'),
+       }}
+   />
 
-   ![Set default warehouse](/img/connectors/catalog/database/snowflake/setup/snowflakes_set_default_warehouse.png)
+   <ThemedImage
+       alt="Set default warehouse"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_set_default_warehouse.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_set_default_warehouse.png'),
+       }}
+   />
 
    :::note
    If you do not set a default warehouse, you must specify the warehouse name when creating a connection.
@@ -33,7 +57,13 @@ This guide walks you through creating a Snowflake warehouse and database, and co
 
 5. Navigate to the **Databases** tab under the **Data** section and select **+ Database** to create a new database.
 
-   ![Create database](/img/connectors/catalog/database/snowflake/setup/snowflakes_create_database.png)
+   <ThemedImage
+       alt="Create database"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_database.png'),
+           dark: useBaseUrl('/img/connectors/catalog/database/snowflake/setup/snowflakes_create_database.png'),
+       }}
+   />
 
 ## Step 2: Note your account identifier
 

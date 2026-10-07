@@ -30,7 +30,13 @@ flowchart LR
 ### Step 1: Open the connector palette
 
 Select the **Add Connection** button (or the **+** icon next to the **Connections** label on the canvas) to open the connector search palette.
-![HubSpot CRM Commerce Carts connector palette open before searching](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_01_palette.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Carts connector palette open before searching"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for the HubSpot CRM Commerce Carts connector
 
@@ -43,12 +49,24 @@ Enter `hubspot.crm.commerce.carts` in the search box and select the **ballerinax
 For each field shown in the **Configure HubSpot CRM Commerce Carts** form, navigate to the **Configurables** tab, create a new configurable with a descriptive camelCase name, and save to auto-inject it into the field.
 - **Config** : The connection configuration record containing the authentication credentials, using a configurable variable for the HubSpot private app token.
 
-![Connection form with all HubSpot CRM Commerce Carts parameters bound to configurables](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Connection form with all HubSpot CRM Commerce Carts parameters bound to configurables"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save** to persist the HubSpot CRM Commerce Carts connection. The connector node named `cartsClient` appears on the integration design canvas under **Connections**.
-![HubSpot CRM Commerce Carts connector saved and visible on the canvas](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Carts connector saved and visible on the canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -68,14 +86,26 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 1. Inside the automation body, select the **+** (Add Step) button on the edge between the **Start** node and the **Error Handler** node.
 2. Under **Connections** in the node panel, select the HubSpot CRM Commerce Carts connection node (`cartsClient`) to expand it and reveal all available operations.
 
-![HubSpot CRM Commerce Carts connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Carts connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **get** from the operations list, then fill in the operation fields:
 - **Limit** : The maximum number of cart records to return per page.
 - **Result Variable** : The variable name to store the API response.
 4. Select **Save** to add the operation step to the automation flow.
 
-![HubSpot CRM Commerce Carts get operation configured with all input values filled](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="HubSpot CRM Commerce Carts get operation configured with all input values filled"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 ### Step 8: Log the get result
 
@@ -84,7 +114,13 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 3. Set the **Msg** field to `Carts listing completed` in Text mode to log a confirmation message after the cart listing operation completes.
 4. Select **Save** to add the Log step to the flow.
 
-![Completed flow showing Automation entry point, get operation node, Log Info node, and Error Handler all connected on the canvas](/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed flow showing Automation entry point, get operation node, Log Info node, and Error Handler all connected on the canvas"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/crm-sales/hubspot.crm.commerce.carts/hubspot_crm_commerce_carts_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

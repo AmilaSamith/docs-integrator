@@ -34,7 +34,13 @@ flowchart LR
 
 In the left sidebar, select the **WSO2 Integrator** tab. Under your project, hover over **Connections** in the tree and select the **+** (Add Connection) button that appears to open the connector palette.
 
-![Email SMTP connector palette open with search field before any selection](/img/connectors/catalog/built-in/email/email_screenshot_01_palette.png)
+<ThemedImage
+    alt="Email SMTP connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Email SMTP connector
 
@@ -52,13 +58,25 @@ Bind each field to a configurable variable using the helper panel. For each fiel
 - **port**: SMTP port: switch to **Expression** mode first, then bind to an `int` configurable variable
 - **security** : Set to `SSL` from the dropdown
 
-![Email SMTP connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/email/email_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Email SMTP connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The form closes and the canvas shows the `emailSmtpclient` connection node.
 
-![Email SMTP Connections panel showing emailSmtpclient entry after saving](/img/connectors/catalog/built-in/email/email_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Email SMTP Connections panel showing emailSmtpclient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -79,7 +97,13 @@ From the **Design** canvas, select **+ Add Artifact**, then select **Automation*
 
 Select the **+** (add step) button between the **Start** node and the **Error Handler** to open the step panel. Under **Connections**, expand `emailSmtpclient` to reveal available operations.
 
-![Email SMTP connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/email/email_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Email SMTP connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Send Message** to open the operation configuration form. Switch the **Email** field to **Expression** mode and enter the email record with the following fields:
 
@@ -91,9 +115,21 @@ Select **Send Message** to open the operation configuration form. Switch the **E
 
 Select **Save** to add the step to the automation flow.
 
-![Email SMTP Send Message operation configuration filled with all values](/img/connectors/catalog/built-in/email/email_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Email SMTP Send Message operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed Email SMTP automation flow](/img/connectors/catalog/built-in/email/email_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Email SMTP automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

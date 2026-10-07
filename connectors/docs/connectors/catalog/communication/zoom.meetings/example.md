@@ -31,7 +31,13 @@ flowchart LR
 
 In the project tree, hover over **Connections** and select the **+** (Add Connection) button to open the **Add Connection** palette.
 
-![Zoom Meetings connector palette open with search field before any selection](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_01_palette.png)
+<ThemedImage
+    alt="Zoom Meetings connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Search for and select the Zoom meetings connector
 
@@ -52,13 +58,25 @@ Bind all authentication fields to configurable variables so credentials are neve
 - **auth.refreshToken** : The long-lived refresh token, bound to the `zoomRefreshToken` configurable variable
 - **auth.refreshUrl** : The Zoom token endpoint URL, bound to the `zoomRefreshUrl` configurable variable
 
-![Zoom Meetings connection form fully filled with all parameters before saving](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Zoom Meetings connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. The **meetingsClient** node appears on the design canvas confirming the connection was created.
 
-![Zoom Meetings Connections panel showing meetingsClient entry after saving](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="Zoom Meetings Connections panel showing meetingsClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -84,7 +102,13 @@ Select **Save Connection** to persist the connection. The **meetingsClient** nod
 1. Select the **+** button between **Start** and **Error Handler** to add a new step.
 2. Under **Connections** in the node panel, expand **meetingsClient** to reveal all available operations.
 
-![Zoom Meetings connection node expanded showing all available operations before selection](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Zoom Meetings connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **List meetings** to open its configuration panel.
 4. Fill in the operation fields:
@@ -92,11 +116,23 @@ Select **Save Connection** to persist the connection. The **meetingsClient** nod
 - **userId** : Enter `me` to return meetings for the currently authenticated user
 - **result** : Enter `meetingsList` as the variable name to hold the response
 
-![Zoom Meetings listMeetings operation configuration filled with all values](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="Zoom Meetings listMeetings operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_05_operation_filled.png'),
+    }}
+/>
 
 5. Select **Save** to add the step to the flow canvas.
 
-![Completed Zoom Meetings automation flow](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed Zoom Meetings automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

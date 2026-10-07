@@ -32,7 +32,13 @@ flowchart LR
 
 Select **Add Connection** in the **Connections** section.
 
-![Inventory connector palette open before selection](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-01-palette.png)
+<ThemedImage
+    alt="Inventory connector palette open before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-01-palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-01-palette.png'),
+    }}
+/>
 
 ### Step 2: Select the Inventory connector
 
@@ -47,13 +53,25 @@ Bind the SAP Business One session fields to configurable variables.
 
 - **Session** : Supplies the company database, user name, and password for a Service Layer session.
 
-![Inventory connection form with the session parameters bound before saving](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-02-connection-form.png)
+<ThemedImage
+    alt="Inventory connection form with the session parameters bound before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-02-connection-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-02-connection-form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** and verify that the connection appears in the **Connections** section.
 
-![Inventory connection visible after saving](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-03-connections-list.png)
+<ThemedImage
+    alt="Inventory connection visible after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-03-connections-list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-03-connections-list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -77,14 +95,26 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 1. Select **Add Step** in the automation flow.
 2. Expand **inventoryClient** to display its operations.
 
-![Inventory connection expanded to display operations before selecting List Items](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-04-operations-panel.png)
+<ThemedImage
+    alt="Inventory connection expanded to display operations before selecting List Items"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-04-operations-panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-04-operations-panel.png'),
+    }}
+/>
 
 3. Select **List Items**.
 4. Enter `inventoryItems` in **Result**.
 
 - **Result** : Names the variable that stores the returned items collection.
 
-![Inventory List Items operation with the result variable entered before saving](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-05-operation-form.png)
+<ThemedImage
+    alt="Inventory List Items operation with the result variable entered before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-05-operation-form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-05-operation-form.png'),
+    }}
+/>
 
 5. Select **Save**.
 
@@ -96,7 +126,13 @@ Select **Save Connection** and verify that the connection appears in the **Conne
 4. Enter `inventoryItems.toJsonString()` to log the returned inventory collection.
 5. Select **Save** and return to the visual flow.
 
-![Completed Inventory flow with List Items and result logging](/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-06-completed-flow.png)
+<ThemedImage
+    alt="Completed Inventory flow with List Items and result logging"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-06-completed-flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.businessone.inventory/sap-businessone-inventory-screenshot-06-completed-flow.png'),
+    }}
+/>
 
 ## Try it yourself
 

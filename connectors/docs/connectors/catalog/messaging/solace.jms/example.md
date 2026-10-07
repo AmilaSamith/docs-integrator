@@ -37,7 +37,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, select **+** next to **Connections** to open the **Add Connection** palette.
 2. Enter `solace.jms` in the search field.
 
-![Add Connection palette filtered to solace.jms, listing Jms MessageConsumer, Jms MessageProducer, and Jms Caller under ballerinax / solace.jms](/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Connection palette filtered to solace.jms, listing Jms MessageConsumer, Jms MessageProducer, and Jms Caller under ballerinax / solace.jms"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Select the **Jms MessageProducer** card.
 
@@ -50,7 +56,13 @@ For each field, open its helper panel, select the **Configurables** tab, select 
 - **Url** : The Solace broker URL in `smf://` format, bound to a configurable variable.
 - **Auth** : The authentication configuration; enter `{username: solaceJmsUsername, password: solaceJmsPassword}` in expression mode, referencing configurable variables for both fields.
 
-![Configure Jms MessageProducer form with the Url field bound to a configurable variable and the Auth field set to a username/password record](/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Configure Jms MessageProducer form with the Url field bound to a configurable variable and the Auth field set to a username/password record"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
@@ -76,7 +88,13 @@ Select **+** next to **Entry Points**, select **Automation**, and select **Creat
 
 Select **+** on the flow canvas, then expand `jmsMessageproducer` under **Connections** to display its operations: **Send**, **Commit**, **Rollback**, and **Close**.
 
-![Connections panel expanded to show the jmsMessageproducer operations Send, Commit, Rollback, and Close](/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Connections panel expanded to show the jmsMessageproducer operations Send, Commit, Rollback, and Close"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 #### Step 7: Configure the Send operation
 
@@ -85,13 +103,25 @@ Select **Send** to open the `jmsMessageproducer → send` form, then enter:
 - **Message** : A `jms:Message` record; set the `payload` field to `"Hello from Solace JMS!"`.
 - **Destination** (under **Advanced Configurations**) : `{topicName: solaceJmsTopicName}`.
 
-![Send operation form with the Message payload set and the Advanced Configurations Destination field set to a topicName expression](/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Send operation form with the Message payload set and the Advanced Configurations Destination field set to a topicName expression"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_05_operation_form.png'),
+    }}
+/>
 
 #### Step 8: Save the operation
 
 Select **Save**. The `jms : send` node connects between **Start** and **Error Handler** in the automation flow.
 
-![Completed automation flow with the jms : send node between Start and Error Handler](/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with the jms : send node between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_producer_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Try it yourself
 
@@ -134,7 +164,13 @@ flowchart LR
 1. In the WSO2 Integrator sidebar, select **+** next to **Connections** to open the **Add Connection** palette.
 2. Enter `solace.jms` in the search field.
 
-![Add Connection palette filtered to solace.jms, listing Jms MessageConsumer, Jms MessageProducer, and Jms Caller under ballerinax / solace.jms](/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_01_palette.png)
+<ThemedImage
+    alt="Add Connection palette filtered to solace.jms, listing Jms MessageConsumer, Jms MessageProducer, and Jms Caller under ballerinax / solace.jms"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_01_palette.png'),
+    }}
+/>
 
 3. Select the **Jms MessageConsumer** card.
 
@@ -146,7 +182,13 @@ flowchart LR
 - **Auth** : Enter `{username: solaceJmsUsername, password: solaceJmsPassword}` in expression mode, referencing configurable variables for both fields.
 - **Subscription Config** : Enter `{queueName: solaceJmsQueueName}` in expression mode, referencing a configurable variable for the queue name.
 
-![Configure Jms MessageConsumer form with the Auth field set to a username/password record](/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="Configure Jms MessageConsumer form with the Auth field set to a username/password record"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_02_connection_form.png'),
+    }}
+/>
 
 #### Step 3: Save the connection
 
@@ -172,7 +214,13 @@ Select **+** next to **Entry Points**, select **Automation**, and select **Creat
 
 Select **+** on the flow canvas, then expand `jmsMessageconsumer` under **Connections** to display its operations: **Receive**, **Receive No Wait**, **Ack**, **Commit**, **Rollback**, **Close**, and **Destination Name**.
 
-![Connections panel expanded to show the jmsMessageconsumer operations, including Receive, Ack, Commit, Rollback, and Destination Name](/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="Connections panel expanded to show the jmsMessageconsumer operations, including Receive, Ack, Commit, Rollback, and Destination Name"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 Select **Receive** to open the `jmsMessageconsumer → receive` form.
 
@@ -183,13 +231,25 @@ This operation has no required parameters. Enter the following optional values:
 - **Result** : The variable name to store the received message in.
 - **T** : A narrowed message type, for example, `record {|*jms:Message; T payload;|}`, to bind the payload to a specific type. Leave this as `jms:Message` to receive the raw message.
 
-![Receive operation form showing the Result variable name and the T type parameter set to jms:Message](/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_05_operation_form.png)
+<ThemedImage
+    alt="Receive operation form showing the Result variable name and the T type parameter set to jms:Message"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_05_operation_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_05_operation_form.png'),
+    }}
+/>
 
 #### Step 8: Save the operation and log the result
 
 Select **Save** to add the `jms : receive` node to the flow.
 
-![Completed automation flow with the jms : receive node between Start and Error Handler](/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed automation flow with the jms : receive node between Start and Error Handler"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_consumer_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 Add a **Log Info** step after it, logging the received message.
 
@@ -248,7 +308,13 @@ Scroll down and configure the remaining fields:
 - **Queue Name** : The queue to consume messages from, bound to a configurable variable. The queue must already exist on the broker.
 - **Acknowledgement Mode** : Select **Client Acknowledge** so the handler can acknowledge each message explicitly.
 
-![Create Solace (JMS) Event Integration form showing the Listener Name, Broker URL, Message VPN, Basic Authentication, Queue Name, and Acknowledgement Mode fields](/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_02_config_form.png)
+<ThemedImage
+    alt="Create Solace (JMS) Event Integration form showing the Listener Name, Broker URL, Message VPN, Basic Authentication, Queue Name, and Acknowledgement Mode fields"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_02_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_02_config_form.png'),
+    }}
+/>
 
 #### Step 3: Set actual values for your configurations
 
@@ -274,7 +340,13 @@ Select **+ Add Handler**, then select **onMessage**. In the **New onMessage Conf
 
 Add a **Log Info** step to the flow, setting its **Msg** field to `message.toJsonString()`, then add an **Ack** step that calls `ack` on the `caller` connection to acknowledge the message.
 
-![onMessage flow canvas with a log : printInfo step followed by a jms : ack step calling the caller connection](/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_05_handler_flow.png)
+<ThemedImage
+    alt="onMessage flow canvas with a log : printInfo step followed by a jms : ack step calling the caller connection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_05_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_05_handler_flow.png'),
+    }}
+/>
 
 Select **Save**, then select the back arrow to return to the Service view.
 
@@ -282,7 +354,13 @@ Select **Save**, then select the back arrow to return to the Service view.
 
 The design canvas now shows `jmsListener` connected to the `jms:Service`, with the `onMessage` handler registered.
 
-![Design canvas showing jmsListener connected to jms:Service with the onMessage handler registered](/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Design canvas showing jmsListener connected to jms:Service with the onMessage handler registered"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/solace.jms/solace_jms_trigger_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ### Running the integration
 

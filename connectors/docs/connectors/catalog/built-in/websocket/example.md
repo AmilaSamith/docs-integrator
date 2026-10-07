@@ -30,7 +30,13 @@ flowchart LR
 
 In the WSO2 Integrator explorer panel, expand your project and select the **+** button next to **Connections** to open the **Add Connection** palette.
 
-![WebSocket connector palette open with search field before any selection](/img/connectors/catalog/built-in/websocket/websocket_screenshot_01_palette.png)
+<ThemedImage
+    alt="WebSocket connector palette open with search field before any selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_01_palette.png'),
+    }}
+/>
 
 ### Step 2: Select the WebSocket connector
 
@@ -46,13 +52,25 @@ In the **Configure Websocket** form, bind the required field to a configurable v
 - **connectionName** : Leave the pre-populated value `websocketClient` as-is.
 - **url** : Select the configurable helper, add a new configurable named `websocketServiceUrl` of type `string`, and confirm the field is bound to that variable.
 
-![WebSocket connection form fully filled with all parameters before saving](/img/connectors/catalog/built-in/websocket/websocket_screenshot_02_connection_form.png)
+<ThemedImage
+    alt="WebSocket connection form fully filled with all parameters before saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_02_connection_form.png'),
+    }}
+/>
 
 ### Step 4: Save the connection
 
 Select **Save Connection** to persist the connection. Confirm that `websocketClient` now appears in the **Connections** panel.
 
-![WebSocket Connections panel showing websocketClient entry after saving](/img/connectors/catalog/built-in/websocket/websocket_screenshot_03_connections_list.png)
+<ThemedImage
+    alt="WebSocket Connections panel showing websocketClient entry after saving"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_03_connections_list.png'),
+    }}
+/>
 
 ### Step 5: Set actual values for your configurables
 
@@ -72,7 +90,13 @@ In the WSO2 Integrator explorer, select **Add Artifact**, choose **Automation** 
 1. On the Automation canvas, select the empty placeholder between **Start** and **Error Handler** to open the node panel.
 2. Under **Connections**, expand **websocketClient** to reveal its available operations.
 
-![WebSocket connection node expanded showing all available operations before selection](/img/connectors/catalog/built-in/websocket/websocket_screenshot_04_operations_panel.png)
+<ThemedImage
+    alt="WebSocket connection node expanded showing all available operations before selection"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_04_operations_panel.png'),
+    }}
+/>
 
 3. Select **Write Text Message** (`writeTextMessage`) from the operations list and fill in the parameter:
 
@@ -80,9 +104,21 @@ In the WSO2 Integrator explorer, select **Add Artifact**, choose **Automation** 
 
 4. Select **Save** to add the step to the Automation flow.
 
-![WebSocket writeTextMessage operation configuration filled with all values](/img/connectors/catalog/built-in/websocket/websocket_screenshot_05_operation_filled.png)
+<ThemedImage
+    alt="WebSocket writeTextMessage operation configuration filled with all values"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_05_operation_filled.png'),
+    }}
+/>
 
-![Completed WebSocket automation flow](/img/connectors/catalog/built-in/websocket/websocket_screenshot_06_completed_flow.png)
+<ThemedImage
+    alt="Completed WebSocket automation flow"
+    sources={{
+        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_06_completed_flow.png'),
+    }}
+/>
 
 ## Try it yourself
 
