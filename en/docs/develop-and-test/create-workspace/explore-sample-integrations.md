@@ -33,8 +33,8 @@ The **Browse Samples** view opens with the prompt `Start quickly by downloading 
 <ThemedImage
     alt="Browse Samples gallery"
     sources={{
-        light: useBaseUrl('/img/explore-samples/browse-samples.png'),
-        dark: useBaseUrl('/img/explore-samples/browse-samples.png'),
+        light: useBaseUrl('/img/explore-samples/browse-samples-v5.1.png'),
+        dark: useBaseUrl('/img/explore-samples/browse-samples-v5.1.png'),
     }}
 />
 
