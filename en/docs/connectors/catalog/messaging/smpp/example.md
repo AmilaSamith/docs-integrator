@@ -102,7 +102,7 @@ Select the **+** drop zone between **Start** and **Error Handler** on the canvas
 
 Select **Submit** to open the **smppClient → submit** configuration form, then configure the following fields:
 
-- **Sms** : The message to send. Switch the field to **Expression** mode and enter a `TextSms` record that addresses the message to the `destinationNumber` configurable and requests a delivery receipt: `{destinationAddress: destinationNumber, shortMessage: "Hello from WSO2 Integrator!", registeredDelivery: smpp:ON_SUCCESS_OR_FAILURE}`
+- **Sms** : The message to send. Open the helper panel, select **Configurables**, select **New Configurable**, and create `destinationNumber` (type `string`) for the recipient's number. Then switch the field to **Expression** mode and enter a `TextSms` record that addresses the message to that configurable and requests a delivery receipt: `{destinationAddress: destinationNumber, shortMessage: "Hello from WSO2 Integrator!", registeredDelivery: smpp:ON_SUCCESS_OR_FAILURE}`
 - **Result** : Enter `result`; the SMSC's message ID is returned in `result.messageId`
 
 ![Submit operation form with the Sms record expression entered and the result variable named, before saving](/img/connectors/catalog/messaging/smpp/ballerina_smpp_screenshot_05_operation_form.png)

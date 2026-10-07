@@ -42,6 +42,9 @@ The `host`, `systemId`, and `password` used to bind are required parameters of t
 ```ballerina
 import ballerina/smpp;
 
+configurable string systemId = ?;
+configurable string password = ?;
+
 listener smpp:Listener smsListener = check new ("smsc.example.com", systemId, password,
         port = 2775, bindType = smpp:RECEIVER);
 ```
@@ -69,6 +72,9 @@ In `SYNC` response mode (the default), an error returned from `onDeliverSm`/`onD
 ```ballerina
 import ballerina/io;
 import ballerina/smpp;
+
+configurable string systemId = ?;
+configurable string password = ?;
 
 listener smpp:Listener smsListener = check new ("smsc.example.com", systemId, password,
         port = 2775, bindType = smpp:RECEIVER);
@@ -118,13 +124,19 @@ The records below are what the listener hands to your service callbacks.
 | `deliveryReceipt` | <code>boolean</code> | `true` when this PDU is an SMSC delivery receipt rather than a mobile-originated message |
 | `receiptedMessageId` | <code>string?</code> | The guaranteed correlation key between a delivery receipt and a submit's `messageId` |
 | `receipt` | <code>DeliveryReceipt?</code> | The parsed delivery receipt, when `deliveryReceipt` is `true` and the body could be parsed |
+| `properties` | <code>map&lt;anydata&gt;</code> | Raw PDU attributes for callers that need them: `dataCoding`, `esmClass`, `udhi`, and the source/destination `TypeOfNumber` and `NumberingPlanIndicator` values |
 
 ### DeliveryReceipt
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `finalStatus` | <code>DeliveryReceiptStatus</code> | The final delivery state |
-| `submitDate` | <code>string</code> | Original submission time (`yyMMddHHmm`, no timezone) |
-| `doneDate` | <code>string</code> | Final-state time (`yyMMddHHmm`, no timezone) |
-| `errorCode` | <code>string</code> | A network/SMSC-specific error code |
-| `text` | <code>string</code> | A short echo of the original message |
+| `id` | <code>string?</code> | The SMSC message ID quoted in the receipt text (`id:`); prefer `Sms.receiptedMessageId` for correlation |
+| `submitted` | <code>int?</code> | Number of messages originally submitted (`sub:`) |
+| `delivered` | <code>int?</code> | Number of messages delivered (`dlvrd:`) |
+| `finalStatus` | <code>DeliveryReceiptStatus?</code> | The final delivery state (`stat:`) |
+| `submitDate` | <code>string?</code> | Original submission time (`yyMMddHHmm`, no timezone) |
+| `doneDate` | <code>string?</code> | Final-state time (`yyMMddHHmm`, no timezone) |
+| `errorCode` | <code>string?</code> | A network/SMSC-specific error code (`err:`) |
+| `text` | <code>string?</code> | A short echo of the original message (`text:`) |
+
+Every `DeliveryReceipt` field is optional: SMSCs vary in which parts of the Appendix B receipt format they include, and a field that was not present in the receipt text is absent rather than defaulted.
