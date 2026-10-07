@@ -38,6 +38,11 @@ New to WSO2 Integration Platform? Start here: install WSO2 Integrator, learn the
   </div>
 </PaletteCard>
 
+<PaletteCard icon="template" href="/get-started/prebuilt-integrations">
+  <h3 class="palette-card-title">Try Pre-built Integrations</h3>
+  <p class="palette-card-desc">Skip the build. Download a ready-made integration between two applications, configure it, and run it in minutes.</p>
+</PaletteCard>
+
 </PaletteGrid>
 
 ## What's next
@@ -45,3 +50,4 @@ New to WSO2 Integration Platform? Start here: install WSO2 Integrator, learn the
 - [Setup](setup/setup.md) — Install WSO2 Integrator and sign in.
 - [Concepts](concepts/concepts.mdx) — Learn the vocabulary before you dive into the docs.
 - [Build an Integration as API](quickstarts/build-integration-api.md) — The fastest way to see WSO2 Integrator in action.
+- [Try prebuilt integrations](prebuilt-integrations.md) — Download a ready-made integration without building anything.
