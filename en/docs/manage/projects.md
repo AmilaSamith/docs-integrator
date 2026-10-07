@@ -44,7 +44,24 @@ Removing a project is permanent. All history within the project is deleted and c
 
 1. From the project home, go to **Admin** > **Settings**.
 2. Click **Remove Project** on the right side of the page.
-3. Enter the project name to confirm, then click **Remove**.
+
+    <ThemedImage
+        alt="Remove Project button on the project settings page"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/projects/delete-project-button.png'),
+            dark: useBaseUrl('/img/manage/cloud/projects/delete-project-button.png'),
+        }}
+    />
+
+3. Enter the project name to confirm, then click **Delete**.
+
+    <ThemedImage
+        alt="Confirmation dialog for removing a project"
+        sources={{
+            light: useBaseUrl('/img/manage/cloud/projects/delete-project-confirm.png'),
+            dark: useBaseUrl('/img/manage/cloud/projects/delete-project-confirm.png'),
+        }}
+    />
 
 The project and all its contents are permanently deleted.
 
