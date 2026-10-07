@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-title: Import a Project to WSO2 Cloud
+title: Import a Project
 description: Import an existing WSO2 Integrator project from a Git repository into WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, import, project, git, github, gitlab, azure devops, deploy]
-slug: /deploy-and-run/deploy-to-wso2-cloud/import-project
+slug: /develop-and-test/create-workspace/import-a-project
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -11,10 +11,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Import a Project
 
-If you have an existing project created with the WSO2 Integrator editor in a Git repository, you can import it directly into WSO2 Cloud. During import, you configure each integration in the project and WSO2 Cloud creates them all at once.
+If you already have a project created with the WSO2 Integrator editor in a Git repository, import it into WSO2 Cloud to continue working on it. During import, you configure each integration in the project and WSO2 Cloud creates them all at once.
 
 :::tip
-If you don't have an existing project and would like to get started on a new project, see [Managing projects](../../manage/projects.md) on WSO2 Cloud.
+If you don't have an existing project and would like to get started on a new project, see [Create a project](create-a-project.md).
 :::
 
 :::info Prerequisites
@@ -25,19 +25,21 @@ If you don't have an existing project and would like to get started on a new pro
 ## Connect your Git provider
 
 1. Sign in to [WSO2 Cloud](https://console.devant.dev).
-2. Navigate to the organization overview page by clicking on the organization name at the top. The organization overview lists all your projects.
+2. Navigate to the organization overview page by clicking the organization name at the top. The organization overview lists all your projects.
+3. Click **Import** to import an existing WSO2 Integrator project.
+
     <ThemedImage
-        alt="Organization Overview"
+        alt="Import button on the organization overview page"
         sources={{
-            light: useBaseUrl('/img/deploy/cloud/import-project/organization-overview.png'),
-            dark: useBaseUrl('/img/deploy/cloud/import-project/organization-overview.png'),
+            light: useBaseUrl('/img/import-project/import-project-saas-button.png'),
+            dark: useBaseUrl('/img/import-project/import-project-saas-button.png'),
         }}
     />
-3. Click **Import** to import an existing WSO2 Integrator project.
+
 4. Select your Git provider and complete the authorization flow in the browser, then return to WSO2 Cloud.
 
     :::warning
-    One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git provider](connect-git-provider.md) for instructions.
+    One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git provider](../../deploy-and-run/deploy-to-wso2-cloud/connect-git-provider.md) for instructions.
     :::
 
 ## Configure and import the project
@@ -50,8 +52,8 @@ If you don't have an existing project and would like to get started on a new pro
     <ThemedImage
         alt="Import Project"
         sources={{
-            light: useBaseUrl('/img/deploy/cloud/import-project/import-project.png'),
-            dark: useBaseUrl('/img/deploy/cloud/import-project/import-project.png'),
+            light: useBaseUrl('/img/import-project/import-project-saas-form.png'),
+            dark: useBaseUrl('/img/import-project/import-project-saas-form.png'),
         }}
     />
 6. For each integration, set the integration name, an optional description, and the integration type.
@@ -59,8 +61,8 @@ If you don't have an existing project and would like to get started on a new pro
     <ThemedImage
         alt="Configure Integration"
         sources={{
-            light: useBaseUrl('/img/deploy/cloud/import-project/configure-integration.png'),
-            dark: useBaseUrl('/img/deploy/cloud/import-project/configure-integration.png'),
+            light: useBaseUrl('/img/import-project/import-project-saas-integration-config.png'),
+            dark: useBaseUrl('/img/import-project/import-project-saas-integration-config.png'),
         }}
     />
 8. After configuring all integrations, click **Import**.
@@ -70,15 +72,16 @@ WSO2 Cloud creates all the integrations and navigates you to the newly created p
 <ThemedImage
     alt="Project Home"
     sources={{
-        light: useBaseUrl('/img/deploy/cloud/import-project/project-home.png'),
-        dark: useBaseUrl('/img/deploy/cloud/import-project/project-home.png'),
+        light: useBaseUrl('/img/import-project/import-project-saas-project-home.png'),
+        dark: useBaseUrl('/img/import-project/import-project-saas-project-home.png'),
     }}
 />
 
 ## What's next
 
+- [Import an integration](import-an-integration.md) — Add a single integration from a Git repository to a project.
 - [View and manage integrations](../../manage/integrations/integrations.md) — Inspect build status, deployment status, and manage the lifecycle of your deployed integrations.
-- [View and manage projects](../../manage/projects.md) — Create, view, edit, and delete projects on WSO2 Cloud.
+- [Manage projects](../../manage/projects.md) — View, edit, and delete projects on WSO2 Cloud.
 - [Runtime configurations](../../manage/configurations/runtime-configurations.md) — Set configurable values per environment and manage reusable configuration groups.
 - [Security configurations](../../manage/configurations/security-configurations.md) — Secure your integration endpoints with API Key or OAuth2 authentication.
 - [Endpoint configurations](../../manage/configurations/endpoint-configurations.md) — Control endpoint visibility levels for integrations deployed as Integration as APIs.

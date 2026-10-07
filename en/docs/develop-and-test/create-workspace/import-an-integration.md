@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
-title: Import an Integration to WSO2 Cloud
+title: Import an Integration
 description: Import an integration from a Git repository into WSO2 Cloud and deploy it to the Development environment.
 keywords: [wso2 integrator, wso2 cloud, import, git, github, gitlab, azure devops, deploy]
-slug: /deploy-and-run/deploy-to-wso2-cloud/import-integration
+slug: /develop-and-test/create-workspace/import-an-integration
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -29,13 +29,13 @@ If your integration is already in a Git repository, you can import it directly i
     <ThemedImage
         alt="Project Home in WSO2 Cloud"
         sources={{
-            light: useBaseUrl('/img/deploy/cloud/import-integration/project-home.png'),
-            dark: useBaseUrl('/img/deploy/cloud/import-integration/project-home.png'),
+            light: useBaseUrl('/img/create-project/create-project-saas-landing.png'),
+            dark: useBaseUrl('/img/create-project/create-project-saas-landing.png'),
         }}
     />
 
     :::warning
-    One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git provider](connect-git-provider.md) for instructions.
+    One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git provider](../../deploy-and-run/deploy-to-wso2-cloud/connect-git-provider.md) for instructions.
     :::
 
 3. Complete the authorization flow in the browser and return to WSO2 Cloud.
@@ -52,14 +52,16 @@ If your integration is already in a Git repository, you can import it directly i
     <ThemedImage
         alt="Import Integration"
         sources={{
-            light: useBaseUrl('/img/deploy/cloud/import-integration/import-integration.png'),
-            dark: useBaseUrl('/img/deploy/cloud/import-integration/import-integration.png'),
+            light: useBaseUrl('/img/import-project/import-integration-saas-form.png'),
+            dark: useBaseUrl('/img/import-project/import-integration-saas-form.png'),
         }}
     />
 
 WSO2 Cloud starts the build immediately. Once the build completes, the integration is automatically deployed to the **Development** environment.
 
 ## What's next
+
+- [Import a project](import-a-project.md) — Bring a whole project, with several integrations, into WSO2 Cloud at once.
 
 - [View and manage integrations](../../manage/integrations/integrations.md) — Inspect build status, deployment status, and manage the lifecycle of your deployed integrations.
 - [Runtime configurations](../../manage/configurations/runtime-configurations.md) — Set configurable values per environment and manage reusable configuration groups.
