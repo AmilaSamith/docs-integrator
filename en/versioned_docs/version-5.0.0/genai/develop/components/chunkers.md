@@ -55,9 +55,13 @@ For plain text. Begins splitting using the chosen strategy and recursively falls
 
 ### Create form
 
-![Create Chunker form for Generic Recursive. Header reads 'Initializes a new instance of the GenericRecursiveChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default PARAGRAPH), Chunker Name (default aiGenericrecursivechunker), Result Type (locked to ai:GenericRecursiveChunker). Save button.](/img/genai/develop/components/chunkers/02-generic-recursive-basic.png)
+![Create Chunker form for Generic Recursive showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiGenericrecursivechunker, Result Type ai:GenericRecursiveChunker.](/img/genai/develop/components/chunkers/02-generic-recursive-basic.png)
 
 No required fields. Sensible defaults work for most prose.
+
+### Advanced configurations
+
+![Generic Recursive Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default PARAGRAPH).](/img/genai/develop/components/chunkers/03-generic-recursive-advanced.png)
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -83,9 +87,13 @@ Header-aware chunker for Markdown. Starts at heading level `##` and walks down b
 
 ### Create form
 
-![Create Chunker form for Markdown. Header reads 'Initializes a new instance of the MarkdownChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default MARKDOWN_HEADER), Chunker Name (default aiMarkdownchunker), Result Type (locked to ai:MarkdownChunker). Save button.](/img/genai/develop/components/chunkers/03-markdown-basic.png)
+![Create Chunker form for Markdown showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiMarkdownchunker, Result Type ai:MarkdownChunker.](/img/genai/develop/components/chunkers/04-markdown-basic.png)
 
 No required fields.
+
+### Advanced configurations
+
+![Markdown Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default MARKDOWN_HEADER).](/img/genai/develop/components/chunkers/05-markdown-advanced.png)
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
@@ -108,9 +116,13 @@ Tag-aware chunker for HTML. Starts at heading tags and falls back through paragr
 
 ### Create form
 
-![Create Chunker form for HTML. Header reads 'Initializes a new instance of the HtmlChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default HTML_HEADER), Chunker Name (default aiHtmlchunker), Result Type (locked to ai:HtmlChunker). Save button.](/img/genai/develop/components/chunkers/04-html-basic.png)
+![Create Chunker form for HTML showing the banner 'This operation has no required parameters. Optional settings can be configured below.' Advanced Configurations Expand link, Chunker Name aiHtmlchunker, Result Type ai:HtmlChunker.](/img/genai/develop/components/chunkers/06-html-basic.png)
 
 No required fields.
+
+### Advanced configurations
+
+![HTML Chunker Create form with Advanced Configurations expanded showing Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default HTML_HEADER).](/img/genai/develop/components/chunkers/07-html-advanced.png)
 
 | Field | Default | Available values | What it controls |
 |---|---|---|---|
