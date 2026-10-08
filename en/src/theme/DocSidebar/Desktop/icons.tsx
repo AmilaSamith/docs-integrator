@@ -330,6 +330,7 @@ const ICONS_BY_LABEL: Record<string, () => ReactNode> = {
   manage: ManageIcon,
   migrate: MigrateIcon,
   'integration control plane': IntegrationControlPlaneIcon,
+  'integration control plane (icp)': IntegrationControlPlaneIcon,
   guides: GuidesIcon,
   reference: ReferenceIcon,
   'connector catalog': ConnectorCatalogIcon,
