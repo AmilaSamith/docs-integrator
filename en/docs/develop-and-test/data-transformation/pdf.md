@@ -291,16 +291,26 @@ Build an HTTP service that renders a parameterized template into a PDF and retur
 
 2. **Configure the response**: Open the **Responses** tab on the resource. Edit the success response (click the pencil icon) and pick **Dynamic - Response** from the **Status Code** dropdown. This lets the resource return any `http:Response`, which is required to carry the binary PDF payload.
 
-3. **Add a Function Call step to build the HTML**: Click **+** and select **Call Function**. Call your template function — for example, `buildInvoiceHtml(customer, amount, dueDate)`. 
+3. **Add a Declare Variable step for the HTML**: Click **+** and, under **Statement**, select **Declare Variable**. Set the type to `string` and the name to `html`. Switch the toggle from **Record** to **Expression** and enter the HTML as a Ballerina template literal (`` string `...` ``), interpolating the query parameters directly into the markup:
 
-- The function won't exist yet, so create it from the picker: expand **Project**, select **Create Function**, and define it using the signature shown in the Ballerina Code tab. Assign the result to a `string` variable named `html`.
+   ```
+   string `<!DOCTYPE html>
+   <html>
+     <body style="font-family: 'Liberation Sans'; padding: 24px;">
+       <h1>Invoice</h1>
+       <p>Customer: ${customer}</p>
+       <p>Amount due: $${amount}</p>
+       <p>Due by: ${dueDate}</p>
+     </body>
+   </html>`
+   ```
 
-4. **Add a Function Call step for rendering**: Click **+** and select **Call Function**. Call `pdf:parseHtml(html)` and assign the result to `pdfBytes`.
+4. **Add a Function Call step for rendering**: Click **+** and select **Call Function**. Call `parseHtml(html)` and assign the result to `pdfBytes`.
 
-5. **Build the response**: Add the following three steps in order inside the flow:
+5. **Build the response**: Add the following steps in order inside the flow:
    - **Declare Variable** with type `http:Response`, name `response`, and expression `new`.
-   - **Call Function** under **http** calling `response.setBinaryPayload(pdfBytes)`.
-   - **Call Function** under **http** calling `response.setContentType("application/pdf")`.
+   - **Declare Variable** with type `()`, name `payload`, and expression `response.setBinaryPayload(pdfBytes)`.
+   - **Declare Variable** with type `error?`, name `contentType`, and expression `response.setContentType("application/pdf")`.
 
 6. **Return the response**: Click **+** and, under **Control**, select **Return**. Set the return value to `response`.
 
