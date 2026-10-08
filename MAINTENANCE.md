@@ -58,9 +58,23 @@ One authored spot (`main`), physically duplicated into every product
 branch — but only via automation, never by hand:
 
 - Theme/chrome (`en/src/theme`, `en/src/theme-shared`, `en/src/css/custom.css`,
-  `en/static/img`, `SiteNav`/`TabAwareToc`/`ProductDocsLinks`/`SidebarProductHeader`,
-  the markdown-export plugin) and governance docs (this file,
-  `CONTRIBUTING.md`, `CODEOWNERS`) are edited only on `main`.
+  `en/static/img`, `SiteNav`/`TabAwareToc`/`ProductDocsLinks`/`SidebarProductHeader`/
+  `ExploreDropdown`, the shared component library (`PaletteCard`/`PaletteIcon`,
+  `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `ArtifactPicker`),
+  ConnectorCatalog's styling/filtering (not its own `index.tsx`, which stays
+  per-branch), the markdown-export plugin) and governance docs (this file,
+  `CONTRIBUTING.md`, `HOW_TO_WRITE_A_GUIDE.md`, `UI_UX_GUIDELINES.md`,
+  `CODEOWNERS`) are edited only on `main`. This is the full inventory of
+  what's mechanically synced -- see `sync-theme.yaml`'s own `SHARED_PATHS`
+  for the exact, authoritative path list; keep this bullet in sync with it
+  by hand when either changes.
+
+  A synced component only does something on a given branch if that
+  branch's own `docusaurus.config.ts` also registers it (config itself is
+  deliberately NOT synced, see below) and its docs actually use it --
+  e.g. `GuidesCatalog`/`ArtifactPicker` render nothing on a branch whose
+  content doesn't reference them yet, even once the component files
+  themselves land there via sync.
 - `sync-theme.yaml` (lives on `main` only) opens a bot PR into each
   product branch whenever these paths change on `main`.
 - Physical duplication is unavoidable, not a compromise: each product
@@ -123,12 +137,16 @@ workflow against an older tag.
 | Where | Change |
 |---|---|
 | New branch | Create `wso2-<product>` from `main` |
-| `staging_sync.yaml` | Add the branch to the trigger list and to the `case` statement's `BASE_URL` lookup |
-| `scripts/preview-all-sites.mjs` `SITES` map | Add an entry, same shape as the existing three |
-| `en/src/components/SidebarProductHeader` `PRODUCTS` map | Add label/description/icon/href so it appears in the product switcher |
+| `staging_sync.yaml` | Add the branch to the trigger list, add a case to the `case` statement's `BASE_URL` lookup with its **own subpath** -- e.g. `/integration-platform/docs/<product>/`, the exact same pattern `saas` (`/saas/`) and `wso2-integrator` (`/integrator/`) already use -- **and add its own `Deploy <product>` step** (copy an existing one, give it its own `destination_dir` matching that subpath). Skipping the deploy step is the easy mistake: the branch still builds fine, it just never gets published anywhere. Every product gets its own subpath; none of them owns the bare family root (that's a static redirect stub, `root-redirect/index.html`, saas-only). Full worked example: `docs/workflows/workflows.md`'s "How to configure its path". |
+| `scripts/preview-all-sites.mjs` `SITES` map | Add an entry, same shape as the existing three (`baseUrl`/`mergeSubdir` following that same subpath) |
+| `en/src/components/SidebarProductHeader`'s `ProductKey` type, `PRODUCTS` map, `PRODUCT_ORDER` array, and `detectCurrentProduct()` | Add the new key to the `ProductKey` union first -- `tsc` then won't pass until every `Record<ProductKey, ...>` map has a matching entry, including `ReportIssueButton`'s below. Then add label/description/icon/`path` to `PRODUCTS`; add the key to `PRODUCT_ORDER` too (a plain `ProductKey[]`, **not** exhaustiveness-checked -- miss this and the build still passes, the product just silently never appears in the switcher dropdown); and add a matching `baseUrl.includes('/<product>/')` branch to `detectCurrentProduct()`. Full worked example: `docs/workflows/workflows.md`'s "How to configure its path". |
+| `en/src/components/ReportIssueButton` `ISSUE_CHOOSER_URLS` map | Add the new product's own issue-tracker repo (`.../issues/new/choose`), keyed the same `ProductKey` as `SidebarProductHeader`'s `PRODUCTS` map (reuses its exported `detectCurrentProduct()`, not duplicated) -- this file is wholesale-shared, so the repo can't be a single constant. `tsc` won't pass until this map has an entry either. Full worked example: `docs/workflows/workflows.md`'s "How to configure its issue-tracker URL". |
+| `en/src/theme/DocSidebar/Desktop/icons.tsx` `ICONS_BY_LABEL` | Add an entry for each of your own top-level category labels, so the collapsed desktop sidebar's icon rail shows a real icon instead of the generic fallback dot -- see "How to add a sidebar category icon" in `main`'s `docs/section-1/sub-section-1/sample-page.md` for the full mechanism |
+| `en/src/pages/index.tsx` | Replace the placeholder `sections`/`quickLinks` arrays with your own top-level sections, and customize the hero badge/CTA -- see `main`'s `docs/homepage/homepage.md` for what lives where, including the search bar |
 | `sync-theme.yaml`'s matrix (on `main`) | Add the branch so it receives the shared theme |
 | This file's branch table, and `CONTRIBUTING.md`'s branch table + Section Ownership | Add the row |
 | `.github/workflows/shared-content-guard.yaml` | Add if the product will also consume synced shared content from `wso2-integrator` |
+| Versioning | If the new product needs release-versioned docs (most self-hosted/on-prem products do; SaaS-style continuously-deployed ones usually don't) -- set it up the same way `wso2-integrator` already is: mark it `Yes` in this file's and `CONTRIBUTING.md`'s branch tables, then once there's a real first release, run `npm run docusaurus docs:version X.Y.Z` (from `en/`) to freeze `docs/` into `versioned_docs/version-X.Y.Z/` + `versioned_sidebars/` and generate `versions.json` -- see "I'm cutting a new wso2-integrator release version" in `CONTRIBUTING.md` for the full step-by-step. The version pill above the sidebar and the `/versions` page pick this up automatically once `versions.json` exists, no further theme/config changes needed. |
 
 `sync-theme.yaml`'s own header comment already anticipated this exact
 addition (*"e.g. wso2-agent-builder once un-parked"*) — this checklist
