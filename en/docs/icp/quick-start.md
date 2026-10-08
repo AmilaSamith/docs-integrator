@@ -6,6 +6,9 @@ slug: /icp/quick-start
 sidebar_position: 1
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Get Started with ICP
 
 This guide walks you through connecting a running Ballerina project to ICP, enabling observability, and configuring access control. By the end, you will have a project and integration created in ICP, a Ballerina runtime connected and sending heartbeats, and optionally centralized logs, metrics, and access control configured.
@@ -18,12 +21,18 @@ This guide walks you through connecting a running Ballerina project to ICP, enab
 
 :::
 
-To begin, start ICP from WSO2 Integrator. The ICP console opens in your browser at `https://localhost:9446`. Sign in with the default credentials (username `admin`, password `admin`).
+For local development, start ICP from WSO2 Integrator. The ICP console opens in your browser at `https://localhost:9446`. Sign in with the default credentials (username `admin`, password `admin`).
 
-![ICP sign-in page](/img/icp/quick-start/sign-in.png)
+<ThemedImage
+    alt="ICP sign-in page"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/sign-in.png'),
+        dark: useBaseUrl('/img/icp/quick-start/sign-in.png'),
+    }}
+/>
 
 :::caution Security Recommendation
-Change the default `admin` password before using ICP in any non-evaluation environment. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**.
+Change the default `admin` password before using ICP in production. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**.
 :::
 
 ## 1. Create a project
@@ -32,11 +41,23 @@ Projects group related integrations. Every integration belongs to exactly one pr
 
 1. On the organization home, click **+ Create Project**.
 
-   ![All Projects page with the Create Project button highlighted](/img/icp/quick-start/create-project-button.png)
+   <ThemedImage
+       alt="All Projects page with the Create Project button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-project-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-project-button.png'),
+       }}
+   />
 
 2. Enter a **Display Name** (e.g. `My Project`). The name slug is auto-generated.
 
-   ![Create a Project form with Display Name set to My Project](/img/icp/quick-start/create-project-form.png)
+   <ThemedImage
+       alt="Create a Project form with Display Name set to My Project"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-project-form.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-project-form.png'),
+       }}
+   />
 
 3. Click **Create**.
 
@@ -52,7 +73,13 @@ For full project management options, see [Manage projects](manage-projects.md).
 
 1. On the project home page, click **+ Create Integration**.
 
-   ![Project home page with the Create Integration button highlighted](/img/icp/quick-start/create-integration-button.png)
+   <ThemedImage
+       alt="Project home page with the Create Integration button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-integration-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-integration-button.png'),
+       }}
+   />
 
 2. Enter a **Display Name** (e.g. `My Integration`).
 
@@ -83,7 +110,13 @@ For full project management options, see [Manage projects](manage-projects.md).
      </tbody>
    </table>
 
-   ![Create New Integration form with Technology and Integration Type options](/img/icp/quick-start/create-new-integration-form.png)
+   <ThemedImage
+       alt="Create New Integration form with Technology and Integration Type options"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-new-integration-form.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-new-integration-form.png'),
+       }}
+   />
 
 5. Click **Create**.
 
@@ -93,7 +126,7 @@ For full integration management options, see [Manage integrations](manage-integr
 
 ## 3. Connect a runtime
 
-After creating the integration, connect your Ballerina runtime to it so ICP can monitor and manage it. To do this, generate a secret from the integration's **Runtimes** page in the ICP console, add it to your project's configuration, and start the runtime.
+After creating the integration, connect your integration runtime to it so ICP can monitor and manage it. To do this, generate a secret from the integration's **Runtimes** page in the ICP console, add it to your project's configuration, and start the runtime.
 
 For the step-by-step procedure, see [Connect an Integration to ICP](connect-runtime.md).
 
@@ -101,7 +134,13 @@ Once connected, the runtime appears in the **Runtimes** view with status **RUNNI
 
 <div style={{paddingLeft: '1.5rem'}}>
 
-![Runtimes view showing a connected runtime with status RUNNING](/img/icp/quick-start/runtimes.png)
+<ThemedImage
+    alt="Runtimes view showing a connected runtime with status RUNNING"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/runtimes.png'),
+        dark: useBaseUrl('/img/icp/quick-start/runtimes.png'),
+    }}
+/>
 
 </div>
 
@@ -113,13 +152,25 @@ ICP ships with **dev** and **prod** environments. If you need additional environ
 
 2. Click **+ Create Environment** and enter the environment name and details.
 
-   ![Environments page with the Create Environment button highlighted](/img/icp/quick-start/create-environment-button.png)
+   <ThemedImage
+       alt="Environments page with the Create Environment button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-environment-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-environment-button.png'),
+       }}
+   />
 
 3. Click **Create**.
 
 <div style={{paddingLeft: '1.5rem'}}>
 
-![Environments page showing the newly created environment](/img/icp/quick-start/environment-created.png)
+<ThemedImage
+    alt="Environments page showing the newly created environment"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/environment-created.png'),
+        dark: useBaseUrl('/img/icp/quick-start/environment-created.png'),
+    }}
+/>
 
 </div>
 
