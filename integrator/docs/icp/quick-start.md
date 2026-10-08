@@ -12,55 +12,149 @@ This guide walks you through connecting a running Ballerina project to ICP, enab
 - **A running Ballerina project.** If you don't have one, follow the [Build an Integration as API](../get-started/quickstarts/build-integration-api.md) guide to create one.
 - **Fluent Bit** (optional, required only for step 5). See the [Fluent Bit installation page](https://docs.fluentbit.io/manual/installation/downloads).
 
-Change the default `admin` password before using ICP in any non-evaluation environment. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**.
+For local development, start ICP from WSO2 Integrator. The ICP console opens in your browser at `https://localhost:9446`. Sign in with the default credentials (username `admin`, password `admin`).
+
+<ThemedImage
+    alt="ICP sign-in page"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/sign-in.png'),
+        dark: useBaseUrl('/img/icp/quick-start/sign-in.png'),
+    }}
+/>
+
+:::caution Security Recommendation
+Change the default `admin` password before using ICP in production. Go to **Access control** > **Users**, select the `admin` user, and click **Reset Password**.
 
 ## 1. Create a project
 
 Projects group related integrations. Every integration belongs to exactly one project.
 
 1. On the organization home, click **+ Create Project**.
+
+   <ThemedImage
+       alt="All Projects page with the Create Project button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-project-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-project-button.png'),
+       }}
+   />
+
 2. Enter a **Display Name** (e.g. `My Project`). The name slug is auto-generated.
+
+   <ThemedImage
+       alt="Create a Project form with Display Name set to My Project"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-project-form.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-project-form.png'),
+       }}
+   />
+
 3. Click **Create**.
 
-ICP redirects to the new project's home page. It also auto-creates an `<Project Name> Admins` group with the *Project Admin* role.
+ICP redirects to the new project's home page.
+
+ICP also auto-creates an `<Project Name> Admins` group with the *Project Admin* role. You can use this group to manage access to the project. See [Access control](access-control.md).
 
 For full project management options, see [Manage projects](manage-projects.md).
 
 ## 2. Create an integration
 
 1. On the project home page, click **+ Create Integration**.
-2. Enter a **Display Name** (e.g. `My Integration`). Integration type defaults to **Default profile** (Ballerina).
-3. Click **Create**.
 
-The integration appears in the project's integrations table. You will connect a runtime to it in the next step.
+   <ThemedImage
+       alt="Project home page with the Create Integration button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-integration-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-integration-button.png'),
+       }}
+   />
+
+2. Enter a **Display Name** (e.g. `My Integration`).
+
+3. Under **Technology**, select the runtime type:
+
+   <table style={{width: '100%', display: 'table'}}>
+     <colgroup><col style={{width: '30%'}} /><col style={{width: '70%'}} /></colgroup>
+     <thead><tr><th>Technology</th><th>Description</th></tr></thead>
+     <tbody>
+       <tr><td><strong>WSO2 Integrator</strong></td><td>A Ballerina-based integration. This is the default profile.</td></tr>
+       <tr><td><strong>WSO2 Integrator: MI</strong></td><td>A Micro Integrator-based integration for existing MI deployments.</td></tr>
+     </tbody>
+   </table>
+
+4. Under **Integration Type**, select what you want to build:
+
+   <table style={{width: '100%', display: 'table'}}>
+     <colgroup><col style={{width: '30%'}} /><col style={{width: '70%'}} /></colgroup>
+     <thead><tr><th>Integration type</th><th>Description</th></tr></thead>
+     <tbody>
+       <tr><td><strong>Integration as API</strong></td><td>Expose your integration as a REST, GraphQL or WebSocket API.</td></tr>
+       <tr><td><strong>Automation</strong></td><td>Run integrations on a schedule or as a recurring task.</td></tr>
+       <tr><td><strong>Workflow</strong></td><td>Orchestrate long-running processes with durable state and human tasks.</td></tr>
+       <tr><td><strong>File Integration</strong></td><td>Process files from storage systems like FTP or AWS S3 when they arrive.</td></tr>
+       <tr><td><strong>Event Integration</strong></td><td>React to events from sources like Kafka, Azure Service Bus, RabbitMQ or NATS.</td></tr>
+       <tr><td><strong>AI Agent</strong></td><td>Build AI agents that reason over your integrations and call tools and services.</td></tr>
+       <tr><td><strong>MCP Server</strong></td><td>Expose tools to AI agents and clients over the Model Context Protocol.</td></tr>
+     </tbody>
+   </table>
+
+   <ThemedImage
+       alt="Create New Integration form with Technology and Integration Type options"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-new-integration-form.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-new-integration-form.png'),
+       }}
+   />
+
+5. Click **Create**.
+
+The integration now appears under **Integrations** on the project home page. It has no runtime yet. You will connect one in the next step.
 
 For full integration management options, see [Manage integrations](manage-integrations.md).
 
 ## 3. Connect a runtime
 
-This step links your Ballerina application to the integration you just created in ICP.
+After creating the integration, connect your integration runtime to it so ICP can monitor and manage it. To do this, generate a secret from the integration's **Runtimes** page in the ICP console, add it to your project's configuration, and start the runtime.
 
-At a high level, the setup involves:
-
-1. Generating a secret from the ICP console.
-2. Adding the secret to `Config.toml` in your Ballerina project with a unique runtime name.
-3. Enabling remote management in `Ballerina.toml`.
-4. Importing the runtime bridge in `main.bal`.
-5. Starting the runtime with `bal run`.
+For the step-by-step procedure, see [Connect an Integration to ICP](connect-runtime.md).
 
 Once connected, the runtime appears in the **Runtimes** view with status **RUNNING**.
 
-For the full connection procedure including field reference and troubleshooting, see [Connect an Integration to ICP](connect-runtime.md).
+<ThemedImage
+    alt="Runtimes view showing a connected runtime with status RUNNING"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/runtimes.png'),
+        dark: useBaseUrl('/img/icp/quick-start/runtimes.png'),
+    }}
+/>
 
 ## 4. Create an environment (optional)
 
 ICP ships with **dev** and **prod** environments. If you need additional environments such as *staging*, follow these steps:
 
 1. Go to **Environments** in the organization sidebar.
-2. Click **+ Create** and enter the environment name and details.
+
+2. Click **+ Create Environment** and enter the environment name and details.
+
+   <ThemedImage
+       alt="Environments page with the Create Environment button highlighted"
+       sources={{
+           light: useBaseUrl('/img/icp/quick-start/create-environment-button.png'),
+           dark: useBaseUrl('/img/icp/quick-start/create-environment-button.png'),
+       }}
+   />
+
 3. Click **Create**.
 
-The new environment appears immediately on every integration across all projects.
+<ThemedImage
+    alt="Environments page showing the newly created environment"
+    sources={{
+        light: useBaseUrl('/img/icp/quick-start/environment-created.png'),
+        dark: useBaseUrl('/img/icp/quick-start/environment-created.png'),
+    }}
+/>
+
+New environments are available immediately to every integration across all projects.
 
 For full environment management options, see [Manage environments](manage-environments.md).
 

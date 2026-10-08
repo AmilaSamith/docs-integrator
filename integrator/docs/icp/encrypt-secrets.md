@@ -40,6 +40,7 @@ Only the following configuration keys in `deployment.toml` support encryption (u
 |---|---|
 | `dbUser` | Primary database username |
 | `dbPassword` | Primary database password |
+| `artifactsApiTrustStorePassword` | Truststore password for runtime management API connections (ICP 2.1.0 and later) |
 
 ## Step 1: Generate a keystore
 

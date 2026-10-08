@@ -36,56 +36,12 @@ ICP supports two integration profiles that determine the type of runtime that co
 | **Default profile** | Ballerina | A Ballerina-based integration. This is the default for all new integrations created in ICP. |
 | **MI profile** | Micro Integrator | A WSO2 Micro Integrator-based integration for connecting existing MI deployments. |
 
-The profile is set when the integration is created and cannot be changed later. Runtimes connect to ICP using the bridge library that corresponds to their profile type.
+The profile is set when the integration is created and cannot be changed later. Runtimes connect to ICP using the bridge library that corresponds to their profile type. For the steps to connect a runtime, see [Connect an Integration to ICP](connect-runtime.md).
 
 :::info Supported MI versions
 The MI profile in ICP 2.0.0 supports WSO2 Micro Integrator 4.6.0 and later. Earlier MI versions cannot connect to ICP 2.0.0. If you are using an older MI version, download the compatible ICP release from [ICP previous releases](https://wso2.com/integrator/icp/previous-releases/).
 
-## Configuring the integration node with ICP
-
-ICP allows you to connect Ballerina and MI runtimes to the ICP server for centralized management and monitoring.
-This guide will walk you through the steps to connect your integration runtime to the ICP server.
-
-1. Navigate to the home view of WSO2 Integrator.
-2. Select the **Enable ICP monitoring** checkbox under the **Integration Control Plane** section.
-
-   <ThemedImage
-       alt="ICP Enable Checkbox"
-       sources={{
-           light: useBaseUrl('/img/deploy-operate/observe/icp-enable.png'),
-           dark: useBaseUrl('/img/deploy-operate/observe/icp-enable.png'),
-       }}
-   />
-
-3. Enabling ICP monitoring will generate and add the following configurations to your runtime.
-
-```toml
-[wso2.icp.runtime.bridge]
-environment = "dev"
-project = "<project name>"
-integration = "<integration name>"
-runtime = "<unique id for the runtime>"
-secret = "<your-secret-here>"
-# serverUrl="https://<hostname>:9445"
-```
-
-Remote management will be enabled in the `Ballerina.toml` file.
-
-```toml
-[build-options]
-remoteManagement = true
-```
-
-The `wso2.icp.runtime.bridge` package will be imported into the integration entrypoint.
-
-```ballerina
-import wso2/icp.runtime.bridge as _;
-```
-
-4. Click the **View in ICP** button to start and connect the integration runtime to the ICP server.
-5. The ICP server will start on `https://localhost:9446`.
-
-## Browsing the ICP
+## ICP console
 
 1. Navigate to `https://localhost:9446` in your browser.
 2. Enter the default username (`admin`) and password (`admin`), then click the **Sign In** button.
