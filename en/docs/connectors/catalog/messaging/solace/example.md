@@ -31,7 +31,7 @@ flowchart LR
 
 ### Setting up the Solace MessageProducer integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](product://integrator/develop-and-test/create-workspace) guide to set up your integration first, then return here to add the connector.
 
 ### Adding the Solace MessageProducer connector
 
@@ -150,7 +150,7 @@ flowchart LR
 
 ### Setting up the Solace MessageConsumer integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](product://integrator/develop-and-test/create-workspace) guide to set up your integration first, then return here to add the connector.
 
 ### Adding the Solace MessageConsumer connector
 
@@ -259,7 +259,7 @@ flowchart LR
 
 ### Setting up the Solace integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the trigger.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](product://integrator/develop-and-test/create-workspace) guide to set up your integration first, then return here to add the trigger.
 
 ### Adding the Solace trigger
 
