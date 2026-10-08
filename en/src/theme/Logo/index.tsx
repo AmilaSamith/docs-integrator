@@ -3,18 +3,15 @@
  * ThemedImage src/srcDark rendering as stock Logo. The ONLY difference:
  * a plain native <a href> instead of Docusaurus's <Link>.
  *
- * Why: sharedNavbarLogo.href is a plain absolute path
- * ("/integration-platform/docs/", the saas site's root), meant to
- * resolve against whatever origin is currently serving the site --
- * localhost during local testing, the real domain in production --
- * never a hardcoded domain. Stock Logo can't do this: it always runs
- * `logo.href` through `useBaseUrl()` before handing it to <Link>, which
- * unconditionally PREPENDS the current site's own baseUrl to an
- * already-absolute path (unlike navbar items, Logo has no
- * `autoAddBaseUrl:false` escape hatch to opt out of that). On
- * wso2-integrator/wso2-connectors that doubles the path into something
- * like "/integration-platform/docs/integrator/integration-platform/docs/".
- * A plain native anchor sidesteps all of that -- same fix
+ * Why: the logo links to the CURRENT site's own landing page
+ * (siteConfig.baseUrl -- /integration-platform/docs/saas/,
+ * .../integrator/, .../connectors/), so clicking it never jumps to
+ * another product. Stock Logo can't be pointed at that safely: it
+ * always runs `logo.href` through `useBaseUrl()` before handing it to
+ * <Link>, which PREPENDS the current site's baseUrl to an already-
+ * absolute path and doubles it into something like
+ * "/integration-platform/docs/integrator/integration-platform/docs/".
+ * A plain native anchor on the bare baseUrl sidesteps that -- same fix
  * SidebarProductHeader already uses for its own cross-product links,
  * see its docstring for the fuller isInternalUrl explanation.
  *
@@ -56,13 +53,13 @@ function LogoThemedImage({
 
 export default function Logo(props: Props): ReactNode {
   const {
-    siteConfig: { title },
+    siteConfig: { title, baseUrl },
   } = useDocusaurusContext();
   const {
     navbar: { title: navbarTitle, logo },
   } = useThemeConfig();
   const { imageClassName, titleClassName, ...propsRest } = props;
-  const logoLink = logo?.href || '/';
+  const logoLink = baseUrl;
   const fallbackAlt = navbarTitle ? '' : title;
   const alt = logo?.alt ?? fallbackAlt;
 
