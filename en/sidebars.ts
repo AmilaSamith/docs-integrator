@@ -2315,6 +2315,17 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SMPP',
+          link: { type: 'doc', id: 'connectors/catalog/messaging/smpp/overview' },
+          items: [
+            'connectors/catalog/messaging/smpp/setup-guide',
+            'connectors/catalog/messaging/smpp/action-reference',
+            'connectors/catalog/messaging/smpp/trigger-reference',
+            'connectors/catalog/messaging/smpp/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Snowflake',
           link: { type: 'doc', id: 'connectors/catalog/database/snowflake/connector-overview' },
           items: [
@@ -2592,6 +2603,7 @@ const sidebars: SidebarsConfig = {
           label: 'How to Guides',
           items: [
             'guides/howtoguides/sap-b1-low-stock-purchase-automation',
+            'guides/howtoguides/sf-ec-leave-to-google-calendar-sync',
           ],
         },
         // Migration Guides
