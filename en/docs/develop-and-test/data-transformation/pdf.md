@@ -110,10 +110,10 @@ The three variants mirror text extraction: bytes, file path, or URL. Each return
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. **Add a Function Call step for conversion**: Click **+** and select **Call Function**. Choose one of the following depending on your input. 
-   - `pdf:toImages`: when the input is `byte[]`
-   - `pdf:fileToImages`: when the input is a file path `string`
-   - `pdf:urlToImages`: when the input is a URL `string`
+1. **Add a Function Call step for conversion**: Click **+** and select **Call Function**. Choose one of the following under pdf library depending on your input.
+   - `toImages`: when the input is `byte[]`
+   - `fileToImages`: when the input is a file path `string`
+   - `urlToImages`: when the input is a URL `string`
 
    Then, assign the `string[]` result to a variable named `pageImages`.
 
@@ -121,7 +121,7 @@ The three variants mirror text extraction: bytes, file path, or URL. Each return
 
    > **Why an index range here?** Each output file needs a unique name (`page-1.png`, `page-2.png`, ...), so the loop tracks the page number through `i`. Direct iteration over `pageImages` (as in the text-extraction example) wouldn't expose the position.
 
-3. **Decode and write each image**: Inside the loop, click **+** and select **Call Function**. Call `array:fromBase64(pageImages[i])` to obtain the raw PNG bytes for the current page, then call `io:fileWriteBytes` with the path expression `` string `./page-${i + 1}.png` `` to save each page as a separate, numbered PNG file.
+3. **Decode and write each image**: Inside the loop, click **+** and select **Call Function**. Call `fromBase64(pageImages[i])` to obtain the raw PNG bytes for the current page, then call `fileWriteBytes` with the path expression `` string `./page-${i + 1}.png` `` to save each page as a separate, numbered PNG file.
 
    <ThemedImage
        alt="Flow designer showing the fileToImages function call, an index-range foreach, and the fromBase64 plus fileWriteBytes steps inside the loop"
@@ -170,7 +170,7 @@ Read or build an HTML string, then pass it to `pdf:parseHtml` to obtain the PDF 
    - **Result***: `pdfBytes`
    - **Type**: `byte[]`
 
-3. **Add a Function Call step for output**: Click **+** and select **Call Function**. Call `io:fileWriteBytes("./output.pdf", pdfBytes)` to save the PDF to disk, or assign `pdfBytes` to an `http:Response` payload to return it from a service.
+3. **Add a Function Call step for output**: Click **+** and select **Call Function**. Call `fileWriteBytes` and set `Path` as `"./output.pdf"` and the `Content` as `pdfBytes` and save the PDF to disk, or assign `pdfBytes` to an `http:Response` payload to return it from a service.
 
    <ThemedImage
        alt="Flow designer showing the html variable, parseHtml function call producing pdfBytes, and fileWriteBytes save step"
@@ -213,7 +213,7 @@ public function main() returns error? {
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. **Add a Function Call step for the font bytes**: Click **+** and select **Call Function**. Call `io:fileReadBytes("./resources/NotoSansSC.ttf")` and assign the result to a `byte[] & readonly` variable named `fontBytes`. The font is required to render non-Latin scripts such as Chinese, Japanese, Korean, Arabic, or Devanagari.
+1. **Add a Function Call step for the font bytes**: Click **+** and select **Call Function**. Call `fileReadBytes("./resources/NotoSansSC.ttf")` and assign the result to a `byte[] & readonly` variable named `fontBytes`. The font is required to render non-Latin scripts such as Chinese, Japanese, Korean, Arabic, or Devanagari.
 
    > **Note**: Declare `fontBytes` at module scope (as shown in the Ballerina Code tab) so the font is read once at startup rather than on every render.
 
