@@ -15,15 +15,6 @@ name: Staging Sync
 # time you DO edit it: adding a new product branch to the trigger list
 # and the case statement below when that product launches.
 #
-# CURRENTLY OUT OF SYNC WITH THAT: saas moved from owning the bare
-# staging root to its own /saas/ subpath (matching /integrator/ and
-# /connectors/), which touched this file directly on `saas` rather than
-# going through `main` first -- this same change (the `saas` case below,
-# its deploy step's `destination_dir: saas`, and the new root-redirect
-# deploy step, conditioned on `github.ref_name == 'saas'` since
-# root-redirect/ only exists on that branch) needs to land on `main` too,
-# or the next shared-sync distribution silently reverts it here.
-#
 # Deliberately does NOT deploy to production. See promote_to_production.yaml
 # (lives on `main`) for that half of the pipeline.
 
