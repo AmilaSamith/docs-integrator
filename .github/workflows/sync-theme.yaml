@@ -43,6 +43,7 @@ on:
       - 'en/src/theme/**'
       - 'en/src/plugins/expose-sidebars/**'
       - 'en/src/plugins/guidesCatalogPlugin.js'
+      - 'en/src/plugins/crossProductLinks.js'
       - 'en/src/components/SiteNav/**'
       - 'en/src/components/TabAwareToc/**'
       - 'en/src/components/ProductDocsLinks/**'
@@ -95,6 +96,7 @@ env:
     en/src/theme
     en/src/plugins/expose-sidebars
     en/src/plugins/guidesCatalogPlugin.js
+    en/src/plugins/crossProductLinks.js
     en/src/components/SiteNav
     en/src/components/TabAwareToc
     en/src/components/ProductDocsLinks
