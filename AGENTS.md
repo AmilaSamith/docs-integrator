@@ -6,16 +6,19 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) first — in particular "Golden
 Rules" and "Doc structure conventions". The short version, as a
 pre-flight checklist for any change that adds, moves, or renames a doc:
 
-- [ ] **Not editing synced content on `saas`.** `platform-overview/`,
-      `editor/`, `develop-and-test/`, `customize/`, `migrate/`,
-      `guides/`, and `reference/glossary.md` are synced from
-      `wso2-integrator` — a direct edit here gets silently reverted and
-      the CI guard (`shared-content-guard.yaml`) rejects the PR. If the
-      task touches one of these, the PR belongs on `wso2-integrator`,
-      not here — say so rather than making the edit. **Exception:**
-      `develop-and-test/create-workspace/` (and its images under
-      `static/img/create-project/`, `import-project/`, `explore-samples/`)
-      is authored independently on `saas` — edit it here directly.
+- [ ] **Not hand-editing shared content on a branch that only receives
+      it.** CONTRIBUTING.md's Golden Rule 1 lists the exact folders
+      (`platform-overview/`, `editor/`, `develop-and-test/`, `migrate/`,
+      `guides/`, `reference/glossary.md` as of this writing) that are
+      authored on `wso2-integrator` and synced out to `saas` — check
+      that list rather than this one, since it's the one place it's
+      kept current. If you're on the receiving branch (today: `saas`)
+      and the task touches one of those folders, a direct edit gets
+      silently reverted and the CI guard (`shared-content-guard.yaml`)
+      rejects the PR — say so and note the PR belongs on
+      `wso2-integrator` instead, rather than making the edit. If you're
+      on `wso2-integrator` itself, this is exactly where that content
+      should be edited.
 - [ ] **New/moved doc has an explicit `slug:`** in frontmatter, matching
       its actual route — never rely on the path-derived default.
 - [ ] **New folder with 2+ docs has an index page** at
