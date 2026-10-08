@@ -175,7 +175,12 @@ HINT: Execute the bal command with --locking-mode=soft
 
 The build keeps the dependency versions in `Dependencies.toml`. It can still succeed, or it can fail with compile or runtime errors from a dependency that's incompatible with Ballerina 2201.14.0.
 
-Don't follow the hint. `--locking-mode=soft` keeps the outdated dependency versions and only updates `distribution-version`, which hides the problem from the editor's check. Update the dependencies with `bal clean` and `bal build --sticky=false` instead, as described in [Update the dependencies](#update-the-dependencies).
+To update the dependencies, run the following commands from the package directory, as described in [Update the dependencies](#update-the-dependencies):
+
+```bash
+bal clean
+bal build --sticky=false
+```
 
 ### Java version error at startup
 
