@@ -16,7 +16,7 @@ Extract text from existing PDFs, convert PDF pages to images, and generate PDF d
 
 ## Text Extraction
 
-Read the textual content of a PDF one page at a time. The module provides three entry points; choose the one that matches where the PDF originates.
+Read the textual content of a PDF one page at a time. The module provides three entry points — choose the one that matches where the PDF originates.
 
 ### Extracting from PDF Bytes
 
@@ -154,7 +154,7 @@ public function main() returns error? {
 
 ## HTML to PDF Rendering
 
-Convert parameterized HTML templates into PDF bytes suitable for download, email attachments, or storage. The rendering engine covers document-style HTML and CSS. Tables, inline images, fonts, colored cells, and injected stylesheets without depending on a headless browser.
+Convert parameterized HTML templates into PDF bytes suitable for download, email attachments, or storage. The rendering engine covers document-style HTML and CSS — tables, inline images, fonts, colored cells, and injected stylesheets — without depending on a headless browser.
 
 ### Rendering an HTML String
 
