@@ -117,6 +117,16 @@ doc:
   section — the whole point of `customProps` here is that it doesn't
   cost the autogeneration property described above; a manually-assembled
   `sidebars.ts` entry would.
+- **Link to another product's docs with `product://`.** saas, integrator
+  and connectors are separate builds, so a relative `.md` link to a page
+  on a sibling product is always a broken link, and a hardcoded
+  `/integration-platform/docs/...` path breaks on fork previews. Write
+  `[Create a project](product://integrator/develop-and-test/create-workspace)`
+  (first segment is `saas`, `integrator` or `connectors`; the rest is
+  that product's route, `#anchors` allowed). `en/src/plugins/
+  crossProductLinks.js` rewrites it at build time using
+  `CROSS_PRODUCT_BASE`. It's registered per branch in
+  `docusaurus.config.ts` under `docs.remarkPlugins`.
 
 Adding a new guide to `guides/` specifically has its own checklist,
 including required frontmatter that's build-enforced — see
