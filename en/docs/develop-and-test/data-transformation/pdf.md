@@ -206,7 +206,7 @@ public function main() returns error? {
 
 ### Customizing Page Size, Margins, and Fonts
 
-`parseHtml` accepts a set of named options; page size, margins, a `maxPages` cap, custom fonts for non-Latin scripts, a `fallbackFontSize` applied when CSS does not specify one, and extra CSS injected into every render.
+`parseHtml` accepts a `ConversionOptions` record spread as named arguments: page size, margins (`PageMargins`), a `maxPages` cap, custom fonts for non-Latin scripts, a `fallbackFontSize` (default `12.0`) applied when CSS does not specify one, and `additionalCss` injected into every render.
 
 > **Custom-font prerequisite**: The example below uses [Noto Sans SC](https://fonts.google.com/noto/specimen/Noto+Sans+SC) for custom-font rendering. Download the font file and place it at `./resources/NotoSansSC.ttf` in your Ballerina project before running the integration. Substitute any TrueType font that covers your target script.
 
@@ -221,7 +221,8 @@ public function main() returns error? {
    - **html***: `html`
    - **pageSize**: `pdf:LETTER`
    - **margins**: `{top: 36.0, right: 40.0, bottom: 36.0, left: 40.0}`
-   - **customFonts**: `[{family: "NotoSansSC", content: fontBytes}]`
+   - **customFonts**: `[{family: "NotoSansSC", content: fontBytes}]` (the `Font` record also accepts optional `bold` and `italic` boolean fields, both defaulting to `false`)
+   - **fallbackFontSize**: `12.0` (applied when the HTML/CSS does not specify a font size)
    - **maxPages**: `50`
    - **Result***: `pdfBytes`
 
@@ -268,7 +269,7 @@ public function main() returns error? {
 
 For landscape orientation, use a `pdf:CustomPageSize` with the width and height of the standard portrait size swapped.
 
-For the complete list of options, the `StandardPageSize` enum, the `CustomPageSize` record, and the `Font` record, see the [ballerina/pdf API reference on Ballerina Central](https://central.ballerina.io/ballerina/pdf/latest).
+For the complete list of options, the `ConversionOptions` record, the `StandardPageSize` enum, the `CustomPageSize` record, the `PageMargins` record, and the `Font` record, see the [ballerina/pdf API reference on Ballerina Central](https://central.ballerina.io/ballerina/pdf/latest).
 
 ### Supported HTML and CSS
 
