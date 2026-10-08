@@ -143,7 +143,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [dev-amila-saas, dev-amila-wso2-integrator, dev-amila-wso2-connectors]
+        target: [dev-amila-saas, dev-amila-integrator, dev-amila-connectors]
 
     steps:
       - uses: actions/checkout@v4
