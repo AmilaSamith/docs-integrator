@@ -34,8 +34,8 @@ import styles from './styles.module.css';
 
 // Every connector's Setup Guide/Actions/Triggers/Example page uses
 // exactly this frontmatter `title` -- enforced across all ~165
-// connectors (see HOW_TO_ADD_A_CONNECTOR_DOCUMENTATION.md), so no alias/plural
-// variants are needed here.
+// connectors (see HOW_TO_ADD_A_CONNECTOR_DOCUMENTATION.md on wso2-connectors), so no
+// alias/plural variants are needed here.
 const CONNECTOR_SUBPAGE_LABELS = new Set(['setup guide', 'actions', 'triggers', 'example']);
 
 function hasIcon(level: number, label: string): boolean {
