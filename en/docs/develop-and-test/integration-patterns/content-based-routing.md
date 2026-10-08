@@ -25,7 +25,7 @@ Use pattern-based content routing with [match expressions](../../editor/canvases
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create or open the [HTTP service resource](../integration-artifacts/integration-as-api/http.md#creating-an-http-service) that receives the routed message.
-2. Add HTTP client connections for each recipient. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](../../connectors/catalog/built-in/http/action-reference.md#client).
+2. Add HTTP client connections for each recipient. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](product://connectors/catalog/built-in/http/action-reference#client).
 3. Open the resource flow and [add a step](../../editor/canvases/flow-canvas/flow-canvas.md#anatomy-of-the-canvas).
 4. Add a [Match node](../../editor/canvases/flow-canvas/node-palette.md#match) and set the expression to the routing field, such as `order.itemType`.
 5. Add one branch for each accepted value, such as `"standard"` and `"express"`, and add `_` as the default branch.
@@ -90,7 +90,7 @@ Use predicate-based content routing with [if/else statements](../../editor/canva
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create or open the resource or function that contains the routing decision.
-2. Add HTTP client connections for the possible recipients. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](../../connectors/catalog/built-in/http/action-reference.md#client).
+2. Add HTTP client connections for the possible recipients. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](product://connectors/catalog/built-in/http/action-reference#client).
 3. Add a [configurable variable](../../reference/configuration-reference.md#configurable-variables) for any route rule that should change by environment, such as `bulkThreshold`.
 4. Open the flow and add an [If node](../../editor/canvases/flow-canvas/node-palette.md#if) with a condition such as `order.quantity >= bulkThreshold`.
 5. Add the bulk recipient call inside the **True** branch.

@@ -94,6 +94,9 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/wso2/docs-integrator/tree/wso2-integrator/en/',
           showLastUpdateTime: true,
+          // Lets docs link to a sibling product with `product://<product>/<path>`
+          // instead of a hardcoded production path -- see the plugin's docstring.
+          remarkPlugins: [[require('./src/plugins/crossProductLinks'), { base: CROSS_PRODUCT_BASE }]],
           // Serve Next (docs/, the new IA) at the site root by default —
           // matching reactnative.dev's model of latest/current up front,
           // older releases behind the version switcher. Without this,
