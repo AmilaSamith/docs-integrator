@@ -24,6 +24,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import ThemedImage from '@theme/ThemedImage';
 import type { Props } from '@theme/Logo';
+import { detectCurrentProduct } from '@site/src/components/SidebarProductHeader';
 
 function LogoThemedImage({
   logo,
@@ -59,7 +60,9 @@ export default function Logo(props: Props): ReactNode {
     navbar: { title: navbarTitle, logo },
   } = useThemeConfig();
   const { imageClassName, titleClassName, ...propsRest } = props;
-  const logoLink = baseUrl;
+  // Connectors has no standalone landing page worth landing on -- its
+  // home IS the catalog, same target as the navbar's own Connectors link.
+  const logoLink = detectCurrentProduct(baseUrl) === 'connectors' ? `${baseUrl}catalog` : baseUrl;
   const fallbackAlt = navbarTitle ? '' : title;
   const alt = logo?.alt ?? fallbackAlt;
 
