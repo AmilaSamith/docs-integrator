@@ -89,10 +89,10 @@ The form opens with **Service URL**, **Access Token**, **API Version**, and **De
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Service URL** | Yes | — | Base URL of the Azure OpenAI API endpoint. Use the v1 GA URL (`https://<resource>.services.ai.azure.com/openai/v1`) or the legacy URL (`https://<resource>.openai.azure.com/openai`). |
-| **Access Token** | Yes | — | Azure OpenAI API key. |
+| **Service URL** | Yes | N/A | Base URL of the Azure OpenAI API endpoint. Use the v1 GA URL (`https://<resource>.services.ai.azure.com/openai/v1`) or the legacy URL (`https://<resource>.openai.azure.com/openai`). |
+| **Access Token** | Yes | N/A | Azure OpenAI API key. |
 | **API Version** | No | `()` | **Required for legacy (non-`/v1`) service URLs**: a date-based version, e.g. `2023-05-15`. Optional on `/v1` URLs and normally omitted; pass `preview` or `v1` to opt into a specific v1 surface (any other value is ignored on `/v1` URLs). |
-| **Deployment ID** | Yes | — | Deployment ID for your embedding model deployment. |
+| **Deployment ID** | Yes | N/A | Deployment ID for your embedding model deployment. |
 
 :::info
 The model name is implicit in the **deployment** on Azure. There is no **Model Type** field. Pick the model when you create the deployment in the Azure portal.
@@ -130,8 +130,8 @@ The form opens with **Auth**, **Project ID**, **Location**, **Model Type**, and 
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Auth** | Yes | — | OAuth2 refresh-token record, a service-account record, or a path to a service-account JSON file. See [Vertex auth options](model-providers.md#vertex-auth-options) on the Model Providers page. |
-| **Project ID** | Yes | — | Your Google Cloud project ID. |
+| **Auth** | Yes | N/A | OAuth2 refresh-token record, a service-account record, or a path to a service-account JSON file. See [Vertex auth options](model-providers.md#vertex-auth-options) on the Model Providers page. |
+| **Project ID** | Yes | N/A | Your Google Cloud project ID. |
 | **Location** | No | `"global"` | `"global"`, `"us-central1"`, `"europe-west1"`, etc. Google Cloud region. |
 | **Model Type** | No | `text-embedding-005` (shown as `TEXT_EMBEDDING_005`) | `text-embedding-005`, `text-embedding-004`, `textembedding-gecko-multilingual@001`, `textembedding-gecko@001`. Vertex embedding model. |
 | **Service URL** | No | `""` (auto-derived) | Override the regional endpoint. Defaults to `https://\{location\}-aiplatform.googleapis.com`. |
@@ -166,8 +166,8 @@ Official website: [OpenAI Embeddings documentation](https://platform.openai.com/
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **API Key** | Yes | — | OpenAI API key. Reference a `configurable` in production. |
-| **Embedding Model Type** | Yes | — | `text-embedding-3-small` (1536 dims, configurable down), `text-embedding-3-large` (3072 dims, configurable down), `text-embedding-ada-002` (1536 dims). |
+| **API Key** | Yes | N/A | OpenAI API key. Reference a `configurable` in production. |
+| **Embedding Model Type** | Yes | N/A | `text-embedding-3-small` (1536 dims, configurable down), `text-embedding-3-large` (3072 dims, configurable down), `text-embedding-ada-002` (1536 dims). |
 
 ### Advanced configurations
 
@@ -205,11 +205,11 @@ The form opens with **API Key**, **Model Type**, **Service URL**, **Site URL**, 
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **API Key** | Yes | — | OpenRouter API key. Get one from [openrouter.ai/keys](https://openrouter.ai/keys). |
-| **Model Type** | Yes | — | Qualified embedding model name, for example `openai/text-embedding-3-small`. See OpenRouter's [model list](https://openrouter.ai/models). |
+| **API Key** | Yes | N/A | OpenRouter API key. Get one from [openrouter.ai/keys](https://openrouter.ai/keys). |
+| **Model Type** | Yes | N/A | Qualified embedding model name, for example `openai/text-embedding-3-small`. See OpenRouter's [model list](https://openrouter.ai/models). |
 | **Service URL** | No | `https://openrouter.ai/api/v1` | OpenRouter API base URL. |
-| **Site URL** | No | `()` | URL string or empty — optional site URL sent as the `HTTP-Referer` header, used by OpenRouter for site attribution. |
-| **Site Name** | No | `()` | String or empty — optional site name sent as the `X-OpenRouter-Title` header. |
+| **Site URL** | No | `()` | URL string or empty. Optional site URL sent as the `HTTP-Referer` header, used by OpenRouter for site attribution. |
+| **Site Name** | No | `()` | String or empty. Optional site name sent as the `X-OpenRouter-Title` header. |
 
 Scrolling further shows Timeout, Forwarded, Compression, and Payload Validation, then the collapsed **Advanced Configurations** toggle, and finally **Embedding Provider Name** and **Result Type**:
 

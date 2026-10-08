@@ -62,7 +62,7 @@ Reads files from the local file system and wraps their content as `ai:Document` 
 | **Data Loader Name** | Yes | The variable name for the loader instance. |
 | **Result Type** | Yes | The variable type, set to `ai:TextDataLoader`. |
 
-For an end-to-end example of wiring this loader into an ingestion pipeline, see [RAG ingestion — add a text data loader](../rag/rag-ingestion.md#step-2-add-a-text-data-loader).
+For an end-to-end example of wiring this loader into an ingestion pipeline, see [RAG ingestion: add a text data loader](../rag/rag-ingestion.md#step-2-add-a-text-data-loader).
 
 ## Microsoft SharePoint Text Data Loader
 
@@ -97,7 +97,7 @@ The connection configuration is shared by every source.
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **auth** | `OAuth2ClientCredentialsGrantConfig \| OAuth2RefreshTokenGrantConfig \| http:BearerTokenConfig` | — | Authentication configuration for the Microsoft Graph API. |
+| **auth** | `OAuth2ClientCredentialsGrantConfig \| OAuth2RefreshTokenGrantConfig \| http:BearerTokenConfig` | N/A | Authentication configuration for the Microsoft Graph API. |
 | **serviceUrl** | `string` | `https://graph.microsoft.com/v1.0` | The base URL of the Microsoft Graph service. |
 
 Plus the [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations), which tune the underlying HTTP client and are forwarded to the Graph `sites` and `pages` clients.
@@ -110,7 +110,7 @@ Plus the [Standard HTTP advanced configurations](model-providers.md#standard-htt
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **siteId** | `string` | — | The Microsoft Graph site id. Accepts the composite id (`{hostname},{spsite-guid},{spweb-guid}`) or the path form (`{hostname}:/sites/{site-name}`). |
+| **siteId** | `string` | N/A | The Microsoft Graph site id. Accepts the composite id (`{hostname},{spsite-guid},{spweb-guid}`) or the path form (`{hostname}:/sites/{site-name}`). |
 | **libraries** | `Library[]` | `[{}]` | Document libraries to read from, each with its own paths and options. The default loads the whole of the site's default document library; `[]` loads no document-library content. |
 | **pages** | `string[]?` | `()` | Site pages to load as text, matched by name, title, or id. Use `["*"]` for all pages; `()` for none. |
 

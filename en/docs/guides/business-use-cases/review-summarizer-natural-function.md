@@ -214,7 +214,7 @@ If you'd rather use OpenAI, Anthropic, Azure OpenAI, or any other provider, clic
 
 Click the pencil icon at the top-right of the Prompt node (tooltip: **Edit Prompt**). The full Prompt editor opens directly, with a formatting toolbar (**Insert**, undo/redo, **Bold**, *Italic*, link, headings, quote, lists, table, and **Preview**/**Source** toggles).
 
-Type the following prompt, and use the **Insert** menu (or just type the parameter name) to interpolate `customerReview` — it renders as a token pill reading `{x} customerReview`, backed by the Ballerina template expression `${customerReview}`:
+Type the following prompt, and use the **Insert** menu (or just type the parameter name) to interpolate `customerReview`. It renders as a token pill reading `{x} customerReview`, backed by the Ballerina template expression `${customerReview}`:
 
 > You are a customer review analyzer. For the review below, identify the overall sentiment, extract the key topics being discussed with their individual sentiment, and suggest a follow-up action if needed.
 >
@@ -231,7 +231,7 @@ Type the following prompt, and use the **Insert** menu (or just type the paramet
 Click **Save**. The natural function is complete; the Prompt node shows the saved body inline, and behind the scenes WSO2 Integrator generated the Ballerina source.
 
 :::note
-Reopening a saved prompt (clicking the pencil icon again) opens a smaller floating editor with the same text but no formatting toolbar, and **Cancel**/**Save** buttons — a quick-edit view distinct from the full editor used the first time.
+Reopening a saved prompt (clicking the pencil icon again) opens a smaller floating editor with the same text but no formatting toolbar, and **Cancel**/**Save** buttons: a quick-edit view distinct from the full editor used the first time.
 :::
 
 <Tabs>
@@ -447,7 +447,7 @@ Select the run icon next to the request to send it.
 The response appears inline below the request, in the same `TryIt.hurl` tab. It shows `Status: 201 Created` and a fully structured body matching `ReviewResponse`.
 
 <ThemedImage
-    alt="TryIt.hurl showing the POST /api/v1/analyze request and the structured ReviewResponse — sentiment, summary, per-topic sentiment, churn_risk, and suggested_action — returned below it."
+    alt="TryIt.hurl showing the POST /api/v1/analyze request and the structured ReviewResponse (sentiment, summary, per-topic sentiment, churn_risk, and suggested_action) returned below it."
     sources={{
         light: useBaseUrl('/img/genai/tutorials/review-summarizer-natural-function-v5.1/26-try-it-result-v5.1.png'),
         dark: useBaseUrl('/img/genai/tutorials/review-summarizer-natural-function-v5.1/26-try-it-result-v5.1.png'),

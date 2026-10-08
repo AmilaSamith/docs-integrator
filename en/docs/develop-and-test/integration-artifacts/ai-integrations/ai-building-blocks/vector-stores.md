@@ -139,8 +139,8 @@ Official website: [Milvus documentation](https://milvus.io/docs).
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Service URL** | Yes | — | The Milvus service URL. |
-| **API Key** | Yes | — | Milvus API key (sent as a bearer token). |
+| **Service URL** | Yes | N/A | The Milvus service URL. |
+| **API Key** | Yes | N/A | Milvus API key (sent as a bearer token). |
 | **Milvus Configuration** | Yes | `{}` | Record with collection settings. **Collection Name** (default `"default"`): the Milvus collection to use. **Chunk Field Name** (optional): the field on the collection that holds the chunk content. **Primary Key Field** (default `"id"`): the collection's primary-key field. **Additional Fields** (default `[]`): extra fields to include in search results, on top of `content`, `type`, `vector`, `metadata`. |
 | **HTTP Configuration** | No | `{}` | Record. Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). Shown directly on the form. |
 
@@ -168,10 +168,10 @@ The form opens with **Host Name**, **Username**, **Password**, **Database Name**
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Host Name** | Yes | — | Database host, for example `localhost`. |
-| **Username** | Yes | — | Database user. |
-| **Password** | Yes | — | Database password. |
-| **Database Name** | Yes | — | PostgreSQL database name. |
+| **Host Name** | Yes | N/A | Database host, for example `localhost`. |
+| **Username** | Yes | N/A | Database user. |
+| **Password** | Yes | N/A | Database password. |
+| **Database Name** | Yes | N/A | PostgreSQL database name. |
 | **Table Name** | No | `"vector_store"` | Table to store vectors in. Created on first use if missing. |
 | **Port Number** | No | `5432` | Any positive integer. Database port. |
 
@@ -213,8 +213,8 @@ Official website: [Pinecone documentation](https://docs.pinecone.io).
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Service URL** | Yes | — | URL of the Pinecone index endpoint. |
-| **API Key** | Yes | — | Pinecone API key. |
+| **Service URL** | Yes | N/A | URL of the Pinecone index endpoint. |
+| **API Key** | Yes | N/A | Pinecone API key. |
 | **Query Mode** | No | `ai:DENSE` | `ai:DENSE`, `ai:SPARSE`, `ai:HYBRID`. Search mode. |
 | **Pinecone Configuration** | No | `{}` | Record (`namespace`, `filters`, `sparseVector`). Pinecone-specific settings. **Namespace** isolates vectors for multi-tenancy. **Filters** sets default metadata filters applied on every query. **Sparse Vector** is needed for hybrid search. |
 | **HTTP Configuration** | No | `{}` | Record. Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). |
@@ -241,8 +241,8 @@ Official website: [Weaviate documentation](https://weaviate.io/developers/weavia
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Service URL** | Yes | — | The Weaviate endpoint URL. |
-| **API Key** | Yes | — | Weaviate API key (sent as a bearer token). |
+| **Service URL** | Yes | N/A | The Weaviate endpoint URL. |
+| **API Key** | Yes | N/A | Weaviate API key (sent as a bearer token). |
 | **Weaviate Configuration** | Yes | `{collectionName: ""}` | Record with collection-level config. **Collection Name** (required): the Weaviate collection to use; must already exist. **Chunk Field Name** (optional, default `"content"`): the field on the collection that holds the chunk content. |
 | **HTTP Configuration** | No | `{}` | Record. Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations). |
 

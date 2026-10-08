@@ -666,7 +666,7 @@ Once your service is running, MCP clients connect by URL.
 }
 ```
 
-**Another agent inside WSO2 Integrator** — see [Consuming MCP from an Agent](consuming-mcp-from-agent.md).
+**Another agent inside WSO2 Integrator**: see [Consuming MCP from an Agent](consuming-mcp-from-agent.md).
 
 ## Operational notes
 

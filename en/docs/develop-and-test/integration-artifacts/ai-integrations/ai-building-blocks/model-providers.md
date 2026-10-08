@@ -78,7 +78,7 @@ Scroll to see the remaining options:
 
 ## Standard HTTP advanced configurations
 
-Every provider with a hosted endpoint (all providers except the Default WSO2 provider, which is preconfigured) shares the **same** HTTP-level configurations. They tune the underlying HTTP client and apply to every request the provider makes. These are split across two parts of the Create form, and **this split and these exact fields are identical on every provider's form** — the per-provider sections below don't repeat the screenshots, they just note where the provider's own fields sit relative to this standard set.
+Every provider with a hosted endpoint (all providers except the Default WSO2 provider, which is preconfigured) shares the **same** HTTP-level configurations. They tune the underlying HTTP client and apply to every request the provider makes. These are split across two parts of the Create form, and **this split and these exact fields are identical on every provider's form**. The per-provider sections below don't repeat the screenshots, they just note where the provider's own fields sit relative to this standard set.
 
 **Shown directly on the form**, below the provider-specific fields:
 
@@ -126,7 +126,7 @@ Scrolling further down the expanded section shows Retry Configuration, Response 
 />
 
 :::note
-This is the one Advanced Configurations screenshot in this page. Every provider's Create form shows this exact same panel — where a provider section below says "see Standard HTTP advanced configurations," it means expanding **Advanced Configurations** on that provider's form looks exactly like the two screenshots above, with no provider-specific additions.
+This is the one Advanced Configurations screenshot in this page. Every provider's Create form shows this exact same panel. Where a provider section below says "see Standard HTTP advanced configurations," it means expanding **Advanced Configurations** on that provider's form looks exactly like the two screenshots above, with no provider-specific additions.
 :::
 
 ## Default WSO2 model provider
@@ -157,7 +157,7 @@ Official website: [anthropic.com](https://www.anthropic.com/).
 
 ### Create form
 
-The form opens with **API Key** and **Model Type**, followed directly by the standard inline fields (Service URL defaulting to `https://api.anthropic.com/v1`, Maximum Tokens, Temperature, HTTP Version, Timeout, Forwarded, Compression, Payload Validation — no need to expand anything to see these):
+The form opens with **API Key** and **Model Type**, followed directly by the standard inline fields (Service URL defaulting to `https://api.anthropic.com/v1`, Maximum Tokens, Temperature, HTTP Version, Timeout, Forwarded, Compression, Payload Validation. No need to expand anything to see these):
 
 <ThemedImage
     alt="Create Model Provider form for Anthropic showing API Key, Model Type (No Selection), Service URL (default https://api.anthropic.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version (default HTTP_2_0), and the start of Timeout."
@@ -226,7 +226,7 @@ Continuing the scroll, **Maximum Tokens**, **Temperature**, **Reasoning Effort**
 | **Maximum Tokens** | `4096` | Any positive integer | Hard cap on response length. |
 | **Temperature** | `()` (omitted) | `0.0`-`2.0` or empty | Sampling temperature. Leave empty for deployments of models that reject the parameter (the GPT-5 and o-series reasoning models). |
 | **Reasoning Effort** | `()` (omitted) | `none`, `minimal`, `low`, `medium`, `high`, `xhigh` | Effort spent on reasoning by reasoning-capable models. Not every model accepts every value (for example, `minimal` only on the original `gpt-5` reasoning models, `none` from `gpt-5.1` onward, `xhigh` from `gpt-5.1-codex-max` onward). Because the model is implicit in the deployment, the value is validated by the Azure service rather than at initialization; an unsupported value fails on the first call. |
-| **API Type** | `CHAT_COMPLETIONS` | `CHAT_COMPLETIONS`, `RESPONSES` | The Azure OpenAI API surface to use. Same semantics as the OpenAI provider — see [Chat Completions vs Responses API](#openai-api-type). |
+| **API Type** | `CHAT_COMPLETIONS` | `CHAT_COMPLETIONS`, `RESPONSES` | The Azure OpenAI API surface to use. Same semantics as the OpenAI provider. See [Chat Completions vs Responses API](#openai-api-type). |
 
 Scrolling further shows Timeout, Forwarded, Compression, Payload Validation, then the collapsed **Advanced Configurations** toggle, and finally **Model Provider Name** and **Result Type**:
 
@@ -254,7 +254,7 @@ Official website: [deepseek.com](https://www.deepseek.com/).
 
 ### Create form
 
-The form opens with **API Key**, followed directly by the provider-specific and standard inline fields (Model Type, Service URL, Maximum Token, Temperature, HTTP Version, Timeout — no need to expand anything to see these):
+The form opens with **API Key**, followed directly by the provider-specific and standard inline fields (Model Type, Service URL, Maximum Token, Temperature, HTTP Version, Timeout. No need to expand anything to see these):
 
 <ThemedImage
     alt="Create Model Provider form for DeepSeek showing API Key, Model Type (default DEEPSEEK_CHAT), Service URL (default https://api.deepseek.com), Maximum Token (default 512), Temperature (default 0.7), HTTP Version (default HTTP_2_0), and the start of Timeout."
@@ -358,7 +358,7 @@ Official website: [mistral.ai](https://www.mistral.ai/).
 
 ### Create form
 
-The form opens with **API Key** and **Model Type**, followed directly by the standard inline fields (Service URL defaulting to `https://api.mistral.ai/v1`, Maximum Tokens, Temperature, HTTP Version, Timeout — no need to expand anything to see these):
+The form opens with **API Key** and **Model Type**, followed directly by the standard inline fields (Service URL defaulting to `https://api.mistral.ai/v1`, Maximum Tokens, Temperature, HTTP Version, Timeout. No need to expand anything to see these):
 
 <ThemedImage
     alt="Create Model Provider form for Mistral showing API Key, Model Type (No Selection), Service URL (default https://api.mistral.ai/v1), Maximum Tokens (default 512), Temperature (default 0.7), and the start of HTTP Version."
@@ -470,7 +470,7 @@ Ollama is the only provider with **no API key**. Authentication is implicit beca
 
 ## OpenAI
 
-Connects to OpenAI's hosted models (the GPT-5 family, GPT-4o, GPT-4.1, and the o-series reasoning models). The provider can call either the **Chat Completions API** (the default) or the newer **Responses API**, selected with the **API Type** advanced configuration — see [Chat Completions vs Responses API](#openai-api-type).
+Connects to OpenAI's hosted models (the GPT-5 family, GPT-4o, GPT-4.1, and the o-series reasoning models). The provider can call either the **Chat Completions API** (the default) or the newer **Responses API**, selected with the **API Type** advanced configuration. See [Chat Completions vs Responses API](#openai-api-type).
 
 Official website: [platform.openai.com](https://platform.openai.com/).
 
@@ -550,7 +550,7 @@ Official website: [openrouter.ai](https://openrouter.ai/).
 
 ### Create form
 
-The form opens with **API Key** and **Model Type**, followed directly by the standard and provider-specific inline fields (Service URL defaulting to `https://openrouter.ai/api/v1`, Site URL, Site Name, Maximum Tokens, Temperature — no need to expand anything to see these):
+The form opens with **API Key** and **Model Type**, followed directly by the standard and provider-specific inline fields (Service URL defaulting to `https://openrouter.ai/api/v1`, Site URL, Site Name, Maximum Tokens, Temperature. No need to expand anything to see these):
 
 <ThemedImage
     alt="Create Model Provider form for OpenRouter showing API Key (with link to https://openrouter.ai/keys), Model Type (with example values 'openai/gpt-4o', 'anthropic/claude-3.5-sonnet'), Service URL (default https://openrouter.ai/api/v1), Site URL, Site Name, and the start of Maximum Tokens."

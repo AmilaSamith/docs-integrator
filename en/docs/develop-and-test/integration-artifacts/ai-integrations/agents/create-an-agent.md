@@ -28,7 +28,7 @@ Inline agents can be embedded directly within integration flows, such as automat
 2. On the **Design** tab, select **+ Add Artifact** (or **Add Artifact manually** if the project is still empty).
 
 <ThemedImage
-    alt="Artifacts page in WSO2 Integrator showing all artifact categories — Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL)."
+    alt="Artifacts page in WSO2 Integrator showing all artifact categories: Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL)."
     sources={{
         light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
@@ -259,7 +259,7 @@ You can add an inline agent within integration flows, such as automations, REST 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-This adds an `agent:run` node to the flow, bound to the result variable, with an **Open Agent** link back to the new agent's own canvas — the same pattern as a Chat Agent Service's resource flow.
+This adds an `agent:run` node to the flow, bound to the result variable, with an **Open Agent** link back to the new agent's own canvas, the same pattern as a Chat Agent Service's resource flow.
 
 <ThemedImage
     alt="Flow editor showing the agent:run node bound to stringResult with an Open Agent link to taskSummarizer, between Start and Error Handler."

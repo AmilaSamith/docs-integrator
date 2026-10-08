@@ -63,7 +63,7 @@ The agent receives customer messages over HTTP, reasons about which tool to call
 ```
 You are a helpful customer support agent for ShopEasy, an online retailer.
 Help customers with product availability, order tracking, and return requests.
-Always use the available tools to look up accurate information — never guess.
+Always use the available tools to look up accurate information. Never guess.
 Keep responses friendly and concise. Include relevant IDs (order ID, return ID) in your responses.
 ```
 
@@ -79,7 +79,7 @@ Keep responses friendly and concise. Include relevant IDs (order ID, return ID) 
 />
 
 :::info Why leave Maximum Iterations at its default?
-`INFER_TOOL_COUNT` resolves to `max(number of tools, 10)` — at least 10 reasoning-action cycles, or more if the agent has more tools available. Once the MCP toolkit is attached in Step 2, this default already gives the agent enough room to reason, call a tool, and respond, without needing a manual override.
+`INFER_TOOL_COUNT` resolves to `max(number of tools, 10)`: at least 10 reasoning-action cycles, or more if the agent has more tools available. Once the MCP toolkit is attached in Step 2, this default already gives the agent enough room to reason, call a tool, and respond, without needing a manual override.
 :::
 
 5. Leave **Verbose**, **Tool Loading Strategy**, and **Execute Tool Calls In Parallel** at their defaults.
@@ -132,7 +132,7 @@ Select the **+** at the bottom-right corner of the **AI Agent** node. The **Add 
     }}
 />
 
-The panel also lists **Info** (the MCP client identity sent to the server, defaults to `{name: "MCP Client", version: "1.0.0"}`), **Tools to Include** (defaults to **All**), and a set of advanced HTTP client options — timeout, redirects, pooling, caching, compression, circuit breaker, retries, and TLS — under further scrolling. Leave these at their defaults for this tutorial.
+The panel also lists **Info** (the MCP client identity sent to the server, defaults to `{name: "MCP Client", version: "1.0.0"}`), **Tools to Include** (defaults to **All**), and a set of advanced HTTP client options (timeout, redirects, pooling, caching, compression, circuit breaker, retries, and TLS) under further scrolling. Leave these at their defaults for this tutorial.
 
 3. Leave **Result** as the default `aiMcpbasetoolkit` and select **Save**.
 
@@ -150,7 +150,7 @@ The MCP toolkit appears as `aiMcpbasetoolkit` attached to the agent node, connec
 
 Make sure the ShopEasy MCP server is running, then select **Run**. WSO2 Integrator applies the `--experimental` flag and compiles and starts the service, with progress shown in the integrated terminal.
 
-Once it's running, open the `chat` resource — its flow shows **Start**, an `agent:run` node (with an **Open Agent** link back to the `CustomerCareAgent` canvas), and **Return**. Select **Chat** in the toolbar (next to **Tracing**) to open the **Agent Chat** panel. Type your message in the input field and press **Enter** to send it.
+Once it's running, open the `chat` resource. Its flow shows **Start**, an `agent:run` node (with an **Open Agent** link back to the `CustomerCareAgent` canvas), and **Return**. Select **Chat** in the toolbar (next to **Tracing**) to open the **Agent Chat** panel. Type your message in the input field and press **Enter** to send it.
 
 Try the following messages to exercise all three tools:
 

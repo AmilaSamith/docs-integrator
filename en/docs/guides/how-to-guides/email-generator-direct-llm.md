@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Email Generator with Direct LLM
-description: Step-by-step tutorial — build an HTTP service that generates professional emails with a single direct LLM call in WSO2 Integrator.
+description: Step-by-step tutorial to build an HTTP service that generates professional emails with a single direct LLM call in WSO2 Integrator.
 slug: /guides/how-to-guides/email-generator-direct-llm
 card_icon: ai
 card_summary: Generate email drafts with a direct LLM call
@@ -81,7 +81,7 @@ Click **Define Payload** and:
     }}
 />
 
-The dialog produces a record with the right fields. There is no need to write the type by hand — the JSON sample drives it.
+The dialog produces a record with the right fields. There is no need to write the type by hand. The JSON sample drives it.
 
 ### Step 1.3: Define the response type
 
@@ -124,7 +124,7 @@ Click **Save** on the resource. The configuration should now show `EmailsGenerat
 
 ## 2. Add a model provider
 
-After saving, the resource opens as a visual flow with **Start** connected to an **Error Handler** — the visual designer adds this node automatically to catch failures from the LLM call you're about to add. Click **+** on the connector between **Start** and **Error Handler**. In the **Add Node** panel, scroll to the **AI** section and click **Model Provider**. Then click `Add Model Provider`. The provider list appears on the right side.
+After saving, the resource opens as a visual flow with **Start** connected to an **Error Handler**. The visual designer adds this node automatically to catch failures from the LLM call you're about to add. Click **+** on the connector between **Start** and **Error Handler**. In the **Add Node** panel, scroll to the **AI** section and click **Model Provider**. Then click `Add Model Provider`. The provider list appears on the right side.
 
 
 <ThemedImage
@@ -141,7 +141,7 @@ Click **Default Model Provider (WSO2)**. The panel describes it as creating a de
 2. **Result Type** is fixed to the provider's connection type (`ai:Wso2ModelProvider` for the WSO2 default) and cannot be edited.
 3. Click **Save**.
 
-The provider is added under **Connections** as `emailGenerator`. It doesn't appear as a step in the flow itself — the `generate` node you add next connects to it as a referenced connection.
+The provider is added under **Connections** as `emailGenerator`. It doesn't appear as a step in the flow itself. The `generate` node you add next connects to it as a referenced connection.
 
 <ThemedImage
     alt="Model Provider configuration with name emailGenerator, added to the flow between Start and Error Handler."
@@ -173,7 +173,7 @@ The **Generate** panel opens with a description ("Sends a chat request to the mo
 
 > *"You are an email writing assistant. Write a short email from `${payload.senderName}` to `${payload.recipientName}` asking for a 30-minute meeting to discuss `${payload.intent}`. Offer the recipient the following time slots and ask them to pick one: `${payload.timeSlots}`. Keep it under 150 words and use a polite, professional tone."*
 
-Use the **Insert → Inputs** menu to add each `${payload....}` reference, or just type the placeholders by hand — the editor renders them as tokens (for example `{x} payload.senderName`) and stores them as a Ballerina template literal.
+Use the **Insert → Inputs** menu to add each `${payload....}` reference, or just type the placeholders by hand. The editor renders them as tokens (for example `{x} payload.senderName`) and stores them as a Ballerina template literal.
 
 <ThemedImage
     alt="Prompt editor with the email writing assistant instruction."
@@ -188,10 +188,10 @@ The prompt has three natural parts:
 | | |
 |---|---|
 | **Role** | *"You are an email writing assistant."* |
-| **Inputs** | `${payload.senderName}`, `${payload.recipientName}`, `${payload.intent}`, `${payload.timeSlots}` — pulled in from `EmailsGeneratePayload`. |
+| **Inputs** | `${payload.senderName}`, `${payload.recipientName}`, `${payload.intent}`, `${payload.timeSlots}`, pulled in from `EmailsGeneratePayload`. |
 | **Task** | *"Write a short email… ask them to pick one… polite, professional tone."* |
 
-> **Why no "return JSON" instruction?** The **Expected Type** field on the next step handles that for you — you don't have to put the schema in the prompt.
+> **Why no "return JSON" instruction?** The **Expected Type** field on the next step handles that for you. You don't have to put the schema in the prompt.
 
 ### Step 3.2: Bind the result and save
 
@@ -274,7 +274,7 @@ Select the run icon (▷) next to the request to send it.
 
 ### Step 4.3: Read the response
 
-The response appears inline below the request, in the same `TryIt.hurl` tab, along with the elapsed request time. It shows `Status: 201 Created` (Ballerina's default for `POST` resources — see Step 1.3) and a JSON body matching `EmailGenerateResponse`:
+The response appears inline below the request, in the same `TryIt.hurl` tab, along with the elapsed request time. It shows `Status: 201 Created` (Ballerina's default for `POST` resources; see Step 1.3) and a JSON body matching `EmailGenerateResponse`:
 
 ```json
 {
@@ -291,11 +291,11 @@ The response appears inline below the request, in the same `TryIt.hurl` tab, alo
     }}
 />
 
-The LLM produced a complete, professionally written email — subject and body — exactly in the shape declared by `EmailGenerateResponse`.
+The LLM produced a complete, professionally written email, subject and body, exactly in the shape declared by `EmailGenerateResponse`.
 
 ---
 
 ## What's next
 
-- **[Direct LLM Calls reference](../../develop-and-test/integration-artifacts/ai-integrations/direct-llm/direct-llm.md)** -- the single-page feature reference covering the `generate` node, prompt editor, and typed responses.
-- **[Model Providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md)** -- switch the LLM provider for production (init params, supported models, advanced HTTP configs for OpenAI, Azure, Anthropic, Vertex, Mistral, DeepSeek, Ollama, OpenRouter).
+- **[Direct LLM Calls reference](../../develop-and-test/integration-artifacts/ai-integrations/direct-llm/direct-llm.md)** — the single-page feature reference covering the `generate` node, prompt editor, and typed responses.
+- **[Model Providers](../../develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/model-providers.md)** — switch the LLM provider for production (init params, supported models, advanced HTTP configs for OpenAI, Azure, Anthropic, Vertex, Mistral, DeepSeek, Ollama, OpenRouter).

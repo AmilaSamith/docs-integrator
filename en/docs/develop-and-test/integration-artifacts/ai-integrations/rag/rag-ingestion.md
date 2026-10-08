@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: RAG Ingestion
-description: How to build a RAG ingestion integration in WSO2 Integrator — load documents, chunk them, generate embeddings, and store vectors in a knowledge base.
+description: How to build a RAG ingestion integration in WSO2 Integrator, load documents, chunk them, generate embeddings, and store vectors in a knowledge base.
 keywords: [wso2 integrator, rag, rag ingestion, knowledge base, vector store, embedding provider]
 slug: /develop-and-test/integration-artifacts/ai-integrations/rag/rag-ingestion
 ---

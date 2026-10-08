@@ -36,13 +36,23 @@ You almost always pick one of these in the **Vector Knowledge Base** form's **Ch
 
 ## Where to find chunkers
 
-Inside the **Create Vector Knowledge Base** form click **+ Create New Chunker**. The **Select Chunker** picker shows the available types:
+Inside the **Create Vector Knowledge Base** form click **+ Create New Chunker**. The **Select Chunker** picker opens with a single **AI Chunkers** entry, described as *"Chunkers available in ballerina/ai"* and badged **3 options**:
 
 <ThemedImage
-    alt="Select Chunker picker listing three chunkers: Generic Recursive Chunker (Represents a Generic document chunker. Provides functionality to recursively chunk a text), Markdown Chunker (Represents a Markdown document chunker. Provides functionality to recursively chunk a Markdown document), and Html Chunker (Represents an HTML document chunker. Provides functionality to recursively chunk a HTML document)."
+    alt="Select Chunker picker showing a single AI Chunkers entry, described as Chunkers available in ballerina/ai and badged 3 options."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/chunkers/01-select-list.png'),
-        dark: useBaseUrl('/img/genai/develop/components/chunkers/01-select-list.png'),
+        light: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/01-select-list-collapsed-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/01-select-list-collapsed-v5.1.png'),
+    }}
+/>
+
+Expand **AI Chunkers** to reveal the three individual chunker types: **Generic Recursive Chunker** (*"Represents a Genereric document chunker..."*), **Markdown Chunker** (*"Represents a Markdown document chunker..."*), and **Html Chunker** (*"Represents an HTML document chunker..."*):
+
+<ThemedImage
+    alt="Select Chunker picker with AI Chunkers expanded, listing Generic Recursive Chunker, Markdown Chunker, and Html Chunker, each with a short description."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/01-select-list-expanded-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/01-select-list-expanded-v5.1.png'),
     }}
 />
 
@@ -167,8 +177,8 @@ The Devant Chunker is added from the same **Select Chunker** picker. Its create 
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Service URL** | Yes | — | The WSO2 Integration Platform service endpoint URL. |
-| **Access Token** | Yes | — | Access token for authenticating with WSO2 Integration Platform. |
+| **Service URL** | Yes | N/A | The WSO2 Integration Platform service endpoint URL. |
+| **Access Token** | Yes | N/A | Access token for authenticating with WSO2 Integration Platform. |
 
 ### Advanced configurations
 
