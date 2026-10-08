@@ -56,8 +56,8 @@ The four nodes, **Retrieve**, **Augment User Query**, **Generate**, and **Return
     <ThemedImage
         alt="Artifacts page listing artifact types including HTTP Service under Integration as API."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/01-add-artifact-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/01-add-artifact-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/01-add-artifact-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/01-add-artifact-v5.1.png'),
         }}
     />
 
@@ -66,8 +66,8 @@ The four nodes, **Retrieve**, **Augment User Query**, **Generate**, and **Return
     <ThemedImage
         alt="Create HTTP Service form with Service Contract set to Design From Scratch and Service Base Path set to /."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/02-http-service-form-create-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/02-http-service-form-create-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/02-http-service-form-create-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/02-http-service-form-create-v5.1.png'),
         }}
     />
 
@@ -76,8 +76,8 @@ The four nodes, **Retrieve**, **Augment User Query**, **Generate**, and **Return
     <ThemedImage
         alt="HTTP Service editor showing no resources and the Select HTTP Method to Add panel."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/03-http-service-add-resource-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/03-http-service-add-resource-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/03-http-service-add-resource-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/03-http-service-add-resource-v5.1.png'),
         }}
     />
 
@@ -86,8 +86,8 @@ The four nodes, **Retrieve**, **Augment User Query**, **Generate**, and **Return
     <ThemedImage
         alt="Select HTTP Method to Add panel listing GET, POST, PUT, DELETE, PATCH, and DEFAULT."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/04-select-post-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/04-select-post-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/04-select-post-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/04-select-post-v5.1.png'),
         }}
     />
 
@@ -96,8 +96,8 @@ The four nodes, **Retrieve**, **Augment User Query**, **Generate**, and **Return
     <ThemedImage
         alt="New Resource Configuration panel with POST method, query resource path, QueryPayload payload, and the default 201 json / 500 error responses."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/05-resource-config-query-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/05-resource-config-query-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/05-resource-config-query-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/05-resource-config-query-v5.1.png'),
         }}
     />
 
@@ -117,8 +117,8 @@ The **Retrieve** action queries the Knowledge Base for chunks most similar to th
     <ThemedImage
         alt="Add Node panel with AI > RAG > Knowledge Base highlighted, tooltip Knowledge bases available in the integration."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/06-knowledgebase-select-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/06-knowledgebase-select-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/06-knowledgebase-select-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/06-knowledgebase-select-v5.1.png'),
         }}
     />
 
@@ -127,8 +127,8 @@ The **Retrieve** action queries the Knowledge Base for chunks most similar to th
     <ThemedImage
         alt="aiVectorknowledgebase connection expanded showing Ingest, Retrieve, and Delete By Filter actions, with the Retrieve tooltip visible."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/07-retrieve-action-selected-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/07-retrieve-action-selected-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/07-retrieve-action-selected-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/07-retrieve-action-selected-v5.1.png'),
         }}
     />
 
@@ -146,8 +146,8 @@ The **Retrieve** action queries the Knowledge Base for chunks most similar to th
     <ThemedImage
         alt="ai:retrieve form with Query set to payload.userQuery, Top K default 10, Filters empty, and Result set to context."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/08-retrieve-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/08-retrieve-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/08-retrieve-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/08-retrieve-form-v5.1.png'),
         }}
     />
 
@@ -160,8 +160,8 @@ Retrieve is the read-side counterpart to Ingest. It must point to the same Knowl
 <ThemedImage
     alt="Flow editor showing the ai:retrieve node (context) added after the HTTP service resource."
     sources={{
-        light: useBaseUrl('/img/genai/develop/rag/rag-query/09-retrieve-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/rag/rag-query/09-retrieve-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/09-retrieve-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/09-retrieve-node-v5.1.png'),
     }}
 />
 
@@ -186,8 +186,8 @@ The **Augment User Query** node combines the retrieved chunks with the original 
     <ThemedImage
         alt="ai:augmentUserQuery form with Context set to context (Expression mode), Query set to payload.userQuery, and Result set to aiChatusermessage."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/10-augment-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/10-augment-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/10-augment-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/10-augment-form-v5.1.png'),
         }}
     />
 
@@ -196,8 +196,8 @@ This step handles prompt construction automatically. You do not need to manually
 <ThemedImage
     alt="Flow editor showing the ai:augmentUserQuery node added after the ai:retrieve node."
     sources={{
-        light: useBaseUrl('/img/genai/develop/rag/rag-query/11-augment-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/rag/rag-query/11-augment-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/11-augment-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/11-augment-node-v5.1.png'),
     }}
 />
 
@@ -213,8 +213,8 @@ This step handles prompt construction automatically. You do not need to manually
     <ThemedImage
         alt="Model Providers panel with aiWso2modelprovider expanded, showing Chat and Generate actions, with the Generate tooltip visible."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/12-model-provider-node-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/12-model-provider-node-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/12-model-provider-node-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/12-model-provider-node-v5.1.png'),
         }}
     />
 
@@ -237,16 +237,16 @@ The **Generate** action calls the LLM with the augmented message and returns the
     <ThemedImage
         alt="ai:generate form with Prompt set to check aiChatusermessage.content.ensureType(), Expected Type string, and Result set to response."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/13-generate-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/13-generate-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/13-generate-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/13-generate-form-v5.1.png'),
         }}
     />
 
     <ThemedImage
         alt="Flow editor showing the ai:generate node (response) added, connected to the aiWso2modelprovider connection."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/rag-query/14-final-flow-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/rag-query/14-final-flow-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/14-final-flow-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/14-final-flow-v5.1.png'),
         }}
     />
 
@@ -262,8 +262,8 @@ The **Generate** action calls the LLM with the augmented message and returns the
 <ThemedImage
     alt="Complete RAG query integration: Start, ai:retrieve, ai:augmentUserQuery, ai:generate, Return, and Error Handler."
     sources={{
-        light: useBaseUrl('/img/genai/develop/rag/rag-query/15-rag-query-pipeline-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/rag/rag-query/15-rag-query-pipeline-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/15-rag-query-pipeline-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-query/15-rag-query-pipeline-v5.1.png'),
     }}
 />
 

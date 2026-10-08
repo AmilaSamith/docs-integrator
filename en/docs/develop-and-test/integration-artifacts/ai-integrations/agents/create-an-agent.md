@@ -30,8 +30,8 @@ Inline agents can be embedded directly within integration flows, such as automat
 <ThemedImage
     alt="Artifacts page in WSO2 Integrator showing all artifact categories — Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/shared/07-artifacts-page-full-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/shared/07-artifacts-page-full-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
     }}
 />
 
@@ -54,8 +54,8 @@ Under **AI Integration**, select **Chat Agent Service**.
     <ThemedImage
         alt="The empty Create Chat Agent Service form with Role, Instructions, Model, and Maximum Iterations fields."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/02-chat-agent-service-form-empty-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/02-chat-agent-service-form-empty-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/02-chat-agent-service-form-empty-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/02-chat-agent-service-form-empty-v5.1.png'),
         }}
     />
 
@@ -64,8 +64,8 @@ Under **AI Integration**, select **Chat Agent Service**.
     <ThemedImage
         alt="The Create Chat Agent Service form filled in with Role set to Blog Reviewer, Instructions filled in, and Model set to Default WSO2 Model Provider."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/03-chat-agent-service-form-filled-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/03-chat-agent-service-form-filled-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/03-chat-agent-service-form-filled-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/03-chat-agent-service-form-filled-v5.1.png'),
         }}
     />
 
@@ -81,8 +81,8 @@ Under **AI Integration**, select **Chat Agent Service**.
     <ThemedImage
         alt="The bottom of the Create Chat Agent Service form with Agent Name set to blogReviewer and Service Base Path set to /blog-reviewer."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/04-chat-agent-service-name-path-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/04-chat-agent-service-name-path-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/04-chat-agent-service-name-path-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/04-chat-agent-service-name-path-v5.1.png'),
         }}
     />
 
@@ -103,8 +103,8 @@ The resource flow shows **Start**, an `agent:run` node bound to a result variabl
 <ThemedImage
     alt="The chat resource flow showing Start, an agent:run node bound to stringResult with an Open Agent link to blogReviewer, then Return."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents/05-chat-agent-resource-flow-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents/05-chat-agent-resource-flow-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/05-chat-agent-resource-flow-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/05-chat-agent-resource-flow-v5.1.png'),
     }}
 />
 
@@ -113,8 +113,8 @@ Selecting **Open Agent** (or the agent under **Agents** in the sidebar) opens th
 <ThemedImage
     alt="The AI Agent canvas showing the AI Agent node with its name, an Add Memory button, a role and instructions preview, and a connection to the model provider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents/06-agent-canvas-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents/06-agent-canvas-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/06-agent-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/06-agent-canvas-v5.1.png'),
     }}
 />
 
@@ -178,16 +178,16 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="Add Node panel with the AI section showing Direct LLM, RAG, and Agent options, with the Agent option highlighted and its tooltip visible."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/07-automation-empty-flow-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/07-automation-empty-flow-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-automation-empty-flow-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-automation-empty-flow-v5.1.png'),
         }}
     />
 
     <ThemedImage
         alt="The Add Node panel's AI section with the Agent option selected and its Create or reuse an Agent tooltip shown."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/08-add-node-ai-panel-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/08-add-node-ai-panel-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/08-add-node-ai-panel-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/08-add-node-ai-panel-v5.1.png'),
         }}
     />
 
@@ -196,8 +196,8 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="The Agents panel listing the existing blogReviewer agent as a reusable option, with a + button to add a new agent."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/09-agents-panel-reusable-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/09-agents-panel-reusable-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/09-agents-panel-reusable-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/09-agents-panel-reusable-v5.1.png'),
         }}
     />
 
@@ -212,8 +212,8 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="The Add Agent dialog with Create Agent, Create Agent Definition, and an empty Pre-built Agents section."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/10-add-agent-modal-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/10-add-agent-modal-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/10-add-agent-modal-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/10-add-agent-modal-v5.1.png'),
         }}
     />
 
@@ -222,8 +222,8 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="The empty Create Agent form with Role, Instructions, Model, and Maximum Iterations fields."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/11-create-agent-form-empty-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/11-create-agent-form-empty-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/11-create-agent-form-empty-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/11-create-agent-form-empty-v5.1.png'),
         }}
     />
 
@@ -232,8 +232,8 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="The Create Agent form scrolled down to Verbose, Tool Loading Strategy, Execute Tool Calls In Parallel, and the Agent Name field."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/12-create-agent-form-name-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/12-create-agent-form-name-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/12-create-agent-form-name-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/12-create-agent-form-name-v5.1.png'),
         }}
     />
 
@@ -251,8 +251,8 @@ You can add an inline agent within integration flows, such as automations, REST 
     <ThemedImage
         alt="The AI Agent node panel with Query set to a literal prompt string and Result set to stringResult."
         sources={{
-            light: useBaseUrl('/img/genai/develop/agents/13-ai-agent-node-panel-filled-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/agents/13-ai-agent-node-panel-filled-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/13-ai-agent-node-panel-filled-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/13-ai-agent-node-panel-filled-v5.1.png'),
         }}
     />
 
@@ -264,8 +264,8 @@ This adds an `agent:run` node to the flow, bound to the result variable, with an
 <ThemedImage
     alt="Flow editor showing the agent:run node bound to stringResult with an Open Agent link to taskSummarizer, between Start and Error Handler."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents/14-inline-agent-node-in-flow-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents/14-inline-agent-node-in-flow-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/14-inline-agent-node-in-flow-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/14-inline-agent-node-in-flow-v5.1.png'),
     }}
 />
 
@@ -274,8 +274,8 @@ Selecting **Open Agent** opens the agent's own canvas: an **AI Agent** block sho
 <ThemedImage
     alt="The taskSummarizer AI Agent canvas showing its name, an Add Memory button, and a role and instructions preview."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents/15-inline-agent-canvas-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents/15-inline-agent-canvas-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/15-inline-agent-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/15-inline-agent-canvas-v5.1.png'),
     }}
 />
 

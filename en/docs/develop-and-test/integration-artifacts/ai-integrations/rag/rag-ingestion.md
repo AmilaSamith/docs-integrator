@@ -52,8 +52,8 @@ An **Automation** runs on integration startup. It is the right artifact type for
     <ThemedImage
         alt="Artifacts page with Automation selected, showing the artifact-type filter tabs (All, Automation, Workflow, AI, API, Event, File, Other)."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/01-rag-ingestion-artifacts-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/01-rag-ingestion-artifacts-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/01-rag-ingestion-artifacts-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/01-rag-ingestion-artifacts-v5.1.png'),
         }}
     />
 
@@ -70,8 +70,8 @@ A **Text Data Loader** reads a file from disk and wraps its content as an `ai:Do
     <ThemedImage
         alt="Data Loaders picker listing Text Data Loader and Microsoft SharePoint Text Data Loader, with Text Data Loader selected."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/02-add-dataloader-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/02-add-dataloader-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/02-add-dataloader-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/02-add-dataloader-v5.1.png'),
         }}
     />
 
@@ -86,8 +86,8 @@ A **Text Data Loader** reads a file from disk and wraps its content as an `ai:Do
     <ThemedImage
         alt="Text Data Loader configuration form with Paths set to a relative file path, Data Loader Name set to loader, and Result Type ai:TextDataLoader."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/03-dataloader-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/03-dataloader-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/03-dataloader-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/03-dataloader-form-v5.1.png'),
         }}
     />
 
@@ -106,8 +106,8 @@ Call the loader's `load` function to execute the read and get back an `ai:Docume
     <ThemedImage
         alt="loader connection expanded showing the Load action with its tooltip."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/04-call-load-action-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/04-call-load-action-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/04-call-load-action-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/04-call-load-action-v5.1.png'),
         }}
     />
 
@@ -118,8 +118,8 @@ Call the loader's `load` function to execute the read and get back an `ai:Docume
     <ThemedImage
         alt="Load action form with result variable name set to documents."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/05-load-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/05-load-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/05-load-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/05-load-form-v5.1.png'),
         }}
     />
 
@@ -128,8 +128,8 @@ Call the loader's `load` function to execute the read and get back an `ai:Docume
     <ThemedImage
         alt="Flow editor showing the load action node added to the automation flow."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/06-load-node-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/06-load-node-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/06-load-node-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/06-load-node-v5.1.png'),
         }}
     />
 
@@ -145,8 +145,8 @@ The **Vector Knowledge Base** owns the three pluggable parts of a RAG store: a v
     <ThemedImage
         alt="Knowledge Bases picker listing Vector Knowledge Base, Azure AI Search Knowledge Base, and WSO2 Cloud Knowledge Base."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/07-knowledge-base-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/07-knowledge-base-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/07-knowledge-base-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/07-knowledge-base-v5.1.png'),
         }}
     />
 
@@ -164,8 +164,8 @@ The **Vector Knowledge Base** owns the three pluggable parts of a RAG store: a v
     <ThemedImage
         alt="Completed ai : Vector Knowledge Base form with Vector Store, Embedding Model, Chunker set to AUTO, and Knowledge Base Name filled in."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/08-vector-knowledge-base-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/08-vector-knowledge-base-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/08-vector-knowledge-base-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/08-vector-knowledge-base-form-v5.1.png'),
         }}
     />
 
@@ -193,8 +193,8 @@ Call `ingest` on the knowledge base to chunk, embed, and persist the loaded docu
     <ThemedImage
         alt="aiVectorknowledgebase connection expanded showing Ingest, Retrieve, and Delete By Filter actions, with the Ingest tooltip visible."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/09-ingest-action-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/09-ingest-action-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/09-ingest-action-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/09-ingest-action-v5.1.png'),
         }}
     />
 
@@ -203,8 +203,8 @@ Call `ingest` on the knowledge base to chunk, embed, and persist the loaded docu
     <ThemedImage
         alt="Ingest action form with the Documents field in Expression mode, set to the documents variable."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/10-ingest-doc-form-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/10-ingest-doc-form-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/10-ingest-doc-form-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/10-ingest-doc-form-v5.1.png'),
         }}
     />
 
@@ -213,8 +213,8 @@ Call `ingest` on the knowledge base to chunk, embed, and persist the loaded docu
     <ThemedImage
         alt="Flow editor showing the ingest node added after the knowledge base node."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/11-with-ingest-node-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/11-with-ingest-node-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/11-with-ingest-node-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/11-with-ingest-node-v5.1.png'),
         }}
     />
 
@@ -239,8 +239,8 @@ This is optional but useful during development and when the automation runs on a
 <ThemedImage
     alt="Completed RAG ingestion flow: Start, ai:load, ai:ingest, log:printInfo, and Error Handler."
     sources={{
-        light: useBaseUrl('/img/genai/develop/rag/12-full-rag-ingestion-pipeline-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/rag/12-full-rag-ingestion-pipeline-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/12-full-rag-ingestion-pipeline-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/12-full-rag-ingestion-pipeline-v5.1.png'),
     }}
 />
 
@@ -259,8 +259,8 @@ Watch the terminal output for the log message. If the run fails with `File does 
     <ThemedImage
         alt="Terminal output showing the RAG ingestion integration completed successfully with the &quot;RAG ingestion complete.&quot; log message."
         sources={{
-            light: useBaseUrl('/img/genai/develop/rag/13-run-rag-ingestion-pipeline-v5.1.png'),
-            dark: useBaseUrl('/img/genai/develop/rag/13-run-rag-ingestion-pipeline-v5.1.png'),
+            light: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/13-run-rag-ingestion-pipeline-v5.1.png'),
+            dark: useBaseUrl('/img/genai/develop/rag-v5.1/rag-ingestion/13-run-rag-ingestion-pipeline-v5.1.png'),
         }}
     />
 

@@ -68,8 +68,8 @@ For plain text. Begins splitting using the chosen strategy and recursively falls
 <ThemedImage
     alt="Create Chunker form for Generic Recursive. Header reads 'Initializes a new instance of the GenericRecursiveChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default PARAGRAPH), Chunker Name (default aiGenericrecursivechunker), Result Type (locked to ai:GenericRecursiveChunker). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/chunkers/02-generic-recursive-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/chunkers/02-generic-recursive-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/02-generic-recursive-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/02-generic-recursive-basic-v5.1.png'),
     }}
 />
 
@@ -102,8 +102,8 @@ Header-aware chunker for Markdown. Starts at heading level `##` and walks down b
 <ThemedImage
     alt="Create Chunker form for Markdown. Header reads 'Initializes a new instance of the MarkdownChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default MARKDOWN_HEADER), Chunker Name (default aiMarkdownchunker), Result Type (locked to ai:MarkdownChunker). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/chunkers/03-markdown-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/chunkers/03-markdown-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/03-markdown-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/03-markdown-basic-v5.1.png'),
     }}
 />
 
@@ -133,8 +133,8 @@ Tag-aware chunker for HTML. Starts at heading tags and falls back through paragr
 <ThemedImage
     alt="Create Chunker form for HTML. Header reads 'Initializes a new instance of the HtmlChunker.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Fields: Max Chunk Size (default 200), Max Overlap Size (default 40), Strategy (default HTML_HEADER), Chunker Name (default aiHtmlchunker), Result Type (locked to ai:HtmlChunker). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/chunkers/04-html-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/chunkers/04-html-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/04-html-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/chunkers-v5.1/04-html-basic-v5.1.png'),
     }}
 />
 
