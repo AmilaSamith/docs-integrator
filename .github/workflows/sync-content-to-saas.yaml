@@ -56,7 +56,13 @@ on:
       - 'en/static/img/**'
   workflow_dispatch:
 
+# One sync at a time; a newer push supersedes a queued one.
+concurrency:
+  group: sync-content-to-saas
+  cancel-in-progress: false
+
 env:
+  SYNC_BRANCH: sync-content-saas
   SYNC_DIRS: >-
     en/docs/platform-overview
     en/docs/editor
@@ -85,7 +91,11 @@ jobs:
           git config user.email "docs@wso2.com"
 
           git fetch origin wso2-integrator saas
-          git checkout -b sync-content-saas-$(date +%Y%m%d%H%M%S) origin/saas
+          # Fixed branch name: every run rebuilds it from the current saas, so it
+          # always carries the full, latest diff (a superset of any earlier run's)
+          # and one open PR is updated in place instead of a new one per push.
+          git fetch origin "$SYNC_BRANCH" 2>/dev/null || true
+          git checkout -B "$SYNC_BRANCH" origin/saas
 
           # comm needs both inputs sorted the same way.
           export LC_ALL=C
@@ -183,9 +193,29 @@ jobs:
           fi
 
           git commit -m "content(sync): shared docs from wso2-integrator ($(date +%Y-%m-%d))"
-          git push origin HEAD
 
-          gh pr create --base saas --head "$(git branch --show-current)" \
+          open_pr=$(gh pr list --base saas --head "$SYNC_BRANCH" --state open --json number --jq '.[0].number')
+
+          # An open sync PR already carries exactly this content: leave it alone.
+          # (Only checked while a PR is open, so a leftover branch from a merged
+          # PR never suppresses a new one.)
+          if [ -n "$open_pr" ] \
+             && git rev-parse --verify -q "origin/$SYNC_BRANCH" >/dev/null \
+             && git diff --quiet "origin/$SYNC_BRANCH" HEAD; then
+            echo "Open sync PR #$open_pr is already up to date."
+            exit 0
+          fi
+
+          # Bot-owned branch, rebuilt each run, so a force push is intended.
+          git push --force origin "HEAD:$SYNC_BRANCH"
+
+          # Reuse the open sync PR if there is one (the push above updated it).
+          if [ -n "$open_pr" ]; then
+            echo "Updated sync PR #$open_pr."
+            exit 0
+          fi
+
+          gh pr create --base saas --head "$SYNC_BRANCH" \
             --title "content(sync): shared docs from wso2-integrator" \
             --body $'Auto-synced shared content (platform-overview, editor, develop-and-test, migrate, guides, plus every en/static/img/ file they reference) from wso2-integrator. develop-and-test/create-workspace/ is saas-owned and is not synced. Check the run log for warnings about referenced images missing on wso2-integrator.\n\n**Review before merging, do not auto-merge.** In particular:\n- `editor/views/integration-view.md`, `editor/views/project-view.md`, and `editor/integrator-app.md` carry intentional saas-specific divergence (Cloud-only deploy options panel, no ICP status-bar item -- see the NOTE comments in each file). If this PR\'s diff re-adds the VM/Containerized/ICP options or the ICP status bar row to these files, that\'s this sync clobbering the saas-specific override -- revert those hunks before merging, don\'t accept them as-is.\n- Any other saas-specific edit inside a synced folder will show the same way: as this PR reverting it. Check for NOTE-style comments before accepting a hunk that removes one.\n- The same goes for images: if saas intentionally carries its own version of a screenshot the synced docs reference, this PR keeps saas\'s copy only if it was edited on saas after wso2-integrator\'s version (see the "kept saas copy" warnings in the run log); otherwise it overwrites it -- revert that file before merging if the saas copy should win.' \
             --label "content-sync"
