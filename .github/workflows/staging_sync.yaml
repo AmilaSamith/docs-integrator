@@ -90,6 +90,21 @@ jobs:
           # fork build using FORK_BASE_PATH above for its own baseUrl.
           CROSS_PRODUCT_BASE: ${{ steps.cfg.outputs.cross_product_base }}
 
+      # Fork builds only (FORK_BASE_PATH set = a personal fork's own GitHub
+      # Pages demo, not the real org pipeline): keep search engines from
+      # indexing the demo until the site goes live from the official repo.
+      # `noindex` in every page is what actually works -- a robots.txt
+      # can't, because a project site (<owner>.github.io/<repo>/) isn't the
+      # host root and crawlers only read /robots.txt from the root. The
+      # sitemaps are dropped too so crawlers aren't handed a URL list.
+      # Real org builds leave FORK_BASE_PATH unset, so production and the
+      # Choreo staging site are never affected.
+      - name: Block search engines on fork builds
+        if: ${{ vars.FORK_BASE_PATH != '' }}
+        run: |
+          find en/build -name '*.html' -print0 | xargs -0 sed -i 's#<head>#<head><meta name="robots" content="noindex, nofollow">#'
+          find en/build -name 'sitemap.xml' -delete
+
       # `keep_files: true` is load-bearing: without it, peaceiris wipes
       # the whole `staging` branch before each deploy, deleting whatever
       # the other product branches (and, now, the root redirect) already
@@ -124,6 +139,10 @@ jobs:
         run: |
           mkdir -p /tmp/root-redirect
           sed "s#/integration-platform/docs/saas/#${{ steps.cfg.outputs.base_url }}#g" root-redirect/index.html > /tmp/root-redirect/index.html
+          # Fork builds: same noindex as the step above, for the redirect page.
+          if [ -n "${{ vars.FORK_BASE_PATH }}" ]; then
+            sed -i 's#<head>#<head><meta name="robots" content="noindex, nofollow">#' /tmp/root-redirect/index.html
+          fi
 
       - name: Deploy root redirect (root of staging)
         if: github.ref_name == 'saas'
