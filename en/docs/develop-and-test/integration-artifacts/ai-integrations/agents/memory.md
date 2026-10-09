@@ -68,8 +68,8 @@ Selecting **In Memory Short Term Memory Store** opens the configuration form for
 <ThemedImage
     alt="Create Memory Store form for an in-memory store. Fields: Size (Default: 10). Memory Store Name* (default 'aiInmemoryshorttermmemorystore'). Result Type* (default 'ai:InMemoryShortTermMemoryStore', locked). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/09-create-inmemory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/09-create-inmemory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/03-create-inmemory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/03-create-inmemory-store-v5.1.png'),
     }}
 />
 
@@ -88,8 +88,8 @@ Selecting **MSSQL Short Term Memory Store** opens a configuration form for creat
 <ThemedImage
     alt="Create Memory Store form for MSSQL. Fields: MS SQL Client* (default `new ('', (), (), (), 0, '', (), ())`), Max Messages Per Key (Default: 20), Cache Config (Default: {}), Table Name (Default: 'ChatMessages'), Checkpoint Table Name (Default: 'Checkpoints')."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/03-create-mssql-memory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/03-create-mssql-memory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/04-create-mssql-memory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/04-create-mssql-memory-store-v5.1.png'),
     }}
 />
 
@@ -98,8 +98,8 @@ Scrolling further shows **Memory Store Name**, **Result Type**, and the **Save**
 <ThemedImage
     alt="Bottom of the Create Memory Store form for MSSQL showing the end of Table Name, Checkpoint Table Name, Memory Store Name* (default 'mssqlShorttermmemorystore'), Result Type* (default 'mssql:ShortTermMemoryStore', locked), and the Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/04-mssql-memory-scrolled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/04-mssql-memory-scrolled-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/05-mssql-memory-scrolled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/05-mssql-memory-scrolled-v5.1.png'),
     }}
 />
 
@@ -124,8 +124,8 @@ Selecting **Redis Short Term Memory Store** opens a configuration form for creat
 <ThemedImage
     alt="Create Memory Store form for Redis. Fields: Redis Client* (default `new ({})`), Max Messages Per Key (Default: 20), Cache Config (Default: ()), Key Prefix (Default: 'chat_memory'), Memory Store Name* (default 'redisShorttermmemorystore'), Result Type* (default 'redis:ShortTermMemoryStore', locked)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/05-create-redis-memory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/05-create-redis-memory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06-create-redis-memory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06-create-redis-memory-store-v5.1.png'),
     }}
 />
 
@@ -147,8 +147,8 @@ Selecting **PostgreSQL Short Term Memory Store** opens a configuration form for 
 <ThemedImage
     alt="Create Memory Store form for PostgreSQL. Fields: Database Connection* (default empty database name), Max Messages Per Key (Default: 20), Table Name (Default: 'chat_messages'), Checkpoint Table Name (Default: 'checkpoints')."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06-create-postgresql-memory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06-create-postgresql-memory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07-create-postgresql-memory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07-create-postgresql-memory-store-v5.1.png'),
     }}
 />
 
@@ -157,8 +157,8 @@ Scrolling further shows the end of **Checkpoint Table Name**, **Memory Store Nam
 <ThemedImage
     alt="Bottom of the Create Memory Store form for PostgreSQL showing Memory Store Name* (default 'postgresqlShorttermmemorystore'), Result Type* (default 'postgresql:ShortTermMemoryStore', locked), and the Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06b-postgresql-memory-scrolled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/06b-postgresql-memory-scrolled-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/08-postgresql-memory-scrolled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/08-postgresql-memory-scrolled-v5.1.png'),
     }}
 />
 
@@ -178,8 +178,8 @@ Selecting **SQLite Short Term Memory Store** opens a configuration form for crea
 <ThemedImage
     alt="Create Memory Store form for SQLite. Fields: Database Connection* (default empty URL), Maximum Messages Per Key (Default: 20), Table Name (Default: 'chat_messages'), Checkpoint Table Name (Default: 'checkpoints'), and the start of Memory Store Name*."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07-create-sqlite-memory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07-create-sqlite-memory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/09-create-sqlite-memory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/09-create-sqlite-memory-store-v5.1.png'),
     }}
 />
 
@@ -188,8 +188,8 @@ Scrolling further shows the end of **Checkpoint Table Name**, **Memory Store Nam
 <ThemedImage
     alt="Bottom of the Create Memory Store form for SQLite showing Memory Store Name* (default 'sqliteShorttermmemorystore'), Result Type* (default 'sqlite:ShortTermMemoryStore', locked), and the Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07b-sqlite-memory-scrolled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/07b-sqlite-memory-scrolled-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/10-sqlite-memory-scrolled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/10-sqlite-memory-scrolled-v5.1.png'),
     }}
 />
 
@@ -213,8 +213,8 @@ Selecting **Amazon DynamoDB Short Term Memory Store** opens a configuration form
 <ThemedImage
     alt="Create Memory Store form for Amazon DynamoDB. Fields: Database Connection* (default empty AWS credentials and region), Max Messages Per Key (Default: 20), Table Configuration (Default: empty), Memory Store Name* (default 'dynamodbShorttermmemorystore'), Result Type* (default 'dynamodb:ShortTermMemoryStore', locked). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/08-create-dynamodb-memory-store-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/08-create-dynamodb-memory-store-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/11-create-dynamodb-memory-store-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/11-create-dynamodb-memory-store-v5.1.png'),
     }}
 />
 
@@ -262,8 +262,8 @@ After memory is configured, the AI Agent block on the canvas displays the attach
 <ThemedImage
     alt="The blogReviewer AI Agent node with an additional inner sub-block 'Memory: ShortTermMemory', between the agent header and the Blog Reviewer role description."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/10-agent-with-memory-attached-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/10-agent-with-memory-attached-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/memory/12-agent-with-memory-attached-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/memory/12-agent-with-memory-attached-v5.1.png'),
     }}
 />
 

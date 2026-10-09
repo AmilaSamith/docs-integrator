@@ -35,8 +35,8 @@ A typical flow with a direct LLM call has a `generate` node sitting between your
 <ThemedImage
     alt="A WSO2 Integrator flow on the canvas showing Start, an ai:generate node bound to an aiWso2modelprovider connection on the right, then log:printInfo with template `string ${summary}`, then Return, then Error Handler."
     sources={{
-        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/21-complete-flow-with-direct-llm-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/21-complete-flow-with-direct-llm-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/01-complete-flow-with-direct-llm-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/01-complete-flow-with-direct-llm-v5.1.png'),
     }}
 />
 
@@ -65,8 +65,8 @@ The `generate` action lives **on the model-provider connection itself**, not as 
 <ThemedImage
     alt="The right-side Model Providers panel with aiWso2modelprovider expanded, showing two actions: Chat and Generate. The Generate action is highlighted with a description that it sends a chat request to the model and generates a value that belongs to the type corresponding to the type descriptor argument."
     sources={{
-        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/22-pick-generate-action-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/22-pick-generate-action-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/02-pick-generate-action-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/02-pick-generate-action-v5.1.png'),
     }}
 />
 
@@ -77,8 +77,8 @@ When the form opens, three fields are all you need: the **Prompt**, the **Result
 <ThemedImage
     alt="The Generate configuration panel for the aiWso2modelprovider generate action, showing the Prompt field with the Insert menu open, listing Inputs, Variables, Configurables, Functions, and Documents. Result and Expected Type fields are below, with a Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/23-generate-action-configure-prompt-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/23-generate-action-configure-prompt-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/03-generate-action-configure-prompt-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/03-generate-action-configure-prompt-v5.1.png'),
     }}
 />
 
@@ -105,8 +105,8 @@ The **Prompt** is the instruction you send to the LLM. Click any **Prompt** fiel
 <ThemedImage
     alt="The Prompt editor dialog opened with the toolbar at the top: Insert, undo/redo, Bold, Italic, Link, H1, quote, lists, table, and a magic-wand AI assist icon, plus a Preview/Source toggle."
     sources={{
-        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/24-prompt-editor-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/24-prompt-editor-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/04-prompt-editor-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/04-prompt-editor-v5.1.png'),
     }}
 />
 

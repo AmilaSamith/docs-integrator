@@ -37,8 +37,8 @@ Per-call overrides are not exposed in the form. Anything that varies per request
 <ThemedImage
     alt="Right-side Model Providers panel showing the search bar and a + Add Model Provider button at the top of an empty list."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/01-panel-empty-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/01-panel-empty-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/01-panel-empty-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/01-panel-empty-v5.1.png'),
     }}
 />
 
@@ -47,8 +47,8 @@ Per-call overrides are not exposed in the form. Anything that varies per request
 <ThemedImage
     alt="Select Model Provider picker listing Default Model Provider (WSO2), Anthropic, Azure OpenAI, DeepSeek, Google Vertex, Mistral, Ollama, OpenAI, with one-line descriptions for each."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/02-select-list-top-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/02-select-list-top-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/02-select-list-top-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/02-select-list-top-v5.1.png'),
     }}
 />
 
@@ -57,8 +57,8 @@ Scroll to see the remaining options:
 <ThemedImage
     alt="Select Model Provider picker scrolled to show DeepSeek (highlighted), Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter Model Provider entries."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/03-select-list-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/03-select-list-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/03-select-list-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/03-select-list-bottom-v5.1.png'),
     }}
 />
 
@@ -98,8 +98,8 @@ Every provider with a hosted endpoint (all providers except the Default WSO2 pro
 <ThemedImage
     alt="Advanced Configurations expanded (shown here for Anthropic; every other provider's panel shows the exact same fields) with HTTP1 Settings, HTTP2 Settings, Pool Configuration, Cache Configuration, Circuit Breaker Configuration, and the start of Retry Configuration, each defaulting to {}."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/04-advanced-configurations-top-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/04-advanced-configurations-top-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/04-advanced-configurations-top-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/04-advanced-configurations-top-v5.1.png'),
     }}
 />
 
@@ -120,8 +120,8 @@ Scrolling further down the expanded section shows Retry Configuration, Response 
 <ThemedImage
     alt="Bottom of the expanded Advanced Configurations section (shown here for Anthropic) showing Retry Configuration, Response Limit Configuration, Secure Socket Configuration, and Proxy Configuration, each defaulting to {} or ()."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/05-advanced-configurations-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/05-advanced-configurations-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/05-advanced-configurations-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/05-advanced-configurations-bottom-v5.1.png'),
     }}
 />
 
@@ -138,8 +138,8 @@ Provided by the core `ballerina/ai` package. Routes through the WSO2 intelligenc
 <ThemedImage
     alt="Create Model Provider form for the Default WSO2 provider. Header reads 'Creates a default model provider based on the provided wso2ProviderConfig'. Banner: 'This is a simple operation that requires no parameters. Specify where to store the result to finish.' Two fields: Model Provider Name (default aiWso2modelprovider) and Result Type (locked to ai:Wso2ModelProvider). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/06-wso2-default-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/06-wso2-default-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/06-wso2-default-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/06-wso2-default-v5.1.png'),
     }}
 />
 
@@ -162,8 +162,8 @@ The form opens with **API Key** and **Model Type**, followed directly by the sta
 <ThemedImage
     alt="Create Model Provider form for Anthropic showing API Key, Model Type (No Selection), Service URL (default https://api.anthropic.com/v1), Maximum Tokens (default 512), Temperature (default 0.7), HTTP Version (default HTTP_2_0), and the start of Timeout."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/07-anthropic-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/07-anthropic-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/07-anthropic-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/07-anthropic-basic-v5.1.png'),
     }}
 />
 
@@ -177,8 +177,8 @@ Scrolling further shows Forwarded, Compression, and Payload Validation, then the
 <ThemedImage
     alt="Bottom of the Anthropic Create Model Provider form showing Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to anthropicModelprovider, and Result Type locked to anthropic:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/08-anthropic-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/08-anthropic-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/08-anthropic-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/08-anthropic-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -199,8 +199,8 @@ The form opens with **Service URL**, **API Key**, **Deployment ID**, and **API V
 <ThemedImage
     alt="Create Model Provider form for Azure OpenAI showing four required fields: Service URL, API Key, Deployment ID, and API Version, with the start of Maximum Tokens below."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/09-azure-openai-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/09-azure-openai-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/09-azure-openai-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/09-azure-openai-basic-v5.1.png'),
     }}
 />
 
@@ -216,8 +216,8 @@ Continuing the scroll, **Maximum Tokens**, **Temperature**, **Reasoning Effort**
 <ThemedImage
     alt="Azure OpenAI Create Model Provider form showing Maximum Tokens (default 4096), Temperature with its tooltip about GPT-5/o-series reasoning models, Reasoning Effort (No Selection), API Type (default CHAT_COMPLETIONS), HTTP Version (default HTTP_2_0), and the start of Timeout."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/10-azure-openai-inline-mid-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/10-azure-openai-inline-mid-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/10-azure-openai-inline-mid-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/10-azure-openai-inline-mid-v5.1.png'),
     }}
 />
 
@@ -233,8 +233,8 @@ Scrolling further shows Timeout, Forwarded, Compression, Payload Validation, the
 <ThemedImage
     alt="Bottom of the Azure OpenAI Create Model Provider form showing Timeout, Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to azureOpenaimodelprovider, and Result Type locked to azure:OpenAiModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/11-azure-openai-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/11-azure-openai-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/11-azure-openai-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/11-azure-openai-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -259,8 +259,8 @@ The form opens with **API Key**, followed directly by the provider-specific and 
 <ThemedImage
     alt="Create Model Provider form for DeepSeek showing API Key, Model Type (default DEEPSEEK_CHAT), Service URL (default https://api.deepseek.com), Maximum Token (default 512), Temperature (default 0.7), HTTP Version (default HTTP_2_0), and the start of Timeout."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/12-deepseek-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/12-deepseek-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/12-deepseek-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/12-deepseek-basic-v5.1.png'),
     }}
 />
 
@@ -274,8 +274,8 @@ Scrolling further shows Forwarded, Compression, and Payload Validation, then the
 <ThemedImage
     alt="Bottom of the DeepSeek Create Model Provider form showing Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to deepseekModelprovider, and Result Type locked to deepseek:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/13-deepseek-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/13-deepseek-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/13-deepseek-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/13-deepseek-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -296,8 +296,8 @@ The form opens with **Auth**, **Project ID**, and **Model**:
 <ThemedImage
     alt="Create Model Provider form for Google Vertex showing three required fields: Auth (record/expression toggle, with hint 'OAuth2RefreshConfig for OAuth2 refresh token flow, or ServiceAccountConfig for automatic token refresh via service account'), Project ID, Model (with hint 'The model in publisher/model-name format, e.g., google/gemini-2.0-flash'), and the start of Location."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/14-vertex-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/14-vertex-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/14-vertex-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/14-vertex-basic-v5.1.png'),
     }}
 />
 
@@ -312,8 +312,8 @@ Scrolling further shows Maximum Tokens, Temperature, HTTP Version, and the start
 <ThemedImage
     alt="Google Vertex Create Model Provider form showing Maximum Tokens (default 512), Temperature (omitted by default, with tooltip about models that don't accept it), HTTP Version (default HTTP_2_0), and the start of Timeout."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/15-vertex-inline-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/15-vertex-inline-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/15-vertex-inline-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/15-vertex-inline-v5.1.png'),
     }}
 />
 
@@ -329,8 +329,8 @@ Scrolling further shows Timeout, Forwarded, Compression, Payload Validation, the
 <ThemedImage
     alt="Bottom of the Google Vertex Create Model Provider form showing Timeout, Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to vertexModelprovider, and Result Type locked to vertex:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/16-vertex-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/16-vertex-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/16-vertex-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/16-vertex-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -363,8 +363,8 @@ The form opens with **API Key** and **Model Type**, followed directly by the sta
 <ThemedImage
     alt="Create Model Provider form for Mistral showing API Key, Model Type (No Selection), Service URL (default https://api.mistral.ai/v1), Maximum Tokens (default 512), Temperature (default 0.7), and the start of HTTP Version."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/17-mistral-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/17-mistral-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/17-mistral-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/17-mistral-basic-v5.1.png'),
     }}
 />
 
@@ -376,8 +376,8 @@ The form opens with **API Key** and **Model Type**, followed directly by the sta
 <ThemedImage
     alt="Mistral Model Type dropdown open, listing MISTRAL_SMALL_LATEST, MISTRAL_MEDIUM_LATEST, MISTRAL_LARGE_LATEST, DEVSTRAL_SMALL_LATEST, PIXTRAL_LARGE_LATEST, MINISTRAL_3B_LATEST, MINISTRAL_8B_LATEST, MISTRAL_SABA_LATEST, CODESTRAL_LATEST, and date-pinned MISTRAL_SMALL_2402 and MISTRAL_SMALL_2409 options."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/18-mistral-model-types-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/18-mistral-model-types-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/18-mistral-model-types-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/18-mistral-model-types-v5.1.png'),
     }}
 />
 
@@ -386,8 +386,8 @@ Scrolling further shows Timeout, Forwarded, Compression, Payload Validation, the
 <ThemedImage
     alt="Bottom of the Mistral Create Model Provider form showing Timeout, Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to mistralModelprovider, and Result Type locked to mistral:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/19-mistral-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/19-mistral-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/19-mistral-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/19-mistral-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -408,8 +408,8 @@ The form opens with **Model Type** as a free-text field (there's no fixed model 
 <ThemedImage
     alt="Create Model Provider form for Ollama showing Model Type (free text), Service URL (default http://localhost:11434), Mirostat Sampling (default 0, options 0=disabled, 1=Mirostat, 2=Mirostat 2.0), Mirostat Eta (default 0.1), and the start of Mirostat Tau."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/20-ollama-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/20-ollama-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/20-ollama-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/20-ollama-basic-v5.1.png'),
     }}
 />
 
@@ -418,8 +418,8 @@ Scrolling further shows Mirostat Tau, Context Window Size, Repeat Last N, Repeat
 <ThemedImage
     alt="Ollama Create Model Provider form showing Mirostat Tau (default 5.0), Context Window Size (default 2048), Repeat Last N (default 64), Repeat Penalty (default 1.1), and Temperature (default 0.8)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/21-ollama-inline-mid-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/21-ollama-inline-mid-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/21-ollama-inline-mid-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/21-ollama-inline-mid-v5.1.png'),
     }}
 />
 
@@ -428,8 +428,8 @@ Scrolling further shows Seed, Number Of Tokens To Predict, Top K, Top P, and Min
 <ThemedImage
     alt="Ollama Create Model Provider form showing Seed (default 0), Number Of Tokens To Predict (default -1), Top K (default 40), Top P (default 0.9), and Min P (default 0.0)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/22-ollama-inline-mid2-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/22-ollama-inline-mid2-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/22-ollama-inline-mid2-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/22-ollama-inline-mid2-v5.1.png'),
     }}
 />
 
@@ -455,8 +455,8 @@ Scrolling further shows the standard inline fields (HTTP Version, Timeout, Forwa
 <ThemedImage
     alt="Bottom of the Ollama Create Model Provider form showing HTTP Version, Timeout, Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to ollamaModelprovider, and Result Type locked to ollama:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/23-ollama-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/23-ollama-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/23-ollama-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/23-ollama-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -479,8 +479,8 @@ Official website: [platform.openai.com](https://platform.openai.com/).
 <ThemedImage
     alt="Create Model Provider form for OpenAI showing API Key, Model Type with its dropdown open listing GPT_4_0613, O1, O1_2024_12_17, O1_PRO_2025_03_19, O1_PRO, O1_MINI, O3, O3_MINI, O3_PRO, O4_MINI, and GPT_3_5_TURBO, followed by Temperature and the start of Reasoning Effort."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/24-openai-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/24-openai-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/24-openai-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/24-openai-basic-v5.1.png'),
     }}
 />
 
@@ -551,8 +551,8 @@ The form opens with **API Key** and **Model Type**, followed directly by the sta
 <ThemedImage
     alt="Create Model Provider form for OpenRouter showing API Key (with link to https://openrouter.ai/keys), Model Type (with example values 'openai/gpt-4o', 'anthropic/claude-3.5-sonnet'), Service URL (default https://openrouter.ai/api/v1), Site URL, Site Name, and the start of Maximum Tokens."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/25-openrouter-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/25-openrouter-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/25-openrouter-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/25-openrouter-basic-v5.1.png'),
     }}
 />
 
@@ -568,8 +568,8 @@ Scrolling further shows Temperature, HTTP Version, Timeout, Forwarded, Compressi
 <ThemedImage
     alt="OpenRouter Create Model Provider form showing Temperature (omitted by default), HTTP Version (default HTTP_2_0), Timeout (default 60), Forwarded, Compression, and Payload Validation."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/26-openrouter-inline-mid-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/26-openrouter-inline-mid-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/26-openrouter-inline-mid-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/26-openrouter-inline-mid-v5.1.png'),
     }}
 />
 
@@ -578,8 +578,8 @@ Scrolling further shows Timeout, Forwarded, Compression, Payload Validation, the
 <ThemedImage
     alt="Bottom of the OpenRouter Create Model Provider form showing Timeout, Forwarded, Compression, Payload Validation, the collapsed Advanced Configurations toggle, Model Provider Name set to openrouterModelprovider, and Result Type locked to openrouter:ModelProvider."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/27-openrouter-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/27-openrouter-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/27-openrouter-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/27-openrouter-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -604,8 +604,8 @@ The saved model provider appears in multiple places:
 <ThemedImage
     alt="The integration project Design overview with the left sidebar Connections tree populated with three model-provider connections (anthropicModelprovider, azureOpenaimodelprovider, openaiModelprovider), and the main canvas wiring an Automation, an AI Agent Service, an MCP Service action, and a Voice Agent Integration action to their respective model-provider nodes on the right with provider logos."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/28-project-design-multi-providers-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/28-project-design-multi-providers-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/28-project-design-multi-providers-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/28-project-design-multi-providers-v5.1.png'),
     }}
 />
 
@@ -626,8 +626,8 @@ To change a provider's API key, model name, or any other field after it's been c
 <ThemedImage
     alt="Edit Connection modal for an Anthropic connection showing Api Key (sk-ant-xxx), Model Type set to an expression 'claude-sonnet-4-20250514', Service URL (default DEFAULT_ANTHROPIC_SERVICE_URL), Maximum Tokens (default DEFAULT_MAX_TOKEN_COUNT), and the Update Connection button at the bottom."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/30-edit-connection-anthropic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/model-providers-v5.1/30-edit-connection-anthropic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/29-edit-connection-anthropic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/29-edit-connection-anthropic-v5.1.png'),
     }}
 />
 

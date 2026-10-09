@@ -122,8 +122,8 @@ Under **AI > RAG**, select **Data Loader**. The **Data Loaders** panel opens.
 <ThemedImage
     alt="Data Loaders panel"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05a-data-loaders-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05a-data-loaders-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05-data-loaders-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05-data-loaders-picker-v5.1.png'),
     }}
 />
 
@@ -132,8 +132,8 @@ Select **+ Add Data Loader**. The picker lists the available loader types, **Tex
 <ThemedImage
     alt="Text Data Loader option"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05b-data-loaders-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/05b-data-loaders-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/06-data-loaders-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/06-data-loaders-picker-v5.1.png'),
     }}
 />
 
@@ -142,8 +142,8 @@ The **ai : Data Loader** side panel opens with a default name already filled in.
 <ThemedImage
     alt="Data Loader form with default values"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/06-data-loader-form-empty-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/06-data-loader-form-empty-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/07-data-loader-form-empty-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/07-data-loader-form-empty-v5.1.png'),
     }}
 />
 
@@ -159,8 +159,8 @@ Configure the **Paths** field with a configurable so the file path can be change
    <ThemedImage
        alt="New Configurable dialog for path"
        sources={{
-           light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/07-new-configurable-path-v5.1.png'),
-           dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/07-new-configurable-path-v5.1.png'),
+           light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/08-new-configurable-path-v5.1.png'),
+           dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/08-new-configurable-path-v5.1.png'),
        }}
    />
 
@@ -175,8 +175,8 @@ The Data Loader form is now complete:
 <ThemedImage
     alt="Data Loader form filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/08-data-loader-form-filled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/08-data-loader-form-filled-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09-data-loader-form-filled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09-data-loader-form-filled-v5.1.png'),
     }}
 />
 
@@ -193,8 +193,8 @@ After you save the data loader, the **Data Loaders** panel reopens and lists the
 <ThemedImage
     alt="Data Loaders panel with textDocumentLoader"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09a-load-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09a-load-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10-load-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10-load-action-picker-v5.1.png'),
     }}
 />
 
@@ -203,8 +203,8 @@ Select `textDocumentLoader` to expand it and reveal its **Load** action, *"Loads
 <ThemedImage
     alt="Load action expanded"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09b-load-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09b-load-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11-load-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11-load-action-picker-v5.1.png'),
     }}
 />
 
@@ -216,8 +216,8 @@ The **ai : load** form opens. Set:
 <ThemedImage
     alt="ai:load form filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09c-ai-load-form-filled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09c-ai-load-form-filled-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12-ai-load-form-filled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12-ai-load-form-filled-v5.1.png'),
     }}
 />
 
@@ -226,8 +226,8 @@ Select **Save**. The `ai:load` node is added to the flow between the **Start** n
 <ThemedImage
     alt="ai:load node added to the flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09d-ai-load-form-saved-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/09d-ai-load-form-saved-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/13-ai-load-form-saved-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/13-ai-load-form-saved-v5.1.png'),
     }}
 />
 
@@ -238,8 +238,8 @@ Select **+** below the `ai:load` node to add the next node.
 <ThemedImage
     alt="ai:load node with + below it"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10a-knowledge-bases-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10a-knowledge-bases-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/14-knowledge-bases-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/14-knowledge-bases-picker-v5.1.png'),
     }}
 />
 
@@ -248,8 +248,8 @@ The node palette opens. Under **AI > RAG**, select **Knowledge Base**.
 <ThemedImage
     alt="Knowledge Base option in the AI > RAG section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10b-knowledge-bases-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10b-knowledge-bases-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15-knowledge-bases-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15-knowledge-bases-picker-v5.1.png'),
     }}
 />
 
@@ -258,8 +258,8 @@ The **Knowledge Bases** panel opens. Select **+ Add Knowledge Base**.
 <ThemedImage
     alt="Knowledge Bases panel"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10c-knowledge-bases-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10c-knowledge-bases-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16-knowledge-bases-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16-knowledge-bases-picker-v5.1.png'),
     }}
 />
 
@@ -268,8 +268,8 @@ The picker lists the supported knowledge base types, **Vector Knowledge Base**, 
 <ThemedImage
     alt="Knowledge Bases type picker"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10d-knowledge-bases-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10d-knowledge-bases-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/17-knowledge-bases-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/17-knowledge-bases-picker-v5.1.png'),
     }}
 />
 
@@ -278,8 +278,8 @@ The **ai : Vector Knowledge Base** form opens with all fields empty. It has thre
 <ThemedImage
     alt="Empty Vector Knowledge Base form"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10e-knowledge-bases-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/10e-knowledge-bases-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/18-knowledge-bases-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/18-knowledge-bases-picker-v5.1.png'),
     }}
 />
 
@@ -292,8 +292,8 @@ Select **+ Create New Vector Store**. The supported vector store types are liste
 <ThemedImage
     alt="Select Vector Store"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11a-vector-store-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11a-vector-store-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/19-vector-store-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/19-vector-store-picker-v5.1.png'),
     }}
 />
 
@@ -305,8 +305,8 @@ Pick **In Memory Vector Store**. No external infrastructure is required for this
 <ThemedImage
     alt="Create Vector Store filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11b-vector-store-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11b-vector-store-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20-vector-store-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20-vector-store-picker-v5.1.png'),
     }}
 />
 
@@ -315,8 +315,8 @@ Select **Save**. You are returned to the **ai : Vector Knowledge Base** form wit
 <ThemedImage
     alt="Vector Knowledge Base form with vector store filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11c-vector-store-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/11c-vector-store-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21-vector-store-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21-vector-store-picker-v5.1.png'),
     }}
 />
 
@@ -327,8 +327,8 @@ Back on the Vector Knowledge Base form, select **+ Create New Embedding Model**.
 <ThemedImage
     alt="Select Embedding Provider"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12a-embedding-provider-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12a-embedding-provider-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22-embedding-provider-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22-embedding-provider-picker-v5.1.png'),
     }}
 />
 
@@ -356,8 +356,8 @@ The **Create Embedding Provider** form opens. Fill in:
 <ThemedImage
     alt="Create Embedding Provider filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12b-embedding-provider-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12b-embedding-provider-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23-embedding-provider-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23-embedding-provider-picker-v5.1.png'),
     }}
 />
 
@@ -366,8 +366,8 @@ Select **Save**. You are returned to the **ai : Vector Knowledge Base** form wit
 <ThemedImage
     alt="Vector Knowledge Base form with embedding model filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12c-embedding-provider-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/12c-embedding-provider-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24-embedding-provider-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24-embedding-provider-picker-v5.1.png'),
     }}
 />
 
@@ -380,8 +380,8 @@ If you want to control chunking explicitly, select **+ Create New Chunker**. The
 <ThemedImage
     alt="Select Chunker"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/13-chunker-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/13-chunker-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25-chunker-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25-chunker-picker-v5.1.png'),
     }}
 />
 
@@ -400,8 +400,8 @@ The Vector Knowledge Base form is now fully populated:
 <ThemedImage
     alt="Vector Knowledge Base filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/14-vector-knowledge-base-filled-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/14-vector-knowledge-base-filled-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26-vector-knowledge-base-filled-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26-vector-knowledge-base-filled-v5.1.png'),
     }}
 />
 
@@ -414,8 +414,8 @@ After you save the Vector Knowledge Base form, the **Knowledge Bases** panel reo
 <ThemedImage
     alt="Knowledge Bases panel with aiVectorknowledgebase"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15a-ingest-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15a-ingest-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/27-ingest-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/27-ingest-action-picker-v5.1.png'),
     }}
 />
 
@@ -424,8 +424,8 @@ Select `aiVectorknowledgebase` to expand it and reveal its actions, **Ingest**, 
 <ThemedImage
     alt="Ingest action expanded"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15b-ingest-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15b-ingest-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/28-ingest-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/28-ingest-action-picker-v5.1.png'),
     }}
 />
 
@@ -434,8 +434,8 @@ The **ai : ingest** form opens. The **Documents** field defaults to **Record** m
 <ThemedImage
     alt="ai:ingest form in Record mode"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15c-ingest-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15c-ingest-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/29-ingest-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/29-ingest-action-picker-v5.1.png'),
     }}
 />
 
@@ -444,8 +444,8 @@ Switch the **Documents** field to **Expression** mode, then select into it and p
 <ThemedImage
     alt="Documents set to hrDocuments"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15g-ingest-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15g-ingest-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/30-ingest-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/30-ingest-action-picker-v5.1.png'),
     }}
 />
 
@@ -454,8 +454,8 @@ Select **Save**. The `ai:ingest` node is added to the flow between `ai:load` and
 <ThemedImage
     alt="ai:ingest node added to the flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15h-ingest-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/15h-ingest-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/31-ingest-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/31-ingest-action-picker-v5.1.png'),
     }}
 />
 
@@ -466,8 +466,8 @@ Select **+** below the `ai:ingest` node.
 <ThemedImage
     alt="ai:ingest node with + below it"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16a-add-log-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16a-add-log-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/32-add-log-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/32-add-log-node-v5.1.png'),
     }}
 />
 
@@ -476,8 +476,8 @@ The node palette opens. Under **Logging**, select **Log Info**.
 <ThemedImage
     alt="Log Info option in the Logging section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16b-add-log-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16b-add-log-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/33-add-log-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/33-add-log-node-v5.1.png'),
     }}
 />
 
@@ -486,8 +486,8 @@ The **log : printInfo** form opens. Set **Msg** to `Ingestion Completed!` so you
 <ThemedImage
     alt="log:printInfo form with message"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16c-add-log-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/16c-add-log-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/34-add-log-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/34-add-log-node-v5.1.png'),
     }}
 />
 
@@ -496,8 +496,8 @@ The **log : printInfo** form opens. Set **Msg** to `Ingestion Completed!` so you
 <ThemedImage
     alt="Completed automation flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/17-automation-flow-complete-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/17-automation-flow-complete-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/35-automation-flow-complete-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/35-automation-flow-complete-v5.1.png'),
     }}
 />
 
@@ -516,8 +516,8 @@ Go back to the project overview and select **+ Add Artifact**. Since the project
 <ThemedImage
     alt="HTTP Service in the artifact catalog"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20a-http-service-config-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20a-http-service-config-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/36-http-service-config-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/36-http-service-config-v5.1.png'),
     }}
 />
 
@@ -526,8 +526,8 @@ The **Create HTTP Service** form opens. Keep **Service Contract** at **Design Fr
 <ThemedImage
     alt="Create HTTP Service form"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20b-http-service-config-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20b-http-service-config-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/37-http-service-config-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/37-http-service-config-v5.1.png'),
     }}
 />
 
@@ -536,8 +536,8 @@ The HTTP Service designer opens with the default listener `httpDefaultListener` 
 <ThemedImage
     alt="HTTP Service designer with no resources"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20c-http-service-config-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/20c-http-service-config-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/38-http-service-config-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/38-http-service-config-v5.1.png'),
     }}
 />
 
@@ -548,8 +548,8 @@ Select **+ Add Resource**. The **Select HTTP Method to Add** panel opens. Pick *
 <ThemedImage
     alt="HTTP method picker"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21a-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21a-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/39-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/39-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -561,8 +561,8 @@ The **New Resource Configuration** panel opens with **HTTP Method** set to **POS
 <ThemedImage
     alt="New Resource Configuration"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21b-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21b-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/40-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/40-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -571,8 +571,8 @@ Select **+ Define Payload**. The **Define Payload** dialog opens on the **Import
 <ThemedImage
     alt="Define Payload dialog"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21c-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21c-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/41-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/41-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -587,8 +587,8 @@ Paste the following JSON sample into **Sample data** and set **Type Name** to `Q
 <ThemedImage
     alt="Import payload from sample JSON"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21d-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21d-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/42-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/42-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -597,8 +597,8 @@ Select **Import Type**. The payload is added as `QueryPayload payload`, and the 
 <ThemedImage
     alt="Resource configuration with QueryPayload payload"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21e-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21e-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/43-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/43-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -607,8 +607,8 @@ Select **Save** on the **New Resource Configuration** panel. The resource flow e
 <ThemedImage
     alt="Resource flow editor"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21f-add-resource-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/21f-add-resource-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/44-add-resource-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/44-add-resource-form-v5.1.png'),
     }}
 />
 
@@ -619,8 +619,8 @@ Select **+** in the resource flow. The node palette opens. Under **AI > RAG**, s
 <ThemedImage
     alt="Knowledge Base option in the AI > RAG section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22a-retrieve-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22a-retrieve-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/45-retrieve-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/45-retrieve-action-picker-v5.1.png'),
     }}
 />
 
@@ -629,8 +629,8 @@ The **Knowledge Bases** panel lists `aiVectorknowledgebase` (the same connection
 <ThemedImage
     alt="Knowledge Bases panel with aiVectorknowledgebase"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22b-retrieve-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22b-retrieve-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/46-retrieve-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/46-retrieve-action-picker-v5.1.png'),
     }}
 />
 
@@ -639,8 +639,8 @@ Select `aiVectorknowledgebase` to expand it and reveal its actions. Select **Ret
 <ThemedImage
     alt="Retrieve action expanded"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22c-retrieve-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22c-retrieve-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/47-retrieve-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/47-retrieve-action-picker-v5.1.png'),
     }}
 />
 
@@ -651,8 +651,8 @@ Set **Result** to `queryMatch`. **Result Type** stays at the auto-filled `ai:Que
 <ThemedImage
     alt="ai:retrieve filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22g-retrieve-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22g-retrieve-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/48-retrieve-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/48-retrieve-action-picker-v5.1.png'),
     }}
 />
 
@@ -661,8 +661,8 @@ Select **Save**. The `ai:retrieve` node is added to the flow.
 <ThemedImage
     alt="ai:retrieve node added to the flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22h-retrieve-action-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/22h-retrieve-action-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/49-retrieve-action-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/49-retrieve-action-picker-v5.1.png'),
     }}
 />
 
@@ -673,8 +673,8 @@ Select **+** below the `ai:retrieve` node to add the next node.
 <ThemedImage
     alt="ai:retrieve node with + below it"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23a-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23a-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/50-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/50-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -683,8 +683,8 @@ The node palette opens. Under **AI > RAG**, select **Augment Query**. It package
 <ThemedImage
     alt="Augment Query option in the AI > RAG section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23b-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23b-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/51-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/51-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -693,8 +693,8 @@ The **ai : augmentUserQuery** form opens. **Result** is pre-filled with `aiChatu
 <ThemedImage
     alt="ai:augmentUserQuery form initial state"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23c-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23c-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/52-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/52-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -703,8 +703,8 @@ Switch the **Context** field to **Expression** mode, then select into it and pic
 <ThemedImage
     alt="Context set to queryMatch"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23g-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23g-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/53-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/53-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -713,8 +713,8 @@ Select into the **Query** field and pick **Inputs > payload > userQuery** from t
 <ThemedImage
     alt="ai:augmentUserQuery filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23k-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23k-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/54-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/54-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -723,8 +723,8 @@ Select **Save**. The `ai:augmentUserQuery` node is added to the flow.
 <ThemedImage
     alt="ai:augmentUserQuery node added to the flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23l-augment-query-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/23l-augment-query-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/55-augment-query-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/55-augment-query-node-v5.1.png'),
     }}
 />
 
@@ -735,8 +735,8 @@ Select **+** below the `ai:augmentUserQuery` node to add the next node. Under **
 <ThemedImage
     alt="Model Provider option in the AI > Direct LLM section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24a-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24a-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/56-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/56-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -745,8 +745,8 @@ The **Model Providers** panel opens with no existing connections. Select **+ Add
 <ThemedImage
     alt="Model Providers panel"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24c-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24c-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/57-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/57-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -755,8 +755,8 @@ The supported model providers are listed. Pick **Default Model Provider (WSO2)**
 <ThemedImage
     alt="Model provider type list"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24d-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24d-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/58-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/58-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -768,8 +768,8 @@ The **ai : Model Provider** form opens, describing itself as *"Creates a default
 <ThemedImage
     alt="Create Model Provider filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24e-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24e-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/59-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/59-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -778,8 +778,8 @@ Select **Save**. You are returned to the **Model Providers** panel with `aiWso2m
 <ThemedImage
     alt="Model Providers panel with aiWso2modelprovider"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24f-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24f-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/60-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/60-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -794,8 +794,8 @@ Select `aiWso2modelprovider` to expand it and reveal its actions, **Chat** and *
 <ThemedImage
     alt="Generate action expanded"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24g-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24g-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/61-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/61-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -812,8 +812,8 @@ The **generate** form opens. Fill in:
 <ThemedImage
     alt="ai:generate filled"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24h-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24h-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/62-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/62-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -822,8 +822,8 @@ Select **Save**. The `ai:generate` node is added to the flow, with the `aiWso2mo
 <ThemedImage
     alt="ai:generate node added to the flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24i-model-provider-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/24i-model-provider-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/63-model-provider-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/63-model-provider-node-v5.1.png'),
     }}
 />
 
@@ -834,8 +834,8 @@ Select **+** below the `ai:generate` node. The node palette opens. Under **Contr
 <ThemedImage
     alt="Return option in the Control section"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25a-return-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25a-return-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/64-return-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/64-return-node-v5.1.png'),
     }}
 />
 
@@ -844,8 +844,8 @@ The **Return** form opens, noting the operation has no required parameters. Sele
 <ThemedImage
     alt="Return Expression set to result"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25d-return-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25d-return-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/65-return-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/65-return-node-v5.1.png'),
     }}
 />
 
@@ -854,8 +854,8 @@ Select **Save**. The completed query flow walks the request through `ai:retrieve
 <ThemedImage
     alt="Completed query flow"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25e-return-node-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/25e-return-node-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/66-return-node-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/66-return-node-v5.1.png'),
     }}
 />
 
@@ -866,8 +866,8 @@ Open the project overview. The integration shows the Automation, the HTTP Servic
 <ThemedImage
     alt="Project overview before run"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26a-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26a-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/67-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/67-run-and-try-it-v5.1.png'),
     }}
 />
 
@@ -876,8 +876,8 @@ WSO2 Integrator detects that the `path` configurable has no value yet and shows 
 <ThemedImage
     alt="Missing configurations dialog"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26b-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26b-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/68-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/68-run-and-try-it-v5.1.png'),
     }}
 />
 
@@ -886,8 +886,8 @@ The **Configurable Variables** view opens. Set `path` to your HR policy document
 <ThemedImage
     alt="Set the path configurable"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26c-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26c-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/69-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/69-run-and-try-it-v5.1.png'),
     }}
 />
 
@@ -898,8 +898,8 @@ A prompt appears at the bottom right, *"1 service found in the integration. Test
 <ThemedImage
     alt="Try It Client prompt"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26d-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26d-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/70-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/70-run-and-try-it-v5.1.png'),
     }}
 />
 
@@ -908,8 +908,8 @@ A `TryIt.hurl` file opens in a new tab via the **Hurl Client Runner**, prefilled
 <ThemedImage
     alt="TryIt.hurl request prefilled with the POST /query request and sample JSON body"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26e-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26e-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/71-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/71-run-and-try-it-v5.1.png'),
     }}
 />
 
@@ -918,8 +918,8 @@ Update the JSON body if you want to ask about a different topic in the documents
 <ThemedImage
     alt="Response with grounded answer"
     sources={{
-        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26g-run-and-try-it-v5.1.png'),
-        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/26g-run-and-try-it-v5.1.png'),
+        light: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/72-run-and-try-it-v5.1.png'),
+        dark: useBaseUrl('/img/genai/tutorials/hr-knowledge-base-rag-v5.1/72-run-and-try-it-v5.1.png'),
     }}
 />
 

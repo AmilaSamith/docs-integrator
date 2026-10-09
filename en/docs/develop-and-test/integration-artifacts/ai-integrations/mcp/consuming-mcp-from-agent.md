@@ -24,8 +24,8 @@ On the agent canvas, click **+ Add Tool** → **Use MCP Server**. The **Add Tool
 <ThemedImage
     alt="The Add Tool - Use MCP Server panel showing Server URL (http://localhost:8080/mcp), a Requires Authentication checkbox, Tools to Include set to Selected, and the Available Tools list (3 of 3 selected: getTextStatistics, getReadabilityScore, analyzeStructure, each with a Read more link), a collapsed Advanced Configurations section, and Result (default aiMcpbasetoolkit)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/08-add-mcp-server-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/08-add-mcp-server-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/01-add-mcp-server-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/01-add-mcp-server-v5.1.png'),
     }}
 />
 
@@ -108,8 +108,8 @@ In the **Edit MCP Server** panel, set **Tools to Include** to **Selected** and c
 <ThemedImage
     alt="The Edit MCP Server panel with Tools to Include set to Selected, showing the Available Tools list (1 of 3 selected) with getTextStatistics checked and getReadabilityScore and analyzeStructure unchecked, each with a Read more link."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/29-mcp-filter-tools-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/29-mcp-filter-tools-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/02-mcp-filter-tools-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/consuming-mcp-from-agent/02-mcp-filter-tools-v5.1.png'),
     }}
 />
 

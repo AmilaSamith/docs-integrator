@@ -82,8 +82,8 @@ Local stores let you choose the metric. Hosted stores manage it themselves (you 
 <ThemedImage
     alt="Select Vector Store picker with a search bar and five cards: In Memory Vector Store described as providing simple storage for vector entries, Milvus Vector Store described as supporting Dense, Sparse, and Hybrid vector search, Pgvector Vector Store described as supporting Dense, Sparse, and Hybrid vector search, Pinecone Vector Store described as supporting Dense, Sparse, and Hybrid vector search, and Weaviate Vector Store described as supporting Dense, Sparse, and Hybrid vector search."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/01-select-list-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/01-select-list-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/01-select-list-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/01-select-list-v5.1.png'),
     }}
 />
 
@@ -106,8 +106,8 @@ Embeddings live in the running integration's process memory. The store loses all
 <ThemedImage
     alt="Create Vector Store form for In-Memory. Header reads 'Initializes a new in-memory vector store.' Banner: 'This operation has no required parameters. Optional settings can be configured below.' Similarity Metric field (default COSINE), Vector Store Name (default ailnmemoryvectorstore), Result Type (locked to ai:InMemoryVectorStore). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/02-in-memory-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/02-in-memory-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/02-in-memory-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/02-in-memory-basic-v5.1.png'),
     }}
 />
 
@@ -132,8 +132,8 @@ Official website: [Milvus documentation](https://milvus.io/docs).
 <ThemedImage
     alt="Create Vector Store form for Milvus. Header reads 'Initializes the Milvus vector store with the given configuration.' Fields: Service URL, API Key, Milvus Configuration (record/expression toggle, default {}), HTTP Configuration (default {}), Vector Store Name (default milvusVectorstore), Result Type (locked to milvus:VectorStore). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/03-milvus-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/03-milvus-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/03-milvus-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/03-milvus-basic-v5.1.png'),
     }}
 />
 
@@ -161,8 +161,8 @@ The form opens with **Host Name**, **Username**, **Password**, **Database Name**
 <ThemedImage
     alt="Create Vector Store form for pgvector showing Host Name, Username, Password, Database Name, Table Name (default 'vector_store'), and the start of Port Number (default 5432)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/04-pgvector-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/04-pgvector-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/04-pgvector-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/04-pgvector-basic-v5.1.png'),
     }}
 />
 
@@ -180,8 +180,8 @@ Scrolling further shows Additional Set Of Configurations For The Database, Prope
 <ThemedImage
     alt="Bottom of the pgvector Create Vector Store form showing Additional Set Of Configurations For The Database (default {}), Properties To Configure Connection Pool (default {}), Configurations For The Vector Store (default {}), Vector Store Name set to pgvectorVectorstore, and Result Type locked to pgvector:VectorStore."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/05-pgvector-inline-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/05-pgvector-inline-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/05-pgvector-inline-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/05-pgvector-inline-bottom-v5.1.png'),
     }}
 />
 
@@ -206,8 +206,8 @@ Official website: [Pinecone documentation](https://docs.pinecone.io).
 <ThemedImage
     alt="Create Vector Store form for Pinecone. Header reads 'Initializes the PineconeVectorStore with the given configuration.' Fields: Service URL, API Key, Query Mode (default DENSE), Pinecone Configuration (default {}), HTTP Configuration (default {}), Vector Store Name (default pineconeVectorstore), Result Type (locked to pinecone:VectorStore). Save button."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/06-pinecone-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/06-pinecone-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/06-pinecone-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/06-pinecone-basic-v5.1.png'),
     }}
 />
 
@@ -234,8 +234,8 @@ Official website: [Weaviate documentation](https://weaviate.io/developers/weavia
 <ThemedImage
     alt={"Create Vector Store form for Weaviate. Header reads 'Initializes the Weaviate vector store with the given configuration.' Fields: Service URL, API Key, Weaviate Configuration (record/expression toggle, default '{collectionName: \"\"}'), HTTP Configuration (default {}), Vector Store Name (default weaviateVectorstore), Result Type (locked to weaviate:VectorStore). Save button."}
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/07-weaviate-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/vector-stores-v5.1/07-weaviate-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/07-weaviate-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/07-weaviate-basic-v5.1.png'),
     }}
 />
 

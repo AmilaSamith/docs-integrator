@@ -103,8 +103,8 @@ This creates an **AI Agent Service** with a `POST /chat` resource and a `chatAge
 <ThemedImage
     alt="AI Agent node for HotelFinderAssistant connected to the model provider, with an Add Memory button and a + icon for adding tools"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/03b-ai-agent-canvas-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/03b-ai-agent-canvas-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/04-ai-agent-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/04-ai-agent-canvas-v5.1.png'),
     }}
 />
 
@@ -142,8 +142,8 @@ This creates an **AI Agent Service** with a `POST /chat` resource and a `chatAge
 <ThemedImage
     alt="Create New Type dialog open over the Create Custom Tool form, with Kind set to Record and Name set to Hotel, showing all six fields"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/04-create-hotel-type-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/04-create-hotel-type-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/05-create-hotel-type-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/05-create-hotel-type-v5.1.png'),
     }}
 />
 
@@ -158,8 +158,8 @@ This creates an **AI Agent Service** with a `POST /chat` resource and a `chatAge
 <ThemedImage
     alt="Completed Create Custom Tool form for searchHotels showing the city parameter, Hotel[] return type, and return description"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/05-create-search-hotels-tool-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/05-create-search-hotels-tool-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/06-create-search-hotels-tool-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/06-create-search-hotels-tool-v5.1.png'),
     }}
 />
 
@@ -186,8 +186,8 @@ The tool now shows as a node connected to the agent. Select it to open its flow.
 <ThemedImage
     alt="Declare Variable node configured with Name set to allHotels, Type set to Hotel[], and the hotel array set as the Expression"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/06-declare-variable-allhotels-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/06-declare-variable-allhotels-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/07-declare-variable-allhotels-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/07-declare-variable-allhotels-v5.1.png'),
     }}
 />
 
@@ -200,8 +200,8 @@ The tool now shows as a node connected to the agent. Select it to open its flow.
 <ThemedImage
     alt="Declare Variable node configured with Name set to hotels, Type set to Hotel[], and the filter expression set as the Expression"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/07-declare-variable-hotels-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/07-declare-variable-hotels-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/08-declare-variable-hotels-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/08-declare-variable-hotels-v5.1.png'),
     }}
 />
 
@@ -210,8 +210,8 @@ The tool now shows as a node connected to the agent. Select it to open its flow.
 <ThemedImage
     alt="Return node configuration panel with Expression set to hotels"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/08-return-hotels-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/08-return-hotels-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/09-return-hotels-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/09-return-hotels-v5.1.png'),
     }}
 />
 
@@ -256,8 +256,8 @@ The visual designer currently leaves the placeholder `panic error("not implement
 <ThemedImage
     alt="Create New Type dialog open over the checkAvailability form, with Kind set to Record and Name set to Availability, showing all five fields"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/09-create-availability-type-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/09-create-availability-type-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/10-create-availability-type-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/10-create-availability-type-v5.1.png'),
     }}
 />
 
@@ -270,8 +270,8 @@ The visual designer currently leaves the placeholder `panic error("not implement
 <ThemedImage
     alt="Completed checkAvailability tool form showing hotelId, checkIn, checkOut parameters, Availability return type, and return description, with searchHotels already connected to the agent"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/10-create-check-availability-tool-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/10-create-check-availability-tool-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/11-create-check-availability-tool-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/11-create-check-availability-tool-v5.1.png'),
     }}
 />
 
@@ -298,8 +298,8 @@ This returns hardcoded sample data. In a real scenario, you would query a bookin
 <ThemedImage
     alt="Return node configuration panel for checkAvailability with the hardcoded Availability record set as the Expression"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/11-check-availability-return-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/11-check-availability-return-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/12-check-availability-return-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/12-check-availability-return-v5.1.png'),
     }}
 />
 
@@ -308,8 +308,8 @@ After both tools are created, the agent shows them connected in the design canva
 <ThemedImage
     alt="AI Chat Agent design view showing the agent node connected to searchHotels and checkAvailability tools with the system prompt visible"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/12-agent-with-tools-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/12-agent-with-tools-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/13-agent-with-tools-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/13-agent-with-tools-v5.1.png'),
     }}
 />
 
@@ -324,8 +324,8 @@ The agent calls `searchHotels` and returns the matching Paris options (`Grand Pl
 <ThemedImage
     alt="Agent Chat panel showing the user asking for hotels in Paris, with the agent responding with Grand Plaza Hotel and City Center Inn and asking for check-in and check-out dates"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/13-run-and-test-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/13-run-and-test-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/14-run-and-test-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-hotel-finder-agent-v5.1/14-run-and-test-v5.1.png'),
     }}
 />
 

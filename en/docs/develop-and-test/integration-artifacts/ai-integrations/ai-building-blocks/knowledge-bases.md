@@ -37,8 +37,8 @@ Two places, both equivalent:
 <ThemedImage
     alt="Right-side Knowledge Bases panel showing the search bar and a + Add Knowledge Base button at the top of an empty list."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/00-panel-empty-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/00-panel-empty-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/01-panel-empty-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/01-panel-empty-v5.1.png'),
     }}
 />
 
@@ -47,8 +47,8 @@ Either one opens the **Select Knowledge Base** picker, listing all supported typ
 <ThemedImage
     alt="Select Knowledge Base picker with a search bar and three cards: Vector Knowledge Base described as managing chunk indexing and retrieval, Azure AI Search Knowledge Base described as the Azure Search Knowledge Base implementation, and WSO2 Cloud Knowledge Base described as a WSO2 Cloud knowledge base for retrieval."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/01-select-list-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/01-select-list-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/02-select-list-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/02-select-list-v5.1.png'),
     }}
 />
 
@@ -71,8 +71,8 @@ The default implementation. You combine a Vector Store, an Embedding Provider, a
 <ThemedImage
     alt="Create Vector Knowledge Base form showing three required pluggable fields: Vector Store (with + Create New Vector Store link), Embedding Model (with + Create New Embedding Model link), Chunker (default ai:AUTO, with + Create New Chunker link). Below: Knowledge Base Name aiVectorknowledgebase, Result Type ai:VectorKnowledgeBase."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/02-vector-kb-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/02-vector-kb-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/03-vector-kb-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/03-vector-kb-form-v5.1.png'),
     }}
 />
 
@@ -101,8 +101,8 @@ The form opens with **Service URL**, **API Key**, **Index**, **Embedding Model**
 <ThemedImage
     alt="Create Azure AI Search Knowledge Base form showing Service Url, Api Key, Index, Embedding Model (optional, with Create New Embedding Model link), Chunker (default AUTO, with Create New Chunker link), and the start of Verbose (default false)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/03-azure-search-basic-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/03-azure-search-basic-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/04-azure-search-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/04-azure-search-basic-v5.1.png'),
     }}
 />
 
@@ -119,8 +119,8 @@ Scrolling further shows Verbose, API Version, Content Field Name, Search Client 
 <ThemedImage
     alt="Create Azure AI Search Knowledge Base form showing Verbose (default false), Api Version (default 2025-09-01), Content Field Name (default content), Search Client Connection Config (default {}), Index Client Connection Config (default {}), and the start of Semantic Configuration Name."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/09-azure-search-mid-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/09-azure-search-mid-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/05-azure-search-mid-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/05-azure-search-mid-v5.1.png'),
     }}
 />
 
@@ -138,8 +138,8 @@ Scrolling to the bottom shows **Knowledge Base Name** and **Result Type**:
 <ThemedImage
     alt="Bottom of the Create Azure AI Search Knowledge Base form showing Content Field Name, Search Client Connection Config, Index Client Connection Config, Semantic Configuration Name, Knowledge Base Name set to azureAisearchknowledgebase, and Result Type locked to azure:AiSearchKnowledgeBase."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/10-azure-search-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/10-azure-search-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/06-azure-search-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/06-azure-search-bottom-v5.1.png'),
     }}
 />
 
@@ -158,8 +158,8 @@ Selecting **WSO2 Cloud Knowledge Base** lists the knowledge bases available in y
 <ThemedImage
     alt="WSO2 Cloud Knowledge Bases picker with a search bar and a Manually Config WSO2 Cloud Knowledge Base card ('Add configurations for the Knowledge Base...'). No existing knowledge bases are listed in this organization."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/03-wso2-cloud-list-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/03-wso2-cloud-list-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/07-wso2-cloud-list-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/07-wso2-cloud-list-v5.1.png'),
     }}
 />
 
@@ -168,8 +168,8 @@ Choosing an existing knowledge base opens the create form with its service URL a
 <ThemedImage
     alt="Create WSO2 Cloud Knowledge Base form with the Service URL and Knowledge Base Authentication Configuration fields already filled in from the selected knowledge base."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/04-wso2-cloud-prefilled-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/04-wso2-cloud-prefilled-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/08-wso2-cloud-prefilled-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/08-wso2-cloud-prefilled-form-v5.1.png'),
     }}
 />
 
@@ -180,8 +180,8 @@ Choose **Manually Config WSO2 Cloud Knowledge Base** to open a blank form and en
 <ThemedImage
     alt="Create WSO2 Cloud Knowledge Base form showing Service URL, Knowledge Base Authentication Configuration (default {auth: {token: ''}}), Minimum Similarity Threshold (default 0.7), Cohere Reranker API Key, Cohere Reranker Model, Reranker Top N (default 5), and the start of HTTP Version (default 2.0)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/05-wso2-cloud-manual-form-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/05-wso2-cloud-manual-form-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/09-wso2-cloud-manual-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/09-wso2-cloud-manual-form-v5.1.png'),
     }}
 />
 
@@ -199,8 +199,8 @@ Scrolling further shows the standard HTTP inline fields: **HTTP1 Settings**, **H
 <ThemedImage
     alt="Middle of the Create WSO2 Cloud Knowledge Base form showing HTTP1 Settings (default {}), HTTP2 Settings (default {}), Timeout (default 0.0d), Forwarded (default empty), Cache Configuration (default {}), and the start of Compression (default AUTO)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/05b-wso2-cloud-manual-mid-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/05b-wso2-cloud-manual-mid-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/10-wso2-cloud-manual-mid-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/10-wso2-cloud-manual-mid-v5.1.png'),
     }}
 />
 
@@ -209,8 +209,8 @@ Continuing the scroll shows **Response Limit Configuration** and **Payload Valid
 <ThemedImage
     alt="Bottom of the Create WSO2 Cloud Knowledge Base form showing Response Limit Configuration (default {}), Payload Validation (default false), the collapsed Advanced Configurations toggle, Knowledge Base Name set to integrationCloudknowledgebase, and Result Type locked to integration:CloudKnowledgeBase."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/06-wso2-cloud-manual-bottom-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/06-wso2-cloud-manual-bottom-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/11-wso2-cloud-manual-bottom-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/11-wso2-cloud-manual-bottom-v5.1.png'),
     }}
 />
 
@@ -221,8 +221,8 @@ Expanding **Advanced Configurations** shows **Pool Configuration**, **Circuit Br
 <ThemedImage
     alt="Create WSO2 Cloud Knowledge Base form with Advanced Configurations expanded showing Pool Configuration (default {}), Circuit Breaker Configuration (default {}), Retry Configuration (default {}), Secure Socket Configuration (default {}), and Proxy Configuration (default {})."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/07-wso2-cloud-advanced-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases-v5.1/07-wso2-cloud-advanced-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/12-wso2-cloud-advanced-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/12-wso2-cloud-advanced-v5.1.png'),
     }}
 />
 

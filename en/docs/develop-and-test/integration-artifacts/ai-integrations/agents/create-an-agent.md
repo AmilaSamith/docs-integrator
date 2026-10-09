@@ -30,8 +30,8 @@ Inline agents can be embedded directly within integration flows, such as automat
 <ThemedImage
     alt="Artifacts page in WSO2 Integrator showing all artifact categories: Automation, AI Integration (AI Chat Agent, MCP Service), Integration as API (HTTP Service, GraphQL Service Beta, TCP Service Beta), Event Integration (Kafka, RabbitMQ, MQTT, Azure Service Bus, Salesforce, Twilio, GitHub, Solace, CDC for Microsoft SQL Server, CDC for PostgreSQL)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/07-artifacts-page-full-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/01-artifacts-page-full-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/creating-an-agent/01-artifacts-page-full-v5.1.png'),
     }}
 />
 

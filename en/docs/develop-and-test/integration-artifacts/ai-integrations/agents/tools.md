@@ -89,8 +89,8 @@ After selecting a connector, WSO2 Integrator lists its available operations, sea
 <ThemedImage
     alt="The Add Tool - Use Connection panel showing the HTTP connector's operations, with a Search 22 actions box and a list including Delete, Execute, Forward, Get, Get next promise, Get promised response, Get response, and Has promise, each with a short description."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/09-use-connection-actions-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/09-use-connection-actions-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/05-use-connection-actions-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/05-use-connection-actions-v5.1.png'),
     }}
 />
 
@@ -99,8 +99,8 @@ Selecting an operation opens its tool configuration:
 <ThemedImage
     alt="Tool configuration for the HTTP connector's Get operation. Fields: Tool Name (default getTool), Description (prefilled from the operation), Connection (required, with a + Create HTTP Connection action when none exists yet), a Requires Approval checkbox, and collapsed sections for Inputs and Mapping, OAuth Client Configuration, and Result Type."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/10-tool-metadata-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/10-tool-metadata-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/06-tool-metadata-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/06-tool-metadata-v5.1.png'),
     }}
 />
 
@@ -123,8 +123,8 @@ Selecting **Use Function** opens the **Add Tool - Use Function** panel, with a *
 <ThemedImage
     alt="The Add Tool - Use Function panel with a Search functions box. Sections: Within Project, showing the current integration (ai_applications) and a + Create Function action, collapsed Standard Library, and Extended Library expanded showing functions grouped by module, such as client.config (constructHTTPClientConfig), azure_eventhub (createRandomUUIDWithoutHyphens), and others grouped by the connector module name."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/05-use-function-panel-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/05-use-function-panel-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/07-use-function-panel-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/07-use-function-panel-v5.1.png'),
     }}
 />
 
@@ -133,8 +133,8 @@ Expanding **Standard Library** lists Ballerina standard library functions groupe
 <ThemedImage
     alt="The Add Tool - Use Function panel with Standard Library expanded, showing modules regex, data.yaml, yaml, and auth, each listing their functions."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/06-use-function-stdlib-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/06-use-function-stdlib-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/08-use-function-stdlib-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/08-use-function-stdlib-v5.1.png'),
     }}
 />
 
@@ -151,8 +151,8 @@ Use **Search functions** to find a specific function by name across all three se
 <ThemedImage
     alt="Tool configuration for the regex module's matches function. Fields: Tool Name (default matchesTool), Description (prefilled from the function's doc comment), a Requires Approval checkbox, and collapsed sections for Inputs and Mapping, OAuth Client Configuration, and Result Type. Save Tool button at the bottom."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/11-use-function-config-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/11-use-function-config-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/09-use-function-config-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/09-use-function-config-v5.1.png'),
     }}
 />
 
@@ -182,8 +182,8 @@ Selecting **Use MCP Server** opens the **Add Tool - Use MCP Server** panel.
 <ThemedImage
     alt="The Add Tool - Use MCP Server panel with Server Url, Requires Authentication, Tools to Include set to All, a collapsed Advanced Configurations section, and Result set to aiMcpbasetoolkit."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/07-add-mcp-server-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/07-add-mcp-server-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/10-add-mcp-server-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/10-add-mcp-server-v5.1.png'),
     }}
 />
 
@@ -210,8 +210,8 @@ Selecting **Create Custom Tool** opens the **Add Tool - Create Custom Tool** pan
 <ThemedImage
     alt="The Add Tool - Create Custom Tool panel (initial empty state). Fields: Name (empty), Description (text area), Parameters with a + Add Parameter link, Return Type (with a type icon), Description (for the return value), a Requires Approval checkbox, and a collapsed Advanced Configurations section. Cancel and Create Tool buttons at the bottom."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/08-create-custom-tool-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/08-create-custom-tool-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/11-create-custom-tool-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/11-create-custom-tool-v5.1.png'),
     }}
 />
 
@@ -323,8 +323,8 @@ After adding the toolkit, the agent can invoke all tools exposed by the `TaskMan
 <ThemedImage
     alt="The blogReviewer AI Agent node with two attached tools: matchesTool and taskManager, the toolkit instance, each connected with a dashed line."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/14-agent-with-toolkit-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/14-agent-with-toolkit-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/13-agent-with-toolkit-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/13-agent-with-toolkit-v5.1.png'),
     }}
 />
 
@@ -335,8 +335,8 @@ Once a tool is attached, right-click its node to **Edit**, **View**, or **Delete
 <ThemedImage
     alt="Right-click context menu on the matchesTool node, showing Edit, View, and Delete options."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/15-tool-node-context-menu-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/15-tool-node-context-menu-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/14-tool-node-context-menu-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/14-tool-node-context-menu-v5.1.png'),
     }}
 />
 
@@ -345,8 +345,8 @@ Selecting **View** (or clicking the node) opens the tool's own flow view: for a 
 <ThemedImage
     alt="Configure tool for the matchesTool custom function. Fields: Name, Description, Parameters with their types and + Add Parameter, Return Type, Description (return), a Requires Approval checkbox, and a collapsed Advanced Configurations section. Cancel and Save buttons at the bottom."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/13-tool-configure-v5.1.png'),
-        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/13-tool-configure-v5.1.png'),
+        light: useBaseUrl('/img/genai/develop/agents-v5.1/tools/15-tool-configure-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/agents-v5.1/tools/15-tool-configure-v5.1.png'),
     }}
 />
 

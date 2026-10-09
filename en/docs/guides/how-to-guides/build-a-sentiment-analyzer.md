@@ -38,8 +38,8 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 <ThemedImage
     alt="Artifacts page listing artifact types such as Automation, AI Integration, and Integration as API, with HTTP Service highlighted"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/artifacts-picker-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/artifacts-picker-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/01-artifacts-picker-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/01-artifacts-picker-v5.1.png'),
     }}
 />
 
@@ -50,8 +50,8 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 <ThemedImage
     alt="Empty HTTP Service view with base path / and the default listener"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/create-http-service-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/create-http-service-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/02-create-http-service-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/02-create-http-service-v5.1.png'),
     }}
 />
 
@@ -67,8 +67,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="Sentiment enum with POSITIVE, NEGATIVE, and NEUTRAL members"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/create-sentiment-type-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/create-sentiment-type-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/03-create-sentiment-type-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/03-create-sentiment-type-v5.1.png'),
     }}
 />
 
@@ -83,8 +83,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="Define Payload popup with Create Type Schema selected, name set to AnalyzePayload, and a text field of type string"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/define-payload-popup-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/define-payload-popup-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/04-define-payload-popup-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/04-define-payload-popup-v5.1.png'),
     }}
 />
 
@@ -94,8 +94,8 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 <ThemedImage
     alt="POST analyze resource configured with the AnalyzePayload request body"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-post-resource-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-post-resource-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/05-add-post-resource-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/05-add-post-resource-v5.1.png'),
     }}
 />
 
@@ -111,8 +111,8 @@ The resource opens as a visual flow with **Start** connected to an **Error Handl
 <ThemedImage
     alt="Model Providers panel showing aiWso2modelprovider added to the flow between Start and Error Handler"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-model-provider-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-model-provider-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/06-add-model-provider-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/06-add-model-provider-v5.1.png'),
     }}
 />
 
@@ -125,8 +125,8 @@ The resource opens as a visual flow with **Start** connected to an **Error Handl
 <ThemedImage
     alt="Configuring the generate action with the classification prompt and SentimentResult as the expected return type"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-prompt-and-return-type-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/add-prompt-and-return-type-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/07-add-prompt-and-return-type-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/07-add-prompt-and-return-type-v5.1.png'),
     }}
 />
 
@@ -142,8 +142,8 @@ The flow now shows **Start**, **ai:generate**, **Return**, and the **Error Handl
 <ThemedImage
     alt="Final flow with Start, ai:generate, Return, the WSO2 model provider connection, and an Error Handler"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/final-view-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/final-view-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/08-final-view-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/08-final-view-v5.1.png'),
     }}
 />
 
@@ -158,8 +158,8 @@ The flow now shows **Start**, **ai:generate**, **Return**, and the **Error Handl
 <ThemedImage
     alt="Running the integration and testing it with the Hurl Client Runner's Try It panel showing a 201 Created response with a POSITIVE sentiment and a confidence score"
     sources={{
-        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/run-and-test-v5.1.png'),
-        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/run-and-test-v5.1.png'),
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/09-run-and-test-v5.1.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer-v5.1/09-run-and-test-v5.1.png'),
     }}
 />
 
