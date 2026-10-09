@@ -43,10 +43,10 @@ Both features can pause an AI agent so a person approves a call before it runs. 
 |---|---|---|
 | **Infrastructure required** | None beyond the agent's memory store | Temporal |
 | **Setup effort** | Tick **Requires Approval** on a tool you already have | Stand up Temporal |
-| **Works today with no new infrastructure** | ✓ | ✗ (Temporal has an in-memory mode for a first run with nothing installed, but production needs the real setup below) |
+| **Works today with no new infrastructure** | ✓ | ✗ (The module's own lightweight in-memory engine lets you try it with nothing installed, but it doesn't persist. Production needs Temporal) |
 
 If you only need a yes or no before a tool runs and don't want to run a workflow engine, start with gated tools. If you already run durable workflows, or need anything in the capability table above beyond a yes or no, use a durable agent instead.
 
 By default, **gated tools** need nothing beyond the agent itself. For a pause that survives a restart or resumes on another replica, attach a durable [memory store](memory.md#add-memory-store): PostgreSQL, MSSQL, SQLite, Redis, or Amazon DynamoDB.
 
-**Durable agentic workflows** need [Temporal](../../workflow/durable-workflow/deployment-modes.md): in memory for a first run with nothing installed, a local server for development, and self-hosted or cloud for production.
+For a first try with nothing installed, **durable agentic workflows** can run on the `ballerina/workflow` module's own lightweight in-memory engine, though it doesn't persist. For a run that survives a restart, use [Temporal](../../workflow/durable-workflow/deployment-modes.md): a local server for development, and self-hosted or cloud for production.
