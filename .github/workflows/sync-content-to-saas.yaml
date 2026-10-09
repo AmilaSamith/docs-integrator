@@ -32,6 +32,10 @@ name: Sync shared content to saas
 # `*-saas-*` files) are never touched. The shared-content-guard on saas
 # excludes the same path.
 #
+# Carved out of editor/: integration-control-plane.md documents the local ICP
+# server, which is self-hosted only, so it is listed in SYNC_EXCLUDE_FILES and
+# removed after the replace (and so never drives image syncing either).
+#
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
@@ -46,6 +50,7 @@ on:
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
       - '!en/docs/develop-and-test/create-workspace/**'
+      - '!en/docs/editor/integration-control-plane.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
       - 'en/static/img/**'
@@ -62,6 +67,9 @@ env:
   # import integration, and sample flows), so never overwritten by a sync.
   SAAS_OWNED_DIRS: >-
     en/docs/develop-and-test/create-workspace
+  # Self-hosted-only pages inside synced folders, never copied to saas.
+  SYNC_EXCLUDE_FILES: >-
+    en/docs/editor/integration-control-plane.md
 
 jobs:
   sync:
@@ -102,6 +110,11 @@ jobs:
           for d in $SYNC_DIRS; do
             rm -rf "$d"
             git checkout origin/wso2-integrator -- "$d" 2>/dev/null || true
+          done
+
+          # Drop wso2-integrator-only pages that live inside synced folders.
+          for f in $SYNC_EXCLUDE_FILES; do
+            rm -f "$f"
           done
 
           # Put saas's copy of the saas-owned directories back, before any
