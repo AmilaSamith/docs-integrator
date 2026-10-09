@@ -62,7 +62,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  SYNC_BRANCH: sync-content-saas
+  SYNC_BRANCH: sync-content-saas-latest
   SYNC_DIRS: >-
     en/docs/platform-overview
     en/docs/editor
