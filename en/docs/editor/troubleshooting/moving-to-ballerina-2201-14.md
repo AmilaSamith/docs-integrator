@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Moving to Ballerina 2201.14.0
 description: Resolve the Ballerina version and dependency screens and build warnings that appear when you open or build an older setup or integration after moving to Ballerina 2201.14.0 and Java 25.
 keywords: [wso2 integrator, migration, troubleshooting, ballerina 2201.14.0, swan lake update 14, java 25, dependencies, upgrade, downgrade, previous version, locking-mode, UnsupportedClassVersionError]
-slug: /editor/troubleshooting/moving-to-ballerina-2201-14
+slug: /editor/editor-troubleshooting/moving-to-ballerina-2201-14
 ---
 
 # Moving to Ballerina 2201.14.0
@@ -39,6 +39,8 @@ To update from a terminal instead, run the following command, then reload the VS
 ```bash
 bal dist pull 2201.14.0
 ```
+
+If you installed Ballerina with the installer, rather than through the extension, run the command with `sudo` on macOS and Linux, or from an administrator command prompt on Windows.
 
 Run `bal version` to confirm that Ballerina 2201.14.0 is active.
 
@@ -79,6 +81,8 @@ dependencies-toml-version = "2"
 distribution-version = "2201.12.3"
 ```
 
+A `Dependencies.toml` without a `distribution-version` field uses an older format and is also treated as set up with an earlier Ballerina version.
+
 Only packages that set `sticky = true` under `[build-options]` in `Ballerina.toml`, or in the workspace's `Ballerina.toml`, are checked. Integrations are created with it; a package without it picks up newer versions on its next build.
 
 In a workspace, each package has its own `Dependencies.toml`, and the editor checks every package and lists the ones it will update.
@@ -90,7 +94,7 @@ You can either update the dependencies, or keep them as they are by switching to
 - **What moves:** each dependency moves to the latest version that works with Ballerina 2201.14.0 within its current major version. The update doesn't move a dependency to a new major version, because a new major version can include breaking changes.
 - **What can change:** newer minor and patch versions are meant to be compatible, but they can deprecate APIs or fix behavior your integration relied on. Build and test the integration after the update.
 - **Who it affects:** after the update, everyone working on the integration, and every pipeline that builds or runs it, needs Ballerina 2201.14.0 and Java 25. See [After you update](#after-you-update).
-- **How to undo it:** commit or back up `Dependencies.toml` and `Ballerina.toml` in each package first. To undo the update, restore both files, for example with `git checkout -- Dependencies.toml Ballerina.toml`. The restored files still have the old dependency versions, so on Ballerina 2201.14.0 the editor shows **Your project dependencies need to be updated** again. To stop it from appearing, [keep the current dependencies](#keep-the-current-dependencies).
+- **How to undo it:** commit or back up `Dependencies.toml` and `Ballerina.toml` in each package first. To undo the update, restore both files, for example with `git checkout -- Dependencies.toml Ballerina.toml`. In a workspace, packages update one at a time, and a package that fails doesn't stop the others, so after a failed update some packages can already have rewritten files. Check every package before you restore files. The restored files still have the old dependency versions, so on Ballerina 2201.14.0 the editor shows **Your project dependencies need to be updated** again. To stop it from appearing, [keep the current dependencies](#keep-the-current-dependencies).
 
 ### Update the dependencies
 
@@ -140,12 +144,12 @@ Commit the updated `Dependencies.toml` and `Ballerina.toml` files so that others
 
 #### VS Code
 
-Switch to the latest Ballerina version before 2201.14.0, then switch the extensions to their previous versions.
+Switch to the latest Ballerina 2201.13.x version, then switch the extensions to their previous versions.
 
-1. Switch to Ballerina 2201.13.6:
+1. Switch to the latest Ballerina 2201.13.x version, for example 2201.13.7:
 
     ```bash
-    bal dist pull 2201.13.6
+    bal dist pull 2201.13.7
     ```
 
     Any Ballerina version from the one in the `distribution-version` field of `Dependencies.toml` up to, but not including, 2201.14.0 keeps the locked dependency versions.
