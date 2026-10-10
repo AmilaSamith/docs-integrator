@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 # Automation
 
-An automation runs without an external request. Use it for periodic data synchronization, batch processing, report generation, and other recurring tasks that execute on a timer or on demand. Periodic invocation is scheduled in an external system such as a cron job, Kubernetes, or WSO2 Integration Platform.
+An automation executes integration logic when started, without waiting for an incoming service request. Use it for periodic data synchronization, batch processing, report generation, and other recurring tasks that execute on a timer or on demand. Periodic invocation is scheduled in an external system such as a cron job, Kubernetes, or WSO2 Integration Platform.
 
 :::note
 Only one automation can be configured per integration.
