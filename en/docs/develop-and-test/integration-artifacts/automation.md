@@ -23,8 +23,7 @@ Only one automation can be configured per integration.
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
-
-1. Select the **+ Add Artifact** button in the canvas, or select **+** next to **Entry Points** in the sidebar.
+1. Select the **Add Artifact manually** button on the Integration Overview page, or select **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Automation** under **Automation**.
 
    <ThemedImage
