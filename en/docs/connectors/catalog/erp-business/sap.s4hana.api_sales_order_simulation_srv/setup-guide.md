@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through configuring an SAP S/4HANA Communication Arrangement to expose the Sales Order Simulation API and obtaining the credentials required by the connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA Cloud tenant or an on-premise SAP S/4HANA system with the Sales and Distribution (SD) module enabled.

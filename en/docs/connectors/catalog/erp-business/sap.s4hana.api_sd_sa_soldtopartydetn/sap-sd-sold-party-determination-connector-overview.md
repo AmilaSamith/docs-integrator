@@ -6,7 +6,6 @@ title: "Overview"
 
 The SAP S/4HANA SD Sold-to-Party Determination connector provides programmatic access to the `API_SD_SA_SOLDTOPARTYDETN` OData service, which manages sold-to party assignments for sales scheduling agreements. Using the Ballerina `ballerinax/sap.s4hana.api_sd_sa_soldtopartydetn` connector, you can query and retrieve delivery scheduling sold-to party determination records from SAP S/4HANA Cloud to integrate partner assignment data into your business workflows.
 
-
 ## Key features
 
 - Retrieve a specific sold-to party assignment by composite key (Supplier, PartnerDescription, UnloadingPointName)
@@ -21,7 +20,6 @@ The SAP S/4HANA SD Sold-to-Party Determination connector provides programmatic a
 
 Actions are operations you invoke on the SAP S/4HANA SD Sold-to-Party Determination service from your integration. Use these actions for retrieving sold-to party assignments for delivery scheduling agreements. The connector exposes actions through a single client:
 
-
 | Client | Actions |
 |--------|---------|
 | `Client` | Sold-to party determination record retrieval, list with OData query support, batch operations |
@@ -31,7 +29,6 @@ See the **[Action Reference](actions.md)** for the full list of operations, para
 ## Documentation
 
 * **[Setup Guide](setup-guide.md)**: This guide walks you through configuring the SAP S/4HANA Communication Arrangement for the Sold-to-Party Assignment of Sales Scheduling Agreement Integration API and obtaining the credentials required to use the connector.
-
 
 * **[Action Reference](actions.md)**: Full reference for all clients: operations, parameters, return types, and sample code.
 

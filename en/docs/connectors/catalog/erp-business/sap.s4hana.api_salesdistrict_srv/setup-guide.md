@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through configuring SAP S/4HANA access and obtaining the credentials required to use the SAP Sales District connector.
 
-
 ## Prerequisites
 
 - Access to an SAP S/4HANA system (on-premise or cloud) with the Sales District Read API (`API_SALESDISTRICT_SRV`) activated.

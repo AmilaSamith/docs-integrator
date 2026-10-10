@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through configuring SAP S/4HANA Communication Management to expose the Sales Order (A2X) API and obtaining the credentials required to use the connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA Cloud or on-premise system with administrative access.

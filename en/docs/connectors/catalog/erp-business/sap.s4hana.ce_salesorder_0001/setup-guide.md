@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through configuring SAP S/4HANA Cloud to expose the Sales Order Integration API and obtaining the credentials required to use the connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA Cloud tenant with system administrator access.

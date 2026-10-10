@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through configuring the SAP S/4HANA Communication Arrangement for the Sold-to-Party Assignment of Sales Scheduling Agreement Integration API and obtaining the credentials required to use the connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA Cloud tenant with administrator access.

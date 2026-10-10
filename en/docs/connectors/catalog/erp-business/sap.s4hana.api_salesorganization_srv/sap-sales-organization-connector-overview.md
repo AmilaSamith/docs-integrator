@@ -6,7 +6,6 @@ title: "Overview"
 
 SAP Sales Organization is an SAP S/4HANA OData v2 service that provides read access to sales organization master data, including organizational units, company code assignments, intercompany billing settings, and multilingual name texts. The Ballerina `ballerinax/sap.s4hana.api_salesorganization_srv` connector (v1.0.0) enables Ballerina integration flows to query and retrieve this reference data from SAP S/4HANA systems using Basic authentication over HTTPS.
 
-
 ## Key features
 
 - Retrieve a single sales organization record by its key (`SalesOrganization` ID)
@@ -22,7 +21,6 @@ SAP Sales Organization is an SAP S/4HANA OData v2 service that provides read acc
 
 Actions are operations you invoke on SAP S/4HANA from your integration. Use these actions for listing sales organizations, retrieving individual records by key, and navigating related text entities. All operations are read-only OData v2 GET requests exposed through a single client:
 
-
 | Client | Actions |
 |--------|---------|
 | `Client` | Sales organization lookup, listing, text retrieval, and OData navigation |
@@ -32,7 +30,6 @@ See the **[Action Reference](actions.md)** for the full list of operations, para
 ## Documentation
 
 * **[Setup Guide](setup-guide.md)**: This guide walks you through obtaining the SAP S/4HANA connection details and credentials required to use the SAP Sales Organization connector.
-
 
 * **[Action Reference](actions.md)**: Full reference for all clients: operations, parameters, return types, and sample code.
 

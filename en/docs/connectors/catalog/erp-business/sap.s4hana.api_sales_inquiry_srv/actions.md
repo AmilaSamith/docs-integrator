@@ -17,7 +17,6 @@ The `ballerinax/sap.s4hana.api_sales_inquiry_srv` package exposes the following 
 
 Provides typed access to all entities exposed by the SAP S/4HANA API_SALES_INQUIRY_SRV OData service: inquiry headers, line items, business partners, and pricing elements.
 
-
 ### Configuration
 
 | Field | Type | Default | Description |
@@ -61,7 +60,6 @@ salesinquiry:Client salesinquiryClient = check new (
 <div>
 
 Retrieves a collection of sales inquiry header records. Supports OData query options to filter, sort, and project fields.
-
 
 Parameters:
 
@@ -120,7 +118,6 @@ Sample response:
 
 Retrieves a single sales inquiry header by its document number. Use `$expand` to include related items, partners, or pricing elements in the same response.
 
-
 Parameters:
 
 | Name | Type | Required | Description |
@@ -177,7 +174,6 @@ Sample response:
 
 Lists all line items belonging to a specific sales inquiry document. Each item represents a requested product or service with quantity and pricing information.
 
-
 Parameters:
 
 | Name | Type | Required | Description |
@@ -231,7 +227,6 @@ Sample response:
 <div>
 
 Retrieves a single sales inquiry line item identified by document number and item number.
-
 
 Parameters:
 
@@ -287,7 +282,6 @@ Sample response:
 <div>
 
 Lists all sales inquiry line items across all inquiries. Useful for bulk reporting or cross-inquiry analysis with OData filters.
-
 
 Parameters:
 
@@ -346,7 +340,6 @@ Sample response:
 
 Lists all business partner assignments on a sales inquiry header, such as sold-to party, ship-to party, bill-to party, and payer.
 
-
 Parameters:
 
 | Name | Type | Required | Description |
@@ -402,7 +395,6 @@ Sample response:
 
 Retrieves a specific business partner assignment on a sales inquiry header by partner function code.
 
-
 Parameters:
 
 | Name | Type | Required | Description |
@@ -446,7 +438,6 @@ Sample response:
 <div>
 
 Lists all partner assignments at the line-item level for a given sales inquiry item.
-
 
 Parameters:
 
@@ -498,7 +489,6 @@ Sample response:
 <div>
 
 Lists all header-level pricing condition records for a sales inquiry, such as base prices, discounts, freight, and taxes.
-
 
 Parameters:
 
@@ -560,7 +550,6 @@ Sample response:
 
 Retrieves a single header-level pricing condition record identified by inquiry document number, procedure step, and counter.
 
-
 Parameters:
 
 | Name | Type | Required | Description |
@@ -611,7 +600,6 @@ Sample response:
 <div>
 
 Lists all item-level pricing condition records for a specific sales inquiry line item.
-
 
 Parameters:
 
@@ -666,7 +654,6 @@ Sample response:
 <div>
 
 Executes multiple OData read requests as a single HTTP batch call, reducing round-trips when you need to fetch several inquiry entities at once.
-
 
 Parameters:
 

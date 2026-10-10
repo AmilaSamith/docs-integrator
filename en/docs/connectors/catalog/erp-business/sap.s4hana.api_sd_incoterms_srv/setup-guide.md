@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through creating the required Communication User, Communication System, and Communication Arrangement in SAP S/4HANA Cloud to obtain the credentials needed for the SAP SD Incoterms connector.
 
-
 ## Prerequisites
 
 - An active SAP S/4HANA Cloud tenant with administrator or IT administrator access.

@@ -5,7 +5,6 @@ title: Setup Guide
 
 This guide walks you through enabling the SAP Sales Quotation OData service in your SAP S/4HANA system and obtaining the credentials required to connect the Ballerina connector.
 
-
 ## Prerequisites
 
 - An SAP S/4HANA system with the Sales & Distribution (SD) module configured and at least one active sales organization.
