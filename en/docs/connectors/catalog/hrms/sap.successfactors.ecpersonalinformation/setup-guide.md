@@ -43,7 +43,13 @@ In either case, you will also need the API server hostname for your SuccessFacto
 
 2. Search for **Manage OAuth2 Client Applications** in Admin Center's action search, or navigate to it directly under **Admin Center** > **Company Settings**.
 
-   ![Search for Manage OAuth2 Client Applications](/img/connectors/catalog/hrms/sap.successfactors/search-oauth2-client-applications.png)
+   <ThemedImage
+       alt="Search for Manage OAuth2 Client Applications"
+       sources={{
+           light: useBaseUrl('/img/connectors/catalog/hrms/sap.successfactors/search-oauth2-client-applications.png'),
+           dark: useBaseUrl('/img/connectors/catalog/hrms/sap.successfactors/search-oauth2-client-applications.png'),
+       }}
+   />
 
 3. Choose **Register Client Application** and provide the following information:
 
