@@ -18,7 +18,7 @@ The AWS SQS connector enables integration with Amazon Simple Queue Service (SQS)
 - Add, remove, and list cost allocation tags on queues
 - Start and cancel dead-letter queue (DLQ) message movement tasks
 - Event-driven message consumption using a listener and service model
-- Supports static credentials, AWS profiles, and the default credential provider chain
+- Flexible authentication using any standard credential source supported by AWS
 
 ## Actions
 
