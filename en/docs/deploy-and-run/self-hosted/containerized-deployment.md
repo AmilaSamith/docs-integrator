@@ -18,8 +18,8 @@ The Code to Cloud feature supports the following containerized deployment platfo
 - **[Kubernetes](#kubernetes-deployment)** — Deploy to any Kubernetes cluster with auto-generated manifests, services, and autoscaling configurations
 - **[Red Hat OpenShift](#red-hat-openshift-deployment)** — Deploy to OpenShift using the `oc` CLI with platform-specific manifests
 - **[Amazon EKS](#amazon-eks-deployment)** — Deploy to AWS Elastic Kubernetes Service using ECR for image hosting and an internal NLB for service access
+- **[Amazon Bedrock AgentCore Runtime](#amazon-bedrock-agentcore-runtime-deployment)** — Deploy an AI agent to AWS's serverless agent runtime using ECR for image hosting, with each session in its own microVM
 - **[Azure AKS](#azure-aks-deployment)** — Deploy to Azure Kubernetes Service using ACR for image hosting and an Azure Load Balancer for service access
-- **Amazon Bedrock AgentCore Runtime** — Deploy an AI agent to AWS's serverless agent runtime using ECR for image hosting, with each session in its own microVM
 
 :::info Prerequisites
 - [Docker](https://www.docker.com/) installed and running on your build machine
@@ -729,7 +729,7 @@ The steps below deploy an AI agent built with `ballerina/ai`. Code to Cloud buil
 
 ### Prerequisites
 
-In addition to the general prerequisites, you need:
+In addition to the [general prerequisites](#prerequisites), you need:
 
 - AWS CLI v2 installed and configured (`aws configure` or `aws sso login`)
 - Docker with `buildx`, able to build `linux/arm64` images. Apple Silicon machines build them natively.
@@ -806,7 +806,7 @@ service / on new http:Listener(port) {
 `agentFor()` returns the agent, which Step 2 builds. The runtime gives each session its own microVM, so one container serves one session.
 
 :::note
-Log the reason for any failure inside the container. When the agent returns an error, the caller sees only a `RuntimeClientError (500)`. The cause is in the runtime's log group.
+Log the reason for any failure inside the container. When the agent returns an error, the caller sees only a `RuntimeClientError` with HTTP status 424. The cause is in the runtime's log group.
 :::
 
 ### Step 2: Connect the agent to AgentCore Gateway
@@ -815,7 +815,7 @@ AgentCore Gateway gives the agent one MCP endpoint for all its tools and one end
 
 The model provider's API key stays out of the agent. Store it in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), and add an **Inference** target to the Gateway that uses that credential provider. The agent then calls the model through the Gateway and sends its Gateway token in place of a provider key.
 
-The agent gets a Gateway token from Amazon Cognito with the OAuth 2.0 client credentials flow, and uses it for both its tools and its model:
+The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. The MCP toolkit takes the grant configuration and manages its own token; the model provider takes a token that the agent requests:
 
 ```ballerina
 import ballerina/ai;
@@ -838,12 +838,14 @@ isolated function gatewayToken() returns string|error {
     return token.access_token;
 }
 
-isolated function buildAgent(string token) returns ai:Agent|error {
-    // Lists the Gateway's tools once, when the toolkit is created.
-    ai:McpToolKit gateway = check new (mcpServerUrl, auth = {token});
+isolated function buildAgent() returns ai:Agent|error {
+    // Requests a token, and a new one when it expires. Lists the Gateway's tools once,
+    // when the toolkit is created.
+    ai:McpToolKit gateway = check new (mcpServerUrl,
+        auth = {tokenUrl: mcpTokenUrl, clientId: mcpClientId, clientSecret: mcpClientSecret});
 
     // The OpenAI provider sends its key as Authorization: Bearer, which the Gateway reads.
-    ai:ModelProvider model = check new openai:ModelProvider(token, openai:GPT_4_1, inferenceUrl);
+    ai:ModelProvider model = check new openai:ModelProvider(check gatewayToken(), openai:GPT_4_1, inferenceUrl);
 
     return check new ai:Agent(
         systemPrompt = {
@@ -863,7 +865,7 @@ isolated function agentFor() returns ai:Agent|error {
             return existing;
         }
     }
-    ai:Agent agent = check buildAgent(check gatewayToken());
+    ai:Agent agent = check buildAgent();
     lock {
         cachedAgent = agent;
     }
@@ -874,7 +876,7 @@ isolated function agentFor() returns ai:Agent|error {
 Keep these behaviors in mind:
 
 - Use a model provider that sends its key as `Authorization: Bearer`, such as `ballerinax/ai.openai`. The Gateway rejects a key sent as `x-api-key` with `401 Missing Bearer token`.
-- Cognito access tokens expire after one hour, and the model provider doesn't renew its token, so a session that runs longer than that starts failing its model calls.
+- The model provider takes a fixed token and doesn't renew it, so a session that outlives the token starts failing its model calls. Cognito access tokens last one hour by default; each app client can set anywhere from 5 minutes to 24 hours.
 
 AgentCore Policy and guardrails apply only to calls that pass through the Gateway:
 
@@ -899,7 +901,7 @@ name = "my-agent"
 tag = "v1.0.0"
 ```
 
-To send the agent's traces to AWS X-Ray, the image also needs an OpenTelemetry Collector running next to the agent. Code to Cloud adds it through `[[container.copy.files]]` and `entrypoint` entries in the same `Cloud.toml`. Distributed Tracing describes these entries under Send traces to AWS X-Ray and CloudWatch.
+To send the agent's traces to AWS X-Ray, the image also needs an OpenTelemetry Collector running next to the agent. Code to Cloud adds it through `[[container.copy.files]]` and `entrypoint` entries in the same `Cloud.toml`. See [Send traces to AWS X-Ray and CloudWatch](../../observe/tracing.md#send-traces-to-aws-x-ray-and-cloudwatch) for these entries.
 
 Follow these rules for every image you deploy to AgentCore Runtime:
 
@@ -907,7 +909,7 @@ Follow these rules for every image you deploy to AgentCore Runtime:
 |---|---|
 | Push a `linux/arm64` image | AgentCore Runtime runs only `arm64` images and rejects any other with an unhelpful error. |
 | Push with `--provenance=false` | `buildx` otherwise pushes an attestation manifest list. The push succeeds, but the runtime fails to deploy. |
-| Keep secrets out of the image | Code to Cloud leaves `Config.toml` out of the image. Pass configuration as environment variables instead (Step 7). |
+| Keep secrets out of the image | Code to Cloud leaves your project's `Config.toml` out of the image. Any `Config.toml` you copy in yourself, such as the tracing configuration, must hold no secrets. Pass secrets as environment variables (Step 7). |
 | Set only environment variables the code reads | An unknown key in `Config.toml`, or a `BAL_CONFIG_VAR_` variable that matches no `configurable`, stops the program at startup with `unused environment variable`. On AgentCore, this shows up only as `An error occurred when starting the runtime`. |
 
 ### Step 4: Build and test locally
@@ -918,7 +920,7 @@ Build the project. Code to Cloud builds the executable JAR, generates the Docker
 bal build
 ```
 
-Run the image with the same configuration you'll give the runtime, and call the contract endpoints from another terminal:
+Run the image with the same configuration you'll give the runtime, and call the contract endpoints from another terminal. If the image includes the trace collector, the collector needs AWS credentials to start. Without them it exits, and the agent runs without tracing:
 
 ```bash
 docker run --rm -p 8080:8080 -e BAL_CONFIG_VAR_<NAME>=<value> \
@@ -983,6 +985,9 @@ Save the permissions as `runtime-permissions.json`. Replace `<runtime-name>` wit
     { "Sid": "LogGroupManagement", "Effect": "Allow",
       "Action": ["logs:DescribeLogStreams", "logs:CreateLogGroup"],
       "Resource": ["arn:aws:logs:<region>:<account-id>:log-group:/aws/bedrock-agentcore/runtimes/*"] },
+    { "Sid": "LogResourcePolicy", "Effect": "Allow",
+      "Action": ["logs:PutResourcePolicy"],
+      "Resource": ["arn:aws:logs:<region>:<account-id>:log-group:/aws/bedrock-agentcore/runtimes/<runtime-name>-*"] },
     { "Sid": "LogGroupDiscovery", "Effect": "Allow",
       "Action": ["logs:DescribeLogGroups"],
       "Resource": ["arn:aws:logs:<region>:<account-id>:log-group:*"] },
@@ -1018,9 +1023,9 @@ aws iam put-role-policy --role-name AgentCoreRuntime-my_agent \
 
 ### Step 7: Create the runtime
 
-A runtime name can contain only letters, digits, and underscores, and must start with a letter. Hyphens are rejected.
+A runtime name can contain only letters, digits, and underscores, must start with a letter, and can be up to 48 characters long. Hyphens are rejected.
 
-The runtime passes configuration to the container as environment variables. A configurable is read from `BAL_CONFIG_VAR_` followed by its name in **uppercase**: `mcpServerUrl` becomes `BAL_CONFIG_VAR_MCPSERVERURL`. A variable with any other casing is silently ignored.
+The runtime passes configuration to the container as environment variables. A configurable is read from `BAL_CONFIG_VAR_` followed by its name in **uppercase**: `mcpServerUrl` becomes `BAL_CONFIG_VAR_MCPSERVERURL`. Any other spelling, such as mixed case or underscores between words, matches no configurable and stops the agent at startup with `unused environment variable`.
 
 The following command reads the Cognito client secret straight into the runtime definition, so the secret never appears on screen, in your shell history, or in the process list. `umask 077` makes the file readable only by you, and the last command deletes it:
 
@@ -1098,7 +1103,7 @@ If the runtime doesn't deploy or the invocation fails, the usual causes are:
 - The image pushed, but the runtime fails to deploy: the image isn't `linux/arm64`, or it was pushed without `--provenance=false`.
 - The caller gets `An error occurred when starting the runtime`: the program exited at startup. Look in the log for `unused environment variable`, or for an unknown key in `Config.toml`, and run the image locally.
 - The runtime is `READY`, but its log group is empty: the runtime isn't using the `HTTP` protocol, or the service doesn't listen on port `8080`.
-- The caller gets `RuntimeClientError (500)` with no detail: the agent's own error message is in the runtime's log group, on the `agent unavailable` or `agent run failed` line.
+- The caller gets `RuntimeClientError` (HTTP 424) with no detail: the agent's own error message is in the runtime's log group, on the `agent unavailable` or `agent run failed` line.
 - `Failed to initialize the MCP client`: the Gateway is unreachable, or it refused the token.
 - Model calls return `400` with `Failed to fetch outbound api key`: the Gateway's service role can't read the model provider's key from AgentCore Identity. It needs `bedrock-agentcore:GetResourceApiKey` on the credential provider and `secretsmanager:GetSecretValue` on its secret.
 - Model calls fail after about an hour in one session: the Gateway token expired. Start a new session.

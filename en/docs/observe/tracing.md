@@ -52,7 +52,7 @@ tracingEnabled = true
 tracingProvider = "jaeger"
 ```
 
-Each backend also takes its own connection settings (agent host and port, sampler, and buffering) under `[ballerinax.jaeger]` or `[ballerinax.zipkin]`. Those are covered on the backend's page. The `otel` provider takes its endpoint and protocol under `[ballerina.otel]`, as shown in Send traces to AWS X-Ray and CloudWatch below.
+Each backend also takes its own connection settings (agent host and port, sampler, and buffering) under `[ballerinax.jaeger]` or `[ballerinax.zipkin]`. Those are covered on the backend's page. The `otel` provider takes its endpoint and protocol under `[ballerina.otel]`, as shown in [Send traces to AWS X-Ray and CloudWatch](#send-traces-to-aws-x-ray-and-cloudwatch).
 
 ## Sampling
 
@@ -81,6 +81,10 @@ AWS X-Ray accepts OpenTelemetry traces over OTLP at `https://xray.<region>.amazo
 
 The steps below run the collector as a second process in the integration's own container. This works on any container platform, and it's the only option on Amazon Bedrock AgentCore Runtime, which runs one container per session rather than a pod that could hold a sidecar.
 
+:::note
+This is a workaround, not an AWS-supported path. AWS supports agent observability only through the AWS Distro for OpenTelemetry (ADOT) SDK, which isn't available for Ballerina, and states that the ADOT Collector isn't supported for agent observability.
+:::
+
 ### Before you start
 
 Do the following once per AWS account and Region:
@@ -108,7 +112,7 @@ Do the following once per AWS account and Region:
 
 ### 1. Configure the integration
 
-Include observability in the build and import `ballerina/otel` as described in Enable tracing in your integration. Then point the `otel` provider at the collector:
+Include observability in the build and import `ballerina/otel` as described in [Enable tracing in your integration](#enable-tracing-in-your-integration). Then point the `otel` provider at the collector:
 
 ```toml
 [ballerina.observe]
@@ -132,7 +136,7 @@ This file holds no secrets, so you can copy it into the image as `/app/Config.to
 
 ### 2. Configure the collector
 
-Use the contrib distribution of the OpenTelemetry Collector (`otel/opentelemetry-collector-contrib`). It includes the `sigv4auth` extension and the `filter` and `transform` processors used on this page. Save the configuration as `otel-collector.yaml`:
+Use the contrib distribution of the OpenTelemetry Collector (`otel/opentelemetry-collector-contrib`). It includes the `sigv4auth` extension and the `filter`, `transform` and `resourcedetection` processors used on this page. Save the configuration as `otel-collector.yaml`:
 
 ```yaml
 receivers:
@@ -175,20 +179,20 @@ The collector signs with the credentials of the environment it runs in: the exec
 
 ### 3. Run the collector in the same container
 
-Start the collector in the background, then run the integration in the foreground so that the container lives and dies with it. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
+Start the collector in the background, then run the integration in the foreground so that the container lives and dies with it. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Keep the JVM flags that Code to Cloud's own entry point uses, in particular `-XX:+ExitOnOutOfMemoryError`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
 
 ```sh
 #!/bin/sh
 set -e
 /usr/local/bin/otelcol --config=/etc/otel/config.yaml &
-exec java -jar /home/ballerina/jars/my_integration.jar
+exec java --enable-native-access=ALL-UNNAMED -XX:+ExitOnOutOfMemoryError -jar /home/ballerina/jars/my_integration.jar
 ```
 
 Copy the collector binary out of the official image. Use the platform you deploy to, for example `linux/arm64` for AWS Graviton or Amazon Bedrock AgentCore Runtime:
 
 ```bash
 mkdir -p otel
-docker create --name otelcol --platform linux/arm64 otel/opentelemetry-collector-contrib:latest
+docker create --name otelcol --platform linux/arm64 otel/opentelemetry-collector-contrib:0.161.0
 docker cp otelcol:/otelcol-contrib otel/otelcol
 docker rm otelcol
 ```
@@ -229,72 +233,29 @@ CloudWatch groups spans under an agent by resource attributes that AgentCore inj
 
 ```yaml
 processors:
-  resource/agent_identity:
-    attributes:
-      - { key: service.name,                value: "${env:AGENT_SERVICE_NAME}",      action: upsert }
-      - { key: cloud.resource_id,           value: "${env:AGENT_CLOUD_RESOURCE_ID}", action: upsert }
-      - { key: deployment.environment.name, value: "${env:AGENT_DEPLOYMENT_ENV}",    action: upsert }
-      - { key: aws.log.group.names,         value: "${env:AGENT_LOG_GROUP}",         action: upsert }
-      - { key: aws.log.stream.names,        value: "${env:AGENT_LOG_STREAM}",        action: upsert }
-      - { key: cloud.platform,              value: "${env:AGENT_CLOUD_PLATFORM}",    action: upsert }
-      - { key: cloud.provider,              value: "${env:AGENT_CLOUD_PROVIDER}",    action: upsert }
-      - { key: cloud.region,                value: "${env:AGENT_CLOUD_REGION}",      action: upsert }
+  resourcedetection/agentcore:            # reads OTEL_RESOURCE_ATTRIBUTES
+    detectors: [env]
+    override: true
 
-  attributes/agentcore_origin:
-    actions:
-      - { key: aws.xray.origin,   value: "AWS::BedrockAgentCore::Runtime", action: upsert }
-      - { key: aws.resource.type, value: "AWS::BedrockAgentCore::Runtime", action: upsert }
-      - { key: aws.resource.arn,  value: "${env:AGENT_CLOUD_RESOURCE_ID}", action: upsert }
+  transform/agentcore_origin:
+    error_mode: ignore
+    trace_statements:
+      - context: span
+        statements:
+          - set(span.attributes["aws.xray.origin"], "AWS::BedrockAgentCore::Runtime") where resource.attributes["cloud.resource_id"] != nil
+          - set(span.attributes["aws.resource.type"], "AWS::BedrockAgentCore::Runtime") where resource.attributes["cloud.resource_id"] != nil
+          - set(span.attributes["aws.resource.arn"], resource.attributes["cloud.resource_id"]) where resource.attributes["cloud.resource_id"] != nil
 
 service:
   extensions: [sigv4auth]
   pipelines:
     traces:
       receivers: [otlp]
-      # Keep on one line: start.sh removes processors from it with sed.
-      processors: [filter/drop_health, resource/agent_identity, attributes/agentcore_origin]
+      processors: [filter/drop_health, resourcedetection/agentcore, transform/agentcore_origin]
       exporters: [otlp_http]
 ```
 
-The `service.name` in the integration's `Config.toml` becomes a fallback: these processors overwrite it with the runtime's own name.
-
-Extend `start.sh` to read the values from `OTEL_RESOURCE_ATTRIBUTES` into the variables that the processors use. If the variable is missing, as it is when you run the image locally, an empty `${env:...}` value makes the collector exit without an error. The script therefore removes the two processors in that case:
-
-```sh
-#!/bin/sh
-set -e
-CONFIG=/etc/otel/config.yaml
-
-# AgentCore injects OTEL_RESOURCE_ATTRIBUTES with the identity CloudWatch expects.
-otel_attr() {
-    printf '%s' "$OTEL_RESOURCE_ATTRIBUTES" | tr ',' '\n' | sed -n "s/^$1=//p" | head -1
-}
-AGENT_SERVICE_NAME=$(otel_attr 'service\.name')
-AGENT_CLOUD_RESOURCE_ID=$(otel_attr 'cloud\.resource_id')
-AGENT_DEPLOYMENT_ENV=$(otel_attr 'deployment\.environment\.name')
-AGENT_LOG_GROUP=$(otel_attr 'aws\.log\.group\.names')
-AGENT_LOG_STREAM=$(otel_attr 'aws\.log\.stream\.names')
-AGENT_CLOUD_PLATFORM=$(otel_attr 'cloud\.platform')
-AGENT_CLOUD_PROVIDER=$(otel_attr 'cloud\.provider')
-AGENT_CLOUD_REGION=$(otel_attr 'cloud\.region')
-export AGENT_SERVICE_NAME AGENT_CLOUD_RESOURCE_ID AGENT_DEPLOYMENT_ENV \
-    AGENT_LOG_GROUP AGENT_LOG_STREAM AGENT_CLOUD_PLATFORM AGENT_CLOUD_PROVIDER \
-    AGENT_CLOUD_REGION
-
-# Outside AgentCore, drop the identity processors instead of letting the collector exit.
-if [ -z "$AGENT_SERVICE_NAME" ] || [ -z "$AGENT_CLOUD_RESOURCE_ID" ] ||
-    [ -z "$AGENT_DEPLOYMENT_ENV" ] || [ -z "$AGENT_LOG_GROUP" ] ||
-    [ -z "$AGENT_LOG_STREAM" ] || [ -z "$AGENT_CLOUD_PLATFORM" ] ||
-    [ -z "$AGENT_CLOUD_PROVIDER" ] || [ -z "$AGENT_CLOUD_REGION" ]; then
-    echo "start.sh: OTEL_RESOURCE_ATTRIBUTES missing or incomplete -- tracing without AgentCore resource identity" >&2
-    sed -e 's|, resource/agent_identity||' -e 's|, attributes/agentcore_origin||' \
-        "$CONFIG" > /tmp/otel-config.yaml
-    CONFIG=/tmp/otel-config.yaml
-fi
-
-/usr/local/bin/otelcol --config="$CONFIG" &
-exec java -jar /home/ballerina/jars/my_integration.jar
-```
+The `service.name` in the integration's `Config.toml` becomes a fallback: `override: true` replaces it with the runtime's own name. When `OTEL_RESOURCE_ATTRIBUTES` is missing, as it is when you run the image locally, both processors leave the spans unchanged, so the same image and `start.sh` work everywhere.
 
 ### AI agents: the GenAI dashboard and AgentCore Evaluations
 
@@ -336,8 +297,6 @@ processors:
         statements:
           - set(span.attributes["gen_ai.task.input"], span.attributes["gen_ai.input.messages"]) where span.attributes["gen_ai.operation.name"] == "invoke_agent" and span.attributes["gen_ai.input.messages"] != nil
           - set(span.attributes["gen_ai.task.output"], span.attributes["gen_ai.output.messages"]) where span.attributes["gen_ai.operation.name"] == "invoke_agent" and span.attributes["gen_ai.output.messages"] != nil
-          - set(span.attributes["agentcore.invocation.user_prompt"], span.attributes["gen_ai.input.messages"]) where span.attributes["gen_ai.operation.name"] == "invoke_agent" and span.attributes["gen_ai.input.messages"] != nil
-          - set(span.attributes["agentcore.invocation.agent_response"], span.attributes["gen_ai.output.messages"]) where span.attributes["gen_ai.operation.name"] == "invoke_agent" and span.attributes["gen_ai.output.messages"] != nil
           - set(span.attributes["gen_ai.tool.call.arguments"], span.attributes["gen_ai.tool.arguments"]) where span.attributes["gen_ai.operation.name"] == "execute_tool" and span.attributes["gen_ai.tool.arguments"] != nil
           - set(span.attributes["gen_ai.tool.call.result"], span.attributes["gen_ai.tool.output"]) where span.attributes["gen_ai.operation.name"] == "execute_tool" and span.attributes["gen_ai.tool.output"] != nil
 
@@ -346,10 +305,10 @@ processors:
       - { key: session.id, from_attribute: gen_ai.conversation.id, action: upsert }
 ```
 
-Add them to the pipeline, keeping the list on one line:
+Add them to the pipeline:
 
 ```yaml
-      processors: [filter/drop_health, attributes/genai_token_types, transform/genai_total_tokens, transform/scope_name, transform/genai_eval_aliases, resource/agent_identity, attributes/agentcore_origin, attributes/session_id]
+      processors: [filter/drop_health, attributes/genai_token_types, transform/genai_total_tokens, transform/scope_name, transform/genai_eval_aliases, resourcedetection/agentcore, transform/agentcore_origin, attributes/session_id]
 ```
 
 :::note
@@ -360,7 +319,8 @@ Use the contrib collector rather than the AWS Distro for OpenTelemetry (ADOT) co
 
 | What | Where |
 |---|---|
-| Spans from every service, including the AgentCore Gateway | The `aws/spans` log group, and **CloudWatch** > **Application Signals (APM)** > **Transaction Search** |
+| Spans that the collector sends | The `aws/spans` log group, and **CloudWatch** > **Application Signals (APM)** > **Transaction Search** |
+| Spans that AgentCore itself records, such as AgentCore Gateway spans | Runtimes created in Regions that support it deliver AgentCore's own spans to the `spans` stream of the agent's log group. Older runtimes use `aws/spans`. |
 | Logs from an AgentCore runtime, with `traceId` and `spanId` on each line | The `/aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT` log group |
 | Agent sessions, traces, and token usage | **CloudWatch** > **GenAI Observability** > **Bedrock AgentCore** |
 | Runtime metrics: invocations, errors, latency, CPU, and memory | CloudWatch metrics, which AgentCore Runtime publishes with no setup |
@@ -374,7 +334,7 @@ aws logs tail aws/spans --region <region> --since 30m \
 
 ### Known limitations
 
-- **The platform hop and the integration's own spans are separate traces.** AgentCore Runtime records its `AgentCore.Runtime.Invoke` span in one trace, and the Ballerina HTTP listener starts a new trace instead of continuing it. CloudWatch can't show them as one end-to-end trace.
+- **The platform hop and the integration's own spans are separate traces.** AgentCore Runtime records its `AgentCore.Runtime.Invoke` span in one trace and passes the trace context to the container in the X-Ray format (`X-Amzn-Trace-Id`). Ballerina continues a trace from a W3C `traceparent` header but doesn't read the X-Ray format, so it starts a new trace. CloudWatch can't show them as one end-to-end trace.
 
 ## What's next
 

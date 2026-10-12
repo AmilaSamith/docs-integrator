@@ -366,7 +366,7 @@ Agent spans follow the OpenTelemetry GenAI semantic conventions, which most AI o
 | `invoke_agent` | `gen_ai.conversation.id` | The `sessionId` passed to `agent.run()` |
 | `execute_tool` (one per tool call) | `gen_ai.tool.arguments`, `gen_ai.tool.output` | The tool's arguments and its result |
 | LLM call spans | `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens` | Token counts, recorded as **strings** |
-| All spans | Instrumentation scope name `otel` | |
+| All spans | Instrumentation scope name `otel` | The instrumentation that produced the span; some backends select spans by it |
 
 If your backend expects other names, for example `session.id` for the session or integer token counts, rename or convert the attributes in the collector rather than in the agent.
 
