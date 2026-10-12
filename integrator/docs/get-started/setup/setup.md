@@ -4,7 +4,7 @@ title: Set up WSO2 Integrator
 
 # Set up WSO2 Integrator
 
-Install WSO2 Integrator IDE on your machine to develop, test, and debug integrations locally. The IDE is available for Windows, macOS, and Linux.
+Install WSO2 Integrator on your machine to develop, test, and debug integrations locally. The WSO2 Integrator available for Windows, macOS, and Linux.
 
 ## Installation steps
 
@@ -29,14 +29,14 @@ Install WSO2 Integrator IDE on your machine to develop, test, and debug integrat
 
 ### Step 3: Launch WSO2 Integrator
 
-After installation, launch the IDE:
+After installation, launch the WSO2 Integrator:
 
 - **Windows**: Double-click the **WSO2 Integrator** icon on your desktop or start menu.
 - **macOS**: Open the **Applications** folder and double-click **WSO2 Integrator**.
 - **Linux**: Launch **WSO2 Integrator** from your applications menu (after a `.deb` or `.rpm` install), or run the binary from the extracted directory if you used the `.tar.gz` archive.
 
 <ThemedImage
-    alt="WSO2 Integrator IDE"
+    alt="WSO2 Integrator "
     sources={{
         light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
         dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
@@ -67,8 +67,8 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
        }}
    />
 
-3. When the browser prompts you, click **Open WSO2 Integrator** to return to the IDE.
-4. The IDE shows a **Successfully signed into WSO2 Integration Platform** notification, and your account avatar appears in the top-right corner.
+3. When the browser prompts you, click **Open WSO2 Integrator** to return to the editor.
+4. The editor shows a **Successfully signed into WSO2 Integration Platform** notification, and your account avatar appears in the top-right corner.
 
    <ThemedImage
        alt="WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification"
