@@ -178,7 +178,7 @@ For **onCreate** and **onModify**, the panel includes a **File Handling Options*
 
 | Field | Description |
 |---|---|
-| **On Success** | Action to take when the handler completes without returning an error: **Move** the file to another directory, or **Delete** it. See [Post-processing](#post-processing-moving-or-deleting-files). |
+| **On Success** | Action to take when the handler completes without any errors: **Move** the file to another directory, or **Delete** it. See [Post-processing](#post-processing-moving-or-deleting-files). |
 | **On Error** | Action to take when the handler returns an error. Same choices as **On Success**. |
 | **Move To** | Destination directory, required when **Move** is selected. |
 
@@ -187,8 +187,8 @@ An **onDelete** handler has no file handling options, because the file is alread
 <ThemedImage
     alt="Configure onCreate Handler panel showing File Handling Options with On Success and On Error both ticked and set to Move"
     sources={{
-        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-file-handling-options.png'),
-        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-file-handling-options.png'),
+        light: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-file-handling-options-v5.1.png'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/file/local-files/step-file-handling-options-v5.1.png'),
     }}
 />
 
