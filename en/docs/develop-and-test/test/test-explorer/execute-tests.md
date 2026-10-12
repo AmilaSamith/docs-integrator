@@ -32,7 +32,7 @@ The framework runs lifecycle functions in a fixed order for each test. Knowing t
 | `@test:BeforeGroups` | Tests in that group are skipped along with their per-test setup and teardown. `@test:AfterGroups` is skipped unless `alwaysRun: true`. Other groups are not affected. |
 | `@test:BeforeEach` | All test functions are skipped. `@test:AfterSuite` still runs. `@test:AfterGroups` does not run unless `alwaysRun: true`. |
 | `before` attribute function | That test and its `after` function are both skipped. |
-| Test function | Tests that list the failed test in `dependsOn` are skipped. Other tests continue normally. |
+| Test function | Any subsequent tests that depend on the failed test (through `dependsOn`) are skipped. Other tests continue normally. |
 | `@test:AfterEach` | All subsequent `@test:BeforeEach`, `@test:AfterEach`, and test functions are skipped. |
 
 If `alwaysRun: true` is set on `@test:AfterGroups` or `@test:AfterSuite`, those functions run regardless of the status of other functions.
