@@ -161,6 +161,8 @@ JSON output:
 }
 ```
 
+When tracing is enabled, each log record also carries the `traceId` and `spanId` of the request that wrote it. Log platforms that parse JSON, such as Amazon CloudWatch Logs, turn these into queryable fields, so you can go from a log line to its trace and back. In the default key-value format, the same values are present but stay unparsed.
+
 ## What's next
 
 - [Metrics](metrics.md) — Monitor service health with Prometheus

@@ -44,6 +44,28 @@ export BAL_CONFIG_VAR_API_KEY="sk-abc123"
 bal run
 ```
 
+### On Amazon Bedrock AgentCore Runtime
+
+AgentCore Runtime passes configuration to the agent as environment variables, set in the runtime's configuration. A configurable is read from `BAL_CONFIG_VAR_` followed by its name in uppercase: `mcpClientSecret` becomes `BAL_CONFIG_VAR_MCPCLIENTSECRET`.
+
+These values are stored in plain text. Anyone with `bedrock-agentcore:GetAgentRuntime` on the runtime can read them, and they appear again in every `update-agent-runtime` request. Keep secrets out of them where you can:
+
+- **Model provider keys:** don't give the agent a provider key. Store the key in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), add an **Inference** target to AgentCore Gateway that uses it, and have the agent call the model through the Gateway with its Gateway token.
+- **Gateway client credentials:** the agent needs a Cognito client ID and secret to get its Gateway token. Grant `bedrock-agentcore:GetAgentRuntime` only to the people and pipelines that deploy the agent, and rotate the client secret in Cognito if it's exposed.
+
+When you create or update the runtime, read the secret straight into the request file rather than typing it on the command line, so it stays out of your shell history and the process list:
+
+```bash
+umask 077
+aws cognito-idp describe-user-pool-client --region <region> \
+  --user-pool-id <user-pool-id> --client-id <client-id> \
+  --query UserPoolClient.ClientSecret --output text \
+| python3 -c 'import json, sys; print(json.dumps({"BAL_CONFIG_VAR_MCPCLIENTSECRET": sys.stdin.read().strip()}))' \
+  > secret-env.json
+```
+
+Merge `secret-env.json` into the `environmentVariables` of the runtime definition, run `create-agent-runtime` or `update-agent-runtime`, and then delete the file.
+
 ## Kubernetes secrets
 
 Mount Kubernetes Secrets as files or environment variables:
