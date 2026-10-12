@@ -27,7 +27,7 @@ This flexibility is the foundation for everything that follows: full row mapping
 
 2. **Add a Variable step**. Add a **Declare Variable** step with the CSV string assigned to `csvData`.
 
-3. **Parse the CSV string**. Click **+** and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
+3. **Parse the CSV string**. Click the **+** icon and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
    - **Csv String***: `csvData`
    - **Result***: `summaries`
    - **T***: `EmployeeSummary[]`
@@ -86,12 +86,12 @@ When you do need every column, declare a record that includes all of them and it
 
 2. **Add a Variable step**. In the flow designer, click **+** and select **Statement** → **Declare Variable**. Set the type to `string` and the name to `csvData`. Switch the toggle from **Record** to **Expression**, then enter the CSV string value.
 
-3. **Parse the CSV string**. Click **+** and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
+3. **Parse the CSV string**. Click the **+** icon and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
    - **Csv String***: `csvData`
    - **Result***: `employees`
    - **T***: `Employee[]`
 
-4. **Add a Foreach step**. Click **+** and select **Foreach** under **Control**. Set:
+4. **Add a Foreach step**. Click the **+** icon and select **Foreach** under **Control**. Set:
    - **Collection**: `employees`
    - **Variable Name***: `emp`
    - **Variable Type***: `Employee`
@@ -151,7 +151,7 @@ Use `csv:parseBytes()` for byte arrays or `csv:parseStream()` for streaming larg
    - **Path***: `./resources/transactions-2025-q1.csv`
    - **Result***: `content`
 
-3. **Parse the bytes as CSV**. Click **+** and select **Call Function**. Search for `parseBytes` and select it under **data.csv**. Configure:
+3. **Parse the bytes as CSV**. Click the **+** icon and select **Call Function**. Search for `parseBytes` and select it under **data.csv**. Configure:
    - **Csv Bytes***: `content`
    - **Result***: `transactions`
    - **T***: `Transaction[]`
@@ -210,7 +210,7 @@ public function main() returns error? {
    - **Path***: `./resources/transactions-archive.csv`
    - **Result***: `byteStream`
 
-3. **Parse to a record stream**. Click **+** and select **Call Function**. Search for `parseToStream` under **data.csv**. Configure:
+3. **Parse to a record stream**. Click the **+** icon and select **Call Function**. Search for `parseToStream` under **data.csv**. Configure:
    - **Csv Byte Stream***: `byteStream`
    - **Result***: `transactionStream`
    - **T***: `Transaction`
@@ -329,7 +329,7 @@ Configure parsing behavior for TSV (tab-separated values, a CSV-like format that
 
 2. **Add a Variable step**. Add a **Declare Variable** step for `tsvData` and provide the tab-separated content.
 
-3. **Parse with custom delimiter**. Click **+** and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
+3. **Parse with custom delimiter**. Click the **+** icon and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
    - **Csv String***: `tsvData`
    - **Result***: `logs`
    - **T***: `LogEntry[]`
@@ -386,7 +386,7 @@ When a file has no header row, you have two options:
 
 1. **Declare the CSV data variable**. Add a **Declare Variable** step with the headerless CSV content.
 
-2. **Parse as headerless CSV**. Click **+** and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
+2. **Parse as headerless CSV**. Click the **+** icon and select **Call Function**. Search for `parseString` and select it under **data.csv**. Configure:
    - **Csv String***: `csvData`
    - **Result***: `rows`
    - **T***: `string[][]`
@@ -452,7 +452,7 @@ Write arrays of records directly to CSV files using `io:fileWriteCsv()`.
 
 2. **Add a Variable step**. Create a variable named `products` of type `Product[]`.
 
-3. **Write the CSV file**. Click **+** and select **Call Function**. Search under **io** and select `fileWriteCsv`. Configure:
+3. **Write the CSV file**. Click the **+** icon and select **Call Function**. Search under **io** and select `fileWriteCsv`. Configure:
    - **Path***: `./output/product-catalog.csv`
    - **Content***: `products`
 
