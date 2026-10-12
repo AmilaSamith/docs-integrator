@@ -163,7 +163,10 @@ JSON output:
 
 ## Send logs to Amazon CloudWatch Logs
 
-Integrations log to stdout, so on AWS the platform ships the output to CloudWatch Logs without code changes. Set `format = "json"` under `[ballerina.log]` so each log line arrives as one structured event that you can query with CloudWatch Logs Insights.
+Integrations log to stdout, so on AWS the platform ships the output to CloudWatch Logs without code changes. Switch to the [JSON log format](#json-log-format) so each log line arrives as one structured event that you can query with CloudWatch Logs Insights:
+
+- In `Config.toml`, set `format = "json"` under `[ballerina.log]`.
+- In a container, where `Config.toml` isn't part of the image, set the environment variable `BAL_CONFIG_VAR_BALLERINA_LOG_FORMAT=json` instead. On Amazon ECS, add it to the `environment` list of the container definition.
 
 | Platform | How logs reach CloudWatch Logs |
 |----------|--------------------------------|
