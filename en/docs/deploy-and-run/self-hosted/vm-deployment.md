@@ -301,4 +301,3 @@ The instance profile is shared by everything on the instance. With the hop limit
 - [Managing Configurations](../managing-configurations.md) — Per-environment configuration strategies
 - [Scaling & High Availability](../scaling-high-availability.md) — Run multiple instances behind a load balancer
 - [GraalVM Native Images](graalvm-native-images.md) — Compile to native binaries for faster startup
-- [WSO2 Integrator on AWS](../../aws.md) — Everything WSO2 Integrator offers on AWS

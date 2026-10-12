@@ -273,4 +273,3 @@ The compiler auto-detects the serverless platform and generates the appropriate 
 - [GraalVM Native Images](graalvm-native-images.md) — Compile to native binaries for minimal cold start
 - [Managing Configurations](../managing-configurations.md) — Environment-specific configuration strategies
 - [Containerized Deployment](containerized-deployment.md) — Deploy as containers to Kubernetes or Docker
-- [WSO2 Integrator on AWS](../../aws.md) — Everything WSO2 Integrator offers on AWS

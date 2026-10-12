@@ -352,4 +352,3 @@ For database encryption, configure at the database level:
 - [Compliance considerations](compliance-considerations.md) — Audit logging and data protection
 - [Runtime security](runtime-security.md) — Additional runtime security settings
 - [Access AWS Services Securely](aws-access.md) — IAM role-based credentials for AWS connectors
-- [WSO2 Integrator on AWS](../../aws.md) — Everything WSO2 Integrator offers on AWS

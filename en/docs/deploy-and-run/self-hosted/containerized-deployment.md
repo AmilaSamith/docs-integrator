@@ -1103,4 +1103,3 @@ metadata:
 
 - [Managing Configurations](../managing-configurations.md) — Supply configuration values to containers
 - [Scaling and High Availability](../scaling-high-availability.md) — Run multiple replicas reliably
-- [WSO2 Integrator on AWS](../../aws.md) — Everything WSO2 Integrator offers on AWS

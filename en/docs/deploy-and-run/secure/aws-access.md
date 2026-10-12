@@ -268,6 +268,5 @@ final sqs:Client sqsClient = check new ({
 
 ## What's next
 
-- [WSO2 Integrator on AWS](../../aws.md): everything WSO2 Integrator offers on AWS
 - [Secrets and Encryption](secrets-encryption.md#aws-secrets-manager): load configuration from AWS Secrets Manager and SSM Parameter Store
 - [Containerized Deployment](../self-hosted/containerized-deployment.md#amazon-ecs-deployment): deploy to Amazon ECS on Fargate or Amazon EKS
