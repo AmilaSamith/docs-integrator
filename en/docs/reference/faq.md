@@ -159,7 +159,7 @@ Calculating infrastructure costs depends on the type of workload you want to man
 - **Enterprise plan**: Allows unlimited paid integrations.
 
 ### Q: How do I read the bill?
-Your bill will detail the number of integrations used, infrastructure consumed, support plans used, and any additional services you may have purchased. If you are unsure about any charges on your bill, reach out to us on https://discord.com/invite/wso2 for clarification.
+Your bill will detail the number of integrations used, infrastructure consumed, support plans used, and any additional services you may have purchased. If you are unsure about any charges on your bill, reach out to us at [support@wso2.com](mailto:support@wso2.com) for clarification.
 
 ### Q: Is support included in the WSO2 cloud Enterprise plan?
 The WSO2 cloud Enterprise plan does not automatically include support; however, you can purchase support plans in addition to the Enterprise plan at any time. Find out more at https://wso2.com/saas-support-plans/.
