@@ -38,7 +38,7 @@ New to WSO2 Integration Platform? Start here: set up your WSO2 Cloud account, le
 
 <PaletteCard icon="template" href="/get-started/prebuilt-integrations">
   <h3 class="palette-card-title">Try Pre-built Integrations</h3>
-  <p class="palette-card-desc">Skip the build. Pick a ready-made integration between two applications, configure it, and deploy it to WSO2 Cloud in minutes.</p>
+  <p class="palette-card-desc">Skip the build. Pick a ready-made integration between two applications, configure it in minutes.</p>
 </PaletteCard>
 
 </PaletteGrid>
