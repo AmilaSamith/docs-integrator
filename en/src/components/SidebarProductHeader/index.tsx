@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import {
   useVersions,
   useActiveDocContext,
@@ -66,6 +67,47 @@ export function detectCurrentProduct(baseUrl: string): ProductKey {
   // Fallback for a local/dev build with baseUrl '/' (no product segment
   // at all) -- still saas, since that's this branch's own default.
   return 'cloud';
+}
+
+/** Page path of the current URL relative to this site's baseUrl, with no
+ * leading/trailing slash ('' for the homepage). */
+function currentPagePath(pathname: string, baseUrl: string): string {
+  const base = baseUrl.replace(/\/+$/, '');
+  const rel = pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
+  return rel.replace(/^\/+|\/+$/g, '');
+}
+
+const sitemapCache = new Map<string, Promise<Set<string> | null>>();
+
+/** Fetches a sibling product's sitemap (same origin, separate build) and
+ * returns the set of its page paths relative to that product's root, or
+ * null if unavailable (e.g. local dev) -- callers then fall back to the
+ * product's home page. Compared by pathname only, since sitemap <loc>s use
+ * the configured `url` origin, which may differ from the serving origin. */
+function loadProductPages(sitemapUrl: string, segment: string): Promise<Set<string> | null> {
+  let cached = sitemapCache.get(sitemapUrl);
+  if (!cached) {
+    cached = fetch(sitemapUrl)
+      .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
+      .then((xml) => {
+        const pages = new Set<string>();
+        for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+          let pathname: string;
+          try {
+            pathname = new URL(m[1].trim()).pathname;
+          } catch {
+            continue;
+          }
+          const marker = `/${segment}/`;
+          const i = pathname.indexOf(marker);
+          if (i >= 0) pages.add(pathname.slice(i + marker.length).replace(/\/+$/, ''));
+        }
+        return pages.size ? pages : null;
+      })
+      .catch(() => null);
+    sitemapCache.set(sitemapUrl, cached);
+  }
+  return cached;
 }
 
 function ChevronDownIcon(): ReactNode {
@@ -167,6 +209,28 @@ function ProductPill(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   const current = detectCurrentProduct(siteConfig.baseUrl);
   const crossProductBase = (siteConfig.customFields?.crossProductBase as string) || DEFAULT_CROSS_PRODUCT_BASE;
+  const { pathname, hash } = useLocation();
+  const pagePath = currentPagePath(pathname, siteConfig.baseUrl);
+  // Sibling products that are known to have the current page, keyed by product.
+  const [sharedPages, setSharedPages] = useState<Partial<Record<ProductKey, boolean>>>({});
+
+  useEffect(() => {
+    setSharedPages({});
+    if (!pagePath) return;
+    let cancelled = false;
+    PRODUCT_ORDER.forEach((key) => {
+      if (key === current || key === 'connectors') return;
+      const segment = PRODUCTS[key].path.replace(/\/$/, '');
+      loadProductPages(`${crossProductBase}${segment}/sitemap.xml`, segment).then((pages) => {
+        if (!cancelled && pages?.has(pagePath)) {
+          setSharedPages((prev) => ({ ...prev, [key]: true }));
+        }
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [pagePath, current, crossProductBase]);
 
   return (
     <Pill
@@ -189,7 +253,7 @@ function ProductPill(): ReactNode {
               {key === 'connectors' && <div className={styles.pillMenuDivider} />}
               {/* Real <a>, not <Link>: each product is a separate static
                   build, must always be a real page load. */}
-              <a href={`${crossProductBase}${product.path}`} className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
+              <a href={`${crossProductBase}${product.path}${sharedPages[key] ? `${pagePath}${hash}` : ''}`} className={clsx(styles.pillMenuRow, isActive && styles.pillMenuRowActive)}>
                 <span className={clsx(styles.pillMenuRowIcon, isActive && styles.pillMenuRowIconActive)}>
                   <Icon />
                 </span>
