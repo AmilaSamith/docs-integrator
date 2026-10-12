@@ -4,7 +4,7 @@ title: Overview
 
 # Overview
 
-Apache Kafka is a distributed event streaming platform used for building real-time data pipelines and streaming applications. The Ballerina `ballerinax/kafka` connector (v4.6.5) provides a Producer client for publishing messages, a Consumer client for polling messages, and a Listener for event-driven consumption, enabling seamless Kafka integration in Ballerina workflows.
+Apache Kafka is a distributed event streaming platform used for building real-time data pipelines and streaming applications. The Ballerina `ballerinax/kafka` connector (v4.6.6) provides a Producer client for publishing messages, a Consumer client for polling messages, and a Listener for event-driven consumption, enabling seamless Kafka integration in Ballerina workflows.
 
 ## Key features
 
@@ -14,7 +14,7 @@ Apache Kafka is a distributed event streaming platform used for building real-ti
 - Manual and automatic offset management for at-least-once and at-most-once delivery semantics
 - SSL/TLS and SASL (PLAIN, SCRAM-SHA-256, SCRAM-SHA-512) authentication support
 - Avro serialization and deserialization with Confluent Schema Registry integration
-- Transactional producer support for exactly-once delivery with `enableIdempotence` and `transactionalId`
+- Idempotent and transactional producers via `enableIdempotence` and `transactionalId`, used within Ballerina `transaction` blocks for exactly-once delivery
 
 ## Actions
 
@@ -36,6 +36,7 @@ Supported trigger events:
 | Event | Callback | Description |
 |-------|----------|-------------|
 | Records received | `onConsumerRecord` | Fired when one or more records are consumed from the subscribed Kafka topic(s). |
+| Processing error | `onError` | Optional. Fired when an error occurs while polling records or binding them to the declared type. |
 
 See the **[Trigger Reference](triggers.md)** for listener configuration, service callbacks, and the `BytesConsumerRecord` payload structure.
 

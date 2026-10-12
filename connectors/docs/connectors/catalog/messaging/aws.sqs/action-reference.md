@@ -4,7 +4,7 @@ title: Actions
 
 # Actions
 
-The Aws Sqs connector exposes the following clients:
+The AWS SQS connector exposes the following clients:
 
 Available clients:
 
@@ -26,9 +26,9 @@ Send, receive, and manage messages and queues in Amazon SQS.
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `auth` | <code>auth:AuthConfig</code> | Required | Authentication configuration: any standard credential source supported by AWS — static credentials, an AWS profile, STS assume-role, web identity (OIDC), IAM Identity Center (SSO), an external credential process, or the default credential provider chain |
-| `region` | <code>aws:Region&#124;string</code> | Required | AWS region where the SQS queue is located (e.g., `aws:US_EAST_1` or `"us-east-1"`) |
-| `endpoint` | <code>aws:EndpointConfig</code> | — | Optional endpoint options: FIPS/dualstack variants, or a custom endpoint override (e.g. LocalStack, VPC interface endpoints) |
+| `auth` | <code>auth:AuthConfig</code> | Required | Authentication configuration: static credentials, AWS profile, STS assume-role, web identity (OIDC), IAM Identity Center (SSO), external credential process, or the default provider chain |
+| `region` | <code>aws:Region&#124;string</code> | Required | AWS region: an `aws:Region` enum member or a plain region string (e.g., `"us-east-1"`) for regions not yet in the enum |
+| `endpoint` | <code>aws:EndpointConfig</code> | — | Optional endpoint options: FIPS/dualstack variants, or a custom endpoint override (e.g. VPC interface endpoints) |
 
 ### Initializing the client
 

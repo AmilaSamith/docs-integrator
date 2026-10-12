@@ -33,9 +33,9 @@ The `aws.sqs:Listener` establishes the connection to AWS SQS and manages the pol
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `auth` | <code>auth:AuthConfig</code> | Required | Authentication configuration: static credentials, AWS profile, STS assume-role, web identity (OIDC), IAM Identity Center (SSO), an external credential process, or the default credential provider chain |
-| `region` | <code>aws:Region&#124;string</code> | Required | AWS region where the SQS queues are hosted (e.g., `aws:US_EAST_1` or `"us-east-1"`) |
-| `endpoint` | <code>aws:EndpointConfig</code> | <code>()</code> | Optional endpoint override for FIPS/dualstack variants or custom endpoints such as LocalStack |
+| `auth` | <code>auth:AuthConfig</code> | Required | Authentication configuration: static credentials, AWS profile, STS assume-role, web identity (OIDC), IAM Identity Center (SSO), external credential process, or the default provider chain |
+| `region` | <code>aws:Region&#124;string</code> | Required | AWS region: an `aws:Region` enum member or a plain region string (e.g., `"us-east-1"`) for regions not yet in the enum |
+| `endpoint` | <code>aws:EndpointConfig</code> | <code>()</code> | Optional endpoint options: FIPS/dualstack variants, or a custom endpoint override (e.g. VPC interface endpoints) |
 
 **`PollingConfig` fields:**
 
@@ -188,14 +188,14 @@ service on sqsListener {
 
 ### Message
 
-Represents a message received from an SQS queue.
+Represents a message received from an SQS queue. All fields are optional (for example, `body?`), so check for presence before use.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `messageId` | <code>string</code> | Unique ID assigned to the message |
-| `body` | <code>string</code> | Content of the message |
-| `receiptHandle` | <code>string</code> | Token required to delete or change visibility of the message |
-| `md5OfBody` | <code>string</code> | MD5 digest of the non-URL-encoded message body |
-| `md5OfMessageAttributes` | <code>string</code> | MD5 digest of the non-URL-encoded message attribute string |
-| `messageAttributes` | <code>map\<MessageAttributeValue\></code> | User-defined attributes attached to the message |
-| `messageSystemAttributes` | <code>MessageAttributes</code> | System-defined attributes such as sender ID, timestamps, and FIFO metadata |
+| `messageId?` | <code>string</code> | Unique ID assigned to the message |
+| `body?` | <code>string</code> | Content of the message |
+| `receiptHandle?` | <code>string</code> | Token required to delete or change visibility of the message |
+| `md5OfBody?` | <code>string</code> | MD5 digest of the non-URL-encoded message body |
+| `md5OfMessageAttributes?` | <code>string</code> | MD5 digest of the non-URL-encoded message attribute string |
+| `messageAttributes?` | <code>map\<MessageAttributeValue\></code> | User-defined attributes attached to the message |
+| `messageSystemAttributes?` | <code>MessageAttributes</code> | System-defined attributes such as sender ID, timestamps, and FIFO metadata |
