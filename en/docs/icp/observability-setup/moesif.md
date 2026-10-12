@@ -38,7 +38,7 @@ You will use two different credentials:
 
 ## 2. Publish metrics from the integration
 
-The integration publishes metrics to Moesif only while it is running and handling requests. Moesif and ICP show no metrics until the integration receives requests.
+The integration publishes metrics to Moesif only when it handles requests. By default, the Moesif reporter checks for new metrics every 15 seconds and skips publishing if no requests were handled since the last check, so Moesif and ICP show no metrics until the integration receives requests.
 
 Keep the runtime connection settings from [Connect an integration to ICP](../connect-runtime.md), and follow these steps in your integration project.
 
@@ -57,7 +57,7 @@ Keep the runtime connection settings from [Connect an integration to ICP](../con
    import wso2/icp.runtime.bridge as _;
    ```
 
-   The integration must expose a service, such as an HTTP service, to receive requests. A program with only a `main` function exits after it runs and does not generate metrics. If your integration does not have a service yet, you can use the following example. It exposes a `GET /hello` endpoint on port `9090` and writes a log entry for each request:
+   To receive requests, the integration typically exposes a service, such as an HTTP service. If your integration does not have a service yet, you can use the following example. It exposes a `GET /hello` endpoint on port `9090` and writes a log entry for each request:
 
    ```ballerina
    import ballerina/http;
