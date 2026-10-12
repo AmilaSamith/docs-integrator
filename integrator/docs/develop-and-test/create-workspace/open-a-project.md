@@ -44,8 +44,8 @@ WSO2 Integrator detects the project structure and opens the [project view](../..
 
 ### Open a cloud project
 
-1. Click **Open Cloud Project**. The form updates with the prompt *Select a cloud project to clone to your machine.* and a **Cloud Projects** section.
-2. If you are not signed in, the empty state shows *Sign In to browse cloud projects — Connect your WSO2 account to clone and open projects directly from the cloud.* Click **Sign In** to connect your account.
+1. Click **Open Cloud Project**.
+2. Click **Sign In** to connect your WSO2 account (if you are not already signed in).
 
    <ThemedImage
        alt="Sign in to browse cloud projects"
