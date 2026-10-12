@@ -9,13 +9,14 @@ import styles from './styles.module.css';
  * One card per guide (not one card per subsection), with a search box
  * that filters across them. Two usages:
  *
- * - `<GuidesCatalog />` on the top-level Guides page: both categories,
- *   each under its own "How to Guides" / "Business Use Cases" heading,
+ * - `<GuidesCatalog />` on the top-level Guides page: every category,
+ *   each under its own "Tutorials" / "How to Guides" / "Business Use
+ *   Cases" heading,
  *   with a search box (across all guides) that hides a section along
  *   with its grid once a search leaves it empty.
- * - `<GuidesCatalog category="how-to" />` (or "business") on that
- *   category's own subsection landing page (how-to-guides.md /
- *   business-use-cases.md): just a plain grid of that category's
+ * - `<GuidesCatalog category="how-to" />` (or "tutorial" / "business")
+ *   on that category's own subsection landing page (tutorials.md /
+ *   how-to-guides.md / business-use-cases.md): just a plain grid of that category's
  *   cards, no heading (the page already has one, its `# Title`) and no
  *   search box (a search over 2-7 items doesn't earn its keep, and
  *   without it these pages read as a distinct "browse this category"
@@ -32,7 +33,7 @@ import styles from './styles.module.css';
  * editing. Keep this type in sync with that plugin's `cards.push({...})`
  * shape if it ever changes.
  */
-type GuideCategory = 'how-to' | 'business';
+type GuideCategory = 'tutorial' | 'how-to' | 'business';
 
 type Guide = {
   title: string;
@@ -44,6 +45,7 @@ type Guide = {
 };
 
 const SECTIONS: { category: GuideCategory; heading: string }[] = [
+  { category: 'tutorial', heading: 'Tutorials' },
   { category: 'how-to', heading: 'How to Guides' },
   { category: 'business', heading: 'Business Use Cases' },
 ];

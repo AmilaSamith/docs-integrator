@@ -51,8 +51,8 @@ WSO2 Integrator detects the project structure and opens the [project view](../..
 
 ### Open a cloud project
 
-1. Click **Open Cloud Project**. The form updates with the prompt *Select a cloud project to clone to your machine.* and a **Cloud Projects** section.
-2. If you are not signed in, the empty state shows *Sign In to browse cloud projects — Connect your WSO2 account to clone and open projects directly from the cloud.* Click **Sign In** to connect your account.
+1. Click **Open Cloud Project**. The form changes to show the prompt *Select a cloud project to clone to your machine* and a **Cloud Projects** section.
+2. If you are not signed in, the **Cloud Projects** section shows the message *Sign in to browse cloud projects*. Click **Sign In** to connect your WSO2 account.
 
    <ThemedImage
        alt="Sign in to browse cloud projects"
@@ -73,6 +73,10 @@ WSO2 Integrator detects the project structure and opens the [project view](../..
    />
 
 4. Click a project to clone it to your local machine and open it in WSO2 Integrator.
+
+## Troubleshooting
+
+If the editor shows **WSO2 Integrator cannot start** or **Your project dependencies need to be updated** instead of your project, your installed Ballerina version, or the version that resolved the project's dependencies, is earlier than 2201.14.0. See [Moving to Ballerina 2201.14.0](../../editor/troubleshooting/moving-to-ballerina-2201-14.md) to update, or to stay on your current version.
 
 ## What's next
 
