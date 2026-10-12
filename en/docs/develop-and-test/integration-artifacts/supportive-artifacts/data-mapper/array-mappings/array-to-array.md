@@ -40,8 +40,8 @@ To transform each item in an input array into an item in an output array, use **
 <ThemedImage
     alt="Map Each Element opening a focused view for an Engineer array mapping"
     sources={{
-        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-each-element.gif'),
-        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-each-element.gif'),
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-each-element-v5.1.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-each-element-v5.1.gif'),
     }}
 />
 
@@ -85,8 +85,8 @@ To set it up, map `orders` to `orderLines` using **Map Each Element**. In the fo
 <ThemedImage
     alt="Nested Iterate prompt when mapping a second array inside the focused view"
     sources={{
-        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/nested-iterate.gif'),
-        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/nested-iterate.gif'),
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/nested-iterate-v5.1.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/nested-iterate-v5.1.gif'),
     }}
 />
 
@@ -122,8 +122,8 @@ To set it up, map `employees` to `staff` using **Map Each Element**. In the focu
 <ThemedImage
     alt="Join with Condition prompt and side panel for defining the join expression"
     sources={{
-        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/join-with-condition.gif'),
-        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/join-with-condition.gif'),
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/join-with-condition-v5.1.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/join-with-condition-v5.1.gif'),
     }}
 />
 
@@ -174,8 +174,8 @@ This option is available when the target array is a field inside the output, whe
 <ThemedImage
     alt="Map using Custom Function generating a function between an input array and an output array"
     sources={{
-        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-with-custom-function-array.gif'),
-        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-with-custom-function-array.gif'),
+        light: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-with-custom-function-array-v5.1.gif'),
+        dark: useBaseUrl('/img/develop/integration-artifacts/supporting/data-mapper/map-with-custom-function-array-v5.1.gif'),
     }}
 />
 
