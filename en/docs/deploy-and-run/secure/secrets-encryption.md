@@ -48,12 +48,10 @@ bal run
 
 AgentCore Runtime passes configuration to the agent as environment variables, set in the runtime's configuration. A configurable is read from `BAL_CONFIG_VAR_` followed by its name in uppercase: `mcpClientSecret` becomes `BAL_CONFIG_VAR_MCPCLIENTSECRET`.
 
-These values are stored in plain text. Anyone with `bedrock-agentcore:GetAgentRuntime` on the runtime can read them, and they appear again in every `update-agent-runtime` request. Keep secrets out of them where you can:
+These values aren't masked. `GetAgentRuntime` returns them in full to anyone with `bedrock-agentcore:GetAgentRuntime` on the runtime, and they appear again in every `update-agent-runtime` request. Keep secrets out of them where you can:
 
 - **Model provider keys:** don't give the agent a provider key. Store the key in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), add an **Inference** target to AgentCore Gateway that uses it, and have the agent call the model through the Gateway with its Gateway token.
 - **Gateway client credentials:** the agent needs a Cognito client ID and secret to get its Gateway token. Grant `bedrock-agentcore:GetAgentRuntime` only to the people and pipelines that deploy the agent, and rotate the client secret in Cognito if it's exposed.
-
-When you create or update the runtime, read the secret straight into the request file rather than typing it on the command line, so it stays out of your shell history and the process list. [Step 7: Create the runtime](../self-hosted/containerized-deployment.md#step-7-create-the-runtime) shows how.
 
 ## Kubernetes secrets
 

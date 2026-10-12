@@ -1027,38 +1027,28 @@ A runtime name can contain only letters, digits, and underscores, must start wit
 
 The runtime passes configuration to the container as environment variables. A configurable is read from `BAL_CONFIG_VAR_` followed by its name in **uppercase**: `mcpServerUrl` becomes `BAL_CONFIG_VAR_MCPSERVERURL`. Any other spelling, such as mixed case or underscores between words, matches no configurable and stops the agent at startup with `unused environment variable`.
 
-The following command reads the Cognito client secret straight into the runtime definition, so the secret never appears on screen, in your shell history, or in the process list. `umask 077` makes the file readable only by you, and the last command deletes it:
+Create the runtime:
 
 ```bash
-umask 077
-aws cognito-idp describe-user-pool-client --region <region> \
-  --user-pool-id <user-pool-id> --client-id <client-id> \
-  --query UserPoolClient.ClientSecret --output text \
-| python3 -c '
-import json, sys
-gw = "https://<gateway-id>.gateway.bedrock-agentcore.<region>.amazonaws.com"
-print(json.dumps({
-  "agentRuntimeName": "my_agent",
-  "agentRuntimeArtifact": {"containerConfiguration": {
-    "containerUri": "<account-id>.dkr.ecr.<region>.amazonaws.com/my-agent:v1.0.0"}},
-  "roleArn": "arn:aws:iam::<account-id>:role/AgentCoreRuntime-my_agent",
-  "networkConfiguration": {"networkMode": "PUBLIC"},
-  "protocolConfiguration": {"serverProtocol": "HTTP"},
-  "environmentVariables": {
-    "BAL_CONFIG_VAR_MCPSERVERURL": gw + "/mcp",
-    "BAL_CONFIG_VAR_INFERENCEURL": gw + "/inference/v1",
+aws bedrock-agentcore-control create-agent-runtime --region <region> \
+  --agent-runtime-name my_agent \
+  --agent-runtime-artifact '{"containerConfiguration": {"containerUri": "<account-id>.dkr.ecr.<region>.amazonaws.com/my-agent:v1.0.0"}}' \
+  --role-arn arn:aws:iam::<account-id>:role/AgentCoreRuntime-my_agent \
+  --network-configuration '{"networkMode": "PUBLIC"}' \
+  --protocol-configuration '{"serverProtocol": "HTTP"}' \
+  --environment-variables '{
+    "BAL_CONFIG_VAR_MCPSERVERURL": "https://<gateway-id>.gateway.bedrock-agentcore.<region>.amazonaws.com/mcp",
+    "BAL_CONFIG_VAR_INFERENCEURL": "https://<gateway-id>.gateway.bedrock-agentcore.<region>.amazonaws.com/inference/v1",
     "BAL_CONFIG_VAR_MCPTOKENURL": "https://<cognito-domain>/oauth2/token",
     "BAL_CONFIG_VAR_MCPCLIENTID": "<client-id>",
-    "BAL_CONFIG_VAR_MCPCLIENTSECRET": sys.stdin.read().strip()}}))' > agent-runtime.json
-
-aws bedrock-agentcore-control create-agent-runtime --region <region> \
-  --cli-input-json file://agent-runtime.json
-
-rm -f agent-runtime.json
+    "BAL_CONFIG_VAR_MCPCLIENTSECRET": "<client-secret>"
+  }'
 ```
 
-:::warning Environment variables are not secret
-Anyone with `bedrock-agentcore:GetAgentRuntime` can read a runtime's environment variables, including the client secret. Limit that permission to the people who deploy the agent, and rotate the secret in Cognito if it's exposed.
+You can also create the runtime in the AgentCore console and enter the same environment variables there.
+
+:::warning Environment variables are readable
+`GetAgentRuntime` returns a runtime's environment variables in full, including the client secret. Limit `bedrock-agentcore:GetAgentRuntime` to the people who deploy the agent, and rotate the secret in Cognito if it's exposed.
 :::
 
 :::note
