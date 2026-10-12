@@ -8,7 +8,7 @@ import styles from './contribute.module.css';
  * branch's own CONTRIBUTING.md, same file `sharedContributeNavbarItem`
  * used to link straight to (this page replaces that direct link -- the
  * navbar item now points here instead, see theme-shared/themeConfig.ts). */
-const BRANCH = 'saas';
+const BRANCH = 'main';
 
 function GithubIcon(): ReactNode {
   return (

@@ -1,44 +1,25 @@
 ---
 title: Create Integration Workspace
-description: Create Integration Workspace, then create the integrations and libraries that live inside it.
+description: Create or import a project on WSO2 Cloud, then add the integrations that live inside it.
 sidebar_label: Overview
 sidebar_position: 0
 slug: /develop-and-test/create-workspace
 ---
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
 # Create Integration Workspace
 
-WSO2 Integrator organizes your work into three concepts that build on each other:
+WSO2 Cloud organizes your work into two concepts that build on each other:
 
-- **Project** — a workspace that groups multiple integrations and libraries together, sharing a single repository and dependencies.
+- **Project** — the top-level container that groups related integrations, and the unit you create, import, and manage in the console.
 - **Integration** — a deployable unit built from artifacts (services, automations, event handlers, and more) that can be built, tested, and deployed on its own.
-- **Library** — a reusable package of shared logic (utility functions, type definitions, data mappers, connections) that one or more integrations import.
 
-A project can hold any number of integrations and libraries side by side. You can also skip the project wrapper and create a standalone integration or library, then convert it into a project later once you need to add more alongside it.
+You can start from scratch, or bring in work that already lives in a Git repository.
 
-<ThemedImage
-    alt="How WSO2 Integrator organizes a project, its integrations, and its libraries"
-    sources={{
-        light: useBaseUrl('/img/develop/organize/integartor-work-organization.png'),
-        dark: useBaseUrl('/img/develop/organize/integartor-work-organization.png'),
-    }}
-/>
+## Set up your workspace
 
-## Create Your Project
+- **[Create a project](create-a-project.md)** — Create a new, empty project in your organization.
+- **[Import a project](import-a-project.md)** — Import an existing WSO2 Integrator project from a Git repository and configure all its integrations at once.
+- **[Import an integration](import-an-integration.md)** — Add a single integration from a Git repository to a project.
+- **[Start with sample integrations](start-with-sample-integrations.md)** — Deploy a ready-made sample to your project instead of starting from a blank integration.
 
-- **[Create a project](create-a-project.md)** — Set up a new project workspace to hold multiple integrations and libraries.
-
-    - **[Create a new integration](create-a-project.md#add-an-integration)** — Add a new integration to your project.
-    - **[Create a library](create-a-project.md#add-a-library)** — Add a library to your project to share common logic across its integrations.
-
-- **[Open a project](open-a-project.md)** — Open an existing project from your local filesystem, or clone one from WSO2 Cloud.
-
-- **[Explore sample integrations](explore-sample-integrations.md)** — Start from a curated, pre-built sample instead of a blank integration.
-
-## What's next
-
-- [Integration artifacts](../integration-artifacts/integration-artifacts.md) — Understand the artifact types you build inside an integration
-- [Project view](../../editor/views/project-view.md) — Manage, run, and debug a multi-package project
+To view, edit, or delete a project after you create it, see [Manage projects](../../manage/projects.md).

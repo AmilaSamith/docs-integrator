@@ -73,7 +73,7 @@ Use channel boundary binding when the message arrives through, or leaves through
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Add and configure the required connector under **Connections**. For brokered messages, select the relevant connector, such as the [NATS connector](../../connectors/catalog/messaging/nats/connector-overview.md), from the [messaging connector catalog](../../connectors/catalog/index.mdx).
+1. Add and configure the required connector under **Connections**. For brokered messages, select the relevant connector, such as the [NATS connector](product://connectors/catalog/messaging/nats/connector-overview), from the [messaging connector catalog](product://connectors/catalog).
 2. Add the listener or entry point for the inbound channel. For HTTP, start by [creating an HTTP service](../integration-artifacts/integration-as-api/http.md#creating-an-http-service).
 3. Bind the request payload as the body and bind transport metadata, such as headers, as message headers.
 4. Add a **Map Data** step to create the typed message envelope from the inbound payload and metadata.

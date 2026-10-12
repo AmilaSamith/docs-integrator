@@ -553,6 +553,12 @@ const PATHS: Record<PaletteIconName, React.ReactNode> = {
   ),
 };
 
+/** Every icon name this set has, in definition order -- the runtime
+ * counterpart of the `PaletteIconName` type (which doesn't exist at
+ * runtime). Powers `IconGallery`, so the gallery always lists exactly
+ * what's actually available with zero hand-maintained duplication. */
+export const PALETTE_ICON_NAMES = Object.keys(PATHS) as PaletteIconName[];
+
 export default function PaletteIcon({ name }: { name: PaletteIconName }): React.ReactElement {
   return (
     <svg

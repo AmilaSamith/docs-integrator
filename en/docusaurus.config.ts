@@ -101,6 +101,9 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/wso2/docs-integrator/tree/saas/en/',
           showLastUpdateTime: true,
+          // Lets docs link to a sibling product with `product://<product>/<path>`
+          // instead of a hardcoded production path -- see the plugin's docstring.
+          remarkPlugins: [[require('./src/plugins/crossProductLinks'), { base: CROSS_PRODUCT_BASE }]],
         },
         blog: false,
         theme: {

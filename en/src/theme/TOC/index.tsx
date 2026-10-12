@@ -9,6 +9,15 @@
  * every other page/branch -- useCatalog() just returns null there, so
  * ConnectorCatalogFilters renders nothing and the real TOC list shows
  * as before.
+ *
+ * The path is just `/catalog`, not `/connectors/catalog`: wso2-connectors'
+ * docs plugin is rooted at docs/connectors/ (see its sidebars.ts using
+ * bare `catalog/...` doc ids), so routeBasePath: '/' strips the
+ * `connectors` segment along with the usual `docs` one. Got this wrong
+ * once already -- the old `/connectors/catalog/?$` regex never matched
+ * anything real, so the filter rail silently never rendered and nobody
+ * noticed until checking the actual built HTML instead of trusting a
+ * clean `docusaurus build`.
  */
 import type { ReactNode } from 'react';
 import { useLocation } from '@docusaurus/router';
@@ -18,7 +27,7 @@ import ConnectorCatalogFilters from '@site/src/components/ConnectorCatalog/Filte
 
 import styles from './styles.module.css';
 
-const CONNECTOR_CATALOG_PATH = /\/connectors\/catalog\/?$/;
+const CONNECTOR_CATALOG_PATH = /\/catalog\/?$/;
 
 export default function TOCWrapper(props: Props): ReactNode {
   const { pathname } = useLocation();

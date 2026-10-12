@@ -1635,3 +1635,36 @@ hr {
   color: var(--wso2-accent-text);
   text-decoration: none;
 }
+
+/* Wrap plain-text code blocks (for example, prompts and instructions) by default,
+   so readers don't need the word-wrap toggle. Other languages keep scrolling. */
+.theme-code-block.language-text pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.theme-code-block.language-text button[title="Toggle word wrap"] {
+  display: none;
+}
+
+/* Small OS tabs nested inside a step (for example, the /tmp or C:\tmp path):
+   keep them compact so they don't leave a big gap in the list. */
+li .tabs-container {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@layer docusaurus.infima {
+  li .tabs-container > div.margin-top--md {
+    padding: 0.75rem;
+  }
+}
+
+li .tabs-container [role="tabpanel"] .theme-code-block {
+  margin-bottom: 0;
+}
+
+/* Skip ahead card on the quickstarts: same highlighted card, without the corner icon. */
+.skip-ahead-card .palette-card-icon {
+  display: none;
+}

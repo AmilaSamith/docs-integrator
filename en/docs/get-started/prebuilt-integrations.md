@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Building an integration from scratch means learning the platform's abstractions, wiring up connectors, and testing the logic before anything useful happens, even for a straightforward use case. Prebuilt integrations skip all that: each one is a production-ready integration for a real, common use case. Select the one you need, configure it, and deploy in minutes.
 
 :::note Sample integrations vs. prebuilt integrations
-[Sample integrations](../develop-and-test/create-workspace/explore-sample-integrations.md) teach you the platform's abstractions. Prebuilt integrations are different: each one is a real, already-wired integration for an actual business use case.
+[Sample integrations](../develop-and-test/create-workspace/start-with-sample-integrations.md) teach you the platform's abstractions. Prebuilt integrations are different: each one is a real, already-wired integration for an actual business use case.
 :::
 
 The prebuilt integrations catalog is available in WSO2 Cloud, and you can also browse it from the WSO2 Integrator home screen by selecting **Explore** and filtering by **Pre-built Integrations**. This guide follows the WSO2 Cloud path because it lets you pick a prebuilt integration, configure it, and deploy it in one go, without leaving WSO2 Cloud.
@@ -142,4 +142,4 @@ Common integration problems are already solved, so you don't have to rebuild the
 - [Manage integrations](../manage/integrations/integrations.md) — View deployment status and manage the lifecycle of a deployed integration
 - [Runtime configurations](../manage/configurations/runtime-configurations.md) — Update configuration values or link them to shared configuration groups after deployment
 - [Deploy from the cloud editor](../deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor.md) — Learn more about customizing and redeploying an integration you opened in the cloud editor
-- [Explore sample integrations](../develop-and-test/create-workspace/explore-sample-integrations.md) — Start from a teaching sample instead if you'd rather build the integration yourself
+- [Start with sample integrations](../develop-and-test/create-workspace/start-with-sample-integrations.md) — Start from a teaching sample instead if you'd rather build the integration yourself

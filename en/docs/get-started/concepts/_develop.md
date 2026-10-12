@@ -1,6 +1,6 @@
 ## Develop and Test
 
-The concepts you work with while building an integration in the WSO2 Integrator editor. These are covered in depth in [Develop](../../develop-and-test/develop.md).
+The concepts you work with while building an integration in the WSO2 Integrator editor. These are covered in depth in [Develop](../../develop-and-test/develop-and-test.md).
 
 ### Integration
 

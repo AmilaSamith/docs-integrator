@@ -155,6 +155,150 @@ function ConnectorCatalogIcon(): ReactNode {
   );
 }
 
+function BuildYourOwnIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M14.7 6.3a4 4 0 0 0-5.6 5.2L3 17.6V21h3.4l6.1-6.1a4 4 0 0 0 5.2-5.6l-2.8 2.8-2.4-2.4Z" />
+    </svg>
+  );
+}
+
+function UsingConnectorsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M9 2v5M15 2v5" />
+      <path d="M6 7h12v4a6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" />
+      <path d="M12 17v5" />
+    </svg>
+  );
+}
+
+function PublishConnectorIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M12 3v12" />
+      <path d="m7 8 5-5 5 5" />
+      <path d="M4 21h16" />
+    </svg>
+  );
+}
+
+function FaqIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9a2.5 2.5 0 0 1 4.8 1c0 1.5-2.3 1.7-2.3 3.5" />
+      <path d="M12 17.2v.1" />
+    </svg>
+  );
+}
+
+// A single connector's own sub-pages -- Setup Guide/Actions/Triggers/
+// Example -- reused by every one of the ~165 connectors in the catalog,
+// so unlike other nested categories these get icons too (see the level-3
+// exception in DocSidebarItem/Link's LinkLabel): only one connector is
+// ever expanded at a time in the scoped sidebar, so it's at most 4 icons
+// on screen, not 165x4.
+function SetupGuideIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+    </svg>
+  );
+}
+
+function ActionsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+    </svg>
+  );
+}
+
+function TriggersIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" />
+      <path d="M9.5 19a2.5 2.5 0 0 0 5 0" />
+    </svg>
+  );
+}
+
+function ExampleIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M10 8.5v7l6-3.5Z" />
+    </svg>
+  );
+}
+
+// main's own placeholder-scaffold categories (docs/section-1,
+// docs/section-2, docs/icons, docs/homepage, docs/workflows) -- not
+// real product sections, so their icons are generic/illustrative
+// rather than concept-specific like the ones above.
+function SectionIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}
+
+// Distinct from SectionIcon above -- matches the homepage's own Section 2
+// card icon (IconDevelop in pages/index.tsx), so the rail and the
+// homepage card agree instead of both sections sharing one glyph.
+function Section2Icon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+}
+
+function IconsCategoryIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <circle cx="17.5" cy="6.5" r="3.5" />
+      <path d="M3 21v-4a4 4 0 0 1 4-4h1" />
+      <path d="M21 21v-4a4 4 0 0 0-4-4h-1" />
+    </svg>
+  );
+}
+
+function HomepageIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M4 11l8-7 8 7" />
+      <path d="M6 10v9h12v-9" />
+    </svg>
+  );
+}
+
+function WorkflowsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <circle cx="6" cy="6" r="3" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="12" r="3" />
+      <path d="M6 9v6M8.5 7.5 15.5 10.5M8.5 16.5 15.5 13.5" />
+    </svg>
+  );
+}
+
+function ToolsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M17 3a4 4 0 0 0-4.8 4.9L4 16.1V20h3.9l8.2-8.2A4 4 0 0 0 21 7l-3 3-2-2Z" />
+    </svg>
+  );
+}
+
 function FallbackIcon(): ReactNode {
   return (
     <svg {...iconProps}>
@@ -186,9 +330,34 @@ const ICONS_BY_LABEL: Record<string, () => ReactNode> = {
   manage: ManageIcon,
   migrate: MigrateIcon,
   'integration control plane': IntegrationControlPlaneIcon,
+  'integration control plane (icp)': IntegrationControlPlaneIcon,
   guides: GuidesIcon,
   reference: ReferenceIcon,
   'connector catalog': ConnectorCatalogIcon,
+  'using connectors': UsingConnectorsIcon,
+  // 'build your own' kept as an alias for older branches/checkouts that
+  // still carry the pre-rename sidebar label.
+  'build your own': BuildYourOwnIcon,
+  'build a connector': BuildYourOwnIcon,
+  'publish connector': PublishConnectorIcon,
+  'setup guide': SetupGuideIcon,
+  actions: ActionsIcon,
+  triggers: TriggersIcon,
+  example: ExampleIcon,
+  faq: FaqIcon,
+  // main's own placeholder-scaffold categories -- see docs/section-1/,
+  // docs/section-2/, docs/icons/, docs/homepage/, docs/workflows/,
+  // docs/tools/. Real product branches forking from main replace these
+  // entries with their own real category labels (and delete these
+  // once the placeholder docs are gone) -- see "How to add a sidebar
+  // category icon" in docs/section-1/sub-section-1/sample-page.md for
+  // the full mechanism.
+  'section 1': SectionIcon,
+  'section 2': Section2Icon,
+  icons: IconsCategoryIcon,
+  homepage: HomepageIcon,
+  workflows: WorkflowsIcon,
+  tools: ToolsIcon,
 };
 
 export function railIconFor(label: string): ReactNode {
