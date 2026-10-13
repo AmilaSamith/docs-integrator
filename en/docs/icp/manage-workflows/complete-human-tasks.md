@@ -19,7 +19,7 @@ Two kinds of work arrive on that page:
 - A **review activity** is a decision attached to an activity rather than a freestanding question. It is raised in two cases:
 
   - **After an activity fails**, when its retry policy is **Human Review**, so a person decides whether to retry it. See [Human review failed activities](../../develop-and-test/integration-artifacts/workflow/durable-workflow/review-activity-and-error-handling.md#human-review--when-a-person-should-fix-it).
-  - **Before an activity runs**, when a durable agent registered it with **Requires Approval**, so a person approves the call first. See [Durable agent activities](../../develop-and-test/integration-artifacts/workflow/durable-agentic-workflow/create-durable-agent.md#activities).
+  - **Before an activity runs**, when a durable agent registered it with **Approval Policy** set to **Human Approval**, so a person approves the call first. See [Durable agent activities](../../develop-and-test/integration-artifacts/workflow/durable-agentic-workflow/create-durable-agent.md#activities).
 
 :::info Prerequisites
 
@@ -122,7 +122,7 @@ Open a human task from the queue. The panel gathers what you need in order to an
     }}
 />
 
-The fields come from the result type the workflow declared for the task. See [Await Human Task](../../develop-and-test/integration-artifacts/workflow/durable-workflow/await-human-task.md).
+The fields come from the result type the workflow declared for the task. See [Await Human Task](../../develop-and-test/integration-artifacts/workflow/durable-workflow/await-human-task.md). Only a record result type has a form. Any other type, such as a plain `boolean`, opens a **Result (JSON)** box with the note "This task declares no result schema", and you enter the value itself, for example `true`.
 
 ```ballerina
 public type OrderValidation record {|
@@ -165,7 +165,7 @@ A review activity names the activity it guards, and its **Trigger** says why it 
 
 | Trigger | Raised | What you are deciding |
 | --- | --- | --- |
-| **Approval gate — review before the activity runs** | Before a gated activity runs, including every activity a durable agent registered with **Requires Approval** | Whether the call should be made at all, and with which arguments |
+| **Approval gate — review before the activity runs** | Before a gated activity runs, including every activity a durable agent registered with **Approval Policy** set to **Human Approval** | Whether the call should be made at all, and with which arguments |
 | **Review failure — decide the failed activity's retry** | After an activity failed | Whether to run it again, with the original or corrected arguments, or to let the failure reach the workflow |
 
 <ThemedImage

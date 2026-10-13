@@ -95,7 +95,6 @@ The **Execution** card shows the current status of the run and the details that 
 | **Workflow Name** | The workflow definition this execution is an instance of, such as `orderWorkflow`. |
 | **Started** | The date and time the execution began. |
 | **Closed** | The date and time the execution finished. This field appears only after the execution is no longer running. |
-| **Task Queue** | The task queue of the integration that runs the execution. |
 
 The badge also shows how long a finished execution ran, and a failed execution shows its error message below the fields.
 
@@ -125,11 +124,10 @@ Use the **`{}`** icon to switch between the structured view and the raw JSON vie
 
 Below the cards, the execution flow shows the steps in a workflow execution and how they are connected. For example, it can show:
 
-- `reserveInventory` — an activity that completed successfully.
-- `payment` — a data event that is waiting for data.
-- `if payment` — a conditional step that determines which branch to execute.
-- `sendEmail` — the branch that was executed.
-- `cancelOrder` — the other branch, which was not executed.
+- `reserveInventory` — an activity, marked **COMPLETED**.
+- `payment` — a data event the run is **WAITING** on.
+- `if payment` — the condition that picks a branch.
+- `sendEmail` and `cancelOrder` — the two branches, marked **not executed** until the data arrives and one of them runs.
 
 The timeline next to the flow shows when each step ran, how long it took, and the total execution time.
 

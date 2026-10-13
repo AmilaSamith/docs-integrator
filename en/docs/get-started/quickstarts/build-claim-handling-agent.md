@@ -373,7 +373,7 @@ Leave the containers running for the rest of this guide.
 
    ```text
    ... module=wso2/icp.runtime.bridge message="ICP agent initialized with server URL: https://localhost:9445"
-   ... module=wso2/icp.runtime.bridge message="ICP agent started successfully with job ID: {\"id\":\"59000\"}"
+   ... module=wso2/icp.runtime.bridge message="ICP agent started successfully with job ID: {\"id\":59000}"
    ... module=wso2/icp.runtime.bridge message="Full heartbeat acknowledged by ICP server"
    ```
 

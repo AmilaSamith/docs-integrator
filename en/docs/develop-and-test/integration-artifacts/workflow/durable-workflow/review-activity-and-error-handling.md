@@ -151,7 +151,7 @@ Everything above rests on one guarantee: the engine writes down the outcome of e
 | A durable timer   | The original deadline, so an elapsed wait does not restart its clock.                                             |
 | Current time      | The instant the run first reached that step. The workflow always works with the time at which it first got there. |
 
-This is why a durable workflow needs no state management of its own. You write no checkpoint rows, no status columns, and no resume logic, and you do not reload progress when a run picks back up: the variables in the workflow body are rebuilt from the record, so the code after a wait sees exactly what the code before it left behind. The recorded events for a run are listed in its **Event History** in the [Control Plane](../../../../icp/manage-workflows/workflow-executions.md).
+This is why a durable workflow needs no state management of its own. You write no checkpoint rows, no status columns, and no resume logic, and you do not reload progress when a run picks back up: the variables in the workflow body are rebuilt from the record, so the code after a wait sees exactly what the code before it left behind. The recorded events for a run are listed in its **Event History** in the [Control Plane](../../../../icp/manage-workflows/workflow-executions.md), which opens from the debug-information icon on the execution's **Execution** card.
 
 What this asks of you in return is a deterministic workflow body, since that is the part that runs again on every replay. See [Activities](activities.md#why-the-split-matters).
 

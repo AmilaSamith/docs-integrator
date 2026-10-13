@@ -69,7 +69,7 @@ The task input is only there to provide context. It is not returned to the workf
 
 ## Type the decision
 
-**Completion Type** is what the workflow gets back, and it is also what the Control Plane renders the form from. A plain approve or reject can be a `boolean`, while anything richer wants a record.
+**Completion Type** is what the workflow gets back. When it is a record, it is also what the Control Plane renders the form from. Any other type, such as a plain `boolean` for an approve or reject, has no form: the decider types the value, for example `true`, into a JSON box. Use a record whenever the decider should fill in a form.
 
 For the onboarding task, the HR lead answers with a team and a team lead:
 
