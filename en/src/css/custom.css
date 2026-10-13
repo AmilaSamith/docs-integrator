@@ -1350,7 +1350,15 @@ hr {
   .pagination-nav,
   footer,
   .tocCollapsible,
-  [class*="aiAssistant"] {
+  [class*="aiAssistant"],
+  /* Copy-page dropdown: window.print() fires before React re-renders
+     with the menu closed, and the page is narrow enough in print for
+     the mobile `position: fixed` menu rules to apply, so without this
+     the open menu is repeated on every printed page. */
+  [class*="markdownDropdown"],
+  [class*="mobileBackdrop"],
+  /* Fixed floating action buttons (feedback / assistant). */
+  .floating-actions {
     display: none !important;
   }
 

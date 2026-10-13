@@ -57,6 +57,8 @@ on:
       - 'en/src/components/SearchBar/**'
       - 'en/src/components/ColorSwatch/**'
       - 'en/src/components/AiAssistantPanel/**'
+      - 'en/src/components/FloatingActions/**'
+      - 'en/src/components/ReportIssueButton/**'
       - 'en/src/components/ArtifactPicker/index.tsx'
       - 'en/src/components/ArtifactPicker/styles.module.css'
       - 'en/src/components/ArtifactPicker/inlineIcons.ts'
