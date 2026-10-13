@@ -239,6 +239,7 @@ The integration writes its logs to a file in JSON format. A Fluent Bit sidecar r
          port: 443
          tls: true
          tls.verify: on
+         tls.verify_hostname: on
          logs_uri: /v1/logs
          logs_severity_text_message_key: level
          logs_severity_number_message_key: severity_number
