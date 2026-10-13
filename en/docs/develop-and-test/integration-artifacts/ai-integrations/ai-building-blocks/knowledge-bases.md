@@ -1,8 +1,8 @@
 ---
 sidebar_position: 5
 title: Knowledge Bases
-description: Reference for every Knowledge Base in WSO2 Integrator. Covers the Vector Knowledge Base and Azure AI Search Knowledge Base, including create form fields, advanced configurations, and the ingest, retrieve, and delete actions.
-keywords: [wso2 integrator, knowledge base, rag, vector knowledge base, azure ai search, embedding, chunker]
+description: Reference for every Knowledge Base in WSO2 Integrator. Covers the Vector Knowledge Base, WSO2 Cloud Knowledge Base, and Azure AI Search Knowledge Base, including create form fields, advanced configurations, and the ingest, retrieve, and delete actions.
+keywords: [wso2 integrator, knowledge base, rag, vector knowledge base, azure ai search, wso2 cloud, embedding, chunker]
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks/knowledge-bases
 ---
 
@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 A **Knowledge Base** is a managed store of documents that your integration can index and query. It provides a consistent interface for adding content, retrieving the most relevant chunks for a given query, and removing stale content — regardless of the underlying storage technology.
 
-In WSO2 Integrator, a Knowledge Base is the single object the RAG ingest, retrieve, and delete-by-filter nodes talk to. It uses three pluggable parts (a [Vector Store](vector-stores.md), an [Embedding Provider](embedding-providers.md), and a [Chunker](chunkers.md)) and exposes a small surface for indexing chunks and retrieving the most relevant ones.
+In WSO2 Integrator, a Knowledge Base is the single object the RAG ingest, retrieve, and delete-by-filter nodes talk to. It uses three pluggable parts (a [Vector Store](./vector-stores.md), an [Embedding Provider](./embedding-providers.md), and a [Chunker](./chunkers.md)) and exposes a small surface for indexing chunks and retrieving the most relevant ones.
 
 ## Available actions
 
@@ -37,18 +37,18 @@ Two places, both equivalent:
 <ThemedImage
     alt="Right-side Knowledge Bases panel showing the search bar and a + Add Knowledge Base button at the top of an empty list."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/00-panel-empty.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/00-panel-empty.png'),
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/00-panel-empty-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/00-panel-empty-v5.1.png'),
     }}
 />
 
 Click **+ Add Knowledge Base** and the **Select Knowledge Base** picker opens:
 
 <ThemedImage
-    alt="Select Knowledge Base picker listing two options: Vector Knowledge Base ('Represents a vector knowledge base for managing chunk indexing and retrieval') and Azure AI Search Knowledge Base ('Represents the Azure Search Knowledge Base implementation')."
+    alt="Select Knowledge Base picker listing three options: Vector Knowledge Base ('Represents a vector knowledge base for managing chunk indexing and retrieval'), WSO2 Cloud Knowledge Base, and Azure AI Search Knowledge Base ('Represents the Azure Search Knowledge Base implementation')."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/01-select-list.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/01-select-list.png'),
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/01-select-list-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/01-select-list-v5.1.png'),
     }}
 />
 
@@ -56,7 +56,8 @@ Click **+ Add Knowledge Base** and the **Select Knowledge Base** picker opens:
 
 | Knowledge Base | Module | Storage |
 |---|---|---|
-| **Vector Knowledge Base** | `ballerina/ai` | Any [Vector Store](vector-stores.md) |
+| **Vector Knowledge Base** | `ballerina/ai` | Any [Vector Store](./vector-stores.md) |
+| **WSO2 Cloud Knowledge Base** | [`ballerinax/ai.wso2.integration`](https://central.ballerina.io/ballerinax/ai.wso2.integration/latest) | Knowledge base service in WSO2 Cloud |
 | **Azure AI Search Knowledge Base** | [`ballerinax/ai.azure`](https://central.ballerina.io/ballerinax/ai.azure/latest) | Azure AI Search index |
 
 ---
@@ -70,18 +71,85 @@ The default implementation. You combine a Vector Store, an Embedding Provider, a
 <ThemedImage
     alt="Create Vector Knowledge Base form showing three required pluggable fields: Vector Store (with + Create New Vector Store link), Embedding Model (with + Create New Embedding Model link), Chunker (default ai:AUTO, with + Create New Chunker link). Below: Knowledge Base Name aiVectorknowledgebase, Result Type ai:VectorKnowledgeBase."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/02-vector-kb-form.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/02-vector-kb-form.png'),
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/02-vector-kb-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/02-vector-kb-form-v5.1.png'),
     }}
 />
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Vector Store** | Yes | — | Any saved [Vector Store](vector-stores.md) connection. Click **+ Create New Vector Store** to make one inline. |
-| **Embedding Model** | Yes | — | Any saved [Embedding Provider](embedding-providers.md) connection. **Use the same provider on ingest and retrieve.** Embeddings from different providers are not interchangeable. |
-| **Chunker** | No | `ai:AUTO` | `ai:AUTO` (chunker chosen automatically based on document type), `ai:DISABLE` (no chunking; each document becomes one chunk), or any saved [Chunker](chunkers.md) connection. |
+| **Vector Store** | Yes | — | Any saved [Vector Store](./vector-stores.md) connection. Click **+ Create New Vector Store** to make one inline. |
+| **Embedding Model** | Yes | — | Any saved [Embedding Provider](./embedding-providers.md) connection. **Use the same provider on ingest and retrieve.** Embeddings from different providers are not interchangeable. |
+| **Chunker** | No | `ai:AUTO` | `ai:AUTO` (chunker chosen automatically based on document type), `ai:DISABLE` (no chunking; each document becomes one chunk), or any saved [Chunker](./chunkers.md) connection. |
 
 There are no Advanced Configurations on the Vector Knowledge Base itself. Every knob lives on the underlying Vector Store, Embedding Provider, or Chunker connection.
+
+---
+
+## WSO2 Cloud Knowledge Base
+
+A Knowledge Base that's deployed in WSO2 Cloud. If you don't already have a WSO2 Cloud Knowledge Base deployed in your organization, [create the knowledge base in WSO2 Cloud](https://wso2.com/integration-platform/docs/manage/cloud/rag-ingestion/ingestion). It is provisioned and managed there.
+
+### Connect to an existing knowledge base
+
+Selecting **WSO2 Cloud Knowledge Base** lists the knowledge bases available in your WSO2 Cloud organization. You need to be signed in to WSO2 Cloud with a project selected for the list to appear.
+
+<ThemedImage
+    alt="List of existing WSO2 Cloud knowledge bases in the signed-in organization, shown below a 'Manually Config WSO2 Cloud Knowledge Base' card."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/05-wso2-cloud-list-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/05-wso2-cloud-list-v5.1.png'),
+    }}
+/>
+
+Choose one from the **Existing WSO2 Cloud Knowledge Bases** list, and the create form opens with its service URL and credentials already filled in. Click **Save** to create the knowledge base instance.
+
+<ThemedImage
+    alt="Create WSO2 Cloud Knowledge Base form with the Service URL and Knowledge Base Authentication Configuration fields already filled in from the selected knowledge base."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/06-wso2-cloud-prefilled-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/06-wso2-cloud-prefilled-form-v5.1.png'),
+    }}
+/>
+
+The credentials are supplied by the environment when the integration runs, so no secrets are stored in your project.
+
+### Configure manually
+
+Choose **Manually Config WSO2 Cloud Knowledge Base** to open a blank form and enter the details yourself.
+
+<ThemedImage
+    alt="Blank Create WSO2 Cloud Knowledge Base form showing the empty Service URL field and the Knowledge Base Authentication Configuration (Token URL, Client ID, Client Secret)."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/07-wso2-cloud-manual-form-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/07-wso2-cloud-manual-form-v5.1.png'),
+    }}
+/>
+
+### Connection Form Details
+
+| Field | Required | Default | Available values |
+|---|---|---|---|
+| **Service URL** | Yes | — | The endpoint of the knowledge base service in WSO2 Cloud. |
+| **Knowledge Base Authentication Configuration** | Yes | — | A bearer token, or OAuth2 client credentials (**Token URL**, **Client ID**, **Client Secret**). Knowledge bases connected from WSO2 Cloud use OAuth2 client credentials. |
+
+#### Advanced configurations
+
+<ThemedImage
+    alt="Create WSO2 Cloud Knowledge Base form with Advanced Configurations expanded showing Minimum Similarity Threshold (default 0.7), Cohere Reranker API Key, Cohere Reranker Model, Reranker Top N (default 5), and Connection Configuration."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/08-wso2-cloud-advanced-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/08-wso2-cloud-advanced-v5.1.png'),
+    }}
+/>
+
+| Field | Default | Available values | What it controls |
+|---|---|---|---|
+| **Minimum Similarity Threshold** | `0.7` | Decimal `0`–`1` | The lowest similarity score a chunk can have and still be returned by `Retrieve`. |
+| **Cohere Reranker API Key** | `()` | String or empty | API key for the Cohere reranker. Leave empty to skip reranking. |
+| **Cohere Reranker Model** | `()` | String or empty | The Cohere reranker model to use when reranking is enabled. |
+| **Reranker Top N** | `5` | Integer | The number of chunks to keep after reranking. |
+| **Connection Configuration** | `{}` | Record | HTTP client configuration for the connection to the knowledge base service. See [Standard HTTP Advanced Configurations](./model-providers.md#standard-http-advanced-configurations) for available knobs. |
 
 ---
 
@@ -98,8 +166,8 @@ Official website: [Azure AI Search](https://azure.microsoft.com/services/search/
 <ThemedImage
     alt="Create Azure AI Search Knowledge Base form showing required fields: Service URL (the Service URL of the Azure AI Search instance), API Key (for authenticating with the Azure AI Search service), Index (name of an existing search index or a search:SearchIndex definition to create), Embedding Model (optional pluggable field with + Create New Embedding Model link), Chunker (default ai:AUTO)."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/03-azure-search-basic.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/03-azure-search-basic.png'),
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/03-azure-search-basic-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/03-azure-search-basic-v5.1.png'),
     }}
 />
 
@@ -108,16 +176,16 @@ Official website: [Azure AI Search](https://azure.microsoft.com/services/search/
 | **Service URL** | Yes | — | Service URL of your Azure AI Search instance. |
 | **API Key** | Yes | — | API key for authenticating with the Azure AI Search service. |
 | **Index** | Yes | — | The name of an existing search index, or a `search:SearchIndex` definition (a record describing the index schema). When creating a new index, ensure it contains one key field of type string. |
-| **Embedding Model** | No | `()` | Any saved [Embedding Provider](embedding-providers.md) connection. Used for query and ingest if provided. Leave empty to rely on Azure AI Search's integrated vectorization. |
-| **Chunker** | No | `ai:AUTO` | `ai:AUTO`, `ai:DISABLE`, or any saved [Chunker](chunkers.md) connection. |
+| **Embedding Model** | No | `()` | Any saved [Embedding Provider](./embedding-providers.md) connection. Used for query and ingest if provided. Leave empty to rely on Azure AI Search's integrated vectorization. |
+| **Chunker** | No | `ai:AUTO` | `ai:AUTO`, `ai:DISABLE`, or any saved [Chunker](./chunkers.md) connection. |
 
 ### Advanced configurations
 
 <ThemedImage
     alt="Azure AI Search Knowledge Base Create form with Advanced Configurations expanded showing Verbose (default false), API Version (default 2025-09-01), Content Field Name (default 'content'), Search Client Connection Config (default {}), Index Client Connection Config (default {}), Semantic Configuration Name."
     sources={{
-        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/04-azure-search-advanced.png'),
-        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/04-azure-search-advanced.png'),
+        light: useBaseUrl('/img/genai/develop/components/knowledge-bases/04-azure-search-advanced-v5.1.png'),
+        dark: useBaseUrl('/img/genai/develop/components/knowledge-bases/04-azure-search-advanced-v5.1.png'),
     }}
 />
 
@@ -126,8 +194,8 @@ Official website: [Azure AI Search](https://azure.microsoft.com/services/search/
 | **Verbose** | `false` | `true`, `false` | Whether to enable verbose logging during ingest and retrieve. Useful when debugging. |
 | **API Version** | `2025-09-01` | Azure AI Search API version string | The Azure AI Search REST API version to use. |
 | **Content Field Name** | `"content"` | String | The name of the field in the index that contains the main chunk content. |
-| **Search Client Connection Config** | `{}` | Record | Connection configuration for the Azure AI Search service client. Required only when `Index` is provided as a `search:SearchIndex` definition (i.e. when the connector creates the index for you). See [Standard HTTP Advanced Configurations](model-providers.md#standard-http-advanced-configurations) for available knobs. |
-| **Index Client Connection Config** | `{}` | Record | Connection configuration for the Azure AI Search index client. See [Standard HTTP Advanced Configurations](model-providers.md#standard-http-advanced-configurations) for available knobs. |
+| **Search Client Connection Config** | `{}` | Record | Connection configuration for the Azure AI Search service client. Required only when `Index` is provided as a `search:SearchIndex` definition (i.e. when the connector creates the index for you). See [Standard HTTP Advanced Configurations](./model-providers.md#standard-http-advanced-configurations) for available knobs. |
+| **Index Client Connection Config** | `{}` | Record | Connection configuration for the Azure AI Search index client. See [Standard HTTP Advanced Configurations](./model-providers.md#standard-http-advanced-configurations) for available knobs. |
 | **Semantic Configuration Name** | `()` | String or empty | The name of the semantic configuration to use for semantic search. Leave empty for plain vector / keyword search. |
 
 > The connector analyzes the index schema on init: it identifies the **key field**, every **vector field**, and verifies the content field exists. If you use Azure AI Search's integrated vectorization, you don't need to provide an Embedding Model.
@@ -139,11 +207,12 @@ Official website: [Azure AI Search](https://azure.microsoft.com/services/search/
 | Situation | Recommended |
 |---|---|
 | Most projects, especially new ones | **Vector Knowledge Base** with In-Memory (dev) or Pinecone / Pgvector / Weaviate / Milvus (prod). |
+| Knowledge base provisioned and managed in WSO2 Cloud | **WSO2 Cloud Knowledge Base**. |
 | Already running Azure AI Search; need keyword + vector + semantic ranker | **Azure AI Search Knowledge Base**. |
 | Need a custom retrieval source (search engine, graph DB, hand-rolled) | Implement the `ai:KnowledgeBase` contract yourself; the rest of the integration won't change. |
 
 ## What's next
 
-- [Chunkers](chunkers.md) — How documents are split before ingest.
+- [Chunkers](./chunkers.md) — How documents are split before ingest.
 - [Direct LLM Calls](../direct-llm/direct-llm.md) — One-shot generate calls without an agent loop.
 - [Natural Functions](../natural-functions/natural-functions.md) — Ballerina functions whose body is plain English, evaluated at runtime by an LLM.
