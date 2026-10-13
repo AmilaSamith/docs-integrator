@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: "Get an Agent Result"
 description: Read a durable agent instance's final result in WSO2 Integrator, either blocking until the run finishes or checking back while it is still working.
-keywords: [wso2 integrator, durable agent, get agent result, final result, instance id, agentbusyerror, status endpoint, agentic workflow]
+keywords: [wso2 integrator, durable agent, get agent result, final result, instance id, workflowinprogresserror, status endpoint, agentic workflow]
 slug: /develop-and-test/integration-artifacts/workflow/durable-agentic-workflow/get-agent-result
 ---
 
@@ -33,7 +33,7 @@ The steps below follow one example: a `GET claim/[string workflowId]/status` res
    |------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
    | **Durable Agentic Workflow** | Yes      | The durable agent to read the result from, `claimAgent` here.                                                                                          |
    | **Instance Id**              | Yes      | The instance whose result is wanted, the value [Run Durable Agent](run-durable-agent.md) bound. Here it is the resource's `workflowId` path parameter. |
-   | **Wait For Result**          | No       | Selected by default, which blocks until the instance finishes. See [Wait or check back](#wait-or-check-back).                                          |
+   | **Wait for Result**          | No       | Selected by default, which blocks until the instance finishes. See [Wait or check back](#wait-or-check-back).                                          |
    | **Result**                   | Yes      | The variable that receives the agent's result. Defaults to `agentResult`.                                                                              |
    | **Result Type**              | Yes      | The expected type of the result, `string` here.                                                                                                        |
 
@@ -47,14 +47,14 @@ The steps below follow one example: a `GET claim/[string workflowId]/status` res
     }}
 />
 
-The saved step is drawn as **Get Agent Result** with a dashed connector to the `claimAgent` it reads from. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable. Follow it with a **Return** step on the result variable and the status endpoint is complete: it reads what the instance concluded and hands that straight back to the caller.
+With **Wait for Result** selected, the saved step is drawn as a wait, **Wait for Result**; with it cleared, as **Get Agent Result**. Either way it has a dashed connector to the `claimAgent` it reads from. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable. Follow it with a **Return** step on the result variable and the status endpoint is complete: it reads what the instance concluded and hands that straight back to the caller.
 
 ## Wait or check back
 
-**Wait For Result** decides what happens while the instance is still working.
+**Wait for Result** decides what happens while the instance is still working.
 
 - **Selected**, the default, waits until the instance finishes.
-- **Cleared** reads without waiting. While the instance is still working the step returns a `workflow:AgentBusyError`, which the flow can handle and report as "still running". This is what a status endpoint usually wants, because the caller gets an answer immediately either way.
+- **Cleared** reads without waiting. While the instance is still working the step returns a `workflow:WorkflowInProgressError`, which the flow can handle and report as "still running". This is what a status endpoint usually wants, because the caller gets an answer immediately either way.
 
 A gated activity or a human task counts as still working: the instance is suspended waiting on a person, so a run that looks stalled is often one that needs a decision in the [Control Plane](../../../../icp/manage-workflows/complete-human-tasks.md).
 
