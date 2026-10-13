@@ -122,7 +122,7 @@ Activities are the units of work the agent can call. Each one runs durably — c
 3. Set **Activity Name** to `validateClaim`.
 4. Under **Parameters**, click **+ Add Parameter**. Set **Type** to the `ExpenseClaim` record created in Step 2 and **Name** to `expenseClaim`, then click **Add**.
 5. Set **Return Type** to `boolean` and click **Save**.
-6. Click the `validateClaim` form under **Current Integration**. Leave **Retry Policy** on **No Automatic Retry** and click **Save**.
+6. Click the `validateClaim` form under **Current Integration**. Leave **Retry Policy** on **No Retry** and click **Save**.
 
 <ThemedImage
     alt="Creating the validateClaim activity and registering it on the claimAgent node"
@@ -137,7 +137,7 @@ Activities are the units of work the agent can call. Each one runs durably — c
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
 
-`workflow.bal`:
+`workflows.bal`:
 ```ballerina
 import ballerina/ai;
 import ballerina/workflow;
@@ -158,8 +158,10 @@ final workflow:DurableAgent claimAgent = check new ({
 
 `functions.bal`:
 ```ballerina
+import ballerina/workflow;
+
 @workflow:Activity
-function validateClaim(ExpenseClaim expenseClaim) returns boolean {
+function validateClaim(ExpenseClaim expenseClaim) returns boolean|error {
 }
 ```
 
@@ -177,7 +179,7 @@ Creating the activity gives it a signature but an empty body. The activity is a 
 2. Click **+** on the flow diagram to open the node panel, then under **Control**, select **Return**.
 3. Click the **Expression** field to open the value helper, then select **Inputs** > `expenseClaim` > `amount`.
 4. With the cursor after the inserted value, type `> 0d` to require a positive amount.
-5. Click **Save**, then select `claimAgent` under **Workflows** to return to the agent diagram.
+5. Click **Save**, then select `claimAgent` in the left sidebar to return to the agent diagram.
 
 <ThemedImage
     alt="Defining the validateClaim activity body with a Return step"
@@ -192,7 +194,7 @@ Creating the activity gives it a signature but an empty body. The activity is a 
 
 ```ballerina
 @workflow:Activity
-function validateClaim(ExpenseClaim expenseClaim) returns boolean {
+function validateClaim(ExpenseClaim expenseClaim) returns boolean|error {
     return expenseClaim.amount > 0d;
 }
 ```
@@ -212,13 +214,13 @@ Paying out is the risky step, so gate it behind a person. The activity is create
 3. Under **Parameters**, click **+ Add Parameter**. Set **Type** to `ExpenseClaim` and **Name** to `expenseClaim`, then click **Add**.
 4. Leave **Return Type** empty and click **Save**.
 
-5. Click the `payClaim` form under **Current Integration** to open its register form, expand **Advanced Configurations**, and select **Requires Approval**. Now, before the agent runs the activity, a review activity is created and the agent suspends durably until a reviewer proceeds or rejects.
+5. Click the `payClaim` form under **Current Integration** to open its register form, and set **Approval Policy** to **Human Approval**. Now, before the agent runs the activity, a review activity is created and the agent suspends durably until a reviewer proceeds or rejects.
 
 6. Set **Reviewer Roles** to `Finance`, the roles permitted to decide that approval.
 7. Click **Save**.
 
 <ThemedImage
-    alt="Creating the payClaim activity and registering it with Requires Approval and the Finance reviewer role"
+    alt="Creating the payClaim activity and registering it with Human Approval and the Finance reviewer role"
     sources={{
         light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-pay-claim.gif'),
         dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/attach-pay-claim.gif'),
@@ -230,7 +232,7 @@ Paying out is the risky step, so gate it behind a person. The activity is create
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
 
-`workflow.bal`:
+`workflows.bal`:
 ```ballerina
 import ballerina/ai;
 import ballerina/workflow;
@@ -246,14 +248,16 @@ final workflow:DurableAgent claimAgent = check new ({
     model: wso2ModelProvider,
     inputType: ExpenseClaim,
     activities: [validateClaim,
-                {activity: payClaim, requiresApproval: true, userRoles: "Finance"}]
+                {activity: payClaim, approvalPolicy: {userRoles: "Finance"}}]
 });
 ```
 
 `functions.bal`:
 ```ballerina
+import ballerina/workflow;
+
 @workflow:Activity
-function payClaim(ExpenseClaim expenseClaim) {
+function payClaim(ExpenseClaim expenseClaim) returns error? {
 }
 ```
 
@@ -267,7 +271,7 @@ An agent does nothing until something starts it. Give the integration an HTTP re
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Click **+ Add Artifact**, then under **Integration as API**, click **HTTP Service**.
+1. Click **ClaimHandler** in the breadcrumb to open the integration overview, click **+ Add Artifact**, then under **Integration as API**, click **HTTP Service**.
 2. On the **Create HTTP Service** form, keep **Service Contract** on **Design From Scratch**, leave **Service Base Path** as `/`, and click **Create**.
 3. The service opens with no resources. Click **+ Add Resource**.
 4. Set **HTTP Method** to **POST** and **Resource Path** to `claim`.
@@ -377,7 +381,7 @@ Leave the containers running for the rest of this guide.
 
 ## Step 8: Submit a new claim
 
-Once the service is up, a `Tryit.hurl` file opens automatically beside the designer, holding a request generated from the `claim` resource. Send the claim from there.
+Once the service is up, a `TryIt.hurl` file opens automatically beside the designer, holding a request generated from the `claim` resource. Send the claim from there.
 
 <Tabs>
 <TabItem value="tryit" label="Try It" default>
@@ -397,8 +401,7 @@ Replace the `{?}` placeholders with a real claim, then click the run button in t
 ```json
 {
   "claimId": "2002",
-  "amount": 1500,
-  "purpose": "Demo purpose"
+  "amount": 1500
 }
 ```
 </TabItem>
@@ -406,7 +409,7 @@ Replace the `{?}` placeholders with a real claim, then click the run button in t
 
 ```bash
 curl -X POST localhost:9090/claim -H 'Content-Type: application/json' \
-  -d '{"claimId":"2002","amount":1500,"purpose":"Demo purpose"}'
+  -d '{"claimId":"2002","amount":1500}'
 ```
 
 </TabItem>
