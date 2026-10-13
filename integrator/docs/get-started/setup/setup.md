@@ -6,6 +6,18 @@ title: Set up WSO2 Integrator
 
 Install WSO2 Integrator on your machine to develop, test, and debug integrations locally. The WSO2 Integrator available for Windows, macOS, and Linux.
 
+## System requirements
+
+Before installing WSO2 Integrator, ensure your machine meets the following hardware and software requirements:
+
+| Requirement | Minimum | Recommended |
+| :--- | :--- | :--- |
+| **Operating System** | [Supported versions of Windows client](https://learn.microsoft.com/en-us/windows/release-health/supported-versions-windows-client) (64-bit), macOS versions with Apple security update support (typically the latest release and the two previous versions), Linux: Ubuntu Desktop 20.04, Debian 10, Red Hat Enterprise Linux 8, Fedora 36 or later | Latest version of a supported operating system |
+| **Processor (CPU)** | 64-bit dual-core x64 or ARM64 processor, 1.6 GHz or faster | Quad-core or better (Intel Core i5/i7, AMD Ryzen 5/7, or Apple silicon) |
+| **Memory (RAM)** | 4 GB | 8 GB or more (16 GB if you also run Docker or several projects) |
+| **Disk Space** | 4 GB free space | 10 GB free space (SSD recommended) |
+| **Network** | Internet connection to install, update, and pull packages from Ballerina Central | Broadband internet connection |
+
 ## Installation steps
 
 ### Step 1: Download WSO2 Integrator
