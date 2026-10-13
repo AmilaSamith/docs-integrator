@@ -333,7 +333,7 @@ The gated `payClaim` suspends the run until a Finance reviewer decides on it, an
 The terminal opens on an **ICP Server** task and logs the startup. The server is ready once it reports the console address:
 
 ```text
-Starting ICP Server with configuration: /Applications/WSO2 Integrator.app/Contents/components/icp/conf/deployment.toml
+Starting ICP Server with configuration: /Users/<you>/.wso2-integrator/components/icp/2.1.0/conf/deployment.toml
 ... message="WSO2 Integrator: ICP Console started at https://localhost:9446"
 ... message="Workflow management service started at 0.0.0.0:9446"
 ```
@@ -369,6 +369,8 @@ Leave the containers running for the rest of this guide.
 ## Step 7: Run it
 
 1. Select **Run** in the integration header to start the integration.
+
+   The first run asks: "This integration uses the WSO2 default AI provider, but it isn't configured yet. Configure it now?" Click **Configure Now**. It writes the provider's access details to `Config.toml` using your Copilot sign-in, and the run continues. Later runs refresh them on their own.
 2. Watch the terminal. After `Compiling source` and `Running executable`, the runtime bridge connects to the ICP server started in Step 5:
 
    ```text
@@ -381,7 +383,7 @@ Leave the containers running for the rest of this guide.
 
 ## Step 8: Submit a new claim
 
-Once the service is up, a `TryIt.hurl` file opens automatically beside the designer, holding a request generated from the `claim` resource. Send the claim from there.
+Once the service is up, a notification asks "1 service found in the integration. Test with Try It Client?". Click **Test**. A `TryIt.hurl` file opens beside the designer, holding a request generated from the `claim` resource. Send the claim from there.
 
 <Tabs>
 <TabItem value="tryit" label="Try It" default>
@@ -466,7 +468,7 @@ The run is now sitting on the `payClaim` approval, and the ICP console is where 
 
 The review is on the timeline, but it is not yet addressed to you. `payClaim` was registered with `Finance` as its reviewer role, and the console signs you in as `admin`, a super admin who does not carry that role, so the approval will not reach you until your user does.
 
-1. In the left navigation, under **MANAGEMENT**, click **Access-control**. The **Users** tab lists a single user, `admin` (**System Administrator**), in the **Super Admins** and **default-project Admins** groups.
+1. Click **Default Organization** at the top of the console to leave the integration, then in the left navigation, under **MANAGEMENT**, click **Access-control**. Inside an integration, **Access-control** shows only that integration's roles and groups. The **Users** tab lists a single user, `admin` (**System Administrator**), in the **Super Admins** and **default-project Admins** groups.
 2. Open the **Roles** tab. It holds only the built-in roles (**Admin**, **Developer**, **Project Admin**, **Super Admin**, **Viewer**), so click **+ Create Role**, set **Role Name** to `Finance`, and click **Create**. Leave every permission group unchecked.
 3. Open the **Groups** tab and click **Super Admins**, the group that holds `admin`.
 4. On the **ROLES** tab, click **+ Add Roles**. Select `Finance` in the **Roles** dropdown, leave **Applicable Environments** on **All Environments**, and click **Add**.
@@ -504,10 +506,10 @@ The console reports **Activity proceeded**, and on the next refresh the list rea
     }}
 />
 
-Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim:
+Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim. The model words it differently on each run, for example:
 
 ```text
-The claim has been validated and paid.
+The claim with ID "2002" for the amount of $1500.00 has been successfully processed and paid.
 ```
 
 <ThemedImage
