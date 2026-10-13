@@ -21,8 +21,8 @@ Use this page when something in the WSO2 Integrator editor isn't behaving the wa
     <ThemedImage
         alt="Open Settings from the command menu"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/open-settings-command-v5.1.png'),
         }}
     />
 
@@ -31,8 +31,8 @@ Use this page when something in the WSO2 Integrator editor isn't behaving the wa
     <ThemedImage
         alt="Settings page"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/settings-page-v5.1.png'),
         }}
     />
 
@@ -50,8 +50,8 @@ Use this page when something in the WSO2 Integrator editor isn't behaving the wa
     <ThemedImage
         alt="Select the Ballerina output channel"
         sources={{
-            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
-            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel.png'),
+            light: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel-v5.1.png'),
+            dark: useBaseUrl('/img/editor/troubleshooting/ide-troubleshooting/ballerina-output-channel-v5.1.png'),
         }}
     />
 

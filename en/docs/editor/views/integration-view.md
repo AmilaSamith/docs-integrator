@@ -16,8 +16,8 @@ The Integration view is the primary development interface in WSO2 Integrator. Us
 <ThemedImage
     alt="Integration view overview"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/overview.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/overview-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/overview-v5.1.png'),
     }}
 />
 
@@ -28,8 +28,8 @@ The design canvas is the central area of the Integration view. It displays a vis
 <ThemedImage
     alt="Design canvas"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/design-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas-v5.1.png'),
     }}
 />
 
@@ -76,8 +76,8 @@ The toolbar sits at the top of the Integration view and provides quick access to
 <ThemedImage
     alt="Toolbar"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/toolbar-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/toolbar-v5.1.png'),
     }}
 />
 
@@ -96,16 +96,16 @@ Select **Deployment** in the toolbar to open the deployment options panel on the
 <ThemedImage
     alt="Deployment button in the toolbar"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/deployment-button.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/deployment-button.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-button-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-button-v5.1.png'),
     }}
 />
 
 <ThemedImage
     alt="Deployment options"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-options-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options-v5.1.png'),
     }}
 />
 
@@ -115,7 +115,7 @@ Select **Deployment** in the toolbar to open the deployment options panel on the
 | [**Deploy with Docker**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
 | [**Deploy on a VM**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
 
-The panel also includes an **Integration Control Plane** section for monitoring and managing running integrations from a centralized dashboard. Select **Enable ICP monitoring** to activate the [Integration Control Plane (ICP)](../../icp/index.md) for this integration, or expand **Publish to local ICP** to push the integration to a local ICP instance.
+The panel also includes an **Integration Control Plane** section for monitoring and managing running integrations from a centralized dashboard. Select **Enable ICP monitoring** to activate the [Integration Control Plane (ICP)](https://wso2.com/integrator/editor/integration-control-plane) for this integration, or expand **Publish to local ICP** to push the integration to a local ICP instance.
 
 ## Readme tab
 
@@ -124,8 +124,8 @@ The **Readme** tab next to **Design** displays the contents of your project's `R
 <ThemedImage
     alt="Readme"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/readme.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/readme-v5.1.png'),
     }}
 />
 

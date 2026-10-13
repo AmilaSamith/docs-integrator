@@ -46,8 +46,8 @@ After installation, launch the IDE:
 <ThemedImage
     alt="Welcome to WSO2 Integrator screen with the Sign in with WSO2 Integration Platform and Skip for now buttons"
     sources={{
-        light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
-        dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide.png'),
+        light: useBaseUrl('/img/get-started/setup/wso2-integrator-ide-v5.1.png'),
+        dark: useBaseUrl('/img/get-started/setup/wso2-integrator-ide-v5.1.png'),
     }}
 />
 
@@ -55,15 +55,15 @@ After installation, launch the IDE:
 
 Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environments, access observability features, and use [WSO2 Integrator Copilot](../../editor/copilot/capabilities.md).
 
-1. On the **Welcome to WSO2 Integrator** screen that appears when you first launch the IDE, click **Sign in with WSO2 Integration Platform**.
+1. On the **Welcome to WSO2 Integrator** screen that appears when you first launch the editor, click **Sign in with WSO2 Integration Platform**.
 
    If you click **Skip for now**, you can sign in later by clicking **Sign In** in the top-right corner of the **Get Started** page.
 
    <ThemedImage
        alt="WSO2 Integrator Get Started page with the Sign In button in the top-right corner"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
        }}
    />
 
@@ -83,8 +83,8 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
    <ThemedImage
        alt="WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
        }}
    />
 
