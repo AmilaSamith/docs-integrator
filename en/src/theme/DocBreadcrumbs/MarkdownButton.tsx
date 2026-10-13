@@ -76,7 +76,9 @@ export default function MarkdownButton({ markdownUrl }: MarkdownButtonProps): Re
     // backend/service needed. Print-specific CSS (custom.css's @media
     // print block) hides the navbar/sidebar/TOC/footer chrome so the
     // print/PDF-save dialog only shows the article content.
-    window.print();
+    // Deferred so React commits the closed-menu render first; calling
+    // print() synchronously snapshots the DOM with the menu still open.
+    setTimeout(() => window.print(), 100);
   };
 
   const handleOpenInChatGPT = () => {

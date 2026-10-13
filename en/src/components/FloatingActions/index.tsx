@@ -20,7 +20,7 @@ import styles from './styles.module.css';
  */
 export default function FloatingActions(): ReactNode {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} floating-actions`}>
       <ReportIssueButton />
       <AiAssistantPanel />
     </div>
