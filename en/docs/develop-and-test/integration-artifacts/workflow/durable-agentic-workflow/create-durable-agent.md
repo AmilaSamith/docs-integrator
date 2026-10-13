@@ -48,7 +48,7 @@ A durable agentic workflow flips the authoring model: instead of wiring steps to
 
 ## Configure the agent
 
-Click the agent node to open the **Configure Agent** form, which holds the agent's role, its instructions, and its run limits. The model is set from the model circle at the top right of the agent node.
+Click the gear icon on the agent node (**Configure Agent**) to open the **Configure Agent** form, which holds the agent's role, its instructions, and its run limits. The model is set from the model circle to the right of the agent node.
 
 | Field                  | Required | Description                                                                                                                                          |
 |------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|

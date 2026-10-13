@@ -40,7 +40,7 @@ Creating the agent is also where you describe it: the model it thinks with, its 
 <TabItem value="ui" label="Visual Designer" default>
 
 1. In the design view, click **Add Artifact Manually**.
-2. Under **Durable Workflow**, select **Durable Agentic Workflow**. The **Create New Durable Agentic Workflow** form opens.
+2. Under **AI Integration**, select **Durable Agentic Workflow**. The **Create New Durable Agentic Workflow** form opens.
 
    <ThemedImage
        alt="Create Durable Agent"

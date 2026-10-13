@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Await Human Task
 
-Real processes wait on people: a manager approves an expense, a reviewer checks documents, an HR lead assigns a new joiner to a team. An **Await Human Task** step stops the workflow at exactly that point, hands a task to a role, and resumes the moment someone submits a decision, whether that takes a minute or a month. While it waits, it holds no threads and no connections.
+Real processes wait on people: a manager approves an expense, a reviewer checks documents, an HR lead assigns a new joiner to a team. A **Human Task** step stops the workflow at exactly that point, hands a task to a role, and resumes the moment someone submits a decision, whether that takes a minute or a month. While it waits, it holds no threads and no connections.
 
 <ThemedImage
     alt="The employeeOnboarding workflow halted on an Await Human Task step whose result is HRFeedback, with a dashed arrow arriving from an HRManager role marker"
@@ -39,9 +39,9 @@ The steps below follow one example: an onboarding workflow where an HR lead assi
    | **Task Name** | Yes | Identifies the task type, for example `Assign Employee to Team`. |
    | **User Roles** | Yes | One or more roles permitted to complete this task, for example `HRManager`. Only users holding a matching role see the task. It can be left empty only when **Users** names the people who may complete it; the form refuses a task that names nobody. |
    | **Task Input** | Yes | Read-only information shown alongside the form to help the user make the decision. Enter `{}` when there is nothing to show. See [Show the decider what they need](#show-the-decider-what-they-need). |
-   | **Title** | No | Under **Advanced Configurations**. Short summary shown in the inbox, for example `Assign Employee to Team`. |
-   | **Description** | No | Under **Advanced Configurations**. Additional context shown alongside the form, for example `Assign the new employee to the appropriate team and select their team lead.` |
-   | **Timeout** | No | Under **Advanced Configurations**. Maximum time to wait. Omit it to wait indefinitely. |
+   | **Title** | No | Short summary shown in the inbox, for example `Assign Employee to Team`. |
+   | **Description** | No | Additional context shown alongside the form, for example `Assign the new employee to the appropriate team and select their team lead.` |
+   | **Timeout** | No | Maximum time to wait. Omit it to wait indefinitely. |
    | **Result** | Yes | Name of the variable that receives the decision. |
    | **Completion Type** | Yes | The type of the data returned when the task is completed. Defaults to `boolean`. See [Type the decision](#type-the-decision). |
 
