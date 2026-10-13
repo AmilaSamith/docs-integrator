@@ -32,7 +32,7 @@ These are ordinary configurable variables on the `ballerina/workflow` module, so
 
 In the designer:
 
-1. In the sidebar, click **Configurations**.
+1. In the sidebar, hover over **Configurations** and click its **View Configurations** icon.
 2. On the **Configurable Variables** page, under **Imported libraries**, click **ballerina/workflow**.
 3. Fill in the box under the variable you want to set, for example `mode`.
 
@@ -94,7 +94,7 @@ Two integrations sharing a task queue will poll each other's tasks. Name the que
 
 ## Default activity retry policy
 
-These four set the retry policy applied to every activity that does not override it. A single call overrides them through its own **Retry Policy**, which is where **Auto Retry** sets values such as **Max Retries** and **Retry Delay**. See [Error handling and review activities](review-activity-and-error-handling.md).
+These four set the retry policy of the calls the runtime records as activities on a workflow's behalf, such as `workflow:run` and `workflow:sendData` called from inside a workflow. An activity you call with **Call Activity**, prebuilt ones included, does not use them: it follows its own **Retry Policy**, which defaults to **No Retry** and is where **Auto Retry** sets values such as **Max Retries** and **Retry Delay**. See [Error handling and review activities](review-activity-and-error-handling.md).
 
 | Setting | Default | Description |
 |---|---|---|
@@ -105,7 +105,7 @@ These four set the retry policy applied to every activity that does not override
 
 ## What's next
 
-- [Activities](activities.md) — the recorded units of work these retry settings apply to
+- [Activities](activities.md) — the recorded units of work a workflow calls
 - [Error handling and review activities](review-activity-and-error-handling.md) — overriding the default policy on a single activity call
-- [Getting started](../../../../icp/manage-workflows/manage-workflows.md) — registering the integration with the Integration Control Plane
+- [Manage workflows](../../../../icp/manage-workflows/manage-workflows.md) — registering the integration with the Integration Control Plane
 - [Management API](management-api.md) — the REST surface served by the integration runtime
