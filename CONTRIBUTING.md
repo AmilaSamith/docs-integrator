@@ -36,7 +36,7 @@ see [Section Ownership](#section-ownership) and the scenarios below.
    already lives elsewhere: connector catalog content is
    `wso2-connectors`-only per Golden Rule 3, custom connector generation
    is covered under `editor/copilot/`, and reusable libraries are fully
-   covered under `develop-and-test/create-workspace/create-a-project.md` and
+   covered under `develop-and-test/organize-workbench/library/` and
    `editor/views/library-view.md`. If `wso2-integrator` still has a
    `customize/` folder, the same removal needs to happen there, or the
    next sync recreates it on `saas`.)
@@ -117,6 +117,16 @@ doc:
   section — the whole point of `customProps` here is that it doesn't
   cost the autogeneration property described above; a manually-assembled
   `sidebars.ts` entry would.
+- **Link to another product's docs with `product://`.** saas, integrator
+  and connectors are separate builds, so a relative `.md` link to a page
+  on a sibling product is always a broken link, and a hardcoded
+  `/integration-platform/docs/...` path breaks on fork previews. Write
+  `[Create a project](product://integrator/develop-and-test/create-workspace)`
+  (first segment is `saas`, `integrator` or `connectors`; the rest is
+  that product's route, `#anchors` allowed). `en/src/plugins/
+  crossProductLinks.js` rewrites it at build time using
+  `CROSS_PRODUCT_BASE`. It's registered per branch in
+  `docusaurus.config.ts` under `docs.remarkPlugins`.
 
 Adding a new guide to `guides/` specifically has its own checklist,
 including required frontmatter that's build-enforced — see
@@ -124,8 +134,11 @@ including required frontmatter that's build-enforced — see
 
 ## Section Ownership
 
-Ownership is handled per-branch by `.github/CODEOWNERS`, not documented
-here — see that file on each branch for the current owners.
+| Path | Branch | Owner |
+|---|---|---|
+| `en/docs/icp/` | `wso2-integrator` | ICP team (`@wso2/icp-team` — placeholder, needs a real team slug) |
+| `en/docs/` (all) | `wso2-connectors` | Library team (`@wso2/library-team` — placeholder, needs a real team slug) |
+| Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
 
 ## Contributor scenarios
 

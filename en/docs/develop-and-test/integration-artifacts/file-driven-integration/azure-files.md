@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 Azure Files [file integrations](../../../get-started/concepts/concepts.mdx#integration-types) poll a directory on an Azure file share and process files as they arrive. Use them for drop-folder processing, ETL pipelines, and batch integrations where applications exchange data as CSV, XML, JSON, or binary files through a share mounted over SMB or NFS.
 
-The listener authenticates to the storage account with a shared key, a SAS token, a SAS URL, a connection string, or a Microsoft Entra ID identity. For creating the storage account, the file share, and the credentials, see the [Azure Files setup guide](../../../connectors/catalog/storage-file/azure.storage.files/setup-guide.md).
+The listener authenticates to the storage account with a shared key, a SAS token, a SAS URL, a connection string, or a Microsoft Entra ID identity. For creating the storage account, the file share, and the credentials, see the [Azure Files setup guide](product://connectors/catalog/storage-file/azure.storage.files/setup-guide).
 
 ## Creating an Azure Files service
 
@@ -189,7 +189,7 @@ service /incoming on shareListener {
 }
 ```
 
-Entra ID also supports managed identities, service principals with client certificates, and workload identities — one record per credential kind, each carrying the fields that credential needs. See the [connector configuration reference](../../../connectors/catalog/storage-file/azure.storage.files/action-reference.md#configuration) for every record. The Entra ID identity must hold the `Storage File Data Privileged Reader` or `Storage File Data Privileged Contributor` role on the storage account.
+Entra ID also supports managed identities, service principals with client certificates, and workload identities — one record per credential kind, each carrying the fields that credential needs. See the [connector configuration reference](product://connectors/catalog/storage-file/azure.storage.files/action-reference#configuration) for every record. The Entra ID identity must hold the `Storage File Data Privileged Reader` or `Storage File Data Privileged Contributor` role on the storage account.
 
 </TabItem>
 </Tabs>
@@ -336,6 +336,7 @@ Routing rules:
 - A per-handler `@files:FunctionConfig` with a `fileNamePattern` overrides extension routing for that handler. When several patterns match one file name, the handlers are checked in the fixed order `onFileText`, `onFileJson`, `onFileXml`, `onFileCsv`, then `onFile`. At most one handler runs per file.
 - A file whose extension maps to a handler the service does not declare falls back to `onFile`; if `onFile` is also absent, the file is skipped and logged.
 - A file routed to a typed handler whose content is malformed raises a `files:ContentBindingError` — it never falls through to `onFile`. Its detail carries the file's path in `filePath`, and its raw bytes in `content` when the download had already completed. When the service declares an `onError` handler, the error is delivered there and the file's fate follows **`onError`'s own** `@files:FunctionConfig`; the content handler's `afterError` is not applied. When the service declares no `onError`, the error is logged and the content handler's `afterError` applies.
+- A CSV stream handler is the exception for individual rows. A row that fails to bind while the handler reads the stream is returned to the handler as a `files:Error` from the stream, not raised as a `files:ContentBindingError`. It does not reach `onError`; if the handler returns it, the handler's `afterError` applies.
 
 ### Post-processing: moving or deleting files
 
@@ -410,7 +411,7 @@ On `onError`, `afterProcess` applies when it returns normally and `afterError` w
 
 ### Typed content and streaming
 
-JSON and XML handlers can receive their payload as a free-form value (`json`, `xml`) or as a typed record you define; CSV handlers bind typed records only. CSV and Raw Bytes handlers can additionally receive the content as a `stream<T, error?>`, so the handler never holds the whole file in memory. The **Format** picker on the handler form selects the base delivery type; to bind typed records or streams, edit the handler's content parameter type in the code view.
+JSON and XML handlers can receive their payload as a free-form value (`json`, `xml`) or as a typed record you define; CSV handlers receive rows as string arrays (`string[][]`) or as typed records. CSV and Raw Bytes handlers can additionally receive the content as a `stream<T, error?>`, so the handler never holds the whole file in memory. The **Format** picker on the handler form selects the base delivery type; to bind typed records or streams, edit the handler's content parameter type in the code view.
 
 **Typed CSV rows** — the file's first row is always consumed as the header and maps each row's fields:
 
@@ -461,7 +462,7 @@ remote function onFile(stream<byte[], error?> content, files:FileInfo file) retu
 }
 ```
 
-A content value that does not match the declared parameter type is a `files:ContentBindingError`, delivered to `onError`. To relax the record binding — treating a null value as an optional field and an absent field as a nilable field — set `laxDataBinding: true` on the [listener configuration](#listener-configuration).
+A content value that does not match the declared parameter type is a `files:ContentBindingError`, delivered to `onError`. The exception is a row of a CSV stream, which fails inside the handler instead; see [Content types](#content-types). To relax the record binding — treating a null value as an optional field and an absent field as a nilable field — set `laxDataBinding: true` on the [listener configuration](#listener-configuration).
 
 ### FileInfo
 
@@ -476,7 +477,7 @@ Each handler can receive a `files:FileInfo` parameter with metadata about the di
 | `eTag` | `string` | The entity tag of the file |
 | `lastModified` | `time:Utc` | The last-modified time (UTC) |
 
-`FileInfo` carries what a directory listing provides. For full properties (content type, metadata, headers), use the connector's `getFileProperties` operation — see the [action reference](../../../connectors/catalog/storage-file/azure.storage.files/action-reference.md).
+`FileInfo` carries what a directory listing provides. For full properties (content type, metadata, headers), use the connector's `getFileProperties` operation — see the [action reference](product://connectors/catalog/storage-file/azure.storage.files/action-reference).
 
 ### Caller operations
 
@@ -518,7 +519,7 @@ remote function onFile(byte[] content, files:FileInfo file, files:Caller caller)
 }
 ```
 
-Property reads and writes and share-level administrative operations are not on the `Caller`; construct a client through a [connection](../supportive-artifacts/connections.md) for those. See the [action reference](../../../connectors/catalog/storage-file/azure.storage.files/action-reference.md) for every operation's parameters.
+Property reads and writes and share-level administrative operations are not on the `Caller`; construct a client through a [connection](../supportive-artifacts/connections.md) for those. See the [action reference](product://connectors/catalog/storage-file/azure.storage.files/action-reference) for every operation's parameters.
 
 ## Service and listener
 
@@ -637,7 +638,7 @@ listener files:Listener shareListener = new (shareName,
 | `transportConfig` | `files:TransportConfig?` | — | HTTP transport settings (proxy, connection pool, TLS); omit for the defaults. |
 | `laxDataBinding` | `boolean` | `false` | Relaxed data binding for the typed content handlers. |
 
-For the `RetryConfig` and `TransportConfig` field sets and the credential records, see the [connector configuration reference](../../../connectors/catalog/storage-file/azure.storage.files/action-reference.md#configuration).
+For the `RetryConfig` and `TransportConfig` field sets and the credential records, see the [connector configuration reference](product://connectors/catalog/storage-file/azure.storage.files/action-reference#configuration).
 
 </TabItem>
 </Tabs>
@@ -647,4 +648,4 @@ Each poll with `recursive: true` issues a full recursive listing and downloads e
 ## What's next
 
 - [Local files](local-files.md) — monitor a local directory instead of a file share
-- [Azure Files connector reference](../../../connectors/catalog/storage-file/azure.storage.files/overview.md) — setup, operations, and the full trigger reference
+- [Azure Files connector reference](product://connectors/catalog/storage-file/azure.storage.files/overview) — setup, operations, and the full trigger reference

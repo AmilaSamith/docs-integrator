@@ -50,29 +50,13 @@ export const sharedDocsSidebar = {
  * navbar), `srcDark` is the white+orange variant (dark theme -- it's
  * white ink, so it only reads correctly on a dark navbar background).
  *
- * `href` is a plain absolute path to the saas site's root, not a
- * hardcoded `https://wso2.com/...` domain -- the logo is meant to be
- * the one consistent "home base" across every site branch (saas,
- * wso2-integrator, wso2-connectors), so clicking it from anywhere lands
- * on the saas homepage specifically -- pointed directly at
- * `${CROSS_PRODUCT_BASE}saas/`, not just the bare family root. Those
- * used to be the same URL (saas owned the bare root outright); now that
- * saas has its own /saas/ subpath like every other product, the bare
- * root is only a static redirect stub (root-redirect/index.html) that
- * immediately bounces to /saas/ anyway -- pointing here saves that
- * extra hop rather than relying on it. Still resolves against whatever
- * origin is CURRENTLY serving the site (localhost while testing, the
- * real domain in production), not a hardcoded production URL. Rendered
- * via the theme/Logo swizzle (a plain native <a>, not Docusaurus's
- * <Link>) -- see that file's docstring for why stock Logo can't do
- * this safely (it always runs href through useBaseUrl, which would
- * double-prepend this site's own baseUrl onto an already-absolute
- * path). */
+ * There is deliberately no `href` here: the theme/Logo swizzle links to
+ * the current site's own landing page (siteConfig.baseUrl), so each
+ * product's logo goes to that product, not always to saas. */
 export const sharedNavbarLogo = {
   alt: 'WSO2 Integration Platform',
   src: 'img/wso2-integration-platform-black.svg',
   srcDark: 'img/wso2-integration-platform-full-colour.svg',
-  href: `${CROSS_PRODUCT_BASE}saas/`,
 };
 
 export const sharedFooterStyle = 'dark' as const;

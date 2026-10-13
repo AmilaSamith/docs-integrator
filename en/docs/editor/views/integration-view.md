@@ -115,7 +115,7 @@ Select **Deployment** in the toolbar to open the deployment options panel on the
 | [**Deploy with Docker**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
 | [**Deploy on a VM**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
 
-The panel also includes an **Integration Control Plane** section for monitoring and managing running integrations from a centralized dashboard. Select **Enable ICP monitoring** to activate the [Integration Control Plane (ICP)](https://wso2.com/integrator/editor/integration-control-plane) for this integration, or expand **Publish to local ICP** to push the integration to a local ICP instance.
+The panel also includes an **Integration Control Plane** section for monitoring and managing running integrations from a centralized dashboard. Select **Enable ICP monitoring** to activate the [Integration Control Plane (ICP)](../integration-control-plane.md) for this integration, or expand **Publish to local ICP** to push the integration to a local ICP instance.
 
 ## Readme tab
 
