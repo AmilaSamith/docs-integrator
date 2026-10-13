@@ -31,19 +31,19 @@ The steps below follow one example: an onboarding workflow where an HR lead assi
 | `name` | `string` |
 
 1. On the workflow diagram, click **+** where the workflow should wait.
-2. In the node panel, under **Workflow** > **Steps**, click **Await Human Task**.
+2. In the node panel, under **Workflow** > **Steps**, click **Human Task**.
 3. Fill in the form:
 
    | Field | Required | Description |
    |---|---|---|
    | **Task Name** | Yes | Identifies the task type, for example `Assign Employee to Team`. |
-   | **User Roles** | Yes | One or more roles permitted to complete this task, for example `HRManager`. Only users holding a matching role see the task. |
-   | **Task Input** | No | Read-only information shown alongside the form to help the user make the decision. See [Show the decider what they need](#show-the-decider-what-they-need). |
+   | **User Roles** | Yes | One or more roles permitted to complete this task, for example `HRManager`. Only users holding a matching role see the task. It can be left empty only when **Users** names the people who may complete it; the form refuses a task that names nobody. |
+   | **Task Input** | Yes | Read-only information shown alongside the form to help the user make the decision. Enter `{}` when there is nothing to show. See [Show the decider what they need](#show-the-decider-what-they-need). |
    | **Title** | No | Under **Advanced Configurations**. Short summary shown in the inbox, for example `Assign Employee to Team`. |
    | **Description** | No | Under **Advanced Configurations**. Additional context shown alongside the form, for example `Assign the new employee to the appropriate team and select their team lead.` |
    | **Timeout** | No | Under **Advanced Configurations**. Maximum time to wait. Omit it to wait indefinitely. |
    | **Result** | Yes | Name of the variable that receives the decision. |
-   | **Completion Type** | Yes | The type of the data returned when the task is completed. See [Type the decision](#type-the-decision). |
+   | **Completion Type** | Yes | The type of the data returned when the task is completed. Defaults to `boolean`. See [Type the decision](#type-the-decision). |
 
 4. Click **Save**.
 

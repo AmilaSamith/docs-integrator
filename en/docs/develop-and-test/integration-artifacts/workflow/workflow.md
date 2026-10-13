@@ -27,7 +27,7 @@ A workflow is a step-by-step process that completes a larger task. WSO2 Integrat
 - **Survive crashes and restarts** — every completed step is recorded, and the workflow resumes exactly where it left off. A finished step is never re-executed.
 - **Wait for as long as it takes** — pause for hours, days, or months for a human decision or an external event, consuming no threads or connections while suspended.
 - **Recover from failures** — retry failed steps automatically, or hand the failure to a human who can fix the input and retry.
-- **Keep humans in the loop** — assign role-based tasks that people decide from the [Integration Control Plane](../../../icp/manage-workflows/complete-human-tasks.md) task inbox.
+- **Keep humans in the loop** — assign role-based tasks that people decide from the **Human Tasks** page of the [Integration Control Plane](../../../icp/manage-workflows/complete-human-tasks.md).
 
 ## Two ways to build, one durable runtime
 
