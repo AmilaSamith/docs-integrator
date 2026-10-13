@@ -197,7 +197,7 @@ The package ships eight model providers, all on the Bedrock Runtime endpoint. In
 
 | Model provider | When to use |
 |---|---|
-| **Bedrock Converse Model Provider** | Any Bedrock model, through the Converse API. Use it for vendors that have no provider of their own, such as Meta, Writer, xAI, Moonshot AI, MiniMax, NVIDIA, and Z.AI. |
+| **Bedrock Converse Model Provider** | Any Bedrock model that supports the [Converse API](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference-supported-models-features.html). Use it for vendors that have no provider of their own, such as Meta, Writer, xAI, Moonshot AI, MiniMax, NVIDIA, and Z.AI. |
 | **Bedrock Runtime Anthropic Model Provider** | Claude models. Adds Claude's thinking and effort settings. |
 | **Bedrock Runtime OpenAI Model Provider** | GPT models. Adds reasoning effort. |
 | **Bedrock Runtime Amazon Model Provider** | Amazon Nova models. |

@@ -80,7 +80,7 @@ Local stores let you choose the metric. Hosted stores manage it themselves (you 
 - The **Select Vector Store** picker opens, listing all supported stores with a search bar at the top:
 
 <ThemedImage
-    alt="Select Vector Store picker with a search bar and seven cards: In Memory Vector Store described as providing simple storage for vector entries, Opensearch Vector Store described as an ai:VectorStore backed by Amazon OpenSearch, Amazon S3 Vectors Vector Store described as a vector store backed by an Amazon S3 Vectors index, and Milvus, Pgvector, Pinecone, and Weaviate Vector Stores, each described as supporting Dense, Sparse, and Hybrid vector search."
+    alt="Select Vector Store picker with a search bar and six cards: In Memory Vector Store described as providing simple storage for vector entries, Amazon S3 Vectors Vector Store described as a vector store backed by an Amazon S3 Vectors index, and Milvus, Pgvector, Pinecone, and Weaviate Vector Stores, each described as supporting Dense, Sparse, and Hybrid vector search."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/01-select-list-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/01-select-list-v5.1.png'),

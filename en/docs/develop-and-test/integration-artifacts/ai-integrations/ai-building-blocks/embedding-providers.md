@@ -311,7 +311,7 @@ OpenRouter's embedding endpoint accepts text-only chunks. Image or audio chunks 
 | Situation | Recommended |
 |---|---|
 | Prototyping, no infra setup | **Default WSO2**: sign in once, no key needed. |
-| Already on AWS | **AWS Bedrock**: IAM credentials, and requests stay in the AWS region you choose. |
+| Already on AWS | **AWS Bedrock**: IAM credentials, and requests stay in the AWS region you choose, unless you use a cross-region inference profile ID such as `us.cohere.embed-v4:0`. |
 | Already on Azure | **Azure OpenAI**: keep traffic inside your Azure tenant. |
 | Already on Google Cloud | **Vertex**: same auth as the rest of GCP. |
 | Already using OpenAI models | **OpenAI**: use your existing OpenAI API key. |
