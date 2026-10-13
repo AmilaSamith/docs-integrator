@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: "Deployment Modes"
-description: Choose the workflow engine a WSO2 Integrator durable workflow records to, and configure its connection, authentication, worker, and default retry settings.
+description: Choose the workflow engine a WSO2 Integrator durable workflow records to, and configure its connection, authentication, and worker settings.
 keywords: [wso2 integrator, durable workflow, deployment mode, temporal, in memory, self hosted, task queue, configurable, config.toml]
 slug: /develop-and-test/integration-artifacts/workflow/durable-workflow/deployment-modes
 ---
@@ -92,20 +92,9 @@ All three are ignored in `IN_MEMORY` mode.
 Two integrations sharing a task queue will poll each other's tasks. Name the queue after the program, as in `ORDER_WORKFLOW_TASK_QUEUE`, whenever more than one workflow program runs against the same server.
 :::
 
-## Default activity retry policy
-
-These four set the retry policy of the calls the runtime records as activities on a workflow's behalf, such as `workflow:run` and `workflow:sendData` called from inside a workflow. An activity you call with **Call Activity**, prebuilt ones included, does not use them: it follows its own **Retry Policy**, which defaults to **No Retry** and is where **Auto Retry** sets values such as **Max Retries** and **Retry Delay**. See [Error handling and review activities](review-activity-and-error-handling.md).
-
-| Setting | Default | Description |
-|---|---|---|
-| `activityRetryInitialInterval` | `1` | Delay in seconds before the first retry attempt. Must be a positive integer. |
-| `activityRetryBackoffCoefficient` | `2.0` | Multiplier applied to the interval after each attempt. With an initial interval of 1 second and a coefficient of `2.0`, retries occur at 1s, 2s, 4s, 8s, and so on. Must be `1.0` or greater. |
-| `activityRetryMaximumInterval` | `0` | Maximum delay in seconds between retries, which caps the exponential backoff. `0` means no upper limit. Any other value must be greater than `0`. |
-| `activityRetryMaximumAttempts` | `1` | Maximum retry attempts. `1`, the default, executes the activity once and does not retry. `0` means unlimited retries. Any positive value sets the cap. |
-
 ## What's next
 
 - [Activities](activities.md) — the recorded units of work a workflow calls
-- [Error handling and review activities](review-activity-and-error-handling.md) — overriding the default policy on a single activity call
+- [Error handling and review activities](review-activity-and-error-handling.md) — retry and review policies on an activity call
 - [Manage workflows](../../../../icp/manage-workflows/manage-workflows.md) — registering the integration with the Integration Control Plane
 - [Management API](management-api.md) — the REST surface served by the integration runtime

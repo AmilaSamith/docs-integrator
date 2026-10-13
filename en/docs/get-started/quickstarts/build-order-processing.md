@@ -493,12 +493,16 @@ A durable workflow keeps its record in a workflow engine, and by default the run
    The workflow reserves the inventory and then suspends on the `payment` event.
 
    ```bash
-   Compiling source (UP-TO-DATE)
-   myorg/orderprocessor:0.1.0
+   Compiling source
+   	myorg/orderprocessor:0.1.0
+   WARNING [types.bal:(11:5,11:29)] undocumented field 'payment'
 
    Running executable
 
-   time=2026-08-14T11:23:04.009+05:30 level=INFO module=myorg/orderprocessor message="Inventory reserved"
+   time=2026-10-13T07:53:30.737Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="workflow.started" workflow_type="workflow-orderWorkflow" task_kind="none" task_name="none" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" run_id="16f8ef66-ade6-4534-b709-4bc3259b4e3b"
+   time=2026-10-13T13:23:30.814+05:30 level=INFO module=myorg/orderprocessor message="Inventory reserved"
+   time=2026-10-13T07:53:30.830Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="activity.executed" activity_type="reserveInventory" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" run_id="16f8ef66-ade6-4534-b709-4bc3259b4e3b" attempt=1 outcome="success" duration_seconds=0.022
+   time=2026-10-13T07:53:30.832Z level=INFO module=ballerina/workflow message="Activity execution type=reserveInventory workflowId=019ffed4-c12e-7e24-a438-8bdaae2b5a29 runId=16f8ef66-ade6-4534-b709-4bc3259b4e3b activityId=5ea5fc48-6754-3de2-99dc-3c3bf7f4ea1a attempt=1 outcome=success durationMs=22 args={\"orderInfo\":{\"total\":4500,\"customerEmail\":\"ann@example.com\",\"customerId\":\"CUS-9\",\"id\":\"ORD-1\"}} result=null"
    ```
 
 6. Confirm the payment with the workflow ID from the previous response:
@@ -511,7 +515,11 @@ A durable workflow keeps its record in a workflow engine, and by default the run
    The workflow resumes and sends the confirmation email. Post `false` instead and it cancels the order.
 
    ```bash
-   time=2026-08-14T11:34:13.224+05:30 level=INFO module=myorg/orderprocessor message="Email sent to ann@example.com"
+   time=2026-10-13T07:53:33.279Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="data.sent" data_name="payment" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" outcome="success"
+   time=2026-10-13T13:23:33.300+05:30 level=INFO module=myorg/orderprocessor message="Email sent to ann@example.com"
+   time=2026-10-13T07:53:33.304Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="activity.executed" activity_type="sendEmail" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" run_id="16f8ef66-ade6-4534-b709-4bc3259b4e3b" attempt=1 outcome="success" duration_seconds=0.009
+   time=2026-10-13T07:53:33.306Z level=INFO module=ballerina/workflow message="Activity execution type=sendEmail workflowId=019ffed4-c12e-7e24-a438-8bdaae2b5a29 runId=16f8ef66-ade6-4534-b709-4bc3259b4e3b activityId=855793ce-3be1-36bf-99bb-e247797db228 attempt=1 outcome=success durationMs=9 args={\"orderInfo\":{\"total\":4500,\"customerEmail\":\"ann@example.com\",\"customerId\":\"CUS-9\",\"id\":\"ORD-1\"}} result=null"
+   time=2026-10-13T07:53:33.338Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="workflow.closed" workflow_type="workflow-orderWorkflow" task_kind="none" task_name="none" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" run_id="16f8ef66-ade6-4534-b709-4bc3259b4e3b" outcome="success" duration_seconds=2.688
    ```
 
 ## Watch it run

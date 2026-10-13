@@ -507,7 +507,7 @@ The console reports **Activity proceeded**, and on the next refresh the list rea
 Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim:
 
 ```text
-The claim has been processed successfully and paid with the ID PAY-2002.
+The claim has been validated and paid.
 ```
 
 <ThemedImage
