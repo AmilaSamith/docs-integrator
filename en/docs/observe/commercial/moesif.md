@@ -90,7 +90,7 @@ These configurations enable traces and metrics publishing for the Ballerina appl
 
 ## Step 3: Publish Integration Logs to Moesif
 
-The integration writes its logs to a file in JSON format. A Fluent Bit sidecar reads that file, converts each entry to an OpenTelemetry log record, and sends it straight to Moesif's OTLP logs endpoint (`/v1/logs`) over HTTPS. You don't need a separate OpenTelemetry Collector.
+The integration writes its logs to a file in JSON format. A Fluent Bit sidecar reads that file, converts each entry to an OpenTelemetry log record, and sends it straight to Moesif's OTLP logs endpoint (`/v1/logs`) over HTTPS.
 
 > Integration → Fluent Bit → Moesif
 
