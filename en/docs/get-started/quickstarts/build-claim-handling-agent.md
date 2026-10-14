@@ -510,7 +510,7 @@ The console reports **Activity proceeded**, and on the next refresh the list rea
 Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim. The model words it differently on each run, for example:
 
 ```text
-The claim with ID 2002 has been successfully processed and paid in the amount of $1500.
+The claim with ID 2002 has been processed and paid successfully.
 ```
 
 <ThemedImage
