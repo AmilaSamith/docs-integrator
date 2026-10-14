@@ -85,7 +85,7 @@ A conditional breakpoint pauses only when a Ballerina expression evaluates to `t
 3. Enter a condition, for example `order.total > 1000` or `customer.tier == "premium"`.
 
 <ThemedImage
-    alt="Editing a breakpoint to add an expression condition"
+    alt="Editing a breakpoint to add a condition to evaluate"
     sources={{
         light: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression.png'),
         dark: useBaseUrl('/img/develop/troubleshooting/debugging-features/expression.png'),
