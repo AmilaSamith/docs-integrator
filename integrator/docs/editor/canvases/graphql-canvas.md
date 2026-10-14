@@ -4,7 +4,7 @@ title: GraphQL Canvas
 
 # GraphQL Canvas
 
-The GraphQL Canvas, also known as the **GraphQL diagram**, is the canvas you open for any GraphQL service in WSO2 Integrator. It renders the service as a node on a canvas, lists every query, mutation, and subscription the service exposes, and draws lines from each operation to the types it returns or accepts. Use it to add or remove operations, edit their signatures, and navigate to the resolver implementation, all from a single view.
+The GraphQL Canvas, also known as the **GraphQL diagram**, shows a GraphQL service as a node, with every query, mutation, and subscription it exposes. Lines connect each operation to the types it accepts or returns. Use it to add or remove operations, edit their signatures, and go to the resolver code.
 
 For end-to-end usage, including how to create a GraphQL service from scratch or import an existing schema, see [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md).
 
@@ -64,17 +64,7 @@ The **GraphQL Operations** side panel groups every operation the service exposes
     }}
 />
 
-#### Add an operation
-
-Select the **+** action next to **Query**, **Mutation**, or **Subscription** to add a new operation. The canvas opens a form where you choose the operation name, arguments, and return type, then generates the resolver stub for you.
-
-#### Edit an operation
-
-Select the edit icon on the operation's row to reopen the form populated with the current signature, so you can rename the operation, adjust arguments, or change the return type.
-
-#### Delete an operation
-
-Select the delete icon on the operation's row. The canvas asks you to confirm before removing the operation from the service.
+Select **+** next to a section, or **+ Create Operations** on the service node, to add an operation. Select the edit icon on a row to change the operation's name, arguments, or return type, and the delete icon to remove it. For the steps, see [Add an operation](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md#add-an-operation).
 
 ## Type nodes
 

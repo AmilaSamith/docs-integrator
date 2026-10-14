@@ -60,6 +60,8 @@ Sampling controls how many requests are traced. Both Jaeger and Zipkin support t
 
 Sampling every request is fine for development. In production, use `probabilistic` or `ratelimiting` to reduce overhead while keeping visibility into your system.
 
+If `samplerType` is not one of these values, the extension prints an error at startup and falls back to `const`, which traces every request.
+
 ## Choose a tracing backend
 
 | Backend | Best for | Guide |
@@ -75,6 +77,8 @@ To send traces to **AWS X-Ray**, use the Jaeger extension, which exports spans o
 agentHostname = "localhost"   # the ADOT collector; localhost for an ECS sidecar
 agentPort = 4317
 ```
+
+Set `agentPort` explicitly. The Jaeger extension defaults to port `55680`, not the standard OTLP gRPC port `4317` that the collector listens on.
 
 In a container, where `Config.toml` isn't part of the image, set the same values as environment variables: `BAL_CONFIG_VAR_BALLERINA_OBSERVE_TRACINGENABLED=true`, `BAL_CONFIG_VAR_BALLERINA_OBSERVE_TRACINGPROVIDER=jaeger`, `BAL_CONFIG_VAR_BALLERINAX_JAEGER_AGENTHOSTNAME`, and `BAL_CONFIG_VAR_BALLERINAX_JAEGER_AGENTPORT`.
 
