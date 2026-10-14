@@ -33,7 +33,7 @@ Workflows usually start from your own integration logic, but during testing, onb
 4. After you select a workflow, its input form appears under **Input**. A workflow that takes no input says so instead.
 
 <ThemedImage
-    alt="Workflow input form showing field validation"
+    alt="The Start Workflow form for orderWorkflow with each required input field flagged as required"
     sources={{
         light: useBaseUrl('/img/workflows/icp/workflow-input-validation.png'),
         dark: useBaseUrl('/img/workflows/icp/workflow-input-validation.png'),
