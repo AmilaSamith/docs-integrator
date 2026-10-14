@@ -464,24 +464,25 @@ The run is now sitting on the `payClaim` approval, and the ICP console is where 
     }}
 />
 
-## Step 10: Assign the Finance role to your user
+## Step 10: Give your user the Finance role
 
-The review is on the timeline, but it is not yet addressed to you. `payClaim` was registered with `Finance` as its reviewer role, and the console signs you in as `admin`, a super admin who does not carry that role, so the approval will not reach you until your user does.
+The review is on the timeline, but it is not yet addressed to you. `payClaim` was registered with `Finance` as its reviewer role, and the console signs you in as `admin`, who does not carry that role yet. Roles reach users through groups, so create a `Finance` role that can see and decide human tasks, and a group that grants it.
 
-1. Click **Default Organization** at the top of the console to leave the integration, then in the left navigation, under **MANAGEMENT**, click **Access-control**. Inside an integration, **Access-control** shows only that integration's roles and groups. The **Users** tab lists a single user, `admin` (**System Administrator**), in the **Super Admins** and **default-project Admins** groups.
-2. Open the **Roles** tab. It holds only the built-in roles (**Admin**, **Developer**, **Project Admin**, **Super Admin**, **Viewer**), so click **+ Create Role**, set **Role Name** to `Finance`, and click **Create**. Leave every permission group unchecked.
-3. Open the **Groups** tab and click **Super Admins**, the group that holds `admin`.
-4. On the **ROLES** tab, click **+ Add Roles**. Select `Finance` in the **Roles** dropdown, leave **Applicable Environments** on **All Environments**, and click **Add**.
+1. Click **Default Organization** at the top of the console to leave the integration, then in the left navigation, under **MANAGEMENT**, click **Access-control**. Inside an integration, **Access-control** shows only that integration's roles and groups. The **Users** tab lists a single user, `admin` (**System Administrator**).
+2. Open the **Roles** tab and click **+ Create Role**. Set **Role Name** to `Finance`, expand **Workflow-Management**, and select `workflow_mgt:view_human_tasks`, `workflow_mgt:manage_human_tasks`, and `workflow_mgt:view_workflows`. Click **Create**.
+3. Open the **Groups** tab, click **+ Create Group**, set **Name** to `Finance Reviewers`, and click **Create**.
+4. Click **Finance Reviewers**. On the **USERS** tab, click **+ Add Users**, select **System Administrator (admin)**, and click **Add**.
+5. On the **ROLES** tab, click **+ Add Roles**. Select `Finance` in the **Roles** dropdown, leave **Applicable Environments** on **All Environments**, and click **Add**.
 
 <ThemedImage
-    alt="Creating the Finance role under Access Control and adding it to the Super Admins group"
+    alt="Creating the Finance role with the workflow permissions, creating the Finance Reviewers group, and adding admin and the Finance role to it"
     sources={{
         light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/assign-finance-role.gif'),
         dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/assign-finance-role.gif'),
     }}
 />
 
-The console confirms **Role(s) added to group successfully**, and the group's role list now holds **Finance** beside **Super Admin**, both mapped at **Organization** level for **All** environments. Roles reach a user through their groups, so `admin` is now a `Finance` reviewer.
+The console confirms **Role(s) added to group successfully**. `admin` now holds `Finance` through **Finance Reviewers**, so the approval reaches it. In a real deployment, add the accounts of the people who approve payments to this group; `admin` stands in for them here.
 
 ## Step 11: Approve the payment
 
