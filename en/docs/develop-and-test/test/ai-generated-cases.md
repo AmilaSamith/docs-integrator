@@ -6,13 +6,16 @@ keywords: [wso2 integrator, ai test generation, copilot, generate tests, balleri
 slug: /develop-and-test/test/ai-generated-cases
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Generate Tests with AI
 
-Writing test cases with [WSO2 Integrator Copilot](../../editor/copilot/capabilities.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
+Writing test cases with [WSO2 Integrator Copilot](../../editor/copilot/copilot.md) works the same way as writing them manually through the visual designer or in Ballerina code. Instead of building each test yourself, you describe what you want in the Copilot chat and it generates the code for you. Copilot generates `@test:Config` functions, data providers, mocks, and lifecycle hooks that slot directly into your existing `tests/` directory and run with `bal test`.
 
 ## Generate tests with WSO2 Integrator Copilot
 
-Open the Copilot panel and describe the test you want. You can ask for a specific function, a whole service, or a particular scenario. Copilot reads your source code and generates matching Ballerina test code.
+Open the Copilot panel and describe the test you want. You can ask for a specific function, a whole service, or a particular scenario. Copilot reads your source code and generates matching Ballerina test code. Copilot writes tests only when you ask for them.
 
 Example prompts to get started:
 
@@ -20,7 +23,27 @@ Example prompts to get started:
 - "Generate a data-driven test for the `calculateDiscount` function with at least five input combinations."
 - "Add mock stubs for the payment gateway client and write a test for a failed charge."
 
-Copilot places the generated code in the `tests/` folder of your module. Review each function before running it. Generated tests are a starting point, not a finished product.
+Copilot writes the generated code directly into the `tests/` folder of your module. Generated tests are a starting point, not a finished product.
+
+## How Copilot runs the tests
+
+After writing the tests, Copilot checks them for you:
+
+1. It makes sure the project compiles and fixes any errors first, because tests can't run on code that doesn't compile.
+2. It tells you what the tests cover, then runs them with `bal test`.
+3. It reads the results and fixes any failing tests before it finishes.
+
+The test run appears in the chat with its output and a pass count. Copilot then summarizes the tests it added, and **Changes made** lists the new test functions so you can review them as a diagram or as code.
+
+<ThemedImage
+    alt="Copilot running the generated tests with bal test, showing all tests passing, a summary of the added test cases, and the new test functions under Changes made."
+    sources={{
+        light: useBaseUrl('/img/editor/copilot/running-tests.png'),
+        dark: useBaseUrl('/img/editor/copilot/running-tests.png'),
+    }}
+/>
+
+To undo the tests Copilot added, select **Restore Checkpoint** in the chat. It rolls your integration back to the point before that request.
 
 ## Best practices
 
