@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import AiAssistantPanel from '@site/src/components/AiAssistantPanel';
+import DocsCopilotLauncher from '@site/src/components/DocsCopilot/Launcher';
 import ReportIssueButton from '@site/src/components/ReportIssueButton';
 
 import styles from './styles.module.css';
@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 /**
  * Shared fixed-position bottom-right cluster for every floating action
  * button on the site -- currently ReportIssueButton and
- * AiAssistantPanel. One shared wrapper (not each button positioning
+ * DocsCopilotLauncher. One shared wrapper (not each button positioning
  * itself independently) so they move, space, and resize together at
  * each breakpoint via a single set of media queries here, instead of
  * duplicating the same right/bottom/gap/size numbers in every button's
@@ -15,14 +15,14 @@ import styles from './styles.module.css';
  * src/theme/Root.js, so it's present on every page.
  *
  * Order matters: ReportIssueButton first (left, secondary action),
- * AiAssistantPanel second (right, closest to the corner -- the
+ * DocsCopilotLauncher second (right, closest to the corner -- the
  * primary action).
  */
 export default function FloatingActions(): ReactNode {
   return (
     <div className={`${styles.wrapper} floating-actions`}>
       <ReportIssueButton />
-      <AiAssistantPanel />
+      <DocsCopilotLauncher />
     </div>
   );
 }
