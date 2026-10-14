@@ -51,5 +51,5 @@ The JSON key file grants access to your Google Cloud resources. Treat it like a 
 5. Select **Create**.
 
 :::note
-The subscription ID you set here is the value used in the `@pubsub:ServiceConfig` annotation's `subscription` field.
+The subscription ID you set here is the subscription name passed to the `pubsub:Listener` when it is initialized.
 :::

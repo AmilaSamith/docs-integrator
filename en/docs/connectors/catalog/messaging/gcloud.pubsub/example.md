@@ -52,7 +52,7 @@ flowchart LR
 
 After selecting **Pub/Sub Publisher**, the connection configuration form opens. Fill in every field by binding it to a configurable variable using the helper panel. For each field, select the **Open Helper Panel** icon to the right of the input box, switch to the **Configurables** tab, then select **New Configurable** to create the variable.
 
-- **topicName** : Full Pub/Sub topic resource name (e.g., `projects/my-project/topics/my-topic`)
+- **topicName** : Pub/Sub topic ID (e.g., `my-topic`), which is resolved against **projectId**, or a full topic resource name (e.g., `projects/my-project/topics/my-topic`), in which case the project in the resource name is used
 - **projectId** : Google Cloud project ID
 - **credentials** : Service account credentials; select the **Expression** toggle and enter `{credentialsJson: pubsubAuthToken}`, where `pubsubAuthToken` is a `string` configurable holding the service account JSON
 
@@ -85,7 +85,7 @@ Select **Save** to create the connection. The canvas updates and the **pubsubPub
 1. In the left panel, select **Configurations**.
 2. Set a value for each configurable listed below.
 
-- **pubsubTopicName** (string) : Full topic resource name, e.g., `projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME`
+- **pubsubTopicName** (string) : Topic ID (e.g., `YOUR_TOPIC_NAME`) or full topic resource name (e.g., `projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME`)
 - **pubsubProjectId** (string) : Your Google Cloud project ID
 - **pubsubAuthToken** (string) : Service account JSON credentials string
 - **pubsubMessagePayload** (string) : Message content to publish
@@ -113,7 +113,7 @@ Select **Save** to create the connection. The canvas updates and the **pubsubPub
 
 2. Select **Publish** to open the operation configuration form.
 3. Configure the operation fields:
-  - **Message** : Select the **Expression** toggle, then create a `string` configurable named `pubsubMessagePayload` via the helper panel. Enter `{data: pubsubMessagePayload}` as the expression. Non-byte values are serialized automatically; use `.toBytes()` (`{data: pubsubMessagePayload.toBytes()}`) only when you want to pass raw bytes explicitly.
+  - **Message** : Select the **Expression** toggle, then create a `string` configurable named `pubsubMessagePayload` via the helper panel. Enter `{data: pubsubMessagePayload.toBytes()}` as the expression. The message `data` field is a `byte[]`, so the `string` value must be converted with `.toBytes()`.
   - **Result** : Leave as `result` (the variable name for the returned message ID)
   - **Result Type** : `string` (the `publish` operation returns the published message ID)
 4. Select **Save** to add the `publish` step to the flow.

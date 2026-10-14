@@ -29,13 +29,16 @@ The listener supports the following connection strategies:
 
 | Config Type | Description |
 |-------------|-------------|
-| `ListenerConfiguration` | Configuration for the Pub/Sub listener. Authenticates using a GCP service account key file. |
+| `ListenerConfiguration` | Configuration for the Pub/Sub listener. Authenticates using GCP service account credentials. |
+
+The listener is initialized with a subscription name followed by the `ListenerConfiguration` fields. The subscription name can be a subscription ID (for example, `my-subscription`), which is resolved against `projectId`, or a full resource name in the format `projects/{project-id}/subscriptions/{subscription-id}`.
 
 `ListenerConfiguration` fields:
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `auth` | `GcpCredentialConfig` | `()` | GCP service account credentials. Contains a `path` field pointing to the JSON key file. |
+| `projectId` | `string` | Required | Google Cloud project ID. |
+| `credentials` | `Credentials` | `()` | Service account credentials. Set `credentialsPath` (path to the JSON key file) or `credentialsJson` (the JSON key content as a string). |
 
 ### Initializing the listener
 
@@ -44,11 +47,13 @@ The listener supports the following connection strategies:
 ```ballerina
 import ballerinax/gcloud.pubsub;
 
-configurable string project = ?;
+configurable string projectId = ?;
+configurable string subscriptionName = ?;
 configurable string gcpCredentialsFilePath = ?;
 
-listener pubsub:Listener pubsubListener = check new (project,
-    auth = {path: gcpCredentialsFilePath}
+listener pubsub:Listener pubsubListener = check new (subscriptionName,
+    projectId = projectId,
+    credentials = {credentialsPath: gcpCredentialsFilePath}
 );
 ```
 
@@ -58,7 +63,7 @@ listener pubsub:Listener pubsubListener = check new (project,
 
 ## Service
 
-A `pubsub:Service` is a Ballerina service attached to a `pubsub:Listener`. It is annotated with `@pubsub:ServiceConfig` to bind it to a specific subscription, and implements the `onMessage` callback to process incoming messages.
+A `pubsub:Service` is a Ballerina service attached to a `pubsub:Listener`. It receives messages from the subscription configured on the listener and implements the `onMessage` callback to process incoming messages.
 
 
 ### Callback signatures
@@ -77,20 +82,22 @@ Use `caller->ack()` to acknowledge successful processing, or `caller->nack()` to
 import ballerina/log;
 import ballerinax/gcloud.pubsub;
 
-configurable string project = ?;
+configurable string projectId = ?;
+configurable string subscriptionName = ?;
 configurable string gcpCredentialsFilePath = ?;
-configurable string subscription = ?;
 
-listener pubsub:Listener pubsubListener = check new (project,
-    auth = {path: gcpCredentialsFilePath}
+listener pubsub:Listener pubsubListener = check new (subscriptionName,
+    projectId = projectId,
+    credentials = {credentialsPath: gcpCredentialsFilePath}
 );
 
-@pubsub:ServiceConfig {subscription}
 service on pubsubListener {
     remote function onMessage(pubsub:Message message, pubsub:Caller caller) returns error? {
+        // The message payload is delivered as bytes
+        string data = check string:fromBytes(message.data);
         log:printInfo("Received message",
             messageId = message.messageId,
-            data = message.data.toString(),
+            data = data,
             attributes = message.attributes.toString()
         );
         // Acknowledge the message on successful processing
@@ -100,8 +107,7 @@ service on pubsubListener {
 ```
 
 :::note
-The `@pubsub:ServiceConfig` annotation supports additional fields for fine-tuning subscriber behavior: `maxAckExtensionPeriod`, `maxDurationPerAckExtension`, `minDurationPerAckExtension`, `parallelPullCount`, and `flowControlSettings`.
-
+The subscription is set when initializing the `pubsub:Listener`. The package also defines an optional `@pubsub:ServiceConfig` annotation (of type `PubSubServiceConfig`, with a single `subscriptionName` field), but the listener does not use it to select the subscription.
 :::
 
 ---
@@ -113,31 +119,14 @@ The `@pubsub:ServiceConfig` annotation supports additional fields for fine-tunin
 | Field | Type | Description |
 |-------|------|-------------|
 | `messageId` | `string?` | The unique ID assigned by Pub/Sub when the message is published. |
-| `data` | `anydata` | The message payload. |
+| `data` | `byte[]` | The message payload as bytes. Use `string:fromBytes()` to convert text payloads. |
 | `attributes` | `map<string>?` | Optional key-value attributes attached to the message. |
 | `publishTime` | `time:Utc?` | The timestamp when the message was published by the server. |
 | `orderingKey` | `string?` | The ordering key for message ordering, if set by the publisher. |
 
-### `ServiceConfiguration`
+### `Credentials`
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `subscription` | `string` | The name of the Pub/Sub subscription to pull messages from. |
-| `maxAckExtensionPeriod` | `decimal` | Maximum total time (seconds) the ack deadline can be extended. Default: `3600`. |
-| `maxDurationPerAckExtension` | `decimal` | Upper bound (seconds) for a single ack deadline extension. Default: `600`. |
-| `minDurationPerAckExtension` | `decimal` | Minimum duration (seconds) for a single ack deadline extension. Default: `0.0`. |
-| `parallelPullCount` | `int` | Number of parallel streaming pull connections. Default: `1`. |
-| `flowControlSettings` | `FlowControlConfig?` | Flow control settings to limit outstanding messages and bytes. |
-
-### `FlowControlConfig`
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `maxOutstandingMessageCount` | `int` | Maximum number of outstanding (unacknowledged) messages. Default: `1000`. |
-| `maxOutstandingRequestBytes` | `int` | Maximum total bytes of outstanding messages. Default: `104857600` (100 MB). |
-
-### `GcpCredentialConfig`
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `path` | `string` | File path to the GCP service account JSON key file. |
+| `credentialsPath` | `string?` | File path to the GCP service account JSON key file. |
+| `credentialsJson` | `string?` | The GCP service account JSON key content as a string. |
