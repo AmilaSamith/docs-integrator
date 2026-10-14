@@ -23,8 +23,8 @@ Registers and retrieves schemas from Confluent Schema Registry.
 |-------|------|---------|-------------|
 | `baseUrl` | `string` | Required | The base URL of the Schema Registry endpoint (e.g., `https://psrc-xxxxx.us-east-2.aws.confluent.cloud`). |
 | `identityMapCapacity` | `int` | `1000` | Capacity of the schema ID map for a particular subject. |
-| `originals` | `map<anydata>` | `()` | Connection configurations for authentication and SSL (e.g., basic auth credentials, truststore settings). |
-| `headers` | `map<string>` | `()` | Custom HTTP headers to include in requests to the Schema Registry. |
+| `originals` | `map<anydata>?` | `()` | Connection configurations for authentication and SSL (e.g., basic auth credentials, truststore settings). |
+| `headers` | `map<string>?` | `()` | Custom HTTP headers to include in requests to the Schema Registry. |
 
 ### Initializing the client
 
@@ -62,7 +62,7 @@ Parameters:
 | `subject` | `string` | Yes | The subject name under which to register the schema (e.g., `"my-topic-value"`). |
 | `schema` | `string` | Yes | The schema definition as a JSON string (e.g., an Avro schema). |
 
-Returns: `int|error`
+Returns: `int|cregistry:Error`
 
 Sample code:
 
@@ -104,7 +104,7 @@ Parameters:
 |------|------|----------|-------------|
 | `id` | `int` | Yes | The unique ID of the schema to retrieve. |
 
-Returns: `string|error`
+Returns: `string|cregistry:Error`
 
 Sample code:
 
@@ -121,3 +121,23 @@ Sample response:
 </div>
 
 </details>
+
+---
+
+## Errors
+
+Both operations return a `cregistry:Error` on failure. Its detail record, `cregistry:ErrorDetails`, contains the following optional fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `status` | `int` | The HTTP status code returned by the Schema Registry. |
+| `errorCode` | `int` | The error code returned by the Schema Registry. |
+
+```ballerina
+string|cregistry:Error result = schemaRegistryClient->getSchemaById(1);
+if result is cregistry:Error {
+    cregistry:ErrorDetails details = result.detail();
+    int? status = details?.status;
+    int? errorCode = details?.errorCode;
+}
+```
