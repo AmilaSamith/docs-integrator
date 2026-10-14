@@ -36,6 +36,13 @@ name: Sync shared content to saas
 # server, which is self-hosted only, so it is listed in SYNC_EXCLUDE_FILES and
 # removed after the replace (and so never drives image syncing either).
 #
+# Carved out of develop-and-test/integration-artifacts/: workflow/ (durable
+# workflows and durable agentic workflows) is managed through ICP, which is
+# self-hosted only, so it is listed in SYNC_EXCLUDE_DIRS and removed after
+# the replace. Like the ICP page above, it never drives image syncing either,
+# and its images on saas are cleaned up as stale if nothing else uses them.
+# The shared-content-guard on saas excludes the same path.
+#
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
@@ -50,6 +57,7 @@ on:
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
       - '!en/docs/develop-and-test/create-workspace/**'
+      - '!en/docs/develop-and-test/integration-artifacts/workflow/**'
       - '!en/docs/editor/integration-control-plane.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
@@ -76,6 +84,10 @@ env:
   # Self-hosted-only pages inside synced folders, never copied to saas.
   SYNC_EXCLUDE_FILES: >-
     en/docs/editor/integration-control-plane.md
+  # Self-hosted-only (ICP-managed) folders inside synced folders, never
+  # copied to saas. Removed from saas too if a previous sync put them there.
+  SYNC_EXCLUDE_DIRS: >-
+    en/docs/develop-and-test/integration-artifacts/workflow
 
 jobs:
   sync:
@@ -125,6 +137,9 @@ jobs:
           # Drop wso2-integrator-only pages that live inside synced folders.
           for f in $SYNC_EXCLUDE_FILES; do
             rm -f "$f"
+          done
+          for d in $SYNC_EXCLUDE_DIRS; do
+            rm -rf "$d"
           done
 
           # Put saas's copy of the saas-owned directories back, before any
