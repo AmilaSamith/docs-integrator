@@ -23,9 +23,9 @@ Provides two module-level functions, `serialize` and `deserialize`, for encoding
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | `baseUrl` | `string` | Required | The Confluent Schema Registry endpoint URL (e.g., `https://<id>.<region>.aws.confluent.cloud`). |
-| `identityMapCapacity` | `int` | `0` | Maximum number of schemas to cache in the local identity map. Set to `0` for default behaviour. |
-| `originals` | `map<anydata>` | `{}` | Raw Schema Registry client properties including authentication keys such as `schema.registry.url` and `basic.auth.credentials.source`. |
-| `headers` | `map<string>` | `{}` | Additional HTTP headers to include in Schema Registry requests. |
+| `identityMapCapacity` | `int` | `1000` | Maximum number of schemas to cache in the local identity map. |
+| `originals` | `map<anydata>?` | `()` | Raw Schema Registry client properties for authentication and TLS, such as `basic.auth.credentials.source` and `basic.auth.user.info`. |
+| `headers` | `map<string>?` | `()` | Additional HTTP headers to include in Schema Registry requests. |
 
 ### Initializing the client
 
@@ -53,7 +53,7 @@ cregistry:Client registry = check new ({
 
 <div>
 
-Serializes a Ballerina value to Avro-encoded bytes. The provided Avro schema is registered in the Confluent Schema Registry under the given subject, and the assigned schema ID is encoded as a 4-byte prefix in the returned byte array following the Confluent wire format.
+Serializes a Ballerina value to Avro-encoded bytes. The provided Avro schema is registered in the Confluent Schema Registry under the given subject, and the assigned schema ID is encoded as a 5-byte prefix (magic byte `0` followed by the 4-byte big-endian schema ID) in the returned byte array following the Confluent wire format.
 
 
 Parameters:
@@ -92,7 +92,7 @@ byte[] avroBytes = check cavroserdes:serialize(registry, schema, newOrder, "orde
 Sample response:
 
 ```ballerina
-[0, 0, 0, 3, 234, 2, 12, 87, 105, 100, 103, 101, 116]
+[0, 0, 0, 0, 3, 210, 15, 12, 87, 105, 100, 103, 101, 116]
 ```
 
 </div>

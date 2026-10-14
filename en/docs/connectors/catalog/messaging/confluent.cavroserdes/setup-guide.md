@@ -55,18 +55,18 @@ Store the API key and secret securely. Use Ballerina's `configurable` feature an
 
 ## Step 4: Configure schema registry authentication properties
 
-The `cregistry:Client` accepts authentication details through the `originals` map using
+The `cregistry:Client` takes the Schema Registry endpoint URL from the `baseUrl` field (see Step 2).
+Authentication (and, optionally, TLS truststore) details are supplied through the optional `originals` map using
 standard Confluent Schema Registry client properties. Set the following keys in your
 `originals` configuration:
 
 | Property key | Value |
 |---|---|
-| `schema.registry.url` | Your Schema Registry endpoint URL |
 | `basic.auth.credentials.source` | `USER_INFO` |
-| `schema.registry.basic.auth.user.info` | `<API_KEY>:<API_SECRET>` (colon-separated) |
+| `basic.auth.user.info` | `<API_KEY>:<API_SECRET>` (colon-separated) |
 
-In your `Config.toml`, supply these as a TOML inline table under the `originals` key.
+In your `Config.toml`, supply the endpoint URL as `baseUrl` and these properties as a TOML inline table under the `originals` key.
 
 :::note
-If you are using a self-hosted Confluent Platform Schema Registry without authentication, you can omit the `basic.auth.credentials.source` and `schema.registry.basic.auth.user.info` properties and provide only `schema.registry.url`.
+If you are using a self-hosted Confluent Platform Schema Registry without authentication, you can omit `originals` entirely and provide only `baseUrl`.
 :::
