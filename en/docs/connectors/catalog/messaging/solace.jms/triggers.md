@@ -97,7 +97,7 @@ The annotation accepts either a `QueueServiceConfiguration` or a `TopicServiceCo
 | `onMessage` | `remote function onMessage(record {\|*jms:Message; T payload;\|} message, jms:Caller caller) returns jms:Error?` | Invoked when a message is received on the subscribed queue or topic. Narrow `T` to a specific type to trigger data binding. |
 | `onError` | `remote function onError(jms:Error err) returns jms:Error?` | Optional. Invoked when an error occurs during message receipt or data binding. |
 
-> **Note:** The `caller` parameter of `onMessage` can be omitted entirely. Omit it when the service relies on `AUTO_ACKNOWLEDGE` or `DUPS_OK_ACKNOWLEDGE`; include it to acknowledge a message or control a session-transacted service manually. When declared, it must be of type `jms:Caller`.
+> **Note:** The `caller` parameter in `onMessage` is optional. Omit it for `AUTO_ACKNOWLEDGE` or `DUPS_OK_ACKNOWLEDGE` services. Include it (as type `jms:Caller`) if you need to manually acknowledge messages or manage a session-transacted service.
 
 ### Full usage example
 
