@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Sending a turn to an agent and reading its answer are two steps, not one. **Get Data Event Result** takes the correlation token that [Send Agent Data Event](send-agent-data-event.md) produced and returns the agent's answer for that turn, as a typed value. Splitting the two lets the same flow send now and read later, or send and wait in one pass, whichever suits the caller.
 
 <ThemedImage
-    alt="The chat resource flowing from Start into Send to chat, then a Get Data Event Result step with a dashed connector from claimAgent, then a Return step on agentReply"
+    alt="The chat resource flowing from Start into Send to chat, then a Wait for chat step with a dashed connector from claimAgent, then a Return step on agentReply"
     sources={{
         light: useBaseUrl('/img/workflows/agentic/get-data-event-result/get-data-event-result-light.png'),
         dark: useBaseUrl('/img/workflows/agentic/get-data-event-result/get-data-event-result-dark.png'),

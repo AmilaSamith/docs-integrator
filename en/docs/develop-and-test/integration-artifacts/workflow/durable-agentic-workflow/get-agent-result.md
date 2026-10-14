@@ -47,7 +47,7 @@ The steps below follow one example: a `GET claim/[string workflowId]/status` res
     }}
 />
 
-With **Wait for Result** selected, the saved step is drawn as a wait, **Wait for Result**; with it cleared, as **Get Agent Result**. Either way it has a dashed connector to the `claimAgent` it reads from. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable. Follow it with a **Return** step on the result variable and the status endpoint is complete: it reads what the instance concluded and hands that straight back to the caller.
+The saved step is drawn as **Get Agent Result**, with or without **Wait for Result**, and has a dashed connector to the `claimAgent` it reads from. **Instance Id** takes either text or an expression, so the ID can come from a path parameter as it does here, from a variable, or from a configurable. Follow it with a **Return** step on the result variable and the status endpoint is complete: it reads what the instance concluded and hands that straight back to the caller.
 
 ## Wait or check back
 

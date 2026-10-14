@@ -94,7 +94,7 @@ To register an activity with the agent:
     }}
 />
 
-The activity joins the agent node as a capability, drawn with a **Requires Approval** badge while it is gated. Registering it is what makes it available to the model, so an activity the agent never needs is best left off the list.
+The activity joins the agent node as a capability, drawn with a person badge while it is gated. Registering it is what makes it available to the model, so an activity the agent never needs is best left off the list.
 
 :::tip No arguments to wire
 Unlike a [Call Activity](../durable-workflow/activities.md#call-an-activity-from-a-workflow) step in a hand-wired workflow, the register form asks for no activity arguments. The agent maps them at runtime from what it has gathered, which is why the activity's doc comment, which the model reads as its description, and the parameter names are worth writing clearly.
