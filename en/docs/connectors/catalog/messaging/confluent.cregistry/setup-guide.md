@@ -49,7 +49,17 @@ If your Schema Registry instance requires SSL/TLS with a custom certificate auth
     keytool -import -trustcacerts -alias ConfluentCA -file ca-cert.pem -keystore truststore.jks -storepass <password>
     ```
 
-3. Note the truststore file path and password for use in the connector configuration.
+3. Note the truststore file path and password, and pass them to the connector through the `originals` map using the `schema.registry.ssl.truststore.location` and `schema.registry.ssl.truststore.password` keys:
+
+    ```ballerina
+    cregistry:Client schemaRegistryClient = check new (
+        baseUrl = baseUrl,
+        originals = {
+            "schema.registry.ssl.truststore.location": truststorePath,
+            "schema.registry.ssl.truststore.password": truststorePassword
+        }
+    );
+    ```
 
 :::note
 For Confluent Cloud with standard certificates, a custom truststore is typically not required.
