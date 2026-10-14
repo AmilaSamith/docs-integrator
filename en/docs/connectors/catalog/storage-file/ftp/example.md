@@ -44,8 +44,8 @@ Select **Add Connection** in the WSO2 Integrator sidebar to open the connector p
 <ThemedImage
     alt="FTP connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_01_palette.png'),
     }}
 />
 
@@ -65,8 +65,8 @@ After creating all four configurables, enter the following record literal in the
 <ThemedImage
     alt="FTP connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -77,8 +77,8 @@ Select **Save Connection** to persist the connection. The form closes and the ca
 <ThemedImage
     alt="FTP Connections panel showing ftpClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_03_canvas_connection.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_03_canvas_connection.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_03_canvas_connection.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_03_canvas_connection.png'),
     }}
 />
 
@@ -110,8 +110,8 @@ The `main` automation entry point appears in the sidebar under **Entry Points**,
 <ThemedImage
     alt="FTP connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -126,8 +126,8 @@ The `main` automation entry point appears in the sidebar under **Entry Points**,
 <ThemedImage
     alt="FTP getJson operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_05_getjson_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_05_getjson_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_05_getjson_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_05_getjson_form.png'),
     }}
 />
 
@@ -142,8 +142,8 @@ WSO2 Integrator renders the `log:printInfo` node in the flow canvas.
 <ThemedImage
     alt="Completed FTP automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_screenshot_06_completed_flow.png'),
     }}
 />
 
@@ -199,8 +199,8 @@ For the **Port Number**, create the `ftpPort` configurable variable and use inte
 <ThemedImage
     alt="Configurations panel open showing the configurable variables listed with empty value fields"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_03_configurations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_03_configurations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_03_configurations_panel.png'),
     }}
 />
 
@@ -213,8 +213,8 @@ Select **Add Artifact** to open the Artifacts palette. Navigate to the **File In
 <ThemedImage
     alt="Artifacts palette open with File Integration category showing the FTP/SFTP trigger card"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_01_artifact_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_01_artifact_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_01_artifact_palette.png'),
     }}
 />
 
@@ -235,8 +235,8 @@ For SFTP, set Protocol to sftp, change the port to `22`, and use the SFTP authen
 <ThemedImage
     alt="FTP trigger configuration form with all five listener parameters bound to configurable chips before selecting Create"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_02_trigger_config_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_02_trigger_config_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_02_trigger_config_form.png'),
     }}
 />
 
@@ -273,8 +273,8 @@ The Visual Designer groups handlers by event category. `onCreate` generates one 
 <ThemedImage
     alt="Service view with Select Handler to Add side panel open listing FTP handler options"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_04_add_handler_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_04_add_handler_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_04_add_handler_panel.png'),
     }}
 />
 
@@ -291,8 +291,8 @@ These paths drive the `@ftp:FunctionConfig` annotation's `afterProcess` (Success
 <ThemedImage
     alt="onCreate handler configuration form showing File Format CSV, success move-to path, and error move-to path configured before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_05_message_define_value.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_05_message_define_value.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_05_message_define_value.png'),
     }}
 />
 
@@ -311,8 +311,8 @@ WSO2 Integrator renders the `log:printInfo` node in the flow canvas.
 <ThemedImage
     alt="onFileCsv handler flow canvas showing the log:printInfo step added with fileInfo.toJsonString() as the argument"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_06_handler_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_06_handler_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_06_handler_flow.png'),
     }}
 />
 
@@ -323,8 +323,8 @@ Navigate back to the **FTP Integration** service view. The **File Handlers** sec
 <ThemedImage
     alt="Final FTP Integration service view with the onFileCsv handler row registered under File Handlers"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_07_service_view_final.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/ftp/ftp_trigger_screenshots_07_service_view_final.png'),
+        light: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/storage-file/ftp/ftp_trigger_screenshots_07_service_view_final.png'),
     }}
 />
 

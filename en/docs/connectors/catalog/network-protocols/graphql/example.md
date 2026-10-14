@@ -44,8 +44,8 @@ Select **+ Add Connection** on the WSO2 Integrator canvas to open the connection
 <ThemedImage
     alt="GraphQL connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_01_palette.png'),
     }}
 />
 
@@ -66,8 +66,8 @@ Bind each field to a configurable variable using the helper panel.
 <ThemedImage
     alt="GraphQL connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -78,8 +78,8 @@ Select **Save Connection** to persist the connection. The `graphqlClient` node a
 <ThemedImage
     alt="GraphQL Connections panel showing graphqlClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -106,8 +106,8 @@ In the left panel, select **Configurations** and set a value for each configurab
 <ThemedImage
     alt="GraphQL connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -120,8 +120,8 @@ In the left panel, select **Configurations** and set a value for each configurab
 <ThemedImage
     alt="GraphQL Execute operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_05_operation_filled.png'),
     }}
 />
 
@@ -130,8 +130,8 @@ Select **Save** to add the `execute` step to the flow.
 <ThemedImage
     alt="Completed GraphQL automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_screenshot_06_completed_flow.png'),
     }}
 />
 
@@ -177,8 +177,8 @@ Select **Add Artifact** (the **+** icon next to the project name) in the WSO2 In
 <ThemedImage
     alt="Artifacts palette open showing the Integration as API category with GraphQL Service card visible"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_01_artifact_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_01_artifact_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_01_artifact_palette.png'),
     }}
 />
 
@@ -202,8 +202,8 @@ Fill in the **Create GraphQL Service** form by binding the port to a configurabl
 <ThemedImage
     alt="GraphQL Service trigger configuration form fully filled with all listener parameters before clicking Create"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_02_trigger_config_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_02_trigger_config_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_02_trigger_config_form.png'),
     }}
 />
 
@@ -217,8 +217,8 @@ Fill in the **Create GraphQL Service** form by binding the port to a configurabl
 <ThemedImage
     alt="Configurations panel open showing the configurable variables listed with empty value fields"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_03_configurations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_03_configurations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_03_configurations_panel.png'),
     }}
 />
 
@@ -235,8 +235,8 @@ Select **+ Create Operations** on the `/graphql` service node in the GraphQL dia
 <ThemedImage
     alt="GraphQL Operations panel showing empty Query, Mutation, and Subscription sections: HTTP equivalent of Add Handler"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_04_add_handler_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_04_add_handler_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_04_add_handler_panel.png'),
     }}
 />
 
@@ -254,8 +254,8 @@ Select **+ Create Operations** on the `/graphql` service node in the GraphQL dia
 <ThemedImage
     alt="Define Value modal on the Create Type Schema tab showing the BookInfo record name and fields filled in before Save"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_05_message_define_value.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_05_message_define_value.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_05_message_define_value.png'),
     }}
 />
 
@@ -266,8 +266,8 @@ Open the `getBookInfo` resource in the flow canvas. Add `graphql:Context ctx` as
 <ThemedImage
     alt="getBookInfo handler flow canvas showing log:printInfo step added"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_06_handler_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_06_handler_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_06_handler_flow.png'),
     }}
 />
 
@@ -278,8 +278,8 @@ Navigate back to **GraphQL Service - /graphql** in the left tree. The GraphQL di
 <ThemedImage
     alt="Trigger Service view showing the registered Event getBookInfo handler row"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_07_service_view_final.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/graphql/graphql_trigger_screenshots_07_service_view_final.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/graphql/graphql_trigger_screenshots_07_service_view_final.png'),
     }}
 />
 

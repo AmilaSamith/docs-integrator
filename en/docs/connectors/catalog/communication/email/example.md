@@ -43,8 +43,8 @@ In the left sidebar, select the **WSO2 Integrator** tab. Under your project, hov
 <ThemedImage
     alt="Email SMTP connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_01_palette.png'),
     }}
 />
 
@@ -67,8 +67,8 @@ Bind each field to a configurable variable using the helper panel. For each fiel
 <ThemedImage
     alt="Email SMTP connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -79,8 +79,8 @@ Select **Save Connection** to persist the connection. The form closes and the ca
 <ThemedImage
     alt="Email SMTP Connections panel showing emailSmtpclient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -106,8 +106,8 @@ Select the **+** (add step) button between the **Start** node and the **Error Ha
 <ThemedImage
     alt="Email SMTP connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -124,16 +124,16 @@ Select **Save** to add the step to the automation flow.
 <ThemedImage
     alt="Email SMTP Send Message operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_05_operation_filled.png'),
     }}
 />
 
 <ThemedImage
     alt="Completed Email SMTP automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/email/email_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/communication/email/email_screenshot_06_completed_flow.png'),
     }}
 />
 

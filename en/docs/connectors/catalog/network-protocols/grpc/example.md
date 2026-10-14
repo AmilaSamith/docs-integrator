@@ -34,8 +34,8 @@ Select **Connections** in the WSO2 Integrator sidebar, then select the **+** but
 <ThemedImage
     alt="gRPC connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_01_palette.png'),
     }}
 />
 
@@ -58,8 +58,8 @@ Bind the connection parameters to configurable variables. Select the grid icon n
 <ThemedImage
     alt="gRPC connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -70,8 +70,8 @@ Select **Save** at the bottom of the connection form. The `grpcClient` connectio
 <ThemedImage
     alt="gRPC Connections panel showing grpcClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -99,8 +99,8 @@ The `main` automation entry point is created and the canvas shows a flow with **
 <ThemedImage
     alt="gRPC connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -113,8 +113,8 @@ The `main` automation entry point is created and the canvas shows a flow with **
 <ThemedImage
     alt="gRPC Execute Simple Rpc operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_05_operation_filled.png'),
     }}
 />
 
@@ -123,8 +123,8 @@ Select **Save**. The `grpc : executeSimpleRPC` node appears on the canvas betwee
 <ThemedImage
     alt="Completed gRPC automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/grpc/grpc_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/grpc/grpc_screenshot_06_completed_flow.png'),
     }}
 />
 
