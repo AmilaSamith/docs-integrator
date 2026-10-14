@@ -23,7 +23,7 @@ Example prompts to get started:
 - "Generate a data-driven test for the `calculateDiscount` function with at least five input combinations."
 - "Add mock stubs for the payment gateway client and write a test for a failed charge."
 
-Copilot writes the generated code into the `tests/` folder of your module, then runs the tests with `bal test` and fixes any that fail before it finishes. Generated tests are a starting point, not a finished product.
+Copilot adds the generated tests to the `tests/` folder of your module, runs them with `bal test`, and resolves any failures before it completes your request. Review the tests to confirm that they check the behavior you expect.
 
 <ThemedImage
     alt="Copilot running the generated tests with bal test and showing all tests passing."
