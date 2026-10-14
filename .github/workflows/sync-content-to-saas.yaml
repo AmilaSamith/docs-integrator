@@ -38,7 +38,8 @@ name: Sync shared content to saas
 #
 # Carved out of develop-and-test/integration-artifacts/: workflow/ (durable
 # workflows and durable agentic workflows) is managed through ICP, which is
-# self-hosted only, so it is listed in SYNC_EXCLUDE_DIRS and removed after
+# self-hosted only, and durable workflow isn't available on WSO2 Cloud yet.
+# It is listed in SYNC_EXCLUDE_DIRS and removed after
 # the replace. Like the ICP page above, it never drives image syncing either,
 # and its images on saas are cleaned up as stale if nothing else uses them.
 # The shared-content-guard on saas excludes the same path.
@@ -50,6 +51,9 @@ name: Sync shared content to saas
 # (SAAS_OWNED_FILES) -- saas's copy links to the integrator site instead of
 # the workflow/ pages it doesn't have. The sync restores saas's copy of
 # those two files after the full replace and never copies integrator's.
+# When durable workflow ships on saas, remove all of these carve-outs
+# (the workflow/ directory, the comparison page, the two saas-owned files,
+# the matching trigger-path negations, and the guard's exemptions on saas).
 #
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
