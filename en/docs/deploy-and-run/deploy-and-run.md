@@ -19,7 +19,6 @@ Once your integration is ready, this section covers how to ship it to WSO2 Cloud
   <ul class="palette-card-list">
     <li>Deploy from the editor or the cloud editor</li>
     <li>Connect a Git provider and deploy automatically on every commit</li>
-    <li>Managing configurations</li>
     <li>Troubleshoot deployment</li>
   </ul>
 </PaletteCard>
