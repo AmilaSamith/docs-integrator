@@ -43,6 +43,13 @@ name: Shared content guard
 # directly. The sync workflow on wso2-integrator must skip it too, or the
 # next sync overwrites it.
 #
+# Durable workflow content is not synced to saas either, so these paths are
+# excluded too: `develop-and-test/integration-artifacts/workflow/` (self-hosted,
+# ICP-managed), `ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md`
+# (removed on saas), and `ai-integrations/agents/gated-tools.md` and
+# `supportive-artifacts/agent.md` (saas-owned copies that link to the
+# integrator site). The sync workflow on wso2-integrator skips the same paths.
+#
 # The sync bot's own PRs are exempt (matched by head branch name prefix,
 # set in sync-content-to-saas.yaml) -- everything else touching a shared
 # path fails this check.
@@ -60,6 +67,10 @@ on:
       - 'en/docs/editor/**'
       - 'en/docs/develop-and-test/**'
       - '!en/docs/develop-and-test/create-workspace/**'
+      - '!en/docs/develop-and-test/integration-artifacts/workflow/**'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md'
+      - '!en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
       - 'en/docs/reference/glossary.md'
