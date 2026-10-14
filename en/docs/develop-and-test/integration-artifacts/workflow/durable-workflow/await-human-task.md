@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Real processes wait on people: a manager approves an expense, a reviewer checks documents, an HR lead assigns a new joiner to a team. A **Human Task** step stops the workflow at exactly that point, hands a task to a role, and resumes the moment someone submits a decision, whether that takes a minute or a month. While it waits, it holds no threads and no connections.
 
 <ThemedImage
-    alt="The employeeOnboarding workflow halted on an Await Human Task step whose result is HRFeedback, with a dashed arrow arriving from an HRManager role marker"
+    alt="The employeeOnboarding workflow with a Human Task step whose result is feedback, with a dashed arrow arriving from the role marker"
     sources={{
         light: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task-light.png'),
         dark: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task-dark.png'),
@@ -48,7 +48,7 @@ The steps below follow one example: an onboarding workflow where an HR lead assi
 4. Click **Save**.
 
 <ThemedImage
-    alt="Adding an Await Human Task step, with its payload, title, description, and a new completion type"
+    alt="Adding a Human Task step with its role, task input, title, description, and a new HRFeedback completion type"
     sources={{
         light: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
         dark: useBaseUrl('/img/workflows/develop/human-task-workflow/await-human-task.gif'),
