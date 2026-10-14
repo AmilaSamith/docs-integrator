@@ -57,8 +57,8 @@ Construct JSON directly using Ballerina types. The `json` type accepts null, boo
    <ThemedImage
        alt="Flow designer showing Declare Variable steps for JSON value construction including nested objects and arrays"
        sources={{
-           light: useBaseUrl('/img/develop/transform/json/json-creating-flow.png'),
-           dark: useBaseUrl('/img/develop/transform/json/json-creating-flow.png'),
+           light: useBaseUrl('/img/develop/transform/json/json-creating-flow-v5.1.png'),
+           dark: useBaseUrl('/img/develop/transform/json/json-creating-flow-v5.1.png'),
        }}
    />
 
