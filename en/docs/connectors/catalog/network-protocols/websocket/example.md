@@ -36,8 +36,8 @@ In the WSO2 Integrator explorer panel, expand your project and select the **+** 
 <ThemedImage
     alt="WebSocket connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_01_palette.png'),
     }}
 />
 
@@ -58,8 +58,8 @@ In the **Configure Websocket** form, bind the required field to a configurable v
 <ThemedImage
     alt="WebSocket connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -70,8 +70,8 @@ Select **Save Connection** to persist the connection. Confirm that `websocketCli
 <ThemedImage
     alt="WebSocket Connections panel showing websocketClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -96,8 +96,8 @@ In the WSO2 Integrator explorer, select **Add Artifact**, choose **Automation** 
 <ThemedImage
     alt="WebSocket connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -110,16 +110,16 @@ In the WSO2 Integrator explorer, select **Add Artifact**, choose **Automation** 
 <ThemedImage
     alt="WebSocket writeTextMessage operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_05_operation_filled.png'),
     }}
 />
 
 <ThemedImage
     alt="Completed WebSocket automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/websocket/websocket_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/websocket/websocket_screenshot_06_completed_flow.png'),
     }}
 />
 

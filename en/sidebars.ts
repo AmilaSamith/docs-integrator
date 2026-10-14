@@ -23,10 +23,10 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'AI',
-          link: { type: 'doc', id: 'catalog/built-in/ai/ai-overview' },
+          link: { type: 'doc', id: 'catalog/ai-ml/ai/ai-overview' },
           items: [
-            'catalog/built-in/ai/action-reference',
-            'catalog/built-in/ai/trigger-reference',
+            'catalog/ai-ml/ai/action-reference',
+            'catalog/ai-ml/ai/trigger-reference',
           ],
         },
         {
@@ -323,22 +323,22 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Email',
-          link: { type: 'doc', id: 'catalog/built-in/email/email' },
+          link: { type: 'doc', id: 'catalog/communication/email/email' },
           items: [
-            'catalog/built-in/email/setup-guide',
-            'catalog/built-in/email/action-reference',
-            'catalog/built-in/email/trigger-reference',
-            'catalog/built-in/email/example',
+            'catalog/communication/email/setup-guide',
+            'catalog/communication/email/action-reference',
+            'catalog/communication/email/trigger-reference',
+            'catalog/communication/email/example',
           ],
         },
         {
           type: 'category',
           label: 'FTP',
-          link: { type: 'doc', id: 'catalog/built-in/ftp/ftp' },
+          link: { type: 'doc', id: 'catalog/storage-file/ftp/ftp' },
           items: [
-            'catalog/built-in/ftp/action-reference',
-            'catalog/built-in/ftp/trigger-reference',
-            'catalog/built-in/ftp/example',
+            'catalog/storage-file/ftp/action-reference',
+            'catalog/storage-file/ftp/trigger-reference',
+            'catalog/storage-file/ftp/example',
           ],
         },
         {
@@ -416,21 +416,21 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'gRPC',
-          link: { type: 'doc', id: 'catalog/built-in/grpc/grpc' },
+          link: { type: 'doc', id: 'catalog/network-protocols/grpc/grpc' },
           items: [
-            'catalog/built-in/grpc/action-reference',
-            'catalog/built-in/grpc/trigger-reference',
-            'catalog/built-in/grpc/example',
+            'catalog/network-protocols/grpc/action-reference',
+            'catalog/network-protocols/grpc/trigger-reference',
+            'catalog/network-protocols/grpc/example',
           ],
         },
         {
           type: 'category',
           label: 'GraphQL',
-          link: { type: 'doc', id: 'catalog/built-in/graphql/graphql' },
+          link: { type: 'doc', id: 'catalog/network-protocols/graphql/graphql' },
           items: [
-            'catalog/built-in/graphql/action-reference',
-            'catalog/built-in/graphql/trigger-reference',
-            'catalog/built-in/graphql/example',
+            'catalog/network-protocols/graphql/action-reference',
+            'catalog/network-protocols/graphql/trigger-reference',
+            'catalog/network-protocols/graphql/example',
           ],
         },
         {
@@ -446,11 +446,11 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'HTTP',
-          link: { type: 'doc', id: 'catalog/built-in/http/overview' },
+          link: { type: 'doc', id: 'catalog/network-protocols/http/overview' },
           items: [
-            'catalog/built-in/http/action-reference',
-            'catalog/built-in/http/trigger-reference',
-            'catalog/built-in/http/example',
+            'catalog/network-protocols/http/action-reference',
+            'catalog/network-protocols/http/trigger-reference',
+            'catalog/network-protocols/http/example',
           ],
         },
         {
@@ -915,10 +915,10 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'MCP',
-          link: { type: 'doc', id: 'catalog/built-in/mcp/mcp' },
+          link: { type: 'doc', id: 'catalog/ai-ml/mcp/mcp' },
           items: [
-            'catalog/built-in/mcp/action-reference',
-            'catalog/built-in/mcp/trigger-reference',
+            'catalog/ai-ml/mcp/action-reference',
+            'catalog/ai-ml/mcp/trigger-reference',
           ],
         },
         {
@@ -993,12 +993,12 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'MQTT',
-          link: { type: 'doc', id: 'catalog/built-in/mqtt/mqtt' },
+          link: { type: 'doc', id: 'catalog/messaging/mqtt/mqtt' },
           items: [
-            'catalog/built-in/mqtt/setup-guide',
-            'catalog/built-in/mqtt/action-reference',
-            'catalog/built-in/mqtt/trigger-reference',
-            'catalog/built-in/mqtt/example',
+            'catalog/messaging/mqtt/setup-guide',
+            'catalog/messaging/mqtt/action-reference',
+            'catalog/messaging/mqtt/trigger-reference',
+            'catalog/messaging/mqtt/example',
           ],
         },
         {
@@ -1789,11 +1789,11 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'TCP',
-          link: { type: 'doc', id: 'catalog/built-in/tcp/tcp' },
+          link: { type: 'doc', id: 'catalog/network-protocols/tcp/tcp' },
           items: [
-            'catalog/built-in/tcp/action-reference',
-            'catalog/built-in/tcp/trigger-reference',
-            'catalog/built-in/tcp/example',
+            'catalog/network-protocols/tcp/action-reference',
+            'catalog/network-protocols/tcp/trigger-reference',
+            'catalog/network-protocols/tcp/example',
           ],
         },
         {
@@ -1843,11 +1843,11 @@ const sidebars: SidebarsConfig = {
           type: 'category',
 
           label: 'UDP',
-          link: { type: 'doc', id: 'catalog/built-in/udp/udp' },
+          link: { type: 'doc', id: 'catalog/network-protocols/udp/udp' },
           items: [
-            'catalog/built-in/udp/action-reference',
-            'catalog/built-in/udp/trigger-reference',
-            'catalog/built-in/udp/example',
+            'catalog/network-protocols/udp/action-reference',
+            'catalog/network-protocols/udp/trigger-reference',
+            'catalog/network-protocols/udp/example',
           ],
         },
         {
@@ -1863,22 +1863,22 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'WebSocket',
-          link: { type: 'doc', id: 'catalog/built-in/websocket/websocket' },
+          link: { type: 'doc', id: 'catalog/network-protocols/websocket/websocket' },
           items: [
-            'catalog/built-in/websocket/action-reference',
-            'catalog/built-in/websocket/trigger-reference',
-            'catalog/built-in/websocket/example',
+            'catalog/network-protocols/websocket/action-reference',
+            'catalog/network-protocols/websocket/trigger-reference',
+            'catalog/network-protocols/websocket/example',
           ],
         },
         {
           type: 'category',
           label: 'WebSub',
-          link: { type: 'doc', id: 'catalog/built-in/websub/websub' },
+          link: { type: 'doc', id: 'catalog/network-protocols/websub/websub' },
           items: [
-            'catalog/built-in/websub/setup-guide',
-            'catalog/built-in/websub/action-reference',
-            'catalog/built-in/websub/trigger-reference',
-            'catalog/built-in/websub/example',
+            'catalog/network-protocols/websub/setup-guide',
+            'catalog/network-protocols/websub/action-reference',
+            'catalog/network-protocols/websub/trigger-reference',
+            'catalog/network-protocols/websub/example',
           ],
         },
         {

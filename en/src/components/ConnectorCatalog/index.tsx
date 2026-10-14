@@ -15,11 +15,8 @@ interface Props {
  * mark on cards that have no real icon image. Deliberately
  * theme-invariant (same hex regardless of light/dark mode) -- like a
  * brand-colored badge, not page chrome, so it stays vibrant either way.
- * "Built-in" gets the WSO2 accent peach since those are WSO2's own
- * bundled connectors, not third-party ones.
  */
 const CATEGORY_TINTS: Record<string, [string, string]> = {
-  'Built-in': ['#FDE3D9', '#D63B12'],
   'AI & ML': ['#EDE9FE', '#5B3FBF'],
   'Cloud & Infrastructure': ['#E4F0FF', '#1D5FA8'],
   Communication: ['#E7F6EF', '#1B7A52'],
@@ -32,6 +29,7 @@ const CATEGORY_TINTS: Record<string, [string, string]> = {
   HRMS: ['#F3E9FB', '#6B2E8F'],
   'Marketing & Social': ['#FFE9E3', '#B23A16'],
   Messaging: ['#E5F1FB', '#175E8C'],
+  'Network & Protocols': ['#FDE3D9', '#D63B12'],
   'Productivity & Collaboration': ['#EAF0FE', '#2B4BAF'],
   'Security & Identity': ['#FDEEE7', '#9A4415'],
   'Storage & Files': ['#E9F3EE', '#26694C'],

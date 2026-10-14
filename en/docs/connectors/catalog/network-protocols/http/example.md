@@ -40,8 +40,8 @@ Select **+ Add Connection** in the **Connections** section of the WSO2 Integrato
 <ThemedImage
     alt="HTTP connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_01_palette.png'),
     }}
 />
 
@@ -57,8 +57,8 @@ In the **New Connection** form, bind the connection parameters to configurable v
 <ThemedImage
     alt="HTTP connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -69,8 +69,8 @@ Select **Save** to create the connection. The connection `httpClient` now appear
 <ThemedImage
     alt="HTTP Connections panel showing httpClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -103,16 +103,16 @@ An Automation entry point named `main` is created and the visual designer opens,
 <ThemedImage
     alt="HTTP get operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_05_operation_filled.png'),
     }}
 />
 
 <ThemedImage
     alt="Completed HTTP automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_screenshot_06_completed_flow.png'),
     }}
 />
 
@@ -159,8 +159,8 @@ flowchart LR
 <ThemedImage
     alt="Artifacts palette open showing the Integration as API category with the HTTP Service card visible"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_01_artifact_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_01_artifact_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_01_artifact_palette.png'),
     }}
 />
 
@@ -176,8 +176,8 @@ In the **Create HTTP Service** form, expand **Advanced Configurations** and sele
 <ThemedImage
     alt="HTTP Service trigger configuration form with the Port field bound to the httpListenerPort configuration variable, before selecting Create"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_02_trigger_config_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_02_trigger_config_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_02_trigger_config_form.png'),
     }}
 />
 
@@ -191,8 +191,8 @@ In the **Create HTTP Service** form, expand **Advanced Configurations** and sele
 <ThemedImage
     alt="Configurable Variables panel open showing the httpListenerPort variable listed with an empty Required value field"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_03_configurations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_03_configurations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_03_configurations_panel.png'),
     }}
 />
 
@@ -210,8 +210,8 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 <ThemedImage
     alt="HTTP Service view with the Select HTTP Method to Add side panel open listing available resource handler options"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_04_add_handler_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_04_add_handler_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_04_add_handler_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_04_add_handler_panel.png'),
     }}
 />
 
@@ -226,8 +226,8 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 <ThemedImage
     alt="Define Value modal on the Create Type Schema tab showing the record name and fields filled in before Save"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_05_message_define_value.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_05_message_define_value.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_05_message_define_value.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_05_message_define_value.png'),
     }}
 />
 
@@ -241,8 +241,8 @@ Select **Create** at the bottom of the trigger configuration form. WSO2 Integrat
 <ThemedImage
     alt="Handler flow canvas showing the Declare Variable, log:printInfo, Return, and Error Handler nodes between Start and End"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_06_handler_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_06_handler_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_06_handler_flow.png'),
     }}
 />
 
@@ -253,8 +253,8 @@ Select the back arrow in the canvas header (or re-select the **HTTP Service** en
 <ThemedImage
     alt="Final HTTP Service view showing the registered GET messages resource row in the Resources section"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_07_service_view_final.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/http/http_trigger_screenshots_07_service_view_final.png'),
+        light: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/network-protocols/http/http_trigger_screenshots_07_service_view_final.png'),
     }}
 />
 
