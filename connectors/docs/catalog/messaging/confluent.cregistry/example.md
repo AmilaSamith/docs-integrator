@@ -49,6 +49,20 @@ Enter the connection parameters, binding each field to a configurable variable:
 
 - **baseUrl** : The URL of the Confluent Schema Registry service
 
+Confluent Cloud Schema Registry requires API key authentication, which you supply through the optional **originals** field of the connection. For Confluent Cloud, set **originals** to a map containing the `basic.auth.credentials.source` and `basic.auth.user.info` keys. The equivalent code is:
+
+```ballerina
+cregistry:Client cregistryClient = check new (
+    baseUrl = cregistryServiceUrl,
+    originals = {
+        "basic.auth.credentials.source": "USER_INFO",
+        "basic.auth.user.info": string `${apiKey}:${apiSecret}`
+    }
+);
+```
+
+Here, `apiKey` and `apiSecret` are configurable variables holding the Schema Registry API key and secret created in the [Setup Guide](setup-guide.md).
+
 <ThemedImage
     alt="Confluent Schema Registry connection form fully filled with all parameters before saving"
     sources={{
