@@ -305,13 +305,13 @@ function SearchBar(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Cloud console screenshot -- the real WSO2 Cloud sign-in page,
+/*  Cloud console screenshot -- the real WSO2 Cloud console (create-an-integration screen),
  *  inside the same browser-chrome frame used across the hero. A raw
  *  flat screenshot (no rounding/shadow of its own baked in), so the
  *  chrome frame is what gives it presentation.
  * ------------------------------------------------------------------ */
 function CloudConsoleScreenshot(): ReactNode {
-  const src = useBaseUrl('/img/landing/wso2-integration-platform-sign-in.png');
+  const src = useBaseUrl('/img/landing/wso2-integration-cloud.png');
   return (
     <div className={styles.productCard}>
       <div className={styles.productCardChrome}>
@@ -320,7 +320,7 @@ function CloudConsoleScreenshot(): ReactNode {
         <span className={styles.productCardDot} />
         <span className={styles.productCardTitle}>WSO2 Cloud Console</span>
       </div>
-      <img src={src} alt="WSO2 Integration Platform sign-in page" />
+      <img src={src} alt="WSO2 Cloud console: create an integration" />
     </div>
   );
 }
