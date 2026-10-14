@@ -138,7 +138,7 @@ To have Amazon Bedrock chunk and embed the documents and query S3 Vectors for yo
 
 - **Dimension** must match your embedding provider's output dimension (1 to 4,096).
 - **Distance metric** is `cosine` or `euclidean`.
-- **Non-filterable metadata keys** must include `content`. The store keeps each chunk's text in this metadata key. AWS limits filterable metadata to 2 KB per vector, which chunk text easily exceeds, while non-filterable metadata can use the rest of the 40 KB per vector. If you set a different **contentKey** (see [S3 Vectors configuration](#s3-vectors-configuration)), declare that key instead.
+- **Non-filterable metadata keys** must include `content`. The store keeps each chunk's text in this metadata key. AWS limits filterable metadata to 2 KB per vector, which chunk text easily exceeds, while non-filterable metadata can use the rest of the 40 KB per vector. If you set a different **contentKey** (see [Vector store config](#s3-vectors-store-config)), declare that key instead.
 
 See [Creating a vector index in a vector bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-create-index.html).
 
@@ -182,7 +182,7 @@ See the permissions sections of [QueryVectors](https://docs.aws.amazon.com/Amazo
 In the **Select Vector Store** picker, this store is listed as **Amazon S3 Vectors Vector Store**.
 
 <ThemedImage
-    alt={"Create Vector Store form titled 'Initializes the S3 Vectors vector store.' showing Connection Config (required, Record/Expression toggle, prefilled with {auth: {accessKeyId: \"\", secretAccessKey: \"\"}}), Index (required, Record/Expression toggle, default {}), S3 Vectors Configuration (Default: {}), HTTP Configuration (Default: {}), and Vector Store Name (default s3Vectorstore)."}
+    alt={"Create Vector Store form titled 'Initializes the S3 Vectors vector store.' showing Connection Config (required, Record/Expression toggle, prefilled with {auth: {accessKeyId: \"\", secretAccessKey: \"\"}, region: \"us-west-2\"}), Vector Index (required, Record/Expression toggle, default {}), Vector Store Config (Default: {}), Vector Store Name (default s3Vectorstore), and Result Type (locked to s3:VectorStore)."}
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/08-s3-vectors-form-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/08-s3-vectors-form-v5.1.png'),
@@ -191,31 +191,33 @@ In the **Select Vector Store** picker, this store is listed as **Amazon S3 Vecto
 
 | Field | Required | Default | Available values |
 |---|---|---|---|
-| **Connection Config** | Yes | — | How to reach S3 Vectors. See [Connection config](#s3-vectors-connection-config). |
-| **Index** | Yes | — | The target index: either `vectorBucketName` and `indexName` together, for example `{vectorBucketName: "amzn-s3-demo-vector-bucket", indexName: "idx"}`, or `indexArn` on its own. Setting both forms, or only one of the two names, fails. |
-| **S3 Vectors Configuration** | No | `{}` | Store behavior. See [S3 Vectors configuration](#s3-vectors-configuration). |
-| **HTTP Configuration** | No | `{}` | Standard HTTP knobs. Same fields as [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations), with two exceptions: the store always uses HTTP/1.1 without chunked request bodies, because S3 Vectors rejects both HTTP/2 and chunked bodies, and **Retry Config** is ignored, because the store retries on its own. |
+| **Connection Config** | Yes | N/A | How to reach S3 Vectors. See [Connection config](#s3-vectors-connection-config). |
+| **Vector Index** | Yes | N/A | The target index: either `vectorBucketName` and `indexName` together, for example `{vectorBucketName: "amzn-s3-demo-vector-bucket", indexName: "idx"}`, or `indexArn` on its own. Setting both forms, or only one of the two names, fails. Use `indexArn` for an index in another AWS account, because bucket and index names are looked up in your own account. |
+| **Vector Store Config** | No | `{}` | Store behavior. See [Vector store config](#s3-vectors-store-config). |
 
 :::tip
-**Connection Config** is prefilled with empty static access keys. When the integration runs on AWS, use `DEFAULT_CREDENTIALS` instead so that no long-lived keys are kept in the integration.
+**Connection Config** is prefilled with empty static access keys and the region `us-west-2`. Set **region** to the region of your vector bucket. When the integration runs on AWS, use `DEFAULT_CREDENTIALS` instead so that no long-lived keys are kept in the integration.
 :::
 
 #### Connection config {#s3-vectors-connection-config}
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **auth** | `auth:AuthConfig` | — | `DEFAULT_CREDENTIALS`, or one of the credential records in [AWS credential options](model-providers.md#aws-credential-options). |
-| **region** | `aws:Region \| string` | `us-east-1` | The region of the vector bucket. |
+| **auth** | `auth:AuthConfig` | N/A | `DEFAULT_CREDENTIALS`, or one of the credential records in [AWS credential options](model-providers.md#aws-credential-options). |
+| **region** | `aws:Region \| string` | N/A | The region of the vector bucket. |
 | **endpoint** | `aws:EndpointConfig` | `()` (derived from **region**) | Only `customEndpoint` is useful here: a full endpoint URL, including the scheme, that replaces the derived one. `fips` must stay `false`; AWS lists no FIPS endpoint for S3 Vectors, so `true` fails when the store is created. `dualstack` is ignored, because every S3 Vectors endpoint is already dual-stack (`s3vectors.<region>.api.aws`). |
+
+| **httpConfig** | `HttpConfig` | `{}` | HTTP client settings: `timeout` (seconds, default `30`), `proxy`, `secureSocket`, `poolConfig`, `circuitBreaker`, `socketConfig`, and `responseLimits`, with the same meaning as in `http:ClientConfiguration`. The HTTP version, chunking, and retries aren't configurable: the store always uses HTTP/1.1 without chunked request bodies, because S3 Vectors rejects both HTTP/2 and chunked bodies, and it retries failed requests on its own. |
 
 For an [interface VPC endpoint](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-privatelink.html), enable private DNS on the endpoint and leave **endpoint** empty.
 
-#### S3 Vectors configuration {#s3-vectors-configuration}
+#### Vector store config {#s3-vectors-store-config}
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **contentKey** | `string` | `"content"` | The metadata key that holds the chunk text. It must be a non-filterable key on the index. |
+| **contentKey** | `string` | `"content"` | The metadata key that holds the chunk text, up to 63 characters. It must be a non-filterable key on the index. |
 | **filters** | `ai:MetadataFilters` | `()` | Filters applied to every **Query**, combined with the query's own filters using `AND`. |
+| **queryMode** | `QueryMode` | `()` (the index's own mode) | How filters are applied in a **Query** with an embedding. `CLASSIC` applies them during the search, so a filtered query can return fewer than **Top K** matches. `ENHANCED` applies them before the search. AWS rejects `CLASSIC` on an `ENHANCED` index. |
 | **returnVectorData** | `boolean` | `false` | Whether **Query** returns each match's embedding. S3 Vectors doesn't return embeddings from a search, so the store makes extra `GetVectors` calls (up to 100 keys each) when this is `true`. When `false`, the embedding of each match is empty. |
 | **maxListScan** | `int` | `100000` | The most vectors that a **Query** without an embedding reads before it fails. See [Behavior and limits](#s3-vectors-behavior-and-limits). |
 | **validateIndexOnInit** | `boolean` | `true` | Whether the store reads the index with `GetIndex` when it is created. This catches a missing index and a filterable content key at startup, and lets **Add** check each vector's dimension before sending it. |
@@ -225,8 +227,9 @@ For an [interface VPC endpoint](https://docs.aws.amazon.com/AmazonS3/latest/user
 - **Dense vectors and text chunks only.** S3 Vectors has no sparse or hybrid index, and the chunk text is stored as metadata, so chunk content must be a `string`.
 - **Large adds and deletes aren't atomic.** The store sends up to 500 vectors per request. If a request fails, the earlier requests are already applied.
 - **`similarityScore` is converted from the S3 Vectors distance** so that higher means more similar: `1 - distance` for a `cosine` index, and `1 / (1 + distance)` for a `euclidean` index.
-- **Range filters need numbers.** The store saves `createdAt` and `modifiedAt` as epoch seconds, so range filters on them must use epoch seconds too.
-- **Filtered queries on a `CLASSIC` index can return fewer than Top K matches.** Indexes in vector buckets created on or after September 30, 2026 are `ENHANCED` and filter before searching. See [Changing a vector index's mode](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-index-mode.html).
+- **Two metadata keys are reserved.** The store saves the chunk text under **contentKey** and the chunk type under `_chunkType`, so **Add** rejects a chunk whose own metadata uses either key.
+- **Range filters need numbers.** The store saves `createdAt` and `modifiedAt` as epoch seconds, because S3 Vectors range filters accept only numbers. A filter on them can use a `time:Utc` value or epoch seconds.
+- **Filtered queries on a `CLASSIC` index can return fewer than Top K matches.** Indexes in vector buckets created on or after September 30, 2026 are `ENHANCED` and filter before searching. To filter first on an older index, set **queryMode** to `ENHANCED`. See [Changing a vector index's mode](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-index-mode.html).
 - **A query without an embedding scans the index** with `ListVectors` and checks the filters in the integration. The Vector Knowledge Base's **Delete By Filter** sends this kind of query, so it reads the whole index, and fails after more than **maxListScan** vectors.
 
 ## Milvus

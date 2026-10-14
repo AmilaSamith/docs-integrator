@@ -69,9 +69,9 @@ For an end-to-end example of wiring this loader into an ingestion pipeline, see 
 
 Reads objects from Amazon S3 buckets and returns them as text. A single loader instance can read from several buckets in the same region, and from whole buckets, key prefixes (optionally recursively), or individual object keys.
 
-Each object is returned as an `ai:TextDocument` based on its extension:
+Each object is returned as an `ai:TextDocument` based on its extension. For a key named directly in **paths** without a recognized extension, the object's `Content-Type` is used instead.
 
-- Textual files (`txt`, `text`, `md`, `markdown`, `html`, `htm`, `csv`, `tsv`, `json`, `xml`, `yaml`, `yml`, `log`, `ini`, `conf`, `properties`, `css`, `js`, `ts`) are decoded as UTF-8. Markup is kept as is.
+- Textual files (`txt`, `text`, `md`, `markdown`, `html`, `htm`, `csv`, `tsv`, `json`, `xml`, `yaml`, `yml`, `log`, `ini`, `conf`, `properties`, `css`, `js`) are decoded as UTF-8. Markup is kept as is.
 - `pdf`, `docx`, `pptx`, and `xlsx` files have their text extracted in memory. Nothing is written to disk. An `xlsx` sheet is returned as tab-separated cells, one row per line, under the sheet name.
 - The older Office formats `doc`, `ppt`, and `xls` are not supported. Convert them to `docx`, `pptx`, `xlsx`, or PDF.
 - Other files (for example, images and archives) are skipped with a logged warning. Naming such a file explicitly as a key is an error.
@@ -129,7 +129,7 @@ Each object is returned as an `ai:TextDocument` based on its extension:
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **auth** | `auth:AuthConfig` | — | `DEFAULT_CREDENTIALS`, or one of the credential records in [AWS credential options](model-providers.md#aws-credential-options). The **Bedrock API key** option does not apply to S3. |
+| **auth** | `auth:AuthConfig` | N/A | `DEFAULT_CREDENTIALS`, or one of the credential records in [AWS credential options](model-providers.md#aws-credential-options). |
 | **region** | `aws:Region \| string` | `us-east-1` | The AWS region of the buckets, for example `eu-west-1`. |
 | **endpoint** | `aws:EndpointConfig` | `()` | Optional endpoint settings: `fips` (FIPS endpoint), `dualstack` (IPv4 and IPv6 endpoint), or `customEndpoint` (a full endpoint URL that overrides the other two). |
 
@@ -143,8 +143,8 @@ S3 FIPS endpoints are available only in the US, Canada, and AWS GovCloud (US) re
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| **bucket** | `string` | — | The bucket name. It must be in the connection's region. |
-| **paths** | `string[]` | Omitted | Object keys or key prefixes to load, for example `["reports/2026/", "policies/handbook.md"]`. Omit it, or include `""`, to load the whole bucket. |
+| **bucket** | `string` | N/A | The bucket name. It must be in the connection's region. |
+| **paths** | `string[]` | Omitted | Object keys or key prefixes to load, for example `["reports/2026/", "policies/handbook.md"]`. Omit it, or include `""`, to load the whole bucket. An empty list is an error. |
 | **recursive** | `boolean` | `false` | Whether prefixes are traversed into nested prefixes. Applies to every path in the source. |
 | **includeExtensions** | `string[]?` | `()` | Case-insensitive extension allowlist applied while walking a prefix (for example, `["pdf", ".docx"]`); a leading dot is optional. `()` or `[]` loads all supported types. A key listed explicitly in **paths** is always loaded, even if its extension is not in the list. |
 
@@ -155,7 +155,7 @@ To use different **recursive** or **includeExtensions** settings for different p
 S3 has no real folders, only keys that may contain `/`. Each path is resolved as follows:
 
 - A path ending in `/` is a prefix.
-- Any other path is tried as an exact key first. If no object has that key, it is treated as the prefix `<path>/`. If a bucket has both an object `reports` and objects under `reports/`, the path `reports` loads only the single object; use `reports/` for the prefix.
+- Any other path is tried as an exact key first. If no object has that key, or the object is a zero-byte file of an unsupported type (a folder marker that some tools create), it is treated as the prefix `<path>/`. If a bucket has both an object `reports` and objects under `reports/`, the path `reports` loads only the single object; use `reports/` for the prefix.
 - Zero-byte keys ending in `/` (the folder objects that the S3 console creates) are skipped.
 - With **recursive** set to `false`, only keys directly under the prefix are loaded.
 
@@ -174,8 +174,8 @@ Every loaded document carries `fileName`, `mimeType`, `fileSize`, and `modifiedA
 ### Behavior and limits
 
 - **Everything is loaded into memory.** `load` returns every matching object at once, with no limit on the number of documents. Narrow **paths** for very large buckets.
-- **Problem objects found while walking a prefix are skipped, with a warning in the log.** This covers unsupported types, objects larger than **maxObjectSize**, text files that are not valid UTF-8, and objects in the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage classes, which must be [restored](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html) before they can be read. The same problems on a key named explicitly are errors. `load` returns no count of skipped objects.
-- **Any other read failure fails the whole load.** For example, a PDF that can't be parsed, or an object deleted between listing and download.
+- **Problem objects found while walking a prefix are skipped, with a warning in the log.** This covers unsupported types, objects larger than **maxObjectSize**, text files that are not valid UTF-8, PDF and Office files that can't be parsed, objects deleted after they were listed, and objects in the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage classes, which must be [restored](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html) before they can be read. The same problems on a key named explicitly are errors. `load` returns no count of skipped objects.
+- **Failures that affect every object fail the whole load.** For example, missing permissions or a connection error.
 - **A listing is not a snapshot.** S3 lists up to 1,000 keys per page. Objects written or deleted while a large prefix is being paged through can be missed or loaded twice.
 - **Not supported:** directory buckets (S3 Express One Zone), requester-pays buckets, and reading a specific object version. The loader always reads the current version.
 
