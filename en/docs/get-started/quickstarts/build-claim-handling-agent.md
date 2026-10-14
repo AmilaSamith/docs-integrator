@@ -370,7 +370,7 @@ Leave the containers running for the rest of this guide.
 
 1. Select **Run** in the integration header to start the integration.
 
-   The first run asks: "This integration uses the WSO2 default AI provider, but it isn't configured yet. Configure it now?" Click **Configure Now**. It writes the provider's access details to `Config.toml` using your Copilot sign-in, and the run continues. Later runs refresh them on their own.
+   If the integration does not yet hold access details for the default provider, the first run asks: "This integration uses the WSO2 default AI provider, but it isn't configured yet. Configure it now?" Click **Configure Now**. It writes the provider's access details to `Config.toml` using your Copilot sign-in, and the run continues. Later runs refresh them on their own.
 2. Watch the terminal. After `Compiling source` and `Running executable`, the runtime bridge connects to the ICP server started in Step 5:
 
    ```text
@@ -398,7 +398,7 @@ The generated request already carries the method, URL, and content type, along w
     }}
 />
 
-Replace the `{?}` placeholders with a real claim, then click the run button in the request cell's left gutter to send it.
+Fill in a real claim: replace the `{?}` placeholder for `claimId` and the `0` for `amount`, then click the run button in the request cell's left gutter to send it.
 
 ```json
 {
@@ -509,7 +509,7 @@ The console reports **Activity proceeded**, and on the next refresh the list rea
 Open the run again from **Workflows**. `payClaim` has now completed. The agent takes one closing turn, and the execution reads **Completed**, with a **Closed** time and a **Workflow Result** holding the agent's own summary of the claim. The model words it differently on each run, for example:
 
 ```text
-The claim with ID "2002" for the amount of $1500.00 has been successfully processed and paid.
+The claim with ID 2002 has been successfully processed and paid in the amount of $1500.
 ```
 
 <ThemedImage
@@ -520,7 +520,7 @@ The claim with ID "2002" for the amount of $1500.00 has been successfully proces
     }}
 />
 
-The timeline is green end to end, and it shows where the time went: the thinking turns and `validateClaim` took seconds, `payClaim` ran in milliseconds once released, and `review-payClaim` accounts for almost the entire run. The claim was not being worked on for 52 of its 53 minutes. It was waiting for a person, and it lost nothing by waiting.
+The timeline is green end to end, and it shows where the time went: the thinking turns and `validateClaim` took seconds, `payClaim` ran in milliseconds once released, and `review-payClaim` accounts for almost the entire run. For most of the run, nobody was working on the claim. It was waiting for a person, and it lost nothing by waiting.
 
 ## Next steps
 
