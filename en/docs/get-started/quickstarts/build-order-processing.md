@@ -70,10 +70,9 @@ The finished flow has three steps:
 3. Set **Name** to `orderWorkflow`.
 4. Click the **Workflow Input Data Type** field, then create a new type for the order information that the workflow needs.
 5. Click **+ Create New Type**.
-6. In the **Create New Type** dialog, select the **Create from scratch** tab.
-7. Set **Kind** to **Record**.
-8. Change **Name** from `MyType` to `OrderInfo`.
-9. Add each field with the **+** next to **Fields**, then set its name and type:
+6. The **Create New Type** dialog opens on the **Create from scratch** tab with **Kind** set to **Record**; keep both.
+7. Change **Name** from `MyType` to `OrderInfo`.
+8. Add each field with the **+** next to **Fields**, then set its name and type:
 
    | Field | Type |
    |---|---|
@@ -82,8 +81,8 @@ The finished flow has three steps:
    | `customerEmail` | `string` |
    | `total` | `int` |
 
-10. Click **Save**. The record is added to your project and appears under **Types** in the sidebar.
-11. Click **Create**. The workflow is generated and its diagram opens with a single **Start** node, ready for the first step. The workflow receives the order as its `input` parameter.
+9. Click **Save**. The record is added to your project and appears under **Types** in the sidebar.
+10. Click **Create**. The workflow is generated and its diagram opens with a single **Start** node, ready for the first step. The workflow receives the order as its `input` parameter.
 
 <ThemedImage
     alt="Creating the orderWorkflow durable workflow and its OrderInfo input type"
@@ -136,7 +135,7 @@ The first step of the order process reserves stock. You create the activity and 
    | Field | Value |
    |---|---|
    | **Order Info** | The order to reserve. Switch to **Expression** and set it to the workflow's input parameter. |
-   | **Retry Policy** | **No Retry** for now. |
+   | **Retry Policy** | Leave it on **No Retry**, the default, for now. |
 
 9. Click **Save**. The `reserveInventory` node appears on the diagram.
 10. Give the activity something to do. Click the open icon on the node to open its own diagram. To keep it simple, mock the implementation with a log line.
