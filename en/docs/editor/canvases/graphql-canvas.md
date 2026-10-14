@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: GraphQL Canvas
 description: Design GraphQL services visually, with queries, mutations, subscriptions, and their referenced types on one canvas.
+keywords: [wso2 integrator, graphql canvas, graphql diagram, graphql service, queries, mutations, subscriptions, type nodes]
 slug: /editor/canvases/graphql-canvas
 ---
 
@@ -24,9 +25,7 @@ For end-to-end usage, including how to create a GraphQL service from scratch or 
 
 ## Open the canvas
 
-Select a GraphQL service under **Entry points** in the project explorer, or select the service node on the [Integration view](../views/integration-view.md) design canvas. The canvas opens with the service node and the types it references on the canvas.
-
-To create a new GraphQL service before opening the canvas, see [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md).
+Select a GraphQL service under **Entry Points** in the project explorer, or select the service node on the [Integration view](../views/integration-view.md) design canvas. The canvas opens with the service node and the types it references.
 
 ## Header
 
@@ -42,7 +41,7 @@ The header runs along the top of the canvas and combines the breadcrumb, the ser
 
 ## Service node
 
-The service node is the card on the canvas that represents the GraphQL service itself. It is labelled with the service base path (for example, `/graphql`) and groups the operations the service exposes into sections.
+The service node is the card on the canvas that represents the GraphQL service itself. It is labeled with the service base path (for example, `/graphql`) and groups the operations the service exposes into sections.
 
 | Section | What it contains |
 |---|---|
@@ -86,7 +85,7 @@ Select the delete icon on the operation's row. The canvas asks you to confirm be
 
 ## Type nodes
 
-Every type referenced by an operation appears as its own card on the right of the canvas, with each field of the type rendered as a row showing the field name and its type. Imported types (types defined in a library or another package) are tagged **Imported Type** so you can tell them apart from types defined in the current integration.
+Every type referenced by an operation appears as its own card on the right of the canvas, with each field of the type rendered as a row showing the field name and its type. Imported types (types defined in a library) are tagged **Imported Type** so you can tell them apart from types defined in the current integration.
 
 Lines drawn between the service node and a type node show which operations return or accept that type.
 
@@ -94,7 +93,7 @@ The three-dot menu (**⋮**) on a type node depends on where the type is defined
 
 | Type | Menu actions |
 |---|---|
-| **Imported types** (tagged **Imported Type**) | **Focused View** only. Imported types are defined in another package or library, so you cannot edit or delete them from this service. |
+| **Imported types** (tagged **Imported Type**) | **Focused View** only. Imported types are defined in a library, so you cannot edit or delete them from this service. |
 | **Locally defined types** | **Edit**, **Source**, **Focused View**, and **Delete**. Use **Edit** to open the [Type Panel](../panels/type-panel.md) and change the fields, **Source** to jump to the Ballerina source, **Focused View** to isolate the type on the canvas, and **Delete** to remove the type from the integration. |
 
 ## Canvas controls
@@ -109,11 +108,10 @@ Use the controls in the bottom-left corner of the canvas to adjust the view.
 | **+** | Zooms in. |
 | **−** | Zooms out. |
 
-To pan across the canvas, hold scroll-wheel click or **Space** while dragging, or use the hand tool.
+To pan across the canvas, hold scroll-wheel click or **Space** while dragging.
 
 ## What's next
 
-- [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md): end-to-end guide to creating and configuring a GraphQL service.
-- [Flow Canvas](flow-canvas/flow-canvas.md): edit the resolver logic for a query, mutation, or subscription.
-- [Type Panel](../panels/type-panel.md): define the types the GraphQL schema exposes.
-- [Configuration Panel](../panels/configuration-panel.md): change the service's base path, port, or listener.
+- [GraphQL Service](../../develop-and-test/integration-artifacts/integration-as-api/graphql.md) — End-to-end guide to creating and configuring a GraphQL service.
+- [Flow Canvas](flow-canvas/flow-canvas.md) — Edit the resolver logic for a query, mutation, or subscription.
+- [Type Panel](../panels/type-panel.md) — Define the types the GraphQL schema exposes.
