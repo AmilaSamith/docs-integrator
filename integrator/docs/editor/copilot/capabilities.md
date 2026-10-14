@@ -155,7 +155,7 @@ To undo what Copilot changed, select **Restore Checkpoint**. It rolls your integ
 
 ## See also
 
-- [Getting started](copilot.md) — Sign in to WSO2 Integrator Copilot.
+- [WSO2 Integrator Copilot](copilot.md) — Sign in to WSO2 Integrator Copilot.
 - [Copilot Chat Interface](chat-interface.md) — Chat controls, slash commands, and modes.
 - [Customize Copilot](customize-copilot.md) — Give Copilot project instructions, reusable skills, and your own tools through MCP servers.
 - [Generate tests with AI](../../develop-and-test/test/ai-generated-cases.md) — Use Copilot to generate test cases.

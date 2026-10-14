@@ -68,6 +68,16 @@ Sampling every request is fine for development. In production, use `probabilisti
 | **Zipkin** | A lightweight tracing alternative | [Zipkin](open-source/zipkin.md) |
 | **OpenTelemetry** | Any OTLP backend, such as an OpenTelemetry Collector, with traces and metrics from one extension | [OpenTelemetry](open-source/opentelemetry.md) |
 
+To send traces to **AWS X-Ray**, use the Jaeger extension, which exports spans over OTLP gRPC to an [AWS Distro for OpenTelemetry](https://aws-otel.github.io/) (ADOT) collector. Configure the collector's `awsxray` exporter, and run the collector as a sidecar on Amazon ECS or as a DaemonSet on Amazon EKS. [Turn tracing on](#3-turn-tracing-on) with the `jaeger` provider, and point the extension at the collector in `Config.toml`:
+
+```toml
+[ballerinax.jaeger]
+agentHostname = "localhost"   # the ADOT collector; localhost for an ECS sidecar
+agentPort = 4317
+```
+
+In a container, where `Config.toml` isn't part of the image, set the same values as environment variables: `BAL_CONFIG_VAR_BALLERINA_OBSERVE_TRACINGENABLED=true`, `BAL_CONFIG_VAR_BALLERINA_OBSERVE_TRACINGPROVIDER=jaeger`, `BAL_CONFIG_VAR_BALLERINAX_JAEGER_AGENTHOSTNAME`, and `BAL_CONFIG_VAR_BALLERINAX_JAEGER_AGENTPORT`.
+
 You can also send traces to a managed platform: [Datadog](commercial/datadog.md) and [New Relic](commercial/new-relic.md) both accept traces, and [Moesif](commercial/moesif.md) supports traces alongside metrics and logs. For a complete stack that includes tracing, see the [Local Development Stack](recipes/local-development-stack.md) and [Kubernetes Production Stack](recipes/kubernetes-production-stack.md) recipes.
 
 ## What's next
