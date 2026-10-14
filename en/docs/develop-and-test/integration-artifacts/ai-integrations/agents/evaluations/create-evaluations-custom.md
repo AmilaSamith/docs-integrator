@@ -1,33 +1,44 @@
 ---
-sidebar_position: 3
-title: Create Evaluations
-description: Create AI agent evaluations in WSO2 Integrator. Fill the AI Evaluation form, pick an evalset to score against, and refine the checks in the visual designer.
-keywords: [wso2 integrator, ai agent, evaluation, visual designer, llm-as-judge]
+sidebar_position: 4
+title: Create Evaluations - Custom
+description: Create custom AI agent evaluations in WSO2 Integrator. Fill the AI Evaluation form, optionally pick an evalset to score against, and build the checks in the visual designer.
+keywords: [wso2 integrator, ai agent, evaluation, custom evaluation, visual designer]
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations/creating-evaluations
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create Evaluations
+# Create Evaluations - Custom
 
-An **evaluation** is the function that scores agent behaviour against an evalset. You start by filling a short form, and WSO2 Integrator opens the rest of the configuration in the visual designer.
+A **custom evaluation** is an evaluation function whose logic you build yourself. You start by filling a short form, and WSO2 Integrator opens the rest of the configuration in the visual designer. Use a custom evaluation when none of the prebuilt [evaluation templates](create-evaluations-templates.md) fits the check you need.
 
 :::info Prerequisites
-For the **From Evalset** path (the most common), have at least one evalset in your project. See [Create evalsets](evalsets.md) to capture or import one. The **Standalone/Custom** path does not need an evalset.
+The example on this page scores the agent against an evalset, so have at least one evalset in your project. See [Create evalsets](evalsets.md) to capture or import one. A custom evaluation with **No evalset** does not need one.
 :::
 
 ## Start a new evaluation
 
 1. Open the **Test Explorer** by clicking the test beaker icon in the activity bar.
-2. Click **Add AI Evaluation**.
-3. Fill the **Create New AI Evaluation** form and click **Save**.
+2. Click **Add Test** at the top of the **Test Explorer** and choose **Add AI Evaluation**.
 
 <ThemedImage
-    alt="Create New AI Evaluation form with fields for AI Evaluation Name, Minimum Pass Rate, build option, and Evalset File."
+    alt="Test Explorer in the Testing view with the math-tutor evalset listed under Evalsets, ready to add a new AI evaluation."
     sources={{
-        light: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form.png'),
-        dark: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form.png'),
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/add-ai-evaluation.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/add-ai-evaluation.png'),
+    }}
+/>
+
+3. In the **Create New AI Evaluation** form, under **How would you like to build this evaluation?**, select **Custom**.
+4. Under **Use an evalset?**, select **Use evalset**, then pick the evalset in **Evalset File**.
+5. Fill the rest of the form and click **Save**.
+
+<ThemedImage
+    alt="Create New AI Evaluation form with Custom selected, Use evalset chosen, Evalset File set to math-tutor, and Minimum Pass Rate set to 90%."
+    sources={{
+        light: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form-custom.png'),
+        dark: useBaseUrl('/img/genai/develop/agents/evaluations/create-evaluation-form-custom.png'),
     }}
 />
 
@@ -36,18 +47,19 @@ For the **From Evalset** path (the most common), have at least one evalset in yo
 | Field | What it does |
 |---|---|
 | **AI Evaluation Name** | A unique name for the evaluation. |
-| **Minimum Pass Rate (%)** | The percentage of evalset cases that must pass for the run to succeed. Defaults to 100%. |
-| **How would you like to build this evaluation?** | Pick **From Evalset** to score against an existing evalset, or **Standalone/Custom** to define your own evaluation behaviour without an evalset. |
-| **Evalset File** | The evalset to use. Shown when **From Evalset** is selected. |
+| **How would you like to build this evaluation?** | Pick **Custom** to build your own evaluation logic. To start from a prebuilt evaluator instead, see [Create evaluations - templates](create-evaluations-templates.md). |
+| **Use an evalset?** | Pick **Use evalset** to score the agent against an evalset, or **No evalset** to define the evaluation without one. |
+| **Evalset File** | The evalset to use. Shown when **Use evalset** is selected. **Create empty evalset** creates a new evalset, and **Open evalset** opens the selected one in the **Evalset Viewer**. |
+| **Minimum Pass Rate (%)** | The percentage of evalset cases that must pass for the run to succeed. |
 
 :::tip
 Consider lowering the **Minimum Pass Rate** below 100%. Agent responses are non-deterministic, so a small amount of run-to-run variation is expected even when the agent is behaving correctly. A threshold around 80–90% tolerates that variance while still catching real regressions.
 :::
 
-#### When to use each build option
+#### When to use an evalset
 
-- **From Evalset.** Score the agent against the conversations captured in an evalset. Best when you have a representative dataset to replay.
-- **Standalone/Custom.** Define the evaluation entirely with your own logic. Use this for custom behaviour that does not fit the conversation-trace format, or when you do not have an evalset yet.
+- **Use evalset.** Score the agent against the conversations captured in an evalset. Best when you have a representative dataset to replay. The rest of this page uses this option.
+- **No evalset.** Define the evaluation entirely with your own logic. Use this for custom behaviour that does not fit the conversation-trace format, or when you do not have an evalset yet.
 
 After you click **Save**, the evaluation opens in the visual designer for further configuration. To reopen it later, click the flow icon next to the evaluation in the **Test Explorer**.
 
@@ -179,11 +191,12 @@ For tool-selection regressions, **assertEquals** is the most common choice. It v
 
 Add more asserts inside the loop for any other dimension you want to score, such as response content, tool count, or structured output fields.
 
-#### LLM-as-judge
-
-For subjective dimensions like tone, helpfulness, or completeness, pass `actualTrace` (along with `trace` for reference) into a [Model Provider](../../ai-building-blocks/model-providers.md) node and prompt the LLM to score the response. Then assert on the score it returns. This pattern catches quality regressions that deterministic asserts cannot reach.
+:::tip
+Comparing tool calls against an evalset is also available as the prebuilt **Tool Trajectory** template, with no flow to build. See [Create evaluations - templates](create-evaluations-templates.md).
+:::
 
 ## What's next
 
 - [Run evaluations](running-evaluations.md) — Execute the evaluation and open the report.
+- [Create evaluations - templates](create-evaluations-templates.md) — Start from a prebuilt evaluator instead.
 - [Create evalsets](evalsets.md) — Add more evalsets to broaden coverage.
