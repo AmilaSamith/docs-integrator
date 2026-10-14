@@ -26,9 +26,9 @@ Send individual, batch, and scheduled messages to Azure Service Bus queues and t
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | `connectionString` | `string` | Required | The Azure Service Bus connection string. |
-| `entityType` | `QUEUE|TOPIC` | Required | The type of entity to send to: `QUEUE` or `TOPIC`. |
+| `entityType` | `QUEUE\|TOPIC` | Required | The type of entity to send to: `QUEUE` or `TOPIC`. |
 | `topicOrQueueName` | `string` | Required | The name of the queue or topic. |
-| `amqpRetryOptions` | `AmqpRetryOptions` | `()` | Retry options for AMQP operations (maxRetries, delay, maxDelay, tryTimeout, retryMode). |
+| `amqpRetryOptions` | `AmqpRetryOptions` | `{}` | Retry options for AMQP operations (maxRetries, delay, maxDelay, tryTimeout, retryMode). |
 
 ### Initializing the client
 
@@ -59,7 +59,7 @@ Parameters:
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message to send, including `body`, optional `contentType`, `messageId`, `sessionId`, `timeToLive`, and application properties. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -84,7 +84,7 @@ Parameters:
 |------|------|----------|-------------|
 | `payload` | `anydata` | Yes | The payload to send as the message body. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -105,7 +105,7 @@ Parameters:
 |------|------|----------|-------------|
 | `messageBatch` | `asb:MessageBatch` | Yes | A batch of messages to send, containing an array of `asb:Message` records. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -134,7 +134,7 @@ Parameters:
 | `message` | `asb:Message` | Yes | The message to schedule. |
 | `scheduledEnqueueTime` | `time:Civil` | Yes | The UTC time at which the message should become available. |
 
-Returns: `int|error`
+Returns: `int|asb:Error`
 
 Sample code:
 
@@ -158,7 +158,7 @@ Parameters:
 |------|------|----------|-------------|
 | `sequenceNumber` | `int` | Yes | The sequence number returned by the `schedule` operation. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -177,7 +177,7 @@ Closes the sender connection and releases resources.
 
 No parameters.
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -199,9 +199,9 @@ Receive messages from queues and subscriptions, settle messages, and manage lock
 |-------|------|---------|-------------|
 | `connectionString` | `string` | Required | The Azure Service Bus connection string. |
 | `entityConfig` | `QueueConfig\|TopicSubsConfig` | Required | Entity configuration: either `{queueName: "..."}` for queues or `{topicName: "...", subscriptionName: "..."}` for topic subscriptions. |
-| `receiveMode` | `PEEK_LOCK|RECEIVE_AND_DELETE` | `PEEK_LOCK` | The receive mode. `PEEK_LOCK` requires explicit settlement; `RECEIVE_AND_DELETE` auto-removes on receive. |
+| `receiveMode` | `PEEK_LOCK\|RECEIVE_AND_DELETE` | `PEEK_LOCK` | The receive mode. `PEEK_LOCK` requires explicit settlement; `RECEIVE_AND_DELETE` auto-removes on receive. |
 | `maxAutoLockRenewDuration` | `int` | `300` | Maximum duration (in seconds) to automatically renew the message lock. |
-| `amqpRetryOptions` | `AmqpRetryOptions` | `()` | Retry options for AMQP operations. |
+| `amqpRetryOptions` | `AmqpRetryOptions` | `{}` | Retry options for AMQP operations. |
 
 ### Initializing the client
 
@@ -233,9 +233,10 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `serverWaitTime` | `int?` | No | Maximum wait time in seconds for a message to arrive. Defaults to `60`. |
+| `T` | `typedesc<asb:Message>` | No | The expected message type (`asb:Message` or a subtype). Inferred from the assigned variable type. |
 | `deadLettered` | `boolean` | No | When `true`, receives from the dead-letter sub-queue instead of the main queue or subscription. Defaults to `false`. |
 
-Returns: `asb:Message|error?`
+Returns: `T|asb:Error?`
 
 Returns `()` if no message arrives within `serverWaitTime`. Always assign to a nilable type.
 
@@ -247,7 +248,11 @@ if message is () {
     // No message available
     return;
 }
+// Read a single application property set by the sender
+anydata source = check asb:getApplicationPropertyByName(message, "source");
 ```
+
+To read one application property from a received message, use `asb:getApplicationPropertyByName(message, name)`. It returns `anydata|error?`, and `()` if the property does not exist.
 
 </details>
 
@@ -264,7 +269,7 @@ Parameters:
 | `T` | `typedesc<anydata>` | No | The expected payload type. |
 | `deadLettered` | `boolean` | No | When `true`, receives from the dead-letter sub-queue instead of the main queue or subscription. Defaults to `false`. |
 
-Returns: `T|error`
+Returns: `T|asb:Error`
 
 Sample code:
 
@@ -287,7 +292,7 @@ Parameters:
 | `serverWaitTime` | `int?` | No | Maximum wait time in seconds. Defaults to `()` (no wait). |
 | `deadLettered` | `boolean` | No | When `true`, receives from the dead-letter sub-queue instead of the main queue or subscription. Defaults to `false`. |
 
-Returns: `asb:MessageBatch|error?`
+Returns: `asb:MessageBatch|asb:Error?`
 
 Returns `()` if no messages are available. Always assign to a nilable type.
 
@@ -316,7 +321,7 @@ Parameters:
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message to complete. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -341,7 +346,7 @@ Parameters:
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message to abandon. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -361,10 +366,10 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message to dead-letter. |
-| `deadLetterReason` | `string?` | No | The reason for dead-lettering. |
+| `deadLetterReason` | `string` | No | The reason for dead-lettering. Defaults to `"DEADLETTERED_BY_RECEIVER"`. |
 | `deadLetterErrorDescription` | `string?` | No | A description of the error that caused dead-lettering. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -388,7 +393,7 @@ Parameters:
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message to defer. |
 
-Returns: `int|error`
+Returns: `int|asb:Error`
 
 The returned `int` is the sequence number of the deferred message. Pass it to `receiveDeferred` to retrieve the message later.
 
@@ -413,7 +418,7 @@ Parameters:
 |------|------|----------|-------------|
 | `sequenceNumber` | `int` | Yes | The sequence number of the deferred message. |
 
-Returns: `asb:Message|error?`
+Returns: `asb:Message|asb:Error?`
 
 Sample code:
 
@@ -436,7 +441,7 @@ Parameters:
 |------|------|----------|-------------|
 | `message` | `asb:Message` | Yes | The message whose lock should be renewed. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -455,12 +460,12 @@ Closes the receiver connection and releases resources.
 
 No parameters.
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
 ```ballerina
-check receiver->closeReceiver();
+check receiver->close();
 ```
 
 </details>
@@ -484,10 +489,10 @@ import ballerinax/asb;
 
 configurable string connectionString = ?;
 
-asb:Administrator admin = check new ({
-    connectionString: connectionString
-});
+asb:Administrator admin = check new (connectionString);
 ```
+
+All `Administrator` operations return `T|asb:Error?` (or `asb:Error?`). Assign results to a nilable type (for example, `asb:QueueProperties?`) and handle `()` before use. Management API failures are returned as `asb:AdminActionError`, whose detail (`asb:AdminErrorContext`) carries the HTTP `statusCode` and the `reason`.
 
 ### Operations
 
@@ -503,14 +508,14 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `queueName` | `string` | Yes | The name of the queue to create. |
-| `queueProperties` | `CreateQueueOptions?` | No | Optional properties such as max size, TTL, lock duration, and dead-lettering settings. |
+| `queueOptions` | `*CreateQueueOptions` | No | Included record parameter, passed as named arguments. Optional properties such as max size, TTL, lock duration, and dead-lettering settings. |
 
-Returns: `QueueProperties|error`
+Returns: `QueueProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:QueueProperties queue = check admin->createQueue("my-new-queue");
+asb:QueueProperties? queue = check admin->createQueue("my-new-queue");
 ```
 
 Sample response:
@@ -532,12 +537,12 @@ Parameters:
 |------|------|----------|-------------|
 | `queueName` | `string` | Yes | The name of the queue. |
 
-Returns: `QueueProperties|error`
+Returns: `QueueProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:QueueProperties queue = check admin->getQueue("my-queue");
+asb:QueueProperties? queue = check admin->getQueue("my-queue");
 ```
 
 </details>
@@ -551,18 +556,18 @@ Parameters:
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `queueProperties` | `QueueProperties` | Yes | The updated queue properties. |
+| `queueName` | `string` | Yes | The name of the queue to update. |
+| `queueOptions` | `*UpdateQueueOptions` | No | Included record parameter. Pass the properties to change as named arguments (for example, `maxDeliveryCount`, `lockDuration`, `defaultMessageTimeToLive`). Time-based fields use `asb:Duration` (`{seconds, nanoseconds}`). |
 
-Returns: `QueueProperties|error`
+Returns: `QueueProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:QueueProperties queue = check admin->getQueue("my-queue");
-asb:QueueProperties updated = check admin->updateQueue({
-    ...queue,
-    maxDeliveryCount: 15
-});
+asb:QueueProperties? updated = check admin->updateQueue("my-queue",
+    maxDeliveryCount = 15,
+    defaultMessageTimeToLive = {seconds: 3600}
+);
 ```
 
 </details>
@@ -578,7 +583,7 @@ Parameters:
 |------|------|----------|-------------|
 | `queueName` | `string` | Yes | The name of the queue to delete. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -598,12 +603,14 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 
-Returns: `QueueProperties[]|error`
+Returns: `QueueList|asb:Error?`
+
+The `list` field of the returned `QueueList` record holds the `QueueProperties[]` array.
 
 Sample code:
 
 ```ballerina
-asb:QueueProperties[] queues = check admin->listQueues();
+asb:QueueList? queues = check admin->listQueues();
 ```
 
 </details>
@@ -619,12 +626,12 @@ Parameters:
 |------|------|----------|-------------|
 | `queueName` | `string` | Yes | The name of the queue to check. |
 
-Returns: `boolean|error`
+Returns: `boolean|asb:Error?`
 
 Sample code:
 
 ```ballerina
-boolean exists = check admin->queueExists("my-queue");
+boolean? exists = check admin->queueExists("my-queue");
 ```
 
 </details>
@@ -641,14 +648,14 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the topic to create. |
-| `topicProperties` | `CreateTopicOptions?` | No | Optional properties such as max size, TTL, and duplicate detection. |
+| `topicOptions` | `*CreateTopicOptions` | No | Included record parameter, passed as named arguments. Optional properties such as max size, TTL, and duplicate detection. |
 
-Returns: `TopicProperties|error`
+Returns: `TopicProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:TopicProperties topic = check admin->createTopic("my-new-topic");
+asb:TopicProperties? topic = check admin->createTopic("my-new-topic");
 ```
 
 Sample response:
@@ -670,12 +677,12 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the topic. |
 
-Returns: `TopicProperties|error`
+Returns: `TopicProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:TopicProperties topic = check admin->getTopic("my-topic");
+asb:TopicProperties? topic = check admin->getTopic("my-topic");
 ```
 
 </details>
@@ -689,18 +696,17 @@ Parameters:
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `topicProperties` | `TopicProperties` | Yes | The updated topic properties. |
+| `topicName` | `string` | Yes | The name of the topic to update. |
+| `topicOptions` | `*UpdateTopicOptions` | No | Included record parameter. Pass the properties to change as named arguments. Time-based fields use `asb:Duration` (`{seconds, nanoseconds}`). |
 
-Returns: `TopicProperties|error`
+Returns: `TopicProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:TopicProperties topic = check admin->getTopic("my-topic");
-asb:TopicProperties updated = check admin->updateTopic({
-    ...topic,
-    defaultMessageTimeToLive: 3600
-});
+asb:TopicProperties? updated = check admin->updateTopic("my-topic",
+    defaultMessageTimeToLive = {seconds: 3600}
+);
 ```
 
 </details>
@@ -716,7 +722,7 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the topic to delete. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -736,12 +742,14 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 
-Returns: `TopicProperties[]|error`
+Returns: `TopicList|asb:Error?`
+
+The `list` field of the returned `TopicList` record holds the `TopicProperties[]` array.
 
 Sample code:
 
 ```ballerina
-asb:TopicProperties[] topics = check admin->listTopics();
+asb:TopicList? topics = check admin->listTopics();
 ```
 
 </details>
@@ -757,12 +765,12 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the topic to check. |
 
-Returns: `boolean|error`
+Returns: `boolean|asb:Error?`
 
 Sample code:
 
 ```ballerina
-boolean exists = check admin->topicExists("my-topic");
+boolean? exists = check admin->topicExists("my-topic");
 ```
 
 </details>
@@ -780,14 +788,14 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription to create. |
-| `subscriptionProperties` | `CreateSubscriptionOptions?` | No | Optional subscription properties. |
+| `subscriptionOptions` | `*CreateSubscriptionOptions` | No | Included record parameter, passed as named arguments. Optional subscription properties. |
 
-Returns: `SubscriptionProperties|error`
+Returns: `SubscriptionProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:SubscriptionProperties sub = check admin->createSubscription("my-topic", "my-subscription");
+asb:SubscriptionProperties? sub = check admin->createSubscription("my-topic", "my-subscription");
 ```
 
 Sample response:
@@ -810,12 +818,12 @@ Parameters:
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
 
-Returns: `SubscriptionProperties|error`
+Returns: `SubscriptionProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:SubscriptionProperties sub = check admin->getSubscription("my-topic", "my-subscription");
+asb:SubscriptionProperties? sub = check admin->getSubscription("my-topic", "my-subscription");
 ```
 
 </details>
@@ -830,18 +838,17 @@ Parameters:
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the parent topic. |
-| `subscriptionProperties` | `SubscriptionProperties` | Yes | The updated subscription properties. |
+| `subscriptionName` | `string` | Yes | The name of the subscription to update. |
+| `subscriptionOptions` | `*UpdateSubscriptionOptions` | No | Included record parameter. Pass the properties to change as named arguments. Time-based fields use `asb:Duration` (`{seconds, nanoseconds}`). |
 
-Returns: `SubscriptionProperties|error`
+Returns: `SubscriptionProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:SubscriptionProperties sub = check admin->getSubscription("my-topic", "my-sub");
-asb:SubscriptionProperties updated = check admin->updateSubscription("my-topic", {
-    ...sub,
-    maxDeliveryCount: 20
-});
+asb:SubscriptionProperties? updated = check admin->updateSubscription("my-topic", "my-sub",
+    maxDeliveryCount = 20
+);
 ```
 
 </details>
@@ -858,7 +865,7 @@ Parameters:
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription to delete. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -879,12 +886,14 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the parent topic. |
 
-Returns: `SubscriptionProperties[]|error`
+Returns: `SubscriptionList|asb:Error?`
+
+The `list` field of the returned `SubscriptionList` record holds the `SubscriptionProperties[]` array.
 
 Sample code:
 
 ```ballerina
-asb:SubscriptionProperties[] subs = check admin->listSubscriptions("my-topic");
+asb:SubscriptionList? subs = check admin->listSubscriptions("my-topic");
 ```
 
 </details>
@@ -901,12 +910,12 @@ Parameters:
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription to check. |
 
-Returns: `boolean|error`
+Returns: `boolean|asb:Error?`
 
 Sample code:
 
 ```ballerina
-boolean exists = check admin->subscriptionExists("my-topic", "my-subscription");
+boolean? exists = check admin->subscriptionExists("my-topic", "my-subscription");
 ```
 
 </details>
@@ -925,14 +934,14 @@ Parameters:
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
 | `ruleName` | `string` | Yes | The name of the rule to create. |
-| `ruleProperties` | `CreateRuleOptions?` | No | Optional rule options including filter and action. |
+| `ruleOptions` | `*CreateRuleOptions` | No | Included record parameter, passed as named arguments. Optional `rule` (an `asb:SqlRule` with `filter` and `action`). |
 
-Returns: `RuleProperties|error`
+Returns: `RuleProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:RuleProperties rule = check admin->createRule("my-topic", "my-sub", "high-priority-filter");
+asb:RuleProperties? rule = check admin->createRule("my-topic", "my-sub", "high-priority-filter");
 ```
 
 </details>
@@ -950,12 +959,12 @@ Parameters:
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
 | `ruleName` | `string` | Yes | The name of the rule. |
 
-Returns: `RuleProperties|error`
+Returns: `RuleProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:RuleProperties rule = check admin->getRule("my-topic", "my-sub", "my-rule");
+asb:RuleProperties? rule = check admin->getRule("my-topic", "my-sub", "my-rule");
 ```
 
 </details>
@@ -971,15 +980,17 @@ Parameters:
 |------|------|----------|-------------|
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
-| `ruleProperties` | `RuleProperties` | Yes | The updated rule properties. |
+| `ruleName` | `string` | Yes | The name of the rule to update. |
+| `ruleOptions` | `*UpdateRuleOptions` | No | Included record parameter. Pass the new `rule` (an `asb:SqlRule` with `filter` and `action`) as a named argument. |
 
-Returns: `RuleProperties|error`
+Returns: `RuleProperties|asb:Error?`
 
 Sample code:
 
 ```ballerina
-asb:RuleProperties rule = check admin->getRule("my-topic", "my-sub", "my-rule");
-asb:RuleProperties updated = check admin->updateRule("my-topic", "my-sub", rule);
+asb:RuleProperties? updated = check admin->updateRule("my-topic", "my-sub", "my-rule",
+    rule = {filter: "priority = 'high'", action: "SET processed = 'true'"}
+);
 ```
 
 </details>
@@ -997,7 +1008,7 @@ Parameters:
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
 | `ruleName` | `string` | Yes | The name of the rule to delete. |
 
-Returns: `error?`
+Returns: `asb:Error?`
 
 Sample code:
 
@@ -1019,12 +1030,14 @@ Parameters:
 | `topicName` | `string` | Yes | The name of the parent topic. |
 | `subscriptionName` | `string` | Yes | The name of the subscription. |
 
-Returns: `RuleProperties[]|error`
+Returns: `RuleList|asb:Error?`
+
+The `list` field of the returned `RuleList` record holds the `RuleProperties[]` array.
 
 Sample code:
 
 ```ballerina
-asb:RuleProperties[] rules = check admin->listRules("my-topic", "my-sub");
+asb:RuleList? rules = check admin->listRules("my-topic", "my-sub");
 ```
 
 </details>

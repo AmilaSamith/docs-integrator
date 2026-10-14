@@ -6,7 +6,7 @@ keywords: [wso2 integrator, azure service bus, asb, messaging, queue, topic, bal
 
 # Overview
 
-Azure Service Bus is a fully managed enterprise message broker with message queues and publish-subscribe topics. The Ballerina `ballerinax/asb` connector (v3.9.1) provides programmatic access to Azure Service Bus for sending, receiving, and administering messages across queues, topics, and subscriptions, enabling reliable cloud messaging in your Ballerina integration flows.
+Azure Service Bus is a fully managed enterprise message broker with message queues and publish-subscribe topics. The Ballerina `ballerinax/asb` connector (v3.10.2) provides programmatic access to Azure Service Bus for sending, receiving, and administering messages across queues, topics, and subscriptions, enabling reliable cloud messaging in your Ballerina integration flows.
 
 
 ## Key features
