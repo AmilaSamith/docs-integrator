@@ -45,7 +45,7 @@ A workflow does not start itself. Something has to launch it. It can be any type
 4. Click **Save**.
 
 <ThemedImage
-    alt="Adding a Run Workflow step and following its link to the workflow it starts"
+    alt="Adding a Run Workflow step that starts shipmentWorkflow with the request payload"
     sources={{
         light: useBaseUrl('/img/workflows/develop/start-workflow/add-run-workflow.gif'),
         dark: useBaseUrl('/img/workflows/develop/start-workflow/add-run-workflow.gif'),

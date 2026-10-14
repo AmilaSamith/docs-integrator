@@ -80,7 +80,7 @@ Some steps should never run without sign-off, even when nothing has failed. A ga
 | **Reviewer Roles**  | Yes      | Shown for **Human Approval**. One or more roles permitted to decide the approval, for example `Finance`. It can be left empty only when **Reviewers** names the users who may decide. |
 
 <ThemedImage
-    alt="The payClaim activity registration form with an approval gate and Reviewer Roles set to Finance"
+    alt="The activity call form with Approval Policy set to Human Approval and Reviewer Roles set to Finance"
     sources={{
         light: useBaseUrl('/img/workflows/develop/review-activity/requires-approval.png'),
         dark: useBaseUrl('/img/workflows/develop/review-activity/requires-approval.png'),

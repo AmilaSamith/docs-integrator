@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Long-running processes spend most of their life waiting: a cooling-off period before a sensitive change takes effect, a settlement delay before a payout, a reminder three days after a request. A **durable timer** is how a workflow waits. The instance suspends, the runtime remembers when to wake it, and nothing is held open in the meantime.
 
 <ThemedImage
-    alt="The emailChangeRequest workflow running from Start through validateEmailChange, a workflow : Sleep step, and performEmailChange"
+    alt="The emailChangeRequest workflow running from Start through validateEmailChange, a Sleep step, and performEmailChange"
     sources={{
         light: useBaseUrl('/img/workflows/develop/durable-timers/sleep-step-light.png'),
         dark: useBaseUrl('/img/workflows/develop/durable-timers/sleep-step-dark.png'),
@@ -41,7 +41,7 @@ The `emailChangeRequest` workflow puts that rule in one place. It validates the 
 5. Click **Save**.
 
 <ThemedImage
-    alt="Adding a Sleep step between validateEmailChange and performEmailChange, selecting days in the Record Configuration editor and setting it to 1"
+    alt="Adding a Sleep step between validateEmailChange and performEmailChange, selecting hours in the Record Configuration editor and setting it to 24"
     sources={{
         light: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
         dark: useBaseUrl('/img/workflows/develop/durable-timers/add-sleep-step.gif'),
