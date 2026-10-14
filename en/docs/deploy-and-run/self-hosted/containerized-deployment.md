@@ -788,7 +788,13 @@ To run on AWS Graviton, build with `--platform linux/arm64` and add `"runtimePla
 
 Keep secrets in Secrets Manager and plain settings in SSM Parameter Store.
 
-To keep the password out of your shell history and the process list, put the secret in a file instead of on the command line. Create `db-secret.json` with a text editor, with the content `{"password":"<db-password>"}`, and then run:
+To keep the password out of your shell history and the process list, put the secret in a file instead of on the command line. First, restrict the default permissions for new files in your shell so that only you can read the file:
+
+```bash
+umask 077
+```
+
+From the same shell, create `db-secret.json` with a text editor, with the content `{"password":"<db-password>"}`, and then run:
 
 ```bash
 chmod 600 db-secret.json
