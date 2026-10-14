@@ -153,7 +153,7 @@ The `onError` callback is optional. If not implemented, retrieval errors are log
 | Field | Type | Description |
 |-------|------|-------------|
 | `body` | `anydata` | The message body content. |
-| `contentType` | `string?` | The MIME content type of the message body. Use the connector constants `asb:TEXT` (`"text/plain"`), `asb:JSON` (`"application/json"`), `asb:XML` (`"application/xml"`), or `asb:BYTE_ARRAY` (`"application/octet-stream"`). |
+| `contentType` | `string` | The MIME content type of the message body. Defaults to `asb:BYTE_ARRAY`. Use the connector constants `asb:TEXT` (`"text/plain"`), `asb:JSON` (`"application/json"`), `asb:XML` (`"application/xml"`), or `asb:BYTE_ARRAY` (`"application/octet-stream"`). |
 | `messageId` | `string?` | A unique identifier for the message. |
 | `to` | `string?` | The destination address of the message. |
 | `replyTo` | `string?` | The address to reply to. |
@@ -169,6 +169,8 @@ The `onError` callback is optional. If not implemented, retrieval errors are log
 | `deliveryCount` | `int?` | The number of times delivery has been attempted. |
 | `enqueuedTime` | `string?` | The UTC time when the message was enqueued. |
 | `enqueuedSequenceNumber` | `int?` | The enqueued sequence number. |
+| `deadLetterErrorDescription` | `string?` | The error description set when the message was dead-lettered. |
+| `deadLetterReason` | `string?` | The reason set when the message was dead-lettered. |
 | `deadLetterSource` | `string?` | The name of the entity where the message was dead-lettered. |
 | `state` | `string?` | The state of the message (`Active`, `Deferred`, `Scheduled`). |
 
