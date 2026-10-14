@@ -94,7 +94,7 @@ The annotation accepts either a `QueueServiceConfiguration` or a `TopicServiceCo
 | `onMessage` | `remote function onMessage(record {\|*solace:Message; T payload;\|} message, solace:Caller caller) returns solace:Error?` | Invoked when a message is received on the subscribed queue or topic. Narrow `T` to a specific type to trigger data binding. |
 | `onError` | `remote function onError(solace:Error err) returns solace:Error?` | Optional. Invoked when an error occurs during message receipt or data binding. |
 
-> **Note:** The `caller` parameter of `onMessage` can be omitted entirely. Omit it when the service relies on `AUTO_ACK`; include it to acknowledge, negatively acknowledge, or control a transacted session manually. When declared, it must be of type `solace:Caller`.
+> **Note:** The `caller` parameter in `onMessage` is optional. Omit it for `AUTO_ACK` services, or include it (as type `solace:Caller`) to handle manual acknowledgments, negative acknowledgments, or transacted sessions.
 
 ### Full usage example
 
