@@ -43,6 +43,14 @@ name: Sync shared content to saas
 # and its images on saas are cleaned up as stale if nothing else uses them.
 # The shared-content-guard on saas excludes the same path.
 #
+# The pages that talk about durable workflows are handled the same way:
+# ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md is
+# excluded outright (SYNC_EXCLUDE_FILES), and ai-integrations/agents/
+# gated-tools.md and supportive-artifacts/agent.md are saas-owned
+# (SAAS_OWNED_FILES) -- saas's copy links to the integrator site instead of
+# the workflow/ pages it doesn't have. The sync restores saas's copy of
+# those two files after the full replace and never copies integrator's.
+#
 # NOT synced (deliberately): deploy-and-run/, observe/, manage/, icp/,
 # get-started/, reference/ -- hosting-model-specific, authored
 # independently per branch. connectors/ isn't a folder here at all
@@ -58,6 +66,9 @@ on:
       - 'en/docs/develop-and-test/**'
       - '!en/docs/develop-and-test/create-workspace/**'
       - '!en/docs/develop-and-test/integration-artifacts/workflow/**'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md'
+      - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md'
+      - '!en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md'
       - '!en/docs/editor/integration-control-plane.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
@@ -82,8 +93,14 @@ env:
   SAAS_OWNED_DIRS: >-
     en/docs/develop-and-test/create-workspace
   # Self-hosted-only pages inside synced folders, never copied to saas.
+  # Pages edited on saas to link to the integrator site instead of the
+  # workflow/ pages (which saas doesn't have), so never overwritten by a sync.
+  SAAS_OWNED_FILES: >-
+    en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md
+    en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md
   SYNC_EXCLUDE_FILES: >-
     en/docs/editor/integration-control-plane.md
+    en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md
   # Self-hosted-only (ICP-managed) folders inside synced folders, never
   # copied to saas. Removed from saas too if a previous sync put them there.
   SYNC_EXCLUDE_DIRS: >-
@@ -149,6 +166,14 @@ jobs:
             if git cat-file -e "origin/saas:$d" 2>/dev/null; then
               rm -rf "$d"
               git checkout origin/saas -- "$d"
+            fi
+          done
+
+          # Same for the saas-owned files: put saas's copy back over the one the
+          # replace just brought in. Only if it exists on saas.
+          for f in $SAAS_OWNED_FILES; do
+            if git cat-file -e "origin/saas:$f" 2>/dev/null; then
+              git checkout origin/saas -- "$f"
             fi
           done
 
