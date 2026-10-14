@@ -17,7 +17,7 @@ WSO2 Cloud runs your integrations on one of two data plane models: the shared **
 <PaletteGrid>
 
 <PaletteCard icon="cloud" href="/deploy-and-run/deploy-to-wso2-cloud">
-  <h3 class="palette-card-title">Deploy your integration</h3>
+  <h3 class="palette-card-title">Deploy Your Integration</h3>
   <ul class="palette-card-list">
     <li>Works the same on either data plane model</li>
     <li>Deploy from the editor or the cloud editor</li>
@@ -28,7 +28,7 @@ WSO2 Cloud runs your integrations on one of two data plane models: the shared **
 </PaletteCard>
 
 <PaletteCard icon="server" href="/deploy-and-run/deploy-on-private-data-plane">
-  <h3 class="palette-card-title">Set up a private data plane</h3>
+  <h3 class="palette-card-title">Set up a Private Data Plane</h3>
   <ul class="palette-card-list">
     <li>Infrastructure requirements and system components</li>
     <li>Management models</li>

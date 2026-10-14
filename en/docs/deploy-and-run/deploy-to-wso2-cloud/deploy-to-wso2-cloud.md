@@ -1,11 +1,11 @@
 ---
-title: Deploy your integration
+title: Deploy Your Integration
 description: Get integrations onto WSO2 Cloud, then keep them configured and running once they're live.
 sidebar_position: 0
 slug: /deploy-and-run/deploy-to-wso2-cloud
 ---
 
-# Deploy your integration
+# Deploy Your Integration
 
 WSO2 Cloud is a fully managed platform that builds and runs your integrations from a Git repository. There are three ways to get your integrations onto WSO2 Cloud, depending on where your work lives.
 
