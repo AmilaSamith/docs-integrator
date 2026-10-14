@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## What you'll build
 
-Build a WSO2 Integrator automation that posts a message to a Slack channel using the Slack connector. The integration connects to your Slack workspace using a Bot OAuth token and sends a text message to a specified channel.
+Build a WSO2 Integrator automation that posts a message to a Slack channel using the Slack connector. The integration connects to your Slack workspace using an OAuth token and sends a text message to a specified channel.
 
 **Operations used:**
 - **post** : Sends a message to a Slack channel with a specified payload.
@@ -21,7 +21,7 @@ flowchart LR
 
 ## Prerequisites
 
-- A Slack Bot OAuth token (starts with `xoxb-`)
+- A Slack OAuth token (see the [Setup Guide](setup-guide.md))
 - A Slack workspace with a channel to post messages to
 
 ## Setting up the Slack integration
@@ -51,7 +51,7 @@ In the search box, enter `slack` to filter connectors, then select **ballerinax/
 In the connection configuration form, bind each field to a configurable variable:
 
 - **connectionName** : Enter `slackClient` as the connection name
-- **auth.token** : Set to the `slackAuthToken` configurable variable of type `string`
+- **Config** : Switch to **Expression** mode and enter `{ auth: { token: slackAuthToken } }`, where `slackAuthToken` is a configurable variable of type `string`
 
 <ThemedImage
     alt="Slack connection form fully filled with all parameters before saving"
@@ -77,7 +77,7 @@ Select **Save** to create the connection. The `slackClient` connection node appe
 
 In the left panel, select **Configurations**. Set a value for each configurable listed below:
 
-- **slackAuthToken** (string) : Your Slack Bot OAuth token (starts with `xoxb-`)
+- **slackAuthToken** (string) : Your Slack OAuth token from the [Setup Guide](setup-guide.md)
 
 ## Configuring the Slack post operation
 
@@ -101,8 +101,7 @@ Select the **+** button between the **Start** and **Error Handler** nodes to ope
 
 Select **post** from the list to open the operation configuration form, then fill in the fields:
 
-- **channel** : The Slack channel to post the message to (for example, `general`)
-- **text** : The message text to send
+- **Payload** : A record with the channel to post to and the message text, for example `{channel: "general", text: "Hello from WSO2 Integrator!"}`
 - **result** : The variable name to store the response (default `slackChatpostmessageresponse`)
 
 <ThemedImage
