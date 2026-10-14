@@ -72,8 +72,8 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
    <ThemedImage
        alt="WSO2 Integrator Get Started page with the Sign In button in the top-right corner"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/integrator-get-started-v5.1.png'),
        }}
    />
 
@@ -91,10 +91,10 @@ Sign in with your WSO2 Cloud account to deploy to WSO2 Cloud, manage environment
 4. The editor shows a **Successfully signed into WSO2 Integration Platform** notification, and your account avatar appears in the top-right corner.
 
    <ThemedImage
-       alt="WSO2 Integrator Get Started page after sign-in showing the account avatar and a success notification"
+       alt="WSO2 Integrator Get Started page after sign-in showing the account avatar in the top-right corner"
        sources={{
-           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
-           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in.png'),
+           light: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
+           dark: useBaseUrl('/img/get-started/setup/sign-in/signed-in-v5.1.png'),
        }}
    />
 
