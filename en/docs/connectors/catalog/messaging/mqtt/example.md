@@ -46,8 +46,8 @@ Select **Add Connection** (the **+** button in the **Connections** section) on t
 <ThemedImage
     alt="MQTT connector palette open with search field before any selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_01_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_01_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_01_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_01_palette.png'),
     }}
 />
 
@@ -69,8 +69,8 @@ Enter the following connection parameters, binding each to a configurable variab
 <ThemedImage
     alt="MQTT connection form fully filled with all parameters before saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_02_connection_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_02_connection_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_02_connection_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_02_connection_form.png'),
     }}
 />
 
@@ -81,8 +81,8 @@ Select **Save Connection** to persist the connection. The `mqttClient` connectio
 <ThemedImage
     alt="MQTT Connections panel showing mqttClient entry after saving"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_03_connections_list.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_03_connections_list.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_03_connections_list.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_03_connections_list.png'),
     }}
 />
 
@@ -108,8 +108,8 @@ In the left sidebar under **Entry Points**, select **Add Entry Point** (**+**), 
 <ThemedImage
     alt="MQTT connection node expanded showing all available operations before selection"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_04_operations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_04_operations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_04_operations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_04_operations_panel.png'),
     }}
 />
 
@@ -122,8 +122,8 @@ In the left sidebar under **Entry Points**, select **Add Entry Point** (**+**), 
 <ThemedImage
     alt="MQTT Publish operation configuration filled with all values"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_05_operation_filled.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_05_operation_filled.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_05_operation_filled.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_05_operation_filled.png'),
     }}
 />
 
@@ -132,8 +132,8 @@ Select **Save** to add the publish step to the automation flow.
 <ThemedImage
     alt="Completed MQTT automation flow"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_06_completed_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_screenshot_06_completed_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_06_completed_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_screenshot_06_completed_flow.png'),
     }}
 />
 
@@ -180,8 +180,8 @@ Select **Add Artifact** in the WSO2 Integrator panel. In the artifacts palette, 
 <ThemedImage
     alt="Artifacts palette open with MQTT trigger card visible under Event Integration category"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_01_artifact_palette.png'),
     }}
 />
 
@@ -200,8 +200,8 @@ For each field, select the helper panel icon, go to the **Configurables** tab, s
 <ThemedImage
     alt="MQTT trigger configuration form with all three fields bound to configurables mqttBrokerUrl, mqttClientId, and mqttTopic"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_02_trigger_config_form.png'),
     }}
 />
 
@@ -216,8 +216,8 @@ In the left panel, select **Configurations** to open the Configurations panel. Y
 <ThemedImage
     alt="Configurable Variables panel showing mqttBrokerUrl, mqttClientId, and mqttTopic with empty Required fields"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_03_configurations_panel.png'),
     }}
 />
 
@@ -241,8 +241,8 @@ Select the **+** icon in the flow chart, and in the side panel that opens, choos
 <ThemedImage
     alt="onMessage handler flow canvas showing Start node followed by log:printInfo node with message.toJsonString() argument"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_06_handler_flow.png'),
     }}
 />
 
@@ -253,8 +253,8 @@ Return to the **MQTT Event Integration** service view. The **Event Handlers** li
 <ThemedImage
     alt="MQTT Event Integration service view with onMessage handler row registered under Event Handlers"
     sources={{
-        light: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
-        dark: useBaseUrl('/img/connectors/catalog/built-in/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
+        light: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
+        dark: useBaseUrl('/img/connectors/catalog/messaging/mqtt/mqtt_trigger_screenshots_07_service_view_final.png'),
     }}
 />
 
