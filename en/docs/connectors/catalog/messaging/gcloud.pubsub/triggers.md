@@ -6,12 +6,12 @@ title: Triggers
 The `ballerinax/gcloud.pubsub` connector supports event-driven message consumption through a streaming pull mechanism. When messages arrive on a Google Cloud Pub/Sub subscription, the listener receives them in real time and invokes your service's `onMessage` callback automatically.
 
 
-Three components work together:
+Four components work together:
 
 | Component | Role |
 |-----------|------|
 | `pubsub:Listener` | Connects to Google Cloud Pub/Sub and opens streaming pull connections to receive messages from subscriptions. |
-| `pubsub:Service` | Defines the `onMessage` callback invoked for each received message. |
+| `pubsub:Service` | Defines the `onMessage` callback invoked for each received message, and an optional `onError` callback. |
 | `pubsub:Caller` | Provided to the callback to acknowledge (`ack`) or reject (`nack`) the received message. |
 | `pubsub:Message` | The message payload passed to the `onMessage` callback, containing data, attributes, and metadata. |
 
@@ -29,16 +29,13 @@ The listener supports the following connection strategies:
 
 | Config Type | Description |
 |-------------|-------------|
-| `ListenerConfiguration` | Configuration for the Pub/Sub listener. Authenticates using GCP service account credentials. |
-
-The listener is initialized with a subscription name followed by the `ListenerConfiguration` fields. The subscription name can be a subscription ID (for example, `my-subscription`), which is resolved against `projectId`, or a full resource name in the format `projects/{project-id}/subscriptions/{subscription-id}`.
+| `ListenerConfiguration` | Configuration for the Pub/Sub listener. Authenticates using a GCP service account key file, or Application Default Credentials if `auth` is omitted. |
 
 `ListenerConfiguration` fields:
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `projectId` | `string` | Required | Google Cloud project ID. |
-| `credentials` | `Credentials` | `()` | Service account credentials. Set `credentialsPath` (path to the JSON key file) or `credentialsJson` (the JSON key content as a string). |
+| `auth` | `GcpCredentialConfig` | `()` | GCP service account credentials. Contains a `path` field pointing to the JSON key file. If omitted, Application Default Credentials are used. |
 
 ### Initializing the listener
 
@@ -47,13 +44,11 @@ The listener is initialized with a subscription name followed by the `ListenerCo
 ```ballerina
 import ballerinax/gcloud.pubsub;
 
-configurable string projectId = ?;
-configurable string subscriptionName = ?;
+configurable string project = ?;
 configurable string gcpCredentialsFilePath = ?;
 
-listener pubsub:Listener pubsubListener = check new (subscriptionName,
-    projectId = projectId,
-    credentials = {credentialsPath: gcpCredentialsFilePath}
+listener pubsub:Listener pubsubListener = check new (project,
+    auth = {path: gcpCredentialsFilePath}
 );
 ```
 
@@ -63,17 +58,18 @@ listener pubsub:Listener pubsubListener = check new (subscriptionName,
 
 ## Service
 
-A `pubsub:Service` is a Ballerina service attached to a `pubsub:Listener`. It receives messages from the subscription configured on the listener and implements the `onMessage` callback to process incoming messages.
+A `pubsub:Service` is a Ballerina service attached to a `pubsub:Listener`. It is annotated with `@pubsub:ServiceConfig` to bind it to a specific subscription, and implements the `onMessage` callback to process incoming messages.
 
 
 ### Callback signatures
 
 | Function | Signature | Description |
 |----------|-----------|-------------|
-| `onMessage` | `remote function onMessage(pubsub:Message message, pubsub:Caller caller) returns error?` | Invoked when a message is received from the subscription. Use the `Caller` to acknowledge or reject the message. |
+| `onMessage` | `remote function onMessage(pubsub:Message message, pubsub:Caller caller) returns error?` | Invoked when a message is received from the subscription. Use the `Caller` to acknowledge or reject the message. The `caller` parameter is optional. |
+| `onError` | `remote function onError(pubsub:Error err) returns error?` | Optional. Invoked when a received message cannot be dispatched to `onMessage`, for example when payload data binding fails. The message is nacked. |
 
 :::note
-Use `caller->ack()` to acknowledge successful processing, or `caller->nack()` to reject the message and request re-delivery.
+Use `caller->ack()` to acknowledge successful processing, or `caller->nack()` to reject the message and request re-delivery. If `onMessage` does not declare a `caller` parameter, the message is acknowledged automatically after `onMessage` returns.
 :::
 
 ### Full usage example
@@ -82,22 +78,20 @@ Use `caller->ack()` to acknowledge successful processing, or `caller->nack()` to
 import ballerina/log;
 import ballerinax/gcloud.pubsub;
 
-configurable string projectId = ?;
-configurable string subscriptionName = ?;
+configurable string project = ?;
 configurable string gcpCredentialsFilePath = ?;
+configurable string subscription = ?;
 
-listener pubsub:Listener pubsubListener = check new (subscriptionName,
-    projectId = projectId,
-    credentials = {credentialsPath: gcpCredentialsFilePath}
+listener pubsub:Listener pubsubListener = check new (project,
+    auth = {path: gcpCredentialsFilePath}
 );
 
+@pubsub:ServiceConfig {subscription}
 service on pubsubListener {
     remote function onMessage(pubsub:Message message, pubsub:Caller caller) returns error? {
-        // The message payload is delivered as bytes
-        string data = check string:fromBytes(message.data);
         log:printInfo("Received message",
             messageId = message.messageId,
-            data = data,
+            data = message.data.toString(),
             attributes = message.attributes.toString()
         );
         // Acknowledge the message on successful processing
@@ -107,7 +101,8 @@ service on pubsubListener {
 ```
 
 :::note
-The subscription is set when initializing the `pubsub:Listener`. The package also defines an optional `@pubsub:ServiceConfig` annotation (of type `PubSubServiceConfig`, with a single `subscriptionName` field), but the listener does not use it to select the subscription.
+The `@pubsub:ServiceConfig` annotation supports additional fields for fine-tuning subscriber behavior: `maxAckExtensionPeriod`, `maxDurationPerAckExtension`, `minDurationPerAckExtension`, `parallelPullCount`, and `flowControlSettings`.
+
 :::
 
 ---
@@ -119,14 +114,35 @@ The subscription is set when initializing the `pubsub:Listener`. The package als
 | Field | Type | Description |
 |-------|------|-------------|
 | `messageId` | `string?` | The unique ID assigned by Pub/Sub when the message is published. |
-| `data` | `byte[]` | The message payload as bytes. Use `string:fromBytes()` to convert text payloads. |
+| `data` | `anydata` | The message payload. When received through `pubsub:Message`, this is the raw `byte[]` payload. |
 | `attributes` | `map<string>?` | Optional key-value attributes attached to the message. |
 | `publishTime` | `time:Utc?` | The timestamp when the message was published by the server. |
 | `orderingKey` | `string?` | The ordering key for message ordering, if set by the publisher. |
 
-### `Credentials`
+:::note
+To bind the received payload to a specific type, declare the `onMessage` parameter as a record type that includes `pubsub:Message` and narrows `data`, for example `record {| *pubsub:Message; string data; |}`. Supported `data` types include `string`, `xml`, `byte[]`, records, and other JSON-compatible types. If binding fails, the message is nacked and `onError` is invoked.
+:::
+
+### `ServiceConfiguration`
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `credentialsPath` | `string?` | File path to the GCP service account JSON key file. |
-| `credentialsJson` | `string?` | The GCP service account JSON key content as a string. |
+| `subscription` | `string` | The name of the Pub/Sub subscription to pull messages from. |
+| `maxAckExtensionPeriod` | `decimal` | Maximum total time (seconds) the ack deadline can be extended. Default: `3600`. |
+| `maxDurationPerAckExtension` | `decimal` | Upper bound (seconds) for a single ack deadline extension. Default: `600`. |
+| `minDurationPerAckExtension` | `decimal` | Minimum duration (seconds) for a single ack deadline extension. Default: `0.0`. |
+| `parallelPullCount` | `int` | Number of parallel streaming pull connections. Default: `1`. |
+| `flowControlSettings` | `FlowControlConfig?` | Flow control settings to limit outstanding messages and bytes. |
+
+### `FlowControlConfig`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `maxOutstandingMessageCount` | `int` | Maximum number of outstanding (unacknowledged) messages. Default: `1000`. |
+| `maxOutstandingRequestBytes` | `int` | Maximum total bytes of outstanding messages. Default: `104857600` (100 MB). |
+
+### `GcpCredentialConfig`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `path` | `string` | File path to the GCP service account JSON key file. |
