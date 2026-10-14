@@ -3,7 +3,7 @@ title: "WSO2 Integrator Copilot"
 description: Sign in to WSO2 Integrator Copilot with your WSO2 Cloud account or your own AI provider credentials.
 keywords: [wso2 integrator, copilot, getting started, sign in]
 sidebar_position: 1
-slug: /editor/copilot/getting-started
+slug: /editor/copilot
 ---
 
 import ThemedImage from '@theme/ThemedImage';
