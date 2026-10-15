@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import AIAssistantSidePanel from '@site/src/components/DocsCopilot/Launcher';
+import AIAssistantSidePanel from '@site/src/components/AIAssistantSidePanel/Launcher';
 import ReportIssueButton from '@site/src/components/ReportIssueButton';
 
 import styles from './styles.module.css';

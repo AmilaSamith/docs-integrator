@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
 
-import DocsCopilot from './index';
+import AssistantChat from './index';
 import styles from './launcher.module.css';
 
 /**
@@ -13,7 +13,7 @@ import styles from './launcher.module.css';
  */
 
 /** Lucide's "bot" icon (https://lucide.dev/icons/bot), ISC-licensed. */
-function CopilotButtonIcon(): ReactNode {
+function AssistantButtonIcon(): ReactNode {
   return (
     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M12 8V4H8" />
@@ -34,7 +34,7 @@ export default function AIAssistantSidePanel(): ReactNode {
     <>
       {open && (
         <div className={styles.dock}>
-          <DocsCopilot onClose={close} />
+          <AssistantChat onClose={close} />
         </div>
       )}
       <button
@@ -43,7 +43,7 @@ export default function AIAssistantSidePanel(): ReactNode {
         aria-label="AI Docs Assistant"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}>
-        <CopilotButtonIcon />
+        <AssistantButtonIcon />
       </button>
     </>
   );
