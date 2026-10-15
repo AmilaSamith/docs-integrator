@@ -54,10 +54,10 @@ The rest of this page walks each step in order.
 
 A model provider is the connection that the `generate` node uses to reach the LLM. You create it once and reuse it in every direct LLM call in the integration.
 
-1. In the flow, select **+** where you want to add the call. In the node panel, under **AI** > **Direct LLM**, select **Model Provider**.
+1. In the flow canvas, select the **+** icon where you want to add the LLM call. In the node palette that opens, under **AI** > **Direct LLM**, select **Model Provider**.
 
     <ThemedImage
-        alt="The node panel on the right side of the flow editor, with the AI section expanded and Model Provider highlighted under Direct LLM. Knowledge Base, Data Loader, and Augment Query appear under RAG."
+        alt="The node palette on the right side of the flow canvas, with the AI section expanded and Model Provider highlighted under Direct LLM. Knowledge Base, Data Loader, and Augment Query appear under RAG."
         sources={{
             light: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/05-add-model-provider-node-v5.1.png'),
             dark: useBaseUrl('/img/genai/develop/direct-llm-v5.1/direct-llm/05-add-model-provider-node-v5.1.png'),
@@ -74,7 +74,7 @@ A model provider is the connection that the `generate` node uses to reach the LL
         }}
     />
 
-3. Select a provider from the list. The fastest option is **Default Model Provider (WSO2)**, which needs no API key, just a one-time WSO2 sign-in. To use OpenAI, Anthropic, Azure OpenAI, or another provider, see [Model Providers](../ai-building-blocks/model-providers.md).
+3. Select a provider from the list. The simplest option is **Default Model Provider (WSO2)**, which needs no API key, only a one-time WSO2 sign-in. To use OpenAI, Anthropic, Azure OpenAI, or another provider, see [Model Providers](../ai-building-blocks/model-providers.md).
 
     <ThemedImage
         alt="The Model Providers list showing Default Model Provider (WSO2) highlighted, followed by Anthropic, Azure OpenAI, Deepseek, Google Vertex, Mistral, Ollama, and OpenAI model providers."
@@ -94,7 +94,7 @@ A model provider is the connection that the `generate` node uses to reach the LL
         }}
     />
 
-The new connection appears under **Connections** in the project explorer and in the **Model Providers** panel.
+The new connection appears under **Connections** in the project explorer and in the **Model Providers** list.
 
 ---
 
