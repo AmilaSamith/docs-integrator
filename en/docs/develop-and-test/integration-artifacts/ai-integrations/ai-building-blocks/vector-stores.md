@@ -192,7 +192,7 @@ In the **Select Vector Store** picker, this store is listed as **Amazon S3 Vecto
 | Field | Required | Default | Available values |
 |---|---|---|---|
 | **Connection Config** | Yes | N/A | How to reach S3 Vectors. See [Connection config](#s3-vectors-connection-config). |
-| **Vector Index** | Yes | N/A | The target index: either `vectorBucketName` and `indexName` together, for example `{vectorBucketName: "amzn-s3-demo-vector-bucket", indexName: "idx"}`, or `indexArn` on its own. Setting both forms, or only one of the two names, fails. Use `indexArn` for an index in another AWS account, because bucket and index names are looked up in your own account. |
+| **Vector Index** | Yes | N/A | The target index, as one of two records: `VectorBucketIndex`, with the bucket and index name, for example `{vectorBucketName: "amzn-s3-demo-vector-bucket", indexName: "idx"}`, or `IndexArn`, for example `{indexArn: "arn:aws:s3vectors:us-east-1:111122223333:bucket/amzn-s3-demo-vector-bucket/index/idx"}`. Use the ARN for an index in another AWS account, because bucket and index names are looked up in your own account. |
 | **Vector Store Config** | No | `{}` | Store behavior. See [Vector store config](#s3-vectors-store-config). |
 
 :::tip
@@ -207,7 +207,7 @@ In the **Select Vector Store** picker, this store is listed as **Amazon S3 Vecto
 | **region** | `aws:Region \| string` | N/A | The region of the vector bucket. |
 | **endpoint** | `aws:EndpointConfig` | `()` (derived from **region**) | Only `customEndpoint` is useful here: a full endpoint URL, including the scheme, that replaces the derived one. `fips` must stay `false`; AWS lists no FIPS endpoint for S3 Vectors, so `true` fails when the store is created. `dualstack` is ignored, because every S3 Vectors endpoint is already dual-stack (`s3vectors.<region>.api.aws`). |
 
-| **httpConfig** | `HttpConfig` | `{}` | HTTP client settings: `timeout` (seconds, default `30`), `proxy`, `secureSocket`, `poolConfig`, `circuitBreaker`, `socketConfig`, and `responseLimits`, with the same meaning as in `http:ClientConfiguration`. The HTTP version, chunking, and retries aren't configurable: the store always uses HTTP/1.1 without chunked request bodies, because S3 Vectors rejects both HTTP/2 and chunked bodies, and it retries failed requests on its own. |
+| **httpConfig** | `http:ClientConfiguration` | `{}` | The [Standard HTTP advanced configurations](model-providers.md#standard-http-advanced-configurations), with three exceptions: the store always uses HTTP/1.1 without chunked request bodies, because S3 Vectors rejects both HTTP/2 and chunked bodies, and it ignores **Retry Config**, because it retries failed requests on its own. |
 
 For an [interface VPC endpoint](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-privatelink.html), enable private DNS on the endpoint and leave **endpoint** empty.
 
