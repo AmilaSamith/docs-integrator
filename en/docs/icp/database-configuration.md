@@ -18,7 +18,7 @@ Configure the main database in the `[icp_server.storage]` section of `<ICP_HOME>
 | `dbPort`                | `int`     | `5432`        | Database server port (not used for H2)                                               |
 | `dbName`                | `string`  | `"icp_db"`    | Database or schema name. For Oracle, the service name of the database or PDB          |
 | `dbUser`                | `string`  | `"icp_user"`  | Database user                                                                        |
-| `dbPassword`            | `string`  | `"icp_password"` | Database password                                                                 |
+| `dbPassword`            | `string`  | `"icp_password"` | Database password — **must be changed to a unique password in production**        |
 | `dbUseTLS`              | `boolean` | `false`       | Connect over TLS. Set to `true` for Oracle TCPS endpoints, such as Autonomous Database |
 | `maxOpenConnections`    | `int`     | `10`          | Maximum number of open connections in the pool                                        |
 | `minIdleConnections`    | `int`     | `5`           | Minimum number of idle connections in the pool                                        |
