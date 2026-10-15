@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 0
 sidebar_label: Manage
 title: Choosing a Control Plane
 description: Understand how the way you deploy WSO2 Integrator integrations determines which control plane manages them, and where to find the docs for each.
@@ -14,10 +14,10 @@ Once your integrations are deployed, you need a control plane to organize them i
 :::info The control plane follows your deployment choice
 You do not pick a control plane independently of how you deploy. Where your integrations run decides how you manage them:
 
-- Integrations you [deploy to WSO2 Cloud](deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) are managed in WSO2 Cloud.
-- Integrations you run on your own infrastructure (VMs, containers, Kubernetes, on-premises, private cloud, or air-gapped environments) are managed with the self-hosted [Integration Control Plane](icp/index.md).
+- Integrations you [deploy to WSO2 Cloud](../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) are managed in WSO2 Cloud.
+- Integrations you run on your own infrastructure (VMs, containers, Kubernetes, on-premises, private cloud, or air-gapped environments) are managed with the self-hosted [Integration Control Plane](../icp/index.md).
 
-Decide where to run first, in [Deploy and Run](deploy-and-run/deploy-and-run.md). The control plane follows from that.
+Decide where to run first, in [Deploy and Run](../deploy-and-run/deploy-and-run.md). The control plane follows from that.
 :::
 
 ## Manage on WSO2 Cloud
@@ -43,7 +43,7 @@ ICP is a self-hosted management server you install on your own infrastructure. I
 - Run the control plane on your own infrastructure: on-premises, in your private cloud, or air-gapped.
 - Keep all runtime metadata in a database you control (PostgreSQL, MySQL, or MSSQL).
 
-ICP is documented in its own section, starting with [Integration Control Plane](icp/index.md).
+ICP is documented in its own section, starting with [Integration Control Plane](../icp/index.md).
 
 ## Comparison
 
@@ -60,6 +60,6 @@ ICP is documented in its own section, starting with [Integration Control Plane](
 
 ## What's next
 
-- [Deploy and Run](deploy-and-run/deploy-and-run.md) — choose where your integrations run
+- [Deploy and Run](../deploy-and-run/deploy-and-run.md) — choose where your integrations run
 - <CloudDocsLink to="/manage">Manage on WSO2 Cloud</CloudDocsLink> — manage integrations deployed to WSO2 Cloud
-- [Install ICP](icp/install-icp.md) — set up the self-hosted Integration Control Plane
+- [Install ICP](../icp/install-icp.md) — set up the self-hosted Integration Control Plane

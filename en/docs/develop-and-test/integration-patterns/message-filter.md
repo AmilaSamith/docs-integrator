@@ -118,7 +118,7 @@ function filterHighPriorityMessages(Message[] messages) returns Message[] {
 
 ## Boundary-level filtering
 
-Use boundary-level filtering when the input artifact can reject or route messages before custom flow logic runs. For HTTP-facing inputs, use a [request interceptor](product://connectors/catalog/built-in/http/trigger-reference#interceptors) when the decision can be made from request metadata before the resource executes. Other inputs can use their own handler, listener, or subscription selection points.
+Use boundary-level filtering when the input artifact can reject or route messages before custom flow logic runs. For HTTP-facing inputs, use a [request interceptor](product://connectors/catalog/network-protocols/http/trigger-reference#interceptors) when the decision can be made from request metadata before the resource executes. Other inputs can use their own handler, listener, or subscription selection points.
 
 <PatternImplementationTabs>
 <TabItem value="ui" label="Visual Designer" default>

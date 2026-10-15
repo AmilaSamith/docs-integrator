@@ -25,7 +25,7 @@ Use loop-driven polling with [while loops](../../editor/canvases/flow-canvas/nod
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Create or open the [HTTP service resource](../integration-artifacts/integration-as-api/http.md#creating-an-http-service) that starts the polling flow.
-2. Add an HTTP client connection for the source that the flow must poll. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](product://connectors/catalog/built-in/http/action-reference#client).
+2. Add an HTTP client connection for the source that the flow must poll. See [adding a connection](../integration-artifacts/supportive-artifacts/connections.md#adding-a-connection) and the [HTTP client reference](product://connectors/catalog/network-protocols/http/action-reference#client).
 3. Add [configurable variables](../../reference/configuration-reference.md#configurable-variables) for values such as `maxAttempts` and `pollDelaySeconds`.
 4. Add a [While node](../../editor/canvases/flow-canvas/node-palette.md#while) that runs while the attempt count is less than `maxAttempts`.
 5. Inside the loop, add the HTTP client operation that asks for the current message or status.
