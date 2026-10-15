@@ -1030,6 +1030,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'catalog/messaging/nats/setup-guide',
             'catalog/messaging/nats/actions',
+            'catalog/messaging/nats/triggers',
             'catalog/messaging/nats/example',
           ],
         },
