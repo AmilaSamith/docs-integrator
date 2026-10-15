@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AIAssistantSidePanel from '@site/src/components/AIAssistantSidePanel/Launcher';
 import ReportIssueButton from '@site/src/components/ReportIssueButton';
 
@@ -17,12 +18,19 @@ import styles from './styles.module.css';
  * Order matters: ReportIssueButton first (left, secondary action),
  * AIAssistantSidePanel second (right, closest to the corner -- the
  * primary action).
+ *
+ * AIAssistantSidePanel only shows when the site's docusaurus.config.ts
+ * sets `customFields.showAiAssistant: true`. A branch without the
+ * setting keeps it hidden.
  */
 export default function FloatingActions(): ReactNode {
+  const { siteConfig } = useDocusaurusContext();
+  const showAiAssistant = siteConfig.customFields?.showAiAssistant === true;
+
   return (
     <div className={`${styles.wrapper} floating-actions`}>
       <ReportIssueButton />
-      <AIAssistantSidePanel />
+      {showAiAssistant && <AIAssistantSidePanel />}
     </div>
   );
 }
