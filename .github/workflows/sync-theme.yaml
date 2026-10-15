@@ -17,6 +17,11 @@ name: Sync shared theme to product branches
 # unconditionally, so any target missing one fails to typecheck/build
 # the moment it receives that file.
 #
+# AIAssistantSidePanel travels with FloatingActions for the same reason:
+# FloatingActions/index.tsx imports AIAssistantSidePanel/Launcher, so
+# syncing one without the other breaks the target's build ("Can't
+# resolve '@site/src/components/...Launcher'").
+#
 # ConnectorCatalog is NOT here at all, not even styles.module.css --
 # learned the hard way establishing the theme on wso2-connectors: its
 # real index.tsx (never shared) and styles.module.css were already
@@ -57,6 +62,7 @@ on:
       - 'en/src/components/SearchBar/**'
       - 'en/src/components/ColorSwatch/**'
       - 'en/src/components/AiAssistantPanel/**'
+      - 'en/src/components/AIAssistantSidePanel/**'
       - 'en/src/components/FloatingActions/**'
       - 'en/src/components/ReportIssueButton/**'
       - 'en/src/components/ArtifactPicker/index.tsx'
@@ -112,6 +118,7 @@ env:
     en/src/components/SearchBar
     en/src/components/ColorSwatch
     en/src/components/AiAssistantPanel
+    en/src/components/AIAssistantSidePanel
     en/src/components/ReportIssueButton
     en/src/components/FloatingActions
     en/src/components/ArtifactPicker/index.tsx
@@ -203,6 +210,6 @@ jobs:
 
           gh pr create --base ${{ matrix.target }} --head sync-theme-${{ matrix.target }} \
             --title "theme(sync): shared theme + governance docs from main" \
-            --body "Auto-synced shared theme files (custom.css, theme overrides, SiteNav, ProductDocsLinks, TabAwareToc, SidebarProductHeader, ExploreDropdown, GuidesCatalog + its plugin, PaletteCard/PaletteIcon/IconGallery/ColorSwatch/SearchBar, scripts/preview-all-sites.mjs, AiAssistantPanel, ArtifactPicker's presentation code (not its per-branch data.ts), expose-sidebars, markdown-export, brand assets) and governance docs (MAINTENANCE.md, CONTRIBUTING.md, AGENTS.md, HOW_TO_WRITE_A_GUIDE.md, UI_UX_GUIDELINES.md, staging_sync.yaml). ConnectorCatalog is NOT included -- it's wso2-connectors-owned, not shared. Review for ${{ matrix.target }}-specific breakage before merge -- in particular, GuidesCatalog/ArtifactPicker only do something if this branch's own docusaurus.config.ts registers guidesCatalogPlugin and its docs actually use these components; see HOW_TO_WRITE_A_GUIDE.md."
+            --body "Auto-synced shared theme files (custom.css, theme overrides, SiteNav, ProductDocsLinks, TabAwareToc, SidebarProductHeader, ExploreDropdown, GuidesCatalog + its plugin, PaletteCard/PaletteIcon/IconGallery/ColorSwatch/SearchBar, scripts/preview-all-sites.mjs, AiAssistantPanel, AIAssistantSidePanel + FloatingActions + ReportIssueButton, ArtifactPicker's presentation code (not its per-branch data.ts), expose-sidebars, markdown-export, brand assets) and governance docs (MAINTENANCE.md, CONTRIBUTING.md, AGENTS.md, HOW_TO_WRITE_A_GUIDE.md, UI_UX_GUIDELINES.md, staging_sync.yaml). ConnectorCatalog is NOT included -- it's wso2-connectors-owned, not shared. Review for ${{ matrix.target }}-specific breakage before merge -- in particular, GuidesCatalog/ArtifactPicker only do something if this branch's own docusaurus.config.ts registers guidesCatalogPlugin and its docs actually use these components; see HOW_TO_WRITE_A_GUIDE.md."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
