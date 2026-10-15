@@ -155,6 +155,16 @@ function ConnectorCatalogIcon(): ReactNode {
   );
 }
 
+function ConnectorsIcon(): ReactNode {
+  return (
+    <svg {...iconProps}>
+      <path d="M9 2v4M15 2v4" />
+      <path d="M7 6h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5Z" />
+      <path d="M12 14v7M9 21h6" />
+    </svg>
+  );
+}
+
 function BuildYourOwnIcon(): ReactNode {
   return (
     <svg {...iconProps}>
@@ -335,6 +345,9 @@ const ICONS_BY_LABEL: Record<string, () => ReactNode> = {
   reference: ReferenceIcon,
   'connector catalog': ConnectorCatalogIcon,
   'using connectors': UsingConnectorsIcon,
+  // wso2-integrator's 5.0.0 top-level "Connectors" category (see
+  // versioned_sidebars/version-5.0.0-sidebars.json there).
+  connectors: ConnectorsIcon,
   // 'build your own' kept as an alias for older branches/checkouts that
   // still carry the pre-rename sidebar label.
   'build your own': BuildYourOwnIcon,
