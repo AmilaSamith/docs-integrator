@@ -49,7 +49,7 @@ These values default to `localhost:9446` and must be updated when ICP is accesse
 | ----------------- | --------- | ------- | ----------- |
 | `miTunnelEnabled` | `boolean` | `false` | Send management requests to MI runtimes in heartbeat responses instead of calling each runtime's management API directly. Use this when ICP cannot reach the MI management API, for example when MI runs behind a load balancer. Requires WSO2 Integrator: MI 4.7.0 or later. |
 
-Add `miTunnelEnabled` before the first `[section]` header and restart ICP. For details, see [Connect MI behind a load balancer](https://mi.docs.wso2.com/en/latest/install-and-setup/install/connecting-an-integration-to-icp/#connect-mi-behind-a-load-balancer) in the MI documentation.
+Add `miTunnelEnabled` before the first `[section]` header and restart ICP. For details, see [Connect MI behind a load balancer](https://mi.docs.wso2.com/en/4.7.0/install-and-setup/install/connecting-an-integration-to-icp/#connect-mi-behind-a-load-balancer) in the MI documentation.
 
 ## Runtime management TLS settings
 
