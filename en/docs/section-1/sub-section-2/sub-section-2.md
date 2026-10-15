@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 sidebar_label: Overview
-title: "Sub-section 2"
+title: "Sub-Section 2"
 description: A second placeholder sub-section, kept to just its own index page to show the minimal single-doc case.
 slug: /section-1/sub-section-2
 ---
