@@ -39,6 +39,9 @@ const config: Config = {
   // exists at all.
   customFields: {
     crossProductBase: CROSS_PRODUCT_BASE,
+    // Shows the AI assistant button and side panel (see FloatingActions).
+    // Off until the feature is ready; set to true to bring it back.
+    showAiAssistant: false,
   },
 
   organizationName: 'wso2',
