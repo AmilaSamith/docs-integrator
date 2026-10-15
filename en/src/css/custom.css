@@ -757,6 +757,17 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid var(--wso2-border-subtle);
 }
 
+/* A ### straight after a ## (the ## has no body of its own, e.g. the
+   "## General" group heading above the first "### Q:" in a FAQ) would stack
+   the h2's bottom rule on the h3's top rule -- two lines in a row. Keep the
+   h2's rule only, and tighten the gap that rule + the h3's own top padding
+   would otherwise leave. */
+.markdown h2 + h3 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 1rem;
+}
+
 /* Jumping to a heading (card link, TOC, #anchor in the URL) must clear
    BOTH sticky rows: the navbar itself and the product/"Copy page" row
    stacked under it (theme/Navbar's .secondaryRow). Docusaurus only
