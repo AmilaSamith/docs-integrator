@@ -133,4 +133,4 @@ Three arrangements are available, covering different splits of infrastructure re
 - **WSO2 fully managed**, with infrastructure and the private data plane in your own subscription
 - **Customer self-managed**, where WSO2 provides the installation script and updates
 
-For the full infrastructure requirements, system components, network connectivity, and security architecture of a private data plane, see [Deploy to WSO2 Cloud](../../deploy-and-run/deploy-and-run.md).
+For the full infrastructure requirements, system components, network connectivity, and security architecture of a private data plane, see [Set up a Private Data Plane](../../deploy-and-run/deploy-on-private-data-plane/deploy-on-private-data-plane.md).
