@@ -57,7 +57,7 @@ project     = "order-service"
 integration = "order-create"
 runtime     = "<unique-runtime-name>"
 secret      = "<generated-secret>"
-# Set to false to run headless: heartbeats only, no workflow management from the ICP.
+# Set to false to disable workflow management from the ICP. START, STOP, and SET_LOGGER_LEVEL remain available.
 enableWorkflowManagement = true
 # serverUrl = "https://<hostname>:9445"
 # runtimeHostUrl = "http://<hostname>"
@@ -80,7 +80,7 @@ Set `runtime` to a short, meaningful name that identifies this instance in the I
 | `heartbeatInterval` | No | `10` | Seconds between heartbeats |
 | `cert` | No | none | Path to a PEM certificate for the ICP server |
 | `enableSSL` | No | `false` | Enforce TLS certificate verification |
-| `enableWorkflowManagement` | No | `true` | Allow ICP to manage this runtime's workflows over the heartbeat channel. Set to `false` to send heartbeats only |
+| `enableWorkflowManagement` | No | `true` | Allow ICP to manage this runtime's workflows over the heartbeat channel. Set to `false` to disable workflow management from ICP; `START`, `STOP`, and `SET_LOGGER_LEVEL` commands remain available |
 | `runtimeHostUrl` | No | `http://localhost` | URL whose host ICP uses to reach this runtime for Try-It requests. Only the host is used |
 | `requireSignedCommands` | No | `false` | Refuse control commands from ICP that are not signed |
 
