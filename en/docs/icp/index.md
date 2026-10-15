@@ -33,7 +33,7 @@ Key capabilities:
 |-----------|-------------|
 | **ICP Server** | Ballerina-based backend that hosts the GraphQL API, auth service, and observability endpoints |
 | **ICP Dashboard** | React and TypeScript web UI served at port `9446`, bundled into the distribution |
-| **Database** | Persistent store for integration metadata. Supports MySQL, PostgreSQL, MSSQL, and H2. |
+| **Database** | Persistent store for integration metadata. Supports MySQL, PostgreSQL, MSSQL, Oracle, and H2. |
 
 ## Integration profiles
 
@@ -59,7 +59,7 @@ The MI profile in ICP 2.0.0 supports WSO2 Micro Integrator 4.6.0 and later. Earl
    Default credentials must be changed before using ICP in production. Update the admin password account through **Profile > Change Password** in the ICP dashboard.
    :::
 
-3. The project will be displayed on the **Home** page of the ICP dashboard.
+3. Your projects are listed on the **All Projects** page of the ICP dashboard.
 
    <ThemedImage
        alt="ICP Projects Dashboard"
@@ -95,6 +95,8 @@ The MI profile in ICP 2.0.0 supports WSO2 Micro Integrator 4.6.0 and later. Earl
 |------|----------|-------------|
 | `9446` | HTTPS | All ICP Server endpoints: GraphQL, auth, and observability |
 | `9445` | HTTPS | Runtime communication. Integration runtimes connect here to register and send heartbeats. |
+| `9447` | HTTPS | Internal authentication backend for the built-in user store. When the LDAP user store is enabled, the LDAP authentication adapter runs on `9450` instead. |
+| `9449` | HTTPS | Internal OpenSearch adapter used by the ICP server for observability queries |
 
 ## Endpoints
 
