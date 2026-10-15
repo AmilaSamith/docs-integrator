@@ -48,7 +48,7 @@ Open your integration project. You need to update three files to enable the ICP 
 
 ### Add the runtime configuration (Config.toml)
 
-Create a `Config.toml` file in your integration directory if one doesn't exist. Paste the snippet copied from the ICP console in step 1:
+Create a `Config.toml` file in your integration directory if one doesn't exist. Paste the snippet copied from the ICP console in step 1, then add the `requireSignedCommands`, `enableSSL`, and `cert` settings shown below:
 
 ```toml
 [wso2.icp.runtime.bridge]
@@ -59,9 +59,18 @@ runtime     = "<unique-runtime-name>"
 secret      = "<generated-secret>"
 # Set to false to disable workflow management from the ICP. START, STOP, and SET_LOGGER_LEVEL remain available.
 enableWorkflowManagement = true
+# Refuse control commands that ICP has not signed. ICP 2.1.0 signs every command.
+requireSignedCommands = true
+# Verify the ICP server certificate. Required outside local development.
+# enableSSL = true
+# cert = "<path-to-icp-ca-cert>.pem"
 # serverUrl = "https://<hostname>:9445"
 # runtimeHostUrl = "http://<hostname>"
 ```
+
+:::warning
+Keep `requireSignedCommands = true` and, outside local development, set `enableSSL = true` with `cert` pointing to the CA certificate that issued the ICP server certificate. If commands are not required to be signed and the heartbeat connection is not verified, anything that can answer the runtime's heartbeats can start and stop its listeners, change its log levels, and manage its workflows. Leave `enableSSL` off only for local development against ICP's default self-signed certificate.
+:::
 
 Set `runtime` to a short, meaningful name that identifies this instance in the ICP console (for example, `order-create-prod-1`). Each node in a scaled deployment must have a unique `runtime` value.
 
