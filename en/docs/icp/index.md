@@ -105,6 +105,9 @@ The MI profile in ICP 2.0.0 supports WSO2 Micro Integrator 4.6.0 and later. Earl
 | `https://<host>:9446/graphql` | GraphQL API |
 | `https://<host>:9446/auth` | Authentication API for login and token refresh |
 | `https://<host>:9446/icp/observability` | Observability REST API |
+| `https://<host>:9446/icp/workflow` | Workflow management API used by the console's **Workflows** and **Human Tasks** pages |
+| `https://<host>:9446/icp/tryit` | Proxy used by the console's **Test** page to send requests to integration services |
+| `wss://<host>:9446/runtime-status` | WebSocket channel that pushes real-time runtime status updates to the console |
 
 See [ICP Runtime API](runtime-api.md) for the full REST endpoint reference.
 
