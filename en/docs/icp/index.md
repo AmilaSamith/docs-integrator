@@ -95,8 +95,9 @@ The MI profile in ICP 2.1.0 supports WSO2 Micro Integrator 4.7.0 and later. Earl
 |------|----------|-------------|
 | `9446` | HTTPS | All ICP Server endpoints: GraphQL, auth, and observability |
 | `9445` | HTTPS | Runtime communication. Integration runtimes connect here to register and send heartbeats. |
-| `9447` | HTTPS | Internal authentication backend for the built-in user store. When the LDAP user store is enabled, the LDAP authentication adapter runs on `9450` instead. |
+| `9447` | HTTPS | Internal authentication backend for the built-in user store |
 | `9449` | HTTPS | Internal OpenSearch adapter used by the ICP server for observability queries |
+| `9450` | HTTPS | Internal authentication adapter for the LDAP user store |
 
 ## Endpoints
 
