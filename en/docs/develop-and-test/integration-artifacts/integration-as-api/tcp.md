@@ -329,8 +329,7 @@ service class TcpConnectionService {
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         string|error message = string:fromBytes(data);
         if message is error {
-            log:printError("Received data that is not valid UTF-8", 'error = message);
-            return;
+            return error tcp:Error("Received data that is not valid UTF-8", message);
         }
         log:printInfo("Received message", data = message);
         check caller->writeBytes("ACK".toBytes());
