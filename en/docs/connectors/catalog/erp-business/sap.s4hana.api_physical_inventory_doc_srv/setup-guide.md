@@ -81,6 +81,7 @@ Note the user name and password. These are the credentials the connector uses.
 
 <ThemedImage
     alt="New communication arrangement dialog with the scenario and arrangement name"
+    style={{maxWidth: '480px'}}
     sources={{
         light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup_05_new_arrangement.png'),
         dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup_05_new_arrangement.png'),
@@ -105,6 +106,7 @@ Open the saved arrangement. The **API-URL** next to **Own SAP Cloud System** sho
 
 <ThemedImage
     alt="API-URL of the SAP S/4HANA Cloud system in the communication arrangement"
+    style={{maxWidth: '600px'}}
     sources={{
         light: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup_07_view_hostname.png'),
         dark: useBaseUrl('/img/connectors/catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup_07_view_hostname.png'),
