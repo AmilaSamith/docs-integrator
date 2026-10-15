@@ -26,7 +26,7 @@ function CopilotButtonIcon(): ReactNode {
   );
 }
 
-export default function DocsCopilotLauncher(): ReactNode {
+export default function AIAssistantSidePanel(): ReactNode {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
 
