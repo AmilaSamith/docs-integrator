@@ -9,6 +9,7 @@ import { useConnectorVersion } from '@site/src/utils/connectorVersion';
 import styles from './styles.module.css';
 
 const CATEGORY_TAGS = {
+  'built-in':                   { label: 'Built-in',                    color: '#059669', bg: '#ecfdf5', border: '#a7f3d0' },
   'ai-ml':                      { label: 'AI & ML',                      color: '#7c3aed', bg: '#f5f3ff', border: '#ddd6fe' },
   'cloud-infrastructure':       { label: 'Cloud & Infrastructure',       color: '#0369a1', bg: '#f0f9ff', border: '#bae6fd' },
   'communication':              { label: 'Communication',                color: '#0d9488', bg: '#f0fdfa', border: '#99f6e4' },
@@ -21,7 +22,6 @@ const CATEGORY_TAGS = {
   'hrms':                       { label: 'HRMS',                         color: '#7e22ce', bg: '#faf5ff', border: '#e9d5ff' },
   'marketing-social':           { label: 'Marketing & Social',           color: '#e11d48', bg: '#fff1f2', border: '#fecdd3' },
   'messaging':                  { label: 'Messaging',                    color: '#ca8a04', bg: '#fefce8', border: '#fef08a' },
-  'network-protocols':          { label: 'Network & Protocols',          color: '#059669', bg: '#ecfdf5', border: '#a7f3d0' },
   'productivity-collaboration': { label: 'Productivity & Collaboration',  color: '#2563eb', bg: '#eff6ff', border: '#bfdbfe' },
   'security-identity':          { label: 'Security & Identity',          color: '#dc2626', bg: '#fef2f2', border: '#fecaca' },
   'storage-file':               { label: 'Storage & Files',              color: '#64748b', bg: '#f8fafc', border: '#e2e8f0' },
