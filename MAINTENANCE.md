@@ -60,7 +60,7 @@ branch — but only via automation, never by hand:
 - Theme/chrome (`en/src/theme`, `en/src/theme-shared`, `en/src/css/custom.css`,
   `en/static/img`, `SiteNav`/`TabAwareToc`/`ProductDocsLinks`/`SidebarProductHeader`/
   `ExploreDropdown`, the shared component library (`PaletteCard`/`PaletteIcon`,
-  `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `ArtifactPicker`),
+  `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `AIAssistantSidePanel`, `ArtifactPicker`),
   ConnectorCatalog's styling/filtering (not its own `index.tsx`, which stays
   per-branch), the markdown-export plugin) and governance docs (this file,
   `CONTRIBUTING.md`, `HOW_TO_WRITE_A_GUIDE.md`, `UI_UX_GUIDELINES.md`,
