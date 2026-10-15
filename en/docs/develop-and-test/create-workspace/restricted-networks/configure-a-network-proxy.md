@@ -1,8 +1,8 @@
 ---
 title: Configure a Network Proxy for WSO2 Integrator
 sidebar_label: Configure a Network Proxy
-sidebar_position: 2
-slug: /get-started/setup/configure-a-network-proxy
+sidebar_position: 1
+slug: /develop-and-test/create-workspace/restricted-networks/configure-a-network-proxy
 ---
 
 # Configure a Network Proxy for WSO2 Integrator
@@ -64,11 +64,4 @@ BALLERINA_CA_CERT # Path to the CA certificate file
 
 ## Domain Access
 
-These domains must be accessible from your network:
-
-1. Ballerina Central API - `https://api.central.ballerina.io/`
-2. Ballerina Central File Server - `https://fileserver.central.ballerina.io/`
-3. Maven Central Repository - `https://repo.maven.apache.org/maven2`
-4. Docker Hub - `https://hub.docker.com/u/ballerina`
-5. Alpine Linux Repository - `http://dl-cdn.alpinelinux.org/`
-6. Update service - `https://apis.wso2.com/`, `https://integrator-updates-cdn.wso2.com/`
+Make sure the domains listed under [Domain access](restricted-networks.md#domain-access) are reachable through your proxy.
