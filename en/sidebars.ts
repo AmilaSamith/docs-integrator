@@ -1343,6 +1343,56 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SAP Material Document',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_material_document_srv/sap-material-document-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_material_document_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_material_document_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_material_document_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Material Stock',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_material_stock_srv/sap-material-stock-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_material_stock_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_material_stock_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_material_stock_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Physical Inventory Document',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/sap-physical-inventory-document-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Reservation Document',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_reservation_document_srv/sap-reservation-document-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_reservation_document_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_reservation_document_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_reservation_document_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Reservation Document (A2X)',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.ce_apireservationdocument_0001/sap-reservation-document-a2x-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.ce_apireservationdocument_0001/setup-guide',
+            'catalog/erp-business/sap.s4hana.ce_apireservationdocument_0001/actions',
+            'catalog/erp-business/sap.s4hana.ce_apireservationdocument_0001/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'SAP Sales Area',
           link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.salesarea_0001/sap-sales-area-connector-overview' },
           items: [
