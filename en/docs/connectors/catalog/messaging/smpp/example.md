@@ -102,7 +102,7 @@ Select **Save** on the connection form. The `smppClient` connection appears in t
 - **smscPort** (int) : The SMSC's SMPP port; defaults to `2775`
 - **systemId** (string) : The system ID the SMSC issued for your account
 - **password** (string) : The password for that system ID
-- **destinationNumber** (string) : The recipient's number in international format without a leading `+`, for example `94771234567`
+- **destinationNumber** (string) : The recipient's number in international format without a leading `+`, for example `94771234567`. You create this configurable in Step 6; set its value once it exists
 
 ## Configuring the SMPP Submit operation
 
@@ -144,7 +144,7 @@ Select **Submit** to open the **smppClient → submit** configuration form, then
 Select **Save**. The `smpp : submit` node is added to the Automation flow. Then add a **Log Info** step after the operation with the message `SMS submitted to the SMSC` and `result.messageId` as an additional value, so the ID can be correlated with the delivery receipt later.
 
 <ThemedImage
-    alt="Completed automation flow showing Start, the smpp submit operation bound to smppClient, the log step, and the Error Handler"
+    alt="Completed automation flow showing Start, the smpp submit operation bound to smppClient, and the log step"
     sources={{
         light: useBaseUrl('/img/connectors/catalog/messaging/smpp/smpp_screenshots_06_completed_flow.png'),
         dark: useBaseUrl('/img/connectors/catalog/messaging/smpp/smpp_screenshots_06_completed_flow.png'),
