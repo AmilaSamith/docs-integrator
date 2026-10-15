@@ -1,8 +1,8 @@
 ---
 title: Proxy Ballerina Central with a Maven Repository
 sidebar_label: Maven Proxy Repository
-sidebar_position: 3
-slug: /get-started/setup/proxy-ballerina-central-with-maven-repository
+sidebar_position: 2
+slug: /develop-and-test/create-workspace/restricted-networks/maven-proxy-repository
 ---
 
 # Proxy Ballerina Central with a Maven Repository
