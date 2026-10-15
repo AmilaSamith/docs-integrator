@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: CSV and flat file processing
+title: CSV and Flat File Processing
 description: Parse, transform, and write CSV and other delimited flat file data.
 slug: /develop-and-test/data-transformation/csv-flat-file
 ---
@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# CSV and flat file processing
+# CSV and Flat File Processing
 
 CSV and other delimited flat files, such as TSV and pipe-delimited files, are a common way to exchange tabular data between spreadsheets, reporting tools, batch systems, and legacy applications. WSO2 Integrator parses delimited data into typed records with the `ballerina/data.csv` module and writes CSV output with the `ballerina/io` module. You can stream large files, handle custom delimiters and headerless input, and skip malformed rows without stopping the integration.
 
