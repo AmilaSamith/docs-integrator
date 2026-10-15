@@ -1,25 +1,25 @@
 ---
 sidebar_position: 1
-title: Moving to Ballerina 2201.14.0
-description: Resolve the Ballerina version and dependency screens and build warnings that appear when you open or build an older setup or integration after moving to Ballerina 2201.14.0 and Java 25.
-keywords: [wso2 integrator, migration, troubleshooting, ballerina 2201.14.0, swan lake update 14, java 25, dependencies, upgrade, downgrade, previous version, locking-mode, UnsupportedClassVersionError]
+title: Moving to Ballerina 2201.14
+description: Resolve the Ballerina version and dependency screens and build warnings that appear when you open or build an older setup or integration after moving to Ballerina 2201.14 and Java 25.
+keywords: [wso2 integrator, migration, troubleshooting, ballerina 2201.14, swan lake update 14, java 25, dependencies, upgrade, downgrade, previous version, locking-mode, UnsupportedClassVersionError]
 slug: /editor/editor-troubleshooting/moving-to-ballerina-2201-14
 ---
 
-# Moving to Ballerina 2201.14.0
+# Moving to Ballerina 2201.14
 
-WSO2 Integrator 5.1.0, the WSO2 Integrator extension 1.2.0, and the Ballerina extension 6.0.0 run on Ballerina 2201.14.0, which moves from Java 21 to Java 25. When you open an older setup or integration in these releases, the editor can show one of two screens instead of your integration. This page explains why each screen appears and the options you have.
+WSO2 Integrator 5.1.0, the WSO2 Integrator extension 1.2.0, and the Ballerina extension 6.0.0 run on Ballerina 2201.14, which moves from Java 21 to Java 25. When you open an older setup or integration in these releases, the editor can show one of two screens instead of your integration. This page explains why each screen appears and the options you have.
 
 | The editor shows | Why | To update | To stay on your current version |
 |---|---|---|---|
-| **WSO2 Integrator cannot start** or **Ballerina Visualizer cannot start** | Your Ballerina version is earlier than 2201.14.0. | [Update Ballerina](#update-ballerina) | [Keep your current Ballerina version](#keep-your-current-ballerina-version) |
-| **Your project dependencies need to be updated**, including when you click **Run** or **Debug** | Your integration's dependencies were set up with a Ballerina version earlier than 2201.14.0. | [Update the dependencies](#update-the-dependencies) | [Keep the current dependencies](#keep-the-current-dependencies) |
+| **WSO2 Integrator cannot start** or **Ballerina Visualizer cannot start** | Your Ballerina version is earlier than 2201.14. | [Update Ballerina](#update-ballerina) | [Keep your current Ballerina version](#keep-your-current-ballerina-version) |
+| **Your project dependencies need to be updated**, including when you click **Run** or **Debug** | Your integration's dependencies were set up with a Ballerina version earlier than 2201.14. | [Update the dependencies](#update-the-dependencies) | [Keep the current dependencies](#keep-the-current-dependencies) |
 
 If you build or run from a terminal or a CI/CD pipeline instead, see [Symptoms outside the editor](#symptoms-outside-the-editor).
 
 ## Ballerina version is incompatible
 
-The editor shows **WSO2 Integrator cannot start**, or **Ballerina Visualizer cannot start** if you use only the Ballerina extension, when your installed Ballerina version is earlier than 2201.14.0. The current extensions need Ballerina 2201.14.0 or later to start.
+The editor shows **WSO2 Integrator cannot start**, or **Ballerina Visualizer cannot start** if you use only the Ballerina extension, when your installed Ballerina version is earlier than 2201.14. The current extensions need Ballerina 2201.14 or later to start.
 
 :::info
 The WSO2 Integrator app bundles its own Ballerina version, so this screen appears only in VS Code.
@@ -37,12 +37,12 @@ You can either update Ballerina, or keep your current Ballerina version and swit
 To update from a terminal instead, run the following command, then reload the VS Code window:
 
 ```bash
-bal dist pull 2201.14.0
+bal dist pull 2201.14.1
 ```
 
 If you installed Ballerina with the installer, rather than through the extension, run the command with `sudo` on macOS and Linux, or from an administrator command prompt on Windows.
 
-Run `bal version` to confirm that Ballerina 2201.14.0 is active.
+Run `bal version` to confirm that Ballerina 2201.14.1 is active.
 
 ### Keep your current Ballerina version
 
@@ -67,11 +67,11 @@ VS Code updates extensions automatically by default, which reinstalls the curren
 
 ## Project dependencies need to be updated
 
-The editor shows **Your project dependencies need to be updated** when the integration you open has dependencies that were set up with a Ballerina version earlier than 2201.14.0.
+The editor shows **Your project dependencies need to be updated** when the integration you open has dependencies that were set up with a Ballerina version earlier than 2201.14.
 
 Clicking **Run** or **Debug** on such an integration doesn't start it. The editor opens this screen instead, and the status bar shows **Run cancelled: update the project dependencies first**.
 
-Integrations lock the exact version of each dependency in `Dependencies.toml`, so they keep using those versions until you update them. Some of the dependencies set up with an earlier Ballerina version are incompatible with Ballerina 2201.14.0. Newer releases of those packages fix the incompatibilities, and updating the dependencies picks them up.
+Integrations lock the exact version of each dependency in `Dependencies.toml`, so they keep using those versions until you update them. Some of the dependencies set up with an earlier Ballerina version are incompatible with Ballerina 2201.14. Newer releases of those packages fix the incompatibilities, and updating the dependencies picks them up.
 
 The `distribution-version` field in `Dependencies.toml` records the Ballerina version that set them up:
 
@@ -91,10 +91,10 @@ You can either update the dependencies, or keep them as they are by switching to
 
 ### Before you update
 
-- **What moves:** each dependency moves to the latest version that works with Ballerina 2201.14.0 within its current major version. The update doesn't move a dependency to a new major version, because a new major version can include breaking changes.
+- **What moves:** each dependency moves to the latest version that works with Ballerina 2201.14 within its current major version. The update doesn't move a dependency to a new major version, because a new major version can include breaking changes.
 - **What can change:** newer minor and patch versions are meant to be compatible, but they can deprecate APIs or fix behavior your integration relied on. Build and test the integration after the update.
-- **Who it affects:** after the update, everyone working on the integration, and every pipeline that builds or runs it, needs Ballerina 2201.14.0 and Java 25. See [After you update](#after-you-update).
-- **How to undo it:** commit or back up `Dependencies.toml` and `Ballerina.toml` in each package first. To undo the update, restore both files, for example with `git checkout -- Dependencies.toml Ballerina.toml`. In a workspace, packages update one at a time, and a package that fails doesn't stop the others, so after a failed update some packages can already have rewritten files. Check every package before you restore files. The restored files still have the old dependency versions, so on Ballerina 2201.14.0 the editor shows **Your project dependencies need to be updated** again. To stop it from appearing, [keep the current dependencies](#keep-the-current-dependencies).
+- **Who it affects:** after the update, everyone working on the integration, and every pipeline that builds or runs it, needs Ballerina 2201.14 and Java 25. See [After you update](#after-you-update).
+- **How to undo it:** commit or back up `Dependencies.toml` and `Ballerina.toml` in each package first. To undo the update, restore both files, for example with `git checkout -- Dependencies.toml Ballerina.toml`. In a workspace, packages update one at a time, and a package that fails doesn't stop the others, so after a failed update some packages can already have rewritten files. Check every package before you restore files. The restored files still have the old dependency versions, so on Ballerina 2201.14 the editor shows **Your project dependencies need to be updated** again. To stop it from appearing, [keep the current dependencies](#keep-the-current-dependencies).
 
 ### Update the dependencies
 
@@ -103,7 +103,7 @@ You can either update the dependencies, or keep them as they are by switching to
 
 For each package with outdated dependencies, the update:
 
-- Runs `bal clean` and `bal build --sticky=false`, which resolves each dependency to the latest version that works with Ballerina 2201.14.0 within its current major version.
+- Runs `bal clean` and `bal build --sticky=false`, which resolves each dependency to the latest version that works with Ballerina 2201.14 within its current major version.
 - Rewrites `Dependencies.toml` with those versions.
 - If the package's `Ballerina.toml` has a `distribution` field and no unsaved changes, moves it to the new Ballerina version.
 
@@ -116,7 +116,7 @@ bal clean
 bal build --sticky=false
 ```
 
-These commands don't change `distribution` in `Ballerina.toml`. If the file has a `distribution` field, set it to `2201.14.0` by hand.
+These commands don't change `distribution` in `Ballerina.toml`. If the file has a `distribution` field, set it to `2201.14.1` by hand.
 
 :::note Running `bal` with the WSO2 Integrator app
 The WSO2 Integrator app bundles its own Ballerina distribution, which usually isn't on your `PATH`. Run the commands in the app's terminal (**Terminal** > **New Terminal**), which uses the bundled `bal`. Outside the app, use the `bal` in the `components/ballerina/bin` directory of the app installation, for example `/Applications/WSO2 Integrator.app/Contents/components/ballerina/bin/bal` on macOS.
@@ -134,11 +134,11 @@ If the update keeps failing, capture the output and report the issue as describe
 
 #### After you update
 
-Commit the updated `Dependencies.toml` and `Ballerina.toml` files so that others working on the integration get the same versions. The integration now needs Ballerina 2201.14.0, so also update the following:
+Commit the updated `Dependencies.toml` and `Ballerina.toml` files so that others working on the integration get the same versions. The integration now needs Ballerina 2201.14, so also update the following:
 
-- **Teammates' setups:** everyone working on the integration needs WSO2 Integrator 5.1.0, or VS Code with Ballerina 2201.14.0. A build on an earlier Ballerina version can still succeed, but it sets `distribution-version` in `Dependencies.toml` back to that version. If that change is committed, the editor shows **Your project dependencies need to be updated** again for everyone on 2201.14.0.
-- **CI/CD pipelines and Docker images:** update any pipeline step or base image that installs or pins an earlier Ballerina version to 2201.14.0.
-- **Runtime:** executables built with Ballerina 2201.14.0 need Java 25 to run. Update the Java runtime or base image wherever you deploy them. On a Java version earlier than 25, the integration fails to start with an `UnsupportedClassVersionError`.
+- **Teammates' setups:** everyone working on the integration needs WSO2 Integrator 5.1.0, or VS Code with Ballerina 2201.14. A build on an earlier Ballerina version can still succeed, but it sets `distribution-version` in `Dependencies.toml` back to that version. If that change is committed, the editor shows **Your project dependencies need to be updated** again for everyone on 2201.14.
+- **CI/CD pipelines and Docker images:** update any pipeline step or base image that installs or pins an earlier Ballerina version to 2201.14.1.
+- **Runtime:** executables built with Ballerina 2201.14 need Java 25 to run. Update the Java runtime or base image wherever you deploy them. On a Java version earlier than 25, the integration fails to start with an `UnsupportedClassVersionError`.
 
 ### Keep the current dependencies
 
@@ -152,11 +152,11 @@ Switch to the latest Ballerina 2201.13.x version, then switch the extensions to 
     bal dist pull 2201.13.7
     ```
 
-    Any Ballerina version from the one in the `distribution-version` field of `Dependencies.toml` up to, but not including, 2201.14.0 keeps the locked dependency versions.
+    Any Ballerina version from the one in the `distribution-version` field of `Dependencies.toml` up to, but not including, 2201.14 keeps the locked dependency versions.
 
 2. Switch the extensions to their previous versions as described in [Keep your current Ballerina version](#keep-your-current-ballerina-version).
 
-Until you finish step 2, the editor shows the **cannot start** screen. That's expected, because the current extensions need Ballerina 2201.14.0.
+Until you finish step 2, the editor shows the **cannot start** screen. That's expected, because the current extensions need Ballerina 2201.14.
 
 #### WSO2 Integrator app
 
@@ -170,14 +170,14 @@ The editor screens appear only when you open the integration in the editor. If y
 
 ### Build warning about an earlier Swan Lake update
 
-A `bal build` or `bal run` with Ballerina 2201.14.0 on an integration whose dependencies were set up with an earlier version shows a warning similar to the following:
+A `bal build` or `bal run` with Ballerina 2201.14 on an integration whose dependencies were set up with an earlier version shows a warning similar to the following:
 
 ```text
 WARNING [message_translator] Detected an attempt to compile this package using Swan Lake Update 14. However, this package was built using Swan Lake Update 13.3.
 HINT: Execute the bal command with --locking-mode=soft
 ```
 
-The build keeps the dependency versions in `Dependencies.toml`. It can still succeed, or it can fail with compile or runtime errors from a dependency that's incompatible with Ballerina 2201.14.0.
+The build keeps the dependency versions in `Dependencies.toml`. It can still succeed, or it can fail with compile or runtime errors from a dependency that's incompatible with Ballerina 2201.14.
 
 To update the dependencies, run the following commands from the package directory, as described in [Update the dependencies](#update-the-dependencies):
 
@@ -188,7 +188,7 @@ bal build --sticky=false
 
 ### Java version error at startup
 
-An executable built with Ballerina 2201.14.0 fails to start on a Java version earlier than 25 with an error similar to the following:
+An executable built with Ballerina 2201.14 fails to start on a Java version earlier than 25 with an error similar to the following:
 
 ```text
 Error: LinkageError occurred while loading main class wso2.message_translator.0.$_init
