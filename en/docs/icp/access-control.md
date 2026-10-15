@@ -214,8 +214,8 @@ Each new project also auto-creates a `<project-name-slug> Admins` group mapped t
 
 | Permission | Description |
 |------------|-------------|
-| `workflow_mgt:manage_human_tasks` | Complete, fail, and cancel human tasks |
-| `workflow_mgt:manage_workflows` | Start, suspend, resume, cancel, and terminate workflow executions |
+| `workflow_mgt:manage_human_tasks` | Complete, fail, and cancel human tasks, and decide review activities |
+| `workflow_mgt:manage_workflows` | Start, suspend, resume, cancel, and terminate workflow executions, and decide review activities |
 | `workflow_mgt:view_human_tasks` | View human tasks |
 | `workflow_mgt:view_workflows` | View workflow executions |
 
