@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 sidebar_label: Overview
-title: "Sub-section 1"
+title: "Sub-Section 1"
 description: Placeholder nested category, demonstrating a sub-section one level under a top-level section.
 slug: /section-1/sub-section-1
 ---

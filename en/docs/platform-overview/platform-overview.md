@@ -1,5 +1,5 @@
 ---
-title: Platform overview
+title: Platform Overview
 sidebar_label: Platform Overview
 sidebar_position: 1
 description: Understand the WSO2 Integration Platform, its development model, integration styles, deployment architecture, and operational lifecycle.
