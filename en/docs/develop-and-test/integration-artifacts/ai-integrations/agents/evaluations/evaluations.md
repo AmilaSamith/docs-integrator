@@ -35,6 +35,6 @@ The feature is built around three stages.
 ## What's next
 
 - [Create evalsets](evalsets.md) — Capture real chats and curate them into a golden dataset.
-- [Create evaluations - templates](create-evaluations-templates.md) — Configure a prebuilt evaluation template in a form.
-- [Create evaluations - custom](create-evaluations-custom.md) — Build your own checks in the visual designer.
+- [Create evaluations from templates](create-evaluations-templates.md) — Configure a prebuilt evaluation template in a form.
+- [Create custom evaluations](create-evaluations-custom.md) — Build your own checks in the visual designer.
 - [Run evaluations](running-evaluations.md) — Execute runs and review the report and history.

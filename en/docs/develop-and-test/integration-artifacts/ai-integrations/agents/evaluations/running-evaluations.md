@@ -97,5 +97,5 @@ This makes it easy to correlate a regression with a specific change. **Restore t
 
 - [Observability](../observability.md) — Trace a single failed case to see exactly what the agent did.
 - [Create evalsets](evalsets.md) — Expand coverage by adding new cases.
-- [Create evaluations - templates](create-evaluations-templates.md) — Add new checks or LLM-as-judge scoring from a template.
-- [Create evaluations - custom](create-evaluations-custom.md) — Build your own checks in the visual designer.
+- [Create evaluations from templates](create-evaluations-templates.md) — Add new checks or LLM-as-judge scoring from a template.
+- [Create custom evaluations](create-evaluations-custom.md) — Build your own checks in the visual designer.

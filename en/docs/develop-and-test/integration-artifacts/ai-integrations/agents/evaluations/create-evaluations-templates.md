@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Create Evaluations - Templates
+title: Create Evaluations from Templates
 description: Create AI agent evaluations in WSO2 Integrator from prebuilt templates. Pick a rule-based or LLM-as-judge template, configure it in a form, and save it without building a flow.
 keywords: [wso2 integrator, ai agent, evaluation, evaluation template, tool trajectory, llm-as-judge]
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations/create-evaluations-templates
@@ -9,11 +9,11 @@ slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create Evaluations - Templates
+# Create Evaluations from Templates
 
 An **evaluation template** is a prebuilt evaluator for a common AI evaluation pattern. You pick a template, fill a short form, and WSO2 Integrator generates the evaluation for you, with no flow to build.
 
-This page walks through the **Tool Trajectory** template, which checks that the agent calls the tools recorded in an evalset. To write your own evaluation logic instead, see [Create evaluations - custom](create-evaluations-custom.md).
+This page walks through the **Tool Trajectory** template, which checks that the agent calls the tools recorded in an evalset. To write your own evaluation logic instead, see [Create custom evaluations](create-evaluations-custom.md).
 
 :::info Prerequisites
 The **Tool Trajectory** template replays an evalset, so have at least one evalset in your project. See [Create evalsets](evalsets.md) to capture or import one.
@@ -61,9 +61,9 @@ The badges on each card show its kind and the test input it accepts. **Evalset r
 
 Select **Tool Trajectory**. You can type `tool` in the search box to find it quickly.
 
-## Configure the Tool Trajectory template
+## Configuring a template
 
-The selected template opens in a configuration card. **Tool Trajectory** replays each turn in the evalset against the agent and compares the tool calls the agent makes with the tool calls recorded for that turn. A tool call matches when both the tool name and its arguments are equal.
+For example, choose the **Tool Trajectory** evaluation template. The selected template opens in a configuration card. **Tool Trajectory** replays each turn in the evalset against the agent and compares the tool calls the agent makes with the tool calls recorded for that turn. A tool call matches when both the tool name and its arguments are equal.
 
 | Field | Value | Notes |
 |---|---|---|
@@ -112,5 +112,5 @@ The evaluation is now ready to run.
 ## What's next
 
 - [Run evaluations](running-evaluations.md) — Execute the evaluation and open the report.
-- [Create evaluations - custom](create-evaluations-custom.md) — Build your own evaluation logic in the visual designer.
+- [Create custom evaluations](create-evaluations-custom.md) — Build your own evaluation logic in the visual designer.
 - [Create evalsets](evalsets.md) — Add more evalsets to broaden coverage.

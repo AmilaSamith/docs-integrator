@@ -180,6 +180,6 @@ There is no import option. To bring in an evalset from elsewhere, copy the `<nam
 
 ## What's next
 
-- [Create evaluations - templates](create-evaluations-templates.md) — Rerun the agent and compare its behaviour with this evalset using a prebuilt evaluation template.
-- [Create evaluations - custom](create-evaluations-custom.md) — Build custom evaluation functions that use this evalset.
+- [Create evaluations from templates](create-evaluations-templates.md) — Rerun the agent and compare its behaviour with this evalset using a prebuilt evaluation template.
+- [Create custom evaluations](create-evaluations-custom.md) — Build custom evaluation functions that use this evalset.
 - [Run evaluations](running-evaluations.md) — Replay the evalset against the current agent build.

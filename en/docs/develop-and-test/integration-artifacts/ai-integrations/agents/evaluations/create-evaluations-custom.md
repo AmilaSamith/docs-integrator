@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Create Evaluations - Custom
+title: Create Custom Evaluations
 description: Create custom AI agent evaluations in WSO2 Integrator. Fill the AI Evaluation form, optionally pick an evalset to score against, and build the checks in the visual designer.
 keywords: [wso2 integrator, ai agent, evaluation, custom evaluation, visual designer]
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations/creating-evaluations
@@ -9,7 +9,7 @@ slug: /develop-and-test/integration-artifacts/ai-integrations/agents/evaluations
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create Evaluations - Custom
+# Create Custom Evaluations
 
 A **custom evaluation** is an evaluation function whose logic you build yourself. You start by filling a short form, and WSO2 Integrator opens the rest of the configuration in the visual designer. Use a custom evaluation when none of the prebuilt [evaluation templates](create-evaluations-templates.md) fits the check you need.
 
@@ -47,7 +47,7 @@ The example on this page scores the agent against an evalset, so have at least o
 | Field | What it does |
 |---|---|
 | **AI Evaluation Name** | A unique name for the evaluation. |
-| **How would you like to build this evaluation?** | Pick **Custom** to build your own evaluation logic. To start from a prebuilt evaluator instead, see [Create evaluations - templates](create-evaluations-templates.md). |
+| **How would you like to build this evaluation?** | Pick **Custom** to build your own evaluation logic. To start from a prebuilt evaluator instead, see [Create evaluations from templates](create-evaluations-templates.md). |
 | **Use an evalset?** | Pick **Use evalset** to score the agent against an evalset, or **No evalset** to define the evaluation without one. |
 | **Evalset File** | The evalset to use. Shown when **Use evalset** is selected. **Create empty evalset** creates a new evalset, and **Open evalset** opens the selected one in the **Evalset Viewer**. |
 | **Minimum Pass Rate (%)** | The percentage of evalset cases that must pass for the run to succeed. |
@@ -192,11 +192,11 @@ For tool-selection regressions, **assertEquals** is the most common choice. It v
 Add more asserts inside the loop for any other dimension you want to score, such as response content, tool count, or structured output fields.
 
 :::tip
-Comparing tool calls against an evalset is also available as the prebuilt **Tool Trajectory** template, with no flow to build. See [Create evaluations - templates](create-evaluations-templates.md).
+Comparing tool calls against an evalset is also available as the prebuilt **Tool Trajectory** template, with no flow to build. See [Create evaluations from templates](create-evaluations-templates.md).
 :::
 
 ## What's next
 
 - [Run evaluations](running-evaluations.md) — Execute the evaluation and open the report.
-- [Create evaluations - templates](create-evaluations-templates.md) — Start from a prebuilt evaluator instead.
+- [Create evaluations from templates](create-evaluations-templates.md) — Start from a prebuilt evaluator instead.
 - [Create evalsets](evalsets.md) — Add more evalsets to broaden coverage.
