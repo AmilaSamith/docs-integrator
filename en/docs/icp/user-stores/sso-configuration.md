@@ -84,6 +84,7 @@ Restart the ICP server after saving changes.
 | `ssoRedirectUri` | Redirect URI registered with your identity provider |
 | `ssoUsernameClaim` | Claim to use as the ICP username: `email` or `preferred_username` |
 | `ssoScopes` | OIDC scopes to request. `openid` is required. |
+| `ssoAllowInsecureTLS` | Optional. Default `false`. Set to `true` to skip TLS certificate validation when ICP calls the token and JWKS endpoints, for example with an identity provider that uses a self-signed certificate. Use only for local testing. |
 
 ## Provider-specific examples
 
