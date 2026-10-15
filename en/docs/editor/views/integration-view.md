@@ -151,6 +151,14 @@ The **Readme** tab next to **Design** displays the contents of your project's `R
 
 Click **Edit** to modify the README directly. On a new integration that has a README but no artifacts yet, you can also click **Generate with Readme** to have Copilot plan and build the integration from the README.
 
+<ThemedImage
+    alt="The Readme tab of a new integration showing the README content and the Generate with Readme button."
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/generate-with-readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/generate-with-readme-v5.1.png'),
+    }}
+/>
+
 ## What's next
 
 - [Flow Canvas](../canvases/flow-canvas/flow-canvas.md) — Build logic using the visual designer.
