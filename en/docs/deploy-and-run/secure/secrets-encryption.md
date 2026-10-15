@@ -39,8 +39,8 @@ configurable string apiKey = ?;
 ```
 
 ```bash
-export BAL_CONFIG_VAR_DBPASSWORD="s3cur3-p@ssw0rd"
-export BAL_CONFIG_VAR_APIKEY="sk-abc123"
+export BAL_CONFIG_VAR_DBPASSWORD="<db-password>"
+export BAL_CONFIG_VAR_APIKEY="<api-key>"
 bal run
 ```
 
