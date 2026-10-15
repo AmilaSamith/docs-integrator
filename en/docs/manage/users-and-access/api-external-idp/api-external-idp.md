@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: "Access Integration as APIs with External IdP"
 description: "Connect an external identity provider to WSO2 Cloud - Integration Platform to authorize API access using tokens from your own identity system."
-keywords: [wso2 cloud, external IdP, identity provider, API access control, OAuth2, Asgardeo, Azure AD]
+keywords: [wso2 cloud, external IdP, identity provider, API access control, OAuth2, WSO2 Identity Platform, Asgardeo, Azure AD]
 slug: /manage/users-and-access/api-external-idp
 ---
 
@@ -25,7 +25,7 @@ You can restrict a registered IdP to specific environments. For example, use one
 
 | Identity provider | Guide |
 |---|---|
-| Asgardeo | [Configure Asgardeo as an external IdP](./asgardeo.md) |
+| WSO2 Identity Platform | [Configure WSO2 Identity Platform as an external IdP](./wso2-identity-platform.md) |
 | Microsoft Azure Active Directory | [Configure Azure Active Directory as an external IdP](./azure.md) |
 
 Any OIDC-compatible identity provider that exposes a standard well-known endpoint can also be configured using the same steps.
