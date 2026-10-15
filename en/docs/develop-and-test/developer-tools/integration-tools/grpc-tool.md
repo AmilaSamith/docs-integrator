@@ -87,7 +87,7 @@ enum OrderStatus {
 Use this when you want to **expose** a gRPC service from your integrator project.
 
 :::note
-The generated service and client file names are derived from the **service name** in the proto file, not the proto file name. For `service OrderService` in `order_service.proto`, the tool generates `orderservice_service.bal` and `orderservice_client.bal`.
+The generated service and client file names are derived from the **service name** in the proto file. For `service OrderService` in `order_service.proto`, the tool generates `orderservice_service.bal` and `orderservice_client.bal`.
 :::
 
 ### Step 1: Place the proto file in your project
@@ -316,7 +316,6 @@ bal grpc --input resources/order_service.proto \
 :::note
 The flag is spelled `--proto-path` (with a hyphen); `--proto_path` is rejected. Pass the directory without a leading `./` or trailing `/`, and make sure it encompasses the input file, otherwise the tool fails with `Input .proto file does not reside within the path specified using --proto-path`.
 :::
-
 ---
 
 ## Regenerating after proto changes
