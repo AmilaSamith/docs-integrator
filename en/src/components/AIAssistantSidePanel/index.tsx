@@ -5,10 +5,10 @@ import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 /**
- * Docs Copilot -- a chat side panel modelled on the WSO2 Cloud (Devant)
- * console Copilot: docked on the right at full height, with a
- * "Copilot · Preview" header, chat bubbles, action buttons that take the
- * reader to the relevant docs page, and a disclaimer under the input.
+ * AI assistant side panel -- a chat panel docked on the right at full
+ * height, with an "AI Docs Assistant · Preview" header, chat bubbles,
+ * action buttons that take the reader to the relevant docs page, and a
+ * disclaimer under the input.
  *
  * UI only for now. Replies come from `getPreviewReply` below, a
  * placeholder that matches a few keywords to docs pages; it will be
@@ -16,12 +16,12 @@ import styles from './styles.module.css';
  * AiAssistantPanel (the existing floating button), which is unchanged.
  */
 
-export type CopilotAction = { label: string; to: string };
+export type AssistantAction = { label: string; to: string };
 
-export type CopilotMessage = {
+export type AssistantMessage = {
   role: 'user' | 'assistant';
   content: string;
-  actions?: CopilotAction[];
+  actions?: AssistantAction[];
 };
 
 // The conversation is kept in sessionStorage: it survives closing and
@@ -30,16 +30,16 @@ export type CopilotMessage = {
 // reader's browser.
 const STORAGE_KEY = 'wso2-docs-ai-assistant';
 
-function loadMessages(): CopilotMessage[] {
+function loadMessages(): AssistantMessage[] {
   try {
     const saved = sessionStorage.getItem(STORAGE_KEY);
-    return saved ? (JSON.parse(saved) as CopilotMessage[]) : [];
+    return saved ? (JSON.parse(saved) as AssistantMessage[]) : [];
   } catch {
     return [];
   }
 }
 
-function saveMessages(messages: CopilotMessage[]) {
+function saveMessages(messages: AssistantMessage[]) {
   try {
     if (messages.length) sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     else sessionStorage.removeItem(STORAGE_KEY);
@@ -55,7 +55,7 @@ const SUGGESTIONS = [
 ];
 
 // Placeholder replies until the backend exists.
-const PREVIEW_TOPICS: { keywords: string[]; reply: string; action: CopilotAction }[] = [
+const PREVIEW_TOPICS: { keywords: string[]; reply: string; action: AssistantAction }[] = [
   {
     keywords: ['agent', 'ai', 'llm'],
     reply: 'You can build an AI agent that connects to an LLM, uses tools, and responds to user queries in chat.',
@@ -73,7 +73,7 @@ const PREVIEW_TOPICS: { keywords: string[]; reply: string; action: CopilotAction
   },
 ];
 
-function getPreviewReply(question: string): CopilotMessage {
+function getPreviewReply(question: string): AssistantMessage {
   const q = question.toLowerCase();
   const topic = PREVIEW_TOPICS.find((t) => t.keywords.some((k) => q.includes(k)));
   if (topic) return { role: 'assistant', content: topic.reply, actions: [topic.action] };
@@ -84,7 +84,7 @@ function getPreviewReply(question: string): CopilotMessage {
   };
 }
 
-function CopilotIcon(): ReactNode {
+function AssistantIcon(): ReactNode {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M12 8V4H8" />
@@ -138,8 +138,8 @@ type Props = {
   onClose: () => void;
 };
 
-export default function DocsCopilot({ onClose }: Props): ReactNode {
-  const [messages, setMessages] = useState<CopilotMessage[]>(loadMessages);
+export default function AssistantChat({ onClose }: Props): ReactNode {
+  const [messages, setMessages] = useState<AssistantMessage[]>(loadMessages);
   const [input, setInput] = useState('');
   const [thinking, setThinking] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -179,7 +179,7 @@ export default function DocsCopilot({ onClose }: Props): ReactNode {
     <aside className={`${styles.panel} ${expanded ? styles.expanded : ''}`} aria-label="AI Docs Assistant">
       <header className={styles.header}>
         <span className={styles.headerIcon}>
-          <CopilotIcon />
+          <AssistantIcon />
         </span>
         <div className={styles.headerText}>
           <span className={styles.title}>AI Docs Assistant</span>

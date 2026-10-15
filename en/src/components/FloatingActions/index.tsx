@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import DocsCopilotLauncher from '@site/src/components/DocsCopilot/Launcher';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import AIAssistantSidePanel from '@site/src/components/AIAssistantSidePanel/Launcher';
 import ReportIssueButton from '@site/src/components/ReportIssueButton';
 
 import styles from './styles.module.css';
@@ -7,7 +8,7 @@ import styles from './styles.module.css';
 /**
  * Shared fixed-position bottom-right cluster for every floating action
  * button on the site -- currently ReportIssueButton and
- * DocsCopilotLauncher. One shared wrapper (not each button positioning
+ * AIAssistantSidePanel. One shared wrapper (not each button positioning
  * itself independently) so they move, space, and resize together at
  * each breakpoint via a single set of media queries here, instead of
  * duplicating the same right/bottom/gap/size numbers in every button's
@@ -15,14 +16,21 @@ import styles from './styles.module.css';
  * src/theme/Root.js, so it's present on every page.
  *
  * Order matters: ReportIssueButton first (left, secondary action),
- * DocsCopilotLauncher second (right, closest to the corner -- the
+ * AIAssistantSidePanel second (right, closest to the corner -- the
  * primary action).
+ *
+ * AIAssistantSidePanel only shows when the site's docusaurus.config.ts
+ * sets `customFields.showAiAssistant: true`. A branch without the
+ * setting keeps it hidden.
  */
 export default function FloatingActions(): ReactNode {
+  const { siteConfig } = useDocusaurusContext();
+  const showAiAssistant = siteConfig.customFields?.showAiAssistant === true;
+
   return (
     <div className={`${styles.wrapper} floating-actions`}>
       <ReportIssueButton />
-      <DocsCopilotLauncher />
+      {showAiAssistant && <AIAssistantSidePanel />}
     </div>
   );
 }
