@@ -28,22 +28,16 @@ The `smpp:Listener` binds as `RECEIVER` (inbound only) or `TRANSCEIVER` (inbound
 
 The `host`, `systemId`, and `password` used to bind are required parameters of the listener's initialization, ahead of the rest of the configuration below.
 
-**`ListenerConfig`**
+**`ListenerConfig` (selected fields):**
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | `port` | <code>int</code> | <code>2775</code> | SMSC port |
-| `systemType` | <code>string</code> | <code>""</code> | The optional SMPP `system_type` |
 | `bindType` | <code>RECEIVER&#124;TRANSCEIVER</code> | <code>RECEIVER</code> | The bind mode. `TRANSCEIVER` additionally allows replying via `Caller` |
-| `maxConcurrentDispatch` | <code>int</code> | <code>3</code> | Maximum number of inbound PDUs dispatched to the attached service concurrently (1-1024); excess PDUs are answered with `ESME_RTHROTTLED` |
+| `maxConcurrentDispatch` | <code>int</code> | <code>3</code> | Maximum number of inbound PDUs dispatched to the attached service concurrently |
 | `responseMode` | <code>SYNC&#124;ASYNC</code> | <code>SYNC</code> | Controls when the `deliver_sm_resp`/`data_sm_resp` is sent back to the SMSC |
-| `decodeGsm7` | <code>boolean</code> | <code>false</code> | When `true`, decodes `data_coding` `0x00` payloads as unpacked GSM 03.38 instead of the UTF-8 fallback |
-| `gracefulStopTimeout` | <code>decimal</code> | <code>30</code> | Maximum time, in seconds, a graceful stop waits for in-flight work before unbinding |
 | `rebindPolicy` | <code>RebindPolicy</code> | <code>{}</code> | Controls automatic rebinding after an unexpected session drop |
-| `enquireLinkInterval` | <code>decimal</code> | <code>60</code> | How often, in seconds, a keepalive `enquire_link` is sent when the session is idle (5-3600) |
-| `bindTimeout` | <code>decimal</code> | <code>60</code> | Maximum time, in seconds, for the connect-and-bind handshake, at start and on every rebind (1-300) |
-| `transactionTimeout` | <code>decimal</code> | <code>30</code> | How long, in seconds, a `Caller` submit waits for the SMSC's response (1-300) |
-| `secureSocket` | <code>SecureSocket&#124;InsecureSocket?</code> | <code>()</code> | Transport security. Absent means plaintext TCP. See [SecureSocket](action-reference.md#securesocket) |
+| `secureSocket` | <code>SecureSocket&#124;InsecureSocket?</code> | <code>()</code> | Transport security. Absent means plaintext TCP |
 
 ### Initializing the listener
 
@@ -67,11 +61,9 @@ A service attached to an `smpp:Listener` implements one or more of the callbacks
 
 | Callback | Signature | Description |
 |----------|-----------|--------------|
-| `onDeliverSm` | <code>remote function onDeliverSm(smpp:Sms sms, smpp:Caller caller) returns error?</code> | Invoked for an inbound `deliver_sm`: a mobile-originated message or a delivery receipt. The `smpp:Caller` parameter is optional |
-| `onDataSm` | <code>remote function onDataSm(smpp:Sms sms, smpp:Caller caller) returns error?</code> | Invoked for an inbound `data_sm`. The `smpp:Caller` parameter is optional |
-| `onError` | <code>remote function onError(error err) returns error?</code> | Invoked on an unexpected session drop, and again for every failed rebind attempt |
-
-The compiler plugin enforces these signatures: callbacks must be `remote` and return `error?`, `onDeliverSm`/`onDataSm` must declare an `smpp:Sms` parameter and may declare one non-optional `smpp:Caller` in either order, and `onError` takes exactly one error-typed parameter and no `smpp:Caller`. Any other remote method is a compile error. Declare the service and its methods `isolated` (or let them be inferred as isolated) so `maxConcurrentDispatch` can run handlers in parallel.
+| `onDeliverSm` | <code>remote function onDeliverSm(smpp:Sms sms) returns error?</code> | Invoked for an inbound `deliver_sm`: a mobile-originated message or a delivery receipt |
+| `onDataSm` | <code>remote function onDataSm(smpp:Sms sms) returns error?</code> | Invoked for an inbound `data_sm` |
+| `onError` | <code>remote function onError(error err) returns error?</code> | Invoked on an unexpected session drop |
 
 :::note
 In `SYNC` response mode (the default), an error returned from `onDeliverSm`/`onDataSm` becomes a negative response telling the SMSC the message was not handled; most SMSCs treat this as a signal to redeliver. In `ASYNC` mode, the SMSC is acknowledged immediately and a later handler failure is only logged, never reflected back to the SMSC.
@@ -102,17 +94,11 @@ service on smsListener {
 
 ### Replying with `Caller`
 
-A `TRANSCEIVER`-bound listener can declare an `smpp:Caller` parameter (matched by type, in either parameter order) and reply on the same session. On a `RECEIVER`-bound listener, `caller->submit` fails.
+A `TRANSCEIVER`-bound listener can declare an `smpp:Caller` parameter (matched by type, in either parameter order) and reply on the same session:
 
 ```ballerina
-import ballerina/log;
-import ballerina/smpp;
-
-configurable string systemId = ?;
-configurable string password = ?;
-
 listener smpp:Listener replyListener = check new ("smsc.example.com", systemId, password,
-        bindType = smpp:TRANSCEIVER, responseMode = smpp:ASYNC);
+        port = 2775, bindType = smpp:TRANSCEIVER);
 
 service on replyListener {
     remote function onDeliverSm(smpp:Sms sms, smpp:Caller caller) returns error? {
@@ -120,18 +106,9 @@ service on replyListener {
             destinationAddress: sms.sourceAddress,
             shortMessage: "Thanks for your message!"
         });
-        log:printInfo("Reply submitted", messageId = result.messageId);
     }
 }
 ```
-
-#### Caller methods
-
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `submit` | <code>remote function submit(TextSms&#124;BinarySms sms) returns SubmitResult&#124;smpp:Error</code> | Submits a message (`submit_sm`) on the listener's current session and waits up to `transactionTimeout` for the response. Requires `bindType: TRANSCEIVER` |
-
-The message and result types are described in the [Action Reference](action-reference.md#supporting-types). In `SYNC` response mode, an inline reply holds one of the `maxConcurrentDispatch` slots and delays the `deliver_sm_resp`, which can make the SMSC redeliver the inbound message; prefer `responseMode: ASYNC` for reply-style services.
 
 :::note
 Correlate a later delivery receipt against a submit using `sms.receiptedMessageId` (the `receipted_message_id` TLV), the only field SMPP guarantees for this; the Appendix-B receipt body's own `id` is vendor specific.
@@ -139,7 +116,7 @@ Correlate a later delivery receipt against a submit using `sms.receiptedMessageI
 
 ## Supporting types
 
-The records below are what the listener hands to your service callbacks, plus the listener's rebind policy.
+The records below are what the listener hands to your service callbacks.
 
 ### Sms
 
@@ -168,14 +145,3 @@ The records below are what the listener hands to your service callbacks, plus th
 | `text` | <code>string?</code> | A short echo of the original message (`Text:`) |
 
 Every `DeliveryReceipt` field is optional: SMSCs vary in which parts of the Appendix B receipt format they include, and a field that was not present in the receipt text is absent rather than defaulted.
-
-### RebindPolicy
-
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `initialRebindDelay` | <code>decimal</code> | <code>1</code> | Delay, in seconds, before the first rebind attempt |
-| `maxRebindDelay` | <code>decimal</code> | <code>60</code> | Maximum delay, in seconds, between rebind attempts |
-| `backOffMultiplier` | <code>decimal</code> | <code>2.0</code> | Multiplier applied to the delay after each consecutive failure |
-| `maxRebindAttempts` | <code>int</code> | <code>-1</code> | Maximum consecutive failures before giving up. `-1` retries indefinitely; `0` disables automatic rebinding |
-
-Once rebinding gives up (or is disabled), the listener stays down and every `Caller` submit fails with the `LINK_ABANDONED` failure mode; only a new `Listener` recovers.
