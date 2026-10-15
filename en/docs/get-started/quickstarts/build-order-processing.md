@@ -70,7 +70,7 @@ The finished flow has three steps:
 3. Set **Name** to `orderWorkflow`.
 4. Click the **Workflow Input Data Type** field, then create a new type for the order information that the workflow needs.
 5. Click **+ Create New Type**.
-6. The **Create New Type** dialog opens on the **Create from scratch** tab with **Kind** set to **Record**; keep both.
+6. The **Create New Type** dialog opens with the correct defaults: the **Create from scratch** tab and **Kind** set to **Record**.
 7. Change **Name** from `MyType` to `OrderInfo`.
 8. Add each field with the **+** next to **Fields**, then set its name and type:
 
