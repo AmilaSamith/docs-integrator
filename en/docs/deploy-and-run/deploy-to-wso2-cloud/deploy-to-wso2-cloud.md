@@ -20,5 +20,5 @@ You can also [import a project](../../develop-and-test/create-workspace/import-a
 
 ## Once you're deployed
 
-- **[Managing configurations](managing-configurations.md)** — Externalize and manage runtime configuration values across environments.
+- **[Runtime configurations](../../manage/configurations/runtime-configurations.md)** — Set the configurable values an integration reads, per environment, and store sensitive ones as secrets.
 - **[Troubleshoot deployment](troubleshoot-deployment.md)** — Diagnose issues that only appear once an integration is running on WSO2 Cloud.

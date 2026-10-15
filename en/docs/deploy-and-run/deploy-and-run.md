@@ -22,7 +22,6 @@ WSO2 Cloud runs your integrations on one of two data plane models: the shared **
     <li>Works the same on either data plane model</li>
     <li>Deploy from the editor or the cloud editor</li>
     <li>Connect a Git provider and deploy automatically on every commit</li>
-    <li>Managing configurations</li>
     <li>Troubleshoot deployment</li>
   </ul>
 </PaletteCard>
