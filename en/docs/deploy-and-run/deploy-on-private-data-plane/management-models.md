@@ -16,6 +16,8 @@ WSO2 supports three management models for private data planes, ranging from full
 
 In this model, WSO2 owns the cloud subscription and manages all infrastructure and platform components on your behalf. You are responsible only for creating and managing your integrations. WSO2 fully managed private data planes are supported on Azure, AWS, and GCP.
 
+<div style={{fontSize: '0.8125rem', '--ifm-table-cell-padding': '0.5rem 0.625rem'}}>
+
 | Task | Task description | Responsible | Accountable | Consulted | Informed |
 |---|---|---|---|---|---|
 | Subscription prerequisites | Create subscriptions, check quota and service limits, run the compatibility prerequisite script | WSO2 | WSO2 | Customer (if required) | Customer (if required) |
@@ -35,9 +37,13 @@ In this model, WSO2 owns the cloud subscription and manages all infrastructure a
 | Integration monitoring | | Customer | Customer | Customer | Customer |
 | Integration logs | | Customer | Customer | Customer | Customer |
 
+</div>
+
 ## WSO2 fully managed (infrastructure and PDP in customer subscription)
 
 In this model, the customer owns the cloud subscription, but WSO2 still manages infrastructure provisioning and all platform operations. You provide access to your subscription and own the integrations that run on it.
+
+<div style={{fontSize: '0.8125rem', '--ifm-table-cell-padding': '0.5rem 0.625rem'}}>
 
 | Task | Task description | Responsible | Accountable | Consulted | Informed |
 |---|---|---|---|---|---|
@@ -58,9 +64,13 @@ In this model, the customer owns the cloud subscription, but WSO2 still manages 
 | Integration monitoring | | Customer | Customer | Customer | Customer |
 | Integration logs | | Customer | Customer | Customer | Customer |
 
+</div>
+
 ## Customer self-managed (WSO2 provides installation script and updates)
 
 In this model, the customer owns the subscription and manages all infrastructure and platform operations. WSO2 provides the installation script, Helm charts, and ongoing updates, and is available for consultation. This model offers the highest level of customer control.
+
+<div style={{fontSize: '0.8125rem', '--ifm-table-cell-padding': '0.5rem 0.625rem'}}>
 
 | Task | Task description | Responsible | Accountable | Consulted | Informed |
 |---|---|---|---|---|---|
@@ -80,6 +90,8 @@ In this model, the customer owns the subscription and manages all infrastructure
 | Integration management | | Customer | Customer | Customer | Customer |
 | Integration monitoring | | Customer | Customer | Customer | Customer |
 | Integration logs | | Customer | Customer | Customer | Customer |
+
+</div>
 
 ## What's next
 
