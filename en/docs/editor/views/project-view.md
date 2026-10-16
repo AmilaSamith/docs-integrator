@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Project View
 description: Manage projects with multiple integrations and libraries in WSO2 Integrator.
-keywords: [wso2 integrator, ide, project view, integrations, libraries]
+keywords: [wso2 integrator, editor, project view, integrations, libraries]
 slug: /editor/views/project-view
 ---
 
