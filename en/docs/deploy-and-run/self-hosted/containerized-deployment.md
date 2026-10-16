@@ -1007,7 +1007,7 @@ service / on new http:Listener(port) {
 }
 ```
 
-`agentFor()` returns the agent, which Step 2 builds. The runtime gives each session its own microVM, so one container serves one session.
+`agentFor()` returns the agent, which Step 2 builds. Each session runs in its own microVM.
 
 :::caution Conversations last only as long as the microVM
 The agent keeps its conversation memory inside the container. By default, AgentCore Runtime stops a session's microVM after 15 minutes without an invocation or after 8 hours in total, and it also stops one that fails its health check. A later call with the same session id starts a new microVM, and the agent no longer remembers the conversation. It doesn't report an error.
@@ -1025,7 +1025,7 @@ AgentCore Gateway gives the agent one MCP endpoint for all its tools and one end
 
 The model provider's API key stays out of the agent. Store it in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), and add an **Inference** target to the Gateway that uses that credential provider. The agent then calls the model through the Gateway and sends its Gateway token in place of a provider key.
 
-The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. Keep the Cognito client secret in AWS Secrets Manager, where the agent reads it with the runtime's IAM role through the [default credential chain](../secure/aws-access.md#use-the-default-credential-chain). The secret then never appears in the runtime's configuration. Save the secret in an editor as `client-secret.json`, rather than on the command line, so that it stays out of your shell history:
+The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. Keep the Cognito client secret in AWS Secrets Manager, where the agent reads it with the runtime's IAM role through the [default credential chain](../secure/aws-access.md#use-the-default-credential-chain). The secret then never appears in the runtime's configuration. To keep the secret out of your shell history, save it in an editor as `client-secret.json`:
 
 ```json
 {"clientSecret": "<client-secret>"}
@@ -1113,17 +1113,17 @@ isolated function agentFor() returns ai:Agent|error {
 }
 ```
 
-AgentCore Identity offers another way to hold the client credentials: the agent then receives only tokens and never the secret. Ballerina has no AgentCore SDK for it, so this page doesn't cover it.
+AgentCore Identity offers another way to hold the client credentials: the agent then receives only tokens and never the secret. This page doesn't cover it.
 
 Keep these behaviors in mind:
 
 - Use a model provider that sends its key as `Authorization: Bearer`, such as `ballerinax/ai.openai`. The Gateway rejects a key sent as `x-api-key` with `401 Missing Bearer token`.
-- The model provider takes a fixed token and doesn't renew it, so a session that outlives the token starts failing its model calls. Cognito access tokens last one hour by default; each app client can set anywhere from 5 minutes to 24 hours.
+- The model provider takes a fixed token and doesn't renew it. In a session that outlives the token, model calls fail. Cognito access tokens last one hour by default; each app client can set anywhere from 5 minutes to 24 hours.
 
 AgentCore Policy and guardrails apply only to calls that pass through the Gateway:
 
-- Tools defined in the agent with `@ai:AgentTool` run inside the agent, so no Gateway policy or guardrail applies to them. To control such a tool, host it behind the Gateway as an MCP server or REST API target, or make it a gated tool so it needs approval before it runs (`ai:RequiresApproval`).
-- Don't add session-aware (temporal) policies to the Gateway's policy engine. They require the `x-amzn-bedrock-agentcore-policy-session-id` header on every Gateway request, and `ai:McpToolKit` doesn't send it, so every tool call from the agent fails.
+- Tools defined in the agent with `@ai:AgentTool` run inside the agent. No Gateway policy or guardrail applies to them. To control such a tool, host it behind the Gateway as an MCP server or REST API target, or make it a gated tool that needs approval before it runs (`ai:RequiresApproval`).
+- Don't add session-aware (temporal) policies to the Gateway's policy engine. They require the `x-amzn-bedrock-agentcore-policy-session-id` header on every Gateway request. `ai:McpToolKit` doesn't send it, and every tool call from the agent fails.
 
 ### Step 3: Configure the image
 
@@ -1298,7 +1298,7 @@ You can also create the runtime in the AgentCore console and enter the same envi
 :::
 
 :::note
-To deploy new code later, push a new image tag and run `aws bedrock-agentcore-control update-agent-runtime`. The update replaces the whole configuration, so send the image, role, network, protocol, and **all** environment variables again. If you leave out `environmentVariables`, the runtime drops them and the agent fails to start.
+To deploy new code later, push a new image tag and run `aws bedrock-agentcore-control update-agent-runtime`. The update replaces the whole configuration. Send the image, role, network, protocol, and **all** environment variables again. If you leave out `environmentVariables`, the runtime drops them and the agent fails to start.
 :::
 
 ### Step 8: Verify
@@ -1311,7 +1311,7 @@ aws bedrock-agentcore-control get-agent-runtime --region <region> \
   --query '{status:status,protocol:protocolConfiguration.serverProtocol,arn:agentRuntimeArn}'
 ```
 
-Wait for `status` to be `READY`. Then look up the runtime ARN and invoke it. The session id must be at least 33 characters, so this example joins two UUIDs:
+Wait for `status` to be `READY`. Then look up the runtime ARN and invoke it. A session id has at least 33 characters. This example joins two UUIDs:
 
 ```bash
 ARN=$(aws bedrock-agentcore-control list-agent-runtimes --region <region> \
@@ -1343,7 +1343,7 @@ If the runtime doesn't deploy or the invocation fails, the usual causes are:
 - The log shows `not authorized to perform: secretsmanager:GetSecretValue`: the runtime's role can't read the client secret. Check the `GatewayClientSecret` statement from Step 6.
 - `Failed to initialize the MCP client`: the Gateway is unreachable, or it refused the token.
 - Model calls return `400` with `Failed to fetch outbound api key`: the Gateway's service role can't read the model provider's key from AgentCore Identity. It needs `bedrock-agentcore:GetResourceApiKey` on the credential provider and `secretsmanager:GetSecretValue` on its secret.
-- Model calls fail after about an hour in one session: the Gateway token expired. Start a new session.
+- Model calls fail partway through a long session: the Gateway token expired. Start a new session.
 
 ## Azure AKS deployment
 

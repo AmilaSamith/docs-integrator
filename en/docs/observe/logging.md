@@ -157,7 +157,7 @@ JSON output, with one log entry per line:
 {"time":"2025-03-15T10:30:00.000Z", "level":"INFO", "module":"myorg/order_service", "message":"Processing order", "orderId":"ORD-12345", "customerId":"CUST-789", "total":149.99, "itemCount":3}
 ```
 
-When tracing is enabled, each log record also carries the `traceId` and `spanId` of the request that wrote it. Log platforms that parse JSON, such as Amazon CloudWatch Logs, turn these into queryable fields, so you can go from a log line to its trace and back. In the default key-value format, the same values are present but stay unparsed.
+When tracing is enabled, each log record also carries the `traceId` and `spanId` of the request that wrote it. Log platforms that parse JSON, such as Amazon CloudWatch Logs, turn these into queryable fields. You can then go from a log line to its trace and back. In the default key-value format, the same values are present but stay unparsed.
 
 ## Send logs to Amazon CloudWatch Logs
 

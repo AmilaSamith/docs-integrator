@@ -96,9 +96,9 @@ You can also send traces to a managed platform: [Datadog](commercial/datadog.md)
 
 ## Send traces to AWS X-Ray and CloudWatch
 
-AWS X-Ray accepts OpenTelemetry traces over OTLP at `https://xray.<region>.amazonaws.com/v1/traces`, but only from requests signed with AWS Signature Version 4 (SigV4). The `ballerina/otel` module can't sign requests, so an OpenTelemetry Collector runs next to the integration: the integration sends unsigned OTLP to the collector on the loopback interface, and the collector signs each batch with the workload's IAM role and forwards it. The spans then appear in CloudWatch.
+AWS X-Ray accepts OpenTelemetry traces over OTLP at `https://xray.<region>.amazonaws.com/v1/traces`, but only from requests signed with AWS Signature Version 4 (SigV4). The `ballerina/otel` module can't sign requests. An OpenTelemetry Collector runs next to the integration and signs for it. The integration sends unsigned OTLP to the collector over the loopback interface. The collector signs each batch with the workload's IAM role and forwards it. The spans then appear in CloudWatch.
 
-The steps below run the collector as a second process in the integration's own container. This works on any container platform, and it's the only option on Amazon Bedrock AgentCore Runtime, which runs one container per session rather than a pod that could hold a sidecar.
+The steps below run the collector as a second process in the integration's own container. This works on any container platform. On Amazon Bedrock AgentCore Runtime it's the only option, because each session runs a single container, not a pod that could hold a sidecar.
 
 :::note
 This is a workaround, not an AWS-supported path. AWS supports agent observability only through the AWS Distro for OpenTelemetry (ADOT) SDK, which isn't available for Ballerina, and states that the ADOT Collector isn't supported for agent observability.
@@ -109,7 +109,7 @@ This is a workaround, not an AWS-supported path. AWS supports agent observabilit
 Do the following once per AWS account and Region:
 
 1. **Enable CloudWatch Transaction Search.** In the CloudWatch console, open **Application Signals (APM)** > **Transaction Search**, choose **Enable**, and choose to ingest spans as structured logs. Spans then land in the `aws/spans` log group.
-2. **Index every trace while you test.** The default indexing rule indexes 1% of traces, so a handful of test requests may index nothing:
+2. **Index every trace while you test.** The default indexing rule indexes only 1% of traces:
 
     ```bash
     aws xray update-indexing-rule --region <region> --name "Default" \
@@ -151,7 +151,7 @@ format = "json"
 
 JSON logs let CloudWatch parse each log line into fields. With tracing on, each line also carries the `traceId` and `spanId` of the request that wrote it.
 
-This file holds no secrets, so you can copy it into the image as `/app/Config.toml`. Keep it separate from the `Config.toml` you use for local runs. `Config.toml` is strict: an unknown key, such as `[ballerinai.otel]` for `[ballerina.otel]`, stops the program at startup.
+This file holds no secrets. Copy it into the image as `/app/Config.toml`. Keep it separate from the `Config.toml` you use for local runs. `Config.toml` is strict: an unknown key, such as `[ballerinai.otel]` for `[ballerina.otel]`, stops the program at startup.
 
 ### 2. Configure the collector
 
@@ -198,7 +198,7 @@ The collector signs with the credentials of the environment it runs in: the exec
 
 ### 3. Run the collector in the same container
 
-Run the collector and the integration side by side. When the integration exits, the script stops the collector and the container exits with the integration's status. On shutdown, it stops the integration first, so that the integration hands over its last spans, and then the collector, so that the collector exports them. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Keep the JVM flags that Code to Cloud's own entry point uses, in particular `-XX:+ExitOnOutOfMemoryError`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
+Run the collector and the integration side by side. When the integration exits, the script stops the collector and the container exits with the integration's status. On shutdown, it stops the integration first and the collector last. The collector then exports the integration's last spans. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Keep the JVM flags that Code to Cloud's own entry point uses, in particular `-XX:+ExitOnOutOfMemoryError`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
 
 ```sh
 #!/bin/sh
@@ -296,7 +296,7 @@ service:
       exporters: [otlp_http]
 ```
 
-The `service.name` in the integration's `Config.toml` becomes a fallback: `override: true` replaces it with the runtime's own name. When `OTEL_RESOURCE_ATTRIBUTES` is missing, as it is when you run the image locally, both processors leave the spans unchanged, so the same image and `start.sh` work everywhere.
+The `service.name` in the integration's `Config.toml` becomes a fallback: `override: true` replaces it with the runtime's own name. When `OTEL_RESOURCE_ATTRIBUTES` is missing, as it is when you run the image locally, both processors leave the spans unchanged. The same image and `start.sh` work everywhere.
 
 ### AI agents: the GenAI dashboard and AgentCore Evaluations
 
@@ -379,7 +379,8 @@ aws logs tail aws/spans --region <region> --since 30m \
 
 ### Known limitations
 
-- **The platform hop and the integration's own spans are separate traces.** AgentCore Runtime records its `AgentCore.Runtime.Invoke` span in one trace and passes the trace context to the container in the X-Ray format (`X-Amzn-Trace-Id`). Ballerina continues a trace from a W3C `traceparent` header but doesn't read the X-Ray format, so it starts a new trace. CloudWatch can't show them as one end-to-end trace.
+- **The platform hop and the integration's own spans are separate traces.** AgentCore Runtime records its `AgentCore.Runtime.Invoke` span in one trace. It passes the trace context to the container in the X-Ray format (`X-Amzn-Trace-Id`). Ballerina continues a trace from a W3C `traceparent` header but doesn't read the X-Ray format. It starts a new trace instead. CloudWatch can't show them as one end-to-end trace.
+- **Spans still queued in the integration are lost on shutdown.** Ballerina doesn't flush its own span queue when it stops. `start.sh` protects only the spans the collector has already received.
 
 ## What's next
 

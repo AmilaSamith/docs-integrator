@@ -126,9 +126,9 @@ service /api on secureListener { }
 
 ## Agents on Amazon Bedrock AgentCore Runtime
 
-An agent deployed to Amazon Bedrock AgentCore Runtime doesn't authenticate callers itself. AgentCore Runtime authenticates every invocation before it reaches the container, so the agent's `http:Listener` needs no `auth` configuration.
+An agent deployed to Amazon Bedrock AgentCore Runtime doesn't authenticate callers itself. AgentCore Runtime authenticates every invocation before it reaches the container. The agent's `http:Listener` needs no `auth` configuration.
 
-By default, the runtime uses IAM: a caller must sign the request with AWS Signature Version 4 (the AWS CLI and SDKs do this), and its IAM identity must be allowed to invoke the runtime:
+By default, the runtime uses IAM. A caller signs the request with AWS Signature Version 4, as the AWS CLI and SDKs do, and its IAM identity must be allowed to invoke the runtime:
 
 ```json
 {
@@ -145,7 +145,7 @@ By default, the runtime uses IAM: a caller must sign the request with AWS Signat
 }
 ```
 
-A caller can also pass a user ID with `--runtime-user-id`. That needs `bedrock-agentcore:InvokeAgentRuntimeForUser` on the same resources. Under IAM authentication the runtime doesn't verify the user ID, so treat it as a label from a trusted caller, not as proof of who the user is. To authenticate end users directly, configure the runtime with a JWT authorizer instead of IAM.
+A caller can also pass a user ID with `--runtime-user-id`. That needs `bedrock-agentcore:InvokeAgentRuntimeForUser` on the same resources. Under IAM authentication the runtime doesn't verify the user ID. Treat it as a label from a trusted caller, not as proof of who the user is. To authenticate end users directly, configure the runtime with a JWT authorizer instead of IAM.
 
 ## What's next
 
