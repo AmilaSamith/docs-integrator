@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Where to Start
 title: Troubleshoot Your Integration
 description: Escalation ladder for diagnosing a WSO2 Integrator integration, from logs to stack traces, hangs, and performance.
 keywords: [wso2 integrator, troubleshooting, logging, errors, stack traces, strand dump, profiling]

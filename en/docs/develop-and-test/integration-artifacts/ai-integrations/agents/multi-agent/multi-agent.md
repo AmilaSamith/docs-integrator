@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: Multi-Agent Concepts
 title: Multi-Agent Systems
 description: Why and when to split work across multiple AI agents in WSO2 Integrator, covering the orchestrator pattern, context and session isolation, and the cost of delegation.
 ---

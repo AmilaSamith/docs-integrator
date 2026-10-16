@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: How RAG Works
 title: RAG
 description: Overview of Retrieval-Augmented Generation support in WSO2 Integrator.
 slug: /develop-and-test/integration-artifacts/ai-integrations/rag

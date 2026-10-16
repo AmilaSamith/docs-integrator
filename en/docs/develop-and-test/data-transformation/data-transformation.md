@@ -1,15 +1,15 @@
 ---
-title: Transform Your Data
+title: Data Transformation
 description: Transform data between formats in WSO2 Integrator using the visual Data Mapper, format-specific processing for JSON, XML, CSV, XLSX, EDI, YAML/TOML, PDF, and ZIP, and template rendering.
 keywords: [wso2 integrator, data transformation, data mapper, json, xml, csv, xlsx, edi, yaml, toml, pdf, zip, template, freemarker]
-sidebar_label: Overview
+sidebar_label: Data Transformation
 sidebar_position: 0
 slug: /develop-and-test/data-transformation
 hide_table_of_contents: true
 wide_layout: true
 ---
 
-# Transform Your Data
+# Data Transformation
 
 Most integrations spend as much time reshaping data as they do moving it. Use the visual **Data Mapper** to wire fields between typed values, and reach for the format-specific pages below whenever you need to parse, construct, or stream a particular file format.
 
