@@ -34,28 +34,37 @@ service / on new af:HttpListener() {
 }
 ```
 
-Other trigger types use their corresponding listeners:
+Other trigger types use their corresponding listeners, configured with a trigger annotation:
 
 ```ballerina
 import ballerinax/azure.functions as af;
 
 // Queue trigger
-service "myqueue" on new af:QueueListener({queueName: "myqueue"}) {
-    remote function onMessage(string message) returns error? {
+@af:QueueTrigger {queueName: "myqueue"}
+listener af:QueueListener queueListener = new af:QueueListener();
+
+service "myqueue" on queueListener {
+    remote function onMessage(string message) {
         // process queue message
     }
 }
 
 // Timer trigger (runs every minute)
-service "timer" on new af:TimerListener({schedule: "0 */1 * * * *"}) {
-    remote function onTrigger() returns error? {
+@af:TimerTrigger {schedule: "0 */1 * * * *"}
+listener af:TimerListener timerListener = new af:TimerListener();
+
+service "timer" on timerListener {
+    remote function onTrigger(af:TimerMetadata metadata) {
         // scheduled work
     }
 }
 
 // Blob trigger
-service "mycontainer/{name}" on new af:BlobListener({path: "mycontainer/{name}"}) {
-    remote function onUpdated(byte[] content) returns error? {
+@af:BlobTrigger {path: "mycontainer/{name}"}
+listener af:BlobListener blobListener = new af:BlobListener();
+
+service "blob" on blobListener {
+    remote function onUpdate(byte[] content) {
         // process blob
     }
 }
@@ -143,7 +152,7 @@ import ballerinax/aws.lambda;
 @lambda:Function
 public function processOrder(lambda:Context ctx,
                              lambda:APIGatewayProxyRequest request) returns json|error {
-    string orderId = check request.queryStringParameters["orderId"];
+    string orderId = check request.queryStringParameters["orderId"].ensureType();
     return { statusCode: 200, body: "Order " + orderId + " received" };
 }
 
@@ -163,6 +172,16 @@ public function processDynamoDB(lambda:Context ctx,
     return event.Records[0].dynamodb.Keys.toString();
 }
 ```
+
+Typed event records are available for these event sources. For any other source, accept the event as `json`.
+
+| Event source | Event type |
+|--------------|------------|
+| Amazon S3 | `lambda:S3Event` |
+| Amazon SQS | `lambda:SQSEvent` |
+| Amazon DynamoDB Streams | `lambda:DynamoDBEvent` |
+| Amazon SES | `lambda:SESEvent` |
+| Amazon API Gateway (proxy integration) | `lambda:APIGatewayProxyRequest` |
 
 ### Step 2: Build
 
@@ -194,7 +213,7 @@ The build output lists the functions and prints the exact deploy commands to use
     Run the following command to deploy each Ballerina AWS Lambda function:
     aws lambda create-function --function-name <FUNCTION_NAME> \
       --zip-file fileb://aws-ballerina-lambda-functions.zip \
-      --handler <FILE_NAME>.<FUNCTION_NAME> \
+      --handler <PACKAGE_NAME>.<FUNCTION_NAME> \
       --runtime provided \
       --role <LAMBDA_ROLE_ARN> \
       --layers arn:aws:lambda:<REGION_ID>:367134611783:layer:ballerina-jre21:<VERSION> \
@@ -230,6 +249,10 @@ aws lambda update-function-code \
 ```
 
 Refer to the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/) for deployment configuration and trigger setup.
+
+### Grant AWS permissions
+
+Lambda runs the function as its **execution role**, the role you pass with `--role` to `aws lambda create-function`. If the function uses AWS connectors, such as Amazon S3 or Amazon DynamoDB, add the permissions they need to that role and configure the connectors with `auth:DEFAULT_CREDENTIALS`. The Lambda runtime exposes the role's credentials as environment variables, which the default credential chain reads, so the function needs no access keys. See [Access AWS Services Securely](../secure/aws-access.md).
 
 ## Reducing cold start times
 

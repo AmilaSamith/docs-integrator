@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+sidebar_label: Try-It Experiences
 title: Try-It Tool
 description: Test your integrations during development directly from WSO2 Integrator without an external client.
 keywords: [wso2 integrator, try-it tool, test http service, test graphql, test chat agent, test mcp]
@@ -23,5 +24,5 @@ Different integration types open a different Try-It interface. Select the one th
 
 ## What's next
 
-- [Test Explorer](../test-explorer/test-explorer.md) — run automated test suites from the IDE
+- [Test Explorer](../test-explorer/test-explorer.md) — run automated test suites from the editor
 - [Generate tests with AI](../ai-generated-cases.md) — generate test code automatically

@@ -15,12 +15,12 @@ import TabItem from '@theme/TabItem';
 The Integration Control Plane (ICP) is a self-hosted management server that connects to your WSO2 Integrator runtimes and provides centralized monitoring, lifecycle management, and access control. This page walks you through downloading, configuring, and starting ICP on your own infrastructure.
 
 :::tip
-This guide covers manual installation. For evaluation, run via WSO2 Integrator IDE [Integration Control Plane (ICP)](index.md).
+This guide covers manual installation. For evaluation, run via WSO2 Integrator [Integration Control Plane (ICP)](index.md).
 :::
 
 :::info Prerequisites
 
-- Java 21
+- Java 25
 - A supported OS: Linux, macOS, or Windows
 - For production deployments: a supported database (PostgreSQL, MySQL, MSSQL, or Oracle Database 19c or later). The default embedded H2 database is suitable for evaluation and development only.
 

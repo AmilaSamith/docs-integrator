@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Workflow Management
 title: "Manage Workflows"
 description: Register an integration that runs durable workflows with the WSO2 Integration Control Plane, then review its workflows, executions, and runtimes from the console.
 keywords: [wso2 integrator, integration control plane, icp, workflow runtime, enable workflow management, config.toml, task queue, workflow definitions, integration overview]
@@ -29,8 +29,8 @@ For development and evaluation, WSO2 Integrator ships its own ICP server and wri
 <ThemedImage
     alt="Enabling ICP monitoring, expanding Publish to local ICP, and starting the bundled ICP server from the deployment options panel"
     sources={{
-        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
-        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server.gif'),
+        light: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server-v5.1.gif'),
+        dark: useBaseUrl('/img/workflows/getting-started/build-a-claim-workflow-agent/start-icp-server-v5.1.gif'),
     }}
 />
 
@@ -46,15 +46,15 @@ On a server you installed yourself ([Install ICP](../install-icp.md)), create th
 
 The **Workflow** integration type is what tells ICP that this integration hosts workflows.
 
-1. Go to **Projects** > *your project*, or click **+ Create Project** first.
-2. Click **+ Create Integration** and fill in the **Create New Integration** form:
+1. Go to **Projects** > *your project*, or click **Create Project** first.
+2. Click **Create Integration** and fill in the **Create New Integration** form:
 
    | Field                | Value                                                                                      |
    |----------------------|--------------------------------------------------------------------------------------------|
    | **Display Name**     | A readable name, for example `Order workflow`                                              |
    | **Name**             | The URL-safe handle derived from the display name. Click the edit icon to override it.     |
    | **Technology**       | **WSO2 Integrator**                                                                        |
-   | **Integration Type** | **Workflow**, which orchestrates long-running processes with durable state and human tasks |
+   | **Integration Type (optional)** | **Workflow**, which orchestrates long-running processes with durable state and human tasks |
 
 3. Click **Create**.
 
@@ -93,8 +93,8 @@ Select **Overview** in the console navigation to open the integration overview.
 <ThemedImage
     alt="Integration overview showing workflow definitions, workflow actions, and runtime status"
     sources={{
-        light: useBaseUrl('/img/workflows/icp/integration-overview.png'),
-        dark: useBaseUrl('/img/workflows/icp/integration-overview.png'),
+        light: useBaseUrl('/img/workflows/icp/integration-overview-v5.1.png'),
+        dark: useBaseUrl('/img/workflows/icp/integration-overview-v5.1.png'),
     }}
 />
 
@@ -102,20 +102,22 @@ From the overview page you can take three actions:
 
 | Action                           | What it does                                                                                                                              |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| **Select a workflow definition** | The **Workflow Definitions** dropdown lists the workflows the integration provides. Selecting one shows its details.                      |
-| **View Workflows**               | Opens the **Workflow Executions** page, which lists the executions for the selected integration and environment.                          |
-| **Start New Workflow**           | Opens the **Start Workflow** dialog, where you choose a workflow definition and enter its input values. See [Start a workflow](start-a-workflow.md). |
+| **Select a workflow definition** | The **Workflow Definitions** dropdown lists the workflows the integration provides. Selecting one scopes the buttons and the counts below to that workflow. |
+| **View Workflows**               | Opens the **Workflow Executions** page, filtered to the selected workflow in that environment.                                            |
+| **Start New Workflow**           | Opens the **Start Workflow** dialog with the selected workflow chosen, where you enter its input values. Shown only to users who can start workflows. See [Start a workflow](start-a-workflow.md). |
 
-The environment overview also summarizes workflow activity by status:
+Below the selector, the environment card counts the selected workflow's instances by status. Select a count to open the matching list:
 
 | Status              | Description                                                                                              |
 |---------------------|----------------------------------------------------------------------------------------------------------|
-| **Running**         | Workflow instances that are currently executing or paused. Select the status to open the execution list. |
+| **Running**         | Workflow instances that are currently executing or waiting. Opens the execution list.                    |
 | **Suspended**       | Workflow instances paused by an operator and waiting to resume.                                          |
 | **Failed (24h)**    | Workflow instances that failed within the last 24 hours.                                                 |
 | **Completed (24h)** | Workflow instances that completed successfully within the last 24 hours.                                 |
-| **Pending reviews** | Workflow instances waiting for a review decision, such as an approval or a failed activity review.       |
-| **Pending tasks**   | Human tasks waiting for action from an eligible user.                                                    |
+| **Pending Reviews** | Review activities waiting for a decision: approval gates and failed-activity reviews. Opens **Human Tasks**. |
+| **Pending Tasks**   | Human tasks waiting for anyone, in any role. Opens **Human Tasks**, which lists only the ones you can act on. |
+
+The counts need a workflow-execution permission, and **Pending Tasks** also needs a human-task permission. See [Workflow permissions](workflow-permissions.md).
 
 ## What's next
 

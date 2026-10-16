@@ -58,7 +58,7 @@ Set the threshold to match your team's quality bar. A common starting point is 7
 
 ## Export JaCoCo XML
 
-Pass `--coverage-format=xml` to produce a JaCoCo XML file alongside the console output. This format is understood by Codecov, SonarQube, and most CI coverage dashboards, which lets you display Ballerina coverage in the same view as Java or other languages in a polyglot project.
+Pass `--coverage-format=xml` to produce a JaCoCo XML report alongside the console output. You can upload this file to CI/CD tools such as Codecov to display coverage information for both the Ballerina sources and the native Java sources used within the package.
 
 ```
 bal test --code-coverage --coverage-format=xml
@@ -92,6 +92,6 @@ bal test --test-report --code-coverage --coverage-format=xml --excludes='./gener
 ## What's next
 
 - [Execute tests](execute-tests.md) — CLI options for running, filtering, and parallel test execution
-- [Test Explorer](test-explorer.md) — run tests and view results from the IDE without the command line
+- [Test Explorer](test-explorer.md) — run tests and view results from the editor without the command line
 - [Write unit tests](unit-testing.md) — assertions, directory structure, and configuration values
 - [Test groups](groups.md) — partition tests into named groups to target coverage runs

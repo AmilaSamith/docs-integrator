@@ -15,7 +15,7 @@ Once your integration is ready, this section covers how to ship it and how to ru
 
 ## Deploy
 
-Choose where your integrations run. Where you deploy also decides how you [manage](../manage.md) and [observe](../observe/observe.md) them.
+Choose where your integrations run. Where you deploy also decides how you [manage](../manage/manage.md) and [observe](../observe/observe.md) them.
 
 <PaletteGrid>
 
@@ -87,6 +87,7 @@ Choose where your integrations run. Where you deploy also decides how you [manag
     <PaletteChip href="/deploy-and-run/secure/api-security-rate-limiting">API security</PaletteChip>
     <PaletteChip href="/deploy-and-run/secure/secrets-encryption">Secrets and encryption</PaletteChip>
     <PaletteChip href="/deploy-and-run/secure/compliance-considerations">Compliance</PaletteChip>
+    <PaletteChip href="/deploy-and-run/secure/aws-access">AWS access</PaletteChip>
   </div>
 </PaletteCard>
 

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: Agent Basics
 title: AI Agents
 description: Reference for AI Agents in WSO2 Integrator — the AI Chat Agent Wizard, system prompt, tools, memory, observability, and evaluations.
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents
@@ -71,7 +72,7 @@ The top-right controls in the agent canvas allow you to interact with and test t
 | Button | Description |
 |---|---|
 | **Tracing: Off / On** | Enables or disables OpenTelemetry tracing for the agent |
-| **Chat** | Opens an in-IDE chat interface for interacting with the agent |
+| **Chat** | Opens an in-editor chat interface for interacting with the agent |
 
 The chat interface reuses the same session across interactions, enabling memory-aware conversations during development and testing.
 

@@ -128,7 +128,7 @@ The wizard runs the automated rule-based migration and displays progress in the 
 After the migration completes successfully, the **AI Enhancement (Recommended)** section appears. Select one of the following:
 
 - **Enhance with AI** — AI automatically resolves unmapped elements, fixes build errors, and improves migration quality.
-- **Skip for Now – Enhance Later** — Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/capabilities.md).
+- **Skip for Now – Enhance Later** — Keep the project as-is. You can trigger AI enhancement later from [WSO2 Integrator Copilot](../editor/copilot/copilot.md).
 
 Click **Start AI Enhancement** to proceed to Step 5, or if you chose to skip, click **Open Project** to open the migrated project or **Done** to exit.
 
@@ -257,7 +257,7 @@ If the source Mule project had tests, the migration tool converts them to Baller
 bal test
 ```
 
-You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the IDE. Open the service file, click **Try it**, and test each endpoint against the responses returned by the original Mule application.
+You can also use the **Try-It** tool built into WSO2 Integrator to send requests to your HTTP service interactively without leaving the editor. Open the service file, click **Try it**, and test each endpoint against the responses returned by the original Mule application.
 
 ## Deploy
 

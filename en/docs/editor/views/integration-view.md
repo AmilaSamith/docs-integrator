@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: Integration View
 description: Work with the Integration view to build and manage individual integrations.
-keywords: [wso2 integrator, ide, integration view, design canvas, deployment]
+keywords: [wso2 integrator, editor, integration view, design canvas, deployment]
 slug: /editor/views/integration-view
 ---
 
@@ -16,8 +16,8 @@ The Integration view is the primary development interface in WSO2 Integrator. Us
 <ThemedImage
     alt="Integration view overview"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/overview.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/overview.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/overview-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/overview-v5.1.png'),
     }}
 />
 
@@ -28,8 +28,8 @@ The design canvas is the central area of the Integration view. It displays a vis
 <ThemedImage
     alt="Design canvas"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/design-canvas-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/design-canvas-v5.1.png'),
     }}
 />
 
@@ -54,9 +54,29 @@ Use the controls in the bottom-right corner of the canvas to adjust the view:
 
 You can also scroll to zoom and drag to pan across the canvas.
 
-### Generate with AI
+### Build with Copilot
 
-Click the **Generate with AI** button at the top of the canvas to open the [WSO2 Integrator Copilot](../copilot/copilot.md). Describe what you want in natural language, and WSO2 Integrator Copilot generates the integration with the appropriate entry points, connections, and logic.
+Describe what you want in natural language, and [WSO2 Integrator Copilot](../copilot/copilot.md) generates the integration with the appropriate entry points, connections, and logic.
+
+- **New integration**: The canvas shows the Copilot composer. Describe what you want to build and send it, or pick one of the examples under **Try one of these**.
+
+  <ThemedImage
+      alt="The Copilot composer on the overview of a new integration."
+      sources={{
+          light: useBaseUrl('/img/editor/copilot/copilot-composer.png'),
+          dark: useBaseUrl('/img/editor/copilot/copilot-composer.png'),
+      }}
+  />
+
+- **Integration with artifacts**: Select the Copilot orb in the bottom-right corner of the canvas. Select it once for a quick chat, or double-click it to open the full Copilot panel.
+
+  <ThemedImage
+      alt="The WSO2 Integrator Copilot orb on the integration overview."
+      sources={{
+          light: useBaseUrl('/img/editor/copilot/copilot-orb.png'),
+          dark: useBaseUrl('/img/editor/copilot/copilot-orb.png'),
+      }}
+  />
 
 ### Add artifact
 
@@ -76,8 +96,8 @@ The toolbar sits at the top of the Integration view and provides quick access to
 <ThemedImage
     alt="Toolbar"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/toolbar.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/toolbar-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/toolbar-v5.1.png'),
     }}
 />
 
@@ -87,41 +107,57 @@ The toolbar sits at the top of the Integration view and provides quick access to
 | **Configure** | Opens the configuration panel, equivalent to adding a configuration from the project explorer. |
 | **Run** | Builds and runs your integration locally. WSO2 Integrator compiles the Ballerina code, starts the services, and displays the output in the terminal panel. |
 | **Debug** | Starts a debug session with the debugger attached. Set breakpoints, step through execution, inspect variables and payloads, and evaluate expressions at runtime. |
+| **Deployment** | Shows or hides the deployment options panel on the right side of the view. |
 
 ## Deployment options panel
 
-The deployment options panel appears on the right sidebar and provides shortcuts to deploy the integration to different environments.
+Select **Deployment** in the toolbar to open the deployment options panel on the right side of the view. The panel provides shortcuts to deploy the integration to different environments. Select **Deployment** again to close it.
+
+<ThemedImage
+    alt="Deployment button in the toolbar"
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-button-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-button-v5.1.png'),
+    }}
+/>
 
 <ThemedImage
     alt="Deployment options"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/deployment-options-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/deployment-options-v5.1.png'),
     }}
 />
 
 | Option | Target |
 |---|---|
-| [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) | Fully managed cloud platform for hosting and running integrations. |
-| [**Containerized Deployment**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
-| [**VM Deployment**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
-| [**Integration Control Plane (ICP)**](../../icp/index.md) | Monitor and manage running integrations from a centralized dashboard. |
+| [**Deploy to WSO2 Cloud**](../../deploy-and-run/deploy-to-wso2-cloud/deploy-to-wso2-cloud.md) | Fully managed cloud platform for hosting and running integrations. Select **Deploy** to start. |
+| [**Deploy with Docker**](../../deploy-and-run/self-hosted/containerized-deployment.md) | Build Docker images and deploy integrations to Docker, Kubernetes, or OpenShift. |
+| [**Deploy on a VM**](../../deploy-and-run/self-hosted/vm-deployment.md) | Deploy integrations as standalone JAR files on virtual machines. |
 
-Select **Enable ICP monitoring** to activate ICP for this integration, or expand **Publish to local ICP** to push the integration to a local Integration Control Plane instance.
+The panel also includes an **Integration Control Plane** section for monitoring and managing running integrations from a centralized dashboard. Select **Enable ICP monitoring** to activate the [Integration Control Plane (ICP)](../integration-control-plane.md) for this integration, or expand **Publish to local ICP** to push the integration to a local ICP instance.
 
-## README section
+## Readme tab
 
-The README section at the bottom of the Integration view displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
+The **Readme** tab next to **Design** displays the contents of your project's `README.md` file. Use it to document the purpose, setup instructions, and usage notes for your integration.
 
 <ThemedImage
     alt="Readme"
     sources={{
-        light: useBaseUrl('/img/editor/views/integration-view/readme.png'),
-        dark: useBaseUrl('/img/editor/views/integration-view/readme.png'),
+        light: useBaseUrl('/img/editor/views/integration-view/readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/readme-v5.1.png'),
     }}
 />
 
-Click **Edit** to modify the README directly. You can also click **Generate with AI** to create a README automatically based on your project's components and configuration.
+Click **Edit** to modify the README directly. On a new integration that has a README but no artifacts yet, you can also click **Generate with Readme** to have Copilot plan and build the integration from the README.
+
+<ThemedImage
+    alt="The Readme tab of a new integration showing the README content and the Generate with Readme button."
+    sources={{
+        light: useBaseUrl('/img/editor/views/integration-view/generate-with-readme-v5.1.png'),
+        dark: useBaseUrl('/img/editor/views/integration-view/generate-with-readme-v5.1.png'),
+    }}
+/>
 
 ## What's next
 

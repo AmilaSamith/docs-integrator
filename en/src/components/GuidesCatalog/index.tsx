@@ -1,5 +1,7 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useHistory, useLocation } from '@docusaurus/router';
 import { usePluginData } from '@docusaurus/useGlobalData';
+import Heading from '@theme/Heading';
 import { PaletteGrid, PaletteCard } from '@site/src/components/PaletteCard';
 import type { PaletteIconName } from '@site/src/components/PaletteIcon';
 
@@ -10,13 +12,11 @@ import styles from './styles.module.css';
  * that filters across them. Two usages:
  *
  * - `<GuidesCatalog />` on the top-level Guides page: every category,
- *   each under its own "Tutorials" / "How to Guides" / "Business Use
- *   Cases" heading,
- *   with a search box (across all guides) that hides a section along
- *   with its grid once a search leaves it empty.
- * - `<GuidesCatalog category="how-to" />` (or "tutorial" / "business")
- *   on that category's own subsection landing page (tutorials.md /
- *   how-to-guides.md / business-use-cases.md): just a plain grid of that category's
+ *   each under its own "How to Guides" / "Business Use Cases" /
+ *   "Tutorials" heading, with a search box (across all guides) that
+ *   hides a section along with its grid once a search leaves it empty.
+ * - `<GuidesCatalog category="how-to" />` (or "business" / "tutorial") on
+ *   a category's own landing page, if a branch has one: just a plain grid of that category's
  *   cards, no heading (the page already has one, its `# Title`) and no
  *   search box (a search over 2-7 items doesn't earn its keep, and
  *   without it these pages read as a distinct "browse this category"
@@ -24,6 +24,12 @@ import styles from './styles.module.css';
  *   what keeps those two pages from needing their own hand-written
  *   guide list, same single-source-of-truth reasoning as the top-level
  *   page.
+ *
+ * The search text lives in the URL as `?q=...` (kept alongside any `#section`
+ * hash), so a filtered view can be shared as a link, e.g.
+ * /guides/overview?q=slack or /guides/overview?q=slack#tutorials. It is read
+ * back after mount rather than during render, so the server-rendered HTML
+ * (which has no query string) and the first client render match.
  *
  * The guide list itself comes from guidesCatalogPlugin (plain JS, see
  * its own docstring for why -- so its GuideCardData shape is
@@ -33,7 +39,7 @@ import styles from './styles.module.css';
  * editing. Keep this type in sync with that plugin's `cards.push({...})`
  * shape if it ever changes.
  */
-type GuideCategory = 'tutorial' | 'how-to' | 'business';
+type GuideCategory = 'how-to' | 'business' | 'tutorial';
 
 type Guide = {
   title: string;
@@ -44,10 +50,12 @@ type Guide = {
   category: GuideCategory;
 };
 
-const SECTIONS: { category: GuideCategory; heading: string }[] = [
-  { category: 'tutorial', heading: 'Tutorials' },
-  { category: 'how-to', heading: 'How to Guides' },
-  { category: 'business', heading: 'Business Use Cases' },
+// `id` is the section heading's anchor, so a type can be shared as a link:
+// /guides/overview#tutorials, #how-to-guides or #business-use-cases.
+const SECTIONS: { category: GuideCategory; heading: string; id: string }[] = [
+  { category: 'how-to', heading: 'How to Guides', id: 'how-to-guides' },
+  { category: 'business', heading: 'Business Use Cases', id: 'business-use-cases' },
+  { category: 'tutorial', heading: 'Tutorials', id: 'tutorials' },
 ];
 
 function SearchIcon(): ReactNode {
@@ -99,7 +107,25 @@ export default function GuidesCatalog({ category }: { category?: GuideCategory }
 }
 
 function SearchableGuides({ guides: allGuides }: { guides: Guide[] }): ReactNode {
+  const location = useLocation();
+  const history = useHistory();
   const [search, setSearch] = useState('');
+
+  // Adopt ?q= from the URL: on load, and on back/forward navigation.
+  useEffect(() => {
+    setSearch(new URLSearchParams(location.search).get('q') ?? '');
+  }, [location.search]);
+
+  // Update the box and the URL together. `replace`, not `push`, so typing
+  // doesn't add a history entry per keystroke.
+  const updateSearch = (value: string) => {
+    setSearch(value);
+    const params = new URLSearchParams(location.search);
+    if (value) params.set('q', value);
+    else params.delete('q');
+    const qs = params.toString();
+    history.replace({ pathname: location.pathname, search: qs ? `?${qs}` : '', hash: location.hash });
+  };
 
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -123,11 +149,11 @@ function SearchableGuides({ guides: allGuides }: { guides: Guide[] }): ReactNode
           className={styles.searchInput}
           placeholder="Search guides by name or description..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => updateSearch(e.target.value)}
           aria-label="Search guides"
         />
         {search && (
-          <button className={styles.clearButton} onClick={() => setSearch('')} aria-label="Clear search" type="button">
+          <button className={styles.clearButton} onClick={() => updateSearch('')} aria-label="Clear search" type="button">
             <ClearIcon />
           </button>
         )}
@@ -139,12 +165,14 @@ function SearchableGuides({ guides: allGuides }: { guides: Guide[] }): ReactNode
         </p>
       )}
 
-      {SECTIONS.map(({ category: sectionCategory, heading }) => {
+      {SECTIONS.map(({ category: sectionCategory, heading, id }) => {
         const guides = filtered.filter((g) => g.category === sectionCategory);
         if (guides.length === 0) return null;
         return (
           <div key={sectionCategory}>
-            <h2>{heading}</h2>
+            <Heading as="h2" id={id}>
+              {heading}
+            </Heading>
             <PaletteGrid>
               {guides.map((g) => (
                 <GuideCard key={g.href} guide={g} />

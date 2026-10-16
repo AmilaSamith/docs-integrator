@@ -1,6 +1,6 @@
 ## Manage and Observe
 
-The concepts that apply once an integration is live and handling real traffic. These are covered in depth in [Manage](../../manage.md) and [Observe](../../observe/observe.md).
+The concepts that apply once an integration is live and handling real traffic. These are covered in depth in [Manage](../../manage/manage.md) and [Observe](../../observe/observe.md).
 
 ### Integration Control Plane (ICP)
 

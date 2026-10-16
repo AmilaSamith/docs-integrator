@@ -19,7 +19,7 @@ Two distinct activities sit under this heading, and it is worth keeping them apa
 - **Diagnosis** answers *"why is it behaving this way?"* It uses logs, metrics, and traces to explain what is actually happening. Useful for problems you did not anticipate.
 
 :::info Observability follows your deployment
-Like [managing](../manage.md) integrations, how you observe them depends on where they run:
+Like [managing](../manage/manage.md) integrations, how you observe them depends on where they run:
 
 - **Deployed to WSO2 Cloud:** observability is built in, with nothing to set up. See <CloudDocsLink to="/observe">Observe on WSO2 Cloud</CloudDocsLink>.
 - **Running on your own infrastructure:** the [Integration Control Plane](../icp/index.md) surfaces health, metrics, and logs, and you can send the same telemetry to the open-source or commercial tools below.
@@ -110,6 +110,7 @@ flowchart LR
     <PaletteChip href="/observe/open-source/zipkin">Zipkin</PaletteChip>
     <PaletteChip href="/observe/open-source/elastic-stack-elk">Elastic Stack (ELK)</PaletteChip>
     <PaletteChip href="/observe/open-source/opensearch">OpenSearch</PaletteChip>
+    <PaletteChip href="/observe/open-source/opentelemetry">OpenTelemetry</PaletteChip>
   </div>
 </PaletteCard>
 

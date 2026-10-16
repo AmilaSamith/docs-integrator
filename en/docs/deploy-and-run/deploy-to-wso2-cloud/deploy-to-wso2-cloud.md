@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
-sidebar_label: Deploy from the Editor
-title: Deploy from the Editor
+sidebar_label: Deploy from WSO2 Integrator
+title: Deploy from WSO2 Integrator
 description: Push your integrations from the WSO2 Integrator editor directly to WSO2 Cloud, either as a whole project or as a single integration, or use another way to get integrations onto WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, deploy, push, cloud deployment]
 slug: /deploy-and-run/deploy-to-wso2-cloud
@@ -10,7 +10,7 @@ slug: /deploy-and-run/deploy-to-wso2-cloud
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Deploy to WSO2 Cloud from the Editor
+# Deploy from WSO2 Integrator
 
 You can deploy your integrations to WSO2 Cloud directly from the WSO2 Integrator editor. You can deploy the entire project at once or deploy a single integration individually.
 

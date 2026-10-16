@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Pre-built Integrations
+title: Pre-Built Integrations
 description: Download a ready-made integration between two applications from WSO2 Integrator and run or deploy it in minutes, without building it from scratch.
 keywords: [wso2 integrator, prebuilt integration, pre-built integration, salesforce, shopify, google sheets, quick start]
 slug: /get-started/prebuilt-integrations
@@ -9,7 +9,7 @@ slug: /get-started/prebuilt-integrations
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Try Pre-built Integrations
+# Try Pre-Built Integrations
 
 **Time:** Under 10 minutes | **What you'll do:** Download a ready-made integration between two applications, add your credentials, and run it. You don't build anything from scratch.
 

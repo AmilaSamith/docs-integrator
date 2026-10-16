@@ -8,9 +8,9 @@ hide_table_of_contents: true
 wide_layout: true
 ---
 
-# Build your integration
+# Build Your Integration
 
-This section covers the Develop and Test phase of the [integration lifecycle](../platform-overview/index.md#4-wso2-integration-platform-across-the-lifecycle): building integrations in the WSO2 Integrator editor before anything ships. We assume you're already familiar with the editor's surfaces from the [Editor Tour](../editor/editor.md).
+This section covers the Develop and Test phase of the [integration lifecycle](../platform-overview/index.md#from-development-to-production): building integrations in the WSO2 Integrator editor before anything ships. We assume you're already familiar with the editor's surfaces from the [Editor Tour](../editor/editor.md).
 
 :::tip
 Start building your integration by prompting [WSO2 Integrator Copilot](../editor/copilot/copilot.md) to generate a first working version of your integration flow, refine it on the visual designer, and drop into Ballerina pro-code only when you need more precise control; everything stays in sync throughout.
@@ -46,7 +46,7 @@ Moving from another platform? See [Migrate](../migrate/index.md).
 
 <div class="palette-card--standalone">
 
-<PaletteCard icon="ai" href="/editor/copilot/getting-started">
+<PaletteCard icon="ai" href="/editor/copilot">
   <h3 class="palette-card-title">Build with Copilot</h3>
   <ul class="palette-card-list">
     <li>Prompt Copilot to generate a first working version</li>
@@ -147,6 +147,6 @@ Moving from another platform? See [Migrate](../migrate/index.md).
 
 ## What's next
 
-- [Create a new integration](create-workspace/create-a-project.md) — Start a project in the WSO2 Integrator IDE or from the CLI
+- [Create a new integration](create-workspace/create-a-project.md) — Start a project in the WSO2 Integrator or from the CLI
 - [Design integration logic](../editor/canvases/flow-canvas/flow-canvas.md) — Wire up the flow between request and response
 - [Deploy and operate](../deploy-and-run/deploy-and-run.md) — Ship your integration once it's ready

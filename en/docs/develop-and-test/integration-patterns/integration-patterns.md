@@ -1,11 +1,12 @@
 ---
 sidebar_position: 0
-title: Apply Integration Patterns
+sidebar_label: Enterprise Integration Patterns (EIP)
+title: Enterprise Integration Patterns (EIP)
 description: Reusable enterprise integration patterns and how to implement them with WSO2 Integrator.
 slug: /develop-and-test/integration-patterns
 ---
 
-# Apply Integration Patterns
+# Enterprise Integration Patterns (EIP)
 
 Reusable enterprise integration patterns you can apply across projects, each shown as both a Visual Designer flow and the equivalent Ballerina code.
 

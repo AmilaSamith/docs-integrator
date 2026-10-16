@@ -1,14 +1,15 @@
 ---
-sidebar_position: 1
-title: Test Your Integration
+sidebar_position: 0
+sidebar_label: Test Toolkit
+title: Test Toolkit
 description: Verify your integrations with the built-in Try-It tool, automated test cases, and AI-generated tests in WSO2 Integrator.
 keywords: [wso2 integrator, testing, try-it, test explorer, ai test generation, code coverage]
 slug: /develop-and-test/test
 ---
 
-# Test
+# Test Toolkit
 
-WSO2 Integrator provides a full testing toolkit built into the IDE. You do not need any external testing tool. Interactive verification, automated test authoring, AI-assisted generation, and coverage reporting are all available without leaving your development environment.
+WSO2 Integrator provides a full testing toolkit built into the editor. You do not need any external testing tool. Interactive verification, automated test authoring, AI-assisted generation, and coverage reporting are all available without leaving your development environment.
 
 ## Testing approaches
 

@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
-import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from '@docusaurus/Link';
-import { useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import LandingHero from '@site/src/components/LandingHero';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
@@ -91,29 +89,10 @@ function IconManage(): ReactNode {
   );
 }
 
-/** The pulse/waveform mark used as the "Docs" badge icon in the hero
- * and as the logo-ish icon in the download panel. */
-function IconWave({ stroke = 'currentColor', size = 14 }: { stroke?: string; size?: number }): ReactNode {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h3l2-4 3 8 2-4h4" />
-    </svg>
-  );
-}
-
 function IconArrowRight(): ReactNode {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
       <path d="M4 12h15M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function IconDownload(): ReactNode {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5" />
-      <path d="M5 19h14" />
     </svg>
   );
 }
@@ -184,7 +163,7 @@ const sections: SectionCard[] = [
   },
   {
     title: 'Guides',
-    description: 'End-to-end tutorials and integration patterns.',
+    description: 'Explore task-focused how-to guides, practical business use cases, and end-to-end tutorials.',
     link: '/guides/overview',
     icon: <IconTutorials />,
     iconColor: '#D97706',
@@ -192,185 +171,40 @@ const sections: SectionCard[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Quick-links shown when the search input is focused but empty       */
+/*  Quick-links for the "What do you want to build?" row               */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
   { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
+  { label: 'Build an Event-Driven Integration', sub: 'Process messages from a message broker', to: '/get-started/quickstarts/build-event-driven-integration' },
+  { label: 'Build a File-Driven Integration', sub: 'Detect and process file changes', to: '/get-started/quickstarts/build-file-driven-integration' },
   { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-durable-workflow' },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Central Search Bar                                                 */
-/* ------------------------------------------------------------------ */
-function SearchBar(): ReactNode {
-  const history = useHistory();
-  const searchPath = useBaseUrl('/search');
-  const [query, setQuery] = useState('');
-  const [focused, setFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  // Keyboard shortcut: "/" to focus search
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (
-        e.key === '/' &&
-        !['INPUT', 'TEXTAREA', 'SELECT'].includes(
-          (e.target as HTMLElement).tagName,
-        )
-      ) {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, []);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(e.target as Node)
-      ) {
-        setFocused(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (query.trim()) {
-        history.push(`${searchPath}?q=${encodeURIComponent(query.trim())}`);
-        setFocused(false);
-      }
-    },
-    [query, history, searchPath],
-  );
-
-  return (
-    <div ref={wrapperRef} className={styles.searchWrapper}>
-      <form onSubmit={handleSubmit} className={styles.searchForm}>
-        <button type="submit" className={styles.searchIconButton} aria-label="Search">
-          <svg
-            className={styles.searchIcon}
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </button>
-        <input
-          ref={inputRef}
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search documentation..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => setFocused(true)}
-          aria-label="Search documentation"
-        />
-        <kbd className={styles.searchKbd}>/</kbd>
-      </form>
-
-      {/* Quick-links dropdown when focused and empty query */}
-      {focused && !query && (
-        <div className={styles.searchDropdown}>
-          <p className={styles.searchDropdownLabel}>Popular pages</p>
-          {quickLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={styles.searchDropdownItem}
-              onClick={() => setFocused(false)}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Welcome screenshot -- the real WSO2 Integrator get-started screen,
- *  inside the same browser-chrome frame (.productCard) saas's hero uses
- *  for the WSO2 Cloud console, so the two products' homepages match.
- * ------------------------------------------------------------------ */
-function WelcomeScreenshot(): ReactNode {
-  const src = useBaseUrl('/img/landing/wso2-integrator-welcome.png');
-  return (
-    <div className={styles.productCard}>
-      <div className={styles.productCardChrome}>
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardTitle}>WSO2 Integrator</span>
-      </div>
-      <img src={src} alt="WSO2 Integrator welcome and sign-in screen" />
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Hero Banner — split layout: welcome screenshot (left) +            */
-/*  badge/heading/search/CTA (right)                                  */
+/*  Hero -- the layout is the shared LandingHero component (synced from */
+/*  main); only the copy/links below are this product's own. The        */
+/*  screenshot is this branch's static/img/landing/hero.png.            */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   return (
-    <header className={styles.heroBanner}>
-      <div className={styles.heroInner}>
-        <div className={styles.heroLeft}>
-          <WelcomeScreenshot />
-          <div className={styles.downloadRow}>
-            <Link
-              className={styles.downloadBtn}
-              href="https://wso2.com/products/downloads/?product=wso2integrator"
-              target="_blank"
-              rel="noopener noreferrer">
-              <IconDownload />
-              Download WSO2 Integrator
-            </Link>
-            <span className={styles.downloadCaption}>
-              Windows &middot; macOS &middot; Linux
-              <br />
-              100% open source
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.heroRight}>
-          <span className={styles.heroBadge}>
-            <IconWave stroke="#FF8A3D" />
-            Docs · WSO2 Integrator
-          </span>
-          <Heading as="h1">WSO2 Integration Platform</Heading>
-          <p className={styles.heroSubtitle}>
-            Build and deploy integrations with low-code simplicity and pro-code power.
-          </p>
-          <SearchBar />
-          <div className={styles.buttons}>
-            <Link
-              className={styles.heroBtn}
-              to="/get-started">
-              Let's Get Started
-              <IconArrowRight />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header>
+    <LandingHero
+      windowTitle="WSO2 Integrator"
+      imageAlt="WSO2 Integrator: build an integration in the visual designer"
+      badge="Docs · WSO2 Integration Platform"
+      title="WSO2 Integrator"
+      subtitle="Build and deploy integrations with low-code simplicity and pro-code power."
+      cta={{ label: "Let's Get Started", to: '/get-started' }}
+      secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
+      secondary={{
+        prefix: 'Already know what you need?',
+        label: 'Download WSO2 Integrator',
+        href: 'https://wso2.com/products/downloads/?product=wso2integrator',
+        icon: 'download',
+      }}
+      footnote="Windows · macOS · Linux · 100% open source"
+    />
   );
 }
 
@@ -378,24 +212,34 @@ function HomepageHeader(): ReactNode {
 /*  "What do you want to build?" — tutorial row                        */
 /* ------------------------------------------------------------------ */
 function TutorialRow(): ReactNode {
+  const quickLinkRows = Array.from(
+    { length: Math.ceil(quickLinks.length / 3) },
+    (_, rowIndex) => quickLinks.slice(rowIndex * 3, rowIndex * 3 + 3),
+  );
+
   return (
     <section className={styles.tutorialRow}>
       <Heading as="h2" className={styles.tutorialRowTitle}>
         What do you want to build?
       </Heading>
-      <div className={styles.tutorialGrid}>
-        {quickLinks.map((link) => (
-          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-            <span className={styles.tutorialCardText}>
-              <span className={styles.tutorialCardTitle}>{link.label}</span>
-              <span className={styles.tutorialCardSub}>{link.sub}</span>
-            </span>
-            <span className={styles.tutorialCardArrow}>
-              <IconArrowRight />
-            </span>
-          </Link>
-        ))}
-      </div>
+      {quickLinkRows.map((row, rowIndex) => (
+        <div
+          key={rowIndex}
+          className={styles.tutorialGrid}
+          style={rowIndex > 0 ? { marginTop: 16 } : undefined}>
+          {row.map((link) => (
+            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+              <span className={styles.tutorialCardText}>
+                <span className={styles.tutorialCardTitle}>{link.label}</span>
+                <span className={styles.tutorialCardSub}>{link.sub}</span>
+              </span>
+              <span className={styles.tutorialCardArrow}>
+                <IconArrowRight />
+              </span>
+            </Link>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+sidebar_label: Test Explorer Basics
 title: Test Explorer
 description: Create, run, and manage automated test cases for your integrations using the Test Explorer panel in WSO2 Integrator.
 keywords: [wso2 integrator, test explorer, create test, run tests, test report, unit testing]
@@ -17,7 +18,7 @@ The Test Explorer is the built-in testing panel in WSO2 Integrator. It gives you
 
 ## Open Test Explorer
 
-Select the **Testing** icon (beaker) in the activity bar on the left side of the IDE. The **TEST EXPLORER** panel opens and lists all test functions discovered in your project.
+Select the **Testing** icon (beaker) in the activity bar on the left side of the editor. The **TEST EXPLORER** panel opens and lists all test functions discovered in your project.
 
 <!-- TODO: Add screenshot of the activity bar with the Testing icon highlighted -->
 

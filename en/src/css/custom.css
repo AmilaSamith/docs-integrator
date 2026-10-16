@@ -448,12 +448,23 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-gutter: auto;
 }
 
+/* Row size comes from three variables (defined with the sidebar dot
+   variables below) so the dots that mark each row can be centered from the
+   same numbers. Vertical padding and the gap between rows are kept small to
+   keep a long sidebar compact; the 14px HORIZONTAL padding is not a free
+   choice -- the carets are aligned against it (see .menu__caret below). */
 .menu__link {
   border-radius: 16px;
-  font-size: 0.875rem;
+  font-size: var(--wso2-sidebar-font);
+  line-height: var(--wso2-sidebar-line);
   font-weight: 700;
-  padding: 12px 14px;
+  padding: var(--wso2-sidebar-row-pad) 14px;
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Infima puts 0.25rem between every pair of sibling rows; tighten it. */
+.menu__list-item:not(:first-child) {
+  margin-top: 0.125rem;
 }
 
 /* Bold is reserved for top-level (main-section) links -- nested
@@ -560,8 +571,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 28px;
   padding: 0;
   /* .menu__link--sublist-caret's chevron (below) sits INSIDE .menu__link's
-     own padded box (.menu__link's `padding: 12px 14px` further up this
-     file), so it lands 14px in from the row's true outer edge. .menu__caret
+     own padded box (.menu__link's `padding: <row-pad> 14px` further up
+     this file), so it lands 14px in from the row's true outer edge. .menu__caret
      is a separate, zero-padding sibling box instead (a category WITH its
      own index page gets this one, not that pseudo-element) -- without this
      margin it sits flush at that true edge, 14px further right than the
@@ -626,11 +637,123 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(255, 255, 255, 0.06);
 }
 
-/* Vertical guide line along an expanded category's nested items. */
+/* Vertical guide line along an expanded category's nested items. It hangs
+   from the leading edge of the row above it, so each branch reads as
+   belonging to its parent:
+   - under a nested sub-section (no icon): the start of its label, which is
+     the row's 14px horizontal padding in;
+   - under a top-level section: the CENTER of its icon (see the next rule). */
 .menu__list .menu__list {
   border-left: 1px solid var(--wso2-surface-border);
-  margin-left: 0.85rem;
+  margin-left: 14px;
   padding-left: 0.5rem;
+}
+
+/* Top-level sections lead with a 17px icon (DocSidebar/Desktop/icons.tsx),
+   14px in from the row edge: drop the line from the icon's center, minus
+   half the line's own width. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list {
+  margin-left: calc(14px + var(--wso2-sidebar-icon-size) / 2 - 0.5px);
+}
+
+/* ----------------------------------------------------------------
+   Sidebar hierarchy: dots on a line.
+
+   Every nested sub-section and page (level 2 and deeper) gets a dot
+   sitting on the vertical guide line above, so the hierarchy reads as a
+   path: a muted dot for an ordinary row, a FILLED dot for every
+   section/sub-section on the path to the current page, and a RING for
+   the current page itself. Deeper lists (level 3+) switch the line to
+   dashed and the dots to a smaller size. Top-level sections keep their
+   icon, peach fill and left accent bar (rules above) -- this only
+   styles what is nested inside them.
+
+   Pure CSS, driven by Docusaurus' own state classes:
+     .menu__link--active                    a link on the path to / at the current page
+     .menu__list-item-collapsible--active   a category whose own page is the current page
+   The dot is a ::before on the row, centered on the line: the nested
+   <ul> has a 1px left border and 0.5rem of left padding, so a row's
+   left edge sits 0.5rem + 1px right of the line.
+   ---------------------------------------------------------------- */
+:root {
+  --wso2-sidebar-dot: #B9C2D0;
+  --wso2-sidebar-dot-size: 8px;
+  /* Sidebar row metrics (see .menu__link above). */
+  --wso2-sidebar-font: 0.8125rem;
+  --wso2-sidebar-row-pad: 7px;
+  --wso2-sidebar-line: 1.25;
+  /* Top-level section icon size -- keep in sync with icons.tsx. */
+  --wso2-sidebar-icon-size: 17px;
+}
+
+[data-theme='dark'] {
+  --wso2-sidebar-dot: rgba(255, 255, 255, 0.28);
+}
+
+/* Level 3 and deeper: dashed line, smaller dots. */
+.menu__list .menu__list .menu__list {
+  border-left-style: dashed;
+  --wso2-sidebar-dot-size: 6px;
+}
+
+/* The row each dot is anchored to: a leaf link, or a category's own row
+   (the div holding its label and caret -- not the whole <li>, which also
+   contains its expanded children). */
+.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link,
+.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible {
+  position: relative;
+}
+
+.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link::before,
+.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible::before {
+  content: '';
+  position: absolute;
+  /* Centered on the line: -(0.5rem padding + half the 1px border) - half the dot. */
+  left: calc(-0.5rem - 0.5px - var(--wso2-sidebar-dot-size) / 2);
+  /* Centered on the label's first line (row padding + half a line). */
+  top: calc(var(--wso2-sidebar-row-pad) + 0.5 * var(--wso2-sidebar-line) * var(--wso2-sidebar-font) - var(--wso2-sidebar-dot-size) / 2);
+  box-sizing: border-box;
+  width: var(--wso2-sidebar-dot-size);
+  height: var(--wso2-sidebar-dot-size);
+  border-radius: 50%;
+  background-color: var(--wso2-sidebar-dot);
+  pointer-events: none;
+}
+
+/* On the path to the current page: filled, in the brand color. */
+.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible:has(> .menu__link--active)::before {
+  background-color: var(--ifm-color-primary);
+}
+
+/* The current page itself: a ring (a leaf link, or a category whose own
+   page is the current one). */
+.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active::before,
+.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible--active::before {
+  background-color: var(--ifm-background-color);
+  border: 2px solid var(--ifm-color-primary);
+}
+
+/* A nested sub-section on the path to the current page is marked by its
+   filled dot and accent text, not the peach row fill the rule further up
+   gives every category with an active link: keep that fill for the
+   top-level section only. */
+.menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: transparent;
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: transparent;
+}
+
+/* ...except the row of a category that IS the current page, which gets the
+   same light pill a current leaf page has. */
+.menu__list .menu__list .menu__list-item-collapsible.menu__list-item-collapsible--active {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible.menu__list-item-collapsible--active {
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .menu__list-item-collapsible:hover {
@@ -755,6 +878,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--wso2-border-subtle);
+}
+
+/* A ### straight after a ## (the ## has no body of its own, e.g. the
+   "## General" group heading above the first "### Q:" in a FAQ) would stack
+   the h2's bottom rule on the h3's top rule -- two lines in a row. Keep the
+   h2's rule only, and tighten the gap that rule + the h3's own top padding
+   would otherwise leave. */
+.markdown h2 + h3 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 1rem;
 }
 
 /* Jumping to a heading (card link, TOC, #anchor in the URL) must clear
@@ -1350,7 +1484,15 @@ hr {
   .pagination-nav,
   footer,
   .tocCollapsible,
-  [class*="aiAssistant"] {
+  [class*="aiAssistant"],
+  /* Copy-page dropdown: window.print() fires before React re-renders
+     with the menu closed, and the page is narrow enough in print for
+     the mobile `position: fixed` menu rules to apply, so without this
+     the open menu is repeated on every printed page. */
+  [class*="markdownDropdown"],
+  [class*="mobileBackdrop"],
+  /* Fixed floating action buttons (feedback / assistant). */
+  .floating-actions {
     display: none !important;
   }
 

@@ -11,16 +11,18 @@ Configure logging for your WSO2 Integrator services to capture operational data,
 
 ## Default Logging Behavior
 
-Ballerina provides a built-in `ballerina/log` module that writes log messages to standard output (stdout). By default, the log level is set to `INFO`, and messages are emitted in a human-readable format.
+Ballerina provides a built-in `ballerina/log` module that writes log messages to standard error (stderr). By default, the log level is set to `INFO`, and messages are emitted in the key-value (logfmt) format. To get JSON instead, set `format = "json"` as shown in [JSON Log Format](#json-log-format).
 
 ```ballerina
+import ballerina/http;
 import ballerina/log;
 
 service /orders on new http:Listener(9090) {
-    resource function post .(@http:Payload json order) returns json|error {
-        log:printInfo("Order received", orderId = order.id);
+    resource function post .(@http:Payload json payload) returns json|error {
+        string orderId = check payload.id;
+        log:printInfo("Order received", orderId = orderId);
         // Process order...
-        log:printInfo("Order processed successfully", orderId = order.id);
+        log:printInfo("Order processed successfully", orderId = orderId);
         return { status: "accepted" };
     }
 }
@@ -110,19 +112,21 @@ Ballerina emits structured logs in key-value format by default, which is compati
 Pass additional context as named arguments to log functions:
 
 ```ballerina
+import ballerina/http;
 import ballerina/log;
 
 service /orders on new http:Listener(9090) {
-    resource function post .(@http:Payload json order) returns json|error {
-        string orderId = check order.id;
-        string customerId = check order.customerId;
-        decimal total = check order.total;
+    resource function post .(@http:Payload json payload) returns json|error {
+        string orderId = check payload.id;
+        string customerId = check payload.customerId;
+        decimal total = check payload.total;
+        json[] items = check payload.items.ensureType();
 
         log:printInfo("Processing order",
             orderId = orderId,
             customerId = customerId,
             total = total,
-            itemCount = order.items.length()
+            itemCount = items.length()
         );
 
         return { status: "accepted" };
@@ -147,21 +151,27 @@ level = "INFO"
 format = "json"
 ```
 
-JSON output:
+JSON output, with one log entry per line:
 
 ```json
-{
-  "time": "2025-03-15T10:30:00.000Z",
-  "level": "INFO",
-  "module": "myorg/order_service",
-  "message": "Processing order",
-  "orderId": "ORD-12345",
-  "customerId": "CUST-789",
-  "total": 149.99
-}
+{"time":"2025-03-15T10:30:00.000Z", "level":"INFO", "module":"myorg/order_service", "message":"Processing order", "orderId":"ORD-12345", "customerId":"CUST-789", "total":149.99, "itemCount":3}
 ```
 
 When tracing is enabled, each log record also carries the `traceId` and `spanId` of the request that wrote it. Log platforms that parse JSON, such as Amazon CloudWatch Logs, turn these into queryable fields, so you can go from a log line to its trace and back. In the default key-value format, the same values are present but stay unparsed.
+
+## Send logs to Amazon CloudWatch Logs
+
+Integrations log to stderr, so on AWS the platform ships the output to CloudWatch Logs without code changes. Switch to the [JSON log format](#json-log-format) so each log line arrives as one structured event that you can query with CloudWatch Logs Insights:
+
+- In `Config.toml`, set `format = "json"` under `[ballerina.log]`.
+- In a container, where `Config.toml` isn't part of the image, set the environment variable `BAL_CONFIG_VAR_BALLERINA_LOG_FORMAT=json` instead. On Amazon ECS, add it to the `environment` list of the container definition.
+
+| Platform | How logs reach CloudWatch Logs |
+|----------|--------------------------------|
+| Amazon ECS | The `awslogs` log driver in the task definition. See [Amazon ECS deployment](../deploy-and-run/self-hosted/containerized-deployment.md#step-5-register-the-task-definition). |
+| Amazon EKS | Fluent Bit, or the Amazon CloudWatch Observability EKS add-on |
+| AWS Lambda | Automatic; function output goes to the `/aws/lambda/<function-name>` log group |
+| Amazon Bedrock AgentCore Runtime | Automatic; output goes to the `/aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT` log group |
 
 ## What's next
 
