@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+sidebar_label: Requirements and Architecture
 title: Set up a Private Data Plane
 description: Understand the infrastructure requirements, system components, and configuration options for a WSO2 Cloud - Integration Platform private data plane.
 keywords: [wso2 cloud, wso2 integration platform, private data plane, pdp, deploy]

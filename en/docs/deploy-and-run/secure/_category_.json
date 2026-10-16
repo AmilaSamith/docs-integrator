@@ -1,1 +1,1 @@
-{ "label": "Secure Integrations", "position": 30 }
+{ "label": "Secure Integrations", "position": 30, "customProps": { "landOnFirst": true } }

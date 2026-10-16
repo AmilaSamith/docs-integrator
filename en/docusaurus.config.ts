@@ -177,7 +177,7 @@ const config: Config = {
           items: [
             { label: 'Platform Overview', to: '/platform-overview' },
             { label: 'Concepts', to: '/get-started/concepts' },
-            { label: 'Cloud Setup', to: '/get-started/cloud-setup' },
+            { label: 'Setup', to: '/get-started/setup' },
             { label: 'Quickstarts', to: '/get-started/quickstarts/build-automation' },
           ],
         },

@@ -2,6 +2,7 @@
 title: Deploy Your Integration
 description: Get integrations onto WSO2 Cloud, then keep them configured and running once they're live.
 sidebar_position: 0
+sidebar_label: Ways to Deploy
 slug: /deploy-and-run/deploy-to-wso2-cloud
 ---
 

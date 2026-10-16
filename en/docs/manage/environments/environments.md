@@ -1,12 +1,13 @@
 ---
-sidebar_position: 1
-title: "Manage Environments"
+sidebar_position: 0
+sidebar_label: Environment Management
+title: Environment Management
 description: "Learn how environments work in the WSO2 Integration Platform and how to use them."
 keywords: [wso2 integrator, environments, promotion, development, production, wso2 cloud]
 slug: /manage/environments
 ---
 
-# Manage Environments
+# Environment Management
 
 The WSO2 Integration Platform runs integrations in isolated environments within a data plane. Environments let you develop and test integrations safely before exposing them to production.
 

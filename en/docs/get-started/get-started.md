@@ -14,7 +14,7 @@ New to WSO2 Integration Platform? Start here: set up your WSO2 Cloud account, le
 
 <PaletteGrid>
 
-<PaletteCard icon="cloud" href="/get-started/cloud-setup">
+<PaletteCard icon="cloud" href="/get-started/setup">
   <h3 class="palette-card-title">Cloud Setup</h3>
   <p class="palette-card-desc">Sign up for WSO2 Cloud and launch WSO2 Integrator in the browser-based cloud editor, no local installation required.</p>
 </PaletteCard>
@@ -45,7 +45,7 @@ New to WSO2 Integration Platform? Start here: set up your WSO2 Cloud account, le
 
 ## What's next
 
-- [Cloud setup](cloud-setup.md) — Sign up for WSO2 Cloud and open the cloud editor.
+- [Cloud setup](setup/setup.md) — Sign up for WSO2 Cloud and open the cloud editor.
 - [Concepts](concepts/concepts.mdx) — Learn the vocabulary before you dive into the docs.
 - [Build an Integration as API](quickstarts/build-integration-api.md) — The fastest way to see WSO2 Integrator in action.
 - [Try prebuilt integrations](prebuilt-integrations.md) — Deploy a ready-made integration without building anything.

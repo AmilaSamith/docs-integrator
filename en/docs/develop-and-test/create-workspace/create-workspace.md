@@ -1,7 +1,7 @@
 ---
 title: Create Integration Workspace
 description: Create or import a project on WSO2 Cloud, then add the integrations that live inside it.
-sidebar_label: Overview
+sidebar_label: Integration Workspace
 sidebar_position: 0
 slug: /develop-and-test/create-workspace
 ---

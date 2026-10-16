@@ -1,1 +1,1 @@
-{ "label": "API Management", "position": 2 }
+{ "label": "Manage APIs", "position": 2, "link": null, "customProps": { "landOnFirst": true } }

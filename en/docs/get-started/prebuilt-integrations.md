@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: "Pre-built Integrations"
+title: "Pre-Built Integrations"
 description: Use prebuilt integrations to connect your applications and automate common use cases on WSO2 Cloud in minutes, without building an integration from scratch.
 keywords: [wso2 integrator, wso2 cloud, prebuilt integration, salesforce, google sheets, automation, quick start]
 slug: /get-started/prebuilt-integrations
@@ -9,7 +9,7 @@ slug: /get-started/prebuilt-integrations
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Try Pre-built Integrations
+# Try Pre-Built Integrations
 
 **Time:** Under 10 minutes | **What you'll build:** Nothing from scratch. You'll configure and deploy a production-ready integration between two applications from the prebuilt integration catalog.
 
@@ -22,7 +22,7 @@ Building an integration from scratch means learning the platform's abstractions,
 The prebuilt integrations catalog is available in WSO2 Cloud, and you can also browse it from the WSO2 Integrator home screen by selecting **Explore** and filtering by **Pre-built Integrations**. This guide follows the WSO2 Cloud path because it lets you pick a prebuilt integration, configure it, and deploy it in one go, without leaving WSO2 Cloud.
 
 :::info Prerequisites
-A WSO2 Cloud account and organization. If you don't have one yet, see [Cloud setup](cloud-setup.md) to sign up.
+A WSO2 Cloud account and organization. If you don't have one yet, see [Cloud setup](setup/setup.md) to sign up.
 :::
 
 ## Step 1: Go to the project-level view
