@@ -13,6 +13,13 @@
  * `customProps.badge` in its _category_.json (e.g. "ICP") -- for short
  * qualifiers that shouldn't lengthen the label itself.
  *
+ * A category without a link of its own (`link: null`) can still make its
+ * title land on its first child -- the overview page, listed first inside
+ * the group -- by setting `customProps.landOnFirst: true` in its
+ * _category_.json. The title then behaves like a category that has a link:
+ * clicking it navigates and expands, and the caret alone collapses. Stock
+ * only uses that first-child link as a server-side-render fallback.
+ *
  * Everything else (collapse state, auto-expand-when-active, the SSR
  * href fallback, keyboard/ARIA handling) is copied as-is from stock --
  * see the original for the reasoning behind each of those.
@@ -160,7 +167,11 @@ function DocSidebarItemCategoryEmpty({ item, ...props }: Props): ReactNode {
 }
 
 function DocSidebarItemCategoryCollapsible({ item, onItemClick, activePath, level, index, ...props }: Props): ReactNode {
-  const { items, label, collapsible, className, href } = item;
+  const { items, label, collapsible, className, href: ownHref } = item;
+  // `landOnFirst`: a link-less category whose title lands on its first child.
+  const firstLink = useMemo(() => findFirstSidebarItemLink(item), [item]);
+  const landOnFirst = !ownHref && item.customProps?.landOnFirst === true && !!firstLink;
+  const href = ownHref ?? (landOnFirst ? firstLink : undefined);
   const {
     docs: {
       sidebar: { autoCollapseCategories },
@@ -224,7 +235,7 @@ function DocSidebarItemCategoryCollapsible({ item, onItemClick, activePath, leve
           aria-current={isCurrentPage ? 'page' : undefined}
           role={collapsible && !href ? 'button' : undefined}
           aria-expanded={collapsible && !href ? !collapsed : undefined}
-          href={collapsible ? (hrefWithSSRFallback ?? '#') : hrefWithSSRFallback}
+          href={landOnFirst ? firstLink : collapsible ? (hrefWithSSRFallback ?? '#') : hrefWithSSRFallback}
           {...props}>
           <CategoryLinkLabel label={label} level={level} badge={item.customProps?.badge as string | undefined} />
         </Link>
