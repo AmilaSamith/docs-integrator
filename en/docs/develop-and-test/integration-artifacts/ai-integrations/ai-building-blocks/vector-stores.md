@@ -182,7 +182,7 @@ See the permissions sections of [QueryVectors](https://docs.aws.amazon.com/Amazo
 In the **Select Vector Store** picker, this store is listed as **Amazon S3 Vectors Vector Store**.
 
 <ThemedImage
-    alt={"Create Vector Store form titled 'Initializes the S3 Vectors vector store.' showing Connection Config (required, Record/Expression toggle, prefilled with {auth: {accessKeyId: \"\", secretAccessKey: \"\"}, region: \"us-west-2\"}), Vector Index (required, Record/Expression toggle, default {}), Vector Store Config (Default: {}), Vector Store Name (default s3Vectorstore), and Result Type (locked to s3:VectorStore)."}
+    alt={"Create Vector Store form titled 'Initializes the S3 Vectors vector store.' showing Connection Config (required, Record/Expression toggle, prefilled with {auth: {accessKeyId: \"\", secretAccessKey: \"\"}, region: \"us-west-2\"}), Vector Index (required, Record/Expression toggle, prefilled with {vectorBucketName: \"\", indexName: \"\"}), Vector Store Config (Default: {}), Vector Store Name (default s3Vectorstore), and Result Type (locked to s3:VectorStore)."}
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/08-s3-vectors-form-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/vector-stores/08-s3-vectors-form-v5.1.png'),
@@ -218,7 +218,7 @@ For an [interface VPC endpoint](https://docs.aws.amazon.com/AmazonS3/latest/user
 | **contentKey** | `string` | `"content"` | The metadata key that holds the chunk text, up to 63 characters. It must be a non-filterable key on the index. |
 | **filters** | `ai:MetadataFilters` | `()` | Filters applied to every **Query**, combined with the query's own filters using `AND`. |
 | **queryMode** | `QueryMode` | `()` (the index's own mode) | How filters are applied in a **Query** with an embedding. `CLASSIC` applies them during the search, so a filtered query can return fewer than **Top K** matches. `ENHANCED` applies them before the search. AWS rejects `CLASSIC` on an `ENHANCED` index. |
-| **returnVectorData** | `boolean` | `false` | Whether **Query** returns each match's embedding. S3 Vectors doesn't return embeddings from a search, so the store makes extra `GetVectors` calls (up to 100 keys each) when this is `true`. When `false`, the embedding of each match is empty. |
+| **returnVectorData** | `boolean` | `false` | Whether **Query** returns each match's embedding. For a query with an embedding, S3 Vectors doesn't return embeddings from the search, so the store makes extra `GetVectors` calls (up to 100 keys each). A query without an embedding gets them from the `ListVectors` listing. When `false`, the embedding of each match is empty. |
 | **maxListScan** | `int` | `100000` | The most vectors that a **Query** without an embedding reads before it fails. See [Behavior and limits](#s3-vectors-behavior-and-limits). |
 | **validateIndexOnInit** | `boolean` | `true` | Whether the store reads the index with `GetIndex` when it is created. This catches a missing index and a filterable content key at startup, and lets **Add** check each vector's dimension before sending it. |
 

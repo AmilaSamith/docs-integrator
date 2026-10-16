@@ -28,7 +28,7 @@ Every data loader exposes one action.
 In the flow editor, open the **Add Node** panel and go to **AI > RAG > Data Loader**, then click **+ Add Data Loader**. The **Data Loaders** picker lists the available types.
 
 <ThemedImage
-    alt="Data Loaders picker with a search box, listing Text Data Loader, AWS S3 Text Data Loader (loads text documents from AWS S3 buckets), Azure Blob Storage Text Data Loader, Azure Files Text Data Loader, Google Drive Text Data Loader, and Microsoft SharePoint Text Data Loader."
+    alt="Data Loaders picker with a search box, listing Text Data Loader, AWS S3 Text Data Loader (loads text documents from AWS S3 buckets), and Microsoft SharePoint Text Data Loader."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/data-loaders/01-data-loaders-picker-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/data-loaders/01-data-loaders-picker-v5.1.png'),
