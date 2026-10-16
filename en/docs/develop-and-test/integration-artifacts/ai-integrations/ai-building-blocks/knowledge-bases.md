@@ -45,7 +45,7 @@ Two places, both equivalent:
 Either one opens the **Select Knowledge Base** picker, listing all supported types with a search bar at the top:
 
 <ThemedImage
-    alt="Select Knowledge Base picker with a search bar and three cards: Vector Knowledge Base described as managing chunk indexing and retrieval, Azure AI Search Knowledge Base described as the Azure Search Knowledge Base implementation, and WSO2 Cloud Knowledge Base described as a WSO2 Cloud knowledge base for retrieval."
+    alt="Select Knowledge Base picker with a search bar and four cards: Vector Knowledge Base, WSO2 Cloud Knowledge Base, the Bedrock Knowledge Bases group (2 options, available in ballerinax/ai.aws.bedrock) expanded to show Bedrock Managed Knowledge Base and Bedrock Self-Managed Knowledge Base, and Azure AI Search Knowledge Base."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/02-select-list-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/02-select-list-v5.1.png'),
@@ -114,7 +114,7 @@ Find or create is meant for a single instance, a local run, or a first-time setu
 ### Create form
 
 <ThemedImage
-    alt="Create form for the Bedrock Managed Knowledge Base, titled 'ai.aws.bedrock : Knowledge Base', showing Knowledge Base, Authentication, and Region (required), then Data Source ID (default ()), Chunker (AUTO, with + Create New Chunker), Reranking Model (No Selection), and the start of Endpoint Configuration."
+    alt="Create form for the Bedrock Managed Knowledge Base, titled 'ai.aws.bedrock : Knowledge Base', showing Knowledge Base (required, hint 'An existing knowledge base ID, or a definition to find or create by name'), Authentication and Region (required), then Data Source ID (default ()), Chunker (default ai:AUTO, with + Create New Chunker), and Reranking Model (hint: Bedrock's managed reranking when unset; RERANKING_NONE turns it off)."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/13-aws-bedrock-basic-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/13-aws-bedrock-basic-v5.1.png'),
@@ -144,7 +144,7 @@ The identity needs `bedrock:Retrieve` for **Retrieve**, and the [direct ingestio
 ### Advanced configurations
 
 <ThemedImage
-    alt="Create form for the Bedrock Self-Managed Knowledge Base scrolled to Reranking (default ()), Endpoint Configuration, and Ingest Timeout, then Advanced Configurations expanded showing Number Of Results, Override Search Type (No Selection), HTTP Config, and Retry Config."
+    alt="Create form for the Bedrock Self-Managed Knowledge Base scrolled to Endpoint Configuration and Ingest Timeout (default 300), then Advanced Configurations expanded showing Number Of Results (hint 'Upper limit on results per retrieval (1-100)'), Override Search Type (No Selection), HTTP Config, and Retry Config."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/14-aws-bedrock-self-managed-advanced-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/knowledge-bases/14-aws-bedrock-self-managed-advanced-v5.1.png'),

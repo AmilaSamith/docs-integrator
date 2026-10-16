@@ -34,7 +34,7 @@ You rarely call these directly. Knowledge Base `ingest` and `retrieve` operation
 - The **Select Embedding Provider** picker opens, listing the available providers with a search bar at the top:
 
 <ThemedImage
-    alt="Select Embedding Provider picker with a search bar and five cards: Default Embedding Provider (WSO2), described as a WSO2 embedding provider implementation that provides embedding capabilities using WSO2's AI service; Azure Embedding Provider, described as an interface for interacting with Azure OpenAI Embedding Models; Google Vertex Embedding Provider, described as a client class that provides an interface for generating vector embeddings; OpenAI Embedding Provider, described as an interface for interacting with OpenAI Embedding Models; and OpenRouter Embedding Provider, described as a client class that provides an interface for generating vector embeddings."
+    alt="Select Embedding Provider picker with a search bar and six cards: Default Embedding Provider (WSO2), the Bedrock Embedding Providers group (2 options, available in ballerinax/ai.aws.bedrock), Azure Embedding Provider, Google Vertex Embedding Provider, OpenAI Embedding Provider, and OpenRouter Embedding Provider, each with a one-line description."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/01-select-embedding-provider-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/01-select-embedding-provider-v5.1.png'),
@@ -81,7 +81,7 @@ Official website: [aws.amazon.com/bedrock](https://aws.amazon.com/bedrock/).
 ### Create form
 
 <ThemedImage
-    alt="Create Embedding Provider form for the Bedrock Titan Embedding Provider, headed 'Amazon Titan text embeddings on AWS Bedrock.', showing three required fields: Model (select/expression toggle), Authentication (record/expression toggle, with hint 'AWS credentials or a Bedrock API key; auth:DEFAULT_CREDENTIALS uses the default chain'), and Region (select/expression toggle), then the optional Endpoint Configuration. Below: Advanced Configurations Expand link, Embedding Provider Name bedrockTitanembeddingprovider, and Result Type bedrock:TitanEmbeddingProvider."
+    alt="Create Embedding Provider form for the Bedrock Titan Embedding Provider, headed 'Amazon Titan text embeddings on AWS Bedrock.', showing three required fields: Model (select/expression toggle), Authentication (record/expression toggle, with hint 'AWS credentials or a Bedrock API key; auth:DEFAULT_CREDENTIALS uses the default chain'), and Region (select/expression toggle), then the optional Endpoint Configuration. Below: Advanced Configurations Expand link and Embedding Provider Name bedrockTitanembeddingprovider."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/11-aws-bedrock-titan-basic-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/11-aws-bedrock-titan-basic-v5.1.png'),
@@ -104,7 +104,7 @@ Both AWS Bedrock embedding providers have the same create form fields.
 ### Advanced configurations
 
 <ThemedImage
-    alt="Bedrock Cohere Create Embedding Provider form with Advanced Configurations expanded showing Input Type (select/expression toggle, no selection, with hint 'Input type for every call. Unset: queries for embed, documents for batchEmbed.'), Truncate, Dimensions, Additional Model Request Fields, Retry Config, and HTTP Config, followed by Embedding Provider Name bedrockCohereembeddingprovider."
+    alt="Bedrock Cohere Create Embedding Provider form scrolled to Endpoint Configuration, then Advanced Configurations expanded showing Input Type (No Selection, with hint 'Input type for every call. Unset: queries for embed, documents for batchEmbed.'), Truncate, Dimensions (hint '256, 512, 1024 or 1536 (Embed v4 only). Defaults to 1536.'), and Additional Model Request Fields."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/12-aws-bedrock-cohere-advanced-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/embedding-providers/12-aws-bedrock-cohere-advanced-v5.1.png'),
