@@ -2,7 +2,7 @@
 title: AI Building Blocks
 description: The shared connections and stores every AI feature in WSO2 Integrator is built from -- model providers, embedding providers, vector stores, knowledge bases, chunkers, and data loaders.
 keywords: [wso2 integrator, model provider, embedding provider, vector store, knowledge base, chunker, data loader, rag]
-sidebar_label: Overview
+sidebar_label: Building Blocks
 sidebar_position: 0
 slug: /develop-and-test/integration-artifacts/ai-integrations/ai-building-blocks
 hide_table_of_contents: true

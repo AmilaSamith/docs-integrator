@@ -2,7 +2,7 @@
 title: AI Integrations Overview
 description: Build AI-powered integrations with WSO2 Integrator using direct LLM calls, RAG pipelines, AI agents, and MCP servers.
 keywords: [wso2 integrator, genai, ai, llm, rag, agent, mcp, natural function, model provider, embedding, vector store, knowledge base]
-sidebar_label: Overview
+sidebar_label: AI Integration Basics
 sidebar_position: 0
 slug: /develop-and-test/integration-artifacts/ai-integrations
 hide_table_of_contents: true
