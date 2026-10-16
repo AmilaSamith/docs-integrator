@@ -34,6 +34,14 @@ If your integration is already in a Git repository, you can import it directly i
         }}
     />
 
+    <ThemedImage
+        alt="Click Import Integration"
+        sources={{
+            light: useBaseUrl('/img/import-project/import-integration.png'),
+            dark: useBaseUrl('/img/import-project/import-integration.png'),
+        }}
+    />
+
     :::warning
     One-click OAuth2 authorization is only available for GitHub. To use Bitbucket, GitLab, or Azure DevOps, you must first add your credentials at the organization level. See [Connect a Git provider](../../deploy-and-run/deploy-to-wso2-cloud/connect-git-provider.md) for instructions.
     :::
@@ -52,12 +60,21 @@ If your integration is already in a Git repository, you can import it directly i
     <ThemedImage
         alt="Import Integration"
         sources={{
-            light: useBaseUrl('/img/import-project/import-integration-saas-form.png'),
-            dark: useBaseUrl('/img/import-project/import-integration-saas-form.png'),
+            light: useBaseUrl('/img/import-project/import-integration-saas-form-new.png'),
+            dark: useBaseUrl('/img/import-project/import-integration-saas-form-new.png'),
+        }}
+    />
+
+    <ThemedImage
+        alt="Build Integration"
+        sources={{
+            light: useBaseUrl('/img/import-project/build-completed.png'),
+            dark: useBaseUrl('/img/import-project/build-completed.png'),
         }}
     />
 
 WSO2 Cloud starts the build immediately. Once the build completes, the integration is automatically deployed to the **Development** environment.
+
 
 ## What's next
 
