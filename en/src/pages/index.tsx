@@ -179,7 +179,7 @@ const quickLinks = [
   { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
   { label: 'Build an Event-Driven Integration', sub: 'React to messages from a broker', to: '/get-started/quickstarts/build-event-driven-integration' },
   { label: 'Build a File-Driven Integration', sub: 'Watch files and process changes', to: '/get-started/quickstarts/build-file-driven-integration' },
-  { label: 'Exposing a Service as MCP', sub: 'Make service operations available as MCP tools', to: '/develop-and-test/integration-artifacts/ai-integrations/mcp/exposing-as-mcp' },
+  { label: 'Exposing a Service as MCP', sub: 'Expose service operations as MCP tools', to: '/develop-and-test/integration-artifacts/ai-integrations/mcp/exposing-as-mcp' },
 ];
 
 /* ------------------------------------------------------------------ */
