@@ -45,7 +45,7 @@ Per-call overrides are not exposed in the form. Anything that varies per request
 - Click **+ Add Model Provider** and the **Select Model Provider** picker opens with a card for each provider type:
 
 <ThemedImage
-    alt="Select Model Provider picker listing Default Model Provider (WSO2), Anthropic Model Provider, Bedrock Model Providers (a group marked 8 options), Azure OpenAI, Deepseek, Gemini, Google Vertex, Mistral, Ollama, and OpenAI Model Provider, with one-line descriptions for each."
+    alt="Select Model Provider picker listing Default Model Provider (WSO2), Anthropic Model Provider, Bedrock Model Providers (a group marked 8 options, available in ballerinax/ai.aws.bedrock), Azure OpenAI, Deepseek, Google Vertex, Mistral, and Ollama Model Provider, with one-line descriptions for each."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/02-select-list-top-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/02-select-list-top-v5.1.png'),
@@ -55,7 +55,7 @@ Per-call overrides are not exposed in the form. Anything that varies per request
 Scroll to see the remaining options:
 
 <ThemedImage
-    alt="Select Model Provider picker scrolled to show Bedrock Model Providers (8 options), Azure OpenAI, Deepseek, Gemini, Google Vertex, Mistral, Ollama, OpenAI, and OpenRouter Model Provider entries."
+    alt="Select Model Provider picker scrolled to show Bedrock Model Providers (8 options), Azure OpenAI, Deepseek, Google Vertex, Mistral, Ollama, and OpenRouter Model Provider entries."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/03-select-list-bottom-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/03-select-list-bottom-v5.1.png'),
@@ -211,7 +211,7 @@ The vendor providers also let you choose which Bedrock API each request uses (se
 ### Create form
 
 <ThemedImage
-    alt="Create Model Provider form for the Bedrock Converse Model Provider showing Model (required, hint 'Any Bedrock model ID, inference profile ID or ARN'), Authentication (required, hint 'AWS credentials or a Bedrock API key; auth:DEFAULT_CREDENTIALS uses the default chain'), Region (required, a select list), Endpoint Configuration, Maximum Tokens (default 4096), and Temperature. Below: Advanced Configurations Expand link and Model Provider Name."
+    alt="Create Model Provider form for the Bedrock Converse Model Provider showing Model (required, hint 'Any Bedrock model ID, inference profile ID or ARN'), Authentication (required, hint 'AWS credentials or a Bedrock API key; auth:DEFAULT_CREDENTIALS uses the default chain'), Region (required, a select list), Endpoint Configuration, Maximum Tokens (default 4096), and Temperature."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/30-aws-bedrock-converse-basic-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/30-aws-bedrock-converse-basic-v5.1.png'),
@@ -263,7 +263,7 @@ IDs that start with `us.` are US cross-region inference profiles and work only w
 Every AWS Bedrock model provider has the same advanced fields, and some vendor providers add their own. For example, the Anthropic provider adds **Thinking** and **Effort**:
 
 <ThemedImage
-    alt="Bedrock Runtime Anthropic Create Model Provider form with Advanced Configurations expanded, showing Service Tier, Latency Optimized, Guardrail, Retry Config, HTTP Config, Thinking, and Effort."
+    alt="Bedrock Runtime Anthropic Create Model Provider form with Advanced Configurations expanded, showing Latency Optimized, Guardrail, Retry Config, HTTP Config, Thinking, and Effort."
     sources={{
         light: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/31-aws-bedrock-runtime-anthropic-advanced-v5.1.png'),
         dark: useBaseUrl('/img/genai/develop/components-v5.1/model-providers/31-aws-bedrock-runtime-anthropic-advanced-v5.1.png'),
