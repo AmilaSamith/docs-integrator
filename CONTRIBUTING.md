@@ -136,8 +136,8 @@ including required frontmatter that's build-enforced — see
 
 | Path | Branch | Owner |
 |---|---|---|
-| `en/docs/icp/` | `wso2-integrator` | ICP team (`@wso2/icp-team` — placeholder, needs a real team slug) |
-| `en/docs/` (all) | `wso2-connectors` | Library team (`@wso2/library-team` — placeholder, needs a real team slug) |
+| `en/docs/icp/` | `wso2-integrator` | ICP team (`@anuruddhal`) |
+| `en/docs/` (all) | `wso2-connectors` | Connector team (`@daneshk`) |
 | Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
 
 ## Contributor scenarios
