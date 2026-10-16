@@ -145,6 +145,8 @@ Add a Data Prepper service to the Docker Compose file:
 ```yaml
   data-prepper:
     image: opensearchproject/data-prepper:2.16.0
+    ports:
+      - "21890:21890"
     volumes:
       - ./pipelines.yaml:/usr/share/data-prepper/pipelines/pipelines.yaml
       - /var/log/integrations:/var/log/integrations:ro
@@ -210,7 +212,7 @@ tracingEnabled = true
 tracingProvider = "jaeger"
 
 [ballerinax.jaeger]
-agentHostname = "data-prepper"
+agentHostname = "localhost"
 agentPort = 21890
 samplerType = "const"
 samplerParam = 1.0

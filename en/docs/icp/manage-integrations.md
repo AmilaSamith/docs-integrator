@@ -143,7 +143,7 @@ When operational, the page provides:
 Ballerina listeners (HTTP, TCP, and other transport listeners) appear on the integration **Overview**, under the service they are attached to. Each listener row shows its name, protocol, host and port, and its state (**Enabled** or **Disabled**). You can start or stop individual listeners directly from the console, which sends a control command to all runtimes running that listener in the selected environment.
 
 <ThemedImage
-    alt="Listener entry point detail panel showing the enable/disable toggle"
+    alt="Listener row with View Details and Disable buttons, and the disable confirmation dialog"
     sources={{
         light: useBaseUrl('/img/manage/icp/listener-control-light.png'),
         dark: useBaseUrl('/img/manage/icp/listener-control-light.png'),

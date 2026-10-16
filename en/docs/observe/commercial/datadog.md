@@ -127,6 +127,8 @@ agentHostname = "localhost"
 agentPort = 4317
 ```
 
+On Kubernetes, the Helm chart runs the agent on each node, so set `agentHostname` to the node IP (for example, from the `status.hostIP` field) instead of `localhost`.
+
 Configure the Datadog Agent to accept OpenTelemetry (OTLP) traces:
 
 ```yaml

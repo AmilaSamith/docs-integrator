@@ -43,7 +43,7 @@ The token is signed with HMAC-SHA256 and validated against:
 
 ## Pagination
 
-Queries that return a list wrap it in a page object. Select the list fields under `items`, and the paging details under `pageInfo`:
+Paginated list queries (those that take a `pagination` argument) wrap the list in a page object. Select the list fields under `items`, and the paging details under `pageInfo`:
 
 ```graphql
 query {

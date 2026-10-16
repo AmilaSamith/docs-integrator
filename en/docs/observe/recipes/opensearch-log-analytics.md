@@ -26,7 +26,7 @@ WSO2 Integrator
 - 4GB RAM minimum (8GB recommended)
 - 20GB disk space for OpenSearch data
 
-## Prepare the Integration
+## Prepare the integration
 
 The `integrator` service runs your integration's executable JAR from the `./integrations` directory.
 
@@ -413,7 +413,7 @@ environment:
   - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
 ```
 
-### Index State Management (ISM)
+### Index state management (ISM)
 
 Fluent Bit already writes one index per day. Configure automatic deletion of indices older than 30 days:
 

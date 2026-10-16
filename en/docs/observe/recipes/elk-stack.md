@@ -142,7 +142,7 @@ networks:
 
 ## Configuration Files
 
-### Integration Configuration
+### Integration configuration
 
 Enable observability in the integration's `Ballerina.toml`:
 
@@ -297,7 +297,7 @@ docker compose logs -f
 - **Grafana (metrics):** http://localhost:3000
 - **Prometheus:** http://localhost:9090
 
-## Setting Up Kibana Data View
+## Setting up Kibana data view
 
 1. Open Kibana at http://localhost:5601
 2. Go to **Stack Management** > **Data Views**
