@@ -9,7 +9,7 @@ pre-flight checklist for any change that adds, moves, or renames a doc:
 - [ ] **Not hand-editing shared content on a branch that only receives
       it.** CONTRIBUTING.md's Golden Rule 1 lists the exact folders
       (`platform-overview/`, `editor/`, `develop-and-test/`, `migrate/`,
-      `guides/`, `reference/glossary.md` as of this writing) that are
+      `guides/` as of this writing) that are
       authored on `wso2-integrator` and synced out to `saas` — check
       that list rather than this one, since it's the one place it's
       kept current. If you're on the receiving branch (today: `saas`)
