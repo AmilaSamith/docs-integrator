@@ -1,12 +1,13 @@
 ---
-sidebar_position: 1
-title: "Manage Access"
+sidebar_position: 0
+sidebar_label: "Users, Roles, and Access"
+title: "Users, Roles, and Access"
 description: "Manage who can access the WSO2 Cloud - Integration Platform, what they can do, and how they sign in."
 keywords: [wso2 cloud, users, access control, roles, groups, identity provider, enterprise login]
 slug: /manage/users-and-access
 ---
 
-# Manage Access
+# Users, Roles, and Access
 
 WSO2 Cloud - Integration Platform gives you centralized control over who can access your organization and projects, what actions they can perform, and how they authenticate. You can define granular permissions using roles and groups, enforce organization-wide policies, and connect your existing enterprise identity provider so users sign in with familiar credentials.
 

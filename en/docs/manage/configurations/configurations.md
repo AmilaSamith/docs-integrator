@@ -1,12 +1,13 @@
 ---
-sidebar_position: 1
-title: "Manage Configurations"
+sidebar_position: 0
+sidebar_label: Configuration Management
+title: Configuration Management
 description: "Manage runtime values, build settings, endpoints, scaling, and security for integrations deployed on WSO2 Cloud - Integration Platform."
 keywords: [wso2 integrator, wso2 cloud, configuration, runtime, build, endpoints, scaling, security]
 slug: /manage/configurations
 ---
 
-# Manage Configurations
+# Configuration Management
 
 WSO2 Cloud - Integration Platform provides configuration options across several dimensions of your integration lifecycle, from how integrations are built and what values they read at runtime, to how they scale, expose endpoints, and enforce security.
 

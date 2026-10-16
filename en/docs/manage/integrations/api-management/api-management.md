@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: API Management
 title: API Management
 description: Comprehensive API management with WSO2 Cloud - Integration Platform. Learn to create, publish, secure, monitor, and analyze APIs at scale with built-in lifecycle management and governance.
 keywords: [api management, lifecycle management, api security, rate limiting, developer portal, analytics]
