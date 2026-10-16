@@ -2,8 +2,8 @@
 title: "Setup"
 description: "Sign up for WSO2 Cloud and launch WSO2 Integrator in the browser-based cloud editor to start building integrations."
 keywords: [wso2 integrator, wso2 cloud, cloud setup, sign up, sign in, account, organization, cloud editor]
-sidebar_position: 2
-slug: /get-started/cloud-setup
+sidebar_position: 0
+slug: /get-started/setup
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -78,7 +78,7 @@ You land on the **Overview** page of the default project in your new organizatio
 />
 
 :::info Invite others
-To give teammates access, an organization admin can invite them from the organization settings. Invited users can only see resources within that organization. See [Users and access control](../manage/users-and-access/users-and-access.md) for more information.
+To give teammates access, an organization admin can invite them from the organization settings. Invited users can only see resources within that organization. See [Users and access control](../../manage/users-and-access/users-and-access.md) for more information.
 :::
 
 ## Step 6: Open the cloud editor
