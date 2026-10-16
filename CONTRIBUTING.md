@@ -158,6 +158,7 @@ including required frontmatter that's build-enforced — see
 | Path | Branch | Owner |
 |---|---|---|
 | `en/docs/icp/` | `wso2-integrator` | ICP team (`@anuruddhal`) |
+| `en/docs/editor/copilot/` | `wso2-integrator` | Copilot (`@shafreenAnfar`) |
 | `en/docs/` (all except `icp/`) | `wso2-integrator` | Integrator team (`@rosensilva`) |
 | `en/docs/` (all) | `saas` | Cloud team (`@pcnfernando`) |
 | `en/docs/` (all) | `wso2-connectors` | Connector team (`@daneshk`) |
