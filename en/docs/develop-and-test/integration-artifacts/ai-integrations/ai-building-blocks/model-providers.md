@@ -296,16 +296,16 @@ Provider-specific fields:
 | **Default credentials** | `auth:DEFAULT_CREDENTIALS` | Uses the standard AWS credential chain (environment variables, shared config file, SSO, EKS, ECS, and EC2 roles). On AWS compute such as EC2, ECS, EKS, or Lambda, it picks up the attached IAM role, so nothing else needs to be set. |
 | **Static keys** | `accessKeyId`, `secretAccessKey`, optional `sessionToken` | IAM user access keys or temporary STS credentials. |
 | **Named profile** | optional `profileName` (default `default`), optional `credentialsFilePath` (default `~/.aws/credentials`) | A profile from a shared credentials file. |
-| **Assume role** | `roleArn`, optional `externalId`, `roleSessionName`, `duration`, `stsRegion`, `sourceCredentials` | Cross-account access through an IAM role. |
-| **Web identity** | `roleArn`, `webIdentityTokenFile`, optional `roleSessionName`, `stsRegion` | OIDC web identity tokens. |
-| **SSO** | `ssoStartUrl`, `ssoRegion`, `accountId`, `roleName`, optional `ssoSessionName` | IAM Identity Center. |
+| **Assume role** | `roleArn`, optional `externalId`, `roleSessionName`, `duration`, `stsRegion`, `stsEndpoint`, `sourceCredentials` | Cross-account access through an IAM role. |
+| **Web identity** | `roleArn`, `webIdentityTokenFile`, optional `roleSessionName`, `stsRegion`, `stsEndpoint` | OIDC web identity tokens. |
+| **SSO** | `ssoStartUrl`, `ssoRegion`, `accountId`, `roleName`, optional `ssoSessionName`, `ssoEndpoint`, `ssoOidcEndpoint` | IAM Identity Center. |
 | **Credential process** | `command` | An external program that prints credentials. |
 | **Bedrock API key** | `apiKey` | A [Bedrock API key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html). The key's identity needs `bedrock:CallWithBearerToken`. See [API key permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-permissions.html). |
 
 :::note
 **Generate** with a non-`string` **Expected Type** is not supported when **API Type** is `INVOKE` for `mistral.mistral-7b-instruct-v0:2`, `mistral.mistral-large-2402-v1:0`, and DeepSeek R1, because those use a text-completion format with no tool calling. Use `CONVERSE` instead. **Chat** works on every API.
 
-**Chat** also accepts images (PNG, JPEG, GIF, and WebP) on the `CONVERSE` API, on the Anthropic provider's `MESSAGES` and `INVOKE` APIs, and on the Amazon provider's `INVOKE` API. On other APIs, a message with an image returns an error.
+**Chat** also accepts images (PNG, JPEG, GIF, and WebP) on the `CONVERSE` API, on the Anthropic provider's `MESSAGES` and `INVOKE` APIs, and on the Amazon provider's `INVOKE` API. On other APIs, a message with an image returns an error. Send images as bytes; an image URL returns an error.
 :::
 
 :::info

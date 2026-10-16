@@ -126,12 +126,12 @@ Both AWS Bedrock knowledge bases have the same create form fields, except rerank
 | Field | Required | Default | Available values |
 |---|---|---|---|
 | **Knowledge Base** | Yes | — | A knowledge base ID (10 characters, for example `KB12345678`; an ARN is not accepted), or a definition record to find or create by name: `ManagedKnowledgeBaseDefinition` (Managed) or `SelfManagedKnowledgeBaseDefinition` (Self-Managed). See [Definition records](#bedrock-definition-records). The knowledge base must be `ACTIVE`, and of the matching kind: a Managed connection can't attach to a self-managed knowledge base, or the other way round. |
-| **Authentication** | Yes | — | `DEFAULT_CREDENTIALS`, or one of the records in [AWS authentication options](model-providers.md#aws-credential-options) **except Bedrock API key**. |
+| **Authentication** | Yes | — | `auth:DEFAULT_CREDENTIALS`, or one of the records in [AWS authentication options](model-providers.md#aws-credential-options) **except Bedrock API key**. |
 | **Region** | Yes | — | The AWS region the knowledge base is in, for example `us-east-1`. There is no default. |
 | **Data Source ID** | No | `()` (detected) | The ID of the Custom data source that **Ingest** writes to and **Delete By Filter** deletes from. Leave empty when the knowledge base has exactly one Custom data source. Leave it empty also when a definition creates a new knowledge base; the new one gets its data source from the definition. |
 | **Chunker** | No | `()` (detected) | `ai:AUTO`, `ai:DISABLE`, or any saved [Chunker](chunkers.md) connection. Client-side chunking before **Ingest**. Leave empty to follow the data source: `ai:DISABLE` when Bedrock chunks the documents, `ai:AUTO` when the data source's chunking strategy is `NONE`. Setting a chunker when Bedrock chunks the documents fails, because Bedrock would split them again. |
 | **Reranking Model** (Managed only) | No | `()` (Bedrock default: managed reranking) | `RERANKING_NONE`, `RERANKING_MANAGED`. Whether Bedrock reranks the results with its managed reranker. Managed reranking is not available on a knowledge base created with your own embedding model. |
-| **Reranking** (Self-Managed only) | No | `()` (no reranking) | `modelArn`, optional `numberOfRerankedResults`. Reranks the results with a Bedrock reranker model. Bedrock returns at most **Number Of Results** results, even if `numberOfRerankedResults` is higher. |
+| **Reranking** (Self-Managed only) | No | `()` (no reranking) | `modelArn`, optional `numberOfRerankedResults`. Reranks the results with a Bedrock reranker model. `numberOfRerankedResults` can't be higher than **Number Of Results**; creating the connection fails if it is. |
 | **Endpoint Configuration** | No | `()` (derived from Region) | `fips` (AWS offers FIPS endpoints for knowledge bases only in `us-east-1` and `us-west-2`), `customEndpoint`. A `customEndpoint` is used for both Bedrock knowledge base endpoints, so it suits a mock or a single gateway. For a VPC endpoint, enable private DNS and leave this empty. `dualstack` is not supported. |
 | **Ingest Timeout** | No | `300` | Seconds. How long **Ingest** waits for the documents to be indexed. |
 
@@ -170,7 +170,7 @@ Use a definition record in **Knowledge Base** to find or create a knowledge base
 | `serviceRoleArn` | Yes | — | ARN of the IAM role Bedrock uses to manage the knowledge base. |
 | `description` | No | `()` | Description. |
 | `dataSource` | No | `{name: "ballerina-custom-source"}` | The Custom data source created with the knowledge base: `name`, optional `description`. |
-| `embeddingModel` | No | `()` (Bedrock's own model) | Your own embedding model: `embeddingModelArn`, `dimensions` (`1024`), `embeddingDataType` (`FLOAT32`). Supported models: Amazon Titan Text Embeddings V2, Cohere Embed English v3, Cohere Embed Multilingual v3, Cohere Embed v4, and Amazon Nova Multimodal Embeddings. This can't be changed later, and rules out `RERANKING_MANAGED`. |
+| `embeddingModel` | No | `()` (Bedrock's own model) | Your own embedding model, as `embeddingModelArn`. The connection always sets 1024 dimensions and `FLOAT32`, which AWS requires for a managed knowledge base. Supported models: Amazon Titan Text Embeddings V2, Cohere Embed English v3, Cohere Embed Multilingual v3, Cohere Embed v4, and Amazon Nova Multimodal Embeddings. This can't be changed later, and rules out `RERANKING_MANAGED`. |
 | `kmsKeyArn` | No | `()` (AWS managed key) | A customer-managed KMS key for the stored data. |
 | `readyTimeout` | No | `300` | Seconds to wait for a new knowledge base and data source to become ready. |
 
