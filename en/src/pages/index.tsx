@@ -143,49 +143,49 @@ const sections: SectionCard[] = [
   },
   {
     title: 'Editor Tour',
-    description: 'Take a tour of the WSO2 Integrator editor -- workspace, canvases, and Copilot.',
+    description: 'Explore the WSO2 Integrator workspace, views, canvases, designers, panels, and Copilot.',
     link: '/editor',
     icon: <IconEditorTour />,
     iconColor: '#DB2777',
   },
   {
     title: 'Develop and Test',
-    description: 'Build services, transform data, and test integrations on your machine.',
+    description: 'Create and test integrations using visual design, data transformation, developer tools, and debugging.',
     link: '/develop-and-test',
     icon: <IconDevelop />,
     iconColor: '#26365A',
   },
   {
     title: 'Deploy and Run',
-    description: 'Deploy to WSO2 Cloud, connect a Git provider, and secure integrations in production.',
+    description: 'Deploy integrations to WSO2 Cloud, configure Git-based delivery, and secure production environments.',
     link: '/deploy-and-run',
     icon: <IconDeploy />,
     iconColor: '#0891B2',
   },
   {
     title: 'Manage',
-    description: 'Centralized control over integrations, environments, and access via the WSO2 Cloud console.',
+    description: 'Manage deployed integrations, projects, environments, configurations, user access, and platform services.',
     link: '/manage',
     icon: <IconManage />,
     iconColor: '#4F46E5',
   },
   {
     title: 'Observe',
-    description: 'Monitor logs, metrics, and alerts for your integrations in WSO2 Cloud.',
+    description: 'Monitor runtime logs and metrics, diagnose issues, and configure anomaly detection and alerts.',
     link: '/observe',
     icon: <IconObserve />,
     iconColor: '#0D9488',
   },
   {
     title: 'Migrate',
-    description: 'Move existing MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps integrations to WSO2.',
+    description: 'Migrate integrations from MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps using migration tools.',
     link: '/migrate',
     icon: <IconMigrate />,
     iconColor: '#B45309',
   },
   {
     title: 'Guides',
-    description: 'End-to-end tutorials and integration patterns.',
+    description: 'Explore task-focused how-to guides, business use cases, and end-to-end tutorials.',
     link: '/guides/overview',
     icon: <IconTutorials />,
     iconColor: '#D97706',
@@ -199,6 +199,9 @@ const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
   { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
   { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
+  { label: 'Build an Event-Driven Integration', sub: 'React to messages from a broker', to: '/get-started/quickstarts/build-event-driven-integration' },
+  { label: 'Build a File-Driven Integration', sub: 'Watch files and process changes', to: '/get-started/quickstarts/build-file-driven-integration' },
+  { label: 'Exposing a Service as MCP', sub: 'Make service operations available as MCP tools', to: '/develop-and-test/integration-artifacts/ai-integrations/mcp/exposing-as-mcp' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -380,24 +383,34 @@ function HomepageHeader(): ReactNode {
 /*  "What do you want to build?" — tutorial row                        */
 /* ------------------------------------------------------------------ */
 function TutorialRow(): ReactNode {
+  const quickLinkRows = Array.from(
+    { length: Math.ceil(quickLinks.length / 3) },
+    (_, rowIndex) => quickLinks.slice(rowIndex * 3, rowIndex * 3 + 3),
+  );
+
   return (
     <section className={styles.tutorialRow}>
       <Heading as="h2" className={styles.tutorialRowTitle}>
         What do you want to build?
       </Heading>
-      <div className={styles.tutorialGrid}>
-        {quickLinks.map((link) => (
-          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-            <span className={styles.tutorialCardText}>
-              <span className={styles.tutorialCardTitle}>{link.label}</span>
-              <span className={styles.tutorialCardSub}>{link.sub}</span>
-            </span>
-            <span className={styles.tutorialCardArrow}>
-              <IconArrowRight />
-            </span>
-          </Link>
-        ))}
-      </div>
+      {quickLinkRows.map((row, rowIndex) => (
+        <div
+          key={rowIndex}
+          className={styles.tutorialGrid}
+          style={rowIndex > 0 ? { marginTop: 16 } : undefined}>
+          {row.map((link) => (
+            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+              <span className={styles.tutorialCardText}>
+                <span className={styles.tutorialCardTitle}>{link.label}</span>
+                <span className={styles.tutorialCardSub}>{link.sub}</span>
+              </span>
+              <span className={styles.tutorialCardArrow}>
+                <IconArrowRight />
+              </span>
+            </Link>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }
