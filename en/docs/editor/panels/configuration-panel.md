@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Configuration Panel
 
-The Configuration Panel is the side panel you open whenever you select **Configure** in the IDE. It groups the settings that apply to the current artifact (an integration, a service, or a function) into a single form, so you can review and update them without editing source code. The panel adapts its content to the level you opened it from.
+The Configuration Panel is the side panel you open whenever you select **Configure** in the editor. It groups the settings that apply to the current artifact (an integration, a service, or a function) into a single form, so you can review and update them without editing source code. The panel adapts its content to the level you opened it from.
 
 <ThemedImage
     alt="Service configuration in the Configuration Panel"
@@ -22,7 +22,7 @@ The Configuration Panel is the side panel you open whenever you select **Configu
 
 ## Where to open it
 
-The Configuration Panel can be reached from many places in the IDE. The level you open it from determines which configuration the panel loads:
+The Configuration Panel can be reached from many places in the editor. The level you open it from determines which configuration the panel loads:
 
 - **Integration level**: open from the Integration view toolbar, the project explorer, or any artifact that does not have its own configuration scope. This level is reachable from anywhere in the integration.
 - **Service level**: open from the **Configure** action in the [Service Designer](../designers/service-designer.md) header, or from the service's three-dot menu in the project explorer.
@@ -35,7 +35,7 @@ The panel exposes configuration at four levels. Each level scopes the settings t
 
 ### Integration-level configurations
 
-Apply to the entire integration and are available from every place in the IDE that can open the Configuration Panel. Use this level for values that should be shared across all services, automations, and functions in the integration, such as configurable variables sourced from `Config.toml`, runtime defaults, and integration-wide environment settings.
+Apply to the entire integration and are available from every place in the editor that can open the Configuration Panel. Use this level for values that should be shared across all services, automations, and functions in the integration, such as configurable variables sourced from `Config.toml`, runtime defaults, and integration-wide environment settings.
 
 ### Service-level configurations
 
