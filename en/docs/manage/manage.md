@@ -17,7 +17,7 @@ WSO2 Cloud - Integration Platform is a managed cloud environment for running int
 <PaletteGrid>
 
 <PaletteCard icon="automation" href="/manage/integrations">
-  <h3 class="palette-card-title">Integration Management</h3>
+  <h3 class="palette-card-title">Manage Integrations</h3>
   <ul class="palette-card-list">
     <li>Track build and deployment status</li>
     <li>Redeploy, schedule, or stop integrations</li>
@@ -33,7 +33,7 @@ WSO2 Cloud - Integration Platform is a managed cloud environment for running int
 </PaletteCard>
 
 <PaletteCard icon="server" href="/manage/environments">
-  <h3 class="palette-card-title">Environment Management</h3>
+  <h3 class="palette-card-title">Manage Environments</h3>
   <ul class="palette-card-list">
     <li>Configure promotion pipelines</li>
     <li>Promote with optional approval gates</li>
@@ -42,7 +42,7 @@ WSO2 Cloud - Integration Platform is a managed cloud environment for running int
 </PaletteCard>
 
 <PaletteCard icon="tools" href="/manage/configurations">
-  <h3 class="palette-card-title">Configuration Management</h3>
+  <h3 class="palette-card-title">Manage Configurations</h3>
   <ul class="palette-card-list">
     <li>Runtime values and secrets</li>
     <li>Endpoint visibility and security</li>
@@ -51,7 +51,7 @@ WSO2 Cloud - Integration Platform is a managed cloud environment for running int
 </PaletteCard>
 
 <PaletteCard icon="security" href="/manage/users-and-access">
-  <h3 class="palette-card-title">Users, Roles, and Access</h3>
+  <h3 class="palette-card-title">Manage Access</h3>
   <ul class="palette-card-list">
     <li>User groups and roles</li>
     <li>Organization- or project-level access</li>
