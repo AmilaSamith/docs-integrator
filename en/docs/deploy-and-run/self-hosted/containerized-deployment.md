@@ -953,7 +953,7 @@ AgentCore Runtime starts your container and talks to it over a fixed contract. A
 - `POST /invocations` takes the caller's JSON payload and returns JSON.
 - Each invocation carries the session id in the `X-Amzn-Bedrock-AgentCore-Runtime-Session-Id` header. A session id has at least 33 characters.
 
-The following service exposes an agent over this contract. It uses the session id as the agent's memory key, so calls with the same session id continue one conversation:
+The following service exposes an agent over this contract. It passes the session id to the agent as its memory key:
 
 ```ballerina
 import ballerina/ai;
@@ -1009,6 +1009,12 @@ service / on new http:Listener(port) {
 
 `agentFor()` returns the agent, which Step 2 builds. The runtime gives each session its own microVM, so one container serves one session.
 
+:::caution Conversations last only as long as the microVM
+The agent keeps its conversation memory inside the container. By default, AgentCore Runtime stops a session's microVM after 15 minutes without an invocation or after 8 hours in total, and it also stops one that fails its health check. A later call with the same session id starts a new microVM, and the agent no longer remembers the conversation. It doesn't report an error.
+
+To keep a conversation beyond that, store it outside the container in a durable [memory store](../../develop-and-test/integration-artifacts/ai-integrations/agents/memory.md#add-memory-store).
+:::
+
 :::note
 Log the reason for any failure inside the container. When the agent returns an error, the caller sees only a `RuntimeClientError` with HTTP status 424. The cause is in the runtime's log group.
 :::
@@ -1019,37 +1025,67 @@ AgentCore Gateway gives the agent one MCP endpoint for all its tools and one end
 
 The model provider's API key stays out of the agent. Store it in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), and add an **Inference** target to the Gateway that uses that credential provider. The agent then calls the model through the Gateway and sends its Gateway token in place of a provider key.
 
-The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. The MCP toolkit takes the grant configuration and manages its own token; the model provider takes a token that the agent requests:
+The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. Keep the Cognito client secret in AWS Secrets Manager, where the agent reads it with the runtime's IAM role. The secret then never appears in the runtime's configuration. Save the secret in an editor as `client-secret.json`, rather than on the command line, so that it stays out of your shell history:
+
+```json
+{"clientSecret": "<client-secret>"}
+```
+
+Then create the secret from the file and delete the file:
+
+```bash
+chmod 600 client-secret.json
+aws secretsmanager create-secret --region <region> --name my-agent/gateway-client \
+  --secret-string file://client-secret.json
+rm client-secret.json
+```
+
+The agent reads the secret when it builds itself. The MCP toolkit takes the grant configuration and manages its own token; the model provider takes a token that the agent requests:
 
 ```ballerina
 import ballerina/ai;
 import ballerina/http;
 import ballerinax/ai.openai;
+import ballerinax/aws.auth;
+import ballerinax/aws.secretmanager;
 
-configurable string mcpServerUrl = ?;   // Gateway MCP URL
-configurable string inferenceUrl = ?;   // Gateway model URL, ending in /v1
-configurable string mcpTokenUrl = ?;    // Cognito token URL
+configurable string mcpServerUrl = ?;      // Gateway MCP URL
+configurable string inferenceUrl = ?;      // Gateway model URL, ending in /v1
+configurable string mcpTokenUrl = ?;       // Cognito token URL
 configurable string mcpClientId = ?;
-configurable string mcpClientSecret = ?;
+configurable string mcpClientSecretId = ?; // Secrets Manager secret holding the client secret
+configurable string awsRegion = ?;
 
-isolated function gatewayToken() returns string|error {
+// Reads the client secret with the runtime's IAM role, so no access keys are needed.
+isolated function clientSecret() returns string|error {
+    secretmanager:Client secrets = check new ({region: awsRegion, auth: auth:DEFAULT_CREDENTIALS});
+    secretmanager:SecretValue secret = check secrets->getSecretValue(mcpClientSecretId);
+    byte[]|string value = secret.value;
+    string secretString = value is string ? value : check string:fromBytes(value);
+    json document = check secretString.fromJsonString();
+    return (check document.clientSecret).toString();
+}
+
+isolated function gatewayToken(string secret) returns string|error {
     http:Client tokenClient = check new (mcpTokenUrl);
     http:Request request = new;
     request.setTextPayload(string `grant_type=client_credentials&client_id=${mcpClientId}` +
-            string `&client_secret=${mcpClientSecret}`, "application/x-www-form-urlencoded");
+            string `&client_secret=${secret}`, "application/x-www-form-urlencoded");
     // Cognito returns expires_in and token_type alongside the token.
     record {string access_token;} token = check tokenClient->post("", request);
     return token.access_token;
 }
 
 isolated function buildAgent() returns ai:Agent|error {
+    string secret = check clientSecret();
+
     // Requests a token, and a new one when it expires. Lists the Gateway's tools once,
     // when the toolkit is created.
     ai:McpToolKit gateway = check new (mcpServerUrl,
-        auth = {tokenUrl: mcpTokenUrl, clientId: mcpClientId, clientSecret: mcpClientSecret});
+        auth = {tokenUrl: mcpTokenUrl, clientId: mcpClientId, clientSecret: secret});
 
     // The OpenAI provider sends its key as Authorization: Bearer, which the Gateway reads.
-    ai:ModelProvider model = check new openai:ModelProvider(check gatewayToken(), openai:GPT_4_1, inferenceUrl);
+    ai:ModelProvider model = check new openai:ModelProvider(check gatewayToken(secret), openai:GPT_4_1, inferenceUrl);
 
     return check new ai:Agent(
         systemPrompt = {
@@ -1076,6 +1112,8 @@ isolated function agentFor() returns ai:Agent|error {
     return agent;
 }
 ```
+
+AgentCore Identity offers another way to hold the client credentials: the agent then receives only tokens and never the secret. Ballerina has no AgentCore SDK for it, so this page doesn't cover it.
 
 Keep these behaviors in mind:
 
@@ -1113,7 +1151,7 @@ Follow these rules for every image you deploy to AgentCore Runtime:
 |---|---|
 | Push a `linux/arm64` image | AgentCore Runtime runs only `arm64` images and rejects any other with an unhelpful error. |
 | Push with `--provenance=false` | `buildx` otherwise pushes an attestation manifest list. The push succeeds, but the runtime fails to deploy. |
-| Keep secrets out of the image | Code to Cloud leaves your project's `Config.toml` out of the image. Any `Config.toml` you copy in yourself, such as the tracing configuration, must hold no secrets. Pass secrets as environment variables (Step 7). |
+| Keep secrets out of the image | Code to Cloud leaves your project's `Config.toml` out of the image. Any `Config.toml` you copy in yourself, such as the tracing configuration, must hold no secrets. Keep secrets in AWS Secrets Manager (Step 2). |
 | Set only environment variables the code reads | An unknown key in `Config.toml`, or a `BAL_CONFIG_VAR_` variable that matches no `configurable`, stops the program at startup with `unused environment variable`. On AgentCore, this shows up only as `An error occurred when starting the runtime`. |
 
 ### Step 4: Build and test locally
@@ -1158,7 +1196,7 @@ docker buildx build \
 
 ### Step 6: Create the IAM role
 
-The runtime assumes an IAM role to pull the image, write logs, and send traces. Save the trust policy as `runtime-trust.json`:
+The runtime assumes an IAM role to pull the image, write logs, send traces, and read the client secret. Save the trust policy as `runtime-trust.json`:
 
 ```json
 {
@@ -1183,7 +1221,7 @@ Save the permissions as `runtime-permissions.json`. Replace `<runtime-name>` wit
   "Statement": [
     { "Sid": "ECRImageAccess", "Effect": "Allow",
       "Action": ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"],
-      "Resource": ["arn:aws:ecr:<region>:<account-id>:repository/*"] },
+      "Resource": ["arn:aws:ecr:<region>:<account-id>:repository/my-agent"] },
     { "Sid": "ECRTokenAccess", "Effect": "Allow",
       "Action": ["ecr:GetAuthorizationToken"], "Resource": "*" },
     { "Sid": "LogGroupManagement", "Effect": "Allow",
@@ -1201,6 +1239,9 @@ Save the permissions as `runtime-permissions.json`. Replace `<runtime-name>` wit
     { "Sid": "Tracing", "Effect": "Allow",
       "Action": ["xray:PutTraceSegments", "xray:PutTelemetryRecords", "xray:GetSamplingRules", "xray:GetSamplingTargets"],
       "Resource": ["*"] },
+    { "Sid": "GatewayClientSecret", "Effect": "Allow",
+      "Action": "secretsmanager:GetSecretValue",
+      "Resource": "arn:aws:secretsmanager:<region>:<account-id>:secret:my-agent/gateway-client-*" },
     { "Sid": "Metrics", "Effect": "Allow",
       "Action": "cloudwatch:PutMetricData", "Resource": "*",
       "Condition": { "StringEquals": { "cloudwatch:namespace": "bedrock-agentcore" } } },
@@ -1245,14 +1286,15 @@ aws bedrock-agentcore-control create-agent-runtime --region <region> \
     "BAL_CONFIG_VAR_INFERENCEURL": "https://<gateway-id>.gateway.bedrock-agentcore.<region>.amazonaws.com/inference/v1",
     "BAL_CONFIG_VAR_MCPTOKENURL": "https://<cognito-domain>/oauth2/token",
     "BAL_CONFIG_VAR_MCPCLIENTID": "<client-id>",
-    "BAL_CONFIG_VAR_MCPCLIENTSECRET": "<client-secret>"
+    "BAL_CONFIG_VAR_MCPCLIENTSECRETID": "my-agent/gateway-client",
+    "BAL_CONFIG_VAR_AWSREGION": "<region>"
   }'
 ```
 
 You can also create the runtime in the AgentCore console and enter the same environment variables there.
 
-:::warning Environment variables are readable
-`GetAgentRuntime` returns a runtime's environment variables in full, including the client secret. Limit `bedrock-agentcore:GetAgentRuntime` to the people who deploy the agent, and rotate the secret in Cognito if it's exposed.
+:::warning Keep secrets out of environment variables
+`GetAgentRuntime` returns a runtime's environment variables in full to anyone allowed to call it. Here they hold only the secret's name; the secret stays in Secrets Manager.
 :::
 
 :::note
@@ -1284,7 +1326,7 @@ aws bedrock-agentcore invoke-agent-runtime --region <region> \
   /dev/stdout
 ```
 
-To continue a conversation, reuse the same session id.
+To continue a conversation, reuse the same session id while its microVM is still running. See [Conversations last only as long as the microVM](#step-1-write-the-service).
 
 Follow the agent's logs. The container's standard output goes to CloudWatch Logs:
 
@@ -1298,6 +1340,7 @@ If the runtime doesn't deploy or the invocation fails, the usual causes are:
 - The caller gets `An error occurred when starting the runtime`: the program exited at startup. Look in the log for `unused environment variable`, or for an unknown key in `Config.toml`, and run the image locally.
 - The runtime is `READY`, but its log group is empty: the runtime isn't using the `HTTP` protocol, or the service doesn't listen on port `8080`.
 - The caller gets `RuntimeClientError` (HTTP 424) with no detail: the agent's own error message is in the runtime's log group, on the `agent unavailable` or `agent run failed` line.
+- The log shows `not authorized to perform: secretsmanager:GetSecretValue`: the runtime's role can't read the client secret. Check the `GatewayClientSecret` statement from Step 6.
 - `Failed to initialize the MCP client`: the Gateway is unreachable, or it refused the token.
 - Model calls return `400` with `Failed to fetch outbound api key`: the Gateway's service role can't read the model provider's key from AgentCore Identity. It needs `bedrock-agentcore:GetResourceApiKey` on the credential provider and `secretsmanager:GetSecretValue` on its secret.
 - Model calls fail after about an hour in one session: the Gateway token expired. Start a new session.

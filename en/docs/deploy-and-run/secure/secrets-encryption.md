@@ -51,7 +51,7 @@ AgentCore Runtime passes configuration to the agent as environment variables, se
 These values aren't masked. `GetAgentRuntime` returns them in full to anyone with `bedrock-agentcore:GetAgentRuntime` on the runtime, and they appear again in every `update-agent-runtime` request. Keep secrets out of them where you can:
 
 - **Model provider keys:** don't give the agent a provider key. Store the key in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), add an **Inference** target to AgentCore Gateway that uses it, and have the agent call the model through the Gateway with its Gateway token.
-- **Gateway client credentials:** the agent needs a Cognito client ID and secret to get its Gateway token. Grant `bedrock-agentcore:GetAgentRuntime` only to the people and pipelines that deploy the agent, and rotate the client secret in Cognito if it's exposed.
+- **Gateway client credentials:** the agent needs a Cognito client ID and secret to get its Gateway token. Store the secret in AWS Secrets Manager and have the agent [read it at runtime](#read-secrets-at-runtime) with the runtime's IAM role. The environment variable then holds only the secret's name. See [Amazon Bedrock AgentCore Runtime deployment](../self-hosted/containerized-deployment.md#step-2-connect-the-agent-to-agentcore-gateway).
 
 ## Kubernetes secrets
 

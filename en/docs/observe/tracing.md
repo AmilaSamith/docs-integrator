@@ -198,14 +198,36 @@ The collector signs with the credentials of the environment it runs in: the exec
 
 ### 3. Run the collector in the same container
 
-Start the collector in the background, then run the integration in the foreground so that the container lives and dies with it. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Keep the JVM flags that Code to Cloud's own entry point uses, in particular `-XX:+ExitOnOutOfMemoryError`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
+Run the collector and the integration side by side. When the integration exits, the script stops the collector and the container exits with the integration's status. On shutdown, it stops the integration first, so that the integration hands over its last spans, and then the collector, so that the collector exports them. Code to Cloud places the executable JAR at `/home/ballerina/jars/<package-name>.jar`. Keep the JVM flags that Code to Cloud's own entry point uses, in particular `-XX:+ExitOnOutOfMemoryError`. Save this as `start.sh` and make it executable (`chmod +x start.sh`):
 
 ```sh
 #!/bin/sh
-set -e
 /usr/local/bin/otelcol --config=/etc/otel/config.yaml &
-exec java --enable-native-access=ALL-UNNAMED -XX:+ExitOnOutOfMemoryError -jar /home/ballerina/jars/my_integration.jar
+COLLECTOR=$!
+java --enable-native-access=ALL-UNNAMED -XX:+ExitOnOutOfMemoryError -jar /home/ballerina/jars/my_integration.jar &
+APP=$!
+
+# On shutdown, stop the integration first so that it flushes its last spans,
+# then the collector so that it exports them.
+stop() {
+    kill -TERM "$APP" 2>/dev/null
+    wait "$APP"
+    STATUS=$?
+    kill -TERM "$COLLECTOR" 2>/dev/null
+    wait "$COLLECTOR"
+    exit "$STATUS"
+}
+trap stop TERM INT
+
+# If the integration exits on its own, stop the collector and exit with its status.
+wait "$APP"
+STATUS=$?
+kill -TERM "$COLLECTOR" 2>/dev/null
+wait "$COLLECTOR"
+exit "$STATUS"
 ```
+
+If the collector stops on its own, the integration keeps running without tracing.
 
 Copy the collector binary out of the official image. Use the platform you deploy to, for example `linux/arm64` for AWS Graviton or Amazon Bedrock AgentCore Runtime:
 
@@ -287,6 +309,10 @@ An agent built with `ballerina/ai` emits spans that follow the OpenTelemetry Gen
 | `transform/scope_name` | AgentCore Evaluations reads only spans whose instrumentation scope is named `opentelemetry.instrumentation.*`. Ballerina's scope is named `otel`. |
 | `transform/genai_eval_aliases` | Copies the prompt, the answer, and the tool arguments and results to the attribute names AgentCore Evaluations reads. Without it, every evaluator receives empty input and scores it 1.0. |
 | `attributes/session_id` | Copies `gen_ai.conversation.id` to `session.id`, which AWS uses to group the spans of one session. |
+
+:::caution Spans carry the conversation
+`ballerina/ai` records the full prompt, the answer, and every tool's arguments and results on its spans, and `transform/genai_eval_aliases` copies them to a second set of attributes. Anyone who can read the `aws/spans` log group can read the conversations. Restrict read access to that log group, and set a retention period that matches your data policy.
+:::
 
 ```yaml
 processors:
