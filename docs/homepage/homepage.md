@@ -8,13 +8,17 @@ Unlike every other page on this site, the homepage (`/`) isn't generated
 from `docs/` -- it's a plain React page at `src/pages/index.tsx`, styled
 by `src/pages/index.module.css`. It has four pieces, top to bottom:
 
-1. **Hero** -- a welcome screenshot and download button (left, copied
-   verbatim from `wso2-integrator`'s own homepage), plus badge,
-   `<h1>` (site title), tagline, the search bar, and a CTA button
-   (right).
-2. **Search bar** -- see "The search bar" below.
-3. **"What do you want to build?"** -- a row of cards from the same
-   `quickLinks` array the search bar's dropdown uses.
+1. **Hero** -- the shared `LandingHero` component
+   (`src/components/LandingHero/`, authored on `main` and synced to every
+   product branch): the product screenshot in a window frame (left), plus
+   badge, `<h1>` (site title), tagline, CTA button, a secondary link and a
+   footnote (right). Only the layout is shared; each branch passes its own
+   text and links as props, and keeps its own screenshot at
+   `static/img/landing/hero.png`.
+2. **Search bar** -- no longer part of the hero; see "The search bar"
+   below for the component itself.
+3. **"What do you want to build?"** -- a row of cards from the
+   `quickLinks` array.
 4. **"Explore the scaffold"** -- one card per top-level section, from
    the `sections` array.
 
@@ -51,9 +55,9 @@ shouldn't need touching):
 | To change... | Edit... |
 | --- | --- |
 | The `<h1>` and tagline | Not here -- they read `siteConfig.title`/`siteConfig.tagline` from `docusaurus.config.ts`. |
-| The hero badge text ("Docs · Scaffold") | The `<span className={styles.heroBadge}>` literal in `HomepageHeader`. |
-| The welcome screenshot / download button (left column) | `WelcomeScreenshot` and the `.downloadRow` block in `HomepageHeader` -- both copied verbatim from `wso2-integrator`'s own homepage, image included (`static/img/landing/wso2-integrator-welcome.png`). Swap the image and the download link/label for a real product's own. |
-| The hero CTA button's label/target | The `<Link className={styles.heroBtn} to="/get-started">` in `HomepageHeader` (currently "Let's Get Started"). |
-| The search dropdown's "Popular pages" and the tutorial row's cards | The `quickLinks` array -- both surfaces read the same list. Currently the two sample quickstarts under `/get-started/quickstarts/`. |
+| The hero badge, title, subtitle, CTA, secondary link, footnote, window-frame title | The props passed to `` in `HomepageHeader`. (The `<h1>` and tagline there read `siteConfig.title`/`siteConfig.tagline`.) |
+| The hero screenshot | Replace this branch's `static/img/landing/hero.png` -- content only, no window frame (the frame is drawn by `LandingHero`). That folder isn't synced, so every branch keeps its own image. |
+| The hero layout/styling | `src/components/LandingHero/` -- edit on `main` only; it's synced. |
+| The tutorial row's cards | The `quickLinks` array. Currently the two sample quickstarts under `/get-started/quickstarts/`. |
 | The "Explore the scaffold" cards | The `sections` array (`title`, `description`, `link`, `icon`, `iconColor`) -- add/remove an `IconXxx()` function alongside the existing ones for a new card's icon. Icons/Homepage/Workflows were deliberately dropped from this array (still real pages, reachable from the navbar's Explore dropdown and the sidebar, just not advertised as homepage cards). |
 | The "Explore the scaffold" heading text | `SectionCards`'s `<Heading as="h2">` literal. |
