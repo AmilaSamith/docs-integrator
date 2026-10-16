@@ -593,7 +593,7 @@ branchA:path` vs `git show branchB:path` before copying):
   page exists there); `Contribute` always points at that branch's own
   `CONTRIBUTING.md`.
 - `en/src/pages/index.tsx` hero content — `wso2-integrator` shows the real
-  IDE screenshot + "Download the IDE" + OS download links; `saas` shows the
+  WSO2 Integrator screenshot + "Download WSO2 Integrator" + OS download links; `saas` shows the
   illustrative cloud-console mockup + "Launch WSO2 Cloud" (linking to the
   real `/get-started/setup/cloud-setup` page) — **never invent a hero for
   `wso2-connectors` without checking with the user first**; its current

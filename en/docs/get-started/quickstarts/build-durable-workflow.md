@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: "Build an Order Processing Workflow"
+title: "Build a Durable Workflow"
 sidebar_label: "Build a Durable Workflow"
 description: Build a crash-safe order processing workflow in WSO2 Integrator that reserves inventory, waits for a payment confirmation, and then confirms or cancels the order.
 keywords: [wso2 integrator, durable workflow, order processing, activity, data event, wait, crash recovery]
@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Build an Order Processing Workflow
+# Build a Durable Workflow
 
 **Time:** 20 minutes | **What you'll build:** A durable workflow that reserves inventory for an order, suspends until a payment confirmation arrives, and then either emails the customer or cancels the order. Every activity result and data event is recorded, so a restart replays the record instead of reserving twice, and the wait for payment holds no thread and no connection while it lasts, whether that is seconds or days.
 

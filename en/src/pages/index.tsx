@@ -184,7 +184,7 @@ const sections: SectionCard[] = [
   },
   {
     title: 'Guides',
-    description: 'End-to-end tutorials and integration patterns.',
+    description: 'Explore task-focused how-to guides, practical business use cases, and end-to-end tutorials.',
     link: '/guides/overview',
     icon: <IconTutorials />,
     iconColor: '#D97706',
@@ -197,7 +197,10 @@ const sections: SectionCard[] = [
 const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
   { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
-  { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-durable-workflow' },
+  { label: 'Build an Integration as API', sub: 'Expose integration logic through REST endpoints', to: '/get-started/quickstarts/build-integration-api' },
+  { label: 'Build an Event-Driven Integration', sub: 'Process messages from a message broker', to: '/get-started/quickstarts/build-event-driven-integration' },
+  { label: 'Build a File-Driven Integration', sub: 'Detect and process file changes', to: '/get-started/quickstarts/build-file-driven-integration' },
+  { label: 'Build a Durable Workflow', sub: 'Run long-lived processes that recover after restarts', to: '/get-started/quickstarts/build-durable-workflow' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -378,24 +381,34 @@ function HomepageHeader(): ReactNode {
 /*  "What do you want to build?" — tutorial row                        */
 /* ------------------------------------------------------------------ */
 function TutorialRow(): ReactNode {
+  const quickLinkRows = Array.from(
+    { length: Math.ceil(quickLinks.length / 3) },
+    (_, rowIndex) => quickLinks.slice(rowIndex * 3, rowIndex * 3 + 3),
+  );
+
   return (
     <section className={styles.tutorialRow}>
       <Heading as="h2" className={styles.tutorialRowTitle}>
         What do you want to build?
       </Heading>
-      <div className={styles.tutorialGrid}>
-        {quickLinks.map((link) => (
-          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-            <span className={styles.tutorialCardText}>
-              <span className={styles.tutorialCardTitle}>{link.label}</span>
-              <span className={styles.tutorialCardSub}>{link.sub}</span>
-            </span>
-            <span className={styles.tutorialCardArrow}>
-              <IconArrowRight />
-            </span>
-          </Link>
-        ))}
-      </div>
+      {quickLinkRows.map((row, rowIndex) => (
+        <div
+          key={rowIndex}
+          className={styles.tutorialGrid}
+          style={rowIndex > 0 ? { marginTop: 16 } : undefined}>
+          {row.map((link) => (
+            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
+              <span className={styles.tutorialCardText}>
+                <span className={styles.tutorialCardTitle}>{link.label}</span>
+                <span className={styles.tutorialCardSub}>{link.sub}</span>
+              </span>
+              <span className={styles.tutorialCardArrow}>
+                <IconArrowRight />
+              </span>
+            </Link>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }

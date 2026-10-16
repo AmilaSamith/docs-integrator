@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: Integration View
 description: Work with the Integration view to build and manage individual integrations.
-keywords: [wso2 integrator, ide, integration view, design canvas, deployment]
+keywords: [wso2 integrator, editor, integration view, design canvas, deployment]
 slug: /editor/views/integration-view
 ---
 
