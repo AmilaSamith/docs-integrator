@@ -935,11 +935,11 @@ The steps below deploy an AI agent built with `ballerina/ai`. Code to Cloud buil
 
 In addition to the [general prerequisites](#general-prerequisites), you need:
 
-- AWS CLI v2 installed and configured (`aws configure` or `aws sso login`)
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) v2 installed and configured (`aws configure` or `aws sso login`)
 - Docker with `buildx`, able to build `linux/arm64` images. Apple Silicon machines build them natively.
 - IAM permissions to manage AgentCore (the `BedrockAgentCoreFullAccess` managed policy), create IAM roles and pass them (`iam:PassRole`), and push to Amazon ECR
 - An AgentCore Gateway with Amazon Cognito inbound authentication. Note its MCP URL, its model URL, and the Cognito token URL, client ID, and client secret.
-- An Amazon ECR repository for the image:
+- An [Amazon ECR](https://aws.amazon.com/ecr/) repository for the image:
 
 ```bash
 aws ecr create-repository --region <region> --repository-name my-agent
@@ -1025,7 +1025,7 @@ AgentCore Gateway gives the agent one MCP endpoint for all its tools and one end
 
 The model provider's API key stays out of the agent. Store it in AgentCore Identity (**AgentCore** > **Identity** > **Outbound Auth** > **API key**), and add an **Inference** target to the Gateway that uses that credential provider. The agent then calls the model through the Gateway and sends its Gateway token in place of a provider key.
 
-The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. Keep the Cognito client secret in AWS Secrets Manager, where the agent reads it with the runtime's IAM role. The secret then never appears in the runtime's configuration. Save the secret in an editor as `client-secret.json`, rather than on the command line, so that it stays out of your shell history:
+The agent gets its Gateway tokens from Amazon Cognito with the OAuth 2.0 client credentials flow. Keep the Cognito client secret in AWS Secrets Manager, where the agent reads it with the runtime's IAM role through the [default credential chain](../secure/aws-access.md#use-the-default-credential-chain). The secret then never appears in the runtime's configuration. Save the secret in an editor as `client-secret.json`, rather than on the command line, so that it stays out of your shell history:
 
 ```json
 {"clientSecret": "<client-secret>"}
@@ -1328,7 +1328,7 @@ aws bedrock-agentcore invoke-agent-runtime --region <region> \
 
 To continue a conversation, reuse the same session id while its microVM is still running. See [Conversations last only as long as the microVM](#step-1-write-the-service).
 
-Follow the agent's logs. The container's standard output goes to CloudWatch Logs:
+Follow the agent's logs. The container's output goes to CloudWatch Logs:
 
 ```bash
 aws logs tail /aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT --region <region> --follow
