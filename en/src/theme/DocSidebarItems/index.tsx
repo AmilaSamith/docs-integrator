@@ -16,10 +16,17 @@
  * still does 100% of the ordering (via each item's own `position`); this
  * only adds a label, it never overrides structure or order.
  *
+ * A category can also be rendered "inline" (`customProps.inline: true` in its
+ * _category_.json): it isn't drawn as a collapsible group; its children take
+ * its place, at the same level as its siblings, with the category's own
+ * `separatorBefore` label (if any) above the first one. Use it for a section
+ * whose pages should sit directly under a section label instead of inside a
+ * group -- the folder (and so every slug and relative link) stays as it is.
+ *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItems/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
  */
-import React, { memo, type ReactNode } from 'react';
+import React, { memo, useMemo, type ReactNode } from 'react';
 import {
   DocSidebarItemsExpandedStateProvider,
   useVisibleSidebarItems,
@@ -35,8 +42,33 @@ function separatorLabelOf(item: Props['items'][number]): string | undefined {
   return typeof label === 'string' ? label : undefined;
 }
 
+type SidebarItem = Props['items'][number];
+
+function customPropsOf(item: SidebarItem): Record<string, unknown> | undefined {
+  return (item as { customProps?: Record<string, unknown> }).customProps;
+}
+
+/** Replaces each `inline` category with its children (see header comment). */
+function inlineCategories(items: Props['items']): Props['items'] {
+  return items.flatMap((item): SidebarItem[] => {
+    if (item.type !== 'category' || customPropsOf(item)?.inline !== true) {
+      return [item];
+    }
+    const [first, ...rest] = inlineCategories(item.items);
+    if (!first) {
+      return [];
+    }
+    const label = separatorLabelOf(item);
+    const lead = label
+      ? ({ ...first, customProps: { ...customPropsOf(first), separatorBefore: label } } as SidebarItem)
+      : first;
+    return [lead, ...rest];
+  });
+}
+
 function DocSidebarItems({ items, ...props }: Props): ReactNode {
-  const visibleItems = useVisibleSidebarItems(items, props.activePath);
+  const flatItems = useMemo(() => inlineCategories(items), [items]);
+  const visibleItems = useVisibleSidebarItems(flatItems, props.activePath);
   return (
     <DocSidebarItemsExpandedStateProvider>
       {visibleItems.map((item, index) => {
