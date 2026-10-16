@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import SearchBar from '@site/src/components/SearchBar';
+import LandingHero from '@site/src/components/LandingHero';
 
 import styles from './index.module.css';
 
@@ -87,28 +86,10 @@ function IconObserve(): ReactNode {
   );
 }
 
-/** The pulse/waveform mark used as the "Docs" badge icon in the hero. */
-function IconWave({ stroke = 'currentColor', size = 14 }: { stroke?: string; size?: number }): ReactNode {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h3l2-4 3 8 2-4h4" />
-    </svg>
-  );
-}
-
 function IconArrowRight(): ReactNode {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
       <path d="M4 12h15M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function IconDownload(): ReactNode {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5" />
-      <path d="M5 19h14" />
     </svg>
   );
 }
@@ -244,73 +225,29 @@ const quickLinks = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Welcome screenshot -- the real WSO2 Integrator get-started screen,
- *  inside the same browser-chrome frame (.productCard) the saas and
- *  wso2-integrator heroes use, so every product homepage matches.
- * ------------------------------------------------------------------ */
-function WelcomeScreenshot(): ReactNode {
-  const src = useBaseUrl('/img/landing/wso2-integrator-welcome.png');
-  return (
-    <div className={styles.productCard}>
-      <div className={styles.productCardChrome}>
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardTitle}>WSO2 Integrator</span>
-      </div>
-      <img src={src} alt="WSO2 Integrator welcome and sign-in screen" />
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Hero Banner -- split layout: welcome screenshot + download button   */
-/*  (left, copied verbatim from wso2-integrator's own homepage) plus     */
-/*  badge/heading/search/CTA (right). Unlike this branch's earlier      */
-/*  no-heroLeft/heroRightSolo version, the .heroRight/.heroLeft border  */
-/*  divider is back now that there's a real left column again.          */
+/*  Hero -- the layout is the shared LandingHero component (synced from */
+/*  main); only the copy/links below are this product's own. The        */
+/*  screenshot is this branch's static/img/landing/hero.png.            */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={styles.heroBanner}>
-      <div className={styles.heroInner}>
-        <div className={styles.heroLeft}>
-          <WelcomeScreenshot />
-          <div className={styles.downloadRow}>
-            <Link
-              className={styles.downloadBtn}
-              href="https://wso2.com/products/downloads/?product=wso2integrator"
-              target="_blank"
-              rel="noopener noreferrer">
-              <IconDownload />
-              Download WSO2 Integrator
-            </Link>
-            <span className={styles.downloadCaption}>
-              Windows &middot; macOS &middot; Linux
-              <br />
-              100% open source
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.heroRight}>
-          <span className={styles.heroBadge}>
-            <IconWave stroke="#FF8A3D" />
-            Docs · Scaffold
-          </span>
-          <Heading as="h1">{siteConfig.title}</Heading>
-          <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <SearchBar quickLinks={quickLinks} />
-          <div className={styles.buttons}>
-            <Link className={styles.heroBtn} to="/get-started">
-              Let's Get Started
-              <IconArrowRight />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header>
+    <LandingHero
+      windowTitle="WSO2 Integrator"
+      imageAlt="WSO2 Integrator welcome and sign-in screen"
+      badge="Docs · Scaffold"
+      title={siteConfig.title}
+      subtitle={siteConfig.tagline}
+      cta={{ label: "Let's Get Started", to: '/get-started' }}
+      secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
+      secondary={{
+        prefix: 'Already know what you need?',
+        label: 'Download WSO2 Integrator',
+        href: 'https://wso2.com/products/downloads/?product=wso2integrator',
+        icon: 'download',
+      }}
+      footnote="Windows · macOS · Linux · 100% open source"
+    />
   );
 }
 

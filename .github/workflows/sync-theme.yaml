@@ -60,6 +60,7 @@ on:
       - 'en/src/components/CloudDocsLink/**'
       - 'en/src/components/IconGallery/**'
       - 'en/src/components/SearchBar/**'
+      - 'en/src/components/LandingHero/**'
       - 'en/src/components/ColorSwatch/**'
       - 'en/src/components/AiAssistantPanel/**'
       - 'en/src/components/AIAssistantSidePanel/**'
@@ -114,6 +115,7 @@ env:
     en/src/components/PaletteCard
     en/src/components/PaletteIcon
     en/src/components/CloudDocsLink
+    en/src/components/LandingHero
     en/src/components/IconGallery
     en/src/components/SearchBar
     en/src/components/ColorSwatch
