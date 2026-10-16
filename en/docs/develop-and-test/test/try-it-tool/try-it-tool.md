@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+sidebar_label: Try-It Experiences
 title: Try-It Tool
 description: Test your integrations during development directly from WSO2 Integrator without an external client.
 keywords: [wso2 integrator, try-it tool, test http service, test graphql, test chat agent, test mcp]

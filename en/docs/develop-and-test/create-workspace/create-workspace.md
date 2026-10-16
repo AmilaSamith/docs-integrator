@@ -1,7 +1,7 @@
 ---
-title: Create Integration Workspace
-description: Create Integration Workspace, then create the integrations and libraries that live inside it.
-sidebar_label: Overview
+title: The Integration Workspace
+description: Understand how WSO2 Integrator organizes your work into projects, integrations, and libraries, then create a workspace and the integrations and libraries that live inside it.
+sidebar_label: Integration Workspace
 sidebar_position: 0
 slug: /develop-and-test/create-workspace
 ---
@@ -9,7 +9,7 @@ slug: /develop-and-test/create-workspace
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create Integration Workspace
+# The Integration Workspace
 
 WSO2 Integrator organizes your work into three concepts that build on each other:
 

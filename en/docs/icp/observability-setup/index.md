@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Choose a Setup
 title: Observability Setup
 description: Set up centralized logs and metrics monitoring for ICP using Moesif or OpenSearch.
 keywords: [wso2 integrator, integration control plane, icp, observability, moesif, fluent bit, opensearch, logs, metrics]

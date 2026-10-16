@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Workflow Management
 title: "Manage Workflows"
 description: Register an integration that runs durable workflows with the WSO2 Integration Control Plane, then review its workflows, executions, and runtimes from the console.
 keywords: [wso2 integrator, integration control plane, icp, workflow runtime, enable workflow management, config.toml, task queue, workflow definitions, integration overview]

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: Agent Basics
 title: AI Agents
 description: Reference for AI Agents in WSO2 Integrator — the AI Chat Agent Wizard, system prompt, tools, memory, observability, and evaluations.
 slug: /develop-and-test/integration-artifacts/ai-integrations/agents
