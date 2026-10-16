@@ -158,6 +158,8 @@ including required frontmatter that's build-enforced — see
 | Path | Branch | Owner |
 |---|---|---|
 | `en/docs/icp/` | `wso2-integrator` | ICP team (`@anuruddhal`) |
+| `en/docs/` (all except `icp/`) | `wso2-integrator` | Integrator team (`@rosensilva`) |
+| `en/docs/` (all) | `saas` | Cloud team (`@pcnfernando`) |
 | `en/docs/` (all) | `wso2-connectors` | Connector team (`@daneshk`) |
 | Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
 
