@@ -131,7 +131,7 @@ Do the following once per AWS account and Region:
 
 ### 1. Configure the integration
 
-Include observability in the build and import `ballerina/otel` as described in [Enable tracing in your integration](#enable-tracing-in-your-integration). Then point the `otel` provider at the collector:
+Set up the OpenTelemetry extension as described in [OpenTelemetry](open-source/opentelemetry.md). On Ballerina versions earlier than 2201.14.0, also import `ballerina/otel`, as shown in [Import the tracing extension](#2-import-the-tracing-extension). Then point the `otel` provider at the collector:
 
 ```toml
 [ballerina.observe]
