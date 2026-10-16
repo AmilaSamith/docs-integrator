@@ -176,10 +176,10 @@ const sections: SectionCard[] = [
 const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
   { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
-  { label: 'Build an Integration as API', sub: 'Expose integration logic through REST endpoints', to: '/get-started/quickstarts/build-integration-api' },
+  { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
   { label: 'Build an Event-Driven Integration', sub: 'Process messages from a message broker', to: '/get-started/quickstarts/build-event-driven-integration' },
   { label: 'Build a File-Driven Integration', sub: 'Detect and process file changes', to: '/get-started/quickstarts/build-file-driven-integration' },
-  { label: 'Build a Durable Workflow', sub: 'Run long-lived processes that recover after restarts', to: '/get-started/quickstarts/build-durable-workflow' },
+  { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-durable-workflow' },
 ];
 
 /* ------------------------------------------------------------------ */
