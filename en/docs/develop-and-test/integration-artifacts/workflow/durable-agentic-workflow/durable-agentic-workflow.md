@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Concepts
 title: "Durable Agentic Workflow"
 description: A durable workflow driven by an AI agent's decisions, combining long-running, crash-recoverable execution with autonomous reasoning.
 keywords: [wso2 integrator, durable agentic workflow, ai agent, long-running, crash recovery]

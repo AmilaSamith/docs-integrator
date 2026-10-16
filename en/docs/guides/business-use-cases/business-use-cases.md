@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: Business Use Cases
-sidebar_label: Overview
+sidebar_label: Browse Use Cases
 description: End-to-end WSO2 Integrator tutorials that solve a business problem for a specific team or function, such as HR, IT support, customer care, or procurement.
 slug: /guides/business-use-cases
 hide_table_of_contents: true

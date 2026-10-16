@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Using Prebuilt Activities
 title: "Prebuilt Activities"
 description: Ready-made durable wrappers for the calls every integration makes, so REST, SOAP, and email run as recorded workflow activities without writing a wrapper.
 keywords: [wso2 integrator, durable workflow, prebuilt activity, builtin activity, rest api, soap, smtp email, connection]

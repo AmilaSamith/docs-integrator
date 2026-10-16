@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Workflow Basics
 title: "Workflows"
 description: Build long-running, crash-safe business processes with WSO2 Integrator using durable workflows, human tasks, events, and durable AI agents.
 keywords: [wso2 integrator, durable workflow, workflow, human task, agentic workflow, durable agent, long running, crash recovery]

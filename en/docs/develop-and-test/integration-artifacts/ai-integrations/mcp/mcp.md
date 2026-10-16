@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: MCP Integration
 title: MCP Integration
 description: Reference for MCP features in WSO2 Integrator. Covers exposing services as MCP servers and consuming MCP servers from AI agents.
 slug: /develop-and-test/integration-artifacts/ai-integrations/mcp

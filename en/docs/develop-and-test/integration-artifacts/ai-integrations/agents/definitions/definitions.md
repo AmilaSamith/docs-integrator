@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+sidebar_label: Definitions and Instances
 title: Agent Definitions
 description: Reference for agent definitions in WSO2 Integrator, covering how to create a reusable agent template, the Agent Definition Designer, response types, and initialization parameters.
 ---

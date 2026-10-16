@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Restricted Networks
 title: Work in a Restricted Network
 description: Configure WSO2 Integrator to reach Ballerina Central and its other dependencies from behind a corporate proxy or in an environment with restricted internet access.
 keywords: [wso2 integrator, proxy, restricted network, ballerina central, maven repository, truststore]

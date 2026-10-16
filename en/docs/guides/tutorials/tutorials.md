@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: Tutorials
-sidebar_label: Overview
+sidebar_label: Browse Tutorials
 description: Long-form, end-to-end WSO2 Integrator tutorials that teach the product by building a complete, realistic system step by step.
 slug: /guides/tutorials
 hide_table_of_contents: true

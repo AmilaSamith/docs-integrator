@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Concepts
 title: "Durable Workflow"
 description: Design long-running workflow logic that survives restarts, waits on events and timers, and involves human tasks.
 keywords: [wso2 integrator, durable workflow, long-running, crash recovery]

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: Overview
+sidebar_label: Developer Tools
 title: Use Developer Tools
 description: "What CLI tools are available for generating code, schemas, and migrations?"
 slug: /develop-and-test/developer-tools
