@@ -68,6 +68,7 @@ import ballerina/http;
 
 @http:ServiceConfig {basePath: "/api"}
 type OASServiceType service object {
+    *http:ServiceContract;
 
     // GET /orders
     resource function get orders(string? status, int 'limit = 20)
@@ -80,7 +81,7 @@ type OASServiceType service object {
     // GET /orders/{orderId}
     resource function get orders/[string orderId]()
             returns Order|http:NotFound;
-}
+};
 ```
 
 The generated types file includes record definitions derived from the OpenAPI schemas:
