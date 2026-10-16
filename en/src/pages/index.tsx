@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
-import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from '@docusaurus/Link';
-import { useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import LandingHero from '@site/src/components/LandingHero';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
@@ -91,30 +89,10 @@ function IconObserve(): ReactNode {
   );
 }
 
-/** The pulse/waveform mark used as the "Docs" badge icon in the hero
- * and as the logo-ish icon in the cloud-console mockup. */
-function IconWave({ stroke = 'currentColor', size = 14 }: { stroke?: string; size?: number }): ReactNode {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h3l2-4 3 8 2-4h4" />
-    </svg>
-  );
-}
-
 function IconArrowRight(): ReactNode {
   return (
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
       <path d="M4 12h15M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function IconLaunch(): ReactNode {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
     </svg>
   );
 }
@@ -193,7 +171,7 @@ const sections: SectionCard[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Quick-links shown when the search input is focused but empty       */
+/*  Quick-links for the "What do you want to build?" row               */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
   { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
@@ -205,177 +183,28 @@ const quickLinks = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Central Search Bar                                                 */
-/* ------------------------------------------------------------------ */
-function SearchBar(): ReactNode {
-  const history = useHistory();
-  const searchPath = useBaseUrl('/search');
-  const [query, setQuery] = useState('');
-  const [focused, setFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  // Keyboard shortcut: "/" to focus search
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (
-        e.key === '/' &&
-        !['INPUT', 'TEXTAREA', 'SELECT'].includes(
-          (e.target as HTMLElement).tagName,
-        )
-      ) {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, []);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(e.target as Node)
-      ) {
-        setFocused(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (query.trim()) {
-        history.push(`${searchPath}?q=${encodeURIComponent(query.trim())}`);
-        setFocused(false);
-      }
-    },
-    [query, history, searchPath],
-  );
-
-  return (
-    <div ref={wrapperRef} className={styles.searchWrapper}>
-      <form onSubmit={handleSubmit} className={styles.searchForm}>
-        <button type="submit" className={styles.searchIconButton} aria-label="Search">
-          <svg
-            className={styles.searchIcon}
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </button>
-        <input
-          ref={inputRef}
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search documentation..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => setFocused(true)}
-          aria-label="Search documentation"
-        />
-        <kbd className={styles.searchKbd}>/</kbd>
-      </form>
-
-      {/* Quick-links dropdown when focused and empty query */}
-      {focused && !query && (
-        <div className={styles.searchDropdown}>
-          <p className={styles.searchDropdownLabel}>Popular pages</p>
-          {quickLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={styles.searchDropdownItem}
-              onClick={() => setFocused(false)}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Cloud console screenshot -- the real WSO2 Cloud console (create-an-integration screen),
- *  inside the same browser-chrome frame used across the hero. A raw
- *  flat screenshot (no rounding/shadow of its own baked in), so the
- *  chrome frame is what gives it presentation.
- * ------------------------------------------------------------------ */
-function CloudConsoleScreenshot(): ReactNode {
-  const src = useBaseUrl('/img/landing/wso2-integration-cloud.png');
-  return (
-    <div className={styles.productCard}>
-      <div className={styles.productCardChrome}>
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardDot} />
-        <span className={styles.productCardTitle}>WSO2 Cloud Console</span>
-      </div>
-      <img src={src} alt="WSO2 Cloud console: create an integration" />
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Hero Banner — split layout: product-screenshot card (left) +      */
-/*  badge/heading/search/CTA (right)                                  */
+/*  Hero -- the layout is the shared LandingHero component (synced from */
+/*  main); only the copy/links below are this product's own. The        */
+/*  screenshot is this branch's static/img/landing/hero.png.            */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   return (
-    <header className={styles.heroBanner}>
-      <div className={styles.heroInner}>
-        <div className={styles.heroLeft}>
-          <CloudConsoleScreenshot />
-          <div className={styles.downloadRow}>
-            <Link
-              className={styles.downloadBtn}
-              href="https://console.devant.dev/signup"
-              target="_blank"
-              rel="noopener noreferrer">
-              <IconLaunch />
-              Launch WSO2 Cloud
-            </Link>
-            <span className={styles.downloadCaption}>
-              No installation required
-              <br />
-              Runs entirely in your browser
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.heroRight}>
-          <span className={styles.heroBadge}>
-            <IconWave stroke="#FF8A3D" />
-            Docs · WSO2 Cloud
-          </span>
-          <Heading as="h1">WSO2 Integration Platform</Heading>
-          <p className={styles.heroSubtitle}>
-            Build, deploy, and manage integrations at cloud speed
-          </p>
-          <SearchBar />
-          <div className={styles.buttons}>
-            <Link
-              className={styles.heroBtn}
-              to="/get-started">
-              Let's Get Started
-              <IconArrowRight />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header>
+    <LandingHero
+      windowTitle="WSO2 Cloud Console"
+      imageAlt="Integration Platform on WSO2 Cloud"
+      badge="Docs · WSO2 Integration Platform"
+      title="Integration Platform on WSO2 Cloud (Saas)"
+      subtitle="Build, deploy, and manage integrations at cloud speed."
+      cta={{ label: "Let's Get Started", to: '/get-started' }}
+      secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
+      secondary={{
+        prefix: 'Prefer to try it first?',
+        label: 'Launch WSO2 Cloud',
+        href: 'https://console.devant.dev/signup',
+        icon: 'external',
+      }}
+      footnote="No installation · runs in your browser"
+    />
   );
 }
 
