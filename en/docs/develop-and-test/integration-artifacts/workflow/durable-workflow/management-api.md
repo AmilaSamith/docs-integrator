@@ -43,7 +43,7 @@ Import the module in the integration:
 import ballerina/workflow.management.rest as _;
 ```
 
-### Configure it
+### Configure the API
 
 Importing the module serves the API, with no other setting needed. To keep the import without opening the port, set `enableManagementApi` to `false`. Set the port, TLS, and CORS settings from the configuration editor, or directly in `Config.toml` under the module's own table:
 
