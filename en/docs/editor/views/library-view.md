@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: Library View
 description: Build and manage reusable libraries in WSO2 Integrator.
-keywords: [wso2 integrator, ide, library view, reusable libraries, artifacts]
+keywords: [wso2 integrator, editor, library view, reusable libraries, artifacts]
 slug: /editor/views/library-view
 ---
 
