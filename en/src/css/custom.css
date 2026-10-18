@@ -1,25 +1,35 @@
 /**
- * WSO2 Integrator Documentation — Clean Modern Theme
+ * WSO2 Integrator Documentation — Warm Ink Theme
  *
  * Design Philosophy:
- *   - Neutral grays for surfaces, borders, backgrounds
+ *   - Warm ink/cream neutrals for surfaces, borders, backgrounds -- same
+ *     family as the landing page, navbar, footer and product/version
+ *     switcher (en/src/pages/index.module.css, LandingHero,
+ *     SidebarProductHeader, theme/Navbar, theme/Footer)
  *   - Color ONLY for interactive elements (links, buttons, active states)
  *   - Generous whitespace, crisp typography
  *
  * Light Palette:
- *   Background:   #FFFFFF   Surface (ash): #F7F9FC   Sidebar: #FBFCFE
- *   Border (lines): #E5E9F0   Hairline: #EEF1F6
- *   Text:         headings #1B2A49   body #565656   muted #7B8598
- *   Primary (Pulse orange): #F14E23   Accent text on light: #D63B12
+ *   Background:   #FFFFFF   Surface (ash): #F7F6F4   Sidebar: #FAF8F6
+ *   Border (lines): #E6E6EA   Hairline: #ECECEF
+ *   Text:         headings #17171C   body #3A3A44   muted #5A5A66
+ *   Primary (warm orange): #C94F0A   Accent text on light: #B4470A
  *
  * Dark Palette:
- *   Background:   #0B1120   Surface (alt): #0E1728   Sidebar: #0C1424
- *   Border (lines): rgba(255,255,255,.09)
- *   Text:         headings #EFF3F9   body #B6C1D3   muted #8B94A7   accent text #FF9163
- *   Primary (same orange, works on both themes): #F14E23
+ *   Background:   #141210   Surface (alt): #1E1B19   Sidebar: #171310
+ *   Border (lines): #3B3532
+ *   Text:         headings #EDE7E2   body #C2B8B0   muted #9A8F87   accent text #F5A06A
+ *   Primary (brighter orange for the dark surface): #E2560B
  *
- * Brand navy (control surfaces, hero, footer): #1B2A49 (deep) / #26365A (mid)
+ * Still-navy support: --wso2-navy* now point at the same warm ink/charcoal
+ * as --wso2-heading-color, kept as a distinct token only because
+ * AIAssistantSidePanel (shared, synced from main) still reads it for its
+ * launcher button -- not a navy brand colour any more, just named that for
+ * historical/sync reasons.
  * Peach active-state fill (light): #FDE3D9 — dark equivalent: rgba(241,78,35,.16)
+ *   (Infima's own default-theme peach -- still used by a few not-yet-
+ *   retouched component rules further down; harmless alongside the new
+ *   orange, just not derived from it.)
  *
  * Typography: Inter (body) / Plus Jakarta Sans (headings)
  */
@@ -31,29 +41,35 @@
    LIGHT THEME
    ================================================================ */
 :root {
-  /* === Primary — Pulse Orange (same value in both themes; reads
-     clearly on both white and navy, unlike the old brand-blue which
-     needed a brighter dark-mode variant) === */
-  --ifm-color-primary: #F14E23;
-  --ifm-color-primary-dark: #D63B12;
-  --ifm-color-primary-darker: #C13710;
-  --ifm-color-primary-darkest: #A62E0D;
-  --ifm-color-primary-light: #FF6B3D;
-  --ifm-color-primary-lighter: #FF8A3D;
-  --ifm-color-primary-lightest: #FFAD75;
+  /* === Primary — warm orange, same family as the landing page/navbar/
+     footer/switcher's --lp-accent/--lh-accent/--wso2-download-bg (#C94F0A).
+     Dark mode below uses a brighter #E2560B variant for the same reason
+     this scale used to brighten rather than darken on hover there --
+     reads better against a dark surface. === */
+  --ifm-color-primary: #C94F0A;
+  --ifm-color-primary-dark: #A8420C;
+  --ifm-color-primary-darker: #943A0A;
+  --ifm-color-primary-darkest: #7A2E04;
+  --ifm-color-primary-light: #E06A1E;
+  --ifm-color-primary-lighter: #F0905A;
+  --ifm-color-primary-lightest: #FFC9A3;
 
   /* === Brand Tokens === */
-  --wso2-navy: #1B2A49;
-  --wso2-navy-deep: #0F172A;
-  --wso2-navy-mid: #26365A;
-  --wso2-accent: #F14E23;
-  --wso2-accent-hover: #D63B12;
-  --wso2-accent-light: rgba(241, 78, 35, 0.08);
+  /* Not a navy any more (see this file's header comment) -- kept as its
+     own token only because AIAssistantSidePanel (shared, synced from
+     main) still reads it for its launcher button background. */
+  --wso2-navy: #17171C;
+  --wso2-navy-deep: #0E0C0A;
+  --wso2-navy-mid: #2A2522;
+  --wso2-accent: #C94F0A;
+  --wso2-accent-hover: #943A0A;
+  --wso2-accent-light: rgba(201, 79, 10, 0.08);
 
   /* Text-on-surface accent (links, active nav/TOC/breadcrumb text) --
      a touch darker than the primary fill so it stays legible as text,
-     not just a button color. */
-  --wso2-accent-text: #D63B12;
+     not just a button color. Same value as the landing page's own
+     --lp-link. */
+  --wso2-accent-text: #B4470A;
 
   /* Second accent, blue -- used only for the AI-assistance highlight
      card (.palette-card--highlight), to read as distinct from the
@@ -72,25 +88,26 @@
   --wso2-ai-accent-text: #2354B8;
 
   /* Heading color -- Infima has no dedicated heading-color var, so this
-     is applied via explicit h1-h6 selectors below. */
-  --wso2-heading-color: #1B2A49;
+     is applied via explicit h1-h6 selectors below. Same ink as the
+     landing page's --lp-text / LandingHero's --lh-text. */
+  --wso2-heading-color: #17171C;
 
-  /* === Neutral Surfaces (no color tint) === */
+  /* === Neutral Surfaces -- warm, not cool-grey === */
   --ifm-background-color: #FFFFFF;
-  --ifm-background-surface-color: #F7F9FC;
-  --wso2-surface-border: #E5E9F0;
-  --wso2-border-subtle: #EEF1F6;
-  --wso2-well-bg: #F2F5F9;
+  --ifm-background-surface-color: #F7F6F4;
+  --wso2-surface-border: #E6E6EA;
+  --wso2-border-subtle: #ECECEF;
+  --wso2-well-bg: #F6F3F0;
   --wso2-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --wso2-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
 
   /* === Text Hierarchy === */
-  --ifm-font-color-base: #565656;
-  --ifm-font-color-secondary: #7B8598;
-  --wso2-text-muted: #7B8598;
+  --ifm-font-color-base: #3A3A44;
+  --ifm-font-color-secondary: #5A5A66;
+  --wso2-text-muted: #5A5A66;
 
   /* === Code === */
-  --docusaurus-highlighted-code-line-bg: rgba(241, 78, 35, 0.06);
+  --docusaurus-highlighted-code-line-bg: rgba(201, 79, 10, 0.08);
 
   /* === Typography — Inter (body) / Plus Jakarta Sans (headings) === */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -120,21 +137,31 @@
 
   /* === Navbar & Navigation === */
   --ifm-navbar-background-color: #FFFFFF;
-  --wso2-sidebar-bg: #FBFCFE;
-  --ifm-navbar-shadow: 0 1px 0 #E5E9F0;
+  --wso2-sidebar-bg: #FAF8F6;
+  --ifm-navbar-shadow: 0 1px 0 #ECECEF;
+  --ifm-navbar-link-color: #3A3A44;
+  --ifm-navbar-link-hover-color: #B4470A;
+
+  /* Single-header chrome (navbar + product/version segment + footer),
+     warm ink/orange family shared with the landing page. */
+  --wso2-nav-divider: #ECECEF;
+  --wso2-download-bg: #C94F0A;
   --ifm-navbar-height: 4rem;
   --ifm-navbar-padding-vertical: 0;
 
-  /* Height of the sticky product/version + "Copy page" row rendered
-     directly under the navbar (theme/Navbar/index.tsx, .secondaryRow).
-     Single source of truth for that row's own min-height AND for how
-     far anchor-linked headings need to scroll clear of it below --
-     see the anchorTargetStickyNavbar override further down. */
+  /* Height of the sticky compact-product-segment row rendered directly
+     under the navbar below 1360px only (theme/Navbar/index.tsx,
+     .secondaryRow -- at 1360px and up the segment lives in the main
+     navbar instead and this row doesn't render at all). Single source
+     of truth for that row's own min-height AND for how far anchor-
+     linked headings / the sidebar / the TOC need to clear it below --
+     see the anchorTargetStickyNavbar override and the 1360px override
+     right after it further down. */
   --wso2-secondary-row-height: 3rem;
 
   /* === Sidebar === */
-  --ifm-menu-color: #565656;
-  --ifm-menu-color-active: #D63B12;
+  --ifm-menu-color: #3A3A44;
+  --ifm-menu-color-active: #B4470A;
   --doc-sidebar-width: 320px;
   /* A real icon rail (see theme/DocSidebar/Desktop), not stock Docusaurus's
      30px sliver -- this var drives both the collapsed container's width
@@ -152,11 +179,12 @@
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>');
 
   /* === Link color === */
-  --ifm-link-color: #D63B12;
-  --ifm-link-hover-color: #C13710;
+  --ifm-link-color: #B4470A;
+  --ifm-link-hover-color: #7A2E04;
 
-  /* === On-navy support (hero, footer -- always-dark navy surfaces,
-     independent of light/dark site theme) === */
+  /* === On-navy support (AIAssistantSidePanel's launcher, the only
+     remaining consumer of --wso2-navy -- see this file's header
+     comment) === */
   --wso2-on-navy-text: #FFFFFF;
   --wso2-on-navy-cool: #C8D3E6;
   --wso2-on-navy-muted: #9FB0CC;
@@ -169,69 +197,75 @@
    DARK THEME
    ================================================================ */
 [data-theme='dark'] {
-  /* === Primary — same Pulse Orange as light (fill color reads fine on
-     both white and navy) === */
-  --ifm-color-primary: #F14E23;
-  --ifm-color-primary-dark: #D63B12;
-  --ifm-color-primary-darker: #C13710;
-  --ifm-color-primary-darkest: #A62E0D;
-  --ifm-color-primary-light: #FF6B3D;
-  --ifm-color-primary-lighter: #FF8A3D;
-  --ifm-color-primary-lightest: #FFAD75;
+  /* === Primary — brighter than light mode's #C94F0A (same reasoning as
+     the switcher/cookie-consent dark palettes: a merely-darker orange
+     reads flat against a dark surface) === */
+  --ifm-color-primary: #E2560B;
+  --ifm-color-primary-dark: #C94F0A;
+  --ifm-color-primary-darker: #A8420C;
+  --ifm-color-primary-darkest: #7A2E04;
+  --ifm-color-primary-light: #F5793A;
+  --ifm-color-primary-lighter: #F5A06A;
+  --ifm-color-primary-lightest: #FFC9A3;
 
   /* === Accent — same orange family, lighten (not darken) on hover
      since we're brightening against a dark surface === */
-  --wso2-accent: #F14E23;
-  --wso2-accent-hover: #FF8A3D;
-  --wso2-accent-light: rgba(241, 78, 35, 0.16);
+  --wso2-accent: #E2560B;
+  --wso2-accent-hover: #F5A06A;
+  --wso2-accent-light: rgba(226, 86, 11, 0.18);
 
-  /* Text-on-surface accent -- lighter salmon-orange for legibility on
-     dark navy (the vivid fill orange reads too harsh as body text). */
-  --wso2-accent-text: #FF9163;
+  /* Text-on-surface accent -- same value as the landing page's own
+     --lp-link (dark). */
+  --wso2-accent-text: #F5A06A;
 
   /* Second accent, blue (AI-assistance highlight card only) -- much
      brighter than the light-mode values, deliberately: the page
-     background here is already a near-black navy (#0B1120 below), so a
+     background here is a near-black warm charcoal (#141210 below), so a
      merely-darker blue would just blend into it instead of reading as
      a highlight. See this var's own light-mode definition for the
      fuller reasoning. */
   --wso2-ai-accent: #5B9BFF;
   --wso2-ai-accent-text: #8AB6FF;
 
-  --wso2-heading-color: #EFF3F9;
+  --wso2-heading-color: #EDE7E2;
 
-  /* === Dark Surfaces — deep navy-black === */
-  --ifm-background-color: #0B1120;
-  --ifm-background-surface-color: #0E1728;
-  --wso2-surface-border: rgba(255, 255, 255, 0.09);
-  --wso2-border-subtle: rgba(255, 255, 255, 0.09);
-  --wso2-well-bg: #0F1930;
+  /* === Dark Surfaces — warm charcoal, same family as the landing
+     page's --lp-bg/--lp-card/LandingHero's --lh-cream dark values === */
+  --ifm-background-color: #141210;
+  --ifm-background-surface-color: #1E1B19;
+  --wso2-surface-border: #3B3532;
+  --wso2-border-subtle: #332E2B;
+  --wso2-well-bg: #221F1D;
   --wso2-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --wso2-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.4);
 
   /* === Text Hierarchy === */
-  --ifm-font-color-base: #B6C1D3;
-  --ifm-font-color-secondary: #8B94A7;
-  --wso2-text-muted: #8B94A7;
+  --ifm-font-color-base: #C2B8B0;
+  --ifm-font-color-secondary: #9A8F87;
+  --wso2-text-muted: #9A8F87;
 
   /* === Code === */
-  --docusaurus-highlighted-code-line-bg: rgba(241, 78, 35, 0.16);
+  --docusaurus-highlighted-code-line-bg: rgba(226, 86, 11, 0.18);
 
   /* === Navbar — solid, opaque in every mode (desktop/tablet/mobile) === */
-  --ifm-navbar-background-color: #0A1020;
-  --wso2-sidebar-bg: #0C1424;
+  --ifm-navbar-background-color: #141210;
+  --wso2-sidebar-bg: #171310;
   --ifm-navbar-shadow: none;
+  --ifm-navbar-link-color: #D8CFC8;
+  --ifm-navbar-link-hover-color: #F5A06A;
+
+  --wso2-nav-divider: #3B3532;
 
   /* === Sidebar === */
-  --ifm-menu-color: #B6C1D3;
-  --ifm-menu-color-active: #FF9163;
+  --ifm-menu-color: #C2B8B0;
+  --ifm-menu-color-active: #F5A06A;
   --ifm-color-emphasis-600: #CBD5E1;
 
   /* === Link color === */
-  --ifm-link-color: #FF9163;
-  --ifm-link-hover-color: #FF8A3D;
+  --ifm-link-color: #F5A06A;
+  --ifm-link-hover-color: #FFC9A3;
 
-  /* === On-navy support === */
+  /* === On-navy support (AIAssistantSidePanel's launcher only) === */
   --wso2-on-navy-text: #FFFFFF;
   --wso2-on-navy-cool: #C8D3E6;
   --wso2-on-navy-muted: #9FB0CC;
@@ -251,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
    NAVBAR — Solid, opaque in every mode (desktop/tablet/mobile)
    ================================================================ */
 .navbar {
-  border-bottom: 1px solid var(--wso2-surface-border);
+  border-bottom: 1px solid var(--wso2-nav-divider);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -271,7 +305,40 @@ h1, h2, h3, h4, h5, h6 {
    unconditionally. */
 
 [data-theme='dark'] .navbar {
-  border-bottom-color: rgba(255, 255, 255, 0.06);
+  border-bottom-color: var(--wso2-nav-divider);
+}
+
+/* "Download" button at the end of the navbar's right zone (html item in
+   docusaurus.config.ts). Solid accent orange, white text -- same button
+   as the landing page's primary CTA. */
+.navbar a.navbar-download-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px !important;
+  margin-left: 0.375rem;
+  border-radius: 10px;
+  background: var(--wso2-download-bg) !important;
+  color: #FFFFFF !important;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.navbar a.navbar-download-btn:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
+/* Same as .navbar-icon-link above: its `display: flex !important` would
+   otherwise keep the button in the mobile top bar; it stays in the drawer. */
+@media (max-width: 996px) {
+  .navbar__items--right a.navbar-download-btn {
+    display: none !important;
+  }
 }
 
 /* The mobile drawer (.navbar-sidebar) reuses --ifm-navbar-background-color
@@ -287,15 +354,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Infima's default .navbar__logo container is a fixed 2rem (32px) tall,
    and its own img rule is `height: 100%` -- so bumping just the img's
    height without also freeing the container leaves the image fighting
-   its own 32px box. Sized big and deliberate -- most of the 4rem (64px)
-   navbar height, not a small icon-sized mark. */
+   its own 32px box. 34px tall: the single-line "Integration Platform"
+   wordmark is ~6:1, so this keeps it ~208px wide in the navbar. */
 .navbar__logo {
-  height: 52px;
+  height: 34px;
   margin-right: 0.75rem;
 }
 
 .navbar__logo img {
-  height: 52px;
+  height: 34px;
   width: auto;
   max-height: none;
 }
@@ -304,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   font-size: 0.9rem;
   border-radius: 8px;
-  padding: 0.4rem 0.75rem;
+  padding: 0.4rem 0.5rem;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -448,18 +515,33 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-gutter: auto;
 }
 
-/* Row size comes from three variables (defined with the sidebar dot
-   variables below) so the dots that mark each row can be centered from the
-   same numbers. Vertical padding and the gap between rows are kept small to
-   keep a long sidebar compact; the 14px HORIZONTAL padding is not a free
-   choice -- the carets are aligned against it (see .menu__caret below). */
+/* ----------------------------------------------------------------
+   Sidebar nesting depth -- values from the "Nesting depth" design
+   reference (SidebarDepth.dc.html): each level steps in ~14px along a
+   guide line and gets a slightly smaller font; the open path stays
+   bold so it can be traced, and only the current page is orange.
+   Replaces an earlier "dots on a line" treatment (uniform font size at
+   every depth, a dot per row) with this per-level font-size + plain
+   guide-line model instead -- the dot system is gone, not just
+   restyled.
+   ---------------------------------------------------------------- */
+
+/* Row size: shared across levels; see the per-level overrides below
+   this block for font-size/weight/color at each depth. The 14px
+   HORIZONTAL padding is not a free choice -- the carets are aligned
+   against it (see .menu__caret below). */
 .menu__link {
-  border-radius: 16px;
-  font-size: var(--wso2-sidebar-font);
-  line-height: var(--wso2-sidebar-line);
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.3;
   font-weight: 700;
-  padding: var(--wso2-sidebar-row-pad) 14px;
+  padding: 11px 12px;
+  color: #2E2E36;
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+[data-theme='dark'] .menu__link {
+  color: #EDE7E2;
 }
 
 /* Infima puts 0.25rem between every pair of sibling rows; tighten it. */
@@ -467,15 +549,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.125rem;
 }
 
-/* Bold is reserved for top-level (main-section) links -- nested
-   subsection links inside an expanded category read as normal text so
-   the hierarchy is visible at a glance, not just via indentation. */
-.menu__list .menu__list .menu__link {
-  font-weight: 400;
-}
-
 .menu__link:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: #FBF8F5;
 }
 
 [data-theme='dark'] .menu__link:hover {
@@ -492,13 +567,14 @@ h1, h2, h3, h4, h5, h6 {
    what makes a real section like "Develop" or "Connector Catalog" show
    as active while you're anywhere inside it, not just on its own page. */
 .menu__link--active {
-  background-color: #FDE3D9;
-  color: var(--wso2-accent-text);
-  font-weight: 700;
+  background-color: #FFEDE0;
+  color: #A3400A;
+  font-weight: 800;
 }
 
 [data-theme='dark'] .menu__link--active {
-  background-color: rgba(241, 78, 35, 0.16);
+  background-color: rgba(226, 86, 11, 0.16);
+  color: #F5A06A;
 }
 
 /* The rule above alone never actually shows for a category WITH
@@ -522,31 +598,167 @@ h1, h2, h3, h4, h5, h6 {
    through the plain leaf-link path instead of the collapsible one, so
    Infima's override never applied to it in the first place. */
 .menu__list-item-collapsible:has(> .menu__link--active) {
-  background-color: #FDE3D9;
+  background-color: #FFEDE0;
+  border-radius: 10px;
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:has(> .menu__link--active) {
-  background-color: rgba(241, 78, 35, 0.16);
+  background-color: rgba(226, 86, 11, 0.16);
 }
 
-/* Left accent bar on the active TOP-LEVEL category only (nested active
-   items already have their own, more subdued treatment above) -- an
-   absolutely-positioned bar rather than a border-left, since a real
-   border would shift the row's own content 2px to the right instead of
-   overlaying flush with the sidebar's edge. */
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
-  position: relative;
+/* Nested (level 2+) rows never get the top-level peach fill, even
+   while on the active path -- see the ancestor/current-page rules
+   further down for their own, different treatment (bold ink / orange
+   bar). Nested rows also lose the ruled-row border-bottom level 1 gets
+   (below) and the ancestor/current rules handle their own background. */
+.menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: transparent;
+  border-radius: 0;
 }
 
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:has(.menu__link--active)::before {
-  content: '';
-  position: absolute;
-  left: -0.6rem;
-  top: 4px;
-  bottom: 4px;
-  width: 3px;
-  border-radius: 2px;
-  background-color: var(--ifm-color-primary);
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
+  background-color: transparent;
+}
+
+/* Level 1 rows are ruled (a hairline under each section, open or
+   closed) instead of floating as separate pills -- the open state's
+   own peach fill (above) sits on top of/replaces this rule visually
+   for that one row, same as the design reference. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-link-level-1 > .menu__link {
+  border-bottom: 1px solid #ECE6E0;
+  border-radius: 0;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > .menu__link {
+  border-bottom-color: #3B3532;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:has(> .menu__link--active) {
+  border-bottom-color: transparent;
+}
+
+/* The row immediately before a `separatorBefore` label never draws its
+   own ruled-row line -- DocSidebarItems/styles.module.css's .separator
+   has no border of its own, so whatever sits above the separator (either
+   this row's own line, when it has one, or a collapsible section's last
+   visible child, e.g. wso2-connectors' "Example") is the only line at
+   that boundary. Without this rule, a plain top-level row immediately
+   before a separator would draw a redundant second line of its own on
+   top of that. Known gap: if THIS row is itself the active section, its
+   own line is already conditionally hidden (the rule above) and nothing
+   it contains is guaranteed to supply one either -- harmless today (no
+   known case hits it), but worth remembering if a boundary like this
+   ever looks like it's missing a line entirely. */
+.theme-doc-sidebar-item-category-level-1:has(+ [role='separator']) > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-link-level-1:has(+ [role='separator']) > .menu__link {
+  border-bottom: none;
+}
+
+/* ── Quiet secondary section (any row after a `separatorBefore` label --
+   DocSidebarItems.tsx's own `[role="separator"]` marker, e.g. wso2-connectors'
+   "WSO2 Connectors" group below the pinned catalog row, or wso2-integrator's
+   `manage/` three-tier grouping). Structurally these are still level-1
+   items, so without this they'd get the exact same bold "primary section"
+   treatment (15px/700, ruled-row hairline) as Connector Catalog or any
+   other top-level entry -- the design references always draw this group
+   noticeably quieter: smaller, lighter weight, no ruled row, softer ink.
+   `[role="separator"] ~ selector` (general sibling) catches every row
+   after ANY separator in the same list, not just the first -- correct
+   for multi-tier grouping too, since every tier below the first separator
+   reads as "secondary" relative to the pinned/primary row above it. ── */
+[role="separator"] ~ .theme-doc-sidebar-item-link-level-1 > .menu__link,
+[role="separator"] ~ .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 12px;
+  color: #3A3A44;
+  border-bottom: none;
+}
+
+[data-theme='dark'] [role="separator"] ~ .theme-doc-sidebar-item-link-level-1 > .menu__link,
+[data-theme='dark'] [role="separator"] ~ .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  color: #D8CFC8;
+}
+
+[role="separator"] ~ .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+  border-bottom: none;
+}
+
+/* ── Pinned, flat catalog row (wso2-connectors' "Connector Catalog",
+   collapseOwnPage + a 'catalog-pinned-row' className + customProps.badge
+   in sidebars.ts) -- a count pill instead of a caret, since browsing its
+   ~190 children happens on the catalog page's own grid/filters, not a
+   sidebar tree (DocSidebarItem/Category's collapseOwnPage keeps it
+   collapsed there; this is purely the visual side). Inert on any branch
+   that never sets that className. ── */
+.catalog-pinned-row .menu__caret {
+  display: none;
+}
+
+/* Same font-size as the quiet "WSO2 Connectors" section below it (the
+   `[role="separator"] ~ ...` rule further down) -- the pinned row, the
+   connector switcher's own name, and the connector's own pages (below)
+   all used a size/weight closer to the site's normal bold section rows,
+   which read as noticeably larger/heavier next to that quieter group.
+   Matching the size (not the weight -- these stay bold/emphasized, only
+   smaller) reads calmer as a whole, closer to the design reference. */
+.catalog-pinned-row > .menu__list-item-collapsible > .menu__link {
+  font-size: 14px;
+}
+
+.catalog-pinned-row .sidebar-category-badge-wrap {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.catalog-pinned-row .sidebar-category-label {
+  flex: 1;
+}
+
+.catalog-pinned-row .sidebar-category-badge {
+  flex-shrink: 0;
+  border: none;
+  padding: 2px 8px;
+  background: var(--ifm-background-color);
+  color: var(--wso2-accent-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+/* The connector's own pages (Setup Guide/Actions/Triggers/Example --
+   flattened into this row's own nested list by DocRoot/Layout/Sidebar's
+   scopeSidebarToConnector, see that file's own docstring for why there's
+   no separate "Alfresco" row) read at the SAME weight as every other
+   top-level sidebar section -- bold ink, same ruled-row hairline under
+   each one -- not the lighter, indented level-2 treatment this
+   font-size/weight/nesting would otherwise get everywhere else in the
+   sidebar. Font-size is 14px, not the usual 15px -- same reasoning as
+   the pinned row's own trigger just above. `!important` on the
+   indent-cancelling properties: the site-wide `.menu__list .menu__list`
+   indent rule (further down this file) has equal selector specificity
+   and comes later in source order, so it would otherwise win. */
+.catalog-pinned-row > .menu__list {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: none !important;
+}
+
+.catalog-pinned-row > .menu__list > .theme-doc-sidebar-item-link > .menu__link {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 12px;
+  color: #2E2E36;
+  border-bottom: 1px solid #ECE6E0;
+  border-radius: 0;
+}
+
+[data-theme='dark'] .catalog-pinned-row > .menu__list > .theme-doc-sidebar-item-link > .menu__link {
+  color: #EDE7E2;
+  border-bottom-color: #3B3532;
 }
 
 /* Two separate chevron rendering paths share the same oversized-icon
@@ -623,18 +835,46 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.85;
 }
 
-/* Active *nested* section/leaf (inside an expanded top-level category):
-   a neutral chip fill with just the accent text color, not the peach
-   top-level fill -- keeps the expanded top-level section visually "in
-   charge" of the peach treatment, however many levels deep the actual
-   active page is. */
-.menu__list .menu__list .menu__link--active {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: var(--wso2-accent-text);
+/* ---- Ancestor rows (level 2+, on the path to the current page but
+   NOT the current page itself): bold ink, no background -- "trail is
+   bold, current is orange". Excludes a category whose own page IS the
+   current page (`--active` on the wrapper div, not just the link) --
+   that gets the orange current-page treatment below instead. */
+.menu__list .menu__list .menu__list-item-collapsible:not(.menu__list-item-collapsible--active) > .menu__link--active {
+  background-color: transparent;
+  color: #17171C;
+  font-weight: 700;
 }
 
-[data-theme='dark'] .menu__list .menu__list .menu__link--active {
-  background-color: rgba(255, 255, 255, 0.06);
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible:not(.menu__list-item-collapsible--active) > .menu__link--active {
+  color: #EDE7E2;
+}
+
+/* ---- The current page itself (level 2+): an orange left bar + light
+   tint + bold orange text -- a leaf link, or a category whose own page
+   is the current one. box-shadow (not border-left) so the bar doesn't
+   shift the row's own content over by its own width. */
+.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active,
+.menu__list .menu__list .menu__list-item-collapsible--active > .menu__link {
+  background-color: #FFF6EF;
+  color: #A3400A;
+  font-weight: 700;
+  box-shadow: inset 2px 0 0 #C94F0A;
+}
+
+[data-theme='dark'] .menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active,
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible--active > .menu__link {
+  background-color: rgba(226, 86, 11, 0.14);
+  color: #F5A06A;
+  box-shadow: inset 2px 0 0 #E2560B;
+}
+
+/* A category whose own page is current never gets the ancestor-bold
+   treatment above (it's excluded by :not(--active) there) and never
+   the level-1 peach fill (nested rows are excluded from that rule
+   separately, above) -- only this orange treatment. */
+.menu__list .menu__list .menu__list-item-collapsible--active {
+  background-color: transparent;
 }
 
 /* Vertical guide line along an expanded category's nested items. It hangs
@@ -642,123 +882,62 @@ h1, h2, h3, h4, h5, h6 {
    belonging to its parent:
    - under a nested sub-section (no icon): the start of its label, which is
      the row's 14px horizontal padding in;
-   - under a top-level section: the CENTER of its icon (see the next rule). */
+   - under a top-level section: the CENTER of its icon (see the next rule).
+   Solid at every depth (no longer dashed from level 3 down) -- the
+   per-level font-size steps below are what reads as depth now, not the
+   line style. */
 .menu__list .menu__list {
   border-left: 1px solid var(--wso2-surface-border);
   margin-left: 14px;
-  padding-left: 0.5rem;
+  padding-left: 10px;
 }
 
 /* Top-level sections lead with a 17px icon (DocSidebar/Desktop/icons.tsx),
    14px in from the row edge: drop the line from the icon's center, minus
    half the line's own width. */
 .theme-doc-sidebar-item-category-level-1 > .menu__list {
-  margin-left: calc(14px + var(--wso2-sidebar-icon-size) / 2 - 0.5px);
+  margin-left: calc(14px + 17px / 2 - 0.5px);
 }
 
-/* ----------------------------------------------------------------
-   Sidebar hierarchy: dots on a line.
-
-   Every nested sub-section and page (level 2 and deeper) gets a dot
-   sitting on the vertical guide line above, so the hierarchy reads as a
-   path: a muted dot for an ordinary row, a FILLED dot for every
-   section/sub-section on the path to the current page, and a RING for
-   the current page itself. Deeper lists (level 3+) switch the line to
-   dashed and the dots to a smaller size. Top-level sections keep their
-   icon, peach fill and left accent bar (rules above) -- this only
-   styles what is nested inside them.
-
-   Pure CSS, driven by Docusaurus' own state classes:
-     .menu__link--active                    a link on the path to / at the current page
-     .menu__list-item-collapsible--active   a category whose own page is the current page
-   The dot is a ::before on the row, centered on the line: the nested
-   <ul> has a 1px left border and 0.5rem of left padding, so a row's
-   left edge sits 0.5rem + 1px right of the line.
-   ---------------------------------------------------------------- */
-:root {
-  --wso2-sidebar-dot: #B9C2D0;
-  --wso2-sidebar-dot-size: 8px;
-  /* Sidebar row metrics (see .menu__link above). */
-  --wso2-sidebar-font: 0.8125rem;
-  --wso2-sidebar-row-pad: 7px;
-  --wso2-sidebar-line: 1.25;
-  /* Top-level section icon size -- keep in sync with icons.tsx. */
-  --wso2-sidebar-icon-size: 17px;
+/* ---- Per-level font size/weight/colour (inactive rows; the ancestor/
+   current-page rules above override colour and weight where they
+   apply). Level 1 is .menu__link's own base rule, further up. */
+.theme-doc-sidebar-item-link-level-2 > .menu__link,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link {
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #4A4A55;
 }
 
-[data-theme='dark'] {
-  --wso2-sidebar-dot: rgba(255, 255, 255, 0.28);
+.theme-doc-sidebar-item-link-level-3 > .menu__link,
+.theme-doc-sidebar-item-category-level-3 > .menu__list-item-collapsible > .menu__link {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4A4A55;
 }
 
-/* Level 3 and deeper: dashed line, smaller dots. */
-.menu__list .menu__list .menu__list {
-  border-left-style: dashed;
-  --wso2-sidebar-dot-size: 6px;
+/* Level 4 is the deepest a sidebar row goes (see this block's own
+   intro comment) -- always a leaf, slightly smaller and more muted. */
+.theme-doc-sidebar-item-link-level-4 > .menu__link {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #5A5A66;
 }
 
-/* The row each dot is anchored to: a leaf link, or a category's own row
-   (the div holding its label and caret -- not the whole <li>, which also
-   contains its expanded children). */
-.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link,
-.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible {
-  position: relative;
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-2 > .menu__link,
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link,
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-3 > .menu__link,
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-3 > .menu__list-item-collapsible > .menu__link {
+  color: #C2B8B0;
 }
 
-.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link::before,
-.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible::before {
-  content: '';
-  position: absolute;
-  /* Centered on the line: -(0.5rem padding + half the 1px border) - half the dot. */
-  left: calc(-0.5rem - 0.5px - var(--wso2-sidebar-dot-size) / 2);
-  /* Centered on the label's first line (row padding + half a line). */
-  top: calc(var(--wso2-sidebar-row-pad) + 0.5 * var(--wso2-sidebar-line) * var(--wso2-sidebar-font) - var(--wso2-sidebar-dot-size) / 2);
-  box-sizing: border-box;
-  width: var(--wso2-sidebar-dot-size);
-  height: var(--wso2-sidebar-dot-size);
-  border-radius: 50%;
-  background-color: var(--wso2-sidebar-dot);
-  pointer-events: none;
-}
-
-/* On the path to the current page: filled, in the brand color. */
-.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible:has(> .menu__link--active)::before {
-  background-color: var(--ifm-color-primary);
-}
-
-/* The current page itself: a ring (a leaf link, or a category whose own
-   page is the current one). */
-.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active::before,
-.menu__list .menu__list .theme-doc-sidebar-item-category > .menu__list-item-collapsible--active::before {
-  background-color: var(--ifm-background-color);
-  border: 2px solid var(--ifm-color-primary);
-}
-
-/* A nested sub-section on the path to the current page is marked by its
-   filled dot and accent text, not the peach row fill the rule further up
-   gives every category with an active link: keep that fill for the
-   top-level section only. */
-.menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
-  background-color: transparent;
-}
-
-[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible:has(> .menu__link--active) {
-  background-color: transparent;
-}
-
-/* ...except the row of a category that IS the current page, which gets the
-   same light pill a current leaf page has. */
-.menu__list .menu__list .menu__list-item-collapsible.menu__list-item-collapsible--active {
-  background-color: rgba(0, 0, 0, 0.04);
-  border-radius: 16px;
-}
-
-[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible.menu__list-item-collapsible--active {
-  background-color: rgba(255, 255, 255, 0.06);
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-4 > .menu__link {
+  color: #9A8F87;
 }
 
 .menu__list-item-collapsible:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-  border-radius: 16px;
+  background-color: #FBF8F5;
+  border-radius: 10px;
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:hover {
@@ -901,6 +1080,17 @@ h1, h2, h3, h4, h5, h6 {
    because this must win regardless of chunk load order. */
 [class*="anchorTargetStickyNavbar"] {
   scroll-margin-top: calc(var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 0.5rem) !important;
+}
+
+/* The secondary row itself only renders below 1360px (theme/Navbar's own
+   media query) -- zero out the height every rule above sizes against,
+   so the sidebar/TOC/anchor-scroll offsets above don't reserve space
+   for a row that isn't there at this width. Single var, every consumer
+   (this file, DocSidebar/Desktop, theme/TOC) adjusts automatically. */
+@media (min-width: 1360px) {
+  :root {
+    --wso2-secondary-row-height: 0rem;
+  }
 }
 
 .markdown h4 {
@@ -1113,11 +1303,17 @@ table th {
   border-left-color: #F87171;
 }
 
-/* Table of contents */
+/* Table of contents -- the left border below (transparent, then
+   --ifm-color-primary on --active) is also what lets a reader track
+   progress through a quickstart's numbered steps from the TOC: each
+   "Step N: ..." heading is a real TOC entry, so the current step is
+   always the one with a lit-up border, no extra code needed (see
+   src/components/Steps' own docstring for the main-content half of
+   this same "track progress" ask). */
 .table-of-contents__link {
   display: inline-block;
   font-size: 0.875rem;
-  color: #565656;
+  color: var(--ifm-font-color-base);
   border-left: 2px solid transparent;
   padding-left: 0.7rem;
   margin-left: -1px;
@@ -1125,7 +1321,7 @@ table th {
 }
 
 [data-theme='dark'] .table-of-contents__link {
-  color: #8B94A7;
+  color: var(--wso2-text-muted);
 }
 
 .table-of-contents__link:hover {
@@ -1171,30 +1367,29 @@ table th {
 /* Pagination */
 .pagination-nav__link {
   border-radius: 12px;
-  border-color: #E5E9F0;
+  border-color: var(--wso2-surface-border);
   transition: all 0.2s ease;
-  background: #FFFFFF;
+  background: var(--ifm-background-color);
 }
 
 [data-theme='dark'] .pagination-nav__link {
-  border-color: rgba(255, 255, 255, 0.09);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--ifm-background-surface-color);
 }
 
 .pagination-nav__link:hover {
-  border-color: #E5E9F0;
+  border-color: var(--wso2-surface-border);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  background: #F7F9FC;
+  background: var(--ifm-background-surface-color);
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: var(--ifm-color-primary);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .pagination-nav__sublabel {
-  color: #7B8598;
+  color: var(--wso2-text-muted);
 }
 
 .pagination-nav__label {
@@ -1269,16 +1464,14 @@ table th {
 
 /* ================================================================
    DOC SIDEBAR DIVIDER
-   ================================================================ */
-.theme-doc-sidebar-menu>.menu__list-item+.menu__list-item {
-  border-top: 1px solid #E5E9F0;
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-}
-
-[data-theme='dark'] .theme-doc-sidebar-menu>.menu__list-item+.menu__list-item {
-  border-top-color: rgba(255, 255, 255, 0.09);
-}
+   ================================================================
+   Deliberately no border-top/margin-top rule here anymore -- the
+   level-1 "ruled row" border-bottom (.theme-doc-sidebar-item-category-level-1
+   / -link-level-1, further up this file) already draws one hairline
+   under every top-level row. A border-top on the NEXT row on top of
+   that drew a second, visibly doubled line a few pixels below the
+   first one everywhere two sections met, not just at manual
+   separators -- see the sidebar double-line bug report. */
 
 /* "Platform Overview" is pinned at the top of the sidebar while the other
    sections scroll beneath it (marked by DocSidebar/Desktop). Sticky
@@ -1806,7 +1999,129 @@ li .tabs-container [role="tabpanel"] .theme-code-block {
   margin-bottom: 0;
 }
 
-/* Skip ahead card on the quickstarts: same highlighted card, without the corner icon. */
+/* Skip ahead card on the quickstarts: same highlighted card, without the
+   corner icon, and its own warm-orange tint instead of .palette-card--
+   highlight's usual blue (--wso2-ai-accent) -- that blue is deliberately
+   kept distinct from the rest of the site's orange everywhere ELSE it's
+   used (see its own comment in this file), but this specific card
+   already carries its own "AI" cue via PaletteCard's icon="ai" and
+   reads better matching the surrounding warm palette than standing out
+   as the one blue box on an otherwise orange/cream quickstart page. */
 .skip-ahead-card .palette-card-icon {
   display: none;
+}
+
+.markdown .skip-ahead-card .palette-card--highlight {
+  background: linear-gradient(135deg, rgba(201, 79, 10, 0.09), rgba(201, 79, 10, 0.03));
+  border-color: rgba(201, 79, 10, 0.35);
+}
+
+.markdown .skip-ahead-card .palette-card--highlight .palette-card-title {
+  color: var(--wso2-accent-text);
+}
+
+.markdown .skip-ahead-card .palette-card--highlight:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 10px 30px rgba(201, 79, 10, 0.18);
+}
+
+[data-theme='dark'] .markdown .skip-ahead-card .palette-card--highlight {
+  background: linear-gradient(135deg, rgba(226, 86, 11, 0.22), rgba(226, 86, 11, 0.08));
+  border-color: rgba(226, 86, 11, 0.45);
+}
+
+[data-theme='dark'] .markdown .skip-ahead-card .palette-card--highlight:hover {
+  box-shadow: 0 10px 30px rgba(226, 86, 11, 0.25);
+}
+
+/* <details>/<summary> (e.g. "View the generated code" on a quickstart) --
+   plain browser chrome by default (no border, default disclosure
+   triangle); same bordered-card language as .palette-card instead,
+   with a custom chevron that rotates open, matching the rest of the
+   site's interactive affordances rather than the OS-themed triangle. */
+.markdown details {
+  margin: 0 0 1rem;
+  border-radius: var(--ifm-card-border-radius);
+  border: 1px solid var(--wso2-surface-border);
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.markdown details > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.85rem 1.1rem;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.15s ease;
+}
+
+.markdown details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.markdown details > summary::before {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--wso2-accent-text);
+  border-bottom: 2px solid var(--wso2-accent-text);
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+
+.markdown details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.markdown details > summary:hover {
+  background: var(--wso2-well-bg);
+}
+
+.markdown details[open] > summary {
+  border-bottom: 1px solid var(--wso2-surface-border);
+}
+
+/* The content after <summary> -- usually a paragraph + code block --
+   gets the same side padding as the summary row, so a nested code
+   block's own border-radius (CODE BLOCKS, further down) isn't flush
+   against this container's. */
+.markdown details > :not(summary) {
+  margin: 0 1.1rem 1.1rem;
+}
+
+.markdown details > summary + :not(summary) {
+  margin-top: 1rem;
+}
+
+/* ================================================================
+   CODE BLOCKS -- rounder, warmer chrome matching the page-view mockup's
+   `main.bal` example. Attribute selectors: CodeBlock's own classes are
+   CSS-module-hashed at build time (same reason this file already does
+   this for anchorTargetStickyNavbar/navbarSearchContainer/aiAssistant).
+   The code itself still follows the site's light/dark theme (Prism's
+   github/dracula themes, theme-shared/themeConfig.ts's sharedPrism) --
+   only the container border and the title bar (shown when a fence has
+   `title="..."`, e.g. ```ballerina title="main.bal") are retouched to a
+   fixed dark neutral, since a title bar reading as part of the code
+   (not the page) is the more common convention and matches the mockup
+   in both site themes, not just light. */
+[class*="codeBlockContainer"] {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[class*="codeBlockTitle"] {
+  background: #2D2E38 !important;
+  color: #FFFFFF !important;
+  border-bottom: 1px solid #2A2B33 !important;
+  font-weight: 600;
+}
+
+[class*="buttonGroup"] button {
+  color: #C9CAD2;
 }

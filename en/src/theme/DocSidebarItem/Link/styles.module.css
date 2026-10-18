@@ -36,3 +36,33 @@
   color: inherit;
   opacity: 0.75;
 }
+
+/* Mirrors DocSidebarItem/Category's categoryTextCol/categoryTextOneLine/
+   categoryBadge exactly -- a link-type item with a badge (e.g. the
+   connector catalog's pinned row, rendered through this component
+   whenever it isn't scoped to one connector) stacks the same way. */
+.linkTextCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 0;
+}
+
+.linkTextOneLine {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linkBadge {
+  padding: 0 0.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--wso2-text-muted);
+}

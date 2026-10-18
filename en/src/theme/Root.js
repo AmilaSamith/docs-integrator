@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
-import SiteNav from '@site/src/components/SiteNav';
 import FloatingActions from '@site/src/components/FloatingActions';
+import CookieConsent from '@site/src/components/CookieConsent';
 import { CatalogProvider } from '@site/src/components/ConnectorCatalog/context';
 
 // Make Prism available globally so extensions can reach it
@@ -125,9 +125,12 @@ export default function Root({ children }) {
   useNavbarActiveState();
   return (
     <CatalogProvider>
-      <SiteNav />
+      {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
+          mounted: the single-header landing page has no sidebar toggle.
+          src/components/SiteNav is left in place, unused. */}
       {children}
       <FloatingActions />
+      <CookieConsent />
     </CatalogProvider>
   );
 }
