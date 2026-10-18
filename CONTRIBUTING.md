@@ -21,8 +21,8 @@ see [Section Ownership](#section-ownership) and the scenarios below.
 ## Golden Rules
 
 1. **Never hand-edit shared content on `saas`.** `platform-overview/`,
-   `editor/`, `develop-and-test/`, `migrate/`, `guides/`, and
-   `reference/glossary.md` are synced from `wso2-integrator`. A
+   `editor/`, `develop-and-test/`, `migrate/`, and `guides/` are synced
+   from `wso2-integrator`. A
    direct edit on `saas` gets silently reverted by the next sync — the CI
    guard (`shared-content-guard.yaml`) rejects such a PR outright. Send
    the PR to `wso2-integrator` instead.
@@ -40,8 +40,29 @@ see [Section Ownership](#section-ownership) and the scenarios below.
    `editor/views/library-view.md`. If `wso2-integrator` still has a
    `customize/` folder, the same removal needs to happen there, or the
    next sync recreates it on `saas`.)
+
+   Not everything inside those folders is synced. These are authored
+   independently on `saas` (or left out of the sync on purpose), so edit
+   them on `saas` directly, and never expect an edit made to them on
+   `wso2-integrator` to reach it:
+   - `develop-and-test/create-workspace/` — saas has its own
+     screenshots and steps.
+   - `develop-and-test/integration-artifacts/workflow/` and
+     `develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md`
+     — durable workflow is managed through ICP (self-hosted only) and
+     isn't on WSO2 Cloud yet, so these are not synced to `saas`.
+   - `develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md`
+     and `develop-and-test/integration-artifacts/supportive-artifacts/agent.md`
+     — `saas` keeps its own copies, which link to the integrator site
+     instead of the workflow pages.
+   - `editor/integration-control-plane.md` — documents the local ICP
+     server, which is self-hosted only.
+
+   The exact lists live in `sync-content-to-saas.yaml` on
+   `wso2-integrator` (`SAAS_OWNED_DIRS`, `SAAS_OWNED_FILES`,
+   `SYNC_EXCLUDE_FILES`, `SYNC_EXCLUDE_DIRS`); check there if in doubt.
 2. **Hosting-model-specific content stays per-branch.** `deploy-and-run/`,
-   `observe/`, `manage/`, the rest of `get-started/`, and the rest of
+   `observe/`, `manage/`, the rest of `get-started/`, and
    `reference/` are authored independently on each branch — self-hosted
    deployment/ICP content on `wso2-integrator`, cloud console content on
    `saas`. Don't try to sync these; they're allowed to (and often must)
@@ -136,9 +157,17 @@ including required frontmatter that's build-enforced — see
 
 | Path | Branch | Owner |
 |---|---|---|
-| `en/docs/icp/` | `wso2-integrator` | ICP team (`@wso2/icp-team` — placeholder, needs a real team slug) |
-| `en/docs/` (all) | `wso2-connectors` | Library team (`@wso2/library-team` — placeholder, needs a real team slug) |
+| `en/docs/icp/` | `wso2-integrator` | ICP team (`@anuruddhal`) |
+| `en/docs/editor/copilot/` | `wso2-integrator` | Copilot (`@shafreenAnfar`) |
+| `en/docs/` (all except `icp/`) | `wso2-integrator` | Integrator team (`@rosensilva`) |
+| `en/docs/` (all) | `saas` | Cloud team (`@pcnfernando`) |
+| `en/docs/` (all) | `wso2-connectors` | Connector team (`@daneshk`) |
 | Everything else | all branches | Default maintainers (see `.github/CODEOWNERS` on each branch) |
+
+Each branch (`main`, `saas`, `wso2-integrator`, `wso2-connectors`) has its
+own `.github/CODEOWNERS`, and the lists differ. `CODEOWNERS` isn't synced
+between branches, so a change to one branch's owners is a PR on that
+branch only.
 
 ## Contributor scenarios
 
@@ -149,13 +178,13 @@ First figure out what kind of content it is:
 - **Shared** (see Golden Rule 1's list) → PR against `wso2-integrator`.
   It reaches `saas` automatically via a bot PR the next time
   `sync-content-to-saas.yaml` runs — you don't need to open a second PR.
-- **Self-hosted-only** (`deploy/`, `operate/`, `manage/`, `get-started/`,
-  `reference/` on `wso2-integrator` — folder names on that branch, not
-  necessarily matching `saas`'s current names) → PR directly against
-  `wso2-integrator`. Not synced anywhere.
+- **Self-hosted-only** (`deploy-and-run/`, `observe/`, `manage/`,
+  `get-started/`, `reference/`, and `icp/` on `wso2-integrator`) → PR
+  directly against `wso2-integrator`. Not synced anywhere.
 - **Cloud-only** (`deploy-and-run/`, `observe/`, `manage/`,
   `get-started/`, `reference/` on `saas`) → PR directly against `saas`.
-  Not synced anywhere.
+  Not synced anywhere. The same goes for the carve-outs listed under
+  Golden Rule 1.
 - **Connector** → PR against `wso2-connectors`.
 
 ### "I'm backporting a fix to an already-released version"
@@ -184,6 +213,24 @@ A maintainer task, not a typical content PR:
 2. Commit the generated files and the updated `versions.json`.
 3. The version pill above the sidebar and the `/versions` page pick up
    the new entry automatically — no further config needed.
+
+## Reviews and checks
+
+- **Fill in the PR template** (`pull_request_template.md`) — at least
+  Purpose, Documentation and a note on any doc impact.
+- **Reviewers** are the owners in the target branch's
+  `.github/CODEOWNERS`.
+- **Automatic checks** — `pr_build_check.yaml` (title case, a build, and
+  a check that every page is reachable from the sidebar) and
+  `broken-link-check.yaml` — are currently configured to run only on
+  PRs into `main`, not on PRs into `saas`, `wso2-integrator` or
+  `wso2-connectors`. For a PR into a product branch, run
+  `npx docusaurus build` from `en/` yourself and fix anything new,
+  including broken links, before asking for review.
+- **After merge**, a push to a product branch is built into the
+  `staging` branch by `staging_sync.yaml`. Production only changes when a
+  maintainer runs `promote_to_production.yaml` — see
+  [MAINTENANCE.md](MAINTENANCE.md).
 
 ## Local verification
 
