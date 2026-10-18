@@ -116,14 +116,6 @@ The envelope headers are read without a schema, so this part works before any me
 
 Create a new project named `edi-purchase-order-processing` with an integration named `Edi Order Processing`.
 
-<ThemedImage
-    alt="Create a Project form with the project name edi-purchase-order-processing, Integration selected, and the integration name Edi Order Processing"
-    sources={{
-        light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/01-create-project.png'),
-        dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/01-create-project.png'),
-    }}
-/>
-
 ## Step 2: Add the SFTP service
 
 1. Select **+ Add Artifact**, filter by **File**, and select **FTP / SFTP**.
@@ -131,8 +123,8 @@ Create a new project named `edi-purchase-order-processing` with an integration n
     <ThemedImage
         alt="Artifacts page filtered to File Integration, showing the FTP / SFTP, SMB, Local Files, and Azure Files cards"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/02-add-ftp-artifact.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/02-add-ftp-artifact.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/01-add-ftp-artifact.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/01-add-ftp-artifact.png'),
         }}
     />
 
@@ -159,8 +151,8 @@ Create a new project named `edi-purchase-order-processing` with an integration n
     <ThemedImage
         alt="Select Handler to Add panel listing On Create, On Delete, and On Error"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/03-add-handler.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/03-add-handler.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/02-add-handler.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/02-add-handler.png'),
         }}
     />
 
@@ -171,8 +163,8 @@ Create a new project named `edi-purchase-order-processing` with an integration n
     <ThemedImage
         alt="Configure On Create Handler panel with the format set to Raw Bytes, successful files moved to /edi/processed, and failed files moved to /edi/rejected"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/04-handler-config.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/04-handler-config.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/03-handler-config.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/03-handler-config.png'),
         }}
     />
 
@@ -190,8 +182,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="Record Configuration builder for the service configuration with fileNamePattern selected and the pattern for .edi files"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/05-file-name-pattern.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/05-file-name-pattern.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/04-file-name-pattern.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/04-file-name-pattern.png'),
         }}
     />
 
@@ -200,8 +192,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="FTP Integration Configuration page with the service configuration path /edi/inbox and the fileNamePattern for .edi files"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-service-configuration.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-service-configuration.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/05-service-configuration.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/05-service-configuration.png'),
         }}
     />
 
@@ -214,8 +206,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="Declare Variable form creating ediText of type string from check string:fromBytes(content)"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-edi-text-variable.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-edi-text-variable.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-edi-text-variable.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-edi-text-variable.png'),
         }}
     />
 
@@ -224,8 +216,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="edifactHeadersFromEdiString form with Edi Text set to ediText and the result named headers of type edi:EdifactHeaders"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/08-read-headers.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/08-read-headers.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-read-headers.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-read-headers.png'),
         }}
     />
 
@@ -236,8 +228,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="If node form with the condition headers.unb.sender.id != tradingPartner"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/09-partner-condition.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/09-partner-condition.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/08-partner-condition.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/08-partner-condition.png'),
         }}
     />
 
@@ -246,8 +238,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
     <ThemedImage
         alt="Return node form returning an Unknown trading partner error"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/10-reject-unknown-partner.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/10-reject-unknown-partner.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/09-reject-unknown-partner.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/09-reject-unknown-partner.png'),
         }}
     />
 
@@ -256,8 +248,8 @@ The raw handler receives every file in the inbox, so filter the service down to 
 <ThemedImage
     alt="onFile flow: fromBytes into ediText, edifactHeadersFromEdiString into headers, an If node that returns an error for an unknown partner, then a Log Info node"
     sources={{
-        light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/11-identify-partner-flow.png'),
-        dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/11-identify-partner-flow.png'),
+        light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/10-identify-partner-flow.png'),
+        dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/10-identify-partner-flow.png'),
     }}
 />
 
@@ -318,8 +310,8 @@ Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `b
     <ThemedImage
         alt="Functions panel searching for ORDERS, listing the edifact.d03a.supplychain.mORDERS functions under Extended Library, including interchangeFromEdiString"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/12-search-orders-package.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/12-search-orders-package.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/11-search-orders-package.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/11-search-orders-package.png'),
         }}
     />
 
@@ -328,8 +320,8 @@ Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `b
     <ThemedImage
         alt="interchangeFromEdiString form with Edi Text set to ediText and the result named interchange of type mORDERS:EDI_ORDERS_ORDERSInterchange"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/13-parse-interchange.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/13-parse-interchange.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/12-parse-interchange.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/12-parse-interchange.png'),
         }}
     />
 
@@ -340,8 +332,8 @@ Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `b
     <ThemedImage
         alt="Foreach form iterating over interchange.transactions with the variable txn"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/14-foreach.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/14-foreach.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/13-foreach.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/13-foreach.png'),
         }}
     />
 
@@ -352,8 +344,8 @@ Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `b
         <ThemedImage
             alt="Log Error form with the message Message rejected, the error set to body, and a reference value taken from the transaction header"
             sources={{
-                light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/15-log-rejected-message.png'),
-                dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/15-log-rejected-message.png'),
+                light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/14-log-rejected-message.png'),
+                dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/14-log-rejected-message.png'),
             }}
         />
 
@@ -365,8 +357,8 @@ Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `b
 <ThemedImage
     alt="onFile flow continuing with interchangeFromEdiString, a Foreach over the transactions, an If node that logs and skips an unreadable message, and a Log Info node for each order"
     sources={{
-        light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/16-process-orders-flow.png'),
-        dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/16-process-orders-flow.png'),
+        light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/15-process-orders-flow.png'),
+        dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/15-process-orders-flow.png'),
     }}
 />
 
@@ -424,15 +416,13 @@ Trading partners usually expect a reply that lists the orders that were accepted
 
     The file moves to `/edi/processed`.
 
-    <ThemedImage
-        alt="Integration terminal output showing the order file accepted from SUPERMART, an unknown trading partner OTHERCO rejected, two orders received, and one rejected message naming the missing BGM segment"
-        sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/17-run-terminal-output.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/17-run-terminal-output.png'),
-        }}
-    />
+5. Change the sender in the `UNB` segment of `orders.edi` to something else, such as `OTHERCO`, and drop it again. The file is rejected on the envelope alone, without the schema being consulted, and moves to `/edi/rejected`:
 
-5. Change the sender in the `UNB` segment of `orders.edi` to something else, such as `OTHERCO`, and drop it again. The file is rejected on the envelope alone, without the schema being consulted, and moves to `/edi/rejected`. A file without the `.edi` extension stays in the inbox.
+    ```text
+    error: Unknown trading partner: OTHERCO
+    ```
+
+    A file without the `.edi` extension stays in the inbox.
 
 ## What's next
 
