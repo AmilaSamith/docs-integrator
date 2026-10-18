@@ -127,6 +127,24 @@
   background: var(--lh-window-bg);
   border: 1px solid var(--lh-border-cream);
   box-shadow: var(--lh-window-shadow);
+  transition: transform 0.35s ease;
+}
+
+/* Whole frame zooms (bar, dots, title and screenshot together), not
+   just the screenshot inside it -- scaling only the <img> left the
+   chrome around it static, which read as the image floating loose
+   inside a fixed frame rather than one cohesive hover affordance.
+   transform (not width/height) so it doesn't reflow layout -- the
+   frame overlaps its own margin on hover and settles back, instead of
+   pushing neighbouring content. */
+.windowFrame:hover {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windowFrame {
+    transition: none;
+  }
 }
 
 .windowBar {

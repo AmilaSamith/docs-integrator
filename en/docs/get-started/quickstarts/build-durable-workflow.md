@@ -14,7 +14,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Build a Durable Workflow
 
-**Time:** 20 minutes | **What you'll build:** A durable workflow that reserves inventory for an order, suspends until a payment confirmation arrives, and then either emails the customer or cancels the order. Every activity result and data event is recorded, so a restart replays the record instead of reserving twice, and the wait for payment holds no thread and no connection while it lasts, whether that is seconds or days.
+<QuickstartHeader
+  time="20 minutes"
+  build={<>A durable workflow that handles customer orders</>}
+/>
+
+The durable workflow reserves inventory for an order, suspends until a payment confirmation arrives, and then either emails the customer or cancels the order. Every activity result and data event is recorded, so a restart replays the record instead of reserving twice, and the wait for payment holds no thread and no connection while it lasts, whether that is seconds or days.
 
 The finished flow has three steps:
 
@@ -30,11 +35,22 @@ The finished flow has three steps:
     }}
 />
 
-:::info Prerequisites
+<Prerequisites>
 
-- [WSO2 Integrator installed](../setup/setup.md)
+## Prerequisites
 
-:::
+A working WSO2 Integrator environment.
+
+<PrereqCard icon="local" title="Local setup" href="/get-started/setup">
+  Install and launch WSO2 Integrator on your machine.
+</PrereqCard>
+<PrereqCard icon="cloud" title="WSO2 Cloud Account" href="/get-started/setup" cloud>
+  For AI assisted development and WSO2 Cloud deployments.
+</PrereqCard>
+
+</Prerequisites>
+
+<Steps>
 
 ## Step 1: Create the integration
 
@@ -520,6 +536,8 @@ A durable workflow keeps its record in a workflow engine, and by default the run
    time=2026-10-13T07:53:33.306Z level=INFO module=ballerina/workflow message="Activity execution type=sendEmail workflowId=019ffed4-c12e-7e24-a438-8bdaae2b5a29 runId=16f8ef66-ade6-4534-b709-4bc3259b4e3b activityId=855793ce-3be1-36bf-99bb-e247797db228 attempt=1 outcome=success durationMs=9 args={\"orderInfo\":{\"total\":4500,\"customerEmail\":\"ann@example.com\",\"customerId\":\"CUS-9\",\"id\":\"ORD-1\"}} result=null"
    time=2026-10-13T07:53:33.338Z level=INFO module=ballerina/workflow message="" logger="workflow-metrics" sample="workflow.closed" workflow_type="workflow-orderWorkflow" task_kind="none" task_name="none" workflow_id="019ffed4-c12e-7e24-a438-8bdaae2b5a29" run_id="16f8ef66-ade6-4534-b709-4bc3259b4e3b" outcome="success" duration_seconds=2.688
    ```
+
+</Steps>
 
 ## Watch it run
 

@@ -25,13 +25,13 @@ An automation runs your integration logic without requiring an external request,
 
 ## Prerequisites
 
-A working WSO2 Integrator environment. Choose the path that fits how you want to work:
+A working WSO2 Integrator environment.
 
-<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/cloud-setup" cloud>
-  Launch WSO2 Integrator in a browser-based cloud editor.
-</PrereqCard>
-<PrereqCard icon="local" title="Local setup" href="../setup/setup.md">
+<PrereqCard icon="local" title="Local setup" href="/get-started/setup">
   Install and launch WSO2 Integrator on your machine.
+</PrereqCard>
+<PrereqCard icon="cloud" title="WSO2 Cloud Account" href="/get-started/setup" cloud>
+  For AI assisted development and WSO2 Cloud deployments.
 </PrereqCard>
 
 </Prerequisites>

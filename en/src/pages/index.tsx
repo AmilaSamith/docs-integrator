@@ -17,8 +17,10 @@ const quickLinks = [
 ];
 
 const steps = [
-  { title: 'Set up', sub: 'Cloud editor or local install' },
-  { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
+  { title: 'Set up', sub: <Link to="/get-started/setup">
+            Install WSO2 Integrator <span aria-hidden="true">→</span>
+          </Link> },
+  { title: 'Pick a quickstart', sub: 'Choose a style below ↓', active: true },
   { title: 'Design the flow', sub: 'On the canvas or with Copilot' },
   { title: 'Run and deploy', sub: 'Test locally, then ship' },
 ];
@@ -92,12 +94,13 @@ const quickstarts: Quickstart[] = [
     ),
   },
   {
-    title: 'MCP server',
-    description: 'Expose your integrations as tools that AI assistants can call.',
-    to: '/develop-and-test/integration-artifacts/ai-integrations/mcp/exposing-as-mcp',
+    title: 'Durable Workflows',
+    description: 'Long running, crash-safe processes.',
+    to: '/get-started/quickstarts/build-durable-workflow',
     icon: (
       <svg {...svgProps}>
-        <path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0zM12 16v5" />
+        <path d="M12 3 5 6v6c0 5 3 7.5 7 9 4-1.5 7-4 7-9V6l-7-3z" />
+        <path d="m9 12 2 2 4-4" />
       </svg>
     ),
   },
@@ -199,9 +202,9 @@ function HomepageHeader(): ReactNode {
     <LandingHero
       windowTitle="WSO2 Integrator"
       imageAlt="WSO2 Integrator showing an AI agent automation flow alongside the Copilot panel"
-      eyebrow="WSO2 Integrator · Docs"
-      title="Build and deploy integrations with low-code simplicity and pro-code power."
-      subtitle="Guides, tutorials and reference for every product in the platform."
+      eyebrow="WSO2 Integration Platform · Docs"
+      title="WSO2 Integrator"
+      subtitle="Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom."
       search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's get started", to: '/get-started' }}
       secondaryCta={{ label: 'Platform overview', to: '/platform-overview' }}
@@ -224,9 +227,6 @@ function GetStarted(): ReactNode {
           <p className={styles.lead}>Build your first integration in four steps, starting with a quickstart.</p>
         </div>
         <div className={styles.headLinks}>
-          <Link to="/get-started/setup">
-            Install WSO2 Integrator <span aria-hidden="true">→</span>
-          </Link>
           <Link to="/get-started/concepts">
             Key concepts <span aria-hidden="true">→</span>
           </Link>
@@ -248,7 +248,7 @@ function GetStarted(): ReactNode {
       <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      <p className={styles.sub}>Pick an integration type to start its quickstart.</p>
+      <p className={styles.sub}>Pick an integration style to start building.</p>
       <div className={styles.tileGrid}>
         {quickstarts.map((q) => (
           <Link key={q.title} to={q.to} className={styles.tile}>
@@ -370,7 +370,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Home"
-      description="Build and deploy integrations with low-code simplicity and pro-code power.">
+      description="Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom.">
       <div className={styles.page}>
         <main>
           <HomepageHeader />

@@ -55,6 +55,7 @@ export default function HeroSearch({ quickLinks }: { quickLinks: HeroQuickLink[]
   }, []);
 
   const openModal = () => {
+    if (!query.trim()) return;
     setFocused(false);
     setModalOpen(true);
   };

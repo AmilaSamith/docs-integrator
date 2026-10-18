@@ -5,48 +5,14 @@
   margin: 16px 0;
 }
 
-.badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.badgeAccent,
-.badgeNeutral {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 999px;
-}
-
-.badgeAccent {
-  background: #FFF0E5;
-  color: #8A3A08;
-}
-
-[data-theme='dark'] .badgeAccent {
-  background: rgba(226, 86, 11, 0.18);
-  color: var(--wso2-accent-text);
-}
-
-.badgeNeutral {
-  background: var(--wso2-well-bg);
-  color: var(--ifm-font-color-base);
-  text-transform: none;
-  letter-spacing: normal;
-}
-
 /* "Time" is always short ("Under 10 minutes"); "What you'll build" is
-   often a full sentence. An even split (the original repeat(auto-fit,
-   minmax(...)) -- two equal fractions) left Time with a lot of empty
-   space and squeezed Build's description. Time now sizes to its own
-   content (never more than 45% of the row) and Build takes the rest,
-   so a long description gets the room an equal split wasn't giving it. */
+   often a full sentence. Time sizes to its own content (max-content)
+   instead of reserving a wide fixed/percentage share of the row, so
+   the column ends right after the text and Build gets everything else
+   -- no empty gap sitting between the two. */
 .grid {
   display: grid;
-  grid-template-columns: minmax(180px, 45%) minmax(min(260px, 100%), 1fr);
+  grid-template-columns: max-content minmax(min(260px, 100%), 1fr);
   gap: 1px;
   background: var(--wso2-surface-border);
   border: 1px solid var(--wso2-surface-border);

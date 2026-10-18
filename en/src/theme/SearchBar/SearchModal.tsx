@@ -69,9 +69,15 @@ function hitTitleHtml(r: SearchResult): string {
 }
 
 function hitPath(r: SearchResult): string {
-  const items = r.page
-    ? (r.page.b ?? []).concat(r.page.t).concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s)
-    : (r.document.b ?? []);
+  if (!r.page) return concatDocumentPath(r.document.b ?? []);
+  // A category's own index page often shares its title with the category
+  // label that's already the last entry of its breadcrumb (e.g. a folder
+  // "Add Integration Artifacts" with an index doc titled the same) --
+  // concatenating page.t unconditionally would then show that label
+  // twice in a row. Only append it when it actually adds information.
+  const b = r.page.b ?? [];
+  const withTitle = b.length > 0 && b[b.length - 1] === r.page.t ? b : b.concat(r.page.t);
+  const items = withTitle.concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s);
   return concatDocumentPath(items);
 }
 

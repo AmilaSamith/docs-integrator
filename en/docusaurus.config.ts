@@ -16,8 +16,8 @@ import {
 } from './src/theme-shared/themeConfig';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
-  tagline: 'Build integrations with low-code simplicity and pro-code power',
+  title: 'WSO2 Integrator Official Documentation',
+  tagline: 'Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom.',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -113,6 +113,18 @@ const config: Config = {
               // (restyled in theme/DocVersionBanner) even though Next is
               // still what most visitors land on by default.
               banner: 'unreleased',
+            },
+            // The version ID itself stays full semver (it's the literal
+            // `versioned_docs/version-5.0.0` / `versioned_sidebars/
+            // version-5.0.0-sidebars.json` folder/file name, and
+            // versions.json's own entry -- renaming any of those is a
+            // bigger, separate change). `label` only overrides what's
+            // DISPLAYED (version dropdown, DocVersionBadge/Banner) to the
+            // one-decimal "5.0" instead. The next cut (`npm run docusaurus
+            // docs:version 5.1.0`) gets its own entry here the same way,
+            // e.g. '5.1.0': { label: '5.1' }.
+            '5.0.0': {
+              label: '5.0',
             },
           },
         },
