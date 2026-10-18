@@ -89,13 +89,6 @@ jobs:
           # would still point at the production family root even on a
           # fork build using FORK_BASE_PATH above for its own baseUrl.
           CROSS_PRODUCT_BASE: ${{ steps.cfg.outputs.cross_product_base }}
-          # Default Node heap isn't enough once a branch carries more
-          # than one versioned_docs/ snapshot (confirmed: wso2-integrator's
-          # own 5.1.0 cut crashed this exact step locally with
-          # "JavaScript heap out of memory" / exit 134 until raised).
-          # ubuntu-latest runners have 16GB+ RAM, so this has headroom
-          # to grow with future version cuts.
-          NODE_OPTIONS: --max-old-space-size=8192
 
       # Fork builds only (FORK_BASE_PATH set = a personal fork's own GitHub
       # Pages demo, not the real org pipeline): keep search engines from
