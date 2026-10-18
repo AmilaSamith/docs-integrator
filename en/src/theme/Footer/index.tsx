@@ -23,11 +23,20 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
+import { openCookieSettings } from '@site/src/components/CookieConsent';
 
 import styles from './styles.module.css';
 
 type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
+
+function CookieIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 4 3.5 3 3 0 0 0 5 5.5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function ExternalIcon(): ReactNode {
   return (
@@ -116,16 +125,31 @@ function FooterLink({ item }: { item: FooterItem }): ReactNode {
 export default function Footer(): ReactNode {
   const { footer } = useThemeConfig() as { footer?: { links?: FooterColumn[]; copyright?: string } };
   const { siteConfig } = useDocusaurusContext();
-  // The real lockup file, used as-is -- the footer background is always
-  // navy regardless of the site's light/dark theme, so it always needs
-  // the white+orange variant (the black one would be invisible here).
-  const logoSrc = useBaseUrl('/img/wso2-integration-platform-full-colour.svg');
+  // The footer background is always dark charcoal regardless of the
+  // site's light/dark theme, so it always needs the white logo (the
+  // black one would be invisible here).
+  const logoSrc = useBaseUrl('/img/integration-platform-logo-white.png');
 
   if (!footer) return null;
   const { links, copyright } = footer;
 
   return (
     <footer className={styles.footer}>
+      <div className={styles.helpRow}>
+        <div className={styles.helpInner}>
+          <span className={styles.helpText}>
+            <strong>Need help?</strong>
+            <span>Ask the community or check the answers to common questions.</span>
+          </span>
+          <span className={styles.helpLinks}>
+            <Link className={styles.helpLink} to="/community">Community</Link>
+            <span className={styles.helpSep} aria-hidden="true">·</span>
+            <a className={styles.helpLink} href="https://discord.com/invite/wso2" target="_blank" rel="noopener noreferrer">Discord</a>
+            <span className={styles.helpSep} aria-hidden="true">·</span>
+            <Link className={styles.helpLink} to="/reference/faq">FAQ</Link>
+          </span>
+        </div>
+      </div>
       <div className={styles.footerTop}>
         <div className={styles.footerBrandCol}>
           <div className={styles.footerBrand}>
@@ -158,11 +182,26 @@ export default function Footer(): ReactNode {
       <div className={styles.footerBottom}>
         {copyright && <span className={styles.footerCopyright}>{copyright}</span>}
         <div className={styles.footerLegal}>
-          {/* Privacy policy / Terms of use aren't linked here yet -- no
-              confirmed URL for either; add once we have real ones.
-              "Report an issue" used to live here -- moved to the
-              floating ReportIssueButton (src/components/FloatingActions),
-              present on every page, not just the footer. */}
+          {/* "Report an issue" used to live here -- moved to the floating
+              ReportIssueButton (src/components/FloatingActions), present
+              on every page, not just the footer. Terms of use isn't
+              linked yet -- no confirmed URL; add once there is one. */}
+          <a className={styles.footerLegalLink} href="https://wso2.com/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Privacy Policy
+          </a>
+          <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
+            Cookie Policy
+          </a>
+          {/* Reopens CookieConsent's settings dialog (src/components/
+              CookieConsent) via its exported event-based helper, rather
+              than a direct import -- CookieConsent owns its own mount
+              (theme/Root.js) and state; the footer only needs to ask it
+              to open, like clicking "Cookie settings" in the banner
+              itself. */}
+          <button type="button" className={styles.footerCookieBtn} onClick={openCookieSettings}>
+            <CookieIcon />
+            Cookie settings
+          </button>
         </div>
       </div>
     </footer>
