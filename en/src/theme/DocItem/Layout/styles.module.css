@@ -5,6 +5,49 @@
   margin-top: 0;
 }
 
+/* "ICP · 2.1.0" pill above the breadcrumb row on every /icp/* page --
+   same pill treatment as the sidebar's own ICP category badge (see
+   DocSidebarItem/Category/styles.module.css's .categoryBadge/
+   .categoryVersionBadge), so the two read as the same chip. */
+.productVersionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--wso2-text-muted);
+}
+
+.productVersionPillSep {
+  opacity: 0.6;
+}
+
+/* Wraps whichever pill rendered (the ICP page pill, or the stock
+   DocVersionBadge) -- a fixed 12px to the title below, regardless of
+   that title's own margin-top (DocItemContent's first heading isn't
+   this row's own DOM sibling, so its margin can't be zeroed with a
+   sibling selector; the global selector below reaches it instead). */
+.versionRow {
+  margin-bottom: 12px;
+}
+
+.versionRow:empty {
+  margin-bottom: 0;
+}
+
+/* `~` (general sibling), not `+` (adjacent) -- DocItemContent isn't
+   always this row's immediate next sibling (DocItemTOCMobile renders
+   between them on mobile viewports when the page has a TOC). */
+.versionRow:not(:empty) ~ * :global(.markdown h1:first-child) {
+  margin-top: 0 !important;
+}
+
 /* Breadcrumb + "Edit this page"/"Copy page", see this file's docstring. */
 .topRow {
   display: flex;

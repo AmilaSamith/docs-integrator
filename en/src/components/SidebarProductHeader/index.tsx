@@ -39,24 +39,21 @@ export type ProductKey = 'cloud' | 'integrator' | 'connectors';
 /** `path` is relative to CROSS_PRODUCT_BASE (siteConfig.customFields.crossProductBase,
  * set per-branch in docusaurus.config.ts from themeConfig.ts's CROSS_PRODUCT_BASE --
  * can't import that directly here, see this const's own docstring above). */
-const PRODUCTS: Record<ProductKey, { label: string; description: string; path: string; icon: () => ReactNode; tone: string }> = {
+const PRODUCTS: Record<ProductKey, { label: string; path: string; icon: () => ReactNode; tone: string }> = {
   cloud: {
     label: 'SaaS',
-    description: 'Cloud-hosted integration platform',
     path: 'saas/',
     icon: CloudIcon,
     tone: 'iconSaas',
   },
   integrator: {
     label: 'WSO2 Integrator',
-    description: 'Integrations, automations, AI agents',
     path: 'integrator/',
     icon: ProductIcon,
     tone: 'iconIntegrator',
   },
   connectors: {
     label: 'WSO2 Connectors',
-    description: 'Pre-built connectors for common systems',
     path: 'connectors/catalog',
     icon: PlugIcon,
     tone: 'iconConnectors',
@@ -225,11 +222,18 @@ function useVersionModel(): VersionModel | null {
   const mainPathOf = (v: (typeof docsVersions)[number]) =>
     v.docs.find((doc) => doc.id === v.mainDocId)?.path ?? v.path;
 
-  const versions: SwitcherVersion[] = docsVersions.map((v) => {
-    const tag = tagFor(v);
-    const targetDoc = activeDocContext.alternateDocVersions[v.name] ?? v.docs.find((doc) => doc.id === v.mainDocId);
-    return { key: v.name, label: v.label, tag, tone: TONE_FOR_TAG[tag], path: targetDoc?.path ?? v.path };
-  });
+  // docsVersions itself lists `current` ("Next") first -- reorder so the
+  // list reads Latest, then Older (their existing relative order, which
+  // is already newest-first), with Next last: a visitor opening the
+  // version picker is almost always after a released version, not the
+  // preview, so that's what should be at the top.
+  const versions: SwitcherVersion[] = [...docsVersions]
+    .sort((a, b) => Number(a.name === 'current') - Number(b.name === 'current'))
+    .map((v) => {
+      const tag = tagFor(v);
+      const targetDoc = activeDocContext.alternateDocVersions[v.name] ?? v.docs.find((doc) => doc.id === v.mainDocId);
+      return { key: v.name, label: v.label, tag, tone: TONE_FOR_TAG[tag], path: targetDoc?.path ?? v.path };
+    });
 
   const activeVersion =
     candidates.map((c) => docsVersions.find((v) => v === c)).find((v) => v !== undefined) ?? docsVersions[0];
@@ -365,9 +369,8 @@ function Switcher({ model, compact }: { model: VersionModel | null; compact: boo
                   </span>
                   <span className={styles.rowText}>
                     <span>{product.label}</span>
-                    <span className={styles.rowDesc}>{product.description}</span>
+                    {isCurrent && <span className={styles.rowMark}>Current</span>}
                   </span>
-                  {isCurrent && <span className={styles.rowMark}>Current</span>}
                 </>
               );
               const nameClass = clsx(styles.segBtn, styles.rowName, (rowVersioned || staticLatest) && styles.rowNameHalf);

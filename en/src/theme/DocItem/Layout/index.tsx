@@ -50,6 +50,13 @@ import styles from './styles.module.css';
 // `/connectors/catalog` -- same bug, same fix, two copies of this regex.
 const CONNECTOR_CATALOG_PATH = /\/catalog\/?$/;
 
+// Mirrors docs/icp/_category_.json's own `customProps.version` literal --
+// keep both in sync by hand (JSON can't import a shared TS constant).
+// This is the pill shown above every page under /icp/*, next to the
+// sidebar category's matching "ICP · 2.1.0" pill.
+const ICP_PATH = /^\/icp(\/|$)/;
+const ICP_VERSION = '2.1.0';
+
 function useDocTOC() {
   const { frontMatter, toc } = useDoc();
   const windowSize = useWindowSize();
@@ -66,6 +73,7 @@ export default function DocItemLayout({ children }: Props): ReactNode {
   const { metadata, frontMatter } = useDoc();
   const { pathname } = useLocation();
   const isConnectorCatalog = CONNECTOR_CATALOG_PATH.test(pathname);
+  const isICP = ICP_PATH.test(pathname);
   // Opt-in for a card-grid landing page (hide_table_of_contents: true,
   // wide_layout: true) -- lets its content use the width the TOC column
   // would have taken instead of staying capped at prose reading width
@@ -91,7 +99,15 @@ export default function DocItemLayout({ children }: Props): ReactNode {
                 <CopyPageButton />
               </div>
             </div>
-            <DocVersionBadge />
+            <div className={styles.versionRow}>
+              {isICP ? (
+                <span className={styles.productVersionPill}>
+                  ICP <span className={styles.productVersionPillSep} aria-hidden="true">·</span> {ICP_VERSION}
+                </span>
+              ) : (
+                <DocVersionBadge />
+              )}
+            </div>
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />

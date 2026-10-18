@@ -11,7 +11,9 @@
  *
  * A category can carry a small pill next to its label via
  * `customProps.badge` in its _category_.json (e.g. "ICP") -- for short
- * qualifiers that shouldn't lengthen the label itself.
+ * qualifiers that shouldn't lengthen the label itself. A second,
+ * quieter pill can sit next to it via `customProps.version` (e.g.
+ * "2.1.0") for that product's current release number.
  *
  * A category without a link of its own (`link: null`) can still make its
  * title land on its first child -- the overview page, listed first inside
@@ -124,7 +126,23 @@ function CollapseButton({
   );
 }
 
-function CategoryLinkLabel({ label, level, badge }: { label: string; level: number; badge?: string }): ReactNode {
+function CategoryLinkLabel({
+  label,
+  level,
+  badge,
+  version,
+}: {
+  label: string;
+  level: number;
+  badge?: string;
+  /** A second, lighter pill next to `badge` (customProps.version in
+   * _category_.json) -- for a product's current release number (e.g.
+   * ICP's "2.1.0"), which isn't a qualifier of the label the way
+   * `badge` is, so it gets its own, quieter treatment rather than
+   * sharing the same pill. Only rendered alongside `badge`; a lone
+   * version with no badge has nothing to sit "near". */
+  version?: string;
+}): ReactNode {
   return (
     <span title={label} className={level === 1 ? styles.categoryLinkLabelTop : styles.categoryLinkLabel}>
       {level === 1 && <span className={styles.categoryIcon}>{railIconFor(label)}</span>}
@@ -136,7 +154,10 @@ function CategoryLinkLabel({ label, level, badge }: { label: string; level: numb
         // CSS-module hashes it can't predict from outside this file.
         <span className={clsx(styles.categoryTextCol, 'sidebar-category-badge-wrap')}>
           <span className={clsx(styles.categoryTextOneLine, 'sidebar-category-label')}>{label}</span>
-          <span className={clsx(styles.categoryBadge, 'sidebar-category-badge')}>{badge}</span>
+          <span className={clsx(styles.categoryBadgeRow, 'sidebar-category-badge-row')}>
+            <span className={clsx(styles.categoryBadge, 'sidebar-category-badge')}>{badge}</span>
+            {version && <span className={clsx(styles.categoryVersionBadge, 'sidebar-category-version-badge')}>{version}</span>}
+          </span>
         </span>
       ) : (
         label
@@ -248,7 +269,12 @@ function DocSidebarItemCategoryCollapsible({ item, onItemClick, activePath, leve
           aria-expanded={collapsible && !href ? !collapsed : undefined}
           href={landOnFirst ? firstLink : collapsible ? (hrefWithSSRFallback ?? '#') : hrefWithSSRFallback}
           {...props}>
-          <CategoryLinkLabel label={label} level={level} badge={item.customProps?.badge as string | undefined} />
+          <CategoryLinkLabel
+            label={label}
+            level={level}
+            badge={item.customProps?.badge as string | undefined}
+            version={item.customProps?.version as string | undefined}
+          />
         </Link>
         {href && collapsible && (
           <CollapseButton
