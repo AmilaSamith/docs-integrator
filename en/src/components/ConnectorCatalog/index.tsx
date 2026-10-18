@@ -36,19 +36,27 @@ const CATEGORY_TINTS: Record<string, [string, string]> = {
 };
 const DEFAULT_TINT: [string, string] = ['#EDEFF3', '#3C4657'];
 
-function tintOf(category: string): [string, string] {
+/** Exported for ConnectorHeader (the connector detail page's own identity
+ * card) -- same fallback-icon tinting/initials, so a connector's own page
+ * and its catalog card read as the same badge regardless of which one a
+ * reader saw first. */
+export function tintOf(category: string): [string, string] {
   return CATEGORY_TINTS[category] ?? DEFAULT_TINT;
 }
 
-function initialsOf(name: string): string {
-  return name
+/** First letter of each of the first two words for a multi-word name
+ * ("AWS S3" -> "AW"... no -- "Azure Files" -> "AF"), or the first two
+ * letters of a single-word name ("Alfresco" -> "Al", "Ardoq" -> "Ar") --
+ * matches the catalog design reference's own two-letter marks exactly,
+ * Title Case (not all-caps, which made "Alfresco" read as the unrelated
+ * "AI" connector's own initials). */
+export function initialsOf(name: string): string {
+  const words = name
     .replace(/[^A-Za-z0-9 ]/g, '')
     .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('')
-    .toUpperCase();
+    .filter(Boolean);
+  const raw = words.length > 1 ? words.slice(0, 2).map((w) => w[0]).join('') : (words[0] ?? '').slice(0, 2);
+  return raw.length > 0 ? raw[0]!.toUpperCase() + raw.slice(1).toLowerCase() : raw;
 }
 
 /** A description long enough to need "Show more" wraps past roughly

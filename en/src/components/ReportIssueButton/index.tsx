@@ -47,6 +47,12 @@ const ISSUE_CHOOSER_URLS: Record<ProductKey, string> = {
   connectors: 'https://github.com/wso2/product-integrator/issues/new/choose',
 };
 
+/** Exported for DocFeedback's own "Report an issue" link -- same product
+ * detection, same map, not duplicated. */
+export function issueUrlFor(baseUrl: string): string {
+  return ISSUE_CHOOSER_URLS[detectCurrentProduct(baseUrl)];
+}
+
 function FlagIcon(): ReactNode {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

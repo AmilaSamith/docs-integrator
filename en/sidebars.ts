@@ -10,12 +10,13 @@ import { connectorVersionedDocs } from './src/utils/sidebarUtils';
  */
 const sidebars: SidebarsConfig = {
   mainSidebar: [
-    { type: 'doc', id: 'overview', label: 'Overview' },
-    { type: 'doc', id: 'using-connectors', label: 'Using Connectors' },
-    // ── Connector Catalog ──
+    // ── Connector Catalog (pinned, flat row -- see DocSidebarItem/Category's
+    //    collapseOwnPage customProps and custom.css's .catalog-pinned-row) ──
     {
       type: 'category',
       label: 'Connector Catalog',
+      className: 'catalog-pinned-row',
+      customProps: { badge: '192', collapseOwnPage: true },
       collapsed: true,
       link: { type: 'doc', id: 'catalog/index' },
       items: [
@@ -1965,6 +1966,8 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    { type: 'doc', id: 'overview', label: 'Overview', customProps: { separatorBefore: 'WSO2 Connectors' } },
+    { type: 'doc', id: 'using-connectors', label: 'Using Connectors' },
     // ── Build a Connector ──
     {
       type: 'category',
