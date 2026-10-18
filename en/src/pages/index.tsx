@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import LandingHero from '@site/src/components/LandingHero';
+import LandingHero, { TitleSuffix } from '@site/src/components/LandingHero';
 import HeroSearch from '@site/src/components/LandingHero/HeroSearch';
 
 import styles from './index.module.css';
@@ -17,7 +17,9 @@ const quickLinks = [
 ];
 
 const steps = [
-  { title: 'Set up', sub: 'Create your WSO2 Cloud account' },
+  { title: 'Set up', sub: <Link to="/get-started/setup">
+            Create your WSO2 Cloud account <span aria-hidden="true">→</span>
+          </Link> },
   { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
   { title: 'Design the flow', sub: 'On the canvas or with Copilot' },
   { title: 'Run and deploy', sub: 'Test and ship, straight from the cloud' },
@@ -199,9 +201,9 @@ function HomepageHeader(): ReactNode {
     <LandingHero
       windowTitle="WSO2 Cloud Console"
       imageAlt="Integration Platform on WSO2 Cloud"
-      eyebrow="WSO2 Cloud · Docs"
-      title="Integration Platform on WSO2 Cloud"
-      subtitle="Build, deploy, and manage integrations at cloud speed."
+      eyebrow="WSO2 Integration Platform · Docs"
+      title={<>Integration Platform on WSO2 Cloud <TitleSuffix>(Saas)</TitleSuffix></>}
+      subtitle="Build, connect, and run integrations, MCP servers, and AI agents with built-in governance, and architectural freedom at cloud speed."
       search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's get started", to: '/get-started' }}
       secondaryCta={{ label: 'Platform overview', to: '/platform-overview' }}
@@ -224,9 +226,6 @@ function GetStarted(): ReactNode {
           <p className={styles.lead}>Build your first integration in four steps, starting with a quickstart.</p>
         </div>
         <div className={styles.headLinks}>
-          <Link to="/get-started/setup">
-            Set up WSO2 Cloud <span aria-hidden="true">→</span>
-          </Link>
           <Link to="/get-started/concepts">
             Key concepts <span aria-hidden="true">→</span>
           </Link>
@@ -248,7 +247,7 @@ function GetStarted(): ReactNode {
       <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      <p className={styles.sub}>Pick an integration type to start its quickstart.</p>
+      <p className={styles.sub}>Pick an integration type to start building.</p>
       <div className={styles.tileGrid}>
         {quickstarts.map((q) => (
           <Link key={q.title} to={q.to} className={styles.tile}>
@@ -277,7 +276,7 @@ function Explore(): ReactNode {
             Explore the platform
           </span>
           <Heading as="h2" className={styles.h2Xl}>
-            Everything from first canvas to production
+            Everything from design canvas to production
           </Heading>
         </div>
 
