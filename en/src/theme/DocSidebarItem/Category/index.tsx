@@ -129,9 +129,14 @@ function CategoryLinkLabel({ label, level, badge }: { label: string; level: numb
     <span title={label} className={level === 1 ? styles.categoryLinkLabelTop : styles.categoryLinkLabel}>
       {level === 1 && <span className={styles.categoryIcon}>{railIconFor(label)}</span>}
       {badge ? (
-        <span className={styles.categoryTextCol}>
-          <span className={styles.categoryTextOneLine}>{label}</span>
-          <span className={styles.categoryBadge}>{badge}</span>
+        // Plain, unhashed classnames alongside the module ones -- so a
+        // page-specific override (e.g. custom.css's .catalog-pinned-row)
+        // can restyle just one category's badge/label layout (stacked ->
+        // inline, muted outline -> filled pill) without reaching into
+        // CSS-module hashes it can't predict from outside this file.
+        <span className={clsx(styles.categoryTextCol, 'sidebar-category-badge-wrap')}>
+          <span className={clsx(styles.categoryTextOneLine, 'sidebar-category-label')}>{label}</span>
+          <span className={clsx(styles.categoryBadge, 'sidebar-category-badge')}>{badge}</span>
         </span>
       ) : (
         label
@@ -142,7 +147,13 @@ function CategoryLinkLabel({ label, level, badge }: { label: string; level: numb
 
 export default function DocSidebarItemCategory(props: Props): ReactNode {
   const visibleChildren = useVisibleSidebarItems(props.item.items, props.activePath);
-  if (visibleChildren.length === 0) {
+  // A category with customProps.badge (e.g. the connector catalog's pinned
+  // row) always keeps its full icon+badge treatment (DocSidebarItemCategoryCollapsible's
+  // CategoryLinkLabel), even on a page where its own items happen to come
+  // back empty or pruned to one sibling -- stock behaviour falls back to a
+  // bare DocSidebarItemLink here (no icon, no badge support at all), which
+  // is a visual downgrade this particular row can't afford.
+  if (visibleChildren.length === 0 && !props.item.customProps?.badge) {
     return <DocSidebarItemCategoryEmpty {...props} />;
   }
   return <DocSidebarItemCategoryCollapsible {...props} />;

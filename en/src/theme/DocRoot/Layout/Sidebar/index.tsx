@@ -85,7 +85,12 @@ function connectorPrefixFor(pathname: string, baseUrl: string): string | null {
 
 function asPlainLink(item: PropSidebarItemCategory): PropSidebarItemLink | PropSidebarItemCategory {
   if (!item.href) return item;
-  return { key: item.key, className: item.className, type: 'link', href: item.href, label: item.label };
+  // customProps carries through too (e.g. a connector-count `badge`) --
+  // DocSidebarItem/Link's own LinkLabel renders it the same way
+  // DocSidebarItem/Category's CategoryLinkLabel does, so the row looks
+  // identical whether it's currently rendered as a link (here) or as a
+  // category with its items scoped down to one connector (below).
+  return { key: item.key, className: item.className, customProps: item.customProps, type: 'link', href: item.href, label: item.label };
 }
 
 function scopeSidebarToConnector(sidebar: PropSidebarItem[], pathname: string, baseUrl: string): PropSidebarItem[] {
