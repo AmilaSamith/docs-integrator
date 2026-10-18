@@ -1,0 +1,208 @@
+/**
+ * Values from the "Connector detail" design reference
+ * (ConnectorDetail.dc.html's own identity card) -- mostly literal (not
+ * site theme tokens) with a dark override, same pattern as
+ * Prerequisites/SearchModal.
+ */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid #ECE6E0;
+  border-radius: 18px;
+  background: #FBF8F5;
+}
+
+[data-theme='dark'] .card {
+  border-color: #3B3532;
+  background: #1A1715;
+}
+
+.top {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.icon,
+.iconFallback {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+.icon {
+  object-fit: contain;
+  background: #FFFFFF;
+  border: 1px solid #ECE6E0;
+}
+
+[data-theme='dark'] .icon {
+  background: #1E1B19;
+  border-color: #3B3532;
+}
+
+.iconFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.titleCol {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.versionBadge {
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: #FFFFFF;
+  border: 1px solid #E3DCD5;
+  color: #3A3A44;
+}
+
+[data-theme='dark'] .versionBadge {
+  background: #1E1B19;
+  border-color: #4A423D;
+  color: #D8CFC8;
+}
+
+.description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3A3A44;
+}
+
+[data-theme='dark'] .description {
+  color: #D8CFC8;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tagVendor,
+.tagCategory {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #E3DCD5;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tagVendor {
+  background: #F3EFEB;
+  color: #2E2A27;
+}
+
+[data-theme='dark'] .tagVendor {
+  background: #2A2522;
+  border-color: #4A423D;
+  color: #EDE7E2;
+}
+
+.tagCategory {
+  background: transparent;
+  color: #4A4A55;
+}
+
+[data-theme='dark'] .tagCategory,
+[data-theme='dark'] .tagVendor,
+[data-theme='dark'] .tagCategory {
+  border-color: #4A423D;
+}
+
+[data-theme='dark'] .tagCategory {
+  color: #B3A9A1;
+}
+
+/* 1px-gap grid whose own background shows through as the dividers --
+   same trick as a bordered table without actual <table> borders. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 1px;
+  background: #E3DCD5;
+  border: 1px solid #E3DCD5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .grid {
+  background: #3B3532;
+  border-color: #3B3532;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 16px;
+  background: #FFFFFF;
+}
+
+[data-theme='dark'] .cell {
+  background: #1E1B19;
+}
+
+.cellLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5A5A66;
+}
+
+[data-theme='dark'] .cellLabel {
+  color: #B3A9A1;
+}
+
+.cellValue {
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.cellValue code {
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  font-size: 13.5px;
+  background: transparent;
+  padding: 0;
+}
+
+.cellValue em {
+  font-weight: 500;
+  color: var(--wso2-text-muted);
+}

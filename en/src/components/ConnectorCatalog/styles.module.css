@@ -26,13 +26,13 @@
 .sidebarSearch {
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 12px;
-  border-radius: 10px;
-  background: var(--wso2-well-bg);
-  border: 1px solid var(--wso2-surface-border);
-  color: var(--wso2-text-muted);
+  gap: 10px;
+  height: 44px;
+  padding: 0 8px 0 12px;
+  border-radius: 11px;
+  background: var(--ifm-background-color);
+  border: 1.5px solid var(--wso2-surface-border);
+  color: var(--ifm-color-primary);
 }
 
 .sidebarSearch:focus-within {
@@ -143,23 +143,39 @@
   white-space: nowrap;
 }
 
+/* Its own highlighted card (background/border), not plain text under a
+   hairline -- matches the "Missing a connector?" box in the catalog
+   design reference, which sits visually apart from the filter groups
+   above it rather than reading as one more of them. */
 .promo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  border-top: 1px solid var(--wso2-border-subtle);
-  padding-top: 0.75rem;
-  font-size: 12px;
-  color: var(--wso2-text-muted);
+  gap: 6px;
+  margin-top: 0.25rem;
+  border-top: none;
+  border-radius: 12px;
+  background: var(--wso2-promo-bg, #FFF6EF);
+  border: 1px solid var(--wso2-promo-border, #F6DCC8);
+  padding: 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--wso2-text-2, #4A3A2E);
+}
+
+[data-theme='dark'] .promo {
+  --wso2-promo-bg: rgba(226, 86, 11, 0.1);
+  --wso2-promo-border: #4A2E1A;
+  --wso2-text-2: #D8CFC8;
 }
 
 .promo b {
   color: var(--wso2-heading-color);
-  font-size: 12.5px;
+  font-size: 14px;
 }
 
 .promo a {
   color: var(--ifm-color-primary);
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -329,13 +345,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 30px;
-  height: 30px;
+  min-width: 34px;
+  height: 34px;
   border: 1px solid var(--wso2-surface-border);
-  border-radius: 999px;
+  border-radius: 9px;
   background: var(--ifm-background-color);
   color: var(--wso2-heading-color);
   font-size: 13px;
+  font-weight: 700;
   font-family: inherit;
   cursor: pointer;
 }
@@ -367,11 +384,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border-radius: 14px;
+  gap: 12px;
+  border-radius: 16px;
   border: 1px solid var(--wso2-surface-border);
   background: var(--ifm-background-surface-color);
-  padding: 16px;
+  padding: 20px;
   box-shadow: var(--wso2-card-shadow);
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
@@ -401,26 +418,26 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
-  height: 32px;
+  gap: 12px;
+  height: 38px;
 }
 
 .versionBadge {
   flex-shrink: 0;
   margin-left: auto;
-  padding: 1px 8px;
-  border-radius: 999px;
+  padding: 3px 8px;
+  border-radius: 6px;
   background: var(--wso2-well-bg);
-  color: var(--wso2-text-muted);
-  font-size: 10.5px;
-  font-weight: 600;
+  color: var(--wso2-text-2, var(--wso2-text-muted));
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  font-size: 12px;
 }
 
 .cardIcon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   object-fit: contain;
 }
 
@@ -428,10 +445,10 @@
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  font-size: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -441,16 +458,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   color: var(--wso2-heading-color);
 }
 
 .cardDesc {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--wso2-text-muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--wso2-text-2, var(--wso2-text-muted));
 }
 
 .showMore {
@@ -484,23 +501,26 @@
 .tagCategory {
   display: inline-flex;
   align-items: center;
-  padding: 2px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
+  border: 1px solid var(--wso2-surface-border);
+  font-size: 12px;
+  font-weight: 700;
   line-height: 1.6;
   white-space: nowrap;
 }
 
+/* Filled-neutral, not accent-orange -- the vendor name is identifying
+   detail, not a call to action, so it reads at the same visual weight
+   as the (outlined) category tag beside it instead of shouting over it. */
 .tagVendor {
-  background: var(--ifm-color-primary);
-  color: #fff;
+  background: var(--wso2-well-bg);
+  color: var(--wso2-heading-color);
 }
 
 .tagCategory {
   background: transparent;
-  border: 1px solid var(--wso2-accent-text);
-  color: var(--wso2-accent-text);
+  color: var(--wso2-text-2, var(--wso2-text-muted));
 }
 
 /* ── Empty state ── */
