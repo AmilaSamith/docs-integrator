@@ -277,7 +277,7 @@ function Explore(): ReactNode {
             Explore the platform
           </span>
           <Heading as="h2" className={styles.h2Xl}>
-            Everything from first canvas to production
+            Everything from design canvas to production
           </Heading>
         </div>
 

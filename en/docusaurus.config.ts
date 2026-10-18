@@ -115,14 +115,16 @@ const config: Config = {
               banner: 'unreleased',
             },
             // The version ID itself stays full semver (it's the literal
-            // `versioned_docs/version-5.0.0` / `versioned_sidebars/
-            // version-5.0.0-sidebars.json` folder/file name, and
+            // `versioned_docs/version-X.Y.Z` / `versioned_sidebars/
+            // version-X.Y.Z-sidebars.json` folder/file name, and
             // versions.json's own entry -- renaming any of those is a
             // bigger, separate change). `label` only overrides what's
             // DISPLAYED (version dropdown, DocVersionBadge/Banner) to the
-            // one-decimal "5.0" instead. The next cut (`npm run docusaurus
-            // docs:version 5.1.0`) gets its own entry here the same way,
-            // e.g. '5.1.0': { label: '5.1' }.
+            // one-decimal form instead. The next cut after this one gets
+            // its own entry here the same way.
+            '5.1.0': {
+              label: '5.1',
+            },
             '5.0.0': {
               label: '5.0',
             },
