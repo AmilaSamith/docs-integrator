@@ -23,13 +23,14 @@ Event integrations are designed for reactive workflows triggered by messages fro
 
 A working WSO2 Integrator environment.
 
-<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/setup">
-  Launch WSO2 Integrator in a browser-based cloud editor.
+<PrereqCard icon="cloud" title="WSO2 Cloud setup" href="/get-started/setup">
+  Sign up and launch WSO2 Integrator in the browser-based cloud editor.
+</PrereqCard>
+<PrereqCard icon="cloud" title="RabbitMQ" code="docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management">
+  A running instance, or start one with Docker:
 </PrereqCard>
 
 </Prerequisites>
-
-You'll also need a running RabbitMQ instance (or use Docker: `docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management`).
 
 <Steps>
 

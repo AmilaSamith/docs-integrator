@@ -26,11 +26,9 @@ File integrations are ideal for batch uploads, scheduled file processing, and ET
 
 A working WSO2 Integrator environment.
 
-<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/setup">
-  Launch WSO2 Integrator in a browser-based cloud editor.
+<PrereqCard icon="cloud" title="WSO2 Cloud setup" href="/get-started/setup">
+  Sign up and launch WSO2 Integrator in the browser-based cloud editor.
 </PrereqCard>
-
-</Prerequisites>
 
 You'll also need a file at the listener path to watch. Create one if you don't have one:
 
@@ -51,6 +49,8 @@ echo test > C:\tmp\testfile.txt
 
 </TabItem>
 </Tabs>
+
+</Prerequisites>
 
 <Steps>
 
