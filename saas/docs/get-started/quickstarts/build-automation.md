@@ -17,8 +17,8 @@ An automation runs your integration logic without an external request, on demand
 
 A working WSO2 Cloud environment.
 
-<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/setup">
-  Sign up and launch WSO2 Cloud in the browser-based editor.
+<PrereqCard icon="cloud" title="WSO2 Cloud setup" href="/get-started/setup">
+  Sign up and launch WSO2 Integrator in the browser-based cloud editor.
 
 ## Step 1: Create the integration
 
