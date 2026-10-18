@@ -17,9 +17,9 @@ import TabItem from '@theme/TabItem';
 
 # Process Inbound EDI Purchase Orders from Trading Partners
 
-**Time:** About 40 minutes | **What you'll build:** An integration that picks up EDI purchase orders a trading partner drops on an SFTP server, identifies the sender from the envelope, and parses each order into typed Ballerina records, without losing the whole batch to one malformed message.
+**Time:** About 30 minutes | **What you'll build:** An integration that picks up EDI purchase orders a trading partner drops on an SFTP server, identifies the sender from the envelope, and parses each order into typed Ballerina records, without losing the whole batch to one malformed message.
 
-Trading partners send purchase orders as EDI files, usually by dropping them in an SFTP mailbox. Two things have to happen before any business logic runs: work out who sent the file, and turn the orders inside it into data the integration can use. This guide builds them in that order. The first needs no schema at all, and the second needs one that matches what the partner actually sends.
+Trading partners send purchase orders as EDI files, usually by dropping them in an SFTP mailbox. Two things have to happen before any business logic runs: work out who sent the file, and turn the orders inside it into data the integration can use. This guide builds them in that order. The first needs no schema at all, and the second uses a prebuilt package for the standard purchase order message.
 
 **Sample project:** [edi-purchase-order-processing](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/samples/edi-purchase-order-processing) is the finished project, ready to run.
 
@@ -29,32 +29,25 @@ Trading partners send purchase orders as EDI files, usually by dropping them in 
 /edi/inbox/*.edi ──▶ read the envelope headers ──▶ known partner? ──┬── no  ──▶ file moved to /edi/rejected
                      (no schema needed)                             │
                                                                     └── yes ──▶ parse the interchange ──┬──▶ orders processed
-                                                                               (generated library)      └──▶ malformed messages quarantined
+                                                                               (prebuilt package)       └──▶ malformed messages quarantined
                                                                                                          file moved to /edi/processed
 ```
 
-An EDI file is an *interchange*: an envelope (`UNB`/`UNZ` in EDIFACT, `ISA`/`IEA` in X12) wrapping one or more messages. The envelope carries the sender and recipient, so reading just those segments is enough to route the file. Only once the partner is known does the integration need a schema to read the orders themselves.
+An EDI file is an *interchange*: an envelope (`UNB`/`UNZ` in EDIFACT, `ISA`/`IEA` in X12) wrapping one or more messages. The envelope carries the sender and recipient, so reading just those segments is enough to route the file. Only once the partner is known does the integration need the message schema to read the orders themselves.
 
 ## Before you begin
 
 :::info Prerequisites
 
 - A working WSO2 Integrator environment. See [Setup](../../get-started/setup/setup.md).
-- The `bal edi` tool, pulled once per machine:
-
-    ```bash
-    bal tool pull edi
-    ```
-
-- The UN/EDIFACT D03A directory archive, downloaded from [UN/EDIFACT directory downloads](https://unece.org/trade/uncefact/unedifact/download). The tool builds the schema from the specification in this archive.
 - Docker, to run a local SFTP server that stands in for the partner's mailbox.
 
 :::
 
 :::tip
-For standard EDIFACT D03A message types, a [prebuilt EDIFACT package](../../reference/data-formats/edi.md#prebuilt-edifact-packages) reads a whole interchange with no code generation: envelope headers, batch splitting, and quarantining included. Use it whenever a partner sends the standard message unchanged. This guide generates its own library because step 6 tightens the schema to what the partner actually sends, which a prebuilt package cannot express.
+This guide reads the orders with the [prebuilt EDIFACT package](../../reference/data-formats/edi.md#prebuilt-edifact-packages) `ballerinax/edifact.d03a.supplychain`, which covers the standard D03A `ORDERS` message. When a partner deviates from the standard, or sends a message type or directory version no prebuilt package covers, [generate your own parser](../../develop-and-test/data-transformation/edi.md#generating-code-from-an-edifact-spec) from the specification and [adapt the schema to the partner](../../develop-and-test/data-transformation/edi.md#adapting-the-schema-to-a-trading-partner). The generated library has the same `interchangeFromEdiString` function, so the flow below stays the same.
 
-X12 specifications are licensed from ASC X12, so no X12 specification ships with the tool and no prebuilt X12 packages are published. The flow in this guide is identical for X12, starting from the schema your organization is licensed to use. If you need help with that, [contact us](https://wso2.com/contact/).
+X12 specifications are licensed from ASC X12, so no X12 specification ships with the tool and no prebuilt X12 packages are published. The flow is identical for X12, starting from a parser generated from the schema your organization is licensed to use. If you need help with that, [contact us](https://wso2.com/contact/).
 :::
 
 ### Start the SFTP server
@@ -254,71 +247,40 @@ service ftp:Service on ftpListener {
 
 ## Part 2: Parse the purchase orders
 
-Reading the orders themselves needs a schema. Generate one from the D03A specification, adapt it to what the partner actually sends, and generate a typed library from it.
+Reading the orders themselves needs the `ORDERS` message schema. The prebuilt `ballerinax/edifact.d03a.supplychain` package carries it, along with typed records for every segment and the envelope-aware `interchangeFromEdiString` function.
 
-### Step 6: Generate and adapt the schema
-
-From the project root, convert the `ORDERS` message type of the D03A directory, passing the archive you downloaded with `-i`:
-
-```bash
-bal edi convertEdifactSchema -v d03a -t ORDERS -i d03a.zip -o schema
-```
-
-This writes `schema/ORDERS.json`, named after the message type.
-
-Trading partners rarely send a standard message exactly as specified. Because the schema is written out as JSON before any code is generated, a partner's deviations are handled by editing that file. The specification itself is never touched.
-
-For the sample interchange, the partner sends a `QTY` segment on every line item, which the standard marks optional. Tighten it so a line item without a quantity is rejected rather than parsed as an order with no quantity. A converted schema declares its segments as references into `segmentDefinitions`, so the edit is on the reference inside the line-item segment group, the group whose first entry is `{"ref": "LIN", ...}`. Add `minOccurances` to its `QTY` entry:
-
-```json
-{"ref": "QTY", "tag": "Quantity", "minOccurances": 1, "maxOccurances": 99}
-```
-
-The fields most often adjusted are `delimiters`, `minOccurances` and `maxOccurances`, a field's `dataType`, and `ignoreSegments` for segments the partner adds that the integration does not care about. See [Adapting the schema to a trading partner](../../develop-and-test/data-transformation/edi.md#adapting-the-schema-to-a-trading-partner) for the full list.
-
-Keep the edited schema in version control next to the integration: it is the record of what that partner sends.
-
-### Step 7: Generate the library
-
-1. On the project overview, select **+ Add**, select **Library**, enter `orders` as the library name, and select **Add**.
-
-    <ThemedImage
-        alt="Add an Integration or Library page with Library selected and the library name set to orders"
-        sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-add-library.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-add-library.png'),
-        }}
-    />
-
-2. In the terminal, move into the `orders` directory and generate the code from the edited schema:
-
-    ```bash
-    cd orders
-    bal edi codegen -i ../schema/ORDERS.json -o orders.bal
-    ```
-
-The library now holds a record type per segment, `fromEdiString` and `toEdiString` for a single message, and, because an EDIFACT schema carries an envelope, the envelope-aware `interchangeFromEdiString`, `interchangeToEdiString`, and `headersFromEdiString`.
-
-### Step 8: Parse the interchange and quarantine bad messages
-
-`interchangeFromEdiString` reads the whole envelope hierarchy. Envelope segments are fail-fast: a malformed `UNB` or `UNT` fails the call. Transaction bodies are **fail-safe**: a body the schema cannot read leaves its parse error on that transaction, typed `ORDERS|error`, and every other message in the interchange still arrives. That is what keeps one bad message from costing a batch: the good orders go on to be processed, and the bad one is quarantined with the reason attached.
+`interchangeFromEdiString` reads the whole envelope hierarchy. Envelope segments are fail-fast: a malformed `UNB` or `UNT` fails the call. Transaction bodies are **fail-safe**: a body the schema cannot read leaves its parse error on that transaction, typed `EDI_ORDERS_ORDERS|error`, and every other message in the interchange still arrives. That is what keeps one bad message from costing a batch: the good orders go on to be processed, and the bad one is quarantined with the reason attached.
 
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Back in the `onFile` flow, after the **Log Info** node from step 5, select **+**, then **Call Function**. Under **Within Project**, in the **orders** section, select **interchangeFromEdiString**. Set **Edi Text** to the expression `ediText`, set **Result** to `interchange`, and select **Save**.
+## Step 6: Parse the interchange
+
+1. After the **Log Info** node from step 5, select **+**, then **Call Function**, and search for `ORDERS`. Under **Extended Library**, in the **edifact.d03a.supplychain.mORDERS** section, select **interchangeFromEdiString**. The package is pulled from Ballerina Central and imported the first time you use it.
 
     <ThemedImage
-        alt="Functions panel listing the generated orders library functions under Within Project, including interchangeFromEdiString"
+        alt="Functions panel searching for ORDERS, listing the edifact.d03a.supplychain.mORDERS functions under Extended Library, including interchangeFromEdiString"
         sources={{
-            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-within-project-functions.png'),
-            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-within-project-functions.png'),
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-search-orders-package.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/06-search-orders-package.png'),
         }}
     />
 
-2. Add a **Foreach** node over the collection `interchange.transactions`, with the variable `txn` of type `orders:ORDERSTransaction`.
-3. Inside the loop, add a **Declare Variable** node named `body` of type `orders:ORDERS|error` with the expression `txn.body`.
-4. Add an **If** node with the condition `body is error`. Inside its branch:
+2. Set **Edi Text** to the expression `ediText`, set **Result** to `interchange`, and select **Save**.
+
+    <ThemedImage
+        alt="interchangeFromEdiString form with Edi Text set to the ediText variable and the result named interchange of type mORDERS:EDI_ORDERS_ORDERSInterchange"
+        sources={{
+            light: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-parse-interchange.png'),
+            dark: useBaseUrl('/img/guides/usecases/edi-purchase-order-processing/07-parse-interchange.png'),
+        }}
+    />
+
+## Step 7: Process each order and quarantine bad messages
+
+1. Add a **Foreach** node over the collection `interchange.transactions`, with the variable `txn` of type `mORDERS:EDI_ORDERS_ORDERSTransaction`.
+2. Inside the loop, add a **Declare Variable** node named `body` of type `mORDERS:EDI_ORDERS_ORDERS|error` with the expression `txn.body`.
+3. Add an **If** node with the condition `body is error`. Inside its branch:
     1. Add a **Log Error** node with the message `Quarantined message`, the **Error** set to `body`, and an **Additional Values** entry with the key `reference` and the value `txn.transactionHeader.Message_header.message_reference_number`. This is the quarantine path.
 
         <ThemedImage
@@ -330,7 +292,7 @@ The library now holds a record type per segment, `fromEdiString` and `toEdiStrin
         />
 
     2. Add a **Continue** node, so the loop moves on to the next message.
-5. After the **If** node, still inside the loop, add the processing for a valid order. A **Declare Variable** node and a **Log Info** node are enough to see it working:
+4. After the **If** node, still inside the loop, add the processing for a valid order. A **Declare Variable** node and a **Log Info** node are enough to see it working:
     - `orderId` of type `string` with the expression `body.Beginning_of_message?.DOCUMENT_MESSAGE_IDENTIFICATION?.Document_identifier ?: ""`.
     - A **Log Info** node with the expression ``string `Order ${orderId} received from ${headers.unb.sender.id}` ``.
 
@@ -350,9 +312,7 @@ The library now holds a record type per segment, `fromEdiString` and `toEdiStrin
 import ballerina/edi;
 import ballerina/ftp;
 import ballerina/log;
-
-// The library generated in step 7.
-import supplier/orders;
+import ballerinax/edifact.d03a.supplychain.mORDERS;
 
 listener ftp:Listener ftpListener = new (host = "localhost", protocol = ftp:SFTP, port = 2222, auth = {credentials: {username: string `${sftpUsername}`, password: string `${sftpPassword}`}});
 
@@ -367,9 +327,9 @@ service ftp:Service on ftpListener {
                 return error(string `Unknown trading partner: ${headers.unb.sender.id}`);
             }
             log:printInfo(string `Order file from ${headers.unb.sender.id}, reference ${headers.unb.controlRef}`);
-            orders:ORDERSInterchange interchange = check orders:interchangeFromEdiString(ediText);
-            foreach orders:ORDERSTransaction txn in interchange.transactions {
-                orders:ORDERS|error body = txn.body;
+            mORDERS:EDI_ORDERS_ORDERSInterchange interchange = check mORDERS:interchangeFromEdiString(ediText);
+            foreach mORDERS:EDI_ORDERS_ORDERSTransaction txn in interchange.transactions {
+                mORDERS:EDI_ORDERS_ORDERS|error body = txn.body;
                 if body is error {
                     log:printError("Quarantined message", body, reference = txn.transactionHeader.Message_header.message_reference_number);
                     continue;
@@ -383,8 +343,6 @@ service ftp:Service on ftpListener {
     }
 }
 ```
-
-Replace `supplier` with the organization name of your project.
 
 </TabItem>
 </Tabs>
@@ -430,5 +388,5 @@ Replace `supplier` with the organization name of your project.
 ## What's next
 
 - **Pick files up from other places.** The same handler works on a [local directory](../../develop-and-test/integration-artifacts/file-driven-integration/local-files.md), and the [FTP/SFTP service](../../develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp.md) supports FTPS and key-based authentication for real partner mailboxes. For partners that post EDI over HTTP, the parsing logic is unchanged: read the request body into `ediText`.
-- **Acknowledge the orders.** Trading partners usually expect a reply saying what was accepted and what was rejected. The quarantined messages from step 8 are exactly the input for an EDIFACT `APERAK`; see the [EDI acknowledgement example](https://github.com/ballerina-platform/module-ballerina-edi/tree/main/examples/edi-acknowledgement).
-- **Handle several formats at once.** Bundle the schemas for every message type a partner sends into one package with [`libgen`](../../develop-and-test/data-transformation/edi.md#building-a-reusable-library-package).
+- **Acknowledge the orders.** Trading partners usually expect a reply saying what was accepted and what was rejected. The quarantined messages from step 7 are exactly the input for an EDIFACT `APERAK`; see the [EDI acknowledgement example](https://github.com/ballerina-platform/module-ballerina-edi/tree/main/examples/edi-acknowledgement).
+- **Support a partner's own variant.** When a partner's messages deviate from the standard, [generate a parser](../../develop-and-test/data-transformation/edi.md#generating-code-from-an-edifact-spec) from the specification, [adapt the schema](../../develop-and-test/data-transformation/edi.md#adapting-the-schema-to-a-trading-partner) to what they send, and swap it in for the prebuilt package. Bundle the schemas for every message type a partner sends into one package with [`libgen`](../../develop-and-test/data-transformation/edi.md#building-a-reusable-library-package).
