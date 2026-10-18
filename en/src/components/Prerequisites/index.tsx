@@ -81,7 +81,19 @@ function LocalIcon(): ReactNode {
   );
 }
 
-const PREREQ_ICONS = { cloud: CloudIcon, local: LocalIcon } as const;
+// Same sparkle glyph as PaletteIcon's "ai" -- for a PrereqCard about an
+// AI assistant/copilot sign-in rather than a setup path (cloud/local).
+function AIIcon(): ReactNode {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3l1.8 4.9L19 9.5l-5.2 1.6L12 16l-1.8-4.9L5 9.5l5.2-1.6Z" />
+      <path d="M19 3v3" />
+      <path d="M17.5 4.5h3" />
+    </svg>
+  );
+}
+
+const PREREQ_ICONS = { cloud: CloudIcon, local: LocalIcon, ai: AIIcon } as const;
 export type PrereqIconName = keyof typeof PREREQ_ICONS;
 
 export function PrereqCard({

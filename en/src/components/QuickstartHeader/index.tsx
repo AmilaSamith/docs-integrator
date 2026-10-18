@@ -1,13 +1,17 @@
 import type { ReactNode } from 'react';
-import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 
 import styles from './styles.module.css';
 
 /**
- * The badge row + info grid at the top of a quickstart doc, from the
- * "Page — versioned product" design reference (ArticleOneBar.dc.html):
- * a "Quick start" pill, a version badge, then a bordered two-cell grid
- * (clock icon + Time, document icon + What you'll build).
+ * The info grid at the top of a quickstart doc, from the "Page —
+ * versioned product" design reference (ArticleOneBar.dc.html): a
+ * bordered two-cell grid (clock icon + Time, document icon + What
+ * you'll build). Used to also carry a "Quick start"/version pill row
+ * above the grid -- dropped (along with the "Quick start" pill text
+ * and version label, which the `kind` prop and useDocsVersion() fed)
+ * since the page's own H1 + breadcrumbs already say what kind of page
+ * this is, and DocItem/Layout's own version badge already covers the
+ * version, making this row redundant.
  *
  * Globally registered (theme/MDXComponents) -- no import needed in a doc,
  * same as PaletteCard/CloudDocsLink. Usage:
@@ -16,13 +20,6 @@ import styles from './styles.module.css';
  *     time="Under 10 minutes"
  *     build={<>An automation that prints <code>Hello World</code></>}
  *   />
- *
- * The version badge reads the ACTIVE version at render time
- * (useDocsVersion(), the same hook DocVersionBadge/DocVersionBanner use)
- * rather than taking it as a prop -- a versioned snapshot under
- * versioned_docs/ renders with its own frozen copy of this component, so
- * each one naturally shows its own version with no per-snapshot edits
- * ever needed.
  */
 export interface QuickstartHeaderProps {
   /** e.g. "Under 10 minutes". */
@@ -30,9 +27,6 @@ export interface QuickstartHeaderProps {
   /** What the reader ends up with -- can include inline markup, e.g.
    * <>An automation that prints <code>Hello World</code></>. */
   build: ReactNode;
-  /** Overrides the "Quick start" pill's text, for a non-quickstart page
-   * reusing this same header shape. */
-  kind?: string;
 }
 
 function ClockIcon(): ReactNode {
@@ -53,15 +47,9 @@ function BuildIcon(): ReactNode {
   );
 }
 
-export default function QuickstartHeader({ time, build, kind = 'Quick start' }: QuickstartHeaderProps): ReactNode {
-  const { label: versionLabel } = useDocsVersion();
-
+export default function QuickstartHeader({ time, build }: QuickstartHeaderProps): ReactNode {
   return (
     <div className={styles.header}>
-      <div className={styles.badges}>
-        <span className={styles.badgeAccent}>{kind}</span>
-        <span className={styles.badgeNeutral}>Version: {versionLabel}</span>
-      </div>
       <div className={styles.grid}>
         <div className={styles.cell}>
           <span className={styles.cellIcon}>

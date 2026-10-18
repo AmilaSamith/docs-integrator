@@ -16,6 +16,7 @@ keywords:
   - control plane
   - data plane
 slug: /platform-overview
+pagination_next: null
 ---
 
 import ThemedImage from '@theme/ThemedImage';

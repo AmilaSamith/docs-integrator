@@ -1,7 +1,10 @@
-/* Desktop -- both buttons at full size, comfortable gap. Same 996px/
-   480px breakpoints custom.css and the navbar already use elsewhere
-   on this site (Infima's own mobile threshold, and a typical small-
-   phone cutoff), not new ones invented for just this component. */
+/* Desktop -- full size. `gap` is harmless with a single child (the
+   AI assistant launcher, the only thing left here) and keeps this
+   ready to hold a second button again without extra edits. Same
+   996px/480px breakpoints custom.css and the navbar already use
+   elsewhere on this site (Infima's own mobile threshold, and a
+   typical small-phone cutoff), not new ones invented for just this
+   component. */
 .wrapper {
   position: fixed;
   right: 1.5rem;

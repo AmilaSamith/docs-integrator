@@ -850,23 +850,43 @@ h1, h2, h3, h4, h5, h6 {
   color: #EDE7E2;
 }
 
-/* ---- The current page itself (level 2+): an orange left bar + light
-   tint + bold orange text -- a leaf link, or a category whose own page
-   is the current one. box-shadow (not border-left) so the bar doesn't
-   shift the row's own content over by its own width. */
+/* ---- The current page itself (level 2+): an orange left bar + bold
+   orange text, no fill -- a leaf link, or a category whose own page is
+   the current one. A `::before` bar, not `box-shadow` or `border-left`:
+   `.menu__link`'s own 10px border-radius bends a box-shadow's corners
+   on a short, single-line row (reads as a curved bracket, not a
+   straight bar); a pseudo-element with no radius of its own stays a
+   crisp vertical line regardless. Absolutely positioned (not
+   border-left) so it doesn't shift the row's own content over by its
+   own width. */
 .menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active,
 .menu__list .menu__list .menu__list-item-collapsible--active > .menu__link {
-  background-color: #FFF6EF;
+  position: relative;
+  background-color: transparent;
   color: #A3400A;
   font-weight: 700;
-  box-shadow: inset 2px 0 0 #C94F0A;
+}
+
+.menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active::before,
+.menu__list .menu__list .menu__list-item-collapsible--active > .menu__link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #C94F0A;
 }
 
 [data-theme='dark'] .menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active,
 [data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible--active > .menu__link {
-  background-color: rgba(226, 86, 11, 0.14);
+  background-color: transparent;
   color: #F5A06A;
-  box-shadow: inset 2px 0 0 #E2560B;
+}
+
+[data-theme='dark'] .menu__list .menu__list .theme-doc-sidebar-item-link > .menu__link--active::before,
+[data-theme='dark'] .menu__list .menu__list .menu__list-item-collapsible--active > .menu__link::before {
+  background: #E2560B;
 }
 
 /* A category whose own page is current never gets the ancestor-bold
@@ -2063,19 +2083,27 @@ li .tabs-container [role="tabpanel"] .theme-code-block {
   display: none;
 }
 
+/* A proper rounded-stroke chevron (mask, not a border corner-trick) --
+   the same line weight/cap style as every other icon on the site (e.g.
+   QuickstartHeader's clock/build icons), rather than a plain CSS
+   triangle. Points right closed, rotates to point down open -- the
+   usual disclosure convention. `mask` (not a plain <img>/background)
+   so it tints with `background-color` and follows the theme/hover
+   colour changes for free. */
 .markdown details > summary::before {
   content: '';
   flex: none;
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid var(--wso2-accent-text);
-  border-bottom: 2px solid var(--wso2-accent-text);
-  transform: rotate(-45deg);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  background-color: var(--wso2-accent-text);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
   transition: transform 0.2s ease;
 }
 
 .markdown details[open] > summary::before {
-  transform: rotate(45deg);
+  transform: rotate(90deg);
 }
 
 .markdown details > summary:hover {
@@ -2096,6 +2124,23 @@ li .tabs-container [role="tabpanel"] .theme-code-block {
 
 .markdown details > summary + :not(summary) {
   margin-top: 1rem;
+}
+
+/* The code block's own copy button (CodeBlock/Buttons, styled further
+   below) sits top-right but is hover-revealed by default -- fine for a
+   code block in the normal reading flow, but easy to miss here: the
+   block only exists once this <details> is already open, tucked away
+   behind a click, so the copy affordance should be obvious right away
+   rather than needing a second discovery (hover) on top of the first
+   (expand). Always visible for a code block nested in this details,
+   not just on hover/focus. */
+.markdown details[open] [class*="buttonGroup"] button {
+  opacity: 0.6;
+}
+
+.markdown details[open] [class*="buttonGroup"] button:hover,
+.markdown details[open] [class*="buttonGroup"] button:focus-visible {
+  opacity: 1 !important;
 }
 
 /* ================================================================
@@ -2124,4 +2169,25 @@ li .tabs-container [role="tabpanel"] .theme-code-block {
 
 [class*="buttonGroup"] button {
   color: #C9CAD2;
+}
+
+/* ================================================================
+   DOC VERSION BADGE ("Version: Next")
+   Infima's stock `badge--secondary` is a solid grey fill -- reads too
+   bright/heavy against the dark theme's charcoal background. Restyled
+   to the same quiet bordered-pill treatment as the ICP page pill
+   (theme/DocItem/Layout's .productVersionPill) instead, so both read
+   as the same kind of chip rather than one standing out more than the
+   other.
+   ================================================================ */
+.theme-doc-version-badge {
+  background: transparent !important;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--wso2-text-muted);
 }
