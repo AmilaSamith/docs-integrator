@@ -28,6 +28,7 @@ import Content from '@theme/DocSidebar/Desktop/Content';
 import type { Props } from '@theme/DocSidebar';
 
 import ProductDocsLinks from '@site/src/components/ProductDocsLinks';
+import SidebarSearch from './SidebarSearch';
 import { railIconFor } from './icons';
 
 import styles from './styles.module.css';
@@ -118,13 +119,16 @@ function usePinnedOverviewAndScroll(path: string, disabled: boolean) {
       const menuRect = menu.getBoundingClientRect();
       let delta = section.getBoundingClientRect().top - (menuRect.top + inset);
       // A long section (e.g. the connector catalog) can put the active page
-      // far below its heading; never scroll it out of view -- center it instead.
+      // far below its heading; never scroll it out of view -- land it in
+      // the sidebar's upper third instead (the "Nesting depth" design
+      // reference's own "auto-scroll" rule: the current page sits in its
+      // upper third, not centered or pushed to the very top). */
       const activeLinks = section.querySelectorAll<HTMLElement>('a.menu__link--active');
       const active = activeLinks[activeLinks.length - 1];
       if (active) {
         const r = active.getBoundingClientRect();
         if (r.bottom - delta > menuRect.bottom - ACTIVE_MARGIN) {
-          delta = r.top - (menuRect.top + (menu.clientHeight - r.height) / 2);
+          delta = r.top - (menuRect.top + menu.clientHeight / 3);
         }
       }
       menu.scrollTo({ top: menu.scrollTop + delta, behavior: 'smooth' });
@@ -160,6 +164,13 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props): Reac
         hideOnScroll && styles.sidebarWithHideableNavbar,
       )}>
       {hideOnScroll && <Logo tabIndex={-1} className={styles.sidebarLogo} />}
+      {/* A sibling of .sidebarContentWrap, not a child -- .sidebarCollapseOverlay
+          inside that wrap is absolutely positioned against ITS own top edge,
+          hand-tuned to land on Content's first row ("Platform Overview").
+          Nesting the search row inside the wrap too would push that row
+          down without the overlay's math knowing, landing the button on
+          top of the search box instead. */}
+      <SidebarSearch />
       <div ref={wrapRef} className={styles.sidebarContentWrap}>
         {hideable && (
           <button

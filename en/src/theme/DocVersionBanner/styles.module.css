@@ -1,0 +1,45 @@
+/**
+ * Values from the "Page — versioned product" design reference
+ * (ArticleOneBar.dc.html), matched literally (not via the site's
+ * --ifm-color-primary/--wso2-heading-color tokens, which land a shade
+ * off): a pale orange pill (#FFF6EF/#F6DCC8), an #E2560B status dot
+ * (the mockup's own choice even in its light version -- a status-orange,
+ * not the page's main accent), and warm-ink body text (#3A2A1E).
+ */
+.banner {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #FFF6EF;
+  border: 1px solid #F6DCC8;
+  font-size: 14.5px;
+  color: #3A2A1E;
+}
+
+[data-theme='dark'] .banner {
+  background: rgba(226, 86, 11, 0.14);
+  border-color: #4A2E1A;
+  color: var(--wso2-heading-color);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: #E2560B;
+}
+
+.text {
+  flex: 1 1 300px;
+}
+
+.banner a.link {
+  flex: none;
+  font-weight: 700;
+  color: var(--wso2-accent-text);
+}

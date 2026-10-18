@@ -11,107 +11,98 @@ Hide color mode toggle in small viewports
   }
 }
 
-/* Vertical divider between the color-mode toggle and the icon-only
-   social/GitHub links that follow it -- see NavbarContent's own
-   docstring for the full right-zone order this sits in. Sized against
-   the 2rem .navbar-icon-link buttons it sits between (custom.css),
-   not the full navbar height, so it doesn't touch the navbar's own
-   top/bottom border. Hidden below 996px along with .colorModeToggle
-   and the individual .navbar__item icons themselves (Infima's own
-   breakpoint) -- nothing left to divide there either. */
-.iconDivider {
-  display: inline-block;
-  flex-shrink: 0;
-  width: 1px;
-  height: 1.25rem;
-  margin: 0 0.375rem;
-  background-color: var(--wso2-surface-border);
-}
-
-@media (max-width: 996px) {
-  .iconDivider {
-    display: none;
-  }
-}
-
-/* Tablet-width windows only (996-1200px): stop the logo zone from growing
-   to match the right zone's flex:1 (Infima's stock two-equal-flex
-   centering trick, see NavbarContent's own docstring). There the right
-   zone (search + icons) is pinned at its own min-content width, so
-   leaving both outer zones at flex:1 drags the center nav items
-   rightward, toward the right zone -- left-aligned next to the logo is
-   the better trade there. Above 1200px there is room to keep the items
-   truly centered. */
-@media (min-width: 997px) and (max-width: 1200px) {
-  .logoZone {
-    flex: 0 1 auto;
-  }
-}
-
-/* Guaranteed breathing room between the last center item (FAQ) and the
-   search icon at every desktop width -- however tight the row gets, the
-   two never touch. Padding on the right zone (not a margin on the
-   center zone) so it takes part in the zone's min-content width. The
-   logo zone gets the mirrored padding so the two outer zones stay the
-   same width and the center items sit exactly in the middle. */
+/* Desktop layout (matches the landing-page header mockup): logo +
+   product/version segment pinned left, then the text links, then the
+   right group (color-mode toggle, GitHub, Download) set off by a vertical
+   rule. Infima's stock trick is two equal flex:1 outer zones that center
+   the links; here only the logo zone grows, so the links sit right next to
+   the right group instead. */
 @media (min-width: 997px) {
-  :global(.navbar__items--right) {
-    padding-left: 1.5rem;
-  }
-}
-
-/* Mirror padding on the logo zone, only where the items are centered (the
-   tablet range above is left-aligned, so no mirror is needed there). */
-@media (min-width: 1201px) {
   .logoZone {
-    padding-right: 1.5rem;
+    flex: 1 1 auto;
+  }
+
+  :global(.navbar__items--center) + :global(.navbar__items--right) {
+    flex: 0 0 auto;
+    margin-left: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  /* The rule before the toggle: same 1px line, same 42px height and
+     colour as .productSegment's border after the logo (a pseudo-element
+     rather than border-left, which would run the full navbar height). */
+  :global(.navbar__items--center) + :global(.navbar__items--right)::before {
+    content: '';
+    flex: none;
+    align-self: center;
+    width: 1px;
+    height: 42px;
+    margin-right: 0.75rem;
+    background-color: var(--wso2-nav-divider);
   }
 }
 
-/* Tablet-width windows can't fit the full icon row next to the center
-   nav items without the two running into each other (the row is ~1180px
-   wide at its fullest), so shed the least essential icons first -- all
-   of them are still one tap away in the mobile drawer and the footer.
-   Only GitHub and Discord stay from 1101px up; below that the row is
-   just search and the color-mode toggle. Matches on the links' own
-   `aria-label` (theme-shared/themeConfig.ts) since they share one
-   className. `!important` because .navbar-icon-link (custom.css) forces
-   `display: flex !important`. */
-@media (min-width: 997px) and (max-width: 1339px) {
-  :global(.navbar__items--right) a[aria-label='Stack Overflow'],
-  :global(.navbar__items--right) a[aria-label='LinkedIn'],
-  :global(.navbar__items--right) a[aria-label='YouTube'],
-  :global(.navbar__items--right) a[aria-label='X (Twitter)'] {
-    display: none !important;
+/* Logo + "Docs" label, sized (>= 1360px) to exactly match the doc
+   sidebar's own width minus the navbar's own left padding -- the two
+   together put this block's right edge at --doc-sidebar-width from the
+   viewport edge, same as the sidebar below it, so productSegment's
+   separator (its border-left, flush against this block with no gap of
+   its own) lines up with the sidebar's right-hand edge instead of
+   floating at whatever width the logo content happens to be. Below
+   1360px there's no sidebar-width column to match (productSegment moves
+   to the secondary row there instead), so this is a no-op width: auto. */
+.logoBlock {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1360px) {
+  .logoBlock {
+    width: calc(var(--doc-sidebar-width) - var(--ifm-navbar-padding-horizontal));
   }
 }
 
-@media (min-width: 997px) and (max-width: 1100px) {
-  :global(.navbar__items--right) a[aria-label='GitHub'],
-  :global(.navbar__items--right) a[aria-label='Discord'],
-  .iconDivider {
-    display: none !important;
+/* "Docs" label right after the wordmark -- the logo itself is the shared
+   product lockup with no product/site name baked in (see
+   theme-shared/themeConfig.ts's sharedNavbarLogo), so this is what tells
+   you you're on the docs site rather than the product's own site. Reads
+   as one continuous phrase with the wordmark ("... Platform Docs"), so
+   it's sized close to the lockup's own wordmark text (not the smaller
+   14px product-switcher label) and sits a plain word-space away, not a
+   whole separate block -- the logo's own 0.75rem margin-right (global,
+   custom.css) is trimmed down just here instead of adding more space on
+   top of it. */
+.logoZone :global(.navbar__logo) {
+  margin-right: 0.35rem;
+}
+
+.docsLabel {
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+}
+
+/* Product + version segment after the logo (single-header layout). No
+   margin-left of its own -- .logoBlock's fixed width (above) already
+   provides the gap, and ending the rule flush against that width is
+   what keeps it aligned with the sidebar. Hidden below 1360px (not just
+   mobile) because the logo + segment + four links + right-hand items
+   don't fit one line any narrower -- the secondary row carries it there
+   instead, see theme/Navbar/index.tsx. */
+.productSegment {
+  display: none;
+  align-items: center;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--wso2-nav-divider);
+}
+
+@media (min-width: 1360px) {
+  .productSegment {
+    display: flex;
   }
-}
-
-/* Vertical separators between the center zone's plain nav-item links
-   (Contribute, Community, Blog, FAQ, ...) -- same visual weight as
-   .iconDivider above, but border-based since these sit in stock
-   Infima `.navbar__item` markup we don't otherwise control. Skipped
-   on the first item so the row doesn't start with a leading rule. */
-:global(.navbar__items--center) :global(.navbar__item):not(:first-child) {
-  position: relative;
-}
-
-:global(.navbar__items--center) :global(.navbar__item):not(:first-child)::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 1.25rem;
-  background-color: var(--wso2-surface-border);
 }
 
 /*
@@ -122,11 +113,9 @@ See https://github.com/facebook/docusaurus/pull/11142
   padding-right: 0;
 }
 
-/* NOT giving `.navbar__items--center` `overflow-x: clip` (tried it,
-   reverted) -- ExploreDropdown's flyout is a wide 2-column card grid,
-   a real DOM descendant of this zone even though it's
-   `position: absolute`; overflow clipping on an ancestor still clips
-   an absolutely-positioned descendant's paint, so it rendered cut off
-   down the middle. Crowding is instead handled by SearchBar collapsing
-   to a ~2rem icon below 1920px (see SearchBar/index.tsx), the tablet
-   `.logoZone` rule above, and the right zone's fixed left padding. */
+/* The logo must keep its natural width -- the product/version segment
+   next to it would otherwise squeeze the wordmark down to just the icon. */
+.logoZone :global(.navbar__logo),
+.logoZone :global(.navbar__logo) img {
+  flex-shrink: 0;
+}

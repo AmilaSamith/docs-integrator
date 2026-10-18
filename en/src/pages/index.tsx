@@ -235,7 +235,7 @@ function HomepageHeader(): ReactNode {
     <LandingHero
       windowTitle="WSO2 Integrator"
       imageAlt="WSO2 Integrator welcome and sign-in screen"
-      badge="Docs · Scaffold"
+      eyebrow="Docs · Scaffold"
       title={siteConfig.title}
       subtitle={siteConfig.tagline}
       cta={{ label: "Let's Get Started", to: '/get-started' }}

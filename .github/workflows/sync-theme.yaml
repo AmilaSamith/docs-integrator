@@ -22,6 +22,16 @@ name: Sync shared theme to product branches
 # syncing one without the other breaks the target's build ("Can't
 # resolve '@site/src/components/...Launcher'").
 #
+# QuickstartHeader, Prerequisites, and Steps travel together for the
+# same reason again: en/src/theme/MDXComponents/index.tsx -- shared --
+# imports all three directly (globally registered for every doc, no
+# per-doc import needed). DocFeedback travels too: en/src/theme/TOC/
+# index.tsx -- also shared -- renders it directly in the "On this page"
+# column. CookieConsent travels for the same reason: both
+# en/src/theme/Root.js (mounts it) and en/src/theme/Footer/index.tsx
+# (its "Cookie settings" link reopens it via an exported helper) --
+# both shared -- import it directly.
+#
 # ConnectorCatalog is NOT here at all, not even styles.module.css --
 # learned the hard way establishing the theme on wso2-connectors: its
 # real index.tsx (never shared) and styles.module.css were already
@@ -66,6 +76,11 @@ on:
       - 'en/src/components/AIAssistantSidePanel/**'
       - 'en/src/components/FloatingActions/**'
       - 'en/src/components/ReportIssueButton/**'
+      - 'en/src/components/QuickstartHeader/**'
+      - 'en/src/components/Prerequisites/**'
+      - 'en/src/components/Steps/**'
+      - 'en/src/components/DocFeedback/**'
+      - 'en/src/components/CookieConsent/**'
       - 'en/src/components/ArtifactPicker/index.tsx'
       - 'en/src/components/ArtifactPicker/styles.module.css'
       - 'en/src/components/ArtifactPicker/inlineIcons.ts'
@@ -87,6 +102,8 @@ on:
       - 'en/static/img/logo.svg'
       - 'en/static/img/wso2-integration-platform-black.svg'
       - 'en/static/img/wso2-integration-platform-full-colour.svg'
+      - 'en/static/img/integration-platform-logo-black.png'
+      - 'en/static/img/integration-platform-logo-white.png'
       - 'en/static/img/artifact-icons/**'
       - 'en/static/img/branding/**'
       - 'en/plugins/docusaurus-plugin-markdown-export/**'
@@ -123,6 +140,11 @@ env:
     en/src/components/AIAssistantSidePanel
     en/src/components/ReportIssueButton
     en/src/components/FloatingActions
+    en/src/components/QuickstartHeader
+    en/src/components/Prerequisites
+    en/src/components/Steps
+    en/src/components/DocFeedback
+    en/src/components/CookieConsent
     en/src/components/ArtifactPicker/index.tsx
     en/src/components/ArtifactPicker/styles.module.css
     en/src/components/ArtifactPicker/inlineIcons.ts
@@ -139,6 +161,8 @@ env:
     en/static/img/logo.svg
     en/static/img/wso2-integration-platform-black.svg
     en/static/img/wso2-integration-platform-full-colour.svg
+    en/static/img/integration-platform-logo-black.png
+    en/static/img/integration-platform-logo-white.png
     en/static/img/artifact-icons
     en/static/img/branding
     en/plugins/docusaurus-plugin-markdown-export
@@ -212,6 +236,6 @@ jobs:
 
           gh pr create --base ${{ matrix.target }} --head sync-theme-${{ matrix.target }} \
             --title "theme(sync): shared theme + governance docs from main" \
-            --body "Auto-synced shared theme files (custom.css, theme overrides, SiteNav, ProductDocsLinks, TabAwareToc, SidebarProductHeader, ExploreDropdown, GuidesCatalog + its plugin, PaletteCard/PaletteIcon/IconGallery/ColorSwatch/SearchBar, scripts/preview-all-sites.mjs, AiAssistantPanel, AIAssistantSidePanel + FloatingActions + ReportIssueButton, ArtifactPicker's presentation code (not its per-branch data.ts), expose-sidebars, markdown-export, brand assets) and governance docs (MAINTENANCE.md, CONTRIBUTING.md, AGENTS.md, HOW_TO_WRITE_A_GUIDE.md, UI_UX_GUIDELINES.md, staging_sync.yaml). ConnectorCatalog is NOT included -- it's wso2-connectors-owned, not shared. Review for ${{ matrix.target }}-specific breakage before merge -- in particular, GuidesCatalog/ArtifactPicker only do something if this branch's own docusaurus.config.ts registers guidesCatalogPlugin and its docs actually use these components; see HOW_TO_WRITE_A_GUIDE.md."
+            --body "Auto-synced shared theme files (custom.css, theme overrides, SiteNav, ProductDocsLinks, TabAwareToc, SidebarProductHeader, ExploreDropdown, GuidesCatalog + its plugin, PaletteCard/PaletteIcon/IconGallery/ColorSwatch/SearchBar, QuickstartHeader/Prerequisites/Steps/DocFeedback/CookieConsent, scripts/preview-all-sites.mjs, AiAssistantPanel, AIAssistantSidePanel + FloatingActions + ReportIssueButton, ArtifactPicker's presentation code (not its per-branch data.ts), expose-sidebars, markdown-export, brand assets) and governance docs (MAINTENANCE.md, CONTRIBUTING.md, AGENTS.md, HOW_TO_WRITE_A_GUIDE.md, UI_UX_GUIDELINES.md, staging_sync.yaml). ConnectorCatalog is NOT included -- it's wso2-connectors-owned, not shared. Review for ${{ matrix.target }}-specific breakage before merge -- in particular, GuidesCatalog/ArtifactPicker only do something if this branch's own docusaurus.config.ts registers guidesCatalogPlugin and its docs actually use these components; see HOW_TO_WRITE_A_GUIDE.md."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

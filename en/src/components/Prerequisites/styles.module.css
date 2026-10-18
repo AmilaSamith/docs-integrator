@@ -1,0 +1,133 @@
+/**
+ * Values from the "Page — versioned product" design reference
+ * (ArticleOneBar.dc.html): a light-blue "info" box, distinct from the
+ * site's orange accent on purpose (see this component's own docstring).
+ *
+ * The box is itself the CSS Grid (not a grid nested below a heading
+ * rendered separately) -- the literal `## Prerequisites` heading and the
+ * intro paragraph each span the full row (:global(h2)/:global(p) below),
+ * while PrereqCard's own <a>/<Link> children flow into the grid's
+ * columns beneath them. See index.tsx's own docstring for why the
+ * heading has to be literal markdown, not something this file renders.
+ */
+.box {
+  margin-top: 28px;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background: #F3F7FB;
+  border: 1px solid #D9E5F0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 12px;
+}
+
+[data-theme='dark'] .box {
+  background: rgba(29, 74, 115, 0.16);
+  border-color: rgba(29, 74, 115, 0.5);
+}
+
+/* The literal heading and intro paragraph each take the whole row,
+   stacked above the card grid -- not treated as grid items themselves. */
+.box > :global(h2),
+.box > :global(p) {
+  grid-column: 1 / -1;
+}
+
+/* Overrides custom.css's .markdown h2 (border-bottom/padding-bottom/
+   margin-top for a normal section break) -- !important for the same
+   reason Steps' own heading override needs it: that rule's extra type
+   selector otherwise beats a plain scoped class on specificity. */
+.box > :global(h2) {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1D4A73;
+}
+
+[data-theme='dark'] .box > :global(h2) {
+  color: #7FB1E0;
+}
+
+/* Info-circle icon before the heading text, via mask-image (not an <img>/
+   inline <svg>, since there's no JSX here to put one in) -- background-
+   color driven, so it follows the heading's own light/dark colour above
+   instead of needing its own separate override. */
+.box > :global(h2)::before {
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7.5v5.5M12 16.5v.01' stroke-width='2'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.box > :global(p) {
+  margin: -4px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #22303D;
+}
+
+[data-theme='dark'] .box > :global(p) {
+  color: var(--ifm-font-color-base);
+}
+
+.box a.card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--ifm-background-color);
+  border: 1px solid #D9E5F0;
+  color: var(--wso2-heading-color);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+[data-theme='dark'] .box a.card {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(29, 74, 115, 0.5);
+}
+
+.box a.card:hover {
+  color: var(--wso2-heading-color);
+  text-decoration: none;
+  border-color: #1D4A73;
+  transform: translateY(-1px);
+}
+
+.cardIcon {
+  flex: none;
+  margin-top: 2px;
+  color: #1D4A73;
+}
+
+[data-theme='dark'] .cardIcon {
+  color: #7FB1E0;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.cardText strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cardText span {
+  color: var(--ifm-font-color-base);
+}

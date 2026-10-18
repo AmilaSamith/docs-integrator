@@ -57,7 +57,26 @@ TODO merge this logic back in Infima?
   text-overflow: ellipsis;
 }
 
+.categoryBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .categoryBadge {
+  padding: 0 0.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--wso2-text-muted);
+}
+
+/* Same pill treatment as .categoryBadge -- a second qualifier (the
+   product's current release number) sitting right next to it. */
+.categoryVersionBadge {
   padding: 0 0.4rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 999px;
