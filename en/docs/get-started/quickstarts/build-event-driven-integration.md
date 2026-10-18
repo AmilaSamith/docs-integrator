@@ -10,15 +10,28 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Build an Event-Driven Integration
 
-**Time:** Under 10 minutes | **What you'll build:** An event-driven integration that consumes messages from `Orders` queue in RabbitMQ broker and processes them.
+<QuickstartHeader
+  time="Under 10 minutes"
+  build={<>An event-driven integration that consumes messages from <code>Orders</code> queue in RabbitMQ broker and processes them.</>}
+/>
 
 Event integrations are designed for reactive workflows triggered by messages from a broker. This quick start demonstrates the complete flow: creating a RabbitMQ message listener, adding an event handler to process messages, and implementing the integration logic executed when a message is received.
 
-:::info Prerequisites
+<Prerequisites>
 
-- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/setup/setup.md).
-- A running RabbitMQ instance (or use Docker: `docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management`)
-:::
+## Prerequisites
+
+A working WSO2 Integrator environment.
+
+<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/setup">
+  Launch WSO2 Integrator in a browser-based cloud editor.
+</PrereqCard>
+
+</Prerequisites>
+
+You'll also need a running RabbitMQ instance (or use Docker: `docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:4.2-management`).
+
+<Steps>
 
 ## Step 1: Create the integration
 
@@ -104,6 +117,26 @@ In the cloud editor, you're already inside a project. Skip to Step 2.
     }}
 />
 
+## Step 6: Deploy to WSO2 Cloud
+
+Deploy your integration to WSO2 Cloud. Check [Save and deploy](/deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor#save-and-deploy).
+
+<div class="skip-ahead-card">
+
+<PaletteCard icon="ai" highlight>
+  <h3 class="palette-card-title">Skip ahead: deploy a ready-made sample</h3>
+  <p class="palette-card-desc">Rather not build it yourself? One-click deploy the OrderProcessor sample straight to WSO2 Cloud.</p>
+  <div class="palette-chip-row" style={{justifyContent: 'center'}}>
+    <a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/orderprocessor" target="_blank" rel="noopener noreferrer">
+      <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" style={{display: 'block', margin: '0', border: 'none', boxShadow: 'none'}} />
+    </a>
+  </div>
+</PaletteCard>
+
+</div>
+
+</Steps>
+
 ## Source code
 
 <details>
@@ -131,18 +164,6 @@ service "Orders" on rabbitmqListener {
 
 </details>
 
-## Step 6: Deploy to WSO2 Cloud
-
-Deploy your integration to WSO2 Cloud. Check [Save and deploy](/deploy-and-run/deploy-to-wso2-cloud/deploy-from-cloud-editor#save-and-deploy).
-
-## Skip ahead: deploy a ready-made sample
-
-Rather not build it yourself? One-click deploy the `OrderProcessor` sample straight to WSO2 Cloud:
-
-<a href="https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/quickstart/orderprocessor" target="_blank">
-    <img src="https://openindevant.choreoapps.dev/images/DeployDevant.svg" alt="Deploy to WSO2 Cloud" />
-</a>
-
 ## Supported event sources
 
 | Broker | Ballerina Package |
@@ -161,4 +182,3 @@ Rather not build it yourself? One-click deploy the `OrderProcessor` sample strai
 - [RabbitMQ](../../develop-and-test/integration-artifacts/event-driven-integration/rabbitmq.md) — Full RabbitMQ listener and publisher reference
 - [MQTT](../../develop-and-test/integration-artifacts/event-driven-integration/mqtt.md) — Handle MQTT messages from IoT and messaging devices
 - [CDC for PostgreSQL](../../develop-and-test/integration-artifacts/event-driven-integration/cdc-postgresql.md) — React to database changes with change data capture
-

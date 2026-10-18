@@ -13,34 +13,46 @@ import TabItem from '@theme/TabItem';
 
 # Build a File-Driven Integration
 
-**Time:** Under 10 minutes | **What you'll build:** A file integration that adds an `onModify` handler to track file changes and uses `printInfo` to log file modification events.
+<QuickstartHeader
+  time="Under 10 minutes"
+  build={<>A file integration that adds an <code>onModify</code> handler to track file changes and uses <code>printInfo</code> to log file modification events.</>}
+/>
 
 File integrations are ideal for batch uploads, scheduled file processing, and ETL workflows triggered by files appearing in a folder or FTP server.
 
-:::info Prerequisites
+<Prerequisites>
 
-- A working WSO2 Integrator environment. See [Cloud setup](../../get-started/setup/setup.md).
-- A file at the listener path to watch. Create one if you don't have one:
+## Prerequisites
 
-  <Tabs groupId="os">
-  <TabItem value="unix" label="macOS / Linux" default>
+A working WSO2 Integrator environment.
 
-  ```bash
-  echo "test" > /tmp/testfile.txt
-  ```
+<PrereqCard icon="cloud" title="Cloud setup" href="/get-started/setup">
+  Launch WSO2 Integrator in a browser-based cloud editor.
+</PrereqCard>
 
-  </TabItem>
-  <TabItem value="windows" label="Windows">
+</Prerequisites>
 
-  ```bat
-  mkdir C:\tmp 2>nul
-  echo test > C:\tmp\testfile.txt
-  ```
+You'll also need a file at the listener path to watch. Create one if you don't have one:
 
-  </TabItem>
-  </Tabs>
+<Tabs groupId="os">
+<TabItem value="unix" label="macOS / Linux" default>
 
-:::
+```bash
+echo "test" > /tmp/testfile.txt
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+
+```bat
+mkdir C:\tmp 2>nul
+echo test > C:\tmp\testfile.txt
+```
+
+</TabItem>
+</Tabs>
+
+<Steps>
 
 ## Step 1: Create the integration
 
@@ -136,6 +148,8 @@ In the cloud editor, you're already inside a project. Skip to Step 2.
         dark: useBaseUrl('/img/get-started/build-file-driven-integration/run-and-test-light.gif'),
     }}
 />
+
+</Steps>
 
 ## Source code
 
