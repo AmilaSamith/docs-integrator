@@ -5,6 +5,22 @@
   margin-top: 0;
 }
 
+/* Breadcrumb + "Edit this page"/"Copy page", see this file's docstring. */
+.topRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.topRowActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+}
+
 /* Opt-in wide layout (wide_layout: true frontmatter) for a card-grid
    landing page that also hides the TOC -- overrides the global
    `article { max-width: 820px }` prose cap in custom.css so a
