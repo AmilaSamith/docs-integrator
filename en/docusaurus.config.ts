@@ -7,14 +7,8 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityNavbarItem,
-  sharedDiscordNavbarItem,
-  sharedStackOverflowNavbarItem,
-  sharedLinkedInNavbarItem,
-  sharedYoutubeNavbarItem,
-  sharedXNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
-  sharedFaqNavbarItem,
   sharedContributeNavbarItem,
   sharedPrism,
   sharedImage,
@@ -117,56 +111,48 @@ const config: Config = {
     image: sharedImage,
     colorMode: sharedColorMode,
     docs: sharedDocsSidebar,
+    // "On this page" shows H2/H3 only, matching wso2-integrator/
+    // wso2-connectors -- see wso2-integrator's own docusaurus.config.ts
+    // for the full reasoning.
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
+    },
     navbar: {
       logo: sharedNavbarLogo,
+      // Single-header design (matches wso2-integrator/wso2-connectors):
+      // four text links, then (right zone) colour-mode toggle, GitHub
+      // and "Launch WSO2 Cloud". The former "Connectors" self-link and
+      // "Explore" dropdown are gone from here -- Connectors is one click
+      // away via the product switcher (SidebarProductHeader) next to the
+      // logo, and Explore's own sections are the homepage's "Explore the
+      // platform" grid + the docs sidebar. Footer (en/src/theme/Footer,
+      // shared) already renders the Discord/Stack Overflow/LinkedIn/
+      // YouTube/X icons itself.
       items: [
-        {
-          // Real <a> tag (via pathname:// + autoAddBaseUrl:false), not a
-          // client-side route -- /integration-platform/docs/connectors/
-          // is a completely separate build/bundle. See
-          // SidebarProductHeader's docstring for the isInternalUrl pitfall
-          // this sidesteps. Goes straight to the catalog, not just the
-          // connectors site's homepage.
-          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
-          autoAddBaseUrl: false,
-          // Docusaurus's Link auto-opens a new tab for anything it treats
-          // as external, which the pathname:// prefix above does -- fine
-          // for a genuinely external site (GitHub, the blog), wrong for a
-          // sibling product that should feel like same-site navigation.
-          target: '_self',
-          html: 'Connectors',
-          position: 'left',
-        },
-        // Same 8 sections as the homepage's "Explore the platform" grid --
-        // one source of truth would need lifting that data out of
-        // src/pages/index.tsx into a shared module; kept in sync by hand
-        // for now, matching how SidebarProductHeader's own product list
-        // note already handles the analogous config-vs-component split.
-        {
-          type: 'custom-exploreDropdown',
-          label: 'Explore',
-          position: 'left',
-          items: [
-            { title: 'Platform Overview', description: "Understand the platform's architecture and core concepts.", href: '/platform-overview' },
-            { title: 'Editor Tour', description: 'Tour the WSO2 Integrator editor and its Copilot.', href: '/editor' },
-            { title: 'Develop and Test', description: 'Build services, transform data, and test integrations.', href: '/develop-and-test' },
-            { title: 'Deploy and Run', description: 'Deploy to WSO2 Cloud, CI/CD, and production security.', href: '/deploy-and-run' },
-            { title: 'Manage', description: 'Centralized control via the WSO2 Cloud console.', href: '/manage' },
-            { title: 'Observe', description: 'Monitor logs, metrics, and alerts in WSO2 Cloud.', href: '/observe' },
-            { title: 'Migrate', description: 'Move existing MuleSoft, TIBCO, and Azure Logic Apps integrations.', href: '/migrate' },
-            { title: 'Guides', description: 'End-to-end tutorials and integration patterns.', href: '/guides/overview' },
-          ],
-        },
-        sharedContributeNavbarItem(),
-        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
-        sharedFaqNavbarItem('/reference/faq'),
+        sharedCommunityNavbarItem,
+        sharedContributeNavbarItem(),
+        // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon
+        // the new header doesn't have) -- same as wso2-integrator/
+        // wso2-connectors.
+        { label: 'FAQ', to: '/reference/faq', position: 'left' },
         sharedGithubNavbarItem,
-        sharedDiscordNavbarItem,
-        sharedStackOverflowNavbarItem,
-        sharedLinkedInNavbarItem,
-        sharedYoutubeNavbarItem,
-        sharedXNavbarItem,
+        // Last on purpose: the right zone renders toggle, divider, then
+        // these in array order (see theme/Navbar/Content), so this
+        // button ends the row. `html` (not `label`) so Docusaurus
+        // doesn't append its external-link arrow; styled by
+        // .navbar-download-btn in custom.css -- same orange CTA
+        // treatment wso2-integrator's Download / wso2-connectors'
+        // Integration Store buttons use, different destination (saas is
+        // cloud-hosted, no download).
+        {
+          html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5c2.5 2.5 4 6 4 9.5 0 2-.5 3.5-1.5 5l-2.5 3-2.5-3c-1-1.5-1.5-3-1.5-5 0-3.5 1.5-7 4-9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="1.8" stroke="currentColor" stroke-width="2"/><path d="M8.5 16 6 21l3-1.2M15.5 16 18 21l-3-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Launch WSO2 Cloud',
+          href: 'https://console.devant.dev/signup',
+          position: 'right',
+          className: 'navbar-download-btn',
+          'aria-label': 'Launch WSO2 Cloud',
+        },
       ]
     },
     footer: {
