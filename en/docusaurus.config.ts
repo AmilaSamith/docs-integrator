@@ -7,16 +7,9 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityNavbarItem,
-  sharedDiscordNavbarItem,
-  sharedStackOverflowNavbarItem,
-  sharedLinkedInNavbarItem,
-  sharedYoutubeNavbarItem,
-  sharedXNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
-  sharedFaqNavbarItem,
   sharedContributeNavbarItem,
-  sharedReleasesNavbarItem,
   sharedPrism,
   sharedImage,
   CROSS_PRODUCT_BASE,
@@ -112,6 +105,14 @@ const config: Config = {
             // — verified by build inspection after getting this wrong once.
             current: {
               label: 'Next',
+              // `lastVersion: 'current'` above means Next also serves at
+              // the site root, so Docusaurus's own default-banner logic
+              // (only shown when the viewed version differs from
+              // lastVersion) would otherwise stay silent here. Explicit
+              // `banner: 'unreleased'` restores the preview warning
+              // (restyled in theme/DocVersionBanner) even though Next is
+              // still what most visitors land on by default.
+              banner: 'unreleased',
             },
           },
         },
@@ -127,56 +128,44 @@ const config: Config = {
     image: sharedImage,
     colorMode: sharedColorMode,
     docs: sharedDocsSidebar,
+    // "On this page" shows H2/H3 only (the "Nesting depth" design
+    // reference's own rule) -- a doc with real content below H3 uses a
+    // bold lead-in or a list instead, per that same reference ("H5/H6
+    // are not used"); H4 still renders in the article body, it just
+    // doesn't get its own TOC entry.
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
+    },
     navbar: {
       logo: sharedNavbarLogo,
+      // Single-header design: four text links, then (right zone) search,
+      // color-mode toggle, GitHub and Download. Connectors, Explore and
+      // Releases moved out of the navbar -- Connectors stays one click away
+      // in the product switcher, Explore's sections are the landing page's
+      // "Explore the platform" grid and the docs sidebar, Releases in the
+      // Reference sidebar -- and the Discord/Stack Overflow/LinkedIn/
+      // YouTube/X icons live in the footer and the Community page instead.
       items: [
-        {
-          // Real <a> tag (via pathname:// + autoAddBaseUrl:false), not a
-          // client-side route -- /integration-platform/docs/connectors/
-          // is a completely separate build/bundle. See
-          // SidebarProductHeader's docstring for the isInternalUrl pitfall
-          // this sidesteps. `html` (not `label`) so Docusaurus doesn't
-          // auto-append its external-link arrow icon. Goes straight to
-          // the catalog, not just the connectors site's homepage.
-          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
-          autoAddBaseUrl: false,
-          // See saas's docusaurus.config.ts for why target:'_self' is here.
-          target: '_self',
-          html: 'Connectors',
-          position: 'left',
-        },
-        // Same 8 sections as the homepage's "Explore the platform" grid --
-        // one source of truth would need lifting that data out of
-        // src/pages/index.tsx into a shared module; kept in sync by hand
-        // for now, matching how SidebarProductHeader's own product list
-        // note already handles the analogous config-vs-component split.
-        {
-          type: 'custom-exploreDropdown',
-          label: 'Explore',
-          position: 'left',
-          items: [
-            { title: 'Platform Overview', description: "Understand the platform's architecture and core concepts.", href: '/platform-overview' },
-            { title: 'Editor Tour', description: 'Tour the WSO2 Integrator editor and its Copilot.', href: '/editor' },
-            { title: 'Develop and Test', description: 'Build services, transform data, and test integrations.', href: '/develop-and-test' },
-            { title: 'Deploy and Run', description: 'Deploy to WSO2 Cloud or your own infrastructure, CI/CD, and security.', href: '/deploy-and-run' },
-            { title: 'Manage', description: 'Control plane: WSO2 Cloud or the self-hosted ICP.', href: '/manage' },
-            { title: 'Observe', description: 'Monitor metrics, logs, and traces.', href: '/observe' },
-            { title: 'Migrate', description: 'Move existing MuleSoft, TIBCO, and Azure Logic Apps integrations.', href: '/migrate' },
-            { title: 'Guides', description: 'End-to-end tutorials and integration patterns.', href: '/guides/overview' },
-            { title: 'Integration Control Plane', description: 'Monitor and manage self-hosted integrations with ICP.', href: '/icp', fullWidth: true, badge: 'ICP' },
-          ],
-        },
-        sharedReleasesNavbarItem('/reference/release-notes'),
-        sharedContributeNavbarItem(),
-        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
-        sharedFaqNavbarItem('/reference/faq'),
+        sharedCommunityNavbarItem,
+        sharedContributeNavbarItem(),
+        // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon the
+        // new header doesn't have).
+        { label: 'FAQ', to: '/reference/faq', position: 'left' },
         sharedGithubNavbarItem,
-        sharedDiscordNavbarItem,
-        sharedStackOverflowNavbarItem,
-        sharedLinkedInNavbarItem,
-        sharedYoutubeNavbarItem,
-        sharedXNavbarItem,
+        // Last on purpose: the right zone renders search, toggle, divider,
+        // then these in array order (see theme/Navbar/Content), so the
+        // Download button ends the row. `html` (not `label`) so Docusaurus
+        // doesn't append its external-link arrow; styled by
+        // .navbar-download-btn in custom.css.
+        {
+          html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download',
+          href: 'https://wso2.com/products/downloads/?product=wso2integrator',
+          position: 'right',
+          className: 'navbar-download-btn',
+          'aria-label': 'Download WSO2 Integrator',
+        },
       ]
     },
     footer: {
