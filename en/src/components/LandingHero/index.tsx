@@ -28,10 +28,7 @@ export interface LandingHeroProps {
   imageAlt: string;
   /** Small uppercase label above the title, e.g. "WSO2 Integrator · Docs". */
   eyebrow: string;
-  /** Usually a plain string; pass JSX (e.g. with <TitleSuffix>) for a
-   * trailing qualifier that should render smaller than the rest, like
-   * "Integration Platform on WSO2 Cloud <TitleSuffix>(SaaS)</TitleSuffix>". */
-  title: ReactNode;
+  title: string;
   subtitle: string;
   /** Optional search box (e.g. <HeroSearch />) rendered between the
    * subtitle and the CTA row. Omit for a product with no in-page search. */
@@ -50,14 +47,6 @@ export interface LandingHeroProps {
   /** Optional caption under the screenshot, e.g. "Windows · macOS ·
    * Linux · 100% open source". */
   footnote?: string;
-}
-
-/** A trailing qualifier inside `title` that should render smaller/lighter
- * than the rest of the headline, e.g. "...WSO2 Cloud <TitleSuffix>(SaaS)
- * </TitleSuffix>". `em`-sized (not a fixed px value) so it stays
- * proportional to heroTitle's own font-size across breakpoints. */
-export function TitleSuffix({ children }: { children: ReactNode }): ReactNode {
-  return <span className={styles.heroTitleSuffix}>{children}</span>;
 }
 
 function IconArrowRight(): ReactNode {
