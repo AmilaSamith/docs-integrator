@@ -10,15 +10,22 @@
  * columns beneath them. See index.tsx's own docstring for why the
  * heading has to be literal markdown, not something this file renders.
  */
+/* One wrapping row -- heading, intro sentence and card(s) flow side by
+   side (the common case: one short sentence + one or two cards fits a
+   single line) instead of the heading/intro always claiming a full row
+   of their own above a separate card grid. A doc with more cards (e.g.
+   extra "Also required" prerequisites) just wraps onto further lines;
+   flex-wrap handles that without a separate layout mode. */
 .box {
   margin-top: 28px;
-  padding: 22px 24px;
+  padding: 18px 24px;
   border-radius: 14px;
   background: #F3F7FB;
   border: 1px solid #D9E5F0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
 }
 
 [data-theme='dark'] .box {
@@ -26,18 +33,12 @@
   border-color: rgba(29, 74, 115, 0.5);
 }
 
-/* The literal heading and intro paragraph each take the whole row,
-   stacked above the card grid -- not treated as grid items themselves. */
-.box > :global(h2),
-.box > :global(p) {
-  grid-column: 1 / -1;
-}
-
 /* Overrides custom.css's .markdown h2 (border-bottom/padding-bottom/
    margin-top for a normal section break) -- !important for the same
    reason Steps' own heading override needs it: that rule's extra type
    selector otherwise beats a plain scoped class on specificity. */
 .box > :global(h2) {
+  flex: none;
   display: flex !important;
   align-items: center;
   gap: 10px;
@@ -49,6 +50,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #1D4A73;
+  white-space: nowrap;
 }
 
 [data-theme='dark'] .box > :global(h2) {
@@ -71,9 +73,10 @@
 }
 
 .box > :global(p) {
-  margin: -4px 0 0;
-  font-size: 16px;
-  line-height: 1.6;
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
   color: #22303D;
 }
 
@@ -81,11 +84,17 @@
   color: var(--ifm-font-color-base);
 }
 
-.box a.card {
+/* `flex-basis: 100%` -- a full-width item in a wrapping flex row always
+   starts its own new line (nothing fits beside it), so the card sits on
+   its own elongated bar under the heading/intro line instead of
+   competing with them for space on the first line. */
+.box a.card,
+.box div.card {
+  flex: 1 1 100%;
   display: flex;
   gap: 12px;
-  align-items: flex-start;
-  padding: 14px 16px;
+  align-items: center;
+  padding: 12px 18px;
   border-radius: 10px;
   background: var(--ifm-background-color);
   border: 1px solid #D9E5F0;
@@ -94,7 +103,8 @@
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-[data-theme='dark'] .box a.card {
+[data-theme='dark'] .box a.card,
+[data-theme='dark'] .box div.card {
   background: var(--ifm-background-surface-color);
   border-color: rgba(29, 74, 115, 0.5);
 }
@@ -108,7 +118,6 @@
 
 .cardIcon {
   flex: none;
-  margin-top: 2px;
   color: #1D4A73;
 }
 
@@ -116,18 +125,112 @@
   color: #7FB1E0;
 }
 
+/* Title and description flow on one line (wrapping together if the
+   card gets narrow) instead of stacking -- a full-width elongated bar
+   reads as one row of text, not a tall block. */
 .cardText {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
   font-size: 14px;
 }
 
 .cardText strong {
   font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .cardText span {
   color: var(--ifm-font-color-base);
+}
+
+/* A card with a `code` snippet (e.g. RabbitMQ's docker run one-liner)
+   stacks title/description/snippet vertically and grows taller, so the
+   icon beside it aligns to the top instead of the simple card's
+   vertical-center. */
+.box a.card:has(.cardTextStacked),
+.box div.card:has(.cardTextStacked) {
+  align-items: flex-start;
+}
+
+.box a.card:has(.cardTextStacked) .cardIcon,
+.box div.card:has(.cardTextStacked) .cardIcon {
+  margin-top: 2px;
+}
+
+.cardTextStacked {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.cardTextStacked strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cardTextStacked > span {
+  color: var(--ifm-font-color-base);
+}
+
+/* The command itself: a nested, slightly-tinted bordered strip so it
+   reads as "the thing to run," distinct from the card's own
+   title/description prose above it. */
+.codeSnippet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #F3F7FB;
+  border: 1px solid #D9E5F0;
+}
+
+[data-theme='dark'] .codeSnippet {
+  background: rgba(29, 74, 115, 0.16);
+  border-color: rgba(29, 74, 115, 0.5);
+}
+
+.codeSnippet code {
+  font-size: 13px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--wso2-heading-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.copyBtn {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1D4A73;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+[data-theme='dark'] .copyBtn {
+  color: #7FB1E0;
+}
+
+.copyBtn:hover {
+  background: rgba(29, 74, 115, 0.1);
+}
+
+[data-theme='dark'] .copyBtn:hover {
+  background: rgba(127, 177, 224, 0.14);
 }

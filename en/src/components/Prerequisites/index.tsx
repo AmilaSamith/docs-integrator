@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -93,6 +93,46 @@ function AIIcon(): ReactNode {
   );
 }
 
+function CopyIcon({ copied }: { copied: boolean }): ReactNode {
+  return copied ? (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m5 12 5 5L20 7" />
+    </svg>
+  ) : (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="9" y="9" width="12" height="12" rx="2" />
+      <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+    </svg>
+  );
+}
+
+/** The bordered, monospace command snippet under a PrereqCard's
+ * description (e.g. a `docker run ...` one-liner) -- its own copy
+ * button, independent of the card's own link target, so a card with a
+ * `code` prop never wraps the whole thing in an `<a>` (see PrereqCard's
+ * own docstring for why). */
+function CodeSnippet({ code }: { code: string }): ReactNode {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className={styles.codeSnippet}>
+      <code>{code}</code>
+      <button
+        type="button"
+        className={styles.copyBtn}
+        aria-label="Copy to clipboard"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigator.clipboard?.writeText(code);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1500);
+        }}>
+        <CopyIcon copied={copied} />
+      </button>
+    </div>
+  );
+}
+
 const PREREQ_ICONS = { cloud: CloudIcon, local: LocalIcon, ai: AIIcon } as const;
 export type PrereqIconName = keyof typeof PREREQ_ICONS;
 
@@ -101,11 +141,15 @@ export function PrereqCard({
   title,
   href,
   cloud,
+  code,
   children,
 }: {
   icon: PrereqIconName;
   title: string;
-  href: string;
+  /** Omit together with `code` for a plain info card with no link
+   * target (e.g. "a running RabbitMQ instance") -- not every
+   * prerequisite is a doc page to navigate to. */
+  href?: string;
   /** `href` is a route on the WSO2 Cloud (saas) docs site, not this
    * site -- resolved the same way CloudDocsLink does (each product is a
    * separate static build with its own baseUrl, so a plain internal
@@ -113,6 +157,14 @@ export function PrereqCard({
    * docstring for the fuller reasoning; not reused directly here since
    * it doesn't accept the icon/title/desc card shape. */
   cloud?: boolean;
+  /** A one-line command (e.g. a `docker run ...`) shown in its own
+   * bordered, monospace, copy-button-equipped strip below the
+   * description -- stacks title above description (rather than the
+   * plain card's same-line layout) to leave room for it. When set, the
+   * card renders as a non-interactive `<div>`, not a link -- the
+   * snippet's own copy button needs its own click target, which an
+   * enclosing `<a>` would fight with. */
+  code?: string;
   children: ReactNode;
 }): ReactNode {
   const Icon = PREREQ_ICONS[icon];
@@ -122,12 +174,17 @@ export function PrereqCard({
       <span className={styles.cardIcon} aria-hidden="true">
         <Icon />
       </span>
-      <span className={styles.cardText}>
+      <span className={code ? styles.cardTextStacked : styles.cardText}>
         <strong>{title}</strong>
         <span>{children}</span>
+        {code && <CodeSnippet code={code} />}
       </span>
     </>
   );
+
+  if (code || !href) {
+    return <div className={styles.card}>{content}</div>;
+  }
 
   if (cloud) {
     const base = (siteConfig.customFields?.crossProductBase as string) || DEFAULT_CROSS_PRODUCT_BASE;
