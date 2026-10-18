@@ -8,14 +8,8 @@ import {
   sharedFooterCopyright,
   sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
-  sharedDiscordNavbarItem,
-  sharedStackOverflowNavbarItem,
-  sharedYoutubeNavbarItem,
-  sharedLinkedInNavbarItem,
-  sharedXNavbarItem,
   sharedBlogNavbarItem,
   sharedContributeNavbarItem,
-  sharedFaqNavbarItem,
   sharedPrism,
   sharedImage,
   CROSS_PRODUCT_BASE,
@@ -112,57 +106,42 @@ const config: Config = {
     image: sharedImage,
     colorMode: sharedColorMode,
     docs: sharedDocsSidebar,
+    // "On this page" shows H2/H3 only, matching every real product
+    // branch -- see wso2-integrator's own docusaurus.config.ts for the
+    // full reasoning.
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
+    },
     navbar: {
       logo: sharedNavbarLogo,
+      // Single-header design, matching every real product branch: four
+      // text links, then (right zone) search, colour-mode toggle,
+      // GitHub and a CTA button. The old "Connectors" self-link and
+      // "Explore" mega-dropdown are gone -- a new product branch
+      // starting from this scaffold should follow the same pattern,
+      // not the pre-redesign one. Explore's own sections are now this
+      // page's own "Explore the scaffold" grid and the docs sidebar.
       items: [
-        {
-          // Real <a> tag (via pathname:// + autoAddBaseUrl:false), not a
-          // client-side route -- see SidebarProductHeader's docstring for
-          // why. Kept here even though this branch has no real product
-          // content, to fully demonstrate the cross-product-link pattern
-          // a new product branch would also want.
-          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
-          autoAddBaseUrl: false,
-          target: '_self',
-          html: 'Connectors',
-          position: 'left',
-        },
-        // Mirrors saas's "Explore" dropdown, pointed at this branch's own
-        // scaffold instead of real platform sections. Order matches each
-        // section's _category_.json position. Platform Overview is
-        // copied verbatim from saas (a genuinely common page across
-        // every product -- see its own frontmatter); Get Started/Guides/
-        // Reference mirror saas's real structure with sample content;
-        // Section 1/2 and Icons/Homepage/Workflows are this scaffold's
-        // own convention demonstrations, not present on a real product
-        // branch.
-        {
-          type: 'custom-exploreDropdown',
-          label: 'Explore',
-          position: 'left',
-          items: [
-            { title: 'Platform Overview', description: 'Copied verbatim from saas -- common to every product branch.', href: '/platform-overview' },
-            { title: 'Get Started', description: 'Sample sign-up/concepts/quickstarts pages, in the same shape saas uses.', href: '/get-started' },
-            { title: 'Section 1', description: 'Placeholder top-level section with sample sub-sections.', href: '/section-1' },
-            { title: 'Section 2', description: 'Two plain leaf docs, each with its own sidebar separator label.', href: '/section-2' },
-            { title: 'Guides', description: 'A searchable guide catalog with a few sample guides.', href: '/guides' },
-            { title: 'Reference', description: 'Sample FAQ and glossary pages, in the same shape saas uses.', href: '/reference' },
-            { title: 'Icons', description: 'Every icon available to doc authors, and how to use one.', href: '/icons' },
-            { title: 'Homepage', description: 'How the landing page and its search bar are put together, and how to customize them.', href: '/homepage' },
-            { title: 'Workflows', description: 'Every CI workflow, and the full checklist for onboarding a new product.', href: '/workflows' },
-            { title: 'Tools', description: 'Brand color palette/logos, and downloadable Claude Code skills for this repo.', href: '/tools' },
-          ],
-        },
-        sharedContributeNavbarItem(),
-        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
-        sharedFaqNavbarItem('/reference/faq'),
+        sharedCommunityNavbarItem,
+        sharedContributeNavbarItem(),
+        // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon
+        // the new header doesn't have) -- same as every real product.
+        { label: 'FAQ', to: '/reference/faq', position: 'left' },
         sharedGithubNavbarItem,
-        sharedDiscordNavbarItem,
-        sharedStackOverflowNavbarItem,
-        sharedYoutubeNavbarItem,
-        sharedLinkedInNavbarItem,
-        sharedXNavbarItem,
+        // Last on purpose: the right zone renders search, toggle,
+        // divider, then these in array order (see theme/Navbar/Content),
+        // so this button ends the row. `html` (not `label`) so
+        // Docusaurus doesn't append its external-link arrow; styled by
+        // .navbar-download-btn in custom.css.
+        {
+          html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download',
+          href: 'https://wso2.com/products/downloads/?product=wso2integrator',
+          position: 'right',
+          className: 'navbar-download-btn',
+          'aria-label': 'Download WSO2 Integrator',
+        },
       ],
     },
     footer: {

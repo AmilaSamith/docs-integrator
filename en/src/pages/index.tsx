@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import LandingHero from '@site/src/components/LandingHero';
+import HeroSearch from '@site/src/components/LandingHero/HeroSearch';
 
 import styles from './index.module.css';
 
@@ -151,6 +152,37 @@ function IconTools(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Step strip -- "New to this scaffold?" section                      */
+/* ------------------------------------------------------------------ */
+const steps = [
+  { title: 'Set up', sub: <Link to="/get-started">Sample sign-up/setup page <span aria-hidden="true">→</span></Link> },
+  { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
+  { title: 'Explore the structure', sub: 'Sections, guides, and reference docs' },
+  { title: 'Customize', sub: 'Fork this scaffold into a real product' },
+];
+
+/* ------------------------------------------------------------------ */
+/*  "What do you want to build?" tiles -- reuses quickLinks below,      */
+/*  same sample quickstarts the hero search's dropdown also shows.      */
+/* ------------------------------------------------------------------ */
+type Quickstart = { title: string; description: string; to: string; icon: ReactNode };
+
+const quickstarts: Quickstart[] = [
+  {
+    title: 'Build an Integration as API',
+    description: 'Sample quickstart -- the shape every product quickstart doc follows.',
+    to: '/get-started/quickstarts/build-integration-api',
+    icon: <IconGetStarted />,
+  },
+  {
+    title: 'Build an AI Agent',
+    description: 'A second sample quickstart, demonstrating the QuickstartHeader/Prerequisites/Steps pattern.',
+    to: '/get-started/quickstarts/build-ai-agent',
+    icon: <IconWorkflows />,
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /*  Section Data -- this branch's own scaffold sections plus saas's     */
 /*  Platform Overview/Get Started/Guides/Reference (copied verbatim or  */
 /*  sample-filled, see each section's own docs).                        */
@@ -216,12 +248,12 @@ const sections: SectionCard[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Quick-links shown when the search input is focused but empty, and   */
-/*  in the "What do you want to build?" tutorial row below the hero.    */
+/*  Quick-links shown when the hero search is focused but empty.        */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Integration as API', sub: 'Sample quickstart', to: '/get-started/quickstarts/build-integration-api' },
-  { label: 'Build an AI Agent', sub: 'Sample quickstart', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build an Integration as API', to: '/get-started/quickstarts/build-integration-api' },
+  { label: 'Build an AI Agent', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Platform Overview', to: '/platform-overview' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -238,6 +270,7 @@ function HomepageHeader(): ReactNode {
       eyebrow="Docs · Scaffold"
       title={siteConfig.title}
       subtitle={siteConfig.tagline}
+      search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's Get Started", to: '/get-started' }}
       secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
       secondary={{
@@ -252,23 +285,48 @@ function HomepageHeader(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  "What do you want to build?" — tutorial row                        */
+/*  New to this scaffold? — step strip + quickstart tiles               */
 /* ------------------------------------------------------------------ */
-function TutorialRow(): ReactNode {
+function GetStarted(): ReactNode {
   return (
-    <section className={styles.tutorialRow}>
-      <Heading as="h2" className={styles.tutorialRowTitle}>
+    <section className={styles.getStarted}>
+      <div className={styles.getStartedHead}>
+        <div className={styles.getStartedHeadText}>
+          <Heading as="h2" className={styles.h2Large}>
+            New to this scaffold?
+          </Heading>
+          <p className={styles.lead}>Four steps, starting with a sample quickstart.</p>
+        </div>
+        <div className={styles.headLinks}>
+          <Link to="/get-started/concepts">
+            Key concepts <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </div>
+
+      <ol className={styles.steps} aria-label="Steps">
+        {steps.map((step, i) => (
+          <li key={step.title} className={`${styles.step} ${step.active ? styles.stepActive : ''}`}>
+            <span className={styles.stepNum}>{i + 1}</span>
+            <span className={styles.stepText}>
+              <strong>{step.title}</strong>
+              <span>{step.sub}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      <div className={styles.tutorialGrid}>
-        {quickLinks.map((link) => (
-          <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-            <span className={styles.tutorialCardText}>
-              <span className={styles.tutorialCardTitle}>{link.label}</span>
-              <span className={styles.tutorialCardSub}>{link.sub}</span>
-            </span>
-            <span className={styles.tutorialCardArrow}>
-              <IconArrowRight />
+      <p className={styles.sub}>Pick a sample quickstart to start.</p>
+      <div className={styles.tileGrid}>
+        {quickstarts.map((q) => (
+          <Link key={q.title} to={q.to} className={styles.tile}>
+            <span className={styles.tileIcon}>{q.icon}</span>
+            <span className={styles.tileText}>
+              <strong>{q.title}</strong>
+              <span>{q.description}</span>
             </span>
           </Link>
         ))}
@@ -278,28 +336,84 @@ function TutorialRow(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Section Cards                                                      */
+/*  Explore the scaffold -- banner (2) + lifecycle grid (4) + wide      */
+/*  tile (1), reusing `sections` above in the same three-tier layout    */
+/*  every real product's own "Explore the platform" section uses.       */
 /* ------------------------------------------------------------------ */
-function SectionCards(): ReactNode {
+function Explore(): ReactNode {
+  const [banner1, banner2, ...rest] = sections;
+  const lifecycle = rest.slice(0, 4);
+  const wide = rest.slice(4);
+  const tones = ['toneInk', 'toneBlue', 'toneIndigo', 'toneTeal'];
+
   return (
-    <section className={styles.sectionCards}>
-      <Heading as="h2" className={styles.sectionCardsTitle}>
-        Explore the scaffold
-      </Heading>
-      <div className={styles.sectionGrid}>
-        {sections.map((card, idx) => (
-          <Link
-            key={idx}
-            to={card.link}
-            className={styles.sectionCard}
-            style={{ '--icon-color': card.iconColor } as React.CSSProperties}>
-            <span className={styles.sectionIcon}>{card.icon}</span>
-            <Heading as="h3" className={styles.sectionCardTitle}>
-              {card.title}
-            </Heading>
-            <p className={styles.sectionCardDesc}>{card.description}</p>
+    <section className={`${styles.cream} ${styles.explore}`}>
+      <div className={styles.exploreInner}>
+        <div>
+          <span className={styles.eyebrow}>
+            <span className={styles.eyebrowDash} />
+            Explore the scaffold
+          </span>
+          <Heading as="h2" className={styles.h2Xl}>
+            Everything this scaffold demonstrates
+          </Heading>
+        </div>
+
+        <div className={styles.banner}>
+          <Link to={banner1.link} className={`${styles.bannerCol} ${styles.bannerColDivider}`}>
+            <span className={styles.bannerIcon}>{banner1.icon}</span>
+            <strong className={styles.bannerTitle}>{banner1.title}</strong>
+            <span className={styles.bannerDesc}>{banner1.description}</span>
+            <span className={styles.bannerCta}>
+              Start here <span aria-hidden="true">→</span>
+            </span>
           </Link>
-        ))}
+          <Link to={banner2.link} className={styles.bannerCol}>
+            <span className={styles.bannerIcon}>{banner2.icon}</span>
+            <strong className={styles.bannerTitle}>{banner2.title}</strong>
+            <span className={styles.bannerDesc}>{banner2.description}</span>
+          </Link>
+        </div>
+
+        <div className={styles.lifecycle}>
+          <div className={styles.lifecycleHead}>
+            <strong>Sections</strong>
+            <span className={styles.lifecycleRule} aria-hidden="true" />
+          </div>
+          <ol className={styles.lifecycleGrid}>
+            {lifecycle.map((c, i) => (
+              <li key={c.title}>
+                <Link to={c.link} className={`${styles.lcCard} ${styles[tones[i]]}`}>
+                  <span className={styles.lcTop}>
+                    <span className={styles.lcIcon} aria-hidden="true">
+                      {c.icon}
+                    </span>
+                    <span className={styles.lcNum}>{String(i + 1).padStart(2, '0')}</span>
+                  </span>
+                  <strong>{c.title}</strong>
+                  <span>{c.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className={styles.wideGrid}>
+          {wide.map((t) => (
+            <Link key={t.title} to={t.link} className={styles.wideTile}>
+              <span className={`${styles.wideIcon} ${styles.wideIconOrange}`} aria-hidden="true">
+                {t.icon}
+              </span>
+              <span className={styles.wideBody}>
+                <strong>{t.title}</strong>
+                <span>{t.description}</span>
+              </span>
+              <span className={styles.wideArrow} aria-hidden="true">
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -312,11 +426,13 @@ export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title="Home" description={siteConfig.tagline}>
-      <HomepageHeader />
-      <main>
-        <TutorialRow />
-        <SectionCards />
-      </main>
+      <div className={styles.page}>
+        <main>
+          <HomepageHeader />
+          <GetStarted />
+          <Explore />
+        </main>
+      </div>
     </Layout>
   );
 }

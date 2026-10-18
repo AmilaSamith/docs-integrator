@@ -1,170 +1,650 @@
 /**
- * Landing Page — Modern, Clean Design
+ * Landing page -- warm "ink + cream + orange" theme, below the hero (the
+ * hero itself is the shared LandingHero component, restyled in its own
+ * styles.module.css to the same palette -- see its docstring).
  *
- * WSO2 Brand: #1B2A49 #26365A (navy) #F14E23 #FF8A3D (Pulse orange)
- * Neutrals:   #000 #0D0D0D #262626 #565656 #D9D9D9 #F2F2F2 #FFF
- *
- * Design: Clean SVG icons with color-coded badges,
- * subtle borders, professional typography.
+ * All colours are tokens on .page (light values) with a
+ * [data-theme='dark'] override, so nothing below hardcodes a theme.
+ * Light: white content, #FBF8F5 cream sections on a faint dot grid,
+ * ink #17171C text, accent orange #C94F0A. Dark: warm charcoal family
+ * (#141210 page / #1E1B19 cards / #1A1715 cream sections).
  */
 
-/* ================================================================
-   HERO — split layout: product-screenshot card (left) + heading/
-   search/CTA (right). Always the navy gradient, independent of the
-   site's light/dark theme (like a fixed brand banner).
-   ================================================================ */
-/* SEARCH BAR CSS moved to src/components/SearchBar/styles.module.css
-   when that component was pulled out of this page -- see index.tsx. */
+.page {
+  --lp-bg: #FFFFFF;
+  --lp-card: #FFFFFF;
+  --lp-cream: #FBF8F5;
+  --lp-dot: #E9E1D9;
+  --lp-border: #E6E6EA;
+  --lp-border-warm: #ECE6E0;
+  --lp-border-cream: #E3DCD5;
+  --lp-text: #17171C;
+  --lp-text-2: #4A4A55;
+  --lp-text-3: #3A3A44;
+  --lp-text-4: #5A5A66;
+  --lp-link: #B4470A;
+  --lp-link-hover: #7A2E04;
+  --lp-eyebrow: #8A3A08;
+  --lp-brand: #FF7300;
+  --lp-accent: #C94F0A;
+  --lp-ink-btn-bg: #17171C;
+  --lp-ink-btn-text: #FFFFFF;
+  --lp-step-active-bg: #FFF3EA;
+  --lp-step-active-sub: #6B3A16;
+  --lp-chip-bg: #F6F3F0;
+  --lp-chip-text: #3A3A44;
+  --lp-banner-bg: #1E1B19;
+  --lp-banner-edge: transparent;
+  --lp-wide-orange-bg: #FFF1E6;
+  --lp-wide-orange: #C05621;
+  --lp-wide-gold-bg: #FBF4E4;
+  --lp-wide-gold: #B7791F;
+  --lp-tone-ink-bg: #F7F8FB;
+  --lp-tone-ink-border: #E8EAF0;
+  --lp-tone-ink-icon: #17171C;
+  --lp-tone-blue-bg: #F4F8FD;
+  --lp-tone-blue-border: #DFE9F5;
+  --lp-tone-blue-icon: #2B6CB0;
+  --lp-tone-indigo-bg: #F6F6FD;
+  --lp-tone-indigo-border: #E3E4F6;
+  --lp-tone-indigo-icon: #4C51BF;
+  --lp-tone-teal-bg: #F2F9F8;
+  --lp-tone-teal-border: #DCEDEB;
+  --lp-tone-teal-icon: #2C7A7B;
+  --lp-lc-text: #3E4250;
 
-/* ================================================================
-   "What do you want to build?" — bordered cards, icon badge on the
-   right (title + subtitle on the left)
-   ================================================================ */
-.tutorialRow {
-  padding: 56px 40px 24px;
-  max-width: 1180px;
-  margin: 0 auto;
+  flex: 1 0 auto;
+  background: var(--lp-bg);
+  color: var(--lp-text);
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.tutorialRowTitle {
-  margin: 0 0 20px;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  color: var(--wso2-heading-color);
+[data-theme='dark'] .page {
+  --lp-bg: #141210;
+  --lp-card: #1E1B19;
+  --lp-cream: #1A1715;
+  --lp-dot: rgba(255, 255, 255, 0.05);
+  --lp-border: #3B3532;
+  --lp-border-warm: #3B3532;
+  --lp-border-cream: #3B3532;
+  --lp-text: #EDE7E2;
+  --lp-text-2: #C2B8B0;
+  --lp-text-3: #D8CFC8;
+  --lp-text-4: #B3A9A1;
+  --lp-link: #F5A06A;
+  --lp-link-hover: #FFC9A3;
+  --lp-eyebrow: #F5A06A;
+  --lp-ink-btn-bg: #EDE7E2;
+  --lp-ink-btn-text: #17171C;
+  --lp-step-active-bg: rgba(201, 79, 10, 0.16);
+  --lp-step-active-sub: #F0C9AE;
+  --lp-chip-bg: #2A2523;
+  --lp-chip-text: #D8CFC8;
+  --lp-banner-bg: #24201D;
+  --lp-banner-edge: #3B3532;
+  --lp-wide-orange-bg: rgba(192, 86, 33, 0.2);
+  --lp-wide-orange: #F5A06A;
+  --lp-wide-gold-bg: rgba(183, 121, 31, 0.2);
+  --lp-wide-gold: #E8B65A;
+  --lp-tone-ink-bg: #221F1D;
+  --lp-tone-ink-border: #3B3532;
+  --lp-tone-ink-icon: #EDE7E2;
+  --lp-tone-blue-bg: #18222E;
+  --lp-tone-blue-border: #26384D;
+  --lp-tone-indigo-bg: #1D1D30;
+  --lp-tone-indigo-border: #32335A;
+  --lp-tone-teal-bg: #15262A;
+  --lp-tone-teal-border: #24413F;
+  --lp-lc-text: #C2B8B0;
 }
 
-.tutorialGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+.page a {
+  color: var(--lp-link);
+  text-decoration: none;
 }
 
-.tutorialCard {
+.page a:hover {
+  color: var(--lp-link-hover);
+  text-decoration: underline;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+  font-family: inherit;
+  color: var(--lp-text);
+  margin: 0;
+}
+
+/* Cream sections: warm fill + faint dot grid */
+.cream {
+  background-color: var(--lp-cream);
+  background-image: radial-gradient(var(--lp-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-bottom: 1px solid var(--lp-border-warm);
+}
+
+/* Shared bits */
+.eyebrow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 20px;
-  border-radius: 16px;
-  background: var(--ifm-background-color);
-  border: 1px solid var(--wso2-surface-border);
-  box-shadow: var(--wso2-card-shadow);
-  color: inherit !important;
-  text-decoration: none !important;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.tutorialCard:hover {
-  border-color: var(--ifm-color-primary);
-  transform: translateY(-2px);
-}
-
-.tutorialCardText {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.tutorialCardTitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--wso2-heading-color);
-}
-
-.tutorialCardSub {
+  gap: 8px;
   font-size: 13px;
-  color: var(--wso2-text-muted);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lp-eyebrow);
 }
 
-.tutorialCardArrow {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 11px;
-  background: #FDE3D9;
-  color: var(--wso2-accent-text);
-  transition: transform 0.2s ease;
-}
-
-[data-theme='dark'] .tutorialCardArrow {
-  background: rgba(241, 78, 35, 0.16);
-}
-
-.tutorialCard:hover .tutorialCardArrow {
-  transform: translateX(3px);
+.eyebrowDash {
+  width: 24px;
+  height: 2px;
+  background: var(--lp-brand);
 }
 
 /* ================================================================
-   "Explore the platform" — bordered cards, icon in a square badge
+   NEW TO WSO2 INTEGRATOR?
    ================================================================ */
-.sectionCards {
-  padding: 36px 40px 72px;
-  max-width: 1180px;
+.getStarted {
+  max-width: 1360px;
   margin: 0 auto;
+  padding: 80px 32px 72px;
 }
 
-.sectionCardsTitle {
-  margin: 0 0 20px;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  color: var(--wso2-heading-color);
+.getStartedHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 26px;
 }
 
-.sectionGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-}
-
-.sectionCard {
+.getStartedHeadText {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 22px;
+  gap: 8px;
+  max-width: 760px;
+}
+
+.page h2.h2Large {
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.lead {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--lp-text-2);
+}
+
+.headLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.headLinks a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.steps {
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  border: 1px solid var(--lp-border-warm);
   border-radius: 16px;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--wso2-surface-border);
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s ease;
+  background: var(--lp-cream);
+  overflow: hidden;
 }
 
-.sectionCard:hover {
-  border-color: var(--ifm-color-primary);
-  text-decoration: none;
-  color: inherit;
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  margin: 0;
 }
 
-/* Icon badge — bordered square, icon color-coded via CSS custom
-   properties (kept per-category for quick visual scanning). */
-.sectionIcon {
+.step + .step {
+  border-left: 1px solid var(--lp-border-warm);
+}
+
+.stepActive {
+  background: var(--lp-step-active-bg);
+}
+
+.stepNum {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--lp-ink-btn-bg);
+  color: var(--lp-ink-btn-text);
+  font-size: 13px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
-  background: var(--ifm-background-color);
-  border: 1px solid var(--wso2-surface-border);
-  color: var(--icon-color);
 }
 
-.sectionCardTitle {
-  font-size: 15.5px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--wso2-heading-color);
+.stepActive .stepNum {
+  background: var(--lp-accent);
+  color: #FFFFFF;
 }
 
-.sectionCardDesc {
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.stepText strong {
+  font-size: 15px;
+  color: var(--lp-text);
+}
+
+.stepText span {
   font-size: 13.5px;
-  color: var(--ifm-font-color-base);
-  margin: 0;
-  line-height: 1.55;
-  flex-grow: 1;
+  color: var(--lp-text-2);
 }
 
+.stepActive .stepText span {
+  color: var(--lp-step-active-sub);
+}
+
+.page h3.h3 {
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  font-weight: 800;
+}
+
+.sub {
+  margin: 6px 0 18px;
+  font-size: 16px;
+  color: var(--lp-text-2);
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 1px;
+  background: var(--lp-border);
+  border: 1px solid var(--lp-border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.page a.tile {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: var(--lp-card);
+  color: var(--lp-text);
+}
+
+.page a.tile:hover {
+  color: var(--lp-text);
+  text-decoration: none;
+  background: var(--lp-cream);
+}
+
+.tileIcon {
+  flex: none;
+  color: var(--lp-link);
+}
+
+.tileText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tileText strong {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tileText span {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--lp-text-2);
+}
+
+/* ================================================================
+   EXPLORE THE PLATFORM
+   ================================================================ */
+.exploreInner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 88px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exploreInner > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.page h2.h2Xl {
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+/* Dark feature banner -- the one deliberately dark block in light mode */
+.banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--lp-banner-edge);
+  background-color: var(--lp-banner-bg);
+  background-image:
+    radial-gradient(ellipse 70% 120% at 100% 0%, rgba(255, 115, 0, 0.28), transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
+  color: #FFFFFF;
+  box-shadow: 0 30px 60px -30px rgba(40, 20, 5, 0.5);
+}
+
+.page a.bannerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px;
+  color: #FFFFFF;
+}
+
+.page a.bannerCol:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.bannerColDivider {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bannerIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerTitle {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.bannerDesc {
+  max-width: 30em;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: #D8CFC8;
+}
+
+.bannerCta {
+  margin-top: 8px;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 11px;
+  background: #FFFFFF;
+  color: #17171C;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.bannerPills {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bannerPills span {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F0E8E2;
+}
+
+/* Lifecycle */
+.lifecycle {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--lp-card);
+  border: 1px solid var(--lp-border-warm);
+}
+
+.lifecycleHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lifecycleHead strong {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lp-text-4);
+}
+
+.lifecycleRule {
+  flex: 1 1 120px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2B6CB0, #C94F0A, #4C51BF, #2C7A7B);
+  opacity: 0.35;
+}
+
+.lifecycleGrid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: 14px;
+}
+
+.lifecycleGrid li {
+  margin: 0;
+}
+
+.page a.lcCard {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid var(--lc-border);
+  background: var(--lc-bg);
+  color: var(--lp-text);
+}
+
+.page a.lcCard:hover {
+  color: var(--lp-text);
+  text-decoration: none;
+  border-color: var(--lc-icon);
+}
+
+.lcCard strong {
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.lcCard > span:last-child {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--lp-lc-text);
+}
+
+.lcTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lcIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--lc-icon);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lcNum {
+  font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace;
+  font-size: 13px;
+  color: var(--lp-text-4);
+}
+
+/* Per-stage tints (consumed through --lc-* above) */
+.toneInk { --lc-bg: var(--lp-tone-ink-bg); --lc-border: var(--lp-tone-ink-border); --lc-icon: var(--lp-tone-ink-icon); }
+.toneBlue { --lc-bg: var(--lp-tone-blue-bg); --lc-border: var(--lp-tone-blue-border); --lc-icon: var(--lp-tone-blue-icon); }
+.toneIndigo { --lc-bg: var(--lp-tone-indigo-bg); --lc-border: var(--lp-tone-indigo-border); --lc-icon: var(--lp-tone-indigo-icon); }
+.toneTeal { --lc-bg: var(--lp-tone-teal-bg); --lc-border: var(--lp-tone-teal-border); --lc-icon: var(--lp-tone-teal-icon); }
+
+[data-theme='dark'] .toneInk .lcIcon { color: #17171C; }
+
+/* Migrate / Guides tiles */
+.wideGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: 20px;
+}
+
+.page a.wideTile {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--lp-card);
+  border: 1px solid var(--lp-border-warm);
+  color: var(--lp-text);
+}
+
+.page a.wideTile:hover {
+  color: var(--lp-text);
+  text-decoration: none;
+  border-color: var(--lp-link);
+}
+
+.wideIcon {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wideIconOrange { background: var(--lp-wide-orange-bg); color: var(--lp-wide-orange); }
+.wideIconGold { background: var(--lp-wide-gold-bg); color: var(--lp-wide-gold); }
+
+.wideBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wideBody strong {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.wideBody > span:not(.tags) {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lp-lc-text);
+}
+
+.tags {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--lp-chip-bg);
+  color: var(--lp-chip-text);
+}
+
+.wideArrow {
+  font-size: 20px;
+  color: var(--lp-link);
+}
+
+@media (max-width: 640px) {
+  .getStarted {
+    padding: 56px 20px 48px;
+  }
+
+  .exploreInner {
+    padding: 56px 20px;
+  }
+
+  .page h2.h2Large {
+    font-size: 30px;
+  }
+
+  .page h2.h2Xl {
+    font-size: 32px;
+  }
+
+  .page a.bannerCol {
+    padding: 28px;
+  }
+
+  .bannerColDivider {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .step + .step {
+    border-left: 0;
+    border-top: 1px solid var(--lp-border-warm);
+  }
+}
