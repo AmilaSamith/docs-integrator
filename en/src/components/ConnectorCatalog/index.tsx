@@ -149,6 +149,39 @@ function ConnectorCard({ connector: c, catalogBase }: { connector: Connector; ca
   );
 }
 
+/** Previous/page-numbers/Next, shared by the toolbar (top) and the
+ * bottom-of-grid row -- same controls in both places so paging through
+ * results doesn't require scrolling back up to the toolbar first. */
+function Pagination({ page, pageCount, setPage }: { page: number; pageCount: number; setPage: (p: number) => void }) {
+  return (
+    <nav className={styles.pagination} aria-label="Pagination">
+      <button type="button" className={styles.pageNav} disabled={page <= 1} onClick={() => setPage(page - 1)} aria-label="Previous page">
+        <ChevronLeftIcon /> Previous
+      </button>
+      {pageNumbers(page, pageCount).map((p, i) =>
+        p === '…' ? (
+          <span key={`gap-${i}`} className={styles.pageGap}>
+            …
+          </span>
+        ) : (
+          <button
+            key={p}
+            type="button"
+            className={styles.pageNum}
+            aria-current={p === page ? 'page' : undefined}
+            onClick={() => setPage(p)}
+          >
+            {p}
+          </button>
+        ),
+      )}
+      <button type="button" className={styles.pageNav} disabled={page >= pageCount} onClick={() => setPage(page + 1)} aria-label="Next page">
+        Next <ChevronRightIcon />
+      </button>
+    </nav>
+  );
+}
+
 export default function ConnectorCatalog({ connectors, categories, vendors }: Props) {
   useCatalogRegister(connectors, categories, vendors);
   const catalog = useCatalog();
@@ -208,42 +241,23 @@ export default function ConnectorCatalog({ connectors, categories, vendors }: Pr
             </span>
           </label>
 
-          {pageCount > 1 && (
-            <nav className={styles.pagination} aria-label="Pagination">
-              <button type="button" className={styles.pageNav} disabled={page <= 1} onClick={() => setPage(page - 1)} aria-label="Previous page">
-                <ChevronLeftIcon /> Previous
-              </button>
-              {pageNumbers(page, pageCount).map((p, i) =>
-                p === '…' ? (
-                  <span key={`gap-${i}`} className={styles.pageGap}>
-                    …
-                  </span>
-                ) : (
-                  <button
-                    key={p}
-                    type="button"
-                    className={styles.pageNum}
-                    aria-current={p === page ? 'page' : undefined}
-                    onClick={() => setPage(p)}
-                  >
-                    {p}
-                  </button>
-                ),
-              )}
-              <button type="button" className={styles.pageNav} disabled={page >= pageCount} onClick={() => setPage(page + 1)} aria-label="Next page">
-                Next <ChevronRightIcon />
-              </button>
-            </nav>
-          )}
+          {pageCount > 1 && <Pagination page={page} pageCount={pageCount} setPage={setPage} />}
         </div>
       </div>
 
       {shown.length > 0 ? (
-        <div className={styles.grid}>
-          {shown.map((c) => (
-            <ConnectorCard key={c.name} connector={c} catalogBase={catalogBase} />
-          ))}
-        </div>
+        <>
+          <div className={styles.grid}>
+            {shown.map((c) => (
+              <ConnectorCard key={c.name} connector={c} catalogBase={catalogBase} />
+            ))}
+          </div>
+          {pageCount > 1 && (
+            <div className={styles.paginationBottom}>
+              <Pagination page={page} pageCount={pageCount} setPage={setPage} />
+            </div>
+          )}
+        </>
       ) : (
         <div className={styles.empty}>
           No connectors match those filters.{' '}

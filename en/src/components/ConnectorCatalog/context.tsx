@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import { useHistory, useLocation } from '@docusaurus/router';
 
 // Plain useLayoutEffect warns during Docusaurus's server-side static
 // generation ("useLayoutEffect does nothing on the server") -- SSG has
@@ -37,6 +38,52 @@ export type Sort = (typeof SORTS)[number];
 export const PER_PAGE_OPTIONS = [12, 24, 30, 48] as const;
 export const DEFAULT_PER_PAGE = 30;
 
+/** Query-param names the catalog's search/filter state round-trips
+ * through, so a URL copied while browsing (e.g. ?q=salesforce&cat=CRM
+ * %20%26%20Sales&page=2) reproduces the same search, filters, sort and
+ * page for whoever opens it. A param is only written when it differs
+ * from its default, so an untouched catalog keeps a plain /catalog URL. */
+const PARAM = { query: 'q', cats: 'cat', vendors: 'vendor', sort: 'sort', perPage: 'per', page: 'page' } as const;
+
+interface SearchState {
+  query: string;
+  selectedCats: string[];
+  selectedVendors: string[];
+  sort: Sort;
+  perPage: number;
+  page: number;
+}
+
+function parseSearch(search: string): SearchState {
+  const p = new URLSearchParams(search);
+  const sortParam = p.get(PARAM.sort);
+  const sort: Sort = (SORTS as readonly string[]).includes(sortParam ?? '') ? (sortParam as Sort) : 'Popular';
+  const perPageParam = Number(p.get(PARAM.perPage));
+  const perPage = (PER_PAGE_OPTIONS as readonly number[]).includes(perPageParam) ? perPageParam : DEFAULT_PER_PAGE;
+  const pageParam = Number(p.get(PARAM.page));
+  const page = Number.isInteger(pageParam) && pageParam > 0 ? pageParam : 1;
+  return {
+    query: p.get(PARAM.query) ?? '',
+    selectedCats: p.get(PARAM.cats)?.split(',').filter(Boolean) ?? [],
+    selectedVendors: p.get(PARAM.vendors)?.split(',').filter(Boolean) ?? [],
+    sort,
+    perPage,
+    page,
+  };
+}
+
+function serializeSearch(state: SearchState): string {
+  const p = new URLSearchParams();
+  if (state.query) p.set(PARAM.query, state.query);
+  if (state.selectedCats.length) p.set(PARAM.cats, state.selectedCats.join(','));
+  if (state.selectedVendors.length) p.set(PARAM.vendors, state.selectedVendors.join(','));
+  if (state.sort !== 'Popular') p.set(PARAM.sort, state.sort);
+  if (state.perPage !== DEFAULT_PER_PAGE) p.set(PARAM.perPage, String(state.perPage));
+  if (state.page !== 1) p.set(PARAM.page, String(state.page));
+  const s = p.toString();
+  return s ? `?${s}` : '';
+}
+
 interface CatalogData {
   connectors: Connector[];
   categories: string[];
@@ -59,6 +106,10 @@ interface CatalogContextValue {
   page: number;
   setPage: (p: number) => void;
   clearAll: () => void;
+  /** Applies a URL search string's query/filters/sort/page as one atomic
+   * state update -- called once by useCatalogRegister when the catalog
+   * page mounts, so opening a shared/copied URL reproduces that view. */
+  hydrateFromSearch: (search: string) => void;
 }
 
 const CatalogContext = createContext<CatalogContextValue | null>(null);
@@ -88,6 +139,32 @@ export function CatalogProvider({ children }: { children: ReactNode }): ReactNod
   const [sort, setSort] = useState<Sort>('Popular');
   const [perPage, setPerPageState] = useState(DEFAULT_PER_PAGE);
   const [page, setPage] = useState(1);
+  const history = useHistory();
+  const location = useLocation();
+
+  // State -> URL, one-way: only while the catalog is actually mounted
+  // (data !== null), so an unrelated page never picks up a leftover
+  // ?q=...&page=2 from an earlier catalog visit. history.replace (not
+  // push) so paging/typing/filtering doesn't spam browser history --
+  // only the URL's query string changes, not a navigable step.
+  useEffect(() => {
+    if (!data) return;
+    const search = serializeSearch({ query, selectedCats, selectedVendors, sort, perPage, page });
+    if (search !== location.search) {
+      history.replace({ pathname: location.pathname, search });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, query, selectedCats, selectedVendors, sort, perPage, page]);
+
+  const hydrateFromSearch = (search: string) => {
+    const s = parseSearch(search);
+    setQueryState(s.query);
+    setSelectedCats(s.selectedCats);
+    setSelectedVendors(s.selectedVendors);
+    setSort(s.sort);
+    setPerPageState(s.perPage);
+    setPage(s.page);
+  };
 
   const setQuery = (q: string) => {
     setQueryState(q);
@@ -129,6 +206,7 @@ export function CatalogProvider({ children }: { children: ReactNode }): ReactNod
       page,
       setPage,
       clearAll,
+      hydrateFromSearch,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [data, query, selectedCats, selectedVendors, sort, perPage, page],
@@ -147,8 +225,17 @@ export function CatalogProvider({ children }: { children: ReactNode }): ReactNod
  * never actually reaches the screen. */
 export function useCatalogRegister(connectors: Connector[], categories: string[], vendors: string[]): void {
   const ctx = useContext(CatalogContext);
+  const location = useLocation();
+  // Captured once per mount (not re-read on every render/navigation) --
+  // hydrateFromSearch below only runs on mount, so it should see the
+  // URL as it was when the catalog page actually loaded (e.g. a shared
+  // link), not get re-triggered by this component's own state -> URL
+  // sync effect replacing the URL moments later.
+  const initialSearchRef = useRef(location.search);
+
   useIsomorphicLayoutEffect(() => {
     ctx?.setData({ connectors, categories, vendors });
+    ctx?.hydrateFromSearch(initialSearchRef.current);
     return () => ctx?.setData(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connectors, categories, vendors]);

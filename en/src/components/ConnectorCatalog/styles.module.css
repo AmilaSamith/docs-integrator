@@ -94,8 +94,6 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
-  max-height: 220px;
-  overflow-y: auto;
 }
 
 .facet {
@@ -316,6 +314,17 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+/* Same Previous/page-numbers/Next row repeated below the grid, so
+   paging through results doesn't require scrolling back up to the
+   toolbar first. */
+.paginationBottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--wso2-surface-border);
 }
 
 .pageNav {
