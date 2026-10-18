@@ -3,12 +3,19 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import LandingHero from '@site/src/components/LandingHero';
+import HeroSearch from '@site/src/components/LandingHero/HeroSearch';
 
 import styles from './index.module.css';
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
 /* ------------------------------------------------------------------ */
+const quickLinks = [
+  { label: 'Build an Automation', to: '/get-started/quickstarts/build-automation' },
+  { label: 'Build an AI Agent', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build an Integration as API', to: '/get-started/quickstarts/build-integration-api' },
+];
+
 const steps = [
   { title: 'Set up', sub: 'Create your WSO2 Cloud account' },
   { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
@@ -195,14 +202,9 @@ function HomepageHeader(): ReactNode {
       eyebrow="WSO2 Cloud · Docs"
       title="Integration Platform on WSO2 Cloud"
       subtitle="Build, deploy, and manage integrations at cloud speed."
+      search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's get started", to: '/get-started' }}
       secondaryCta={{ label: 'Platform overview', to: '/platform-overview' }}
-      secondary={{
-        prefix: 'Prefer to try it first?',
-        label: 'Launch WSO2 Cloud',
-        href: 'https://console.devant.dev/signup',
-        icon: 'external',
-      }}
       footnote="No installation · runs in your browser"
     />
   );
