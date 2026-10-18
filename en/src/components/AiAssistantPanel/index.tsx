@@ -48,7 +48,7 @@ function buildAssistantUrl(assistant: Assistant, prompt: string): string {
 /** Lucide's "bot" icon (https://lucide.dev/icons/bot), used as-is --
  * ISC-licensed, open source, fetched directly from lucide-static
  * rather than hand-drawn, matching the same "real chat-bot glyph"
- * intent as the WSO2 Integrator editor's own Copilot orb icon (see
+ * intent as the WSO2 Integrator IDE's own Copilot orb icon (see
  * en/static/img/editor/copilot/copilot-orb.png) without redrawing it.
  * Single-color (currentColor), matching every other icon in this
  * codebase, on the .fab's own orange background. */
