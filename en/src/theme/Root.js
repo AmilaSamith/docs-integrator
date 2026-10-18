@@ -3,10 +3,6 @@ import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import FloatingActions from '@site/src/components/FloatingActions';
 import CookieConsent from '@site/src/components/CookieConsent';
-// Connectors-only (not present on wso2-integrator) -- portals into a
-// sidebar slot DocRoot/Layout/Sidebar only inserts on a connector's own
-// page, see that component's own docstring.
-import ConnectorSwitcher from '@site/src/components/ConnectorSwitcher';
 import { CatalogProvider } from '@site/src/components/ConnectorCatalog/context';
 
 // Make Prism available globally so extensions can reach it
@@ -135,7 +131,6 @@ export default function Root({ children }) {
       {children}
       <FloatingActions />
       <CookieConsent />
-      <ConnectorSwitcher />
     </CatalogProvider>
   );
 }

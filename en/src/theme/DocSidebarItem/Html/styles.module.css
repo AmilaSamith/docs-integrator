@@ -1,7 +1,0 @@
-/* Copied from @docusaurus/theme-classic's own DocSidebarItem/Html/styles.module.css -- unchanged. */
-@media (min-width: 997px) {
-  .menuHtmlItem {
-    padding: var(--ifm-menu-link-padding-vertical)
-      var(--ifm-menu-link-padding-horizontal);
-  }
-}

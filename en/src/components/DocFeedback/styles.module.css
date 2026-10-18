@@ -5,30 +5,30 @@
  */
 .box {
   margin-top: 24px;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid var(--wso2-border-subtle);
   background: var(--ifm-background-surface-color);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 12.5px;
 }
 
 .questionText {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--wso2-heading-color);
 }
 
 .thanks {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ifm-color-primary);
 }
 
 .answers {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .answerBtn {
@@ -36,16 +36,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 34px;
+  gap: 5px;
+  height: 28px;
   border: 1px solid var(--wso2-surface-border);
-  border-radius: 8px;
+  border-radius: 7px;
   background: var(--ifm-background-color);
   font: inherit;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--wso2-heading-color);
   cursor: pointer;
+}
+
+.answerBtn svg {
+  width: 12px;
+  height: 12px;
 }
 
 .answerBtn:hover {
@@ -56,13 +61,18 @@
 .reportLink {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding-top: 10px;
+  gap: 6px;
+  padding-top: 8px;
   border-top: 1px solid var(--wso2-border-subtle);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--wso2-text-muted) !important;
   text-decoration: none !important;
+}
+
+.reportLink svg {
+  width: 12px;
+  height: 12px;
 }
 
 .reportLink:hover {
