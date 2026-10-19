@@ -117,6 +117,11 @@ on:
   workflow_dispatch:
 
 env:
+  # en/src/theme-local/ is deliberately absent from this list -- it's the
+  # permanent per-branch escape hatch for hooking into the shared files
+  # below (theme/Root.js, theme/DocRoot/Layout/Sidebar) without hand-editing
+  # them, see MAINTENANCE.md's "When a branch needs its own hook into
+  # shared theme internals".
   SHARED_PATHS: >-
     en/src/theme-shared
     en/src/theme
