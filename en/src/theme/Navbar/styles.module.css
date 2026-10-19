@@ -1,0 +1,29 @@
+/* Below 1360px only -- the main navbar has no room for the product/
+   version segment there, so this row carries the compact copy instead
+   (see theme/Navbar/Content's own productSegment). Hidden entirely at
+   1360px and up. */
+.secondaryRow {
+  display: none;
+}
+
+@media (max-width: 1359px) {
+  .secondaryRow {
+    display: block;
+    position: sticky;
+    top: var(--ifm-navbar-height);
+    z-index: calc(var(--ifm-z-index-fixed) - 1);
+    background-color: var(--ifm-background-color);
+    border-bottom: 1px solid var(--wso2-surface-border);
+    /* Kept in sync with custom.css's --wso2-secondary-row-height, which
+       other rules (anchor scroll-margin, sidebar/TOC offsets) size
+       against -- see that variable's definition, and its 1360px-up
+       override to 0, for the full explanation. */
+    min-height: var(--wso2-secondary-row-height);
+  }
+}
+
+.secondaryRowInner {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem var(--ifm-navbar-padding-horizontal);
+}

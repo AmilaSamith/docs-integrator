@@ -1,0 +1,121 @@
+/*
+Hide color mode toggle in small viewports
+ */
+.colorModeToggle {
+  flex-shrink: 0;
+}
+
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}
+
+/* Desktop layout (matches the landing-page header mockup): logo +
+   product/version segment pinned left, then the text links, then the
+   right group (color-mode toggle, GitHub, Download) set off by a vertical
+   rule. Infima's stock trick is two equal flex:1 outer zones that center
+   the links; here only the logo zone grows, so the links sit right next to
+   the right group instead. */
+@media (min-width: 997px) {
+  .logoZone {
+    flex: 1 1 auto;
+  }
+
+  :global(.navbar__items--center) + :global(.navbar__items--right) {
+    flex: 0 0 auto;
+    margin-left: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  /* The rule before the toggle: same 1px line, same 42px height and
+     colour as .productSegment's border after the logo (a pseudo-element
+     rather than border-left, which would run the full navbar height). */
+  :global(.navbar__items--center) + :global(.navbar__items--right)::before {
+    content: '';
+    flex: none;
+    align-self: center;
+    width: 1px;
+    height: 42px;
+    margin-right: 0.75rem;
+    background-color: var(--wso2-nav-divider);
+  }
+}
+
+/* Logo + "Docs" label, sized (>= 1360px) to exactly match the doc
+   sidebar's own width minus the navbar's own left padding -- the two
+   together put this block's right edge at --doc-sidebar-width from the
+   viewport edge, same as the sidebar below it, so productSegment's
+   separator (its border-left, flush against this block with no gap of
+   its own) lines up with the sidebar's right-hand edge instead of
+   floating at whatever width the logo content happens to be. Below
+   1360px there's no sidebar-width column to match (productSegment moves
+   to the secondary row there instead), so this is a no-op width: auto. */
+.logoBlock {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1360px) {
+  .logoBlock {
+    width: calc(var(--doc-sidebar-width) - var(--ifm-navbar-padding-horizontal));
+  }
+}
+
+/* "Docs" label right after the wordmark -- the logo itself is the shared
+   product lockup with no product/site name baked in (see
+   theme-shared/themeConfig.ts's sharedNavbarLogo), so this is what tells
+   you you're on the docs site rather than the product's own site. Reads
+   as one continuous phrase with the wordmark ("... Platform Docs"), so
+   it's sized close to the lockup's own wordmark text (not the smaller
+   14px product-switcher label) and sits a plain word-space away, not a
+   whole separate block -- the logo's own 0.75rem margin-right (global,
+   custom.css) is trimmed down just here instead of adding more space on
+   top of it. */
+.logoZone :global(.navbar__logo) {
+  margin-right: 0.35rem;
+}
+
+.docsLabel {
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--wso2-heading-color);
+}
+
+/* Product + version segment after the logo (single-header layout). No
+   margin-left of its own -- .logoBlock's fixed width (above) already
+   provides the gap, and ending the rule flush against that width is
+   what keeps it aligned with the sidebar. Hidden below 1360px (not just
+   mobile) because the logo + segment + four links + right-hand items
+   don't fit one line any narrower -- the secondary row carries it there
+   instead, see theme/Navbar/index.tsx. */
+.productSegment {
+  display: none;
+  align-items: center;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--wso2-nav-divider);
+}
+
+@media (min-width: 1360px) {
+  .productSegment {
+    display: flex;
+  }
+}
+
+/*
+Restore some Infima style that broke with CSS Cascade Layers
+See https://github.com/facebook/docusaurus/pull/11142
+ */
+:global(.navbar__items--right) > :last-child {
+  padding-right: 0;
+}
+
+/* The logo must keep its natural width -- the product/version segment
+   next to it would otherwise squeeze the wordmark down to just the icon. */
+.logoZone :global(.navbar__logo),
+.logoZone :global(.navbar__logo) img {
+  flex-shrink: 0;
+}

@@ -1,0 +1,68 @@
+/* This wrapper's own `position: sticky` -- not @theme-original/TOC's
+   `.theme-doc-toc-desktop` (custom.css overrides that one too, but it
+   ends up nested inside this already-sticky, already-scrollable
+   wrapper, so its own sticky positioning is moot; this rule is the one
+   that actually determines what's visible). Needs the same secondary
+   row allowance as the sidebar and the inner TOC override -- see
+   custom.css's `.theme-doc-toc-desktop` note for the full explanation.
+   Without it, "On this page" (this wrapper's title) scrolled away
+   behind the navbar/secondary row while the heading list below it
+   (independently sticky via the inner component) stayed visible. */
+.tocWrapper {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 1rem);
+  max-height: calc(100vh - (var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 2rem));
+  overflow-y: auto;
+}
+
+.tocTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wso2-text-muted);
+  margin-bottom: 12px;
+}
+
+.stuckBox {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #FFF6EF;
+  border: 1px solid #F6DCC8;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: #3A2A1E;
+}
+
+[data-theme='dark'] .stuckBox {
+  background: rgba(226, 86, 11, 0.14);
+  border-color: #4A2E1A;
+  color: var(--wso2-heading-color);
+}
+
+.stuckBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--wso2-heading-color);
+  color: var(--ifm-background-color);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.stuckBtn:hover {
+  filter: brightness(1.1);
+}
+
+.stuckBtn svg {
+  color: var(--ifm-color-primary-lighter);
+}

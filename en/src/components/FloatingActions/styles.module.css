@@ -1,0 +1,46 @@
+/* Desktop -- full size. `gap` is harmless with a single child (the
+   AI assistant launcher, the only thing left here) and keeps this
+   ready to hold a second button again without extra edits. Same
+   996px/480px breakpoints custom.css and the navbar already use
+   elsewhere on this site (Infima's own mobile threshold, and a
+   typical small-phone cutoff), not new ones invented for just this
+   component. */
+.wrapper {
+  position: fixed;
+  right: 1.5rem;
+  /* CookieConsent (mounted alongside this in theme/Root.js) sets
+     --wso2-cookie-offset to its banner's own height while the banner is
+     open, so this cluster floats above it instead of sitting underneath;
+     0px (the var's own fallback) the rest of the time. */
+  bottom: calc(1.5rem + var(--wso2-cookie-offset, 0px));
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  --floating-fab-size: 3.25rem;
+  transition: bottom 0.2s ease;
+}
+
+/* Tablet and narrower desktop -- both buttons and the gap between them
+   shrink a little; still comfortably tappable, just less screen eaten
+   at widths where it starts to matter. */
+@media (max-width: 996px) {
+  .wrapper {
+    right: 1.25rem;
+    bottom: calc(1.25rem + var(--wso2-cookie-offset, 0px));
+    gap: 0.6rem;
+    --floating-fab-size: 3rem;
+  }
+}
+
+/* Phones -- smallest comfortable tap target (still >=44px/2.75rem),
+   pulled in from the edge a bit further so neither button sits right
+   under a thumb resting on the screen edge. */
+@media (max-width: 480px) {
+  .wrapper {
+    right: 0.875rem;
+    bottom: calc(0.875rem + var(--wso2-cookie-offset, 0px));
+    gap: 0.5rem;
+    --floating-fab-size: 2.75rem;
+  }
+}
