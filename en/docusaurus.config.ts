@@ -1,6 +1,19 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {
+  sharedColorMode,
+  sharedDocsSidebar,
+  sharedNavbarLogo,
+  sharedFooterStyle,
+  sharedFooterCopyright,
+  sharedCommunityNavbarItem,
+  sharedGithubNavbarItem,
+  sharedBlogNavbarItem,
+  sharedContributeNavbarItem,
+  sharedPrism,
+  sharedImage,
+  CROSS_PRODUCT_BASE,
+} from './src/theme-shared/themeConfig';
 
 const config: Config = {
   title: 'WSO2 Integrator Documentation',
@@ -14,16 +27,29 @@ const config: Config = {
   url: 'https://wso2.com',
   baseUrl: process.env.BASE_URL || '/',
 
+  // Exposes CROSS_PRODUCT_BASE to client-side code (SidebarProductHeader) --
+  // see themeConfig.ts's CROSS_PRODUCT_BASE docstring, and saas's own
+  // docusaurus.config.ts for the fuller explanation of why this bridge
+  // exists at all.
+  customFields: {
+    crossProductBase: CROSS_PRODUCT_BASE,
+    // Shows the AI assistant button and side panel (see FloatingActions).
+    // Off until the feature is ready; set to true to bring it back.
+    showAiAssistant: false,
+  },
+
   organizationName: 'wso2',
   projectName: 'docs-integrator',
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
+  onBrokenAnchors: 'throw',
 
   markdown: {
     mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownImages: 'warn',
     },
   },
 
@@ -36,6 +62,9 @@ const config: Config = {
     './src/plugins/connector-versions',
     './plugins/docusaurus-plugin-markdown-export',
     './src/plugins/expose-sidebars',
+    // Now registered -- docs/guides/ has sample content for it to scan
+    // (see docs/guides/guides.md and HOW_TO_WRITE_A_GUIDE.md).
+    './src/plugins/guidesCatalogPlugin.js',
   ],
 
   themes: [
@@ -45,7 +74,7 @@ const config: Config = {
       {
         hashed: true,
         language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
+        highlightSearchTermsOnTargetPage: false,
         explicitSearchResultPath: true,
         docsRouteBasePath: '/',
         indexBlog: false,
@@ -74,84 +103,96 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
-    colorMode: {
-      defaultMode: 'light',
-      respectPrefersColorScheme: true,
-    },
-    docs: {
-      sidebar: {
-        // Collapse sibling categories whenever a category expands. With
-        // `useAutoExpandActiveCategory`, this means navigating to a page
-        // collapses every other top-level category and only leaves the
-        // current path expanded.        
-        autoCollapseCategories: true,
-      },
+    image: sharedImage,
+    colorMode: sharedColorMode,
+    docs: sharedDocsSidebar,
+    // "On this page" shows H2/H3 only, matching every real product
+    // branch -- see wso2-integrator's own docusaurus.config.ts for the
+    // full reasoning.
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
     },
     navbar: {
-      logo: {
-        alt: 'WSO2 Integration Platform Logo',
-        src: 'img/WSO2_Integration_Platform_Black.svg',
-        srcDark: 'img/WSO2_Integration_Platform_White.svg',
-        href: '/',
-      },
+      logo: sharedNavbarLogo,
+      // Single-header design, matching every real product branch: four
+      // text links, then (right zone) search, colour-mode toggle,
+      // GitHub and a CTA button. The old "Connectors" self-link and
+      // "Explore" mega-dropdown are gone -- a new product branch
+      // starting from this scaffold should follow the same pattern,
+      // not the pre-redesign one. Explore's own sections are now this
+      // page's own "Explore the scaffold" grid and the docs sidebar.
       items: [
+        sharedBlogNavbarItem,
+        sharedCommunityNavbarItem,
+        sharedContributeNavbarItem(),
+        // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon
+        // the new header doesn't have) -- same as every real product.
+        { label: 'FAQ', to: '/reference/faq', position: 'left' },
+        sharedGithubNavbarItem,
+        // Last on purpose: the right zone renders search, toggle,
+        // divider, then these in array order (see theme/Navbar/Content),
+        // so this button ends the row. `html` (not `label`) so
+        // Docusaurus doesn't append its external-link arrow; styled by
+        // .navbar-download-btn in custom.css.
         {
-          href: 'https://github.com/wso2/docs-integrator',
-          label: 'GitHub',
+          html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download',
+          href: 'https://wso2.com/products/downloads/?product=wso2integrator',
           position: 'right',
-        }
-      ]
+          className: 'navbar-download-btn',
+          'aria-label': 'Download WSO2 Integrator',
+        },
+      ],
     },
     footer: {
-      style: 'dark',
+      style: sharedFooterStyle,
       links: [
         {
-          title: 'Get started',
+          title: 'Get Started',
           items: [
-            { label: 'Overview', to: '/get-started/introduction' },
-            { label: 'Install', to: '/get-started/setup/local-setup' },
-            { label: 'Quick starts', to: '/get-started/build-automation' },
+            { label: 'Platform Overview', to: '/platform-overview' },
+            { label: 'Cloud Setup', to: '/get-started/cloud-setup' },
+            { label: 'Concepts', to: '/get-started/concepts' },
+            { label: 'Quickstarts', to: '/get-started/quickstarts' },
           ],
         },
         {
-          title: 'Develop',
+          title: 'Section 1',
           items: [
-            { label: 'Integration artifacts', to: '/develop/integration-artifacts' },
-            { label: 'Transform', to: '/develop/integration-artifacts/supporting/data-mapper/' },
-            { label: 'Test', to: '/develop/test/built-in-try-it-tool' },
-            { label: 'Connectors', to: '/connectors/overview' },
-            { label: 'AI Integrations', to: '/genai/overview' },
+            { label: 'Overview', to: '/section-1' },
+            { label: 'Sub-section 1', to: '/section-1/sub-section-1' },
+            { label: 'Sample Page', to: '/section-1/sub-section-1/sample-page' },
+            { label: 'Sub-section 2', to: '/section-1/sub-section-2' },
           ],
         },
         {
-          title: 'Deploy',
+          title: 'Section 2',
           items: [
-            { label: 'Docker and Kubernetes', to: '/deploy/self-hosted/containerized-deployment' },
-            { label: 'CI/CD', to: '/deploy-operate/cicd/github-actions' },
-            { label: 'Observe', to: '/deploy-operate/observe/observability-overview' },
-            { label: 'Secure', to: '/deploy-operate/secure/authentication' },
+            { label: 'Overview', to: '/section-2' },
+            { label: 'Page 1', to: '/section-2/page-1' },
+            { label: 'Page 2', to: '/section-2/page-2' },
           ],
         },
         {
-          title: 'Community',
+          title: 'Guides',
           items: [
-            { label: 'WSO2 Integrator: MI', href: 'https://mi.docs.wso2.com' },
-            { label: 'WSO2 Integrator: SI', href: 'https://si.docs.wso2.com/latest/' },
-            { label: 'Ballerina Central', href: 'https://central.ballerina.io' },
-            { label: 'Community Forums', href: 'https://discord.com/invite/wso2' },
-            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/wso2' },
-            { label: 'GitHub', href: 'https://github.com/wso2' },
+            { label: 'Overview', to: '/guides' },
+            { label: 'How to Guides', to: '/guides/how-to-guides' },
+            { label: 'Business Use Cases', to: '/guides/business-use-cases' },
+          ],
+        },
+        {
+          title: 'Reference',
+          items: [
+            { label: 'Overview', to: '/reference' },
+            { label: 'FAQ', to: '/reference/faq' },
+            { label: 'Glossary', to: '/reference/glossary' },
           ],
         },
       ],
-      copyright: `Copyright \u00A9 ${new Date().getFullYear()} WSO2 LLC. Built with Docusaurus.`,
+      copyright: sharedFooterCopyright,
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'bash', 'json', 'yaml', 'toml'],
-    },
+    prism: sharedPrism,
   } satisfies Preset.ThemeConfig,
 };
 

@@ -1,0 +1,311 @@
+/**
+ * LandingHero -- shared homepage hero, restyled on this branch to the warm
+ * "ink + cream + orange" theme (see the two design references:
+ * light-mode-final-landing / dark-mode-landing-final). Unlike the navy
+ * version this replaced, it follows the site's light/dark theme: tokens on
+ * .heroBanner for light, overridden under [data-theme='dark'].
+ */
+.heroBanner {
+  --lh-cream: #FBF8F5;
+  --lh-dot: #E9E1D9;
+  --lh-border: #ECE6E0;
+  --lh-border-cream: #E3DCD5;
+  --lh-text: #17171C;
+  --lh-text-2: #3A3A44;
+  --lh-text-3: #4A4A55;
+  --lh-eyebrow: #8A3A08;
+  --lh-brand: #FF7300;
+  --lh-accent: #C94F0A;
+  --lh-accent-shadow: 0 12px 30px rgba(201, 79, 10, 0.3);
+  --lh-outline-border: #17171C;
+  --lh-outline-text: #17171C;
+  --lh-outline-hover: rgba(23, 23, 28, 0.04);
+  --lh-secondary-text: #3A3A44;
+  --lh-secondary-icon: #C94F0A;
+  --lh-footnote: #5A5A66;
+  --lh-window-bg: #FFFFFF;
+  --lh-window-bar: #F3EFEB;
+  --lh-window-dot: #D6CEC6;
+  --lh-window-title: #5A5A66;
+  --lh-window-shadow: 0 40px 80px -30px rgba(40, 20, 5, 0.35), 0 8px 20px -10px rgba(40, 20, 5, 0.15);
+
+  position: relative;
+  overflow: hidden;
+  background-color: var(--lh-cream);
+  background-image: radial-gradient(var(--lh-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-bottom: 1px solid var(--lh-border);
+  color: var(--lh-text);
+}
+
+[data-theme='dark'] .heroBanner {
+  --lh-cream: #1A1715;
+  --lh-dot: rgba(255, 255, 255, 0.05);
+  --lh-border: #3B3532;
+  --lh-border-cream: #3B3532;
+  --lh-text: #EDE7E2;
+  --lh-text-2: #D8CFC8;
+  --lh-text-3: #C2B8B0;
+  --lh-eyebrow: #F5A06A;
+  --lh-accent-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  --lh-outline-border: #EDE7E2;
+  --lh-outline-text: #EDE7E2;
+  --lh-outline-hover: rgba(255, 255, 255, 0.06);
+  --lh-secondary-text: #C2B8B0;
+  --lh-secondary-icon: #F5A06A;
+  --lh-footnote: #B3A9A1;
+  --lh-window-bg: #1E1B19;
+  --lh-window-bar: #2A2523;
+  --lh-window-dot: #4A423D;
+  --lh-window-title: #B3A9A1;
+  --lh-window-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7), 0 8px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 72px 32px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr));
+  gap: 56px;
+  align-items: center;
+}
+
+/* ---- Text column ---- */
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lh-eyebrow);
+}
+
+.eyebrowDash {
+  width: 24px;
+  height: 2px;
+  background: var(--lh-brand);
+}
+
+.heroBanner h1.heroTitle {
+  margin: 0;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  color: var(--lh-text);
+  text-wrap: balance;
+}
+
+/* A trailing qualifier (TitleSuffix) inside the title, e.g. "(SaaS)" --
+   em-sized off heroTitle's own font-size, so it shrinks/grows with it
+   across breakpoints instead of needing its own clamp(). */
+.heroTitleSuffix {
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  opacity: 0.6;
+}
+
+.heroSubtitle {
+  margin: 0;
+  max-width: 34em;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--lh-text-2);
+  text-wrap: pretty;
+}
+
+/* ---- Visual column: product screenshot in a window frame ---- */
+.heroVisual {
+  min-width: 0;
+}
+
+.windowFrame {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--lh-window-bg);
+  border: 1px solid var(--lh-border-cream);
+  box-shadow: var(--lh-window-shadow);
+  transition: transform 0.35s ease;
+}
+
+/* Whole frame zooms (bar, dots, title and screenshot together), not
+   just the screenshot inside it -- scaling only the <img> left the
+   chrome around it static, which read as the image floating loose
+   inside a fixed frame rather than one cohesive hover affordance.
+   transform (not width/height) so it doesn't reflow layout -- the
+   frame overlaps its own margin on hover and settles back, instead of
+   pushing neighbouring content. */
+.windowFrame:hover {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windowFrame {
+    transition: none;
+  }
+}
+
+.windowBar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+  background: var(--lh-window-bar);
+  border-bottom: 1px solid var(--lh-border-cream);
+}
+
+.windowDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lh-window-dot);
+}
+
+.windowTitle {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lh-window-title);
+}
+
+.windowFrame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .heroInner {
+    padding: 48px 20px 56px;
+    gap: 36px;
+  }
+}
+
+/* ---- Actions: CTA row, secondary link, footnote ---- */
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  width: 100%;
+}
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.heroBtn {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 10px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: var(--lh-accent);
+  color: #FFFFFF !important;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: var(--lh-accent-shadow);
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.heroBtn:hover {
+  filter: brightness(1.08);
+}
+
+.heroBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.heroBtn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Low-emphasis companion to the CTA: ink outline, no fill. */
+.heroBtnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 12px;
+  border: 1.5px solid var(--lh-outline-border);
+  background: transparent;
+  color: var(--lh-outline-text) !important;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+}
+
+.heroBtnGhost:hover {
+  background: var(--lh-outline-hover);
+}
+
+.heroSecondary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: 14px;
+  color: var(--lh-secondary-text);
+}
+
+.heroSecondary a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--lh-text) !important;
+  text-decoration: none !important;
+}
+
+.heroSecondaryLabel {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.heroSecondary a svg {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  color: var(--lh-secondary-icon);
+}
+
+/* Caption under the screenshot, not in the actions row -- centered under
+   the window frame, which it shares .heroVisual's width with. */
+.heroFootnote {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--lh-footnote);
+}
+
+@media screen and (max-width: 640px) {
+  .heroActions,
+  .heroButtons {
+    justify-content: center;
+  }
+
+  .heroSecondary {
+    justify-content: center;
+  }
+}
