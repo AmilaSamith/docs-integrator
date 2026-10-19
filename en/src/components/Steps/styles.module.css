@@ -1,0 +1,65 @@
+.steps {
+  --steps-circle-size: 36px;
+  --steps-gutter: 56px;
+
+  position: relative;
+  counter-reset: step;
+  margin-top: 48px;
+}
+
+/* Continuous rail behind every circle, measured precisely in index.tsx
+   (see its own docstring for why a fixed-geometry line can't work here).
+   Circles (below) paint over it with a solid background, so it only
+   shows as short segments between them -- same visual result as the
+   mockup's own per-step line, without needing a per-step DOM wrapper. */
+.line {
+  display: none;
+  position: absolute;
+  left: calc(var(--steps-circle-size) / 2 - 1px);
+  width: 2px;
+  background: var(--wso2-surface-border);
+}
+
+.content :global(h2) {
+  position: relative;
+  margin: 40px 0 0 var(--steps-gutter) !important;
+  padding-top: 2px;
+}
+
+.content > :global(h2):first-child {
+  margin-top: 0 !important;
+}
+
+/* Non-heading content (paragraphs, lists, images, admonitions) between
+   two step headings shares the heading's own left gutter, so it lines
+   up under the step title instead of under the circle. */
+.content > :global(:not(h2)) {
+  margin-left: var(--steps-gutter);
+}
+
+.content :global(h2)::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: calc(-1 * var(--steps-gutter));
+  top: 0;
+  width: var(--steps-circle-size);
+  height: var(--steps-circle-size);
+  border-radius: 50%;
+  background: var(--wso2-heading-color);
+  color: var(--ifm-background-color);
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--ifm-font-family-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .steps {
+    --steps-circle-size: 30px;
+    --steps-gutter: 42px;
+  }
+}

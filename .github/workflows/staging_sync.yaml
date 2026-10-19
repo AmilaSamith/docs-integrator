@@ -69,6 +69,15 @@ jobs:
               ;;
             wso2-integrator)
               echo "base_url=${family_base}integrator/" >> "$GITHUB_OUTPUT"
+              # Default Node heap isn't enough once a branch carries more
+              # than one versioned_docs/ snapshot (confirmed: wso2-integrator's
+              # own 5.1.0 cut crashed this build step with "JavaScript heap
+              # out of memory"). Scoped to this branch only, not every
+              # branch unconditionally, since the others don't carry that
+              # weight yet -- add the same line to a branch's own case
+              # entry here once it needs it too (e.g. after its first
+              # `docs:version` cut).
+              echo "node_options=--max-old-space-size=8192" >> "$GITHUB_OUTPUT"
               ;;
             wso2-connectors)
               echo "base_url=${family_base}connectors/" >> "$GITHUB_OUTPUT"
@@ -89,6 +98,9 @@ jobs:
           # would still point at the production family root even on a
           # fork build using FORK_BASE_PATH above for its own baseUrl.
           CROSS_PRODUCT_BASE: ${{ steps.cfg.outputs.cross_product_base }}
+          # Empty string on any branch whose case entry above doesn't set
+          # node_options -- harmless, Node just ignores an empty NODE_OPTIONS.
+          NODE_OPTIONS: ${{ steps.cfg.outputs.node_options }}
 
       # Fork builds only (FORK_BASE_PATH set = a personal fork's own GitHub
       # Pages demo, not the real org pipeline): keep search engines from

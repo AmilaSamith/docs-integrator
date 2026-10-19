@@ -1,12 +1,28 @@
 /**
- * Swizzled from @docusaurus/theme-classic -- identical to stock except
- * the connector catalog page gets a wider, FIXED-width TOC/filter
- * column instead of Infima's normal 25% (col--3) split. That 25% is
- * fine for a heading list, but too narrow for the filter rail's
- * category labels ("Productivity & Collaboration") without wrapping
- * awkwardly -- a fixed 320px comfortably fits them regardless of
- * viewport width, with the main content column just taking whatever's
- * left instead of a hardcoded 75%.
+ * Swizzled from @docusaurus/theme-classic -- on top of stock:
+ *
+ * 1. The connector catalog page gets a wider, FIXED-width TOC/filter
+ *    column instead of Infima's normal 25% (col--3) split. That 25% is
+ *    fine for a heading list, but too narrow for the filter rail's
+ *    category labels ("Productivity & Collaboration") without wrapping
+ *    awkwardly -- a fixed 320px comfortably fits them regardless of
+ *    viewport width, with the main content column just taking whatever's
+ *    left instead of a hardcoded 75%.
+ *
+ * 2. `<DocBreadcrumbs />` is wrapped in a row (.topRow) that also carries
+ *    "Edit this page" and "Copy page", right-aligned -- `#wso2-edit-page-
+ *    slot` (an empty portal TARGET, not a component) plus `<CopyPageButton
+ *    />`. The actual "Edit this page" link only exists deep in DocItem's
+ *    own tree (stock EditThisPage, reading `editUrl` from useDoc(), a hook
+ *    that throws out here -- same reason CopyPageButton doesn't call
+ *    useDoc() either, see its own docstring); the swizzled EditThisPage
+ *    (src/theme/EditThisPage) portals its real rendered link INTO this
+ *    slot instead of rendering inline at the bottom of the article (where
+ *    it stock-defaults to, easy to miss below a long page). Both are
+ *    boundary-wrapped/empty-safe since each depends on doc-page-only
+ *    hooks/state. (These two used to live in a row under the navbar
+ *    instead -- see theme/Navbar/index.tsx's docstring for why they moved
+ *    here.)
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Layout/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
@@ -26,12 +42,20 @@ import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import type { Props } from '@theme/DocItem/Layout';
+import CopyPageButton from '@site/src/theme/Navbar/CopyPageButton';
 
 import styles from './styles.module.css';
 
 // See theme/TOC/index.tsx's docstring for why this is `/catalog` and not
 // `/connectors/catalog` -- same bug, same fix, two copies of this regex.
 const CONNECTOR_CATALOG_PATH = /\/catalog\/?$/;
+
+// Mirrors docs/icp/_category_.json's own `customProps.version` literal --
+// keep both in sync by hand (JSON can't import a shared TS constant).
+// This is the pill shown above every page under /icp/*, next to the
+// sidebar category's matching "ICP · 2.1.0" pill.
+const ICP_PATH = /^\/icp(\/|$)/;
+const ICP_VERSION = '2.1.0';
 
 function useDocTOC() {
   const { frontMatter, toc } = useDoc();
@@ -49,6 +73,7 @@ export default function DocItemLayout({ children }: Props): ReactNode {
   const { metadata, frontMatter } = useDoc();
   const { pathname } = useLocation();
   const isConnectorCatalog = CONNECTOR_CATALOG_PATH.test(pathname);
+  const isICP = ICP_PATH.test(pathname);
   // Opt-in for a card-grid landing page (hide_table_of_contents: true,
   // wide_layout: true) -- lets its content use the width the TOC column
   // would have taken instead of staying capped at prose reading width
@@ -67,8 +92,22 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article className={clsx(isWideLayout && styles.articleWide, !isWideLayout && !isConnectorCatalog && styles.articleCentered)}>
-            <DocBreadcrumbs />
-            <DocVersionBadge />
+            <div className={styles.topRow}>
+              <DocBreadcrumbs />
+              <div className={styles.topRowActions}>
+                <div id="wso2-edit-page-slot" />
+                <CopyPageButton />
+              </div>
+            </div>
+            <div className={styles.versionRow}>
+              {isICP ? (
+                <span className={styles.productVersionPill}>
+                  ICP <span className={styles.productVersionPillSep} aria-hidden="true">·</span> {ICP_VERSION}
+                </span>
+              ) : (
+                <DocVersionBadge />
+              )}
+            </div>
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />

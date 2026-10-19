@@ -5,8 +5,88 @@ import { useSidebarBreadcrumbs } from '@docusaurus/plugin-content-docs/client';
 import { useLocation, useHistory } from '@docusaurus/router';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useConnectorVersion } from '@site/src/utils/connectorVersion';
 import styles from './styles.module.css';
+
+function HomeIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/**
+ * Home icon + the doc's sidebar trail, ending in the current page (bold,
+ * not a link) -- from the "Nesting depth" design reference
+ * (SidebarDepth.dc.html): over 4 crumbs (home excluded), the middle
+ * ancestors fold into a "…" button; clicking it reveals them inline.
+ * `crumbs` is `useSidebarBreadcrumbs()`'s own return value, whose LAST
+ * entry is always the current page itself (matched by path, same as
+ * every ancestor before it) -- see that hook's own implementation
+ * (extract() unshifts every item on the path to the matching pathname,
+ * current page included) for why that's safe to rely on rather than
+ * re-deriving "which one is current" some other way.
+ */
+function CollapsibleBreadcrumbs({ crumbs }) {
+  const [expanded, setExpanded] = useState(false);
+  const homeHref = useBaseUrl('/');
+  if (!crumbs || crumbs.length === 0) return null;
+
+  const current = crumbs[crumbs.length - 1];
+  const ancestors = crumbs.slice(0, -1);
+  // Collapse only once there's an actual middle to hide -- 2 ancestors
+  // (first + last) need nothing folded between them.
+  const shouldCollapse = !expanded && ancestors.length > 2;
+  const visibleAncestors = shouldCollapse ? [ancestors[0]] : ancestors;
+  const hiddenAncestors = shouldCollapse ? ancestors.slice(1, -1) : [];
+  const tailAncestor = shouldCollapse ? ancestors[ancestors.length - 1] : null;
+
+  const renderCrumb = (crumb, key) => (
+    <React.Fragment key={key}>
+      <span className={styles.breadcrumbItem}>
+        {crumb.href ? (
+          <Link className={styles.breadcrumbLink} to={crumb.href}>
+            {crumb.label}
+          </Link>
+        ) : (
+          <span className={styles.breadcrumbLink}>{crumb.label}</span>
+        )}
+      </span>
+      <span className={styles.separator} aria-hidden="true">/</span>
+    </React.Fragment>
+  );
+
+  return (
+    <nav className={styles.breadcrumbsLeft} aria-label="Breadcrumbs">
+      <Link className={styles.breadcrumbHome} to={homeHref} aria-label="Docs home">
+        <HomeIcon />
+      </Link>
+      <span className={styles.separator} aria-hidden="true">/</span>
+      {visibleAncestors.map((c, i) => renderCrumb(c, i))}
+      {shouldCollapse && (
+        <>
+          <button
+            type="button"
+            className={styles.breadcrumbEllipsis}
+            title={hiddenAncestors.map((c) => c.label).join(', ')}
+            aria-label={`Show ${hiddenAncestors.length} hidden level${hiddenAncestors.length === 1 ? '' : 's'}: ${hiddenAncestors.map((c) => c.label).join(', ')}`}
+            onClick={() => setExpanded(true)}>
+            …
+          </button>
+          <span className={styles.separator} aria-hidden="true">/</span>
+          {renderCrumb(tailAncestor, 'tail')}
+        </>
+      )}
+      <span className={styles.breadcrumbItem}>
+        <strong aria-current="page" className={styles.breadcrumbCurrent}>
+          {current.label}
+        </strong>
+      </span>
+    </nav>
+  );
+}
 
 const CATEGORY_TAGS = {
   'ai-ml':                      { label: 'AI & ML',                      color: '#7c3aed', bg: '#f5f3ff', border: '#ddd6fe' },
@@ -245,11 +325,13 @@ export default function DocBreadcrumbsWrapper(props) {
     };
   }, [isConnector, hasMultipleVersions, isDefaultPage, location.pathname]);
 
-  // Not a versioned connector page — render default breadcrumbs + badge.
+  // Not a versioned connector page — render the collapsible breadcrumb
+  // trail (home icon + sidebar path + bold current page, folding over 4
+  // crumbs) instead of stock DocBreadcrumbs.
   if (!isConnector || !hasMultipleVersions) {
     return (
       <div className={styles.breadcrumbsLeft}>
-        <DocBreadcrumbs {...props} />
+        <CollapsibleBreadcrumbs crumbs={breadcrumbs} />
         {pageSlug === 'overview' && <CategoryBadge categorySlug={categorySlug} />}
       </div>
     );
