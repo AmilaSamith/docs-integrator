@@ -60,7 +60,26 @@ jobs:
 
   run_claude:
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.body, '@wso2-engineering-bot')
+    # `contains(comment.body, trigger_phrase)` alone isn't a real gate --
+    # issue_comment fires for a comment from ANY GitHub user, so without an
+    # author check, anyone could comment the trigger phrase on any issue
+    # and get this job to run: checkout with DOC_FIXING_AGENT_GITHUB_TOKEN
+    # (push-capable) and a Claude run whose --allowedTools include
+    # `Bash(git push *)` and mcp__github__create_pull_request. A path-
+    # restricted pre-commit hook and the system prompt's jailbreak/hidden-
+    # instruction guards bound the worst case, but an untrusted comment
+    # shouldn't be able to spend Anthropic API budget / Actions minutes or
+    # get a bot PR opened at all. OWNER/MEMBER/COLLABORATOR covers org
+    # members, outside collaborators with repo access, and the repo owner
+    # -- whichever of those the DOC_FIXING_AGENT_GITHUB_TOKEN account's own
+    # comments (the scheduled flow in get_issue_and_assign, above) resolve
+    # to must stay on this list for that flow to keep working.
+    if: >-
+      contains(github.event.comment.body, '@wso2-engineering-bot') &&
+      contains(
+        fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'),
+        github.event.comment.author_association
+      )
     steps:
 
       - name: Checkout original repository
