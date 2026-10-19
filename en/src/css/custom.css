@@ -871,7 +871,13 @@ h1, h2, h3, h4, h5, h6 {
 .menu__list .menu__list .menu__list-item-collapsible--active > .menu__link::before {
   content: '';
   position: absolute;
-  left: 0;
+  /* Flush with the parent's vertical guide line (`.menu__list .menu__list`'s
+     own `border-left`, 1px solid at the ul's edge), not inset with the
+     row's own padding -- otherwise the active bar reads as a second,
+     disconnected line floating to the right of the guide line instead of
+     a highlighted continuation of it. Cancels exactly the `border-left`
+     width (1px) + `padding-left` (10px) those nested lists set below. */
+  left: -11px;
   top: 0;
   bottom: 0;
   width: 2px;
