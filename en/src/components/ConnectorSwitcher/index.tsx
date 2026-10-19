@@ -9,12 +9,13 @@
  * that hands off to the catalog's own search/filters for anything not in
  * either list.
  *
- * Mounted unconditionally (theme/Root.js, alongside FloatingActions/
- * CookieConsent) but renders nothing of its own -- it portals into a
+ * Mounted via theme-local/RootExtras.tsx (the shared theme/Root.js's
+ * per-branch extension point, alongside FloatingActions/CookieConsent on
+ * every branch) but renders nothing of its own -- it portals into a
  * synthetic sidebar slot (CONNECTOR_SWITCHER_SLOT_ID) that
- * DocRoot/Layout/Sidebar's scopeSidebarToConnector only inserts right
- * after the pinned "Connector Catalog" row, and only on a connector's own
- * page. `document.getElementById` can't run during render (the slot's
+ * theme-local/sidebarTransform.ts's scopeSidebarToConnector only inserts
+ * right after the pinned "Connector Catalog" row, and only on a connector's
+ * own page. `document.getElementById` can't run during render (the slot's
  * `<li>` may not exist in the DOM yet), so the portal target is found in
  * an effect keyed on `pathname` -- re-checked after every navigation,
  * once Docusaurus's own sidebar re-render (if any) has committed.
@@ -32,8 +33,7 @@ import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { CONNECTORS, type Connector } from '@site/src/data/connectors';
 import { tintOf, initialsOf } from '@site/src/components/ConnectorCatalog';
-import { activeConnector } from '@site/src/utils/connectorScope';
-import { CONNECTOR_SWITCHER_SLOT_ID } from '@site/src/theme/DocRoot/Layout/Sidebar';
+import { activeConnector, CONNECTOR_SWITCHER_SLOT_ID } from '@site/src/utils/connectorScope';
 
 import styles from './styles.module.css';
 

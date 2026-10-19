@@ -11,6 +11,14 @@
  */
 import { CONNECTORS, type Connector } from '@site/src/data/connectors';
 
+/** DOM id of the synthetic sidebar slot ConnectorSwitcher portals into --
+ * shared by theme-local/sidebarTransform.ts (creates the slot item) and
+ * ConnectorSwitcher (finds it via `getElementById`) so neither duplicates
+ * the string. Lives here, not in theme-local or the shared Sidebar file,
+ * since both of those are per-branch/branch-exempt in different ways and
+ * this is the one place both can import from without creating a cycle. */
+export const CONNECTOR_SWITCHER_SLOT_ID = 'wso2-connector-switcher-slot';
+
 /** `[area, packageSlug]` for a connector's own page, or null for anything
  * else (including the catalog's own index page). */
 export function connectorAreaPackage(pathname: string, baseUrl: string): [string, string] | null {
