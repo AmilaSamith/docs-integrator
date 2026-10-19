@@ -44,9 +44,11 @@
  * the category is active, so merely setting `collapsed: true` in the
  * data doesn't stick).
  *
- * `connectorPrefixFor` strips the site's own `baseUrl` off `pathname`
- * before looking for the `catalog/...` prefix. `useLocation().pathname`
- * is the real browser path, which includes `baseUrl` (e.g.
+ * `connectorPrefixFor` (src/utils/connectorScope.ts -- shared with
+ * ConnectorSwitcher, which needs the same answer) strips the site's own
+ * `baseUrl` off `pathname` before looking for the `catalog/...` prefix.
+ * `useLocation().pathname` is the real browser path, which includes
+ * `baseUrl` (e.g.
  * `/docs-integrator/connectors/catalog/...` on this fork's Pages site,
  * `/integration-platform/docs/connectors/catalog/...` in production) --
  * only a root `baseUrl` (`/`, the dev-server default, since nothing sets
@@ -64,6 +66,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocSidebar from '@theme/DocSidebar';
 import type { PropSidebarItem, PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 import type { Props } from '@theme/DocRoot/Layout/Sidebar';
+import { connectorPrefixFor } from '@site/src/utils/connectorScope';
 
 import styles from './styles.module.css';
 
@@ -71,17 +74,9 @@ function isCategory(item: PropSidebarItem): item is PropSidebarItemCategory {
   return item.type === 'category';
 }
 
-/** Non-catalog pages, and the catalog listing page itself (exactly
- * `/catalog` or `/catalog/`), return null -- nothing to scope down to.
- * The returned prefix keeps `baseUrl` on it, matching `sub.href` below
- * (sidebar item hrefs are baseUrl-prefixed absolute paths too). */
-function connectorPrefixFor(pathname: string, baseUrl: string): string | null {
-  if (!pathname.startsWith(baseUrl)) return null;
-  const parts = pathname.slice(baseUrl.length).split('/').filter(Boolean);
-  if (parts[0] !== 'catalog' || parts.length < 3) return null;
-  const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-  return `${base}/catalog/${parts[1]}/${parts[2]}/`;
-}
+/** DOM id of the synthetic sidebar slot ConnectorSwitcher portals into --
+ * exported so that component doesn't have to duplicate the string. */
+export const CONNECTOR_SWITCHER_SLOT_ID = 'wso2-connector-switcher-slot';
 
 function asPlainLink(item: PropSidebarItemCategory): PropSidebarItemLink | PropSidebarItemCategory {
   if (!item.href) return item;
@@ -102,10 +97,56 @@ function scopeSidebarToConnector(sidebar: PropSidebarItem[], pathname: string, b
     );
   }
 
-  return sidebar.map((item) => {
-    if (!isCategory(item) || item.label !== 'Connector Catalog') return item;
-    const match = item.items.find((sub) => isCategory(sub) && sub.href?.startsWith(prefix));
-    return match ? { ...item, items: [match] } : item;
+  return sidebar.flatMap((item) => {
+    if (!isCategory(item) || item.label !== 'Connector Catalog') return [item];
+    const match = item.items.find((sub): sub is PropSidebarItemCategory => isCategory(sub) && !!sub.href?.startsWith(prefix));
+    if (!match) return [item];
+    // A synthetic `html` item (stock Docusaurus's own escape hatch for
+    // non-standard sidebar content), PREPENDED to "Connector Catalog"'s
+    // own items (not a sibling of the category -- a sibling renders
+    // AFTER the category's entire `<li>`, which already contains its
+    // nested items `<ul>`, landing the switcher below Setup Guide/
+    // Actions/Example instead of above them). As items[0] it's the first
+    // row inside that nested `<ul>`, i.e. between the pinned row's own
+    // header and its first page link, matching the design reference.
+    // `customProps.connectorSwitcherSlot: true` tells
+    // the swizzled DocSidebarItem/Html to render this as a real React
+    // `<li id="...">`, not a `dangerouslySetInnerHTML` string -- see that
+    // file's own docstring for why the raw-HTML version silently orphaned
+    // ConnectorSwitcher's portal on some re-renders. `value` is kept too,
+    // both as the id source that swizzle parses out and as a sane
+    // fallback if it's ever rendered through the stock component instead.
+    const switcherSlot: PropSidebarItem = {
+      type: 'html',
+      value: `<div id="${CONNECTOR_SWITCHER_SLOT_ID}"></div>`,
+      defaultStyle: false,
+      customProps: { connectorSwitcherSlot: true },
+    } as PropSidebarItem;
+    // `match.items` (not `[match]`) -- the design reference shows the
+    // connector's own pages (Setup Guide/Actions/Example) as flat rows
+    // directly under "Connector Catalog", not nested one level deeper
+    // behind an "Alfresco" row of their own; ConnectorSwitcher's trigger
+    // card already carries that identity. Dropping the wrapper category
+    // also means these end up one level shallower in the DOM
+    // (theme-doc-sidebar-item-link-level-2, not -3) -- custom.css's
+    // `.catalog-pinned-row > .menu__list` rule restyles them to read at
+    // the same visual weight as the pinned row itself, canceling the
+    // indent/smaller-font treatment that level normally gets everywhere
+    // else in the sidebar.
+    //
+    // `collapsed: false` is forced explicitly, not left to Docusaurus's
+    // own isActiveSidebarItem-driven default -- that check only looks at
+    // `item.href` (this category's own, "/catalog") and `item.items`
+    // (now the 3 flattened pages), so it's only TRUE when the active page
+    // is literally one of those 3. A connector's own "overview"/landing
+    // page -- what the catalog grid's card actually links to, i.e. the
+    // first page most readers land on -- isn't among them, so without
+    // this override the category falls back to `item.collapsed` (true,
+    // from sidebars.ts) and silently renders nothing: no connector pages,
+    // no switcher slot content, until some OTHER navigation happens to
+    // land on one of the 3 flattened pages directly (e.g. a reload deep
+    // on the Setup Guide URL) and makes isActive true by coincidence.
+    return [{ ...item, items: [switcherSlot, ...match.items], collapsed: false }];
   });
 }
 
