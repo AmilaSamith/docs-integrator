@@ -19,41 +19,15 @@
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocRoot/Layout/Sidebar/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
  *
- * Also scopes the sidebar to the current connector when viewing one of
- * its own pages (.../catalog/<area>/<package>/<doc>): instead of the
- * full alphabetical tree of all ~165 connectors, shows just Overview
- * plus that one connector's own category (its overview/setup/actions/
- * example items) -- the other 164 connectors aren't relevant while
- * you're reading one specific connector's docs, and 165 sibling
- * categories is a lot of scrolling to find your way back otherwise.
- * "Build Your Own" stays visible throughout -- it's a short, constant-size
- * link regardless of which connector you're on, not something that needs
- * scoping away.
- *
- * And the other direction: until a connector IS selected, "Connector
- * Catalog" itself renders as a plain link, not an expandable category.
- * Landing on the catalog's own index page makes that category "active"
- * by Docusaurus's own reckoning (its `link` doc is the current page),
- * which normally force-expands it and dumps all ~165 connectors into
- * the sidebar even though nothing under it is actually the active
- * page -- the catalog page's own filter rail is how you browse from
- * there, not a wall of sidebar links. Dropping `items`/`collapsed` and
- * changing `type` to `'link'` sidesteps that auto-expand entirely
- * rather than fighting it (see DocSidebarItem/Category's own
- * `useAutoExpandActiveCategory` -- it re-expands on every render where
- * the category is active, so merely setting `collapsed: true` in the
- * data doesn't stick).
- *
- * `connectorPrefixFor` strips the site's own `baseUrl` off `pathname`
- * before looking for the `catalog/...` prefix. `useLocation().pathname`
- * is the real browser path, which includes `baseUrl` (e.g.
- * `/docs-integrator/connectors/catalog/...` on this fork's Pages site,
- * `/integration-platform/docs/connectors/catalog/...` in production) --
- * only a root `baseUrl` (`/`, the dev-server default, since nothing sets
- * `BASE_URL` locally) ever put `catalog` at `parts[0]` directly. Every
- * real deployment sets a nested `BASE_URL`, so without this the check
- * silently never matched and this whole scoping feature no-opped on
- * every actual deployment while looking correct in local dev.
+ * Runs the sidebar through `sidebarTransform` (src/theme-local/sidebarTransform
+ * -- NOT in sync-theme.yaml's SHARED_PATHS, see Root.js's RootExtras import
+ * for the same pattern and MAINTENANCE.md's "Shared theme & shared
+ * governance" section for why) before rendering it. Every branch keeps its
+ * own copy of that file forever; most just return the sidebar unchanged. A
+ * branch whose docs have their own notion of "scope the sidebar down when
+ * viewing one item from a big catalog" (e.g. wso2-connectors, for its
+ * Connector Catalog) implements that there instead of here, so this file
+ * never needs to know what a "connector" is.
  */
 import React, { useState, useCallback, useEffect, useMemo, type ReactNode } from 'react';
 import clsx from 'clsx';
@@ -62,52 +36,10 @@ import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocSidebar from '@theme/DocSidebar';
-import type { PropSidebarItem, PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 import type { Props } from '@theme/DocRoot/Layout/Sidebar';
+import sidebarTransform from '@site/src/theme-local/sidebarTransform';
 
 import styles from './styles.module.css';
-
-function isCategory(item: PropSidebarItem): item is PropSidebarItemCategory {
-  return item.type === 'category';
-}
-
-/** Non-catalog pages, and the catalog listing page itself (exactly
- * `/catalog` or `/catalog/`), return null -- nothing to scope down to.
- * The returned prefix keeps `baseUrl` on it, matching `sub.href` below
- * (sidebar item hrefs are baseUrl-prefixed absolute paths too). */
-function connectorPrefixFor(pathname: string, baseUrl: string): string | null {
-  if (!pathname.startsWith(baseUrl)) return null;
-  const parts = pathname.slice(baseUrl.length).split('/').filter(Boolean);
-  if (parts[0] !== 'catalog' || parts.length < 3) return null;
-  const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-  return `${base}/catalog/${parts[1]}/${parts[2]}/`;
-}
-
-function asPlainLink(item: PropSidebarItemCategory): PropSidebarItemLink | PropSidebarItemCategory {
-  if (!item.href) return item;
-  // customProps carries through too (e.g. a connector-count `badge`) --
-  // DocSidebarItem/Link's own LinkLabel renders it the same way
-  // DocSidebarItem/Category's CategoryLinkLabel does, so the row looks
-  // identical whether it's currently rendered as a link (here) or as a
-  // category with its items scoped down to one connector (below).
-  return { key: item.key, className: item.className, customProps: item.customProps, type: 'link', href: item.href, label: item.label };
-}
-
-function scopeSidebarToConnector(sidebar: PropSidebarItem[], pathname: string, baseUrl: string): PropSidebarItem[] {
-  const prefix = connectorPrefixFor(pathname, baseUrl);
-
-  if (!prefix) {
-    return sidebar.map((item) =>
-      isCategory(item) && item.label === 'Connector Catalog' ? asPlainLink(item) : item,
-    );
-  }
-
-  return sidebar.map((item) => {
-    if (!isCategory(item) || item.label !== 'Connector Catalog') return item;
-    const match = item.items.find((sub) => isCategory(sub) && sub.href?.startsWith(prefix));
-    return match ? { ...item, items: [match] } : item;
-  });
-}
 
 function ResetOnSidebarChange({ children }: { children: ReactNode }) {
   const sidebar = useDocsSidebar();
@@ -124,7 +56,7 @@ export default function DocRootLayoutSidebar({
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
   const scopedSidebar = useMemo(
-    () => scopeSidebarToConnector(sidebar, pathname, baseUrl),
+    () => sidebarTransform(sidebar, pathname, baseUrl),
     [sidebar, pathname, baseUrl],
   );
   const [hiddenSidebar, setHiddenSidebar] = useState(false);

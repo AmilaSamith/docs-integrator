@@ -3,6 +3,16 @@ import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import FloatingActions from '@site/src/components/FloatingActions';
 import CookieConsent from '@site/src/components/CookieConsent';
+// Per-branch extension point, NOT in sync-theme.yaml's SHARED_PATHS --
+// every branch keeps its own copy of src/theme-local/RootExtras.tsx
+// forever (same as docusaurus.config.ts / pages/index.*), so a sync from
+// here never touches it. Most branches' copy just returns null; a branch
+// that needs to mount something globally (e.g. wso2-connectors'
+// ConnectorSwitcher) does it there instead of importing it directly into
+// this file, which would get silently wiped by the next sync since this
+// file doesn't know that branch-specific component exists. See
+// MAINTENANCE.md's "Shared theme & shared governance" section.
+import RootExtras from '@site/src/theme-local/RootExtras';
 import { CatalogProvider } from '@site/src/components/ConnectorCatalog/context';
 
 // Make Prism available globally so extensions can reach it
@@ -131,6 +141,7 @@ export default function Root({ children }) {
       {children}
       <FloatingActions />
       <CookieConsent />
+      <RootExtras />
     </CatalogProvider>
   );
 }
