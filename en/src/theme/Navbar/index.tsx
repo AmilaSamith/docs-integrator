@@ -9,24 +9,16 @@
  * stylesheet, so it sits directly beneath it and stays there together
  * while scrolling.
  *
- * The row also carries the "Copy page" export dropdown (CopyPageButton,
- * moved here from DocBreadcrumbs) and, immediately before it,
- * `#wso2-edit-page-slot` -- an empty portal TARGET, not a component: the
- * actual "Edit this page" link only exists deep in DocItem's own tree
- * (stock EditThisPage, reading `editUrl` from useDoc(), a hook that
- * throws out here -- same reason CopyPageButton doesn't call useDoc()
- * either, see its own docstring). The swizzled EditThisPage
- * (src/theme/EditThisPage) portals its real rendered link INTO this
- * slot instead of rendering inline at the bottom of the article (where
- * it stock-defaults to, easy to miss below a long page) -- Docusaurus's
- * own editUrl computation (correct per-version on wso2-integrator too)
- * stays completely untouched, only WHERE the result visually lands
- * changes. Both boundary-wrapped/empty-safe since each depends on
- * doc-page-only hooks/state that may not apply on a non-doc page. */
+ * "Edit this page" and "Copy page" used to live in this row too (a
+ * #wso2-edit-page-slot portal target + CopyPageButton). They now render
+ * at the top of the article instead, beside the breadcrumb (see
+ * theme/DocItem/Layout's docstring for why and where) -- this row is
+ * therefore ONLY the compact product/version segment now, and only
+ * exists at all below 1360px, where the main navbar has no room for it
+ * (see theme/Navbar/Content's own productSegment). */
 import type { ReactNode } from 'react';
 import Navbar from '@theme-original/Navbar';
 import SidebarProductHeader from '@site/src/components/SidebarProductHeader';
-import CopyPageButton from './CopyPageButton';
 
 import styles from './styles.module.css';
 
@@ -36,11 +28,7 @@ export default function NavbarWrapper(props: Record<string, unknown>): ReactNode
       <Navbar {...props} />
       <div className={styles.secondaryRow}>
         <div className={styles.secondaryRowInner}>
-          <SidebarProductHeader />
-          <div className={styles.rightGroup}>
-            <div id="wso2-edit-page-slot" />
-            <CopyPageButton />
-          </div>
+          <SidebarProductHeader compact />
         </div>
       </div>
     </>

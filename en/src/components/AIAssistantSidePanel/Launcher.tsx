@@ -1,8 +1,24 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 import AssistantChat from './index';
 import styles from './launcher.module.css';
+
+const OPEN_EVENT = 'wso2:open-ai-assistant';
+
+/**
+ * Opens the assistant panel from anywhere (e.g. the sidebar's "Ask AI"
+ * button, a TOC "Stuck on a step?" prompt, a search-modal row) without
+ * those callers needing a reference to this component's own state --
+ * same event-based pattern as CookieConsent's openCookieSettings. A
+ * no-op if `showAiAssistant` isn't on for this branch (Launcher simply
+ * isn't mounted then, so nothing listens).
+ */
+export function openAIAssistant(): void {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event(OPEN_EVENT));
+  }
+}
 
 /**
  * The floating AI Docs Assistant button plus the side panel it opens.
@@ -29,6 +45,12 @@ function AssistantButtonIcon(): ReactNode {
 export default function AIAssistantSidePanel(): ReactNode {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener(OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_EVENT, onOpen);
+  }, []);
 
   return (
     <>

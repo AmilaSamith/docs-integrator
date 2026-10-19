@@ -69,13 +69,57 @@ function hitTitleHtml(r: SearchResult): string {
 }
 
 function hitPath(r: SearchResult): string {
-  const items = r.page
-    ? (r.page.b ?? []).concat(r.page.t).concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s)
-    : (r.document.b ?? []);
+  if (!r.page) return concatDocumentPath(r.document.b ?? []);
+  // A category's own index page often shares its title with the category
+  // label that's already the last entry of its breadcrumb (e.g. a folder
+  // "Add Integration Artifacts" with an index doc titled the same) --
+  // concatenating page.t unconditionally would then show that label
+  // twice in a row. Only append it when it actually adds information.
+  const b = r.page.b ?? [];
+  const withTitle = b.length > 0 && b[b.length - 1] === r.page.t ? b : b.concat(r.page.t);
+  const items = withTitle.concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s);
   return concatDocumentPath(items);
 }
 
-export default function SearchModal({ onClose }: { onClose: () => void }): ReactNode {
+/** The result's top-level breadcrumb segment (e.g. "Develop and Test"),
+ * falling back to the whole path for a result with no breadcrumb at
+ * all -- used to group the flat result list into labelled sections with
+ * counts, matching the mockup's "Guides · 4 results" headers. */
+function hitCategory(r: SearchResult): string {
+  const b = r.page?.b ?? r.document.b;
+  return b && b.length > 0 ? b[0]! : hitPath(r) || 'Results';
+}
+
+type ResultGroup = { category: string; results: SearchResult[] };
+
+/** Groups by category while preserving each result's original rank
+ * (first appearance order), rather than re-sorting -- the underlying
+ * search index's own relevance ordering stays intact within and across
+ * groups. */
+function groupResults(results: SearchResult[]): ResultGroup[] {
+  const order: string[] = [];
+  const byCategory = new Map<string, SearchResult[]>();
+  for (const r of results) {
+    const cat = hitCategory(r);
+    if (!byCategory.has(cat)) {
+      byCategory.set(cat, []);
+      order.push(cat);
+    }
+    byCategory.get(cat)!.push(r);
+  }
+  return order.map((category) => ({ category, results: byCategory.get(category)! }));
+}
+
+export default function SearchModal({
+  onClose,
+  initialQuery = '',
+}: {
+  onClose: () => void;
+  /** Pre-fills the query (e.g. from the landing page's HeroSearch, which
+   * lets someone type before the modal even opens) and runs it
+   * immediately -- same box, same results, wherever it was opened from. */
+  initialQuery?: string;
+}): ReactNode {
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
@@ -86,7 +130,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }): React
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
@@ -190,9 +234,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }): React
             </button>
           )}
           <button type="button" className={styles.close} onClick={onClose} aria-label="Close search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-              <path d="M6 6l12 12M18 6 6 18" />
-            </svg>
+            Esc
           </button>
         </div>
 
@@ -200,22 +242,40 @@ export default function SearchModal({ onClose }: { onClose: () => void }): React
           <div className={styles.body}>
             {results.length > 0 ? (
               <ul ref={listRef} className={styles.results}>
-                {results.map((r, i) => (
-                  <li key={`${r.document.i}-${r.type}`}>
-                    <Link
-                      to={r.document.u + (r.document.h ?? '')}
-                      className={styles.hit}
-                      data-active={i === active}
-                      onMouseMove={() => setActive(i)}
-                      onClick={onClose}>
-                      <span className={styles.hitIcon}>
-                        <HitIcon heading={r.type === TYPE_HEADING} />
+                {groupResults(results).map((group) => (
+                  <li key={group.category} className={styles.group}>
+                    <span className={styles.groupHeader}>
+                      {group.category}
+                      <span className={styles.groupCount}>
+                        {group.results.length} {group.results.length === 1 ? 'result' : 'results'}
                       </span>
-                      <span className={styles.hitText}>
-                        <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(r) }} />
-                        <span className={styles.hitPath}>{hitPath(r)}</span>
-                      </span>
-                    </Link>
+                    </span>
+                    <ul className={styles.groupList}>
+                      {group.results.map((r) => {
+                        const i = results.indexOf(r);
+                        return (
+                          <li key={`${r.document.i}-${r.type}`}>
+                            <Link
+                              to={r.document.u + (r.document.h ?? '')}
+                              className={styles.hit}
+                              data-active={i === active}
+                              onMouseMove={() => setActive(i)}
+                              onClick={onClose}>
+                              <span className={styles.hitIcon}>
+                                <HitIcon heading={r.type === TYPE_HEADING} />
+                              </span>
+                              <span className={styles.hitText}>
+                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(r) }} />
+                                <span className={styles.hitPath}>{hitPath(r)}</span>
+                              </span>
+                              <span className={styles.hitOpen} aria-hidden="true">
+                                Open <kbd>↵</kbd>
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </li>
                 ))}
               </ul>
@@ -233,18 +293,16 @@ export default function SearchModal({ onClose }: { onClose: () => void }): React
 
         <div className={styles.footer}>
           <span className={styles.hint}>
-            <kbd>↓</kbd>
             <kbd>↑</kbd>
-            Navigate
+            <kbd>↓</kbd>
+            to navigate
           </span>
           <span className={styles.hint}>
             <kbd>↵</kbd>
-            Select
+            to open
           </span>
-          <span className={styles.hint}>
-            <kbd>esc</kbd>
-            Close
-          </span>
+          <span className={styles.footerSpacer} />
+          <span>Results are scoped to the product and version you&apos;re on</span>
         </div>
       </div>
     </div>,

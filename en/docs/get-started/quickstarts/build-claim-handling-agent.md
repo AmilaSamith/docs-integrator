@@ -14,15 +14,38 @@ import TabItem from '@theme/TabItem';
 
 # Build a Claim Handling Durable Agent
 
-**Time:** 15 minutes | **What you'll build:** A durable AI agent that receives expense claims, validates them, and pays them out — but only after a Finance reviewer approves the payment from the Integration Control Plane. If the process crashes while waiting, it resumes exactly where it left off.
+<QuickstartHeader
+  time="15 minutes"
+  build={<>A durable AI agent that handles expense claims.</>}
+/>
 
-:::info Prerequisites
+The durable AI agent receives expense claims, validates them, and pays them out — but only after a Finance reviewer approves the payment from the Integration Control Plane. If the process crashes while waiting, it resumes exactly where it left off.
 
-- [WSO2 Integrator installed](../setup/setup.md)
-- Signed in to WSO2 Integrator Copilot (provides the default AI model — no API key needed)
-- [Docker installed](https://docs.docker.com/engine/install/), including Docker Compose. It runs the Temporal server that keeps the workflow's durable record.
+<Prerequisites>
 
-:::
+## Prerequisites
+
+A working WSO2 Integrator environment.
+
+<PrereqCard icon="local" title="Local setup" href="/get-started/setup">
+  Install and launch WSO2 Integrator on your machine.
+</PrereqCard>
+<PrereqCard icon="cloud" title="WSO2 Cloud Account" href="/get-started/setup" cloud>
+  For AI assisted development and WSO2 Cloud deployments.
+</PrereqCard>
+
+Also required:
+
+<PrereqCard icon="ai" title="WSO2 Integrator Copilot" href="/get-started/setup" cloud>
+  Signed in to WSO2 Integrator Copilot (provides the default AI model — no API key needed)
+</PrereqCard>
+<PrereqCard icon="cloud" title="Docker" href="https://docs.docker.com/engine/install/">
+  Docker installed, including Docker Compose. It runs the Temporal server that keeps the workflow's durable record.
+</PrereqCard>
+
+</Prerequisites>
+
+<Steps>
 
 ## Step 1: Create the integration
 
@@ -522,6 +545,8 @@ The claim with ID 2002 has been processed and paid successfully.
 />
 
 The timeline is green end to end, and it shows where the time went: the thinking turns and `validateClaim` took seconds, `payClaim` ran in milliseconds once released, and `review-payClaim` accounts for almost the entire run. For most of the run, nobody was working on the claim. It was waiting for a person, and it lost nothing by waiting.
+
+</Steps>
 
 ## Next steps
 

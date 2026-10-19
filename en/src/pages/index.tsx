@@ -1,272 +1,363 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import LandingHero from '@site/src/components/LandingHero';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import LandingHero from '@site/src/components/LandingHero';
+import HeroSearch from '@site/src/components/LandingHero/HeroSearch';
 
 import styles from './index.module.css';
 
 /* ------------------------------------------------------------------ */
-/*  Clean SVG Icon Components                                          */
+/*  Data                                                               */
 /* ------------------------------------------------------------------ */
-function IconPlatformOverview(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2" />
-      <polyline points="2 17 12 22 22 17" />
-      <polyline points="2 12 12 17 22 12" />
-    </svg>
-  );
-}
+const quickLinks = [
+  { label: 'Build an Automation', to: '/get-started/quickstarts/build-automation' },
+  { label: 'Build an AI Agent', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build a Durable Workflow', to: '/get-started/quickstarts/build-durable-workflow' },
+];
 
-function IconEditorTour(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 20h9" />
-      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
-    </svg>
-  );
-}
+const steps = [
+  { title: 'Set up', sub: <Link to="/get-started/setup">
+            Install WSO2 Integrator <span aria-hidden="true">→</span>
+          </Link> },
+  { title: 'Pick a quickstart', sub: 'Choose a style below ↓', active: true },
+  { title: 'Design the flow', sub: 'On the canvas or with Copilot' },
+  { title: 'Run and deploy', sub: 'Test locally, then ship' },
+];
 
-function IconObserve(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 14a8 8 0 1 1 16 0" />
-      <path d="M12 14l4-5" />
-      <path d="M4 14h1M19 14h1M12 14v1" />
-    </svg>
-  );
-}
+type Quickstart = { title: string; description: string; to: string; icon: ReactNode };
 
-function IconDevelop(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
-    </svg>
-  );
-}
-
-function IconTutorials(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-    </svg>
-  );
-}
-
-function IconDeploy(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-    </svg>
-  );
-}
-
-function IconMigrate(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 7h13l-3-3M20 17H7l3 3" />
-    </svg>
-  );
-}
-
-function IconManage(): ReactNode {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="4" y1="21" x2="4" y2="14" />
-      <line x1="4" y1="10" x2="4" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="12" />
-      <line x1="12" y1="8" x2="12" y2="3" />
-      <line x1="20" y1="21" x2="20" y2="16" />
-      <line x1="20" y1="12" x2="20" y2="3" />
-      <line x1="1" y1="14" x2="7" y2="14" />
-      <line x1="9" y1="8" x2="15" y2="8" />
-      <line x1="17" y1="16" x2="23" y2="16" />
-    </svg>
-  );
-}
-
-function IconArrowRight(): ReactNode {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-      <path d="M4 12h15M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section Data                                                       */
-/* ------------------------------------------------------------------ */
-type SectionCard = {
-  title: string;
-  description: string;
-  link: string;
-  icon: ReactNode;
-  /** Kept per-category (not tied to the brand accent) so the grid stays
-   * quickly scannable -- only the icon stroke is tinted, the badge itself
-   * is a neutral bordered square (see .sectionIcon). */
-  iconColor: string;
+const svgProps = {
+  width: 28,
+  height: 28,
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.7,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  'aria-hidden': true,
 };
 
-const sections: SectionCard[] = [
+const quickstarts: Quickstart[] = [
   {
-    title: 'Platform Overview',
-    description: "Understand WSO2 Integrator's architecture, core concepts, and key capabilities.",
-    link: '/platform-overview',
-    icon: <IconPlatformOverview />,
-    iconColor: '#059669',
+    title: 'Integration as API',
+    description: 'Expose HTTP, GraphQL and gRPC services that orchestrate backends.',
+    to: '/get-started/quickstarts/build-integration-api',
+    icon: (
+      <svg {...svgProps}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z" />
+      </svg>
+    ),
   },
   {
-    title: 'Editor Tour',
-    description: 'Take a tour of the WSO2 Integrator editor -- workspace, canvases, and Copilot.',
-    link: '/editor',
-    icon: <IconEditorTour />,
-    iconColor: '#DB2777',
+    title: 'Event integration',
+    description: 'React to messages from Kafka, RabbitMQ and other brokers.',
+    to: '/get-started/quickstarts/build-event-driven-integration',
+    icon: (
+      <svg {...svgProps}>
+        <path d="M13 3 5 13h6l-1 8 8-10h-6z" />
+      </svg>
+    ),
   },
   {
+    title: 'File integration',
+    description: 'Process files arriving over FTP, SFTP or local directories.',
+    to: '/get-started/quickstarts/build-file-driven-integration',
+    icon: (
+      <svg {...svgProps}>
+        <path d="M14 3H6v18h12V7zM14 3v4h4M9 13h6M9 17h4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Automation',
+    description: 'Run scheduled or manually triggered jobs and workflows.',
+    to: '/get-started/quickstarts/build-automation',
+    icon: (
+      <svg {...svgProps}>
+        <circle cx="12" cy="13" r="8" />
+        <path d="M12 9v4l2.5 2.5M9 2h6" />
+      </svg>
+    ),
+  },
+  {
+    title: 'AI agent',
+    description: 'Give an LLM tools, memory and instructions to act on your systems.',
+    to: '/get-started/quickstarts/build-ai-agent',
+    icon: (
+      <svg {...svgProps}>
+        <rect x="5" y="8" width="14" height="11" rx="3" />
+        <path d="M12 8V4M9.5 13v1M14.5 13v1M2 13v2M22 13v2" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Durable Workflows',
+    description: 'Long running, crash-safe processes.',
+    to: '/get-started/quickstarts/build-durable-workflow',
+    icon: (
+      <svg {...svgProps}>
+        <path d="M12 3 5 6v6c0 5 3 7.5 7 9 4-1.5 7-4 7-9V6l-7-3z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    ),
+  },
+];
+
+type LifecycleCard = { n: string; title: string; description: string; to: string; tone: string; icon: ReactNode };
+
+const lcProps = { ...svgProps, width: 22, height: 22, strokeWidth: 1.9 };
+
+const lifecycle: LifecycleCard[] = [
+  {
+    n: '01',
     title: 'Develop and Test',
-    description: 'Build services, transform data, and test integrations on your machine.',
-    link: '/develop-and-test',
-    icon: <IconDevelop />,
-    iconColor: '#26365A',
+    description: 'Create and test integrations using visual design, data transformation, developer tools, and debugging.',
+    to: '/develop-and-test',
+    tone: 'toneInk',
+    icon: (
+      <svg {...lcProps}>
+        <path d="m8 7-5 5 5 5M16 7l5 5-5 5" />
+      </svg>
+    ),
   },
   {
+    n: '02',
     title: 'Deploy and Run',
-    description: 'Deploy to WSO2 Cloud or your own infrastructure, and secure integrations in production.',
-    link: '/deploy-and-run',
-    icon: <IconDeploy />,
-    iconColor: '#0891B2',
+    description: 'Deploy integrations to WSO2 Cloud, configure Git-based delivery, and secure production environments.',
+    to: '/deploy-and-run',
+    tone: 'toneBlue',
+    icon: (
+      <svg {...lcProps}>
+        <path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.8 4.8 0 0 1-.5 9.5z" />
+      </svg>
+    ),
   },
   {
+    n: '03',
     title: 'Manage',
-    description: 'Manage deployed integrations with WSO2 Cloud or the self-hosted Integration Control Plane (ICP).',
-    link: '/manage',
-    icon: <IconManage />,
-    iconColor: '#4F46E5',
+    description: 'Manage deployed integrations, projects, environments, configurations, user access, and platform services.',
+    to: '/manage',
+    tone: 'toneIndigo',
+    icon: (
+      <svg {...lcProps}>
+        <path d="M6 4v16M12 4v16M18 4v16M4 9h4M10 15h4M16 7h4" />
+      </svg>
+    ),
   },
   {
+    n: '04',
     title: 'Observe',
-    description: 'Monitor metrics, logs, and traces for your integrations, on WSO2 Cloud or your own stack.',
-    link: '/observe',
-    icon: <IconObserve />,
-    iconColor: '#0D9488',
+    description: 'Monitor runtime logs and metrics, diagnose issues, and configure anomaly detection and alerts.',
+    to: '/observe',
+    tone: 'toneTeal',
+    icon: (
+      <svg {...lcProps}>
+        <path d="M4 17a8 8 0 0 1 16 0M12 17l3.5-5" />
+      </svg>
+    ),
   },
+];
+
+type WideTile = { title: string; description: string; to: string; tags: string[]; tone: string; icon: ReactNode };
+
+const wideTiles: WideTile[] = [
   {
     title: 'Migrate',
-    description: 'Move existing MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps integrations to WSO2.',
-    link: '/migrate',
-    icon: <IconMigrate />,
-    iconColor: '#B45309',
+    description: 'Migrate integrations from MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps using migration tools.',
+    to: '/migrate',
+    tags: ['MuleSoft', 'TIBCO BusinessWorks', 'Azure Logic Apps'],
+    tone: 'wideIconOrange',
+    icon: (
+      <svg {...svgProps} width={26} height={26} strokeWidth={1.9}>
+        <path d="M4 8h14m0 0-3-3m3 3-3 3M20 16H6m0 0 3-3m-3 3 3 3" />
+      </svg>
+    ),
   },
   {
     title: 'Guides',
     description: 'Explore task-focused how-to guides, practical business use cases, and end-to-end tutorials.',
-    link: '/guides/overview',
-    icon: <IconTutorials />,
-    iconColor: '#D97706',
+    to: '/guides/overview',
+    tags: ['How-to guides', 'Use cases', 'Tutorials'],
+    tone: 'wideIconGold',
+    icon: (
+      <svg {...svgProps} width={26} height={26} strokeWidth={1.8}>
+        <path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3zM21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z" />
+      </svg>
+    ),
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Quick-links for the "What do you want to build?" row               */
-/* ------------------------------------------------------------------ */
-const quickLinks = [
-  { label: 'Build an Automation', sub: 'Scheduled and on-demand jobs', to: '/get-started/quickstarts/build-automation' },
-  { label: 'Build an AI Agent', sub: 'Agents, RAG and MCP servers', to: '/get-started/quickstarts/build-ai-agent' },
-  { label: 'Build an Integration as API', sub: 'REST services backed by integration logic', to: '/get-started/quickstarts/build-integration-api' },
-  { label: 'Build an Event-Driven Integration', sub: 'Process messages from a message broker', to: '/get-started/quickstarts/build-event-driven-integration' },
-  { label: 'Build a File-Driven Integration', sub: 'Detect and process file changes', to: '/get-started/quickstarts/build-file-driven-integration' },
-  { label: 'Build a Durable Workflow', sub: 'Long-running, crash-safe processes', to: '/get-started/quickstarts/build-durable-workflow' },
-];
-
-/* ------------------------------------------------------------------ */
 /*  Hero -- the layout is the shared LandingHero component (synced from */
-/*  main); only the copy/links below are this product's own. The        */
+/*  main, and restyled on this branch to the warm/cream palette -- see  */
+/*  LandingHero's own styles.module.css docstring); only the copy/links */
+/*  below and the `search` slot content are this product's own. The     */
 /*  screenshot is this branch's static/img/landing/hero.png.            */
 /* ------------------------------------------------------------------ */
 function HomepageHeader(): ReactNode {
   return (
     <LandingHero
       windowTitle="WSO2 Integrator"
-      imageAlt="WSO2 Integrator: build an integration in the visual designer"
-      badge="Docs · WSO2 Integration Platform"
+      imageAlt="WSO2 Integrator showing an AI agent automation flow alongside the Copilot panel"
+      eyebrow="WSO2 Integration Platform · Docs"
       title="WSO2 Integrator"
-      subtitle="Build and deploy integrations with low-code simplicity and pro-code power."
-      cta={{ label: "Let's Get Started", to: '/get-started' }}
-      secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
-      secondary={{
-        prefix: 'Already know what you need?',
-        label: 'Download WSO2 Integrator',
-        href: 'https://wso2.com/products/downloads/?product=wso2integrator',
-        icon: 'download',
-      }}
+      subtitle="Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom."
+      search={<HeroSearch quickLinks={quickLinks} />}
+      cta={{ label: "Let's get started", to: '/get-started' }}
+      secondaryCta={{ label: 'Platform overview', to: '/platform-overview' }}
       footnote="Windows · macOS · Linux · 100% open source"
     />
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  "What do you want to build?" — tutorial row                        */
+/*  New to WSO2 Integrator? — step strip + quickstart tiles            */
 /* ------------------------------------------------------------------ */
-function TutorialRow(): ReactNode {
-  const quickLinkRows = Array.from(
-    { length: Math.ceil(quickLinks.length / 3) },
-    (_, rowIndex) => quickLinks.slice(rowIndex * 3, rowIndex * 3 + 3),
-  );
-
+function GetStarted(): ReactNode {
   return (
-    <section className={styles.tutorialRow}>
-      <Heading as="h2" className={styles.tutorialRowTitle}>
+    <section className={styles.getStarted}>
+      <div className={styles.getStartedHead}>
+        <div className={styles.getStartedHeadText}>
+          <Heading as="h2" className={styles.h2Large}>
+            New to WSO2 Integrator?
+          </Heading>
+          <p className={styles.lead}>Build your first integration in four steps, starting with a quickstart.</p>
+        </div>
+        <div className={styles.headLinks}>
+          <Link to="/get-started/concepts">
+            Key concepts <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </div>
+
+      <ol className={styles.steps} aria-label="Steps">
+        {steps.map((step, i) => (
+          <li key={step.title} className={`${styles.step} ${step.active ? styles.stepActive : ''}`}>
+            <span className={styles.stepNum}>{i + 1}</span>
+            <span className={styles.stepText}>
+              <strong>{step.title}</strong>
+              <span>{step.sub}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      {quickLinkRows.map((row, rowIndex) => (
-        <div
-          key={rowIndex}
-          className={styles.tutorialGrid}
-          style={rowIndex > 0 ? { marginTop: 16 } : undefined}>
-          {row.map((link) => (
-            <Link key={link.to} to={link.to} className={styles.tutorialCard}>
-              <span className={styles.tutorialCardText}>
-                <span className={styles.tutorialCardTitle}>{link.label}</span>
-                <span className={styles.tutorialCardSub}>{link.sub}</span>
-              </span>
-              <span className={styles.tutorialCardArrow}>
-                <IconArrowRight />
-              </span>
-            </Link>
-          ))}
-        </div>
-      ))}
+      <p className={styles.sub}>Pick an integration style to start building.</p>
+      <div className={styles.tileGrid}>
+        {quickstarts.map((q) => (
+          <Link key={q.title} to={q.to} className={styles.tile}>
+            <span className={styles.tileIcon}>{q.icon}</span>
+            <span className={styles.tileText}>
+              <strong>{q.title}</strong>
+              <span>{q.description}</span>
+            </span>
+          </Link>
+        ))}
+      </div>
     </section>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  Section Cards                                                      */
+/*  Explore the platform                                               */
 /* ------------------------------------------------------------------ */
-function SectionCards(): ReactNode {
+function Explore(): ReactNode {
   return (
-    <section className={styles.sectionCards}>
-      <Heading as="h2" className={styles.sectionCardsTitle}>
-        Explore the platform
-      </Heading>
-      <div className={styles.sectionGrid}>
-        {sections.map((card, idx) => (
-          <Link
-            key={idx}
-            to={card.link}
-            className={styles.sectionCard}
-            style={{ '--icon-color': card.iconColor } as React.CSSProperties}>
-            <span className={styles.sectionIcon}>{card.icon}</span>
-            <Heading as="h3" className={styles.sectionCardTitle}>
-              {card.title}
-            </Heading>
-            <p className={styles.sectionCardDesc}>{card.description}</p>
+    <section className={`${styles.cream} ${styles.explore}`}>
+      <div className={styles.exploreInner}>
+        <div>
+          <span className={styles.eyebrow}>
+            <span className={styles.eyebrowDash} />
+            Explore the platform
+          </span>
+          <Heading as="h2" className={styles.h2Xl}>
+            Everything from design canvas to production
+          </Heading>
+        </div>
+
+        <div className={styles.banner}>
+          <Link to="/platform-overview" className={`${styles.bannerCol} ${styles.bannerColDivider}`}>
+            <span className={styles.bannerIcon}>
+              <svg {...svgProps} stroke="#7FD1A0">
+                <path d="m12 3 9 5-9 5-9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5" />
+              </svg>
+            </span>
+            <strong className={styles.bannerTitle}>Platform Overview</strong>
+            <span className={styles.bannerDesc}>
+              Understand WSO2 Integrator's architecture, core concepts, and key capabilities.
+            </span>
+            <span className={styles.bannerCta}>
+              Start here <span aria-hidden="true">→</span>
+            </span>
           </Link>
-        ))}
+          <Link to="/editor" className={styles.bannerCol}>
+            <span className={styles.bannerIcon}>
+              <svg {...svgProps} stroke="#F29BC6">
+                <path d="m4 20 1-4L16 5l3 3L8 19zM13 20h7" />
+              </svg>
+            </span>
+            <strong className={styles.bannerTitle}>Editor Tour</strong>
+            <span className={styles.bannerDesc}>
+              Explore the WSO2 Integrator workspace, views, canvases, designers, panels, and Copilot.
+            </span>
+            <span className={styles.bannerPills}>
+              {['Flow Canvas', 'Copilot', 'Project View'].map((p) => (
+                <span key={p}>{p}</span>
+              ))}
+            </span>
+          </Link>
+        </div>
+
+        <div className={styles.lifecycle}>
+          <div className={styles.lifecycleHead}>
+            <strong>Integration lifecycle</strong>
+            <span className={styles.lifecycleRule} aria-hidden="true" />
+          </div>
+          <ol className={styles.lifecycleGrid}>
+            {lifecycle.map((c) => (
+              <li key={c.n}>
+                <Link to={c.to} className={`${styles.lcCard} ${styles[c.tone]}`}>
+                  <span className={styles.lcTop}>
+                    <span className={styles.lcIcon} aria-hidden="true">
+                      {c.icon}
+                    </span>
+                    <span className={styles.lcNum}>{c.n}</span>
+                  </span>
+                  <strong>{c.title}</strong>
+                  <span>{c.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className={styles.wideGrid}>
+          {wideTiles.map((t) => (
+            <Link key={t.title} to={t.to} className={styles.wideTile}>
+              <span className={`${styles.wideIcon} ${styles[t.tone]}`} aria-hidden="true">
+                {t.icon}
+              </span>
+              <span className={styles.wideBody}>
+                <strong>{t.title}</strong>
+                <span>{t.description}</span>
+                <span className={styles.tags}>
+                  {t.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </span>
+              </span>
+              <span className={styles.wideArrow} aria-hidden="true">
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -276,14 +367,17 @@ function SectionCards(): ReactNode {
 /*  Home page                                                          */
 /* ------------------------------------------------------------------ */
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title="Home" description={siteConfig.tagline}>
-      <HomepageHeader />
-      <main>
-        <TutorialRow />
-        <SectionCards />
-      </main>
+    <Layout
+      title="Home"
+      description="Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom.">
+      <div className={styles.page}>
+        <main>
+          <HomepageHeader />
+          <GetStarted />
+          <Explore />
+        </main>
+      </div>
     </Layout>
   );
 }

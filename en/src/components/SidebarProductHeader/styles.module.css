@@ -1,244 +1,437 @@
-.header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
+/**
+ * Product + version switcher -- one 320px segmented control (product half,
+ * version half) and a panel whose rows are the same control. Values are
+ * lifted from the "Segmented switcher" design reference
+ * (SwitcherFinal.dc.html). Colours are tokens on .root with a dark override,
+ * so the control reads correctly on both the light and warm-charcoal navbar.
+ */
+.root {
+  --sw-border: #E2E2E7;
+  --sw-bg: #FFFFFF;
+  --sw-text: #17171C;
+  --sw-muted: #5A5A66;
+  --sw-text-2: #4A4A55;
+  --sw-soft: #ECECEF;
+  --sw-accent: #C94F0A;
+  --sw-ring: rgba(201, 79, 10, 0.12);
+  --sw-mark: #A3400A;
+  --sw-current-bg: #FFF8F2;
+  --sw-current-border: #E8B79A;
+  --sw-dashed: #DADAE0;
+  --sw-foot-bg: #FAFAFB;
+  --sw-panel-shadow: 0 22px 48px -18px rgba(30, 20, 10, 0.35);
+  --sw-list-shadow: 0 10px 20px -12px rgba(30, 20, 10, 0.3);
+  --sw-hover: brightness(0.96);
 
-/* Product and version are two independent bordered pills side by side
-   (a small gap between, not fused into one control) -- matches the
-   reference exactly. */
-.pillGroup {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pillWrapper {
   position: relative;
+  color: var(--sw-text);
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
-.pill {
+[data-theme='dark'] .root {
+  --sw-border: #4A423D;
+  --sw-bg: #1E1B19;
+  --sw-text: #EDE7E2;
+  --sw-muted: #B3A9A1;
+  --sw-text-2: #C2B8B0;
+  --sw-soft: #3B3532;
+  --sw-accent: #E2560B;
+  --sw-ring: rgba(226, 86, 11, 0.25);
+  --sw-mark: #F5A06A;
+  --sw-current-bg: rgba(201, 79, 10, 0.12);
+  --sw-current-border: #7A3E1E;
+  --sw-dashed: #4A423D;
+  --sw-foot-bg: #1A1715;
+  --sw-panel-shadow: 0 22px 48px -18px rgba(0, 0, 0, 0.7);
+  --sw-list-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.6);
+  --sw-hover: brightness(1.18);
+}
+
+/* ---- Version tones (Next / Latest / Older) ---- */
+.verNext { --tone-bg: #FFF6EF; --tone-fg: #8A3A08; --tone-dot: #E2560B; }
+.verLatest { --tone-bg: #F5FAF4; --tone-fg: #24561E; --tone-dot: #2F7A26; }
+.verOlder { --tone-bg: #F6F6F8; --tone-fg: #3A3A44; --tone-dot: #8A8A94; }
+
+[data-theme='dark'] .verNext { --tone-bg: rgba(226, 86, 11, 0.16); --tone-fg: #F5A06A; --tone-dot: #E2560B; }
+[data-theme='dark'] .verLatest { --tone-bg: #16261A; --tone-fg: #9BD995; --tone-dot: #4CAF50; }
+[data-theme='dark'] .verOlder { --tone-bg: #2A2523; --tone-fg: #D8CFC8; --tone-dot: #8A8A94; }
+
+/* ---- The segmented control (trigger + every panel row) ---- */
+.seg {
+  display: flex;
+  width: 320px;
+  max-width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  border: 1px solid var(--sw-border);
+  border-radius: 12px;
+  background: var(--sw-bg);
+  box-shadow: 0 1px 2px rgba(23, 23, 28, 0.06);
+  overflow: hidden;
+}
+
+/* Open: accent border + soft ring. 1.5px border like the design; the
+   0.5px growth is absorbed by border-box sizing. */
+.segOpen {
+  border: 1.5px solid var(--sw-accent);
+  box-shadow: 0 0 0 4px var(--sw-ring);
+}
+
+.segBtn,
+.segBtn:hover {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  height: 100%;
-  padding: 0.4rem 0.75rem;
-  border: 1px solid var(--wso2-surface-border);
-  border-radius: 11px;
-  background: var(--ifm-background-color);
-  color: var(--wso2-heading-color);
-  font-size: 0.8125rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.2;
+  color: var(--sw-text);
+  text-decoration: none;
   cursor: pointer;
-  box-shadow: var(--wso2-card-shadow);
-  transition: border-color 0.15s ease;
 }
 
-.pill:hover {
-  border-color: var(--ifm-color-primary);
+.segBtn:hover {
+  filter: var(--sw-hover);
 }
 
-/* `min-width` (not a fixed `width`) so the pill grows to fit the
-   longest real product label ("WSO2 Connectors") instead of clipping
-   it -- only one product name is ever shown here at a time (switching
-   products is a full page load to a different site, not a client-side
-   swap), so there's no "jumping width" to guard against; a fixed width
-   sized for "SaaS" was just truncating the longer names. */
-.pillProduct {
-  min-width: 10rem;
-  justify-content: space-between;
+.segBtn:focus-visible {
+  outline: 2px solid var(--sw-accent);
+  outline-offset: -2px;
 }
 
-/* The 10rem min-width exists so the pill doesn't clip the longest real
-   product label ("WSO2 Connectors") -- on a narrow phone that fixed
-   floor competes with the version pill and the Copy Page button for
-   the same ~320-375px of width. Let it shrink to fit instead; the pill
-   grows to the label's own natural width regardless (see .pillProduct
-   .pillLabel's unconditional `max-width: none` below) rather than being
-   truncated -- .secondaryRowInner (theme/Navbar/styles.module.css)
-   already wraps at this same breakpoint, and Edit this page/Copy page
-   go icon-only here too, so there's room for the full name without
-   clipping it to an unreadable "WSO2 Integr…". */
-@media (max-width: 480px) {
-  .pillProduct {
-    min-width: 0;
-  }
+.segProduct {
+  width: 208px;
+  flex: none;
+  gap: 9px;
+  padding: 0 10px 0 8px;
+  box-sizing: border-box;
 }
 
-.pillLabel {
+.segFull {
+  width: auto;
+  flex: 1;
+  padding: 0 12px 0 8px;
+}
+
+.segLabel {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 9rem;
 }
 
-.pillProduct .pillLabel {
-  max-width: none;
+.chev {
+  display: flex;
+  flex: none;
+  color: var(--sw-muted);
+}
+
+.segDivider {
+  width: 1px;
+  flex: none;
+  background: var(--sw-border);
+}
+
+.segDividerSoft {
+  background: var(--sw-soft);
+}
+
+.segVersion,
+.segVersion:hover {
   flex: 1;
-  text-align: left;
+  justify-content: center;
+  gap: 7px;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
 }
 
-.pill > svg {
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-/* Icon badge shown before the product pill's label -- full opacity,
-   unlike the trailing chevron above. */
-.pillIcon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  background: #FDE3D9;
-  color: var(--wso2-accent-text);
-}
-
-[data-theme='dark'] .pillIcon {
-  background: rgba(241, 78, 35, 0.16);
-}
-
-/* Dot shown before the version pill's label. */
-.pillDot {
-  flex-shrink: 0;
+.dot {
   width: 7px;
   height: 7px;
+  flex: none;
   border-radius: 50%;
-  background: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px #FDE3D9;
+  background: var(--tone-dot);
 }
 
-[data-theme='dark'] .pillDot {
-  box-shadow: 0 0 0 3px rgba(241, 78, 35, 0.16);
+.dotSmall {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--tone-dot);
 }
 
-.pillMenu {
+/* ---- Product icon badges ---- */
+.badge {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconIntegrator { background: #FFEBDC; color: #D45A0C; }
+.iconSaas { background: #EAF1F8; color: #1D4A73; }
+.iconConnectors { background: #F2F2F5; color: #3A3A44; }
+.iconAgent { background: #F1ECFB; color: #5B3BA8; }
+
+[data-theme='dark'] .iconIntegrator { background: rgba(212, 90, 12, 0.2); color: #F5A06A; }
+[data-theme='dark'] .iconSaas { background: rgba(70, 130, 190, 0.2); color: #8FB8E0; }
+[data-theme='dark'] .iconConnectors { background: #2A2523; color: #D8CFC8; }
+[data-theme='dark'] .iconAgent { background: rgba(120, 90, 200, 0.2); color: #B9A3F0; }
+
+/* ---- Panel ---- */
+.panel {
   position: absolute;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 8px);
   left: 0;
-  z-index: 10;
-  min-width: 10rem;
-  padding: 0.35rem;
+  z-index: 300;
+  width: 352px;
+  max-width: calc(100vw - 16px);
   display: flex;
   flex-direction: column;
-  background: var(--ifm-background-color);
-  border: 1px solid var(--wso2-surface-border);
+  box-sizing: border-box;
+  border: 1px solid var(--sw-border);
   border-radius: 16px;
-  box-shadow: var(--wso2-card-shadow-hover);
+  background: var(--sw-bg);
+  box-shadow: var(--sw-panel-shadow);
+  overflow: hidden;
 }
 
-.pillMenuItem {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--ifm-font-color-base) !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-}
-
-.pillMenuItem:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-[data-theme='dark'] .pillMenuItem:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-/* ---- Product dropdown ("Platform Components") ---- */
-.pillMenuWide {
-  width: 330px;
-}
-
-/* Marks connectors as a supporting product (a catalog used BY saas and
-   integrator) rather than a third platform of the same kind as those
-   two -- same divider treatment as the Copy Page dropdown's own
-   .markdownDropdownDivider. */
-.pillMenuDivider {
-  height: 1px;
-  background-color: var(--wso2-surface-border);
-  margin: 0.35rem 0.35rem;
-}
-
-.pillMenuHeading {
-  padding: 8px 10px 6px;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--wso2-text-muted);
-}
-
-.pillMenuRow {
+/* Column labels make the two click targets explicit; the first spans the
+   product half (208px + 1px divider) of the 320px rows below. */
+.panelCols {
   display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  padding: 10px;
-  border-radius: 12px;
-  text-decoration: none !important;
-  transition: background-color 0.15s ease;
+  padding: 10px 16px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sw-muted);
 }
 
-/* Hover is the only background highlight in the open menu -- including
-   on the current product's own row. The current product is still
-   marked (gradient icon, bold accent-colored title/desc below), just
-   not with a permanently-lit row background: a menu that's meant for
-   picking where to go shouldn't visually anchor on where you already
-   are while you're scanning it. Same peach used by the Copy Page
-   dropdown's own hover (DocBreadcrumbs' .markdownDropdownItem:hover),
-   so every dropdown in the chrome shares one hover treatment. */
-.pillMenuRow:hover {
-  background-color: #FDE3D9;
+.colProduct {
+  width: 209px;
 }
 
-[data-theme='dark'] .pillMenuRow:hover {
-  background-color: rgba(241, 78, 35, 0.16);
+.colVersion {
+  flex: 1;
+  text-align: center;
 }
 
-.pillMenuRowIcon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 9px;
-  background: var(--wso2-well-bg);
-  color: var(--wso2-text-muted);
-}
-
-.pillMenuRowIconActive {
-  background: linear-gradient(145deg, #FF8A3D, #F14E23);
-  color: #FFFFFF;
-}
-
-.pillMenuRowText {
+.panelBody {
+  padding: 0 16px 12px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
+}
+
+.rowGroup {
+  display: contents;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  height: 58px;
+  box-sizing: border-box;
+  border: 1px solid var(--sw-border);
+  border-radius: 12px;
+  background: var(--sw-bg);
+  overflow: hidden;
+}
+
+.rowCurrent {
+  background: var(--sw-current-bg);
+  border-color: var(--sw-current-border);
+}
+
+.rowDisabled {
+  border-style: dashed;
+  border-color: var(--sw-dashed);
+}
+
+.rowName {
+  flex: 1;
+  gap: 9px;
+  padding: 0 12px 0 8px;
   min-width: 0;
 }
 
-.pillMenuRowTitle {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--wso2-heading-color);
+.rowNameHalf {
+  width: 208px;
+  flex: none;
+  padding: 0 10px 0 8px;
+  box-sizing: border-box;
 }
 
-.pillMenuRowActive .pillMenuRowTitle {
+.rowNameStatic {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--wso2-accent-text);
+  color: var(--sw-text-2);
+  cursor: default;
 }
 
-.pillMenuRowDesc {
+.rowText {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.rowMark {
   font-size: 12px;
-  color: var(--wso2-text-muted);
+  font-weight: 700;
+  color: var(--sw-mark);
 }
 
-.pillMenuRowActive .pillMenuRowDesc {
-  color: var(--ifm-font-color-base);
+.rowSoon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sw-muted);
+}
+
+.rule {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--sw-soft);
+}
+
+/* ---- Step 2: version list header (back button + title) ---- */
+.verHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+}
+
+.backBtn,
+.backBtn:hover {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: 1px solid var(--sw-border);
+  border-radius: 9px;
+  background: var(--sw-bg);
+  color: var(--sw-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  filter: var(--sw-hover);
+}
+
+.backBtn:focus-visible {
+  outline: 2px solid var(--sw-accent);
+  outline-offset: -2px;
+}
+
+.verHeaderTitle {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* ---- Step 2: the version list itself. Capped height with its own
+   scrollbar -- a product with many versions scrolls inside this step
+   instead of growing the whole panel (and the trigger's position). ---- */
+.verListStep {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 0 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.verRow,
+.verRow:hover {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  border: 1px solid var(--sw-border);
+  border-radius: 12px;
+  background: var(--sw-bg);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.verRowSelected,
+.verRowSelected:hover {
+  background: var(--tone-bg);
+  border-color: var(--tone-dot);
+}
+
+.verRow:hover {
+  filter: var(--sw-hover);
+}
+
+.verRow:focus-visible {
+  outline: 2px solid var(--sw-accent);
+  outline-offset: -2px;
+}
+
+.verRowLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--sw-text);
+}
+
+.verRowTag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--tone-fg);
+}
+
+.panelFoot {
+  padding: 10px 16px;
+  border-top: 1px solid var(--sw-soft);
+  background: var(--sw-foot-bg);
+  font-size: 12px;
+  color: var(--sw-text-2);
+}
+
+/* ---- Compact: the 34px copy in the secondary row (narrower widths) ---- */
+.compact .seg {
+  height: 34px;
+}
+
+.compact .segBtn {
+  font-size: 13px;
+}
+
+.compact .segProduct {
+  width: 180px;
+}
+
+.compact .seg .badge {
+  width: 22px;
+  height: 22px;
+}
+
+.compact .seg .badge svg {
+  width: 13px;
+  height: 13px;
 }

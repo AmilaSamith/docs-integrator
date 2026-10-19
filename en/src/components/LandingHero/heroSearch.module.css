@@ -1,0 +1,123 @@
+/**
+ * Reads --lh-* tokens from LandingHero/styles.module.css's .heroBanner
+ * (a CSS custom property, visible to any descendant regardless of module
+ * boundaries), so this needs no light/dark handling of its own.
+ */
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 8px 0 20px;
+  background: var(--lh-window-bg);
+  border: 1.5px solid var(--lh-border-cream);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px -14px rgba(60, 30, 10, 0.25);
+}
+
+[data-theme='dark'] .form {
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.5);
+}
+
+.form:focus-within {
+  border-color: var(--lh-accent);
+}
+
+.icon {
+  flex: none;
+  color: var(--lh-footnote);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--lh-text);
+}
+
+.input::placeholder {
+  color: var(--lh-footnote);
+}
+
+.submit {
+  height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--lh-outline-border);
+  color: var(--lh-window-bg);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--lh-footnote);
+}
+
+.hint kbd {
+  font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace;
+  font-size: 11px;
+  padding: 2px 6px;
+  border: 1px solid var(--lh-border-cream);
+  border-radius: 5px;
+  background: var(--lh-window-bg);
+  color: var(--lh-text-2);
+}
+
+.dropdown {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 8px;
+  background: var(--lh-window-bg);
+  border: 1px solid var(--lh-border-cream);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px -16px rgba(40, 20, 5, 0.35);
+}
+
+[data-theme='dark'] .dropdown {
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.6);
+}
+
+.dropdownLabel {
+  margin: 4px 10px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lh-footnote);
+}
+
+.dropdownItem,
+.dropdownItem:hover {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lh-text) !important;
+  text-decoration: none !important;
+}
+
+.dropdownItem:hover {
+  background: var(--lh-cream);
+}

@@ -60,7 +60,11 @@ branch — but only via automation, never by hand:
 - Theme/chrome (`en/src/theme`, `en/src/theme-shared`, `en/src/css/custom.css`,
   `en/static/img`, `SiteNav`/`TabAwareToc`/`ProductDocsLinks`/`SidebarProductHeader`/
   `ExploreDropdown`, the shared component library (`PaletteCard`/`PaletteIcon`,
-  `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `AIAssistantSidePanel`, `ArtifactPicker`),
+  `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `AIAssistantSidePanel`, `ArtifactPicker`,
+  `QuickstartHeader`/`Prerequisites`/`Steps` (globally registered on every doc via
+  the shared `theme/MDXComponents`), `DocFeedback` (rendered by the shared `theme/TOC`),
+  `CookieConsent` (mounted by the shared `theme/Root.js`, reopened from the shared
+  `theme/Footer`)),
   ConnectorCatalog's styling/filtering (not its own `index.tsx`, which stays
   per-branch), the markdown-export plugin) and governance docs (this file,
   `CONTRIBUTING.md`, `HOW_TO_WRITE_A_GUIDE.md`, `UI_UX_GUIDELINES.md`,
@@ -84,6 +88,38 @@ branch — but only via automation, never by hand:
   every product branch for exactly this reason. Authoring once on `main`
   and syncing keeps those copies identical without anyone hand-maintaining
   drift.
+
+### When a branch needs its own hook into shared theme internals
+
+Some things can't be solved by a branch-local file like
+`docusaurus.config.ts` or `pages/index.*` -- they need to inject behavior
+*inside* a wholesale-shared file itself (e.g. mounting a global component
+from `theme/Root.js`, or transforming the sidebar tree in
+`theme/DocRoot/Layout/Sidebar`). Hand-editing the shared file directly to
+do this is the one mistake to avoid here: the next `sync-theme` run
+overwrites that file from `main`, which has no idea the branch-specific
+addition exists, and silently deletes it. This has happened more than
+once (a CI heap-size fix, a connector-only header component, a sidebar
+card) before `src/theme-local/` existed as the fix.
+
+`en/src/theme-local/` is the escape hatch: a directory that is
+**permanently excluded** from `sync-theme.yaml`'s `SHARED_PATHS`, the same
+way `docusaurus.config.ts` and `pages/index.*` are. A handful of shared
+files (`theme/Root.js`, `theme/DocRoot/Layout/Sidebar`) import a fixed set
+of extension points from this directory (`RootExtras`, `sidebarTransform`)
+with a safe no-op default. Every branch keeps its own copy of each
+extension-point file forever, just like `docusaurus.config.ts` -- most
+branches' copies do nothing; a branch with a real need (e.g.
+wso2-connectors mounting `<ConnectorSwitcher>` via `RootExtras`, or
+scoping the sidebar to one connector via `sidebarTransform`) implements it
+there instead. A sync from `main` never touches this directory, so the
+branch-specific behavior survives every future sync.
+
+If a shared file needs a NEW extension point that doesn't exist yet, add
+it on `main` (a new `theme-local/<Name>.tsx` default + the shared file's
+own import of it) in the same PR that needs it, then give every other
+branch the trivial no-op default too -- see the two existing extension
+points for the pattern.
 
 ## The develop → staging → production pipeline
 

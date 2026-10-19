@@ -55,8 +55,8 @@ export const sharedDocsSidebar = {
  * product's logo goes to that product, not always to saas. */
 export const sharedNavbarLogo = {
   alt: 'WSO2 Integration Platform',
-  src: 'img/wso2-integration-platform-black.svg',
-  srcDark: 'img/wso2-integration-platform-full-colour.svg',
+  src: 'img/integration-platform-logo-black.png',
+  srcDark: 'img/integration-platform-logo-white.png',
 };
 
 export const sharedFooterStyle = 'dark' as const;
