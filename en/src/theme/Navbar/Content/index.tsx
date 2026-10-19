@@ -1,47 +1,28 @@
 /**
- * Ejected from @docusaurus/theme-classic to add a third, centered zone
- * for the plain-link nav items (Connectors, Explore, Contribute,
- * Community, Learn Hub, FAQ -- everything configured with `position: 'left'`
- * in docusaurus.config.ts) instead of clustering them right next to the
- * logo. Only the layout changes: still the same NavbarItem components,
- * same splitNavbarItems() left/right split for which items go where
- * (the "left" set now renders in the new center zone, "right" items
- * are untouched).
+ * Ejected from @docusaurus/theme-classic for the single-header layout
+ * (see the landing-page header mockup). Three zones, same NavbarItem
+ * components and same splitNavbarItems() left/right split as stock:
  *
- * The right zone's own internal order is also deliberately NOT stock:
- * search, then the color-mode toggle, then a vertical divider
- * (.iconDivider), then the icon-only `position: 'right'` items in
- * docusaurus.config.ts's own array order (today: GitHub, Discord,
- * LinkedIn, YouTube, X) -- stock puts the configured items before the
- * toggle/search. Keep new icon-only navbar items appended to that
- * array (not inserted before the toggle/search) to preserve this order.
+ *   logo zone   -- mobile toggle, logo, a "Docs" label (this is a docs
+ *                  site, not the product's own marketing site), and the
+ *                  product/version segment (desktop >= 1360px; below that
+ *                  the segment moves to the secondary row, see
+ *                  theme/Navbar/index.tsx)
+ *   center zone -- the `position: 'left'` items in docusaurus.config.ts
+ *                  (today: Learn Hub, Community, Contribute, FAQ)
+ *   right zone  -- color-mode toggle, then the `position: 'right'` items in
+ *                  config order (today: GitHub, Download). No search box:
+ *                  the design has none in the header (the landing page has
+ *                  its own hero search). Keep new right-side items appended
+ *                  to the config array to preserve this order.
  *
- * The centering itself needs no bespoke CSS -- Infima already ships a
- * `.navbar__items--center` class for exactly this: flanked by the
- * logo's `.navbar__items` (flex: 1) on one side and `.navbar__items
- * --right` (also flex: 1, but only via the adjacent-sibling selector
- * `.navbar__items--center + .navbar__items--right`) on the other, so
- * both sides grow equally and the center block sits truly centered
- * regardless of how wide the logo or the right-side icons are. Equal
- * spacing between the items themselves is likewise already Infima's
- * default: every `.navbar__item` gets the same
- * `--ifm-navbar-item-padding-horizontal` on both sides.
+ * Layout (styles.module.css): only the logo zone grows, so the links sit
+ * right next to the right zone, which is set off by a vertical rule --
+ * stock instead gives both outer zones flex: 1 to center the links.
  *
- * On mobile (<996px), Infima's stock responsive rules already collapse
- * every `.navbar__items` except `--right` behind the hamburger sidebar
- * -- that includes this new center zone the same way it included these
- * items when they lived in the logo's own zone, so mobile behavior is
- * unchanged.
- *
- * Between 996px and 1200px (styles.module.css's `.logoZone` rule, applied
- * via the class added to the logo zone's div below), the logo zone stops
- * growing (`flex: 0 1 auto` instead of Infima's stock `flex: 1`), so the
- * center items sit left-aligned next to the logo at tablet widths, where
- * the right zone (search icon + icons) is pinned at its min-content width
- * and would otherwise drag them toward it. Above 1200px they stay
- * centered. The right zone also carries a fixed left padding (same file)
- * so there is always a gap between the last center item and the search
- * icon.
+ * On mobile (<996px), Infima's stock responsive rules collapse every
+ * `.navbar__items` except `--right` behind the hamburger sidebar, so the
+ * links live in the drawer there.
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
@@ -52,10 +33,9 @@ import { useThemeConfig, ErrorCauseBoundary, ThemeClassNames } from '@docusaurus
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem, { type Props as NavbarItemConfig } from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
-import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
-import NavbarSearch from '@theme/Navbar/Search';
+import SidebarProductHeader from '@site/src/components/SidebarProductHeader';
 
 import styles from './styles.module.css';
 
@@ -109,25 +89,30 @@ export default function NavbarContent(): ReactNode {
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
-  const searchBarItem = items.find((item) => item.type === 'search');
   return (
     <NavbarContentLayout
       logo={
         <>
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-          <NavbarLogo />
+          {/* Fixed-width (>= 1360px) so productSegment's separator below
+              always lands at the doc sidebar's own right edge -- see
+              styles.module.css's .logoBlock docstring. */}
+          <div className={styles.logoBlock}>
+            {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+            <NavbarLogo />
+            <span className={styles.docsLabel}>Docs</span>
+          </div>
+          {/* Single-header layout: product + version segment sits right
+              after the logo (>= 1360px only -- below that it lives in the
+              secondary row, see theme/Navbar/index.tsx). */}
+          <div className={styles.productSegment}>
+            <SidebarProductHeader />
+          </div>
         </>
       }
       center={<NavbarItems items={leftItems} />}
       right={
         <>
-          {!searchBarItem && (
-            <NavbarSearch>
-              <SearchBar />
-            </NavbarSearch>
-          )}
           <NavbarColorModeToggle className={styles.colorModeToggle} />
-          {rightItems.length > 0 && <span className={styles.iconDivider} aria-hidden="true" />}
           <NavbarItems items={rightItems} />
         </>
       }

@@ -33,6 +33,45 @@
   user-select: none;
 }
 
+/* Home icon crumb + the "…" that folds the middle of a deep trail --
+   see CollapsibleBreadcrumbs in index.js. Values from the "Nesting
+   depth" design reference (SidebarDepth.dc.html). */
+.breadcrumbHome {
+  display: flex;
+  color: var(--wso2-text-muted);
+}
+
+.breadcrumbHome:hover {
+  color: var(--ifm-color-primary);
+}
+
+.breadcrumbEllipsis {
+  height: 22px;
+  padding: 0 7px;
+  border: 1px solid #E3DCD5;
+  border-radius: 6px;
+  background: #FBF8F5;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #3A3A44;
+  cursor: pointer;
+}
+
+[data-theme='dark'] .breadcrumbEllipsis {
+  border-color: #3B3532;
+  background: #1A1715;
+  color: #D8CFC8;
+}
+
+.breadcrumbEllipsis:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.breadcrumbCurrent {
+  color: var(--wso2-heading-color);
+}
+
 /* Version dropdown wrapper */
 .versionDropdown {
   position: relative;

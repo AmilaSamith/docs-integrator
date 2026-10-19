@@ -7,6 +7,9 @@ import IconGallery from '@site/src/components/IconGallery';
 import CloudDocsLink from '@site/src/components/CloudDocsLink';
 import { SearchBarPreview } from '@site/src/components/SearchBar';
 import { SwatchGrid, ColorSwatch, LogoSwatch } from '@site/src/components/ColorSwatch';
+import QuickstartHeader from '@site/src/components/QuickstartHeader';
+import Steps from '@site/src/components/Steps';
+import Prerequisites, { PrereqCard } from '@site/src/components/Prerequisites';
 
 export default {
   ...MDXComponents,
@@ -22,4 +25,8 @@ export default {
   SwatchGrid,
   ColorSwatch,
   LogoSwatch,
+  QuickstartHeader,
+  Steps,
+  Prerequisites,
+  PrereqCard,
 };
