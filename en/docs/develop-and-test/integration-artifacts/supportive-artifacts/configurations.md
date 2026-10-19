@@ -174,6 +174,6 @@ For the complete configuration reference (supported types, value sources, resolu
 
 ## What's next
 
-- [Configuration management](../../../reference/configuration-reference.md#configuration-management) — Complete configuration reference: value sources, precedence, and environment variables.
+- [Configuration management](../../../manage/configurations/configuration-management.md) — Complete configuration reference: value sources, precedence, and environment variables.
 - [Secrets and encryption](../../../deploy-and-run/secure/secrets-encryption.md) — Securely manage credentials and other sensitive values.
 - [Connections](connections.md) — Use configurable variables to parameterize connections.

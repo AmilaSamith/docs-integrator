@@ -4,7 +4,7 @@ sidebar_label: Configuration Management
 title: Configuration Management
 description: "Manage runtime values, build settings, endpoints, scaling, and security for integrations deployed on WSO2 Cloud - Integration Platform."
 keywords: [wso2 integrator, wso2 cloud, configuration, runtime, build, endpoints, scaling, security]
-slug: /manage/configurations
+slug: /manage/configuration-management
 ---
 
 # Configuration Management
