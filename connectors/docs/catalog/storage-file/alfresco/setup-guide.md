@@ -2,6 +2,11 @@
 title: Setup Guide
 ---
 
+{/* ConnectorHeader is wso2-connectors-only (its MDXComponents entry
+    doesn't survive sync-theme from main, which doesn't know this
+    component exists), so it's imported explicitly here rather than
+    relied on as a global MDX component. */}
+
 <ConnectorHeader
   name="Alfresco"
   version="2.0.2"
