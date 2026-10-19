@@ -1,25 +1,27 @@
 /**
- * Swizzled from @docusaurus/theme-classic -- identical to stock EXCEPT for
- * one special case: an item with `customProps.connectorSwitcherSlot: true`
- * (DocRoot/Layout/Sidebar's scopeSidebarToConnector, the connector
- * switcher's mount point) renders a real React-owned `<div>`, not a
- * `dangerouslySetInnerHTML` string.
+ * Full custom swizzle (not a @theme-original wrapper) -- identical to stock
+ * EXCEPT for one special case: an item with `customProps.portalSlotId: '<id>'`
+ * renders a real React-owned `<div id="<id>">`, not a `dangerouslySetInnerHTML`
+ * string.
  *
- * Why: stock's `dangerouslySetInnerHTML` approach worked for the simple
- * "always-identical HTML string" case on paper -- React is supposed to
- * skip re-writing `innerHTML` when the string is unchanged -- but in
- * practice, on some re-renders (confirmed via direct DOM inspection: the
- * `<div id="...">` ConnectorSwitcher's effect captured via
- * `getElementById` stopped being the SAME node current in the document a
- * couple seconds later), the element gets torn down and recreated with a
- * fresh identity. ConnectorSwitcher's `createPortal` target was then a
- * detached node -- the switcher silently stopped rendering into the
- * visible DOM, with no error, while `document.getElementById` elsewhere
- * (and even a fresh `getElementById` call) quietly found the NEW element.
- * A plain React-rendered `<div>` doesn't have that failure mode: React's
- * own reconciliation keeps a stable DOM node for an unchanged element at
- * a stable position, which is a much stronger guarantee than string
- * equality on a `dangerouslySetInnerHTML` value.
+ * Why: stock's `dangerouslySetInnerHTML` approach works for ordinary static
+ * HTML, but breaks for the "empty div as a portal mount point" use case --
+ * React is supposed to skip re-writing `innerHTML` when the string is
+ * unchanged, but in practice (confirmed via direct DOM inspection on a real
+ * use of this pattern) the element can get torn down and recreated with a
+ * fresh identity on some re-renders. Whatever called `document.getElementById`
+ * to grab a portal target then holds a detached node -- content silently
+ * stops rendering, with no error, while a fresh `getElementById` call
+ * elsewhere quietly finds the new element instead. A plain React-rendered
+ * `<div>` doesn't have that failure mode: React's own reconciliation keeps a
+ * stable DOM node for an unchanged element at a stable position, which is a
+ * much stronger guarantee than string equality on a `dangerouslySetInnerHTML`
+ * value.
+ *
+ * `portalSlotId` is intentionally generic (not product-specific): any sidebar
+ * extension injected via a `sidebarTransform` (see
+ * `theme/DocRoot/Layout/Sidebar`'s docstring) that needs a portal mount point
+ * can use this same mechanism, not just one particular product's feature.
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Html/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
@@ -32,26 +34,31 @@ import type { Props } from '@theme/DocSidebarItem/Html';
 import styles from './styles.module.css';
 
 export default function DocSidebarItemHtml({ item, level, index }: Props): ReactNode {
-  const { value, defaultStyle, className } = item;
-  const liClassName = clsx(
-    ThemeClassNames.docs.docSidebarItemLink,
-    ThemeClassNames.docs.docSidebarItemLinkLevel(level),
-    defaultStyle && [styles.menuHtmlItem, 'menu__list-item'],
-    className,
-  );
+  const { value, defaultStyle, className, customProps } = item;
+  const portalSlotId = customProps?.portalSlotId as string | undefined;
 
-  if (item.customProps?.connectorSwitcherSlot === true) {
-    // `value` still carries the slot id (single source of truth, set
-    // alongside this flag in scopeSidebarToConnector) -- parsed out of
-    // the id="..." attribute rather than hardcoding the string twice.
-    const idMatch = /id="([^"]+)"/.exec(value);
-    return <li className={liClassName} key={index} id={idMatch?.[1]} />;
+  if (portalSlotId) {
+    return (
+      <li
+        className={clsx(
+          ThemeClassNames.docs.docSidebarItemLink,
+          ThemeClassNames.docs.docSidebarItemLinkLevel(level),
+          defaultStyle && [styles.menuHtmlItem, 'menu__list-item'],
+          className,
+        )}>
+        <div id={portalSlotId} />
+      </li>
+    );
   }
 
   return (
     <li
-      className={liClassName}
-      key={index}
+      className={clsx(
+        ThemeClassNames.docs.docSidebarItemLink,
+        ThemeClassNames.docs.docSidebarItemLinkLevel(level),
+        defaultStyle && [styles.menuHtmlItem, 'menu__list-item'],
+        className,
+      )}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: value }}
     />
