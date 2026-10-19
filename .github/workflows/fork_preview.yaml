@@ -39,6 +39,15 @@ concurrency:
 
 jobs:
   build-and-publish:
+    # Fork-only by design (see header comment) -- without this guard,
+    # manually running this workflow from the Actions tab on the real org
+    # repo would build with this fork's own /docs-integrator/ base paths
+    # and force-replace the real `gh-pages` (no keep_files, a full
+    # overwrite), bypassing promote_to_production.yaml's staging-review-
+    # then-promote flow entirely. `github.event.repository.fork` is false
+    # on wso2/docs-integrator and true on any fork, so this only ever lets
+    # the job run on a fork.
+    if: github.event.repository.fork == true
     runs-on: ubuntu-latest
     steps:
       - name: Check out saas

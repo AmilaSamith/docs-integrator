@@ -12,11 +12,22 @@ name: Broken Link Check
 #
 # Note: for PRs from forks the pull_request token is read-only, so the comment
 # step is skipped/no-ops gracefully; the step summary still shows the results.
+#
+# No longer auto-triggered on PRs into main: --fail-on-any means every PR goes red
+# over the same ~14 pre-existing broken links regardless of what that PR actually
+# touches, which stopped being a useful signal. Still runnable on demand via
+# workflow_dispatch when you want a link-health pass (e.g. after a doc
+# restructure); broken-link-comment.yaml's workflow_run trigger still fires off
+# that manual run too, so a workflow_dispatch run against a PR's branch still
+# gets its PR comment, if one exists for that branch.
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: "Branch to compare against (what's 'already broken')"
+        required: true
+        default: main
 
 permissions:
   contents: read
@@ -70,8 +81,8 @@ jobs:
         run: |
           set -o pipefail
           HEAD_SHA="$(git rev-parse HEAD)"
-          git fetch origin "${{ github.base_ref }}"
-          git checkout "origin/${{ github.base_ref }}"
+          git fetch origin "${{ inputs.base_ref }}"
+          git checkout "origin/${{ inputs.base_ref }}"
           npm ci
           npm run build
           # Detect orphans against the base source using the PR-head script.
@@ -106,10 +117,20 @@ jobs:
       # Most PRs come from forks, where the pull_request token is read-only and CANNOT
       # comment. Instead of posting here, stash the comment body + PR number as an
       # artifact; the broken-link-comment.yaml workflow (workflow_run, base-repo context
-      # with a write token) downloads it and posts/updates the comment.
+      # with a write token) downloads it and posts/updates the comment. No longer
+      # triggered by a PR at all (see this file's own header comment) -- only written
+      # when this run happens to be against an actual open PR's branch, so a plain
+      # workflow_dispatch run (no PR to comment on) just skips it; `if-no-files-found:
+      # ignore` on the next step handles the resulting missing artifact gracefully.
       - name: Save PR number
         if: always()
-        run: echo "${{ github.event.pull_request.number }}" > en/pr-number.txt
+        run: |
+          PR_NUMBER=$(gh pr list --head "${{ github.ref_name }}" --json number --jq '.[0].number // empty')
+          if [ -n "$PR_NUMBER" ]; then
+            echo "$PR_NUMBER" > en/pr-number.txt
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Upload comment artifact
         if: always()
