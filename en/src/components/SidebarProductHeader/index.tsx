@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useLocation } from '@docusaurus/router';
 import {
   useVersions,
@@ -43,19 +44,19 @@ const PRODUCTS: Record<ProductKey, { label: string; path: string; icon: () => Re
   cloud: {
     label: 'WSO2 Cloud',
     path: 'saas/',
-    icon: CloudIcon,
+    icon: PulseIcon,
     tone: 'iconSaas',
   },
   integrator: {
     label: 'WSO2 Integrator',
     path: 'integrator/',
-    icon: ProductIcon,
+    icon: PulseIcon,
     tone: 'iconIntegrator',
   },
   connectors: {
     label: 'WSO2 Connectors',
     path: 'connectors/catalog',
-    icon: PlugIcon,
+    icon: PulseIcon,
     tone: 'iconConnectors',
   },
 };
@@ -142,38 +143,22 @@ function BackIcon(): ReactNode {
   );
 }
 
-/** Waveform mark -- WSO2 Integrator. */
-function ProductIcon(): ReactNode {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M3 13h4l2.5-6 4 11 3-8 1.5 3H21" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CloudIcon(): ReactNode {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.8 4.8 0 0 1-.5 9.5z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function PlugIcon(): ReactNode {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function AgentIcon(): ReactNode {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="5" y="8" width="14" height="11" rx="3" stroke="currentColor" strokeWidth="2" />
-      <path d="M12 8V4M9.5 13v1M14.5 13v1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
+/** The WSO2 pulse mark -- the actual static/img/favicon.svg asset
+ * (loaded as-is via <img>, not redrawn as an inline SVG icon), shared
+ * across every product entry -- including "Coming soon" ones like
+ * Agent Builder -- instead of a distinct icon per product, for brand
+ * consistency. No circular ring/fill around it (.badge in
+ * styles.module.css is a plain sizing box now) -- the mark is sized to
+ * fill that 26px box itself instead of sitting small inside one; the
+ * compact trigger button's own 22px override lives in
+ * `.compact .seg .badge img`. An <img>'s content can't pick up
+ * `currentColor` the way an inline <svg> can, so this always renders in
+ * the source file's own fixed brand orange regardless of which
+ * product's row it's in -- intentional, not a limitation to work
+ * around: the mark itself stays the same real logo everywhere. */
+function PulseIcon(): ReactNode {
+  const src = useBaseUrl('/img/favicon.svg');
+  return <img src={src} alt="" width={26} height={26} aria-hidden="true" />;
 }
 
 /* ------------------------------------------------------------------ */
@@ -383,7 +368,7 @@ function Switcher({ model, compact }: { model: VersionModel | null; compact: boo
                       <div aria-disabled="true" className={clsx(styles.row, styles.rowDisabled)}>
                         <span className={clsx(styles.rowName, styles.rowNameHalf, styles.rowNameStatic)}>
                           <span className={clsx(styles.badge, styles.iconAgent)}>
-                            <AgentIcon />
+                            <PulseIcon />
                           </span>
                           WSO2 Agent Builder
                         </span>

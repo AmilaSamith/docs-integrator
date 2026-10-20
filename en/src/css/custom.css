@@ -351,6 +351,20 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--ifm-background-color);
 }
 
+/* Infima's own .navbar-sidebar__item sets `width: var(--ifm-navbar-sidebar-width)`
+   (83vw) THEN adds `padding: 0.5rem` on top, content-box by default -- so
+   each panel's rendered box is 83vw + 16px, 16px wider than the parent
+   `.navbar-sidebar` that clips it with `overflow-x: hidden`. At narrow
+   (mobile) widths that silently crops ~16px off the right edge of every
+   row, cutting off a level-1 pill's own right-side border-radius (see
+   DocSidebarItem/Category's `.categoryLink { overflow: hidden }`) --
+   reported as "Get Started" (and others) losing their right rounded
+   corner in the mobile drawer. border-box keeps the padding inside the
+   already-clip-matched width instead of adding to it. */
+.navbar-sidebar__item {
+  box-sizing: border-box;
+}
+
 /* Infima's default .navbar__logo container is a fixed 2rem (32px) tall,
    and its own img rule is `height: 100%` -- so bumping just the img's
    height without also freeing the container leaves the image fighting
@@ -635,8 +649,45 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom-color: #3B3532;
 }
 
+/* Rounded, no bottom border, same as the hover state -- matches the
+   rest of the site's rounded theme (issue #1027: selected was
+   previously flat/square while hover was rounded, an inconsistency).
+   `border-radius` here isn't redundant with line 616's `10px` above --
+   this selector's extra `:has()` gives it one more specificity level
+   than the level-1 flattening rule below, so it's what actually wins;
+   without it, that flattening rule's `border-radius: 0` wins the tie
+   against line 616 on source order alone. */
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible:has(> .menu__link--active) {
   border-bottom-color: transparent;
+  border-radius: 10px;
+}
+
+/* Same fix, plain-link case (a level-1 item with no children of its
+   own, e.g. a bare "Overview" doc) -- the flattening rule below removes
+   its radius unconditionally, active or not. */
+.theme-doc-sidebar-item-link-level-1 > .menu__link--active {
+  border-bottom-color: transparent;
+  border-radius: 10px;
+}
+
+/* The row right after an active level-1 section draws its OWN top
+   border -- the active section's bottom border is unconditionally
+   transparent now (the rounding fix above), so without this there's no
+   line at all between an active section and whatever follows it. All
+   four category/link combinations, in both directions, since either
+   side of that boundary can be either row type. */
+.theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) + .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) + .theme-doc-sidebar-item-link-level-1 > .menu__link,
+.theme-doc-sidebar-item-link-level-1:has(> .menu__link--active) + .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-link-level-1:has(> .menu__link--active) + .theme-doc-sidebar-item-link-level-1 > .menu__link {
+  border-top: 1px solid #ECE6E0;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) + .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) + .theme-doc-sidebar-item-link-level-1 > .menu__link,
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-1:has(> .menu__link--active) + .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible,
+[data-theme='dark'] .theme-doc-sidebar-item-link-level-1:has(> .menu__link--active) + .theme-doc-sidebar-item-link-level-1 > .menu__link {
+  border-top-color: #3B3532;
 }
 
 /* The row immediately before a `separatorBefore` label never draws its
@@ -1528,6 +1579,22 @@ table th {
 
 .theme-doc-sidebar-menu>.menu__list-item[data-pinned]::after {
   top: 100%;
+}
+
+/* When the pinned row itself is the active page, its own bottom border
+   is transparent (the active-row rounding fix above) -- but this ::after
+   sits exactly on that seam (same `top: 100%` edge) and paints over
+   whatever border the NEXT row tries to draw on its own top edge there
+   (the "row after an active section" fix above), hiding it even though
+   it's genuinely applying. Drawing the line on the ::after itself, which
+   is what's actually visible at that seam, fixes it without touching the
+   double-line-prone border-top approach the comment above warns about. */
+.theme-doc-sidebar-menu>.menu__list-item[data-pinned]:has(> a.menu__link--active)::after {
+  border-bottom: 1px solid #ECE6E0;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-menu>.menu__list-item[data-pinned]:has(> a.menu__link--active)::after {
+  border-bottom-color: #3B3532;
 }
 
 /* ================================================================
