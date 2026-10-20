@@ -29,6 +29,14 @@ import styles from './styles.module.css';
 type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
 
+function CookieIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 4 3.5 3 3 0 0 0 5 5.5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function ExternalIcon(): ReactNode {
   return (
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -187,6 +195,24 @@ export default function Footer(): ReactNode {
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
+          {/* A persistent, visible consent-withdrawal entry point is a
+              compliance expectation on its own, not just a convenience --
+              CookiePro's admin-console "floating icon" may or may not be
+              turned on for this domain-script ID (not something this
+              codebase controls) and is easy to miss/disable even when it
+              is, so this stays regardless of that setting.
+              `ot-sdk-show-settings` is CookiePro's own documented class
+              for exactly this -- its script auto-wires a click handler to
+              any element carrying it once initialized; the onClick below
+              is a fallback for the window before that happens. */}
+          <button
+            type="button"
+            className={`ot-sdk-show-settings ${styles.footerCookieBtn}`}
+            onClick={() => (window as typeof window & { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay()}
+          >
+            <CookieIcon />
+            Cookie settings
+          </button>
         </div>
       </div>
     </footer>

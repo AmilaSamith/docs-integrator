@@ -48,7 +48,7 @@ const config: Config = {
 
   // Google Tag Manager + CookiePro -- see themeConfig.ts's sharedHeadTags
   // docstring for the full explanation (same snippet on every product
-  // branch) and theme/Root.js for GTM's <noscript> body half.
+  // branch, and why there is deliberately no GTM <noscript> snippet).
   headTags: sharedHeadTags,
 
   markdown: {

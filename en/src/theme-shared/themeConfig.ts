@@ -50,13 +50,39 @@ const PRODUCTION_HOSTNAME = 'wso2.com';
  * PRODUCTION_HOSTNAME's docstring), the only place that switch can
  * happen is at runtime, off window.location.hostname. A static
  * per-branch headTags array can't express that, so this loads
- * everything itself instead of declaring it as markup.
+ * everything itself instead of declaring it as markup. The hostname
+ * check matches any `wso2.com` subdomain (not just an exact match), so
+ * `www.wso2.com` still resolves to prod instead of silently falling
+ * through to the dev/test IDs. Local dev (`localhost`/`127.0.0.1`) skips
+ * loading either script at all -- there's no real traffic to report and
+ * it would otherwise just add noise to the test GTM container's data.
  *
- * Ordering is deliberate -- CookiePro loads
- * (and defines OptanonWrapper) before GTM is kicked off, so GTM has
- * cookie categories available to read when it runs. The dev/test
- * CookiePro property additionally loads OtAutoBlock.js first, before
- * its own otSDKStub.js; the prod property doesn't use that script.
+ * GTM is gated on real Google Consent Mode, not just script load order:
+ * a `consent: default` (denied) command is pushed to `dataLayer` before
+ * GTM's own script tag is even created, and CookiePro's `OptanonWrapper`
+ * hook (which it calls once on init and again on every consent change)
+ * pushes a matching `consent: update` from `window.OnetrustActiveGroups`.
+ * This is a signal GTM and Google's own tags respect, NOT a network-level
+ * block -- it does not by itself guarantee zero requests before consent,
+ * and a Custom HTML (or other non-Google) tag in either container only
+ * respects it if it's explicitly built to. The `C0002`/`C0004` group IDs
+ * below are OneTrust's out-of-the-box default category IDs (Performance /
+ * Targeting), NOT confirmed against the actual categories configured for
+ * domain-script `486163bc-a8c5-40d8-b185-c707cc718a23` -- and whether
+ * GTM-PSTXMT / GTM-WTHX3F6's own tags use consent-based triggers at all
+ * is a separate, still-open question for marketing. Confirm both before
+ * relying on this for compliance.
+ *
+ * OneTrust's OtAutoBlock.js (marketing's dev/test snippet included it)
+ * is deliberately NOT loaded here: it only works as a real synchronous,
+ * first-script-in-`<head>` tag, so it can monkey-patch script/iframe
+ * insertion and intercept everything that loads after it -- loaded
+ * dynamically like the rest of this bootstrap (necessarily after other
+ * things have already executed), it can't actually block anything, so
+ * including it would be misleading rather than protective. If marketing
+ * confirms real auto-blocking is required, it needs its own static
+ * headTags entry positioned first, which is incompatible with this
+ * bootstrap's runtime prod/dev switching and would need a separate design.
  *
  * There is deliberately no GTM `<noscript>` body snippet anywhere in
  * this codebase (theme/Root.js used to render one). It was static
@@ -76,7 +102,10 @@ export const sharedHeadTags: HtmlTagObject[] = [
     // optional -- an empty object here, not omission, is what satisfies it.
     attributes: {},
     innerHTML: `(function () {
-  var isProd = window.location.hostname === '${PRODUCTION_HOSTNAME}';
+  var hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') return;
+
+  var isProd = /(^|\\.)wso2\\.com$/.test(hostname);
   var gtmId = isProd ? 'GTM-PSTXMT' : 'GTM-WTHX3F6';
   var cookieProId = isProd
     ? '486163bc-a8c5-40d8-b185-c707cc718a23'
@@ -90,17 +119,38 @@ export const sharedHeadTags: HtmlTagObject[] = [
     document.head.appendChild(s);
   }
 
-  // CookiePro before GTM -- see this export's own docstring for why.
-  if (!isProd) {
-    loadScript('https://cookie-cdn.cookiepro.com/consent/' + cookieProId + '/OtAutoBlock.js', { charset: 'UTF-8' });
-  }
+  // CookiePro before GTM -- see this export's own docstring for why
+  // (and for why this alone isn't the real consent gate -- that's the
+  // Consent Mode default/update pair below).
   loadScript('https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js', {
     charset: 'UTF-8',
     'data-domain-script': cookieProId,
   });
-  window.OptanonWrapper = function () {};
 
   window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500,
+  });
+
+  // OneTrust calls this once on init and again on every consent change --
+  // see this export's own docstring for why the group IDs below need
+  // confirming with marketing before this is relied on.
+  window.OptanonWrapper = function () {
+    var active = ',' + (window.OnetrustActiveGroups || '') + ',';
+    function granted(id) { return active.indexOf(',' + id + ',') !== -1; }
+    gtag('consent', 'update', {
+      analytics_storage: granted('C0002') ? 'granted' : 'denied',
+      ad_storage: granted('C0004') ? 'granted' : 'denied',
+      ad_user_data: granted('C0004') ? 'granted' : 'denied',
+      ad_personalization: granted('C0004') ? 'granted' : 'denied',
+    });
+  };
+
   window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
   var f = document.getElementsByTagName('script')[0];
   var j = document.createElement('script');
