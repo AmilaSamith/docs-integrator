@@ -59,12 +59,16 @@ const PRODUCTION_HOSTNAME = 'wso2.com';
  * CookiePro property additionally loads OtAutoBlock.js first, before
  * its own otSDKStub.js; the prod property doesn't use that script.
  *
- * GTM's own `<noscript>` body snippet isn't here -- `headTags` only
- * inserts into `<head>` -- it's rendered by the shared theme/Root.js
- * instead. That fallback is for visitors with JS disabled, so it can't
- * run this same hostname check; it always points at the production
- * container, an accepted simplification (a no-JS visitor missing one
- * pageview ping on a staging/fork preview isn't worth avoiding). */
+ * There is deliberately no GTM `<noscript>` body snippet anywhere in
+ * this codebase (theme/Root.js used to render one). It was static
+ * markup with no gating mechanism -- it requested
+ * googletagmanager.com/ns.html unconditionally on every page load,
+ * disclosing connection/request metadata to Google regardless of any
+ * consent choice, for an audience (JS-disabled visitors) that can never
+ * grant or deny consent in the first place since CookiePro's whole
+ * banner/preference-center UI is itself a JS widget. Removed rather
+ * than reworked, since "only emit it after consent" isn't achievable
+ * when there's no JS running to check consent state. */
 export const sharedHeadTags: HtmlTagObject[] = [
   {
     tagName: 'script',

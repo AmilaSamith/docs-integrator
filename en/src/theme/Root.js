@@ -134,39 +134,26 @@ export default function Root({ children }) {
   useNavbarActiveState();
   return (
     <>
-      {/* Google Tag Manager's <noscript> fallback (themeConfig.ts's
-          sharedHeadTags has the matching <head> script -- see that
-          export's own docstring for why this half lives here instead).
-          Rendered as the very first thing Root returns, outside
-          CatalogProvider, so it lands as close to the top of <body> as
-          this app's own root div allows. Works for visitors with JS
-          disabled same as a hand-pasted tag would: Docusaurus
-          pre-renders this to static HTML (SSG), it's not something React
-          has to execute to produce.
+      {/* No GTM <noscript> fallback here -- deliberately removed, not an
+          oversight. It was static markup with no gating mechanism: it
+          would request googletagmanager.com/ns.html unconditionally on
+          every page load, disclosing connection/request metadata to
+          Google regardless of any consent choice, for an audience
+          (JS-disabled visitors) that can never grant or deny consent in
+          the first place since CookiePro's whole banner/preference-center
+          UI is itself a JS widget. "Only emit it after consent" isn't
+          achievable for this case -- there's no JS running to check
+          consent state -- so removal was the only correct fix. GTM's
+          normal (JS-enabled) path is unaffected; see sharedHeadTags'
+          own docstring in themeConfig.ts for that half.
 
-          Always the production container ID, unlike sharedHeadTags'
-          script half, which switches prod/dev off window.location.hostname
-          at runtime -- a no-JS visitor can't run that check, and this is
-          only a pageview ping for that edge case, so always pointing it
-          at production is an accepted simplification (see sharedHeadTags'
-          own docstring).
-
-          No custom <CookieConsent /> mounted here anymore -- that was a
-          cosmetic banner (categories saved to localStorage) with no real
-          script behind it to actually gate. sharedHeadTags' CookiePro
+          No custom <CookieConsent /> mounted here anymore either -- that
+          was a cosmetic banner (categories saved to localStorage) with no
+          real script behind it to actually gate. sharedHeadTags' CookiePro
           script (the real consent management platform marketing uses on
           wso2.com) renders and owns its own banner/preference center now;
-          theme/Footer's "Cookie settings" link reopens CookiePro's, not
-          a component that lived here. */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-PSTXMT"
-          height="0"
-          width="0"
-          style={{ display: 'none', visibility: 'hidden' }}
-          title="Google Tag Manager"
-        />
-      </noscript>
+          CookiePro's own auto-injected floating icon is the reopen entry
+          point, not a component that lived here. */}
       <CatalogProvider>
         {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
             mounted: the single-header landing page has no sidebar toggle.
