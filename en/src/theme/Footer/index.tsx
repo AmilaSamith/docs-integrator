@@ -181,24 +181,12 @@ export default function Footer(): ReactNode {
       <div className={styles.footerBottom}>
         {copyright && <span className={styles.footerCopyright}>{copyright}</span>}
         <div className={styles.footerLegal}>
-          {/* "Report an issue" used to live here -- moved to the floating
-              ReportIssueButton (src/components/FloatingActions), present
-              on every page, not just the footer. Terms of use isn't
-              linked yet -- no confirmed URL; add once there is one. */}
           <a className={styles.footerLegalLink} href="https://wso2.com/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy Policy
           </a>
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
-          {/* No "Cookie settings" button here -- CookiePro's own
-              auto-injected floating icon (its admin console's "floating
-              icon" setting for this domain-script ID, not something this
-              codebase configures) is the reopen entry point now, so this
-              would otherwise be a duplicate. If that setting ever turns
-              out to be off, there is NO way left to reopen the
-              preference center -- confirm with marketing/Thimuth that
-              it's actually enabled before relying on this. */}
         </div>
       </div>
     </footer>
