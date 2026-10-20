@@ -27,9 +27,7 @@ import type { HtmlTagObject } from '@docusaurus/types';
  * real production/staging never set this, so they're unaffected. */
 export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
 
-/** Google Tag Manager + CookiePro, the exact snippets marketing sent for
- * wso2.com (container GTM-5CR98L58, CookiePro domain-script
- * 486163bc-a8c5-40d8-b185-c707cc718a23) -- identical on every product
+/** Google Tag Manager + CookiePro -- identical on every product
  * branch, so defined once here instead of pasted into each branch's own
  * docusaurus.config.ts. Each branch wires it in via the top-level
  * `headTags: sharedHeadTags` config option (not `themeConfig`, which is
@@ -39,12 +37,7 @@ export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integratio
  * the real static HTML output since Docusaurus pre-renders to SSG, so
  * it works correctly for visitors with JS disabled same as a literal
  * hand-pasted tag would.
- *
- * Order matches marketing's instructions (GTM "as high in <head> as
- * possible", pasted first; CookiePro + its required OptanonWrapper stub
- * after). `charset`/`type` kept exactly as marketing specified rather
- * than dropped as redundant, in case CookiePro's own script depends on
- * them being present verbatim. */
+ * */
 export const sharedHeadTags: HtmlTagObject[] = [
   {
     tagName: 'script',
