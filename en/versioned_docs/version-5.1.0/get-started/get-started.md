@@ -8,9 +8,9 @@ wide_layout: true
 slug: /get-started
 ---
 
-# Get Started with WSO2 Integration Platform
+# Get Started with WSO2 Integrator
 
-New to WSO2 Integration Platform? Start here: install WSO2 Integrator, learn the vocabulary used across the docs, then build your first integration with a quickstart that matches what you're trying to do.
+New to WSO2 Integrator? Start here: install WSO2 Integrator, learn the vocabulary used across the docs, then build your first integration with a quickstart that matches what you're trying to do.
 
 <PaletteGrid>
 
