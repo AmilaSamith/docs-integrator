@@ -1,4 +1,5 @@
 import { themes as prismThemes } from 'prism-react-renderer';
+import type { HtmlTagObject } from '@docusaurus/types';
 
 /**
  * The shared visual identity contract across every docs-integrator site
@@ -25,6 +26,140 @@ import { themes as prismThemes } from 'prism-react-renderer';
  * fork's own Pages URL) can point these at itself instead --
  * real production/staging never set this, so they're unaffected. */
 export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
+
+/** Production's real custom domain -- the one signal that reliably tells
+ * apart the gh-pages promotion (served from here) from everywhere else
+ * this exact same build output also runs (Choreo staging, a fork's own
+ * github.io Pages). Checked at runtime in the browser, not at build
+ * time: promote_to_production.yaml ships staging's already-built
+ * artifact to gh-pages byte-for-byte, with no rebuild ("build once,
+ * promote the artifact" -- see that workflow's own docstring), so no
+ * build-time env var could tell gh-pages and staging apart even if one
+ * existed for this. */
+const PRODUCTION_HOSTNAME = 'wso2.com';
+
+/** Google Tag Manager + CookiePro -- identical on every product branch,
+ * so defined once here instead of pasted into each branch's own
+ * docusaurus.config.ts. Each branch wires it in via the top-level
+ * `headTags: sharedHeadTags` config option (not `themeConfig`, which is
+ * a different part of the config object).
+ *
+ * We have separate prod/dev GTM container IDs and
+ * CookiePro domain-script IDs, switched by environment -- and since
+ * staging and production share one build artifact (see
+ * PRODUCTION_HOSTNAME's docstring), the only place that switch can
+ * happen is at runtime, off window.location.hostname. A static
+ * per-branch headTags array can't express that, so this loads
+ * everything itself instead of declaring it as markup. The hostname
+ * check matches any `wso2.com` subdomain (not just an exact match), so
+ * `www.wso2.com` still resolves to prod instead of silently falling
+ * through to the dev/test IDs. Local dev (`localhost`/`127.0.0.1`) skips
+ * loading either script at all -- there's no real traffic to report and
+ * it would otherwise just add noise to the test GTM container's data.
+ *
+ * GTM is gated on real Google Consent Mode, not just script load order:
+ * a `consent: default` (denied) command is pushed to `dataLayer` before
+ * GTM's own script tag is even created, and CookiePro's `OptanonWrapper`
+ * hook (which it calls once on init and again on every consent change)
+ * pushes a matching `consent: update` from `window.OnetrustActiveGroups`.
+ * This is a signal GTM and Google's own tags respect, NOT a network-level
+ * block -- it does not by itself guarantee zero requests before consent,
+ * and a Custom HTML (or other non-Google) tag in either container only
+ * respects it if it's explicitly built to. The `C0002`/`C0004` group IDs
+ * below are OneTrust's out-of-the-box default category IDs (Performance /
+ * Targeting), NOT confirmed against the actual categories configured for
+ * domain-script `486163bc-a8c5-40d8-b185-c707cc718a23` -- and whether
+ * GTM-PSTXMT / GTM-WTHX3F6's own tags use consent-based triggers at all
+ * is a separate, still-open question for marketing. Confirm both before
+ * relying on this for compliance.
+ *
+ * OneTrust's OtAutoBlock.js (marketing's dev/test snippet included it)
+ * is deliberately NOT loaded here: it only works as a real synchronous,
+ * first-script-in-`<head>` tag, so it can monkey-patch script/iframe
+ * insertion and intercept everything that loads after it -- loaded
+ * dynamically like the rest of this bootstrap (necessarily after other
+ * things have already executed), it can't actually block anything, so
+ * including it would be misleading rather than protective. If marketing
+ * confirms real auto-blocking is required, it needs its own static
+ * headTags entry positioned first, which is incompatible with this
+ * bootstrap's runtime prod/dev switching and would need a separate design.
+ *
+ * There is deliberately no GTM `<noscript>` body snippet anywhere in
+ * this codebase (theme/Root.js used to render one). It was static
+ * markup with no gating mechanism -- it requested
+ * googletagmanager.com/ns.html unconditionally on every page load,
+ * disclosing connection/request metadata to Google regardless of any
+ * consent choice, for an audience (JS-disabled visitors) that can never
+ * grant or deny consent in the first place since CookiePro's whole
+ * banner/preference-center UI is itself a JS widget. Removed rather
+ * than reworked, since "only emit it after consent" isn't achievable
+ * when there's no JS running to check consent state. */
+export const sharedHeadTags: HtmlTagObject[] = [
+  {
+    tagName: 'script',
+    // Docusaurus's own config-schema validation requires `attributes` on
+    // every headTags entry at runtime, even though the TS type marks it
+    // optional -- an empty object here, not omission, is what satisfies it.
+    attributes: {},
+    innerHTML: `(function () {
+  var hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') return;
+
+  var isProd = /(^|\\.)wso2\\.com$/.test(hostname);
+  var gtmId = isProd ? 'GTM-PSTXMT' : 'GTM-WTHX3F6';
+  var cookieProId = isProd
+    ? '486163bc-a8c5-40d8-b185-c707cc718a23'
+    : '486163bc-a8c5-40d8-b185-c707cc718a23-test';
+
+  function loadScript(src, attrs) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.type = 'text/javascript';
+    for (var k in attrs) { s.setAttribute(k, attrs[k]); }
+    document.head.appendChild(s);
+  }
+
+  // CookiePro before GTM -- see this export's own docstring for why
+  // (and for why this alone isn't the real consent gate -- that's the
+  // Consent Mode default/update pair below).
+  loadScript('https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js', {
+    charset: 'UTF-8',
+    'data-domain-script': cookieProId,
+  });
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500,
+  });
+
+  // OneTrust calls this once on init and again on every consent change --
+  // see this export's own docstring for why the group IDs below need
+  // confirming with marketing before this is relied on.
+  window.OptanonWrapper = function () {
+    var active = ',' + (window.OnetrustActiveGroups || '') + ',';
+    function granted(id) { return active.indexOf(',' + id + ',') !== -1; }
+    gtag('consent', 'update', {
+      analytics_storage: granted('C0002') ? 'granted' : 'denied',
+      ad_storage: granted('C0004') ? 'granted' : 'denied',
+      ad_user_data: granted('C0004') ? 'granted' : 'denied',
+      ad_personalization: granted('C0004') ? 'granted' : 'denied',
+    });
+  };
+
+  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+  var f = document.getElementsByTagName('script')[0];
+  var j = document.createElement('script');
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+  f.parentNode.insertBefore(j, f);
+})();`,
+  },
+];
 
 export const sharedColorMode = {
   defaultMode: 'light' as const,
