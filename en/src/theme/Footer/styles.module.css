@@ -1,10 +1,66 @@
 /**
- * Always the navy gradient, independent of the site's light/dark theme --
- * same brand-banner treatment as the hero (see pages/index.module.css).
+ * Always the warm charcoal gradient, independent of the site's light/dark
+ * theme -- identical in both, like the landing page's footer mockup.
+ * Colours are literals here (not theme tokens) for that reason.
  */
 .footer {
-  background: linear-gradient(150deg, var(--wso2-navy-mid), var(--wso2-navy));
-  color: var(--wso2-on-navy-cool);
+  background-color: #1E1B19;
+  background-image:
+    radial-gradient(ellipse 60% 120% at 100% 0%, rgba(255, 115, 0, 0.10), transparent 60%),
+    linear-gradient(180deg, #24201D 0%, #1A1816 100%);
+  color: #EDE7E2;
+}
+
+/* "Need help?" band across the top of the footer. */
+.helpRow {
+  border-bottom: 1px solid #3B3532;
+}
+
+.helpInner {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 22px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+
+.helpText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  color: #B3A9A1;
+}
+
+.helpText strong {
+  color: #FFFFFF;
+  font-weight: 800;
+}
+
+.helpLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-weight: 700;
+}
+
+.helpLink {
+  color: #F5A06A !important;
+  text-decoration: none !important;
+}
+
+.helpLink:hover {
+  color: #FFC9A3 !important;
+  text-decoration: underline !important;
+}
+
+.helpSep {
+  color: #4A423D;
 }
 
 /* One row -- brand column (logo/tagline + social icons stacked below
@@ -30,7 +86,7 @@
   flex-direction: column;
   gap: 20px;
   flex: 0 0 auto;
-  max-width: 300px;
+  max-width: 340px;
 }
 
 .footerBrand {
@@ -59,16 +115,16 @@
 
 .footerLogo {
   display: block;
-  height: 52px;
+  height: 40px;
   width: auto;
   align-self: flex-start;
 }
 
 .footerTagline {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--wso2-on-navy-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #C2B8B0;
 }
 
 .footerSocial {
@@ -85,19 +141,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--wso2-on-navy-text) !important;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #4A423D;
+  color: #FFFFFF !important;
   text-decoration: none !important;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .footerSocialBtn:hover {
   background: rgba(255, 255, 255, 0.14);
-  border-color: var(--ifm-color-primary-lighter);
+  border-color: #F5A06A;
   text-decoration: none;
 }
 
@@ -112,7 +168,7 @@
   flex-direction: column;
   gap: 11px;
   padding-left: 32px;
-  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 1px solid #3B3532;
 }
 
 .footerCol:first-child {
@@ -121,25 +177,25 @@
 }
 
 .footerColTitle {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--wso2-on-navy-label);
+  color: #F5A06A;
 }
 
 .footerColLink {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13.5px;
-  color: var(--wso2-on-navy-cool) !important;
+  font-size: 16px;
+  color: #EDE7E2 !important;
   text-decoration: none !important;
   transition: color 0.2s ease;
 }
 
 .footerColLink:hover {
-  color: var(--wso2-on-navy-text) !important;
+  color: #FFFFFF !important;
   text-decoration: none;
 }
 
@@ -148,7 +204,7 @@
   max-width: 1680px;
   margin: 0 auto;
   padding: 18px 40px 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #3B3532;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -156,8 +212,8 @@
 }
 
 .footerCopyright {
-  font-size: 12.5px;
-  color: var(--wso2-on-navy-muted-dim);
+  font-size: 14.5px;
+  color: #B3A9A1;
 }
 
 .footerLegal {
@@ -168,15 +224,38 @@
 }
 
 .footerLegalLink {
-  font-size: 12.5px;
-  color: var(--wso2-on-navy-muted-dim) !important;
+  font-size: 14.5px;
+  color: #B3A9A1 !important;
   text-decoration: none !important;
   transition: color 0.2s ease;
 }
 
 .footerLegalLink:hover {
-  color: var(--wso2-on-navy-text) !important;
+  color: #FFFFFF !important;
   text-decoration: none;
+}
+
+/* Reopens CookieConsent's settings dialog -- styled distinctly from the
+   plain Privacy/Cookie Policy links (orange, bold, with the cookie icon)
+   since it's an action, not a navigation link, matching the design's
+   "Reopening it later" row. */
+.footerCookieBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #F5A06A;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footerCookieBtn:hover {
+  color: #FFC9A3;
 }
 
 /* The 40px fixed side padding above eats a much bigger share of a
@@ -187,6 +266,10 @@
    line at this width, that same auto margin would strand it at the
    right edge instead of lining up under the copyright text. */
 @media (max-width: 640px) {
+  .helpInner {
+    padding: 18px 20px;
+  }
+
   .footerTop {
     padding: 40px 20px 24px;
     gap: 24px;
@@ -207,7 +290,7 @@
     padding-left: 0;
     padding-top: 20px;
     border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 1px solid #3B3532;
   }
 
   .footerCol:first-child {

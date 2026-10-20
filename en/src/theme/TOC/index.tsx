@@ -21,13 +21,41 @@
  */
 import type { ReactNode } from 'react';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import type { Props } from '@theme/TOC';
 import TOC from '@theme-original/TOC';
 import ConnectorCatalogFilters from '@site/src/components/ConnectorCatalog/Filters';
+import { openAIAssistant } from '@site/src/components/AIAssistantSidePanel/Launcher';
+import DocFeedback from '@site/src/components/DocFeedback';
 
 import styles from './styles.module.css';
 
 const CONNECTOR_CATALOG_PATH = /\/catalog\/?$/;
+
+function AskAIIcon(): ReactNode {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6" />
+    </svg>
+  );
+}
+
+/** Only shown when this branch has the AI assistant enabled (see
+ * FloatingActions' own docstring) -- otherwise there'd be nothing for it
+ * to open. */
+function StuckOnAStep(): ReactNode {
+  const { siteConfig } = useDocusaurusContext();
+  if (siteConfig.customFields?.showAiAssistant !== true) return null;
+  return (
+    <div className={styles.stuckBox}>
+      <strong>Stuck on a step?</strong>
+      <button type="button" className={styles.stuckBtn} onClick={() => openAIAssistant()}>
+        <AskAIIcon />
+        Ask AI about this page
+      </button>
+    </div>
+  );
+}
 
 export default function TOCWrapper(props: Props): ReactNode {
   const { pathname } = useLocation();
@@ -43,6 +71,11 @@ export default function TOCWrapper(props: Props): ReactNode {
     <div className={styles.tocWrapper}>
       <div className={styles.tocTitle}>On this page</div>
       <TOC {...props} />
+      <StuckOnAStep />
+      {/* Last item in the column -- "Edit this page" already has its own
+          button next to the breadcrumb (theme/EditThisPage), so this box
+          is just Yes/No + "Report an issue", not a second edit link. */}
+      <DocFeedback />
     </div>
   );
 }

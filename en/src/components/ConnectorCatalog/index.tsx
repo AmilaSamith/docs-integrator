@@ -36,19 +36,27 @@ const CATEGORY_TINTS: Record<string, [string, string]> = {
 };
 const DEFAULT_TINT: [string, string] = ['#EDEFF3', '#3C4657'];
 
-function tintOf(category: string): [string, string] {
+/** Exported for ConnectorHeader (the connector detail page's own identity
+ * card) -- same fallback-icon tinting/initials, so a connector's own page
+ * and its catalog card read as the same badge regardless of which one a
+ * reader saw first. */
+export function tintOf(category: string): [string, string] {
   return CATEGORY_TINTS[category] ?? DEFAULT_TINT;
 }
 
-function initialsOf(name: string): string {
-  return name
+/** First letter of each of the first two words for a multi-word name
+ * ("AWS S3" -> "AW"... no -- "Azure Files" -> "AF"), or the first two
+ * letters of a single-word name ("Alfresco" -> "Al", "Ardoq" -> "Ar") --
+ * matches the catalog design reference's own two-letter marks exactly,
+ * Title Case (not all-caps, which made "Alfresco" read as the unrelated
+ * "AI" connector's own initials). */
+export function initialsOf(name: string): string {
+  const words = name
     .replace(/[^A-Za-z0-9 ]/g, '')
     .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('')
-    .toUpperCase();
+    .filter(Boolean);
+  const raw = words.length > 1 ? words.slice(0, 2).map((w) => w[0]).join('') : (words[0] ?? '').slice(0, 2);
+  return raw.length > 0 ? raw[0]!.toUpperCase() + raw.slice(1).toLowerCase() : raw;
 }
 
 /** A description long enough to need "Show more" wraps past roughly
@@ -141,6 +149,39 @@ function ConnectorCard({ connector: c, catalogBase }: { connector: Connector; ca
   );
 }
 
+/** Previous/page-numbers/Next, shared by the toolbar (top) and the
+ * bottom-of-grid row -- same controls in both places so paging through
+ * results doesn't require scrolling back up to the toolbar first. */
+function Pagination({ page, pageCount, setPage }: { page: number; pageCount: number; setPage: (p: number) => void }) {
+  return (
+    <nav className={styles.pagination} aria-label="Pagination">
+      <button type="button" className={styles.pageNav} disabled={page <= 1} onClick={() => setPage(page - 1)} aria-label="Previous page">
+        <ChevronLeftIcon /> Previous
+      </button>
+      {pageNumbers(page, pageCount).map((p, i) =>
+        p === '…' ? (
+          <span key={`gap-${i}`} className={styles.pageGap}>
+            …
+          </span>
+        ) : (
+          <button
+            key={p}
+            type="button"
+            className={styles.pageNum}
+            aria-current={p === page ? 'page' : undefined}
+            onClick={() => setPage(p)}
+          >
+            {p}
+          </button>
+        ),
+      )}
+      <button type="button" className={styles.pageNav} disabled={page >= pageCount} onClick={() => setPage(page + 1)} aria-label="Next page">
+        Next <ChevronRightIcon />
+      </button>
+    </nav>
+  );
+}
+
 export default function ConnectorCatalog({ connectors, categories, vendors }: Props) {
   useCatalogRegister(connectors, categories, vendors);
   const catalog = useCatalog();
@@ -200,42 +241,23 @@ export default function ConnectorCatalog({ connectors, categories, vendors }: Pr
             </span>
           </label>
 
-          {pageCount > 1 && (
-            <nav className={styles.pagination} aria-label="Pagination">
-              <button type="button" className={styles.pageNav} disabled={page <= 1} onClick={() => setPage(page - 1)} aria-label="Previous page">
-                <ChevronLeftIcon /> Previous
-              </button>
-              {pageNumbers(page, pageCount).map((p, i) =>
-                p === '…' ? (
-                  <span key={`gap-${i}`} className={styles.pageGap}>
-                    …
-                  </span>
-                ) : (
-                  <button
-                    key={p}
-                    type="button"
-                    className={styles.pageNum}
-                    aria-current={p === page ? 'page' : undefined}
-                    onClick={() => setPage(p)}
-                  >
-                    {p}
-                  </button>
-                ),
-              )}
-              <button type="button" className={styles.pageNav} disabled={page >= pageCount} onClick={() => setPage(page + 1)} aria-label="Next page">
-                Next <ChevronRightIcon />
-              </button>
-            </nav>
-          )}
+          {pageCount > 1 && <Pagination page={page} pageCount={pageCount} setPage={setPage} />}
         </div>
       </div>
 
       {shown.length > 0 ? (
-        <div className={styles.grid}>
-          {shown.map((c) => (
-            <ConnectorCard key={c.name} connector={c} catalogBase={catalogBase} />
-          ))}
-        </div>
+        <>
+          <div className={styles.grid}>
+            {shown.map((c) => (
+              <ConnectorCard key={c.name} connector={c} catalogBase={catalogBase} />
+            ))}
+          </div>
+          {pageCount > 1 && (
+            <div className={styles.paginationBottom}>
+              <Pagination page={page} pageCount={pageCount} setPage={setPage} />
+            </div>
+          )}
+        </>
       ) : (
         <div className={styles.empty}>
           No connectors match those filters.{' '}

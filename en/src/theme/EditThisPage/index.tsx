@@ -5,9 +5,9 @@
  * page. Portals the SAME link (same editUrl prop, same destination,
  * Docusaurus's own computation of it entirely untouched) into
  * #wso2-edit-page-slot instead, a target rendered next to CopyPageButton
- * in the secondary navbar row (see theme/Navbar/index.tsx's docstring)
- * -- so it's visible immediately, not just after scrolling to the
- * bottom.
+ * at the top of the article, beside the breadcrumb (see
+ * theme/DocItem/Layout's docstring) -- so it's visible immediately, not
+ * just after scrolling to the bottom.
  *
  * DocItem/Footer (stock, not swizzled) still calls this exactly as
  * before and still decides whether to render it at all (only when
@@ -15,9 +15,9 @@
  * the DOM changes, not who decides to render it or with what URL.
  *
  * The portal target may not exist yet on first render (this component
- * and the navbar row mount as part of the same pass, but createPortal
- * needs a real DOM node, unavailable during SSR) -- render nothing
- * until an effect confirms the target is actually in the DOM.
+ * and the breadcrumb row mount as part of the same pass, but
+ * createPortal needs a real DOM node, unavailable during SSR) -- render
+ * nothing until an effect confirms the target is actually in the DOM.
  *
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/EditThisPage/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.

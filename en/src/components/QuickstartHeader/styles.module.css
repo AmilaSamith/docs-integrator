@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+/* "Time" is always short ("Under 10 minutes"); "What you'll build" is
+   often a full sentence. Time sizes to its own content (max-content)
+   instead of reserving a wide fixed/percentage share of the row, so
+   the column ends right after the text and Build gets everything else
+   -- no empty gap sitting between the two. */
+.grid {
+  display: grid;
+  grid-template-columns: max-content minmax(min(260px, 100%), 1fr);
+  gap: 1px;
+  background: var(--wso2-surface-border);
+  border: 1px solid var(--wso2-surface-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cell {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  background: var(--wso2-sidebar-bg);
+}
+
+.cellIcon {
+  flex: none;
+  color: var(--wso2-accent-text);
+}
+
+.cellText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cellLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--wso2-text-muted);
+}
+
+.cellValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--wso2-heading-color);
+}
+
+.cellValue code {
+  font-size: 0.9em;
+}

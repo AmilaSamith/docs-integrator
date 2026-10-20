@@ -18,6 +18,18 @@
     height: 100%;
     padding-top: calc(var(--ifm-navbar-height) + var(--wso2-secondary-row-height));
     width: var(--doc-sidebar-width);
+    /* SidebarSearch (index.tsx) renders in this padding-top region, above
+       .sidebarContentWrap -- that wrapper sets its own --wso2-sidebar-bg
+       background, but .sidebar itself never did, so SidebarSearch's row
+       had no explicit background of its own and fell through to
+       whatever's behind the sidebar's stacking context instead (the
+       sticky sidebar container deliberately extends up under the fixed
+       navbar -- see custom.css's .theme-doc-sidebar-container comment --
+       so "whatever's behind it" there could be page content scrolled
+       into that region, not solid colour). Same tint as the rest of the
+       sidebar now, so the row reads as part of one continuous panel
+       instead of a seam at the top. */
+    background: var(--wso2-sidebar-bg);
   }
 
   .sidebarWithHideableNavbar {

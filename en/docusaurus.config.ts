@@ -7,14 +7,8 @@ import {
   sharedFooterStyle,
   sharedFooterCopyright,
   sharedCommunityNavbarItem,
-  sharedDiscordNavbarItem,
-  sharedStackOverflowNavbarItem,
-  sharedLinkedInNavbarItem,
-  sharedYoutubeNavbarItem,
-  sharedXNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
-  sharedFaqNavbarItem,
   sharedContributeNavbarItem,
   sharedPrism,
   sharedImage,
@@ -112,43 +106,44 @@ const config: Config = {
     image: sharedImage,
     colorMode: sharedColorMode,
     docs: sharedDocsSidebar,
+    // "On this page" shows H2/H3 only -- same rule as wso2-integrator's
+    // sidebar-depth redesign, see that branch's docusaurus.config.ts for
+    // the full reasoning (part of the shared theme, just not synced via
+    // this per-branch config file itself).
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
+    },
     navbar: {
       logo: sharedNavbarLogo,
+      // Single-header design (matches wso2-integrator/saas): four text
+      // links, then (right zone) colour-mode toggle, GitHub and
+      // Integration Store. The former SaaS self-link and the Discord/
+      // Stack Overflow/LinkedIn/YouTube/X icons are gone from here --
+      // Footer (en/src/theme/Footer, shared) already renders all of
+      // those itself (SOCIAL_LINKS), and SaaS is one click away via the
+      // product switcher (SidebarProductHeader) next to the logo.
       items: [
-        // No self-link to Connectors here -- this is the connectors site.
-        // Instead, the first item is a real <a> (via pathname:// +
-        // autoAddBaseUrl:false, same reasoning as the other two branches'
-        // Connectors item) back to the saas site, so this is never a
-        // dead end -- matches saas/wso2-integrator's item count too,
-        // keeping the centered nav group the same width across all three.
-        {
-          href: `pathname://${CROSS_PRODUCT_BASE}`,
-          autoAddBaseUrl: false,
-          // See saas's docusaurus.config.ts for why target:'_self' is here.
-          target: '_self',
-          html: 'SaaS',
-          position: 'left',
-        },
-        // Real <a> tag (external, not a client-side route) to the
-        // marketplace listing for this catalog on wso2.com -- not a
-        // sharedReleasesNavbarItem call, since this item isn't release
-        // notes here, and the label/target genuinely diverge from what
-        // that shared helper assumes.
-        {
-          href: 'https://wso2.com/integration-platform/connectors/',
-          label: 'Integration Store',
-          position: 'left',
-        },
-        sharedContributeNavbarItem(),
-        sharedCommunityNavbarItem,
         sharedBlogNavbarItem,
-        sharedFaqNavbarItem('/reference/faq'),
+        sharedCommunityNavbarItem,
+        sharedContributeNavbarItem(),
+        // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon the
+        // new header doesn't have) -- same as wso2-integrator.
+        { label: 'FAQ', to: '/reference/faq', position: 'left' },
         sharedGithubNavbarItem,
-        sharedDiscordNavbarItem,
-        sharedStackOverflowNavbarItem,
-        sharedLinkedInNavbarItem,
-        sharedYoutubeNavbarItem,
-        sharedXNavbarItem,
+        // Last on purpose: the right zone renders toggle, divider, then
+        // these in array order (see theme/Navbar/Content), so this button
+        // ends the row. `html` (not `label`) so Docusaurus doesn't append
+        // its external-link arrow; styled by .navbar-download-btn in
+        // custom.css (same class wso2-integrator's Download button uses --
+        // same orange CTA treatment, different label/icon/href here).
+        {
+          html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Integration Store',
+          href: 'https://wso2.com/integration-platform/connectors/',
+          position: 'right',
+          className: 'navbar-download-btn',
+          'aria-label': 'Browse the Integration Store',
+        },
       ]
     },
     footer: {
