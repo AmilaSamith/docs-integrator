@@ -19,7 +19,7 @@
  * Original: node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.js
  * Keep this file in sync if you bump the @docusaurus/theme-classic major version.
  */
-import React, { useEffect, useRef, type ReactNode } from 'react';
+import React, { useEffect, useRef, useState, type ReactNode } from 'react';
 import clsx from 'clsx';
 import { useThemeConfig } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -29,6 +29,7 @@ import type { Props } from '@theme/DocSidebar';
 
 import ProductDocsLinks from '@site/src/components/ProductDocsLinks';
 import SidebarSearch from './SidebarSearch';
+import SearchModal from '@site/src/theme/SearchBar/SearchModal';
 import { railIconFor } from './icons';
 
 import styles from './styles.module.css';
@@ -153,8 +154,30 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props): Reac
   const scrollEnabled = siteConfig.customFields?.sidebarScrollToSection !== false;
   const wrapRef = usePinnedOverviewAndScroll(path, isHidden || !scrollEnabled);
 
+  // Owned here, not by SidebarSearch, so the Ctrl/Cmd+K listener survives
+  // the sidebar collapsing to its icon rail -- SidebarSearch itself (and
+  // any state/effect it owned) unmounts in that branch below, which used
+  // to silently kill the shortcut while collapsed (issue #1027).
+  const [searchOpen, setSearchOpen] = useState(false);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+  const closeSearch = () => setSearchOpen(false);
+
   if (isHidden) {
-    return <IconRail sidebar={sidebar} onExpand={onCollapse} />;
+    return (
+      <>
+        <IconRail sidebar={sidebar} onExpand={onCollapse} />
+        {searchOpen && <SearchModal onClose={closeSearch} />}
+      </>
+    );
   }
 
   return (
@@ -170,7 +193,8 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props): Reac
           Nesting the search row inside the wrap too would push that row
           down without the overlay's math knowing, landing the button on
           top of the search box instead. */}
-      <SidebarSearch />
+      <SidebarSearch onOpen={() => setSearchOpen(true)} />
+      {searchOpen && <SearchModal onClose={closeSearch} />}
       <div ref={wrapRef} className={styles.sidebarContentWrap}>
         {hideable && (
           <button
