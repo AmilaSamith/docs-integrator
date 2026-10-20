@@ -27,17 +27,43 @@ import type { HtmlTagObject } from '@docusaurus/types';
  * real production/staging never set this, so they're unaffected. */
 export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
 
-/** Google Tag Manager + CookiePro -- identical on every product
- * branch, so defined once here instead of pasted into each branch's own
+/** Production's real custom domain -- the one signal that reliably tells
+ * apart the gh-pages promotion (served from here) from everywhere else
+ * this exact same build output also runs (Choreo staging, a fork's own
+ * github.io Pages). Checked at runtime in the browser, not at build
+ * time: promote_to_production.yaml ships staging's already-built
+ * artifact to gh-pages byte-for-byte, with no rebuild ("build once,
+ * promote the artifact" -- see that workflow's own docstring), so no
+ * build-time env var could tell gh-pages and staging apart even if one
+ * existed for this. */
+const PRODUCTION_HOSTNAME = 'wso2.com';
+
+/** Google Tag Manager + CookiePro -- identical on every product branch,
+ * so defined once here instead of pasted into each branch's own
  * docusaurus.config.ts. Each branch wires it in via the top-level
  * `headTags: sharedHeadTags` config option (not `themeConfig`, which is
- * a different part of the config object). GTM's own `<noscript>` body
- * snippet isn't here -- `headTags` only inserts into `<head>` -- it's
- * rendered by the shared theme/Root.js instead, which still ends up in
- * the real static HTML output since Docusaurus pre-renders to SSG, so
- * it works correctly for visitors with JS disabled same as a literal
- * hand-pasted tag would.
- * */
+ * a different part of the config object).
+ *
+ * We have separate prod/dev GTM container IDs and
+ * CookiePro domain-script IDs, switched by environment -- and since
+ * staging and production share one build artifact (see
+ * PRODUCTION_HOSTNAME's docstring), the only place that switch can
+ * happen is at runtime, off window.location.hostname. A static
+ * per-branch headTags array can't express that, so this loads
+ * everything itself instead of declaring it as markup.
+ *
+ * Ordering is deliberate -- CookiePro loads
+ * (and defines OptanonWrapper) before GTM is kicked off, so GTM has
+ * cookie categories available to read when it runs. The dev/test
+ * CookiePro property additionally loads OtAutoBlock.js first, before
+ * its own otSDKStub.js; the prod property doesn't use that script.
+ *
+ * GTM's own `<noscript>` body snippet isn't here -- `headTags` only
+ * inserts into `<head>` -- it's rendered by the shared theme/Root.js
+ * instead. That fallback is for visitors with JS disabled, so it can't
+ * run this same hostname check; it always points at the production
+ * container, an accepted simplification (a no-JS visitor missing one
+ * pageview ping on a staging/fork preview isn't worth avoiding). */
 export const sharedHeadTags: HtmlTagObject[] = [
   {
     tagName: 'script',
@@ -45,25 +71,39 @@ export const sharedHeadTags: HtmlTagObject[] = [
     // every headTags entry at runtime, even though the TS type marks it
     // optional -- an empty object here, not omission, is what satisfies it.
     attributes: {},
-    innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5CR98L58');`,
-  },
-  {
-    tagName: 'script',
-    attributes: {
-      src: 'https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js',
-      type: 'text/javascript',
-      charset: 'UTF-8',
-      'data-domain-script': '486163bc-a8c5-40d8-b185-c707cc718a23',
-    },
-  },
-  {
-    tagName: 'script',
-    attributes: { type: 'text/javascript' },
-    innerHTML: `function OptanonWrapper() { }`,
+    innerHTML: `(function () {
+  var isProd = window.location.hostname === '${PRODUCTION_HOSTNAME}';
+  var gtmId = isProd ? 'GTM-PSTXMT' : 'GTM-WTHX3F6';
+  var cookieProId = isProd
+    ? '486163bc-a8c5-40d8-b185-c707cc718a23'
+    : '486163bc-a8c5-40d8-b185-c707cc718a23-test';
+
+  function loadScript(src, attrs) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.type = 'text/javascript';
+    for (var k in attrs) { s.setAttribute(k, attrs[k]); }
+    document.head.appendChild(s);
+  }
+
+  // CookiePro before GTM -- see this export's own docstring for why.
+  if (!isProd) {
+    loadScript('https://cookie-cdn.cookiepro.com/consent/' + cookieProId + '/OtAutoBlock.js', { charset: 'UTF-8' });
+  }
+  loadScript('https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js', {
+    charset: 'UTF-8',
+    'data-domain-script': cookieProId,
+  });
+  window.OptanonWrapper = function () {};
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+  var f = document.getElementsByTagName('script')[0];
+  var j = document.createElement('script');
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+  f.parentNode.insertBefore(j, f);
+})();`,
   },
 ];
 

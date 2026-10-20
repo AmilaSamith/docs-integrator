@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import FloatingActions from '@site/src/components/FloatingActions';
-import CookieConsent from '@site/src/components/CookieConsent';
 // Per-branch extension point, NOT in sync-theme.yaml's SHARED_PATHS --
 // every branch keeps its own copy of src/theme-local/RootExtras.tsx
 // forever (same as docusaurus.config.ts / pages/index.*), so a sync from
@@ -143,10 +142,17 @@ export default function Root({ children }) {
           this app's own root div allows. Works for visitors with JS
           disabled same as a hand-pasted tag would: Docusaurus
           pre-renders this to static HTML (SSG), it's not something React
-          has to execute to produce. */}
+          has to execute to produce.
+
+          Always the production container ID, unlike sharedHeadTags'
+          script half, which switches prod/dev off window.location.hostname
+          at runtime -- a no-JS visitor can't run that check, and this is
+          only a pageview ping for that edge case, so always pointing it
+          at production is an accepted simplification (see sharedHeadTags'
+          own docstring). */}
       <noscript>
         <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-5CR98L58"
+          src="https://www.googletagmanager.com/ns.html?id=GTM-PSTXMT"
           height="0"
           width="0"
           style={{ display: 'none', visibility: 'hidden' }}
@@ -159,7 +165,6 @@ export default function Root({ children }) {
             src/components/SiteNav is left in place, unused. */}
         {children}
         <FloatingActions />
-        <CookieConsent />
         <RootExtras />
       </CatalogProvider>
     </>

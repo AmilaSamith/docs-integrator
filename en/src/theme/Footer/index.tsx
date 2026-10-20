@@ -23,20 +23,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
-import { openCookieSettings } from '@site/src/components/CookieConsent';
 
 import styles from './styles.module.css';
 
 type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
-
-function CookieIcon(): ReactNode {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 4 3.5 3 3 0 0 0 5 5.5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 function ExternalIcon(): ReactNode {
   return (
@@ -190,26 +181,12 @@ export default function Footer(): ReactNode {
       <div className={styles.footerBottom}>
         {copyright && <span className={styles.footerCopyright}>{copyright}</span>}
         <div className={styles.footerLegal}>
-          {/* "Report an issue" used to live here -- moved to the floating
-              ReportIssueButton (src/components/FloatingActions), present
-              on every page, not just the footer. Terms of use isn't
-              linked yet -- no confirmed URL; add once there is one. */}
           <a className={styles.footerLegalLink} href="https://wso2.com/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy Policy
           </a>
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
-          {/* Reopens CookieConsent's settings dialog (src/components/
-              CookieConsent) via its exported event-based helper, rather
-              than a direct import -- CookieConsent owns its own mount
-              (theme/Root.js) and state; the footer only needs to ask it
-              to open, like clicking "Cookie settings" in the banner
-              itself. */}
-          <button type="button" className={styles.footerCookieBtn} onClick={openCookieSettings}>
-            <CookieIcon />
-            Cookie settings
-          </button>
         </div>
       </div>
     </footer>
