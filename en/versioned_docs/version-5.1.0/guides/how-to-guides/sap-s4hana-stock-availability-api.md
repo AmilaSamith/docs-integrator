@@ -23,13 +23,13 @@ Web shops, point-of-sale systems and warehouse apps all need the same answer bef
 
 ## How it works
 
-```mermaid
-flowchart LR
-    A((Client)) -- "GET /inventory/stock/RM019?plant=1710" --> B[HTTP service<br/>/inventory]
-    B -- "listA_MatlStkInAcctMods<br/>with $filter" --> C[SAP Material Stock<br/>connector]
-    C --> D((SAP S/4HANA Cloud))
-    B -- "material, plant, totalQuantity,<br/>storageLocations" --> A
-```
+<ThemedImage
+    alt="Architecture diagram: a web shop, POS or warehouse app calls the WSO2 Integrator HTTP service GET /inventory/stock/{material} to check stock; the service uses the SAP S/4HANA Material Stock connector to read stock levels from SAP S/4HANA Cloud through the Material Stock Integration (SAP_COM_0164) scenario, and returns the stock as JSON"
+    sources={{
+        light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/architecture.png'),
+        dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/architecture.png'),
+    }}
+/>
 
 Each request follows the same short flow:
 
