@@ -133,35 +133,18 @@ function useNavbarActiveState() {
 export default function Root({ children }) {
   useNavbarActiveState();
   return (
-    <>
-      {/* No GTM <noscript> fallback here -- deliberately removed, not an
-          oversight. It was static markup with no gating mechanism: it
-          would request googletagmanager.com/ns.html unconditionally on
-          every page load, disclosing connection/request metadata to
-          Google regardless of any consent choice, for an audience
-          (JS-disabled visitors) that can never grant or deny consent in
-          the first place since CookiePro's whole banner/preference-center
-          UI is itself a JS widget. "Only emit it after consent" isn't
-          achievable for this case -- there's no JS running to check
-          consent state -- so removal was the only correct fix. GTM's
-          normal (JS-enabled) path is unaffected; see sharedHeadTags'
-          own docstring in themeConfig.ts for that half.
+    <CatalogProvider>
+      {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
+          mounted: the single-header landing page has no sidebar toggle.
+          src/components/SiteNav is left in place, unused.
 
-          No custom <CookieConsent /> mounted here anymore either -- that
-          was a cosmetic banner (categories saved to localStorage) with no
-          real script behind it to actually gate. sharedHeadTags' CookiePro
-          script (the real consent management platform marketing uses on
-          wso2.com) renders and owns its own banner/preference center now;
-          CookiePro's own auto-injected floating icon is the reopen entry
-          point, not a component that lived here. */}
-      <CatalogProvider>
-        {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
-            mounted: the single-header landing page has no sidebar toggle.
-            src/components/SiteNav is left in place, unused. */}
-        {children}
-        <FloatingActions />
-        <RootExtras />
-      </CatalogProvider>
-    </>
+          No GTM <noscript> fallback or custom <CookieConsent/> mounted
+          here -- see sharedHeadTags' docstring in themeConfig.ts (the one
+          place this is explained in full) for why both are gone and what
+          replaces them. */}
+      {children}
+      <FloatingActions />
+      <RootExtras />
+    </CatalogProvider>
   );
 }

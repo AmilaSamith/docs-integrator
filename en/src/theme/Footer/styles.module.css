@@ -235,6 +235,28 @@
   text-decoration: none;
 }
 
+/* Reopens CookiePro's preference center -- styled distinctly from the
+   plain Privacy/Cookie Policy links (orange, bold, with the cookie icon)
+   since it's an action, not a navigation link. */
+.footerCookieBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #F5A06A;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footerCookieBtn:hover {
+  color: #FFC9A3;
+}
+
 /* The 40px fixed side padding above eats a much bigger share of a
    320-375px phone's width than a desktop's; tighten it instead of
    leaving it fixed. footerLegal's margin-left: auto (pushing it to the
