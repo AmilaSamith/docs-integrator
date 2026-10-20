@@ -385,7 +385,7 @@ function Switcher({ model, compact }: { model: VersionModel | null; compact: boo
                           <span className={clsx(styles.badge, styles.iconAgent)}>
                             <AgentIcon />
                           </span>
-                          WSO2 Agent Builder
+                          Agent Manager
                         </span>
                         <span className={clsx(styles.segDivider, styles.segDividerSoft)} />
                         <span className={styles.rowSoon}>Coming soon</span>
