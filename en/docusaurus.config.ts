@@ -9,7 +9,6 @@ import {
   sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
-  sharedContributeNavbarItem,
   sharedPrism,
   sharedImage,
   CROSS_PRODUCT_BASE,
@@ -130,9 +129,13 @@ const config: Config = {
       // shared) already renders the Discord/Stack Overflow/LinkedIn/
       // YouTube/X icons itself.
       items: [
+        {
+          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
+          label: 'Connectors',
+          position: 'left' as const,
+        },
         sharedBlogNavbarItem,
         sharedCommunityNavbarItem,
-        sharedContributeNavbarItem(),
         // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon
         // the new header doesn't have) -- same as wso2-integrator/
         // wso2-connectors.
