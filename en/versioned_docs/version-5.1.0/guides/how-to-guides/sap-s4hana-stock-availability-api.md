@@ -1,10 +1,10 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 title: "Expose SAP S/4HANA Stock Availability as a REST API"
 sidebar_label: "Expose SAP S/4HANA Stock Availability as a REST API"
 description: Build an HTTP service that reads unrestricted-use stock for a material and plant from SAP S/4HANA Cloud and returns the total quantity and the stock in each storage location as JSON, designed visually with the SAP Material Stock connector.
-keywords: [wso2 integrator, http service, rest api, sap s/4hana, material stock, inventory, stock availability, api_material_stock_srv, use case, low-code]
-slug: /guides/business-use-cases/sap-s4hana-stock-availability-api
+keywords: [wso2 integrator, http service, rest api, sap s/4hana, material stock, inventory, stock availability, api_material_stock_srv, communication arrangement, low-code]
+slug: /guides/how-to-guides/sap-s4hana-stock-availability-api
 card_icon: api
 card_summary: A low-code REST API that answers "how much of this material do we have?" with live SAP S/4HANA stock, broken down by storage location
 card_keywords: [sap, s/4hana, inventory, stock, rest api]
@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 # Expose SAP S/4HANA Stock Availability as a REST API
 
-**Time:** About 30 minutes | **What you'll build:** An HTTP service with one `GET` resource that returns the live unrestricted-use stock of a material in a plant, read from SAP S/4HANA Cloud, with the total quantity and the quantity in each storage location.
+**Time:** About 45 minutes | **What you'll build:** An HTTP service with one `GET` resource that returns the live unrestricted-use stock of a material in a plant, read from SAP S/4HANA Cloud, with the total quantity and the quantity in each storage location.
 
 Web shops, point-of-sale systems and warehouse apps all need the same answer before they promise anything to a customer: how much of this material is actually in stock? SAP S/4HANA knows, but its OData API speaks in SAP field names and returns quantities as text. In this guide you build a small REST API in front of it: a client calls `GET /inventory/stock/{material}?plant={plant}`, and the API asks SAP S/4HANA for that material's unrestricted-use stock in that plant and returns a clean JSON answer.
 
@@ -43,12 +43,101 @@ Each request follows the same short flow:
 :::info Prerequisites
 
 - A working WSO2 Integrator environment. See [Setup](../../get-started/setup/setup.md).
-- Access to an SAP S/4HANA Cloud system, and a communication user for the Material Stock API:
-    - Follow the [SAP Material Stock connector setup guide](product://connectors/catalog/erp-business/sap.s4hana.api_material_stock_srv/setup-guide) to create a communication user, a communication system and a **Material Stock Integration** (`SAP_COM_0164`) communication arrangement.
-    - It gives you the API hostname (for example, `my123456-api.s4hana.cloud.sap`) and the communication user's username and password, which you supply as configurables in Step 3.
+- Access to an SAP S/4HANA Cloud system, with a user that has the `SAP_BR_ADMINISTRATOR` role (or equivalent) to create communication users, systems and arrangements. You set up API access in [Set up access in SAP S/4HANA](#set-up-access-in-sap-s4hana).
 - A material that has stock in your system, and the plant it is stored in. The examples in this guide use material `RM019` in plant `1710`.
 
 :::
+
+## Set up access in SAP S/4HANA
+
+SAP S/4HANA Cloud exposes each API through a **communication scenario**. Before the integration can read stock, you create a communication user for it, register WSO2 Integrator as a communication system, and activate the **Material Stock Integration** (`SAP_COM_0164`) scenario for that system with a communication arrangement. All the apps used below are in the **Communication Management** group of the SAP Fiori launchpad.
+
+<ThemedImage
+    alt="Communication Management group in the SAP Fiori launchpad with the Communication Arrangements, Communication Systems and Maintain Communication Users apps"
+    sources={{
+        light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-01-communication-management.png'),
+        dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-01-communication-management.png'),
+    }}
+/>
+
+### Create a communication user
+
+1. Open **Maintain Communication Users** and select **New**.
+2. Enter a **User Name** and a **Description**, set a **Password**, and select **Create**.
+
+Note the user name and password. The integration uses them to call the API.
+
+### Create a communication system
+
+A communication system represents the external system that calls SAP S/4HANA, here your WSO2 Integrator integration.
+
+1. Open **Communication Systems** and select **New**.
+2. Enter a **System ID** and a **System Name**, then select **Create**.
+
+        <ThemedImage
+        alt="New communication system with the system ID and system name"
+        sources={{
+            light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-02-communication-system.png'),
+            dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-02-communication-system.png'),
+        }}
+    />
+
+3. Under **General** > **Technical Data**, enter a **Host Name** and a **Logical System** (an uppercase ID of up to 10 characters, for example, `INTEGRATOR`).
+4. Under **Users for Inbound Communication**, add the communication user you created, with the **User Name and Password** authentication method.
+
+        <ThemedImage
+        alt="Communication user added under Users for Inbound Communication"
+        sources={{
+            light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-03-inbound-user.png'),
+            dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-03-inbound-user.png'),
+        }}
+    />
+
+5. Select **Save**.
+
+### Create the communication arrangement
+
+A communication arrangement activates a communication scenario for a communication system, which decides the APIs that system may call.
+
+1. Open **Communication Arrangements** and select **New**.
+2. In the **Scenario** value help, search for **Material Stock Integration** and select **`SAP_COM_0164`**. This scenario exposes `API_MATERIAL_STOCK_SRV`, the service the Material Stock connector calls.
+
+        <ThemedImage
+        alt="Select Communication Scenario dialog searching for Material Stock Integration, showing SAP_COM_0164"
+        sources={{
+            light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-04-search-scenario.png'),
+            dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-04-search-scenario.png'),
+        }}
+    />
+
+3. Enter an **Arrangement Name** and select **Create**.
+
+        <ThemedImage
+        alt="New Communication Arrangement dialog with scenario SAP_COM_0164 and an arrangement name"
+        style={{maxWidth: '480px'}}
+        sources={{
+            light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-05-new-arrangement.png'),
+            dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-05-new-arrangement.png'),
+        }}
+    />
+
+4. Select the communication system you created. The communication user is filled in as the inbound user.
+5. Select **Save**.
+
+### Note the hostname
+
+In the saved arrangement, the **API-URL** next to **Own SAP Cloud System** shows your API hostname (`<unique id>-api.s4hana.cloud.sap`).
+
+<ThemedImage
+    alt="API-URL of the SAP S/4HANA Cloud system shown in the communication arrangement"
+    style={{maxWidth: '600px'}}
+    sources={{
+        light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-06-view-hostname.png'),
+        dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/setup-06-view-hostname.png'),
+    }}
+/>
+
+You now have the three values the integration needs: the **hostname** (for example, `my123456-api.s4hana.cloud.sap`), and the communication user's **username** and **password**. For more detail, see the [SAP Material Stock connector setup guide](product://connectors/catalog/erp-business/sap.s4hana.api_material_stock_srv/setup-guide).
 
 ## Build the integration
 
@@ -110,7 +199,7 @@ The resource opens in the flow designer, with **Start**, an empty step and the *
 
 ## Step 3: Connect to SAP S/4HANA
 
-1. Select the **+** below **Start**, then [**Add Connection**](../../develop-and-test/integration-artifacts/supportive-artifacts/connections.md#adding-a-connection). Search for `api_material_stock` and select the **Api_material_stock_srv** connector.
+1. Select the **+** below **Start**, then [**Add Connection**](../../develop-and-test/integration-artifacts/supportive-artifacts/connections.md#adding-a-connection). Search for `api_material_stock` (1) and select the **Api_material_stock_srv** connector (2).
 
     <ThemedImage
         alt="Add Connection dialog searching for api_material_stock, with the Api_material_stock_srv connector card shown under Pre-built Connectors"
@@ -120,7 +209,20 @@ The resource opens in the flow designer, with **Start**, an empty step and the *
         }}
     />
 
-2. Create three `string` configurables so the credentials are supplied at runtime instead of stored in the flow: in a field's [Expression editor](../../editor/panels/expression-panel.md) helper pane, select **Configurables**, then **New Configurable**. Name them `sapS4HanaHostname`, `sapS4HanaUsername` and `sapS4HanaPassword`.
+    :::info Why is the connector called Api_material_stock_srv?
+    Each SAP S/4HANA connector is generated from one API on the [SAP Business Accelerator Hub](https://api.sap.com), and takes its name from that API's **technical name**. The technical name is the last part of the API's URL on api.sap.com, and also the name of the OData service the connector calls on your system (`/sap/opu/odata/sap/API_MATERIAL_STOCK_SRV`).
+
+    | | Example |
+    |---|---|
+    | API on api.sap.com | **Material Stock (A2X)** |
+    | api.sap.com URL | `https://api.sap.com/api/`**`API_MATERIAL_STOCK_SRV`**`/overview` |
+    | Ballerina package | `ballerinax/sap.s4hana.`**`api_material_stock_srv`** (`sap.s4hana.` plus the technical name in lower case) |
+    | Connector card in WSO2 Integrator | **Api_material_stock_srv** |
+
+    So, to find the connector for any other SAP S/4HANA API, open the API on api.sap.com, copy the technical name from its URL, and search for it in lower case. For example, **Outbound Delivery (A2X)** at `https://api.sap.com/api/API_OUTBOUND_DELIVERY_SRV_0002/overview` is the `sap.s4hana.api_outbound_delivery_srv_0002` connector.
+    :::
+
+2. Create three `string` configurables for the hostname, username and password you noted in [Set up access in SAP S/4HANA](#set-up-access-in-sap-s4hana), so the credentials are supplied at runtime instead of stored in the flow: in a field's [Expression editor](../../editor/panels/expression-panel.md) helper pane, select **Configurables**, then **New Configurable**. Name them `sapS4HanaHostname`, `sapS4HanaUsername` and `sapS4HanaPassword`.
 3. Bind **Hostname** to `sapS4HanaHostname`.
 4. Switch **Config** to **Expression** and enter:
 
