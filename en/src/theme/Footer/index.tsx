@@ -23,7 +23,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
-import { openCookieSettings } from '@site/src/components/CookieConsent';
 
 import styles from './styles.module.css';
 
@@ -190,23 +189,31 @@ export default function Footer(): ReactNode {
       <div className={styles.footerBottom}>
         {copyright && <span className={styles.footerCopyright}>{copyright}</span>}
         <div className={styles.footerLegal}>
-          {/* "Report an issue" used to live here -- moved to the floating
-              ReportIssueButton (src/components/FloatingActions), present
-              on every page, not just the footer. Terms of use isn't
-              linked yet -- no confirmed URL; add once there is one. */}
           <a className={styles.footerLegalLink} href="https://wso2.com/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy Policy
           </a>
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
-          {/* Reopens CookieConsent's settings dialog (src/components/
-              CookieConsent) via its exported event-based helper, rather
-              than a direct import -- CookieConsent owns its own mount
-              (theme/Root.js) and state; the footer only needs to ask it
-              to open, like clicking "Cookie settings" in the banner
-              itself. */}
-          <button type="button" className={styles.footerCookieBtn} onClick={openCookieSettings}>
+          {/* A persistent, visible consent-withdrawal entry point is a
+              compliance expectation on its own, not just a convenience --
+              CookiePro's admin-console "floating icon" may or may not be
+              turned on for this domain-script ID (not something this
+              codebase controls) and is easy to miss/disable even when it
+              is, so this stays regardless of that setting.
+              The direct `OneTrust.ToggleInfoDisplay()` call below is the
+              single opening mechanism. It is a no-op until CookiePro
+              initializes. `ot-sdk-show-settings` (CookiePro's own class
+              for auto-wiring this same action) is deliberately NOT also
+              applied here -- combining both means a single click fires
+              both handlers, and since ToggleInfoDisplay toggles rather
+              than just opens, that reopens and immediately closes the
+              preference center again. */}
+          <button
+            type="button"
+            className={styles.footerCookieBtn}
+            onClick={() => (window as typeof window & { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay()}
+          >
             <CookieIcon />
             Cookie settings
           </button>

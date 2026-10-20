@@ -2264,3 +2264,47 @@ li .tabs-container [role="tabpanel"] .theme-code-block {
   letter-spacing: 0.04em;
   color: var(--wso2-text-muted);
 }
+
+/* ================================================================
+   COOKIEPRO (ONETRUST) BANNER -- MOBILE OVERFLOW GUARD
+   CookiePro's own banner markup/CSS is injected at runtime by
+   otSDKStub.js (sharedHeadTags in theme-shared/themeConfig.ts), not
+   authored here -- this is a defensive override, not a redesign, for a
+   real bug seen on mobile: the banner rendered wider than the
+   viewport, clipping its own "Cookies Settings"/"Reject All"/"Accept
+   All Cookies" buttons off-screen. The underlying cause may well be a
+   fixed-width setting in OneTrust's own admin console for this
+   domain-script ID, not something this repo can change at the source --
+   flag that to marketing/Thimuth too; this is a safety net, not a
+   replacement for fixing it there.
+   ================================================================ */
+#onetrust-banner-sdk,
+#onetrust-consent-sdk,
+#onetrust-pc-sdk {
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+#onetrust-banner-sdk *,
+#onetrust-pc-sdk * {
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 480px) {
+  #onetrust-banner-sdk {
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  #onetrust-button-group-parent,
+  #onetrust-button-group {
+    width: 100% !important;
+  }
+
+  #onetrust-button-group-parent button,
+  #onetrust-button-group button {
+    width: 100% !important;
+    margin: 4px 0 !important;
+  }
+}

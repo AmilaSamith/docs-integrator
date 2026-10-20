@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
 import { Prism } from 'prism-react-renderer';
 import FloatingActions from '@site/src/components/FloatingActions';
-import CookieConsent from '@site/src/components/CookieConsent';
 // Per-branch extension point, NOT in sync-theme.yaml's SHARED_PATHS --
 // every branch keeps its own copy of src/theme-local/RootExtras.tsx
 // forever (same as docusaurus.config.ts / pages/index.*), so a sync from
@@ -137,10 +136,14 @@ export default function Root({ children }) {
     <CatalogProvider>
       {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
           mounted: the single-header landing page has no sidebar toggle.
-          src/components/SiteNav is left in place, unused. */}
+          src/components/SiteNav is left in place, unused.
+
+          No GTM <noscript> fallback or custom <CookieConsent/> mounted
+          here -- see sharedHeadTags' docstring in themeConfig.ts (the one
+          place this is explained in full) for why both are gone and what
+          replaces them. */}
       {children}
       <FloatingActions />
-      <CookieConsent />
       <RootExtras />
     </CatalogProvider>
   );
