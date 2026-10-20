@@ -8,11 +8,12 @@
 .wrapper {
   position: fixed;
   right: 1.5rem;
-  /* CookieConsent (mounted alongside this in theme/Root.js) sets
-     --wso2-cookie-offset to its banner's own height while the banner is
-     open, so this cluster floats above it instead of sitting underneath;
-     0px (the var's own fallback) the rest of the time. */
-  bottom: calc(1.5rem + var(--wso2-cookie-offset, 0px));
+  /* No --wso2-cookie-offset coordination anymore -- that var was set by
+     the old custom CookieConsent banner (removed; CookiePro's own script
+     renders its own banner now, which this site doesn't control/hook
+     into). If CookiePro's banner is ever found to overlap this cluster
+     in practice, that's a fresh problem to solve, not this stale offset. */
+  bottom: 1.5rem;
   z-index: 200;
   display: flex;
   align-items: flex-end;
