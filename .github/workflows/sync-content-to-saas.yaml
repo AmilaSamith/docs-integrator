@@ -102,10 +102,10 @@ env:
   SAAS_OWNED_FILES: >-
     en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md
     en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md
+    en/docs/develop-and-test/integration-artifacts/supportive-artifacts/configurations.md
   SYNC_EXCLUDE_FILES: >-
     en/docs/editor/integration-control-plane.md
     en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md
-    en/docs/develop-and-test/integration-artifacts/supportive-artifacts/configurations.md
 
   # Self-hosted-only (ICP-managed) folders inside synced folders, never
   # copied to saas. Removed from saas too if a previous sync put them there.
