@@ -144,6 +144,13 @@ export default function Root({ children }) {
           pre-renders this to static HTML (SSG), it's not something React
           has to execute to produce.
 
+          Always the production container ID, unlike sharedHeadTags'
+          script half, which switches prod/dev off window.location.hostname
+          at runtime -- a no-JS visitor can't run that check, and this is
+          only a pageview ping for that edge case, so always pointing it
+          at production is an accepted simplification (see sharedHeadTags'
+          own docstring).
+
           No custom <CookieConsent /> mounted here anymore -- that was a
           cosmetic banner (categories saved to localStorage) with no real
           script behind it to actually gate. sharedHeadTags' CookiePro
@@ -153,7 +160,7 @@ export default function Root({ children }) {
           a component that lived here. */}
       <noscript>
         <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-5CR98L58"
+          src="https://www.googletagmanager.com/ns.html?id=GTM-PSTXMT"
           height="0"
           width="0"
           style={{ display: 'none', visibility: 'hidden' }}
