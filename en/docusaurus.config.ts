@@ -9,7 +9,6 @@ import {
   sharedCommunityNavbarItem,
   sharedGithubNavbarItem,
   sharedBlogNavbarItem,
-  sharedContributeNavbarItem,
   sharedPrism,
   sharedImage,
   CROSS_PRODUCT_BASE,
@@ -161,9 +160,14 @@ const config: Config = {
       // Reference sidebar -- and the Discord/Stack Overflow/LinkedIn/
       // YouTube/X icons live in the footer and the Community page instead.
       items: [
+        {
+          href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
+          label: 'Connectors',
+          position: 'left' as const,
+        },
         sharedBlogNavbarItem,
         sharedCommunityNavbarItem,
-        sharedContributeNavbarItem(),
+
         // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon the
         // new header doesn't have).
         { label: 'FAQ', to: '/reference/faq', position: 'left' },
