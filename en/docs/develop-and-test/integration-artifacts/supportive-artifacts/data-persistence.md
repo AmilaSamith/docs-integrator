@@ -315,4 +315,4 @@ UPDATE orders SET status = 'PLACED' WHERE order_id IN ('ORD-001', 'ORD-002');
 
 - [Connections](connections.md): Manage and reuse database and API connections across your project
 - [Automation](../automation.md): Schedule and trigger automations
-- [Configuration management](../../../manage/configurations/configuration-management.md): Manage database credentials per environment
+- [Configuration management](../../../reference/configuration-reference.md#configuration-management): Manage database credentials per environment

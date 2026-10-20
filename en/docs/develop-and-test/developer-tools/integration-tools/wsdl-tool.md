@@ -499,4 +499,4 @@ final calculator:CalculatorSoap12Client mtlsClient = check new (
 
 - [XSD Tool](xsd-tool.md) -- Generate record types from XML Schema definitions
 - [OpenAPI Tool](openapi-tool.md) -- Generate REST services and clients
-- [Configuration Management](../../../manage/configurations/configuration-management.md) -- Manage SOAP endpoint configuration per environment
+- [Configuration Management](../../../reference/configuration-reference.md#configuration-management) -- Manage SOAP endpoint configuration per environment
