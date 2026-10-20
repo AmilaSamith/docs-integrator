@@ -16,14 +16,16 @@ core vocabulary, then a quickstart that matches what they're trying to
 build. The two sub-sections below (Cloud Setup, Quickstarts) are sample
 pages demonstrating the shape, not real onboarding instructions.
 
-Kept at the same paths (`get-started/cloud-setup`, `get-started/concepts`,
-`get-started/quickstarts/build-integration-api`)
+Kept at the same paths (`get-started/cloud-setup`, `get-started/concepts`)
 [Platform Overview](/platform-overview) already links to, from before
 this section existed -- so replacing the sample content below with real
 content, or deleting this section entirely once a product provides its
 own, needs those links in `docs/platform-overview/platform-overview.md`
 updated too (that page is copied verbatim from `saas`, not authored
-here -- see its own frontmatter).
+here -- see its own frontmatter). Quickstarts now links to real AI
+Agent / Durable Agent content copied from `wso2-integrator`, not a
+sample page -- `platform-overview.md`'s own quickstart link was updated
+to match.
 
 <PaletteGrid>
 
@@ -41,8 +43,8 @@ here -- see its own frontmatter).
   <h3 class="palette-card-title">Quickstarts</h3>
   <p class="palette-card-desc">A sub-section with a few sample quickstart pages, one per style of thing a reader might want to build first.</p>
   <div class="palette-chip-row">
-    <PaletteChip href="/get-started/quickstarts/build-integration-api">Sample: Integration as API</PaletteChip>
-    <PaletteChip href="/get-started/quickstarts/build-ai-agent">Sample: AI Agent</PaletteChip>
+    <PaletteChip href="/get-started/quickstarts/build-ai-agent">AI Agent</PaletteChip>
+    <PaletteChip href="/get-started/quickstarts/build-durable-agent">Durable Agent</PaletteChip>
   </div>
 </PaletteCard>
 
@@ -52,4 +54,5 @@ here -- see its own frontmatter).
 
 - [Cloud setup](cloud-setup.md) — Sample page for sign-up/environment setup.
 - [Concepts](concepts/concepts.mdx) — Sample page for a vocabulary/glossary-style page.
-- [Quickstarts: Integration as API](quickstarts/build-integration-api.md) — A sample quickstart page.
+- [Quickstarts: AI Agent](quickstarts/build-ai-agent.md) — Build your first AI agent in under 10 minutes.
+- [Quickstarts: Durable Agent](quickstarts/build-durable-agent.md) — Build a human-in-the-loop durable agentic workflow.

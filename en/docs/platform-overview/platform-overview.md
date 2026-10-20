@@ -172,4 +172,4 @@ The platform supports OpenTelemetry, allowing logs, metrics, and traces to feed 
 # Where to go next
 
 - [Concepts](../get-started/concepts/concepts.mdx): Learn the vocabulary used across WSO2 Integration Platform, from organizations and projects to deployment and observability.
-- [Quickstarts](../get-started/quickstarts/build-integration-api.md): Build your first integration in under 10 minutes: an API, automation, AI agent, event-driven, or file-driven integration.
+- [Quickstarts](../get-started/quickstarts/build-ai-agent.md): Build your first AI agent or durable agent in under 10 minutes.

@@ -155,10 +155,10 @@ function IconTools(): ReactNode {
 /*  Step strip -- "New to this scaffold?" section                      */
 /* ------------------------------------------------------------------ */
 const steps = [
-  { title: 'Set up', sub: <Link to="/get-started">Sample sign-up/setup page <span aria-hidden="true">→</span></Link> },
+  { title: 'Set up', sub: <Link to="/get-started">Download WSO2 Agent Builder <span aria-hidden="true">→</span></Link> },
   { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
-  { title: 'Explore the structure', sub: 'Sections, guides, and reference docs' },
-  { title: 'Customize', sub: 'Fork this scaffold into a real product' },
+  { title: 'Build with Copilot', sub: 'Generate, evaluate, and fix your agent' },
+  { title: 'Deploy and run', sub: 'Ship your agent to WSO2 Cloud' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -169,15 +169,15 @@ type Quickstart = { title: string; description: string; to: string; icon: ReactN
 
 const quickstarts: Quickstart[] = [
   {
-    title: 'Build an Integration as API',
-    description: 'Sample quickstart -- the shape every product quickstart doc follows.',
-    to: '/get-started/quickstarts/build-integration-api',
+    title: 'Build an AI Agent',
+    description: 'Build an intelligent agent using LLMs and tools, and expose it via a chat interface.',
+    to: '/get-started/quickstarts/build-ai-agent',
     icon: <IconGetStarted />,
   },
   {
-    title: 'Build an AI Agent',
-    description: 'A second sample quickstart, demonstrating the QuickstartHeader/Prerequisites/Steps pattern.',
-    to: '/get-started/quickstarts/build-ai-agent',
+    title: 'Build a Durable Agent',
+    description: 'Build a human-in-the-loop durable agentic workflow that pauses for approval.',
+    to: '/get-started/quickstarts/build-durable-agent',
     icon: <IconWorkflows />,
   },
 ];
@@ -198,17 +198,52 @@ type SectionCard = {
 const sections: SectionCard[] = [
   {
     title: 'Platform Overview',
-    description: 'Copied verbatim from saas -- common to every product branch.',
+    description: 'What WSO2 Agent Builder is and how it fits into the WSO2 Integration Platform.',
     link: '/platform-overview',
     icon: <IconManage />,
     iconColor: '#7C3AED',
   },
   {
     title: 'Get Started',
-    description: 'Sample sign-up/concepts/quickstarts pages, in the same shape saas uses.',
+    description: 'Quickstarts for building your first AI agent or durable agent.',
     link: '/get-started',
     icon: <IconGetStarted />,
     iconColor: '#F14E23',
+  },
+  {
+    title: 'Editor Tour',
+    description: 'Canvases, designers, panels, and Copilot -- a tour of the editor.',
+    link: '/editor',
+    icon: <IconWorkflows />,
+    iconColor: '#9333EA',
+  },
+  {
+    title: 'Develop and Test',
+    description: 'Create a workspace and build AI integrations: agents, MCP, RAG, and direct LLM calls.',
+    link: '/develop-and-test',
+    icon: <IconDevelop />,
+    iconColor: '#1D4ED8',
+  },
+  {
+    title: 'Deploy and Run',
+    description: 'Deploy agents built in WSO2 Agent Builder to WSO2 Cloud.',
+    link: '/deploy-and-run',
+    icon: <IconDeploy />,
+    iconColor: '#C2410C',
+  },
+  {
+    title: 'Manage',
+    description: 'Manage deployed agents.',
+    link: '/manage',
+    icon: <IconManage />,
+    iconColor: '#15803D',
+  },
+  {
+    title: 'Observe',
+    description: 'Observe deployed agents.',
+    link: '/observe',
+    icon: <IconObserve />,
+    iconColor: '#B91C1C',
   },
   {
     title: 'Section 1',
@@ -226,14 +261,14 @@ const sections: SectionCard[] = [
   },
   {
     title: 'Guides',
-    description: 'A searchable guide catalog with a few sample guides.',
+    description: 'AI agent and MCP guides: business use cases and how-to walkthroughs.',
     link: '/guides',
     icon: <IconTutorials />,
     iconColor: '#0EA5E9',
   },
   {
     title: 'Reference',
-    description: 'Sample FAQ and glossary pages, in the same shape saas uses.',
+    description: 'FAQ and glossary.',
     link: '/reference',
     icon: <IconReference />,
     iconColor: '#7C2D12',
@@ -251,8 +286,8 @@ const sections: SectionCard[] = [
 /*  Quick-links shown when the hero search is focused but empty.        */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Integration as API', to: '/get-started/quickstarts/build-integration-api' },
   { label: 'Build an AI Agent', to: '/get-started/quickstarts/build-ai-agent' },
+  { label: 'Build a Durable Agent', to: '/get-started/quickstarts/build-durable-agent' },
   { label: 'Platform Overview', to: '/platform-overview' },
 ];
 
@@ -265,20 +300,14 @@ function HomepageHeader(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   return (
     <LandingHero
-      windowTitle="WSO2 Integrator"
-      imageAlt="WSO2 Integrator welcome and sign-in screen"
-      eyebrow="Docs · Scaffold"
+      windowTitle="WSO2 Agent Builder"
+      imageAlt="WSO2 Agent Builder Copilot's agent creation screen"
+      eyebrow="WSO2 Integration Platform · Docs"
       title={siteConfig.title}
       subtitle={siteConfig.tagline}
       search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's Get Started", to: '/get-started' }}
       secondaryCta={{ label: 'Platform Overview', to: '/platform-overview' }}
-      secondary={{
-        prefix: 'Already know what you need?',
-        label: 'Download WSO2 Integrator',
-        href: 'https://wso2.com/products/downloads/?product=wso2integrator',
-        icon: 'download',
-      }}
       footnote="Windows · macOS · Linux · 100% open source"
     />
   );
@@ -293,9 +322,9 @@ function GetStarted(): ReactNode {
       <div className={styles.getStartedHead}>
         <div className={styles.getStartedHeadText}>
           <Heading as="h2" className={styles.h2Large}>
-            New to this scaffold?
+            New to WSO2 Agent Builder?
           </Heading>
-          <p className={styles.lead}>Four steps, starting with a sample quickstart.</p>
+          <p className={styles.lead}>Four steps, starting with a quickstart.</p>
         </div>
         <div className={styles.headLinks}>
           <Link to="/get-started/concepts">
@@ -319,7 +348,7 @@ function GetStarted(): ReactNode {
       <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      <p className={styles.sub}>Pick a sample quickstart to start.</p>
+      <p className={styles.sub}>Pick a quickstart to start.</p>
       <div className={styles.tileGrid}>
         {quickstarts.map((q) => (
           <Link key={q.title} to={q.to} className={styles.tile}>
@@ -352,10 +381,10 @@ function Explore(): ReactNode {
         <div>
           <span className={styles.eyebrow}>
             <span className={styles.eyebrowDash} />
-            Explore the scaffold
+            Explore the docs
           </span>
           <Heading as="h2" className={styles.h2Xl}>
-            Everything this scaffold demonstrates
+            Everything you need to get started
           </Heading>
         </div>
 

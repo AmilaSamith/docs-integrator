@@ -17,8 +17,8 @@ import {
 } from './src/theme-shared/themeConfig';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
-  tagline: 'Build integrations with low-code simplicity and pro-code power',
+  title: 'WSO2 Agent Builder',
+  tagline: 'Build, evaluate, and deploy AI agents with Copilot — powered by your Agent Manager\'s LLMs and MCP tools',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -99,6 +99,9 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/wso2/docs-integrator/tree/main/en/',
           showLastUpdateTime: true,
+          // Lets docs link to a sibling product with `product://<product>/<path>`
+          // instead of a hardcoded production path -- see the plugin's docstring.
+          remarkPlugins: [[require('./src/plugins/crossProductLinks'), { base: CROSS_PRODUCT_BASE }]],
         },
         blog: false,
         theme: {
@@ -135,7 +138,10 @@ const config: Config = {
         // Plain-text FAQ (the shared sharedFaqNavbarItem adds a "?" icon
         // the new header doesn't have) -- same as every real product.
         { label: 'FAQ', to: '/reference/faq', position: 'left' },
-        sharedGithubNavbarItem,
+        // Overrides sharedGithubNavbarItem's href -- this product's own
+        // repo, not the docs-integrator repo every other branch points
+        // at. Same icon/styling, only the target differs.
+        { ...sharedGithubNavbarItem, href: 'https://github.com/wso2/product-agent-builder' },
         // Last on purpose: the right zone renders search, toggle,
         // divider, then these in array order (see theme/Navbar/Content),
         // so this button ends the row. `html` (not `label`) so
