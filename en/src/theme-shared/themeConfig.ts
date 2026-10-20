@@ -1,4 +1,5 @@
 import { themes as prismThemes } from 'prism-react-renderer';
+import type { HtmlTagObject } from '@docusaurus/types';
 
 /**
  * The shared visual identity contract across every docs-integrator site
@@ -25,6 +26,46 @@ import { themes as prismThemes } from 'prism-react-renderer';
  * fork's own Pages URL) can point these at itself instead --
  * real production/staging never set this, so they're unaffected. */
 export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
+
+/** Google Tag Manager + CookiePro -- identical on every product
+ * branch, so defined once here instead of pasted into each branch's own
+ * docusaurus.config.ts. Each branch wires it in via the top-level
+ * `headTags: sharedHeadTags` config option (not `themeConfig`, which is
+ * a different part of the config object). GTM's own `<noscript>` body
+ * snippet isn't here -- `headTags` only inserts into `<head>` -- it's
+ * rendered by the shared theme/Root.js instead, which still ends up in
+ * the real static HTML output since Docusaurus pre-renders to SSG, so
+ * it works correctly for visitors with JS disabled same as a literal
+ * hand-pasted tag would.
+ * */
+export const sharedHeadTags: HtmlTagObject[] = [
+  {
+    tagName: 'script',
+    // Docusaurus's own config-schema validation requires `attributes` on
+    // every headTags entry at runtime, even though the TS type marks it
+    // optional -- an empty object here, not omission, is what satisfies it.
+    attributes: {},
+    innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5CR98L58');`,
+  },
+  {
+    tagName: 'script',
+    attributes: {
+      src: 'https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js',
+      type: 'text/javascript',
+      charset: 'UTF-8',
+      'data-domain-script': '486163bc-a8c5-40d8-b185-c707cc718a23',
+    },
+  },
+  {
+    tagName: 'script',
+    attributes: { type: 'text/javascript' },
+    innerHTML: `function OptanonWrapper() { }`,
+  },
+];
 
 export const sharedColorMode = {
   defaultMode: 'light' as const,

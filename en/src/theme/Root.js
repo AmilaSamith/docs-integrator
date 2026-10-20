@@ -134,14 +134,34 @@ function useNavbarActiveState() {
 export default function Root({ children }) {
   useNavbarActiveState();
   return (
-    <CatalogProvider>
-      {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
-          mounted: the single-header landing page has no sidebar toggle.
-          src/components/SiteNav is left in place, unused. */}
-      {children}
-      <FloatingActions />
-      <CookieConsent />
-      <RootExtras />
-    </CatalogProvider>
+    <>
+      {/* Google Tag Manager's <noscript> fallback (themeConfig.ts's
+          sharedHeadTags has the matching <head> script -- see that
+          export's own docstring for why this half lives here instead).
+          Rendered as the very first thing Root returns, outside
+          CatalogProvider, so it lands as close to the top of <body> as
+          this app's own root div allows. Works for visitors with JS
+          disabled same as a hand-pasted tag would: Docusaurus
+          pre-renders this to static HTML (SSG), it's not something React
+          has to execute to produce. */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-5CR98L58"
+          height="0"
+          width="0"
+          style={{ display: 'none', visibility: 'hidden' }}
+          title="Google Tag Manager"
+        />
+      </noscript>
+      <CatalogProvider>
+        {/* SiteNav (the homepage-only sidebar drawer + hamburger) is no longer
+            mounted: the single-header landing page has no sidebar toggle.
+            src/components/SiteNav is left in place, unused. */}
+        {children}
+        <FloatingActions />
+        <CookieConsent />
+        <RootExtras />
+      </CatalogProvider>
+    </>
   );
 }
