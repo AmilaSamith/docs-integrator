@@ -25,6 +25,7 @@ Web shops, point-of-sale systems and warehouse apps all need the same answer bef
 
 <ThemedImage
     alt="Architecture diagram: a web shop, POS or warehouse app calls the WSO2 Integrator HTTP service GET /inventory/stock/{material} to check stock; the service uses the SAP S/4HANA Material Stock connector to read stock levels from SAP S/4HANA Cloud through the Material Stock Integration (SAP_COM_0164) scenario, and returns the stock as JSON"
+    style={{border: 'none', boxShadow: 'none', borderRadius: 0}}
     sources={{
         light: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/architecture.png'),
         dark: useBaseUrl('/img/guides/usecases/sap-s4hana-stock-availability-api/architecture.png'),
