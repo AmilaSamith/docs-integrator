@@ -26,25 +26,8 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
 
-/** Reopens CookiePro's own preference center (themeConfig.ts's
- * sharedHeadTags loads its script into every page) -- `OneTrust` is the
- * global it exposes once otSDKStub.js has loaded; optional-chained since
- * an ad-blocker or slow network could mean it isn't ready/present yet,
- * in which case this is a harmless no-op rather than a thrown error. */
-function openCookieSettings(): void {
-  (window as typeof window & { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay();
-}
-
 type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
-
-function CookieIcon(): ReactNode {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 4 3.5 3 3 0 0 0 5 5.5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 function ExternalIcon(): ReactNode {
   return (
@@ -208,12 +191,14 @@ export default function Footer(): ReactNode {
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
-          {/* Reopens CookiePro's preference center -- see openCookieSettings'
-              own docstring above. */}
-          <button type="button" className={styles.footerCookieBtn} onClick={openCookieSettings}>
-            <CookieIcon />
-            Cookie settings
-          </button>
+          {/* No "Cookie settings" button here -- CookiePro's own
+              auto-injected floating icon (its admin console's "floating
+              icon" setting for this domain-script ID, not something this
+              codebase configures) is the reopen entry point now, so this
+              would otherwise be a duplicate. If that setting ever turns
+              out to be off, there is NO way left to reopen the
+              preference center -- confirm with marketing/Thimuth that
+              it's actually enabled before relying on this. */}
         </div>
       </div>
     </footer>
