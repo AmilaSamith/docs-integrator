@@ -20,7 +20,7 @@ const steps = [
   { title: 'Set up', sub: <Link to="/get-started/setup">
             Create your WSO2 Cloud account <span aria-hidden="true">→</span>
           </Link> },
-  { title: 'Pick a quickstart', sub: 'Choose a type below ↓', active: true },
+  { title: 'Pick a quickstart', sub: 'Choose a style below ↓', active: true },
   { title: 'Design the flow', sub: 'On the canvas or with Copilot' },
   { title: 'Run and deploy', sub: 'Test and ship, straight from the cloud' },
 ];
@@ -202,7 +202,7 @@ function HomepageHeader(): ReactNode {
       windowTitle="WSO2 Cloud Console"
       imageAlt="Integration Platform on WSO2 Cloud"
       eyebrow="WSO2 Integration Platform · Docs"
-      title={<>Integration Platform on WSO2 Cloud <TitleSuffix>(Saas)</TitleSuffix></>}
+      title={<>Integration Platform on WSO2 Cloud <TitleSuffix>(SaaS)</TitleSuffix></>}
       subtitle="Build, connect, and run integrations, MCP servers, and AI agents with built-in governance, and architectural freedom at cloud speed."
       search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's get started", to: '/get-started' }}
@@ -247,7 +247,7 @@ function GetStarted(): ReactNode {
       <Heading as="h3" className={styles.h3}>
         What do you want to build?
       </Heading>
-      <p className={styles.sub}>Pick an integration type to start building.</p>
+      <p className={styles.sub}>Pick an integration style to start building.</p>
       <div className={styles.tileGrid}>
         {quickstarts.map((q) => (
           <Link key={q.title} to={q.to} className={styles.tile}>

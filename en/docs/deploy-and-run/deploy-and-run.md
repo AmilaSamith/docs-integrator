@@ -35,14 +35,4 @@ WSO2 Cloud runs your integrations on one of two data plane models: the shared **
   </ul>
 </PaletteCard>
 
-<PaletteCard icon="security" href="/deploy-and-run/secure/keystore-truststore">
-  <h3 class="palette-card-title">Secure Integrations</h3>
-  <ul class="palette-card-list">
-    <li>Authentication and keystores</li>
-    <li>API security and rate limiting</li>
-    <li>Secrets, encryption, and IP whitelisting</li>
-    <li>Compliance considerations</li>
-  </ul>
-</PaletteCard>
-
 </PaletteGrid>
