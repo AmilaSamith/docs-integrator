@@ -162,7 +162,8 @@ const config: Config = {
       items: [
         {
           href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
-          label: 'Connectors',
+          html: 'Connectors',
+          target: '_self',
           position: 'left' as const,
         },
         sharedBlogNavbarItem,
