@@ -235,10 +235,9 @@
   text-decoration: none;
 }
 
-/* Reopens CookieConsent's settings dialog -- styled distinctly from the
+/* Reopens CookiePro's preference center -- styled distinctly from the
    plain Privacy/Cookie Policy links (orange, bold, with the cookie icon)
-   since it's an action, not a navigation link, matching the design's
-   "Reopening it later" row. */
+   since it's an action, not a navigation link. */
 .footerCookieBtn {
   display: flex;
   align-items: center;
