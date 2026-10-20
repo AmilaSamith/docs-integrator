@@ -1,7 +1,8 @@
 ---
+sidebar_position: 2
 title: File Dependency and Trigger Conditions
 description: Control when files are processed using file name patterns, age filters, and dependency conditions that wait for related files before triggering.
-slug: /develop-and-test/integration-artifacts/file-driven-integration/dependency-and-trigger-conditions
+slug: /develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp/dependency-and-trigger-conditions
 ---
 
 import ThemedImage from '@theme/ThemedImage';
