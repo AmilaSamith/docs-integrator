@@ -165,25 +165,22 @@
 }
 
 /* ---- Product icon badges ---- */
+/* No ring, no fill -- just the mark itself (PulseIcon, index.tsx; the
+   real favicon.svg asset, same fixed brand orange on every row), sized
+   up to fill the space a circular container used to take instead of
+   sitting small inside one. `tone` (iconIntegrator/iconSaas/...) no
+   longer has anything to color now that there's no border/background
+   left to carry it -- kept as a no-op class on the span in index.tsx
+   rather than threading its removal through the data model too, since
+   nothing here currently needs the per-product distinction back. */
 .badge {
   width: 26px;
   height: 26px;
   flex: none;
-  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.iconIntegrator { background: #FFEBDC; color: #D45A0C; }
-.iconSaas { background: #EAF1F8; color: #1D4A73; }
-.iconConnectors { background: #F2F2F5; color: #3A3A44; }
-.iconAgent { background: #F1ECFB; color: #5B3BA8; }
-
-[data-theme='dark'] .iconIntegrator { background: rgba(212, 90, 12, 0.2); color: #F5A06A; }
-[data-theme='dark'] .iconSaas { background: rgba(70, 130, 190, 0.2); color: #8FB8E0; }
-[data-theme='dark'] .iconConnectors { background: #2A2523; color: #D8CFC8; }
-[data-theme='dark'] .iconAgent { background: rgba(120, 90, 200, 0.2); color: #B9A3F0; }
 
 /* ---- Panel ---- */
 .panel {
@@ -431,7 +428,12 @@
   height: 22px;
 }
 
-.compact .seg .badge svg {
-  width: 13px;
-  height: 13px;
+/* `svg, img` -- PulseIcon (index.tsx) renders an <img> now (the real
+   favicon.svg asset, not a redrawn inline <svg>), but this selector
+   predates that and only matched svg; kept broad so either icon shape
+   still gets sized down for the compact trigger button. */
+.compact .seg .badge svg,
+.compact .seg .badge img {
+  width: 22px;
+  height: 22px;
 }
