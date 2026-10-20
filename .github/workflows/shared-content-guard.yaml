@@ -71,7 +71,7 @@ on:
       - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools-or-durable-agentic-workflow.md'
       - '!en/docs/develop-and-test/integration-artifacts/ai-integrations/agents/gated-tools.md'
       - '!en/docs/develop-and-test/integration-artifacts/supportive-artifacts/agent.md'
-      - '!en/docs/develop-and-test/integration-artifacts/supportive-artifacts/configurations.md'
+      - 'en/docs/develop-and-test/integration-artifacts/supportive-artifacts/configurations.md'
       - 'en/docs/migrate/**'
       - 'en/docs/guides/**'
       - 'en/docs/reference/glossary.md'
