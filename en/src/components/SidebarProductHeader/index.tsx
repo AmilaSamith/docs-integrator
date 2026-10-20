@@ -41,7 +41,7 @@ export type ProductKey = 'cloud' | 'integrator' | 'connectors';
  * can't import that directly here, see this const's own docstring above). */
 const PRODUCTS: Record<ProductKey, { label: string; path: string; icon: () => ReactNode; tone: string }> = {
   cloud: {
-    label: 'SaaS',
+    label: 'WSO2 Cloud',
     path: 'saas/',
     icon: CloudIcon,
     tone: 'iconSaas',
@@ -385,7 +385,7 @@ function Switcher({ model, compact }: { model: VersionModel | null; compact: boo
                           <span className={clsx(styles.badge, styles.iconAgent)}>
                             <AgentIcon />
                           </span>
-                          Agent Manager
+                          WSO2 Agent Builder
                         </span>
                         <span className={clsx(styles.segDivider, styles.segDividerSoft)} />
                         <span className={styles.rowSoon}>Coming soon</span>
