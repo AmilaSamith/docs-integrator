@@ -149,15 +149,7 @@ export default function Root({ children }) {
           at runtime -- a no-JS visitor can't run that check, and this is
           only a pageview ping for that edge case, so always pointing it
           at production is an accepted simplification (see sharedHeadTags'
-          own docstring).
-
-          No custom <CookieConsent /> mounted here anymore -- that was a
-          cosmetic banner (categories saved to localStorage) with no real
-          script behind it to actually gate. sharedHeadTags' CookiePro
-          script (the real consent management platform marketing uses on
-          wso2.com) renders and owns its own banner/preference center now;
-          theme/Footer's "Cookie settings" link reopens CookiePro's, not
-          a component that lived here. */}
+          own docstring). */}
       <noscript>
         <iframe
           src="https://www.googletagmanager.com/ns.html?id=GTM-PSTXMT"
