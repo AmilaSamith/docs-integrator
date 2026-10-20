@@ -1322,12 +1322,42 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SAP Characteristic Attribute Catalog',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_charcattributecatalog_srv/sap-characteristic-attribute-catalog-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_charcattributecatalog_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_charcattributecatalog_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_charcattributecatalog_srv/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'SAP Commerce',
           link: { type: 'doc', id: 'catalog/ecommerce/sap.commerce.webservices/sap-commerce-connector-overview' },
           items: [
             'catalog/ecommerce/sap.commerce.webservices/setup-guide',
             'catalog/ecommerce/sap.commerce.webservices/actions',
             'catalog/ecommerce/sap.commerce.webservices/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Customer Returns Delivery',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_customer_returns_delivery_srv_0002/sap-customer-returns-delivery-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_customer_returns_delivery_srv_0002/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_customer_returns_delivery_srv_0002/actions',
+            'catalog/erp-business/sap.s4hana.api_customer_returns_delivery_srv_0002/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Delivery Document with Credit Block',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_del_doc_with_credit_block/sap-delivery-document-with-credit-block-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_del_doc_with_credit_block/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_del_doc_with_credit_block/actions',
+            'catalog/erp-business/sap.s4hana.api_del_doc_with_credit_block/example',
           ],
         },
         {
@@ -1339,6 +1369,56 @@ const sidebars: SidebarsConfig = {
             'catalog/erp-business/sap.jco/action-reference',
             'catalog/erp-business/sap.jco/trigger-reference',
             'catalog/erp-business/sap.jco/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Inbound Delivery',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_inbound_delivery_srv_0002/sap-inbound-delivery-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_inbound_delivery_srv_0002/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_inbound_delivery_srv_0002/actions',
+            'catalog/erp-business/sap.s4hana.api_inbound_delivery_srv_0002/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Inspection Lot',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_inspectionlot_srv/sap-inspection-lot-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_inspectionlot_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_inspectionlot_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_inspectionlot_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Inspection Method',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_inspectionmethod_srv/sap-inspection-method-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_inspectionmethod_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_inspectionmethod_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_inspectionmethod_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Inspection Plan',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_inspectionplan_srv/sap-inspection-plan-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_inspectionplan_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_inspectionplan_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_inspectionplan_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Master Inspection Characteristic',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_masterinspcharacteristic_srv/sap-master-inspection-characteristic-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_masterinspcharacteristic_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_masterinspcharacteristic_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_masterinspcharacteristic_srv/example',
           ],
         },
         {
@@ -1363,12 +1443,42 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'SAP Outbound Delivery',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_outbound_delivery_srv_0002/sap-outbound-delivery-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_outbound_delivery_srv_0002/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_outbound_delivery_srv_0002/actions',
+            'catalog/erp-business/sap.s4hana.api_outbound_delivery_srv_0002/example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'SAP Physical Inventory Document',
           link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/sap-physical-inventory-document-connector-overview' },
           items: [
             'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/setup-guide',
             'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/actions',
             'catalog/erp-business/sap.s4hana.api_physical_inventory_doc_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Purchasing Info Record',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_inforecord_process_srv/sap-purchasing-info-record-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_inforecord_process_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_inforecord_process_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_inforecord_process_srv/example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SAP Quality Info Record',
+          link: { type: 'doc', id: 'catalog/erp-business/sap.s4hana.api_qualityinforecord_srv/sap-quality-info-record-connector-overview' },
+          items: [
+            'catalog/erp-business/sap.s4hana.api_qualityinforecord_srv/setup-guide',
+            'catalog/erp-business/sap.s4hana.api_qualityinforecord_srv/actions',
+            'catalog/erp-business/sap.s4hana.api_qualityinforecord_srv/example',
           ],
         },
         {
