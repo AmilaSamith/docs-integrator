@@ -8,19 +8,23 @@
  *
  * Opens the same SearchModal the old navbar trigger used
  * (theme/SearchBar/SearchModal) -- same index, same results, only a new
- * trigger shape. Also where the global Ctrl/Cmd+K shortcut now lives:
- * moving search out of the navbar moved the shortcut's only previous
- * owner (theme/SearchBar/index.tsx's SearchTrigger) with it, so without
- * this it would have silently stopped working everywhere. It still only
- * fires where this component is mounted -- every doc page, not the
- * landing page or other standalone pages, which is the overwhelming
- * majority of the site and matches the mockup's own intent (search
- * lives in the sidebar on page views).
+ * trigger shape.
+ *
+ * Purely presentational -- `open`/`onOpen` are owned by DocSidebar/
+ * Desktop/index.tsx, not this component. The global Ctrl/Cmd+K listener
+ * used to live here (moving search out of the navbar moved the
+ * shortcut's only previous owner, theme/SearchBar/index.tsx's
+ * SearchTrigger, with it) but that meant the shortcut silently stopped
+ * working the moment the sidebar collapsed to its icon rail -- this
+ * component (and its listener) unmounts entirely in that state (see
+ * index.tsx's `IconRail` branch), since React tears down a removed
+ * component's effects. Lifting the state/listener to the parent, which
+ * stays mounted across the collapsed/expanded toggle, fixes that (issue
+ * #1027).
  */
-import { useEffect, useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { openAIAssistant } from '@site/src/components/AIAssistantSidePanel/Launcher';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import SearchModal from '@site/src/theme/SearchBar/SearchModal';
 
 import styles from './sidebarSearch.module.css';
 
@@ -41,25 +45,13 @@ function AskAIIcon(): ReactNode {
   );
 }
 
-export default function SidebarSearch(): ReactNode {
-  const [open, setOpen] = useState(false);
+export default function SidebarSearch({ onOpen }: { onOpen: () => void }): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   const showAiAssistant = siteConfig.customFields?.showAiAssistant === true;
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setOpen(true);
-      }
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, []);
-
   return (
     <div className={styles.row}>
-      <button type="button" className={styles.searchBtn} aria-haspopup="dialog" onClick={() => setOpen(true)}>
+      <button type="button" className={styles.searchBtn} aria-haspopup="dialog" onClick={onOpen}>
         <SearchIcon />
         <span className={styles.searchLabel}>Search docs</span>
         <span className={styles.kbdGroup}>
@@ -72,7 +64,6 @@ export default function SidebarSearch(): ReactNode {
           <AskAIIcon />
         </button>
       )}
-      {open && <SearchModal onClose={() => setOpen(false)} />}
     </div>
   );
 }
