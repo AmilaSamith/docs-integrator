@@ -144,7 +144,7 @@ function CategoryLinkLabel({
   version?: string;
 }): ReactNode {
   return (
-    <span className={level === 1 ? styles.categoryLinkLabelTop : styles.categoryLinkLabel}>
+    <span title={label} className={level === 1 ? styles.categoryLinkLabelTop : styles.categoryLinkLabel}>
       {level === 1 && <span className={styles.categoryIcon}>{railIconFor(label)}</span>}
       {badge ? (
         // Plain, unhashed classnames alongside the module ones -- so a
