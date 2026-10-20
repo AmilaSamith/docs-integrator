@@ -44,8 +44,7 @@ const PRODUCTION_HOSTNAME = 'wso2.com';
  * `headTags: sharedHeadTags` config option (not `themeConfig`, which is
  * a different part of the config object).
  *
- * One bootstrap script, not a handful of static tags: marketing
- * (Thimuth, Oct 2026) gave separate prod/dev GTM container IDs and
+ * We have separate prod/dev GTM container IDs and
  * CookiePro domain-script IDs, switched by environment -- and since
  * staging and production share one build artifact (see
  * PRODUCTION_HOSTNAME's docstring), the only place that switch can
@@ -53,7 +52,7 @@ const PRODUCTION_HOSTNAME = 'wso2.com';
  * per-branch headTags array can't express that, so this loads
  * everything itself instead of declaring it as markup.
  *
- * Ordering is deliberate per Thimuth's instruction -- CookiePro loads
+ * Ordering is deliberate -- CookiePro loads
  * (and defines OptanonWrapper) before GTM is kicked off, so GTM has
  * cookie categories available to read when it runs. The dev/test
  * CookiePro property additionally loads OtAutoBlock.js first, before
