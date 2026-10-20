@@ -23,9 +23,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
-import { openCookieSettings } from '@site/src/components/CookieConsent';
 
 import styles from './styles.module.css';
+
+/** Reopens CookiePro's own preference center (themeConfig.ts's
+ * sharedHeadTags loads its script into every page) -- `OneTrust` is the
+ * global it exposes once otSDKStub.js has loaded; optional-chained since
+ * an ad-blocker or slow network could mean it isn't ready/present yet,
+ * in which case this is a harmless no-op rather than a thrown error. */
+function openCookieSettings(): void {
+  (window as typeof window & { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay();
+}
 
 type FooterItem = { label: string; to?: string; href?: string; autoAddBaseUrl?: boolean; target?: string };
 type FooterColumn = { title?: string; items?: FooterItem[] };
@@ -200,12 +208,8 @@ export default function Footer(): ReactNode {
           <a className={styles.footerLegalLink} href="https://wso2.com/cookie-policy" target="_blank" rel="noopener noreferrer">
             Cookie Policy
           </a>
-          {/* Reopens CookieConsent's settings dialog (src/components/
-              CookieConsent) via its exported event-based helper, rather
-              than a direct import -- CookieConsent owns its own mount
-              (theme/Root.js) and state; the footer only needs to ask it
-              to open, like clicking "Cookie settings" in the banner
-              itself. */}
+          {/* Reopens CookiePro's preference center -- see openCookieSettings'
+              own docstring above. */}
           <button type="button" className={styles.footerCookieBtn} onClick={openCookieSettings}>
             <CookieIcon />
             Cookie settings
