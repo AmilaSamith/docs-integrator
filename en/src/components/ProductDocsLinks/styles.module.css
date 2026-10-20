@@ -41,6 +41,8 @@
 }
 
 .productLinkText {
+  display: inline-flex;
+  align-items: center;
   flex: 1;
   min-width: 0;
   white-space: nowrap;
@@ -62,13 +64,26 @@
    "Learn [logo]" entry -- both light/dark images are in the DOM, only
    one is ever shown (see BallerinaLogo's docstring in index.tsx). */
 .productLinkLogo {
-  height: 0.8rem;
   width: auto;
   margin-left: 0.35rem;
   vertical-align: middle;
 }
 
+/* The two official wordmark PNGs (unaltered, as required -- see the
+   trademark note in index.tsx) have very different baked-in transparent
+   padding: the light variant reserves roughly 38% of its own canvas
+   height for padding, the dark variant almost none. Rendering both at
+   the same `height` therefore makes the light variant's visible glyph
+   noticeably smaller (and blurrier, at this row's small scale) than the
+   dark one. These per-variant heights compensate so the glyph itself --
+   not the invisible padding around it -- reads at roughly the same size
+   in both themes. */
+.productLinkLogoLight {
+  height: 1.25rem;
+}
+
 .productLinkLogoDark {
+  height: 0.8rem;
   display: none;
 }
 
