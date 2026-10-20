@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
-title: "Expose SAP S/4HANA Stock Availability as a REST API"
-sidebar_label: "Expose SAP S/4HANA Stock Availability as a REST API"
+title: "Connect to SAP S/4HANA and Check Stock Availability"
+sidebar_label: "Connect to SAP S/4HANA and Check Stock Availability"
 description: Build an HTTP service that reads unrestricted-use stock for a material and plant from SAP S/4HANA Cloud and returns the total quantity and the stock in each storage location as JSON, designed visually with the SAP Material Stock connector.
 keywords: [wso2 integrator, http service, rest api, sap s/4hana, material stock, inventory, stock availability, api_material_stock_srv, communication arrangement, low-code]
 slug: /guides/how-to-guides/sap-s4hana-stock-availability-api
@@ -15,7 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Expose SAP S/4HANA Stock Availability as a REST API
+# Connect to SAP S/4HANA and Check Stock Availability
 
 **Time:** About 45 minutes | **What you'll build:** An HTTP service with one `GET` resource that returns the live unrestricted-use stock of a material in a plant, read from SAP S/4HANA Cloud, with the total quantity and the quantity in each storage location.
 
