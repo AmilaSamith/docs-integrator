@@ -202,7 +202,7 @@ function HomepageHeader(): ReactNode {
       windowTitle="WSO2 Cloud Console"
       imageAlt="Integration Platform on WSO2 Cloud"
       eyebrow="WSO2 Integration Platform · Docs"
-      title={<>Integration Platform on WSO2 Cloud <TitleSuffix>(Saas)</TitleSuffix></>}
+      title={<>Integration Platform on WSO2 Cloud <TitleSuffix>(SaaS)</TitleSuffix></>}
       subtitle="Build, connect, and run integrations, MCP servers, and AI agents with built-in governance, and architectural freedom at cloud speed."
       search={<HeroSearch quickLinks={quickLinks} />}
       cta={{ label: "Let's get started", to: '/get-started' }}
