@@ -1,4 +1,6 @@
 ---
+sidebar_position: 0
+sidebar_label: FTP/SFTP
 title: FTP / SFTP
 description: Process files from FTP, SFTP, and FTPS servers using polling, pattern matching, and data binding.
 slug: /develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp
@@ -11,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 # FTP / SFTP
 
-FTP, SFTP, and FTPS [file integrations](../../../get-started/concepts/concepts.mdx#integration-types) poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
+FTP, SFTP, and FTPS [file integrations](../../../../get-started/concepts/concepts.mdx#integration-types) poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
 
 | Protocol | Description | Transport security | Authentication |
 |---|---|---|---|
@@ -819,7 +821,7 @@ service on primaryListener, backupListener {
 </TabItem>
 </Tabs>
 
-For the general concept, see [Services and listeners](../../../get-started/concepts/concepts.mdx#integration-types).
+For the general concept, see [Services and listeners](#service-and-listener).
 
 ## Attaching listeners to services
 
@@ -1085,7 +1087,7 @@ listener ftp:Listener ftpListener = new (
 ## What's next
 
 - [CSV fault tolerance](csv-fault-tolerance.md) — skip malformed rows instead of failing the whole file
-- [Local files](local-files.md) — monitor a local directory instead of a remote server
-- [File integrations on S3 file events](../../../guides/how-to-guides/s3-events-via-sqs-listener.md) — react to S3 uploads using an SQS listener
-- [Connections](../supportive-artifacts/connections.md) — reuse FTP connection credentials across services
-- [Data Mapper](../supportive-artifacts/data-mapper/data-mapper.md) — transform incoming file payloads between formats
+- [Local files](../local-files.md) — monitor a local directory instead of a remote server
+- [File integrations on S3 file events](../../../../guides/how-to-guides/s3-events-via-sqs-listener.md) — react to S3 uploads using an SQS listener
+- [Connections](../../supportive-artifacts/connections.md) — reuse FTP connection credentials across services
+- [Data Mapper](../../supportive-artifacts/data-mapper/data-mapper.md) — transform incoming file payloads between formats

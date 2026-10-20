@@ -10,9 +10,9 @@ Each integration is its own package: a self-contained directory with its own `Ba
 
 When you push an integration to WSO2 Integration Cloud, it becomes a unit of deployment: a single pod in the data plane that can be scaled and managed independently.
 
-### Integration types
+### Integration styles {#integration-types}
 
-Every integration you build is one of the following types:
+Every integration you build is one of the following styles:
 
 - **Automation**: runs periodically on a schedule or is invoked manually. Use it for batch jobs, scheduled syncs, cleanup tasks, and any work not driven by an inbound request or event.
 - **Integration as API**: exposes one or more endpoints that consumers invoke over the network. The protocol determines the sub-type: HTTP services for REST, GraphQL services with typed schemas, or raw TCP services.
