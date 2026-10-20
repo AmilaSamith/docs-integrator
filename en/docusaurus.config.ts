@@ -138,6 +138,7 @@ const config: Config = {
         {
           href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
           html: 'Connectors',
+          autoAddBaseUrl: false,
           target: '_self',
           position: 'left' as const,
         },
