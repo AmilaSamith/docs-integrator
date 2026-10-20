@@ -55,7 +55,7 @@ function hasIcon(level: number, label: string): boolean {
 function LinkLabel({ label, level, badge }: { label: string; level: number; badge?: string }): ReactNode {
   const showIcon = hasIcon(level, label);
   return (
-    <span title={label} className={clsx(styles.linkLabel, showIcon && styles.linkLabelTop)}>
+    <span className={clsx(styles.linkLabel, showIcon && styles.linkLabelTop)}>
       {showIcon && <span className={styles.linkIcon}>{railIconFor(label)}</span>}
       {badge ? (
         <span className={clsx(styles.linkTextCol, 'sidebar-category-badge-wrap')}>
