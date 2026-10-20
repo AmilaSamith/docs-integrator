@@ -201,13 +201,17 @@ export default function Footer(): ReactNode {
               turned on for this domain-script ID (not something this
               codebase controls) and is easy to miss/disable even when it
               is, so this stays regardless of that setting.
-              `ot-sdk-show-settings` is CookiePro's own documented class
-              for exactly this -- its script auto-wires a click handler to
-              any element carrying it once initialized; the onClick below
-              is a fallback for the window before that happens. */}
+              The direct `OneTrust.ToggleInfoDisplay()` call below is the
+              single opening mechanism. It is a no-op until CookiePro
+              initializes. `ot-sdk-show-settings` (CookiePro's own class
+              for auto-wiring this same action) is deliberately NOT also
+              applied here -- combining both means a single click fires
+              both handlers, and since ToggleInfoDisplay toggles rather
+              than just opens, that reopens and immediately closes the
+              preference center again. */}
           <button
             type="button"
-            className={`ot-sdk-show-settings ${styles.footerCookieBtn}`}
+            className={styles.footerCookieBtn}
             onClick={() => (window as typeof window & { OneTrust?: { ToggleInfoDisplay: () => void } }).OneTrust?.ToggleInfoDisplay()}
           >
             <CookieIcon />
