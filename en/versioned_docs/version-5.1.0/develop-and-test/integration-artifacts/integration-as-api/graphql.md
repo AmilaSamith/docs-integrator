@@ -122,7 +122,7 @@ Service-level settings map to the `@graphql:ServiceConfig` annotation placed bef
 ```ballerina
 @graphql:ServiceConfig {
     maxQueryDepth: 7,
-    introspection: true,
+    introspection: true, // default is true; set to false to disable introspection
     graphiql: {
         enabled: true
     },
