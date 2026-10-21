@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 30
 title: Capacity Planning
 description: Estimate CPU, memory, replica counts, and connection requirements for WSO2 Integrator deployments, based on measured performance data and benchmark results.
 keywords: [wso2 integrator, capacity planning, sizing, resource estimation, throughput, scaling, performance, benchmarks]
