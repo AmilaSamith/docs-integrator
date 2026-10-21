@@ -7,8 +7,6 @@ keywords: [wso2 integrator, durable workflow, order processing, activity, data e
 slug: /get-started/quickstarts/build-durable-workflow
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -78,9 +76,6 @@ A working WSO2 Integrator environment.
 
 ## Step 2: Add the durable workflow artifact
 
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
-
 1. In the design view, click **Add Artifact Manually**.
 2. On the **Artifacts** page, under **Durable Workflow**, click **Durable Workflow**. The **Create New Durable Workflow** form opens.
 3. Set **Name** to `orderWorkflow`.
@@ -107,24 +102,6 @@ A working WSO2 Integrator environment.
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/create-workflow.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-type OrderInfo record {|
-    string id;
-    string customerId;
-    string customerEmail;
-    int total;
-|};
-```
-
-```ballerina
-@workflow:Workflow
-function orderWorkflow(workflow:Context ctx, OrderInfo input) returns json|error {
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip Reuse an existing type
 **+ Create New Type** is only one way to fill **Workflow Input Data Type**. Pick any type already in the project straight from the list, or click **Open Type Browser** to search the wider set. Either way the result is an ordinary record you can edit later from **Types** in the sidebar. See [Types](../../develop-and-test/integration-artifacts/supportive-artifacts/types.md).
@@ -135,9 +112,6 @@ function orderWorkflow(workflow:Context ctx, OrderInfo input) returns json|error
 Anything that touches the outside world belongs in an **activity** rather than in the workflow body. The runtime records each activity result, so a completed activity is never executed twice on replay.
 
 The first step of the order process reserves stock. You create the activity and the call that uses it in one pass, straight from the workflow diagram.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. On the workflow diagram, click **+**.
 2. In the node panel, under **Workflow** > **Steps**, click **Call Activity**. The **Activities** panel opens, listing everything this workflow can call.
@@ -164,26 +138,6 @@ The first step of the order process reserves stock. You create the activity and 
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/add-activity.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-import ballerina/log;
-import ballerina/workflow;
-
-@workflow:Activity
-function reserveInventory(OrderInfo orderInfo) returns error? {
-    log:printInfo("Inventory reserved");
-}
-```
-
-```ballerina
-@workflow:Workflow
-function orderWorkflow(workflow:Context ctx, OrderInfo input) returns json|error {
-    () _ = check ctx->callActivity(reserveInventory, {orderInfo: input});
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip Where activities come from
 **+ Create Activity** writes a new activity function in your integration. **Create Activity from a Connection** wraps an action on a connector you already have, and **[Prebuilt Activities](../../develop-and-test/integration-artifacts/workflow/durable-workflow/prebuilt-activities/prebuilt-activities.md)** holds the ones that ship with the runtime, for REST calls, SOAP calls, and email. See [Activities](../../develop-and-test/integration-artifacts/workflow/durable-workflow/activities.md).
@@ -192,9 +146,6 @@ function orderWorkflow(workflow:Context ctx, OrderInfo input) returns json|error
 ## Step 4: Wait for the payment confirmation
 
 Payment is confirmed by something outside the workflow, such as a payment gateway callback or an operator action. Model that as a **data event**: a named slot the workflow waits on, and that anyone holding the workflow ID can fill.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. Go back to **orderWorkflow** under **Workflows** in the sidebar, then click the **+** below the `reserveInventory` step.
 2. In the node panel, under **Workflow** > **Steps**, click **Await Data**. The **Await Data** form opens.
@@ -218,24 +169,6 @@ The workflow now suspends at this line, and only at this line. It holds no threa
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/await-data-event.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-# Data record for workflow function
-type OrderWorkflowData record {|
-    future<boolean> payment;
-|};
-```
-
-```ballerina
-@workflow:Workflow
-function orderWorkflow(workflow:Context ctx, OrderInfo input, OrderWorkflowData data) returns json|error {
-    () _ = check ctx->callActivity(reserveInventory, {orderInfo: input});
-    boolean payment = check wait data.payment;
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip Data event or human task?
 Use a **data event** when a system or a person submits *content* the workflow processes, as here. Use a [human task](../../develop-and-test/integration-artifacts/workflow/durable-workflow/await-human-task.md) when a person makes a *decision* that the Integration Control Plane should render as a form in their inbox.
@@ -244,9 +177,6 @@ Use a **data event** when a system or a person submits *content* the workflow pr
 ## Step 5: Branch on the payment result
 
 The value that arrived decides what happens next, so split the flow in two.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. Click **+** below the wait.
 2. In the node panel, under **Control**, click **If**.
@@ -263,15 +193,6 @@ The diagram splits into a `payment` path and an **Else** path, each with its own
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/branch-on-payment.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-if payment {
-} else {
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip More than two paths
 **+ Add Else If Block** adds another condition to the same node, and **Remove Else Block** drops the else path when a branch is all you need.
@@ -280,9 +201,6 @@ if payment {
 ## Step 6: Send the confirmation email
 
 The `payment` path tells the customer the order is confirmed. Create that activity and call it in one pass, the same way as `reserveInventory`.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. Click **+** on the `payment` path, then under **Workflow** > **Steps**, click **Call Activity**.
 
@@ -309,16 +227,6 @@ The `payment` path tells the customer the order is confirmed. Create that activi
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/send-email.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-@workflow:Activity
-function sendEmail(OrderInfo orderInfo) returns error? {
-    log:printInfo(string `Email sent to ${orderInfo.customerEmail}`);
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip Text or Expression?
 Keep **Msg** on **Text** whenever the message is words with values dropped into it. Text takes what you type as the message and turns each inserted value into an interpolation, which is what produces the string template above. **Expression** treats the whole field as a single Ballerina expression, so bare words like `Email sent to` are a syntax error there. The same toggle appears on any field that accepts either, such as **Order Info** on a call.
@@ -327,9 +235,6 @@ Keep **Msg** on **Text** whenever the message is words with values dropped into 
 ## Step 7: Cancel the order
 
 The **Else** path releases the hold instead.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. Go back to **orderWorkflow** under **Workflows** in the sidebar. Click **+** on the **Else** path, then under **Workflow** > **Steps**, click **Call Activity**.
 
@@ -350,35 +255,10 @@ Both branches now end in an activity, and the workflow is complete.
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/cancel-order.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-@workflow:Activity
-function cancelOrder(OrderInfo orderInfo) returns error? {
-}
-```
-
-```ballerina
-@workflow:Workflow
-function orderWorkflow(workflow:Context ctx, OrderInfo input, OrderWorkflowData data) returns json|error {
-    () _ = check ctx->callActivity(reserveInventory, {orderInfo: input});
-    boolean payment = check wait data.payment;
-    if payment {
-        () _ = check ctx->callActivity(sendEmail, {orderInfo: input});
-    } else {
-        () _ = check ctx->callActivity(cancelOrder, {orderInfo: input});
-    }
-}
-```
-</TabItem>
-</Tabs>
 
 ## Step 8: Start the workflow from a service
 
 A workflow does not start itself. It is launched from an entry point such as a service or an automation, so give the order process an HTTP resource that starts a run for each order that arrives.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. At the top of the screen, click `OrderProcessor` to return to the project.
 2. Click **+ Add Artifact**, then under **Integration as API**, click **HTTP Service**.
@@ -401,24 +281,6 @@ The resource now starts a run for every order it receives and answers with that 
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-8-start-workflow.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-import ballerina/http;
-import ballerina/workflow;
-
-listener http:Listener httpDefaultListener = http:getDefaultListener();
-
-service /orderProcess on httpDefaultListener {
-
-    resource function post .(OrderInfo payload) returns json|error {
-        string workflowId = check workflow:run(orderWorkflow, payload);
-        return workflowId;
-    }
-}
-```
-</TabItem>
-</Tabs>
 
 :::info Hold on to the workflow ID
 **Run Workflow** starts an instance and returns immediately with its ID. It does not wait for the order to finish, which is the point: the run may sit on the payment event for days. Return the ID to the caller, because it is what ties a later payment confirmation to this instance.
@@ -427,9 +289,6 @@ service /orderProcess on httpDefaultListener {
 ## Step 9: Deliver the payment confirmation
 
 The run is now waiting on the `payment` data event, and it will wait forever until something fills it. Add a second resource that does.
-
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
 
 1. Return to the service: click **HTTP Service - /orderProcess** under **Entry Points** in the sidebar.
 2. Click **+ Resource**, then click **POST**.
@@ -463,15 +322,6 @@ The node reads **Send to payment** and is drawn with a dashed arrow across to `o
         dark: useBaseUrl('/img/workflows/getting-started/build-an-order-processing-workflow/step-9-send-data-event.gif'),
     }}
 />
-</TabItem>
-<TabItem value="code" label="Ballerina code">
-```ballerina
-resource function post [string orderId]/payment() returns json|error {
-    check workflow:sendData(orderWorkflow, orderId, "payment", true);
-}
-```
-</TabItem>
-</Tabs>
 
 :::tip Take the value from the request
 Anyone holding the workflow ID can deliver the value, so in a real integration this resource is what the payment gateway's callback hits. This walkthrough leaves it unprotected to keep the steps short. A real callback needs authentication and authorization on this resource, because the workflow ID on its own is not an authorization check. See [Await data events](../../develop-and-test/integration-artifacts/workflow/durable-workflow/data-events.md).
@@ -538,6 +388,84 @@ A durable workflow keeps its record in a workflow engine, and by default the run
    ```
 
 </Steps>
+
+## Source code
+
+<details>
+<summary>View the generated Ballerina code</summary>
+
+The steps above generate the following complete, runnable Ballerina program: the types, the workflow and its activities, and the HTTP service that starts and resumes it.
+
+**Types** (`types.bal`)
+
+```ballerina
+type OrderInfo record {|
+    string id;
+    string customerId;
+    string customerEmail;
+    int total;
+|};
+
+# Data record for workflow function
+type OrderWorkflowData record {|
+    future<boolean> payment;
+|};
+```
+
+**Workflow and activities**
+
+```ballerina
+import ballerina/log;
+import ballerina/workflow;
+
+@workflow:Workflow
+function orderWorkflow(workflow:Context ctx, OrderInfo input, OrderWorkflowData data) returns json|error {
+    () _ = check ctx->callActivity(reserveInventory, {orderInfo: input});
+    boolean payment = check wait data.payment;
+    if payment {
+        () _ = check ctx->callActivity(sendEmail, {orderInfo: input});
+    } else {
+        () _ = check ctx->callActivity(cancelOrder, {orderInfo: input});
+    }
+}
+
+@workflow:Activity
+function reserveInventory(OrderInfo orderInfo) returns error? {
+    log:printInfo("Inventory reserved");
+}
+
+@workflow:Activity
+function sendEmail(OrderInfo orderInfo) returns error? {
+    log:printInfo(string `Email sent to ${orderInfo.customerEmail}`);
+}
+
+@workflow:Activity
+function cancelOrder(OrderInfo orderInfo) returns error? {
+}
+```
+
+**HTTP service**
+
+```ballerina
+import ballerina/http;
+import ballerina/workflow;
+
+listener http:Listener httpDefaultListener = http:getDefaultListener();
+
+service /orderProcess on httpDefaultListener {
+
+    resource function post .(OrderInfo payload) returns json|error {
+        string workflowId = check workflow:run(orderWorkflow, payload);
+        return workflowId;
+    }
+
+    resource function post [string orderId]/payment() returns json|error {
+        check workflow:sendData(orderWorkflow, orderId, "payment", true);
+    }
+}
+```
+
+</details>
 
 ## Watch it run
 
