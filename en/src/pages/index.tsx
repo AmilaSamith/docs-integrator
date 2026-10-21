@@ -273,13 +273,6 @@ const sections: SectionCard[] = [
     icon: <IconReference />,
     iconColor: '#7C2D12',
   },
-  {
-    title: 'Tools',
-    description: 'Brand color palette/logos, and downloadable Claude Code skills for this repo.',
-    link: '/tools',
-    icon: <IconTools />,
-    iconColor: '#0F766E',
-  },
 ];
 
 /* ------------------------------------------------------------------ */
