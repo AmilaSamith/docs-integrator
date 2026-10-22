@@ -91,7 +91,7 @@ The **Execution** card shows the current status of the execution and the details
 | Field | Description |
 | --- | --- |
 | **Status** | The current state of the execution, shown as a badge next to the **Execution** title. For example, **Running**, **Suspended**, or **Completed**. |
-| **Instance ID** | A unique identifier for this execution. A copy icon next to the value copies the ID. |
+| **Workflow ID** | A unique identifier for this execution. A copy icon next to the value copies the ID. |
 | **Workflow Name** | The workflow this execution runs, such as `orderWorkflow`. |
 | **Started** | The date and time the execution began. |
 | **Closed** | The date and time the execution finished. This field appears only after the execution is no longer running. |

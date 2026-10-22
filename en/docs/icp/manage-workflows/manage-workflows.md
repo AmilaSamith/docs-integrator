@@ -22,7 +22,7 @@ A durable workflow runs inside your integration. The Integration Control Plane (
 
 For development and evaluation, WSO2 Integrator ships its own ICP server and writes the runtime bridge configuration for you, so there is nothing to create in the console by hand.
 
-1. In WSO2 Integrator, open the overview of your workflow and, under **Integration Control Plane**, check **Enable ICP monitoring**.
+1. In WSO2 Integrator, open the overview of your integration and, under **Integration Control Plane**, check **Enable ICP monitoring**.
 2. Expand **Publish to local ICP** and click **Start ICP Server**.
 3. Run the workflow. It registers with the server as it boots.
 
@@ -36,7 +36,7 @@ For development and evaluation, WSO2 Integrator ships its own ICP server and wri
 
 Start the ICP server before you run the workflow, so ICP is ready to receive the registration. ICP creates the project and the workflow in the console for you.
 
-For more information, see [Connect an Integration to ICP](../connect-runtime.md).
+For more information, see [Configuring the integration node with ICP](../connect-runtime.md).
 
 ### Register the integration on an installed ICP
 
@@ -68,7 +68,7 @@ Setting the integration type to **Workflow** tells ICP that this integration con
 
 #### 2. Add a runtime
 
-Add a runtime to the new workflow the same way as for any other integration: generate a secret from **Add Runtime** on the environment card, add the snippet to the workflow's `Config.toml` with a unique runtime name, enable remote management in `Ballerina.toml`, import the runtime bridge, and run the workflow.
+Add a runtime to the new workflow the same way as for any other integration: generate a secret from **Add Runtime** on the environment card, add the snippet to the integration's `Config.toml` with a unique runtime name, enable remote management in `Ballerina.toml`, import the runtime bridge, and run the workflow.
 
 The full procedure, with the field reference and troubleshooting, is in [Connect an Integration to ICP](../connect-runtime.md).
 
