@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Start a Workflow
 
-A workflow is usually started by your own code, such as a service or an automation. During testing, onboarding, and day-to-day operations, you can also start one by hand from the Integration Control Plane (ICP). ICP builds the input form for you from the workflow's input type, so you do not have to write the input as JSON.
+A workflow is usually started by your own integration logic, such as a service or an automation. During testing, onboarding, and day-to-day operations, you can also start one by hand from the Integration Control Plane (ICP). ICP builds the input form for you from the workflow's input type, so you do not have to write the input as JSON.
 
 :::info Prerequisites
 
@@ -28,7 +28,7 @@ A workflow is usually started by your own code, such as a service or an automati
 
 2. The **Start Workflow** form opens.
 
-3. In the **Workflow Name** field, select the workflow you want to run. The list shows every workflow you can start in this environment.
+3. In the **Workflow Name** field, select the workflow you want to run. The list shows the workflow definitions available in the current integration.
 
 4. After you select a workflow, its input form appears under **Input**. A workflow that takes no input says so instead.
 
