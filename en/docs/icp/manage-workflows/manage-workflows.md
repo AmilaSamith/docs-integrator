@@ -36,7 +36,7 @@ For development and evaluation, WSO2 Integrator ships its own ICP server and wri
 
 Start the ICP server before you run the workflow, so ICP is ready to receive the registration. ICP creates the project and the workflow in the console for you.
 
-For more information, see [Configuring the integration node with ICP](../connect-runtime.md).
+For more information, see [Connect an Integration to ICP](../connect-runtime.md).
 
 ### Register the integration on an installed ICP
 
