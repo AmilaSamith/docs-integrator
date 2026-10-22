@@ -109,7 +109,19 @@ const config: Config = {
           // visitors landed on unreleased Next docs by default instead
           // of the stable release. Bump this to the new latest release's
           // version id each time one is cut.
-          lastVersion: '5.1.0',
+          //
+          // CHOREO_BUILD overrides this to 'current' (paired with
+          // onlyIncludeVersions below): the Choreo-hosted staging preview
+          // only ever needs to show in-progress ("Next") content, and
+          // building 5.1.0 + 5.0.0's full versioned_docs snapshots on top
+          // of it is what was driving the EMFILE failures there -- 3x the
+          // concurrent file writes of an unversioned branch for a preview
+          // that doesn't need the old releases at all. The real
+          // production/GitHub Pages pipeline (staging_sync.yaml,
+          // promote_to_production.yaml) runs plain `npm run build`, so it
+          // never sets CHOREO_BUILD and keeps building every version.
+          lastVersion: process.env.CHOREO_BUILD === 'true' ? 'current' : '5.1.0',
+          onlyIncludeVersions: process.env.CHOREO_BUILD === 'true' ? ['current'] : undefined,
           versions: {
             current: {
               label: 'Next',
