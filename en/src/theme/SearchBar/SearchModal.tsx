@@ -3,39 +3,98 @@
  * a blurred backdrop, one input (search icon + "Search documentation"
  * placeholder, no title), live results, and a keyboard-hint footer.
  *
- * Reuses @easyops-cn/docusaurus-search-local's own index and web worker
- * (the same ones its stock SearchBar and /search page use), so results,
- * ranking, and highlighting are identical -- only the presentation
- * differs. The worker only exists in production builds (the plugin's own
- * limitation), so `docusaurus start` shows a notice instead of results.
+ * Queries Algolia directly (via themeConfig.algolia -- see
+ * sharedAlgoliaSearch's own docstring in themeConfig.ts for why this
+ * replaced @easyops-cn/docusaurus-search-local: one index crawled across
+ * every product, instead of each product's build only ever seeing its
+ * own pages). Unlike the local-search worker this replaced, Algolia's
+ * API works identically in `docusaurus start` and a production build --
+ * no more dev-only "search doesn't work here" notice.
+ *
+ * Each hit's title is always its page's own h1 (`hierarchy.lvl1`, set by
+ * the crawler's recordExtractor) regardless of which heading/paragraph
+ * on that page actually matched, so results read as "which page",
+ * consistently -- the matched location (a specific heading, or a
+ * content snippet) renders underneath as the path/detail line. Grouping
+ * is by `hierarchy.lvl0`, which the crawler currently hardcodes to the
+ * literal string "Documentation" for every record (not derived from
+ * which product a page belongs to) -- so today this produces one
+ * undifferentiated group. That's a crawler-config fix (Algolia
+ * dashboard, not this file); the grouping code is kept so results
+ * self-organize by product for free once lvl0 is made product-aware.
  */
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { translate } from '@docusaurus/Translate';
-import { useActivePlugin, useActiveVersion } from '@docusaurus/plugin-content-docs/client';
-import { fetchIndexesByWorker, searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
-import { highlight } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlight';
-import { highlightStemmed } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlightStemmed';
-import { getStemmedPositions } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/getStemmedPositions';
-import { concatDocumentPath } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/concatDocumentPath';
+import { liteClient as algoliasearch } from 'algoliasearch/lite';
 
 import styles from './SearchModal.module.css';
 
-// Mirrors the plugin's SearchDocumentType enum (dist/client/shared/interfaces).
-const TYPE_HEADING = 1;
-const TYPE_KEYWORDS = 3;
-const TYPE_ASK_AI = 5;
 const RESULT_LIMIT = 20;
+const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
-interface SearchResult {
-  document: { i: number; t: string; s?: string; u: string; h?: string; b?: string[] };
-  type: number;
-  page?: { t: string; b?: string[] };
-  tokens: string[];
-  metadata: Record<string, unknown>;
+interface HighlightField {
+  value: string;
+}
+
+interface AlgoliaHit {
+  objectID: string;
+  url: string;
+  hierarchy: Partial<Record<(typeof HEADING_LEVELS)[number] | 'lvl0', string | null>>;
+  type: string; // 'lvl1'..'lvl6' | 'content'
+  _highlightResult?: { hierarchy?: Partial<Record<string, HighlightField>> };
+  _snippetResult?: { content?: HighlightField };
+}
+
+/** The page's own title (hierarchy.lvl1) -- always present, always the
+ * result's heading, regardless of which level actually matched. */
+function hitTitleHtml(hit: AlgoliaHit): string {
+  return hit._highlightResult?.hierarchy?.lvl1?.value ?? hit.hierarchy.lvl1 ?? hit.url;
+}
+
+/** What actually matched within the page: the specific heading (for a
+ * heading-level hit) or a content snippet (for a body-text hit) -- null
+ * when the match IS the page title itself (type === 'lvl1'), since
+ * showing it twice would be redundant. */
+function hitDetailHtml(hit: AlgoliaHit): string | null {
+  if (hit.type === 'lvl1') return null;
+  if (hit.type === 'content') return hit._snippetResult?.content?.value ?? null;
+  return hit._highlightResult?.hierarchy?.[hit.type]?.value ?? hit.hierarchy[hit.type as (typeof HEADING_LEVELS)[number]] ?? null;
+}
+
+/** Breadcrumb of intermediate heading levels between the page title and
+ * whatever matched, e.g. "Develop and Test > Create an Agent". */
+function hitPath(hit: AlgoliaHit): string {
+  const matchedLevel = hit.type === 'content' ? undefined : hit.type;
+  return HEADING_LEVELS.slice(1)
+    .filter((lvl) => lvl !== matchedLevel)
+    .map((lvl) => hit.hierarchy[lvl])
+    .filter((v): v is string => Boolean(v))
+    .join(' › ');
+}
+
+type ResultGroup = { category: string; results: AlgoliaHit[] };
+
+/** Groups by hierarchy.lvl0 while preserving each hit's original rank
+ * (first appearance order) -- Algolia's own relevance ordering stays
+ * intact within and across groups. Currently produces one group (see
+ * this file's own docstring for why); kept so it self-organizes by
+ * product for free once the crawler's lvl0 is product-aware. */
+function groupResults(hits: AlgoliaHit[]): ResultGroup[] {
+  const order: string[] = [];
+  const byCategory = new Map<string, AlgoliaHit[]>();
+  for (const hit of hits) {
+    const cat = hit.hierarchy.lvl0 ?? 'Results';
+    if (!byCategory.has(cat)) {
+      byCategory.set(cat, []);
+      order.push(cat);
+    }
+    byCategory.get(cat)!.push(hit);
+  }
+  return order.map((category) => ({ category, results: byCategory.get(category)! }));
 }
 
 function SearchIcon(): ReactNode {
@@ -62,54 +121,6 @@ function HitIcon({ heading }: { heading: boolean }): ReactNode {
   );
 }
 
-function hitTitleHtml(r: SearchResult): string {
-  return r.type === TYPE_KEYWORDS
-    ? highlight(r.document.s, r.tokens)
-    : highlightStemmed(r.document.t, getStemmedPositions(r.metadata, 't'), r.tokens);
-}
-
-function hitPath(r: SearchResult): string {
-  if (!r.page) return concatDocumentPath(r.document.b ?? []);
-  // A category's own index page often shares its title with the category
-  // label that's already the last entry of its breadcrumb (e.g. a folder
-  // "Add Integration Artifacts" with an index doc titled the same) --
-  // concatenating page.t unconditionally would then show that label
-  // twice in a row. Only append it when it actually adds information.
-  const b = r.page.b ?? [];
-  const withTitle = b.length > 0 && b[b.length - 1] === r.page.t ? b : b.concat(r.page.t);
-  const items = withTitle.concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s);
-  return concatDocumentPath(items);
-}
-
-/** The result's top-level breadcrumb segment (e.g. "Develop and Test"),
- * falling back to the whole path for a result with no breadcrumb at
- * all -- used to group the flat result list into labelled sections with
- * counts, matching the mockup's "Guides · 4 results" headers. */
-function hitCategory(r: SearchResult): string {
-  const b = r.page?.b ?? r.document.b;
-  return b && b.length > 0 ? b[0]! : hitPath(r) || 'Results';
-}
-
-type ResultGroup = { category: string; results: SearchResult[] };
-
-/** Groups by category while preserving each result's original rank
- * (first appearance order), rather than re-sorting -- the underlying
- * search index's own relevance ordering stays intact within and across
- * groups. */
-function groupResults(results: SearchResult[]): ResultGroup[] {
-  const order: string[] = [];
-  const byCategory = new Map<string, SearchResult[]>();
-  for (const r of results) {
-    const cat = hitCategory(r);
-    if (!byCategory.has(cat)) {
-      byCategory.set(cat, []);
-      order.push(cat);
-    }
-    byCategory.get(cat)!.push(r);
-  }
-  return order.map((category) => ({ category, results: byCategory.get(category)! }));
-}
-
 export default function SearchModal({
   onClose,
   initialQuery = '',
@@ -121,30 +132,27 @@ export default function SearchModal({
   initialQuery?: string;
 }): ReactNode {
   const {
-    siteConfig: { baseUrl },
+    siteConfig: { themeConfig },
   } = useDocusaurusContext();
-  const activePlugin = useActivePlugin();
-  const activeVersion = useActiveVersion(activePlugin?.pluginId);
-  const versionUrl = activeVersion && !activeVersion.isLast ? `${activeVersion.path}/` : baseUrl;
+  const { appId, apiKey, indexName } = (themeConfig as { algolia?: { appId: string; apiKey: string; indexName: string } }).algolia ?? {};
+  const client = useMemo(() => (appId && apiKey ? algoliasearch(appId, apiKey) : null), [appId, apiKey]);
   const history = useHistory();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const [query, setQuery] = useState(initialQuery);
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [results, setResults] = useState<AlgoliaHit[]>([]);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
-  const isProd = process.env.NODE_ENV === 'production';
 
   useEffect(() => {
     inputRef.current?.focus();
-    fetchIndexesByWorker(versionUrl, '');
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = previous;
     };
-  }, [versionUrl]);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: globalThis.KeyboardEvent) => {
@@ -156,7 +164,7 @@ export default function SearchModal({
 
   useEffect(() => {
     const q = query.trim();
-    if (!q) {
+    if (!q || !client || !indexName) {
       setResults([]);
       setLoading(false);
       return undefined;
@@ -164,25 +172,39 @@ export default function SearchModal({
     setLoading(true);
     let cancelled = false;
     const timer = window.setTimeout(async () => {
-      const found: SearchResult[] = await searchByWorker(versionUrl, '', q, RESULT_LIMIT);
-      if (cancelled) return;
-      setResults((found ?? []).filter((r) => r.type !== TYPE_ASK_AI));
-      setActive(0);
-      setLoading(false);
+      try {
+        const { results: responses } = await client.search<AlgoliaHit>({
+          requests: [
+            {
+              indexName,
+              query: q,
+              hitsPerPage: RESULT_LIMIT,
+              attributesToSnippet: ['content:20'],
+              attributesToHighlight: ['hierarchy', 'content'],
+            },
+          ],
+        });
+        if (cancelled) return;
+        const hits = (responses[0] && 'hits' in responses[0] ? responses[0].hits : []) as AlgoliaHit[];
+        setResults(hits);
+        setActive(0);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     }, 120);
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, [query, versionUrl]);
+  }, [query, client, indexName]);
 
   useEffect(() => {
     listRef.current?.querySelector<HTMLElement>('[data-active="true"]')?.scrollIntoView({ block: 'nearest' });
   }, [active, results]);
 
   const open = useCallback(
-    (r: SearchResult) => {
-      history.push(r.document.u + (r.document.h ?? ''));
+    (hit: AlgoliaHit) => {
+      history.push(hit.url.replace(/^https?:\/\/[^/]+/, ''));
       onClose();
     },
     [history, onClose],
@@ -251,22 +273,25 @@ export default function SearchModal({
                       </span>
                     </span>
                     <ul className={styles.groupList}>
-                      {group.results.map((r) => {
-                        const i = results.indexOf(r);
+                      {group.results.map((hit) => {
+                        const i = results.indexOf(hit);
+                        const detail = hitDetailHtml(hit);
+                        const path = hitPath(hit);
                         return (
-                          <li key={`${r.document.i}-${r.type}`}>
+                          <li key={hit.objectID}>
                             <Link
-                              to={r.document.u + (r.document.h ?? '')}
+                              to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
                               className={styles.hit}
                               data-active={i === active}
                               onMouseMove={() => setActive(i)}
                               onClick={onClose}>
                               <span className={styles.hitIcon}>
-                                <HitIcon heading={r.type === TYPE_HEADING} />
+                                <HitIcon heading={hit.type !== 'content'} />
                               </span>
                               <span className={styles.hitText}>
-                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(r) }} />
-                                <span className={styles.hitPath}>{hitPath(r)}</span>
+                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(hit) }} />
+                                {detail && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: detail }} />}
+                                {!detail && path && <span className={styles.hitPath}>{path}</span>}
                               </span>
                               <span className={styles.hitOpen} aria-hidden="true">
                                 Open <kbd>↵</kbd>
@@ -280,13 +305,7 @@ export default function SearchModal({
                 ))}
               </ul>
             ) : (
-              <p className={styles.empty}>
-                {loading
-                  ? 'Searching…'
-                  : isProd
-                    ? `No results for “${query.trim()}”`
-                    : 'Search only works in a production build (npm run build, then npm run serve).'}
-              </p>
+              <p className={styles.empty}>{loading ? 'Searching…' : `No results for “${query.trim()}”`}</p>
             )}
           </div>
         )}
@@ -302,7 +321,7 @@ export default function SearchModal({
             to open
           </span>
           <span className={styles.footerSpacer} />
-          <span>Results are scoped to the product and version you&apos;re on</span>
+          <span>Searching across every WSO2 Integration Platform product</span>
         </div>
       </div>
     </div>,
