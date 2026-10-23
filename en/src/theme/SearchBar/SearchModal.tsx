@@ -3,39 +3,134 @@
  * a blurred backdrop, one input (search icon + "Search documentation"
  * placeholder, no title), live results, and a keyboard-hint footer.
  *
- * Reuses @easyops-cn/docusaurus-search-local's own index and web worker
- * (the same ones its stock SearchBar and /search page use), so results,
- * ranking, and highlighting are identical -- only the presentation
- * differs. The worker only exists in production builds (the plugin's own
- * limitation), so `docusaurus start` shows a notice instead of results.
+ * Queries Algolia directly (via themeConfig.algolia -- see
+ * sharedAlgoliaSearch's own docstring in themeConfig.ts for why this
+ * replaced @easyops-cn/docusaurus-search-local: one index crawled across
+ * every product, instead of each product's build only ever seeing its
+ * own pages). Unlike the local-search worker this replaced, Algolia's
+ * API works identically in `docusaurus start` and a production build --
+ * no more dev-only "search doesn't work here" notice.
+ *
+ * Each hit's title is always its page's own h1 (`hierarchy.lvl1`, set by
+ * the crawler's recordExtractor) regardless of which heading/paragraph
+ * on that page actually matched, so results read as "which page",
+ * consistently -- the matched location (a specific heading, or a
+ * content snippet) renders underneath as the path/detail line.
+ *
+ * Grouping and the product tabs both key off a `product` facet
+ * (`saas` | `integrator` | `connectors` | `agent-builder`, see PRODUCTS
+ * below) the crawler's recordExtractor stamps on every record from its
+ * URL. `version` is a second facet, wso2-integrator-specific (the only
+ * versioned product) -- `next` for unreleased docs, an explicit X.Y.Z
+ * for an older pinned release, `current` for the default/latest release
+ * served at the bare path. Search always filters to `version:current`,
+ * with no UI to see other versions yet -- otherwise the same page shows
+ * up once per version it exists at, which reads as "the same result
+ * over and over" rather than the near-duplicates they actually are
+ * (confirmed the hard way: `distinct`/`attributeForDistinct: url`
+ * doesn't help here, since each version is a genuinely different URL).
+ *
+ * Both facets need to exist in the index's own attributesForFaceting
+ * setting (Algolia dashboard, not this file) for any of this to work --
+ * a crawler re-run alone doesn't reliably apply that to an index that
+ * already existed before the facet was added to its config, confirmed
+ * the hard way too. See the `console.warn` below for the fallback this
+ * degrades to when that's not (yet) the case.
  */
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { translate } from '@docusaurus/Translate';
-import { useActivePlugin, useActiveVersion } from '@docusaurus/plugin-content-docs/client';
-import { fetchIndexesByWorker, searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
-import { highlight } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlight';
-import { highlightStemmed } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/highlightStemmed';
-import { getStemmedPositions } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/getStemmedPositions';
-import { concatDocumentPath } from '@easyops-cn/docusaurus-search-local/dist/client/client/utils/concatDocumentPath';
+import { liteClient as algoliasearch } from 'algoliasearch/lite';
 
 import styles from './SearchModal.module.css';
 
-// Mirrors the plugin's SearchDocumentType enum (dist/client/shared/interfaces).
-const TYPE_HEADING = 1;
-const TYPE_KEYWORDS = 3;
-const TYPE_ASK_AI = 5;
 const RESULT_LIMIT = 20;
+const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
-interface SearchResult {
-  document: { i: number; t: string; s?: string; u: string; h?: string; b?: string[] };
-  type: number;
-  page?: { t: string; b?: string[] };
-  tokens: string[];
-  metadata: Record<string, unknown>;
+/** `key: 'all'` applies no facet filter; every other key maps straight
+ * to the `product` facet value the crawler patch assigns (see this
+ * file's own docstring). Add a product here the moment it's live on a
+ * real branch -- wso2-agent-builder isn't yet (see MEMORY.md's own
+ * "Agent Builder not live" note), so it's deliberately left out until
+ * then, not because the facet scheme couldn't support it today. When
+ * it's added, its key stays `agent-builder` (must match the real URL
+ * path segment the crawler derives `product` from), but its label
+ * should be `'AB'`, not `'Agent Builder'` -- the other labels are full
+ * words today, but that was this product's own call once it's live. */
+const PRODUCTS: { key: string; label: string }[] = [
+  { key: 'all', label: 'All products' },
+  { key: 'saas', label: 'WSO2 Cloud' },
+  { key: 'integrator', label: 'WSO2 Integrator' },
+  { key: 'connectors', label: 'Connectors' },
+];
+
+interface HighlightField {
+  value: string;
+}
+
+interface AlgoliaHit {
+  objectID: string;
+  url: string;
+  hierarchy: Partial<Record<(typeof HEADING_LEVELS)[number] | 'lvl0', string | null>>;
+  type: string; // 'lvl1'..'lvl6' | 'content'
+  /** Not emitted by the crawler yet -- see this file's own docstring. */
+  product?: string;
+  _highlightResult?: { hierarchy?: Partial<Record<string, HighlightField>> };
+  _snippetResult?: { content?: HighlightField };
+}
+
+/** The page's own title (hierarchy.lvl1) -- always present, always the
+ * result's heading, regardless of which level actually matched. */
+function hitTitleHtml(hit: AlgoliaHit): string {
+  return hit._highlightResult?.hierarchy?.lvl1?.value ?? hit.hierarchy.lvl1 ?? hit.url;
+}
+
+/** What actually matched within the page: the specific heading (for a
+ * heading-level hit) or a content snippet (for a body-text hit) -- null
+ * when the match IS the page title itself (type === 'lvl1'), since
+ * showing it twice would be redundant. */
+function hitDetailHtml(hit: AlgoliaHit): string | null {
+  if (hit.type === 'lvl1') return null;
+  if (hit.type === 'content') return hit._snippetResult?.content?.value ?? null;
+  return hit._highlightResult?.hierarchy?.[hit.type]?.value ?? hit.hierarchy[hit.type as (typeof HEADING_LEVELS)[number]] ?? null;
+}
+
+/** Breadcrumb of intermediate heading levels between the page title and
+ * whatever matched, e.g. "Develop and Test > Create an Agent". */
+function hitPath(hit: AlgoliaHit): string {
+  const matchedLevel = hit.type === 'content' ? undefined : hit.type;
+  return HEADING_LEVELS.slice(1)
+    .filter((lvl) => lvl !== matchedLevel)
+    .map((lvl) => hit.hierarchy[lvl])
+    .filter((v): v is string => Boolean(v))
+    .join(' › ');
+}
+
+type ResultGroup = { category: string; results: AlgoliaHit[] };
+
+const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(PRODUCTS.filter((p) => p.key !== 'all').map((p) => [p.key, p.label]));
+
+/** Groups by the `product` facet (falling back to hierarchy.lvl0, then
+ * a generic label, for a hit that has neither -- see this file's own
+ * docstring for why that's the current reality for every hit) while
+ * preserving each hit's original rank (first appearance order) --
+ * Algolia's own relevance ordering stays intact within and across
+ * groups. */
+function groupResults(hits: AlgoliaHit[]): ResultGroup[] {
+  const order: string[] = [];
+  const byCategory = new Map<string, AlgoliaHit[]>();
+  for (const hit of hits) {
+    const cat = (hit.product && PRODUCT_LABELS[hit.product]) || hit.hierarchy.lvl0 || 'Results';
+    if (!byCategory.has(cat)) {
+      byCategory.set(cat, []);
+      order.push(cat);
+    }
+    byCategory.get(cat)!.push(hit);
+  }
+  return order.map((category) => ({ category, results: byCategory.get(category)! }));
 }
 
 function SearchIcon(): ReactNode {
@@ -62,54 +157,6 @@ function HitIcon({ heading }: { heading: boolean }): ReactNode {
   );
 }
 
-function hitTitleHtml(r: SearchResult): string {
-  return r.type === TYPE_KEYWORDS
-    ? highlight(r.document.s, r.tokens)
-    : highlightStemmed(r.document.t, getStemmedPositions(r.metadata, 't'), r.tokens);
-}
-
-function hitPath(r: SearchResult): string {
-  if (!r.page) return concatDocumentPath(r.document.b ?? []);
-  // A category's own index page often shares its title with the category
-  // label that's already the last entry of its breadcrumb (e.g. a folder
-  // "Add Integration Artifacts" with an index doc titled the same) --
-  // concatenating page.t unconditionally would then show that label
-  // twice in a row. Only append it when it actually adds information.
-  const b = r.page.b ?? [];
-  const withTitle = b.length > 0 && b[b.length - 1] === r.page.t ? b : b.concat(r.page.t);
-  const items = withTitle.concat(!r.document.s || r.document.s === r.page.t ? [] : r.document.s);
-  return concatDocumentPath(items);
-}
-
-/** The result's top-level breadcrumb segment (e.g. "Develop and Test"),
- * falling back to the whole path for a result with no breadcrumb at
- * all -- used to group the flat result list into labelled sections with
- * counts, matching the mockup's "Guides · 4 results" headers. */
-function hitCategory(r: SearchResult): string {
-  const b = r.page?.b ?? r.document.b;
-  return b && b.length > 0 ? b[0]! : hitPath(r) || 'Results';
-}
-
-type ResultGroup = { category: string; results: SearchResult[] };
-
-/** Groups by category while preserving each result's original rank
- * (first appearance order), rather than re-sorting -- the underlying
- * search index's own relevance ordering stays intact within and across
- * groups. */
-function groupResults(results: SearchResult[]): ResultGroup[] {
-  const order: string[] = [];
-  const byCategory = new Map<string, SearchResult[]>();
-  for (const r of results) {
-    const cat = hitCategory(r);
-    if (!byCategory.has(cat)) {
-      byCategory.set(cat, []);
-      order.push(cat);
-    }
-    byCategory.get(cat)!.push(r);
-  }
-  return order.map((category) => ({ category, results: byCategory.get(category)! }));
-}
-
 export default function SearchModal({
   onClose,
   initialQuery = '',
@@ -121,30 +168,30 @@ export default function SearchModal({
   initialQuery?: string;
 }): ReactNode {
   const {
-    siteConfig: { baseUrl },
+    siteConfig: { themeConfig },
   } = useDocusaurusContext();
-  const activePlugin = useActivePlugin();
-  const activeVersion = useActiveVersion(activePlugin?.pluginId);
-  const versionUrl = activeVersion && !activeVersion.isLast ? `${activeVersion.path}/` : baseUrl;
+  const { appId, apiKey, indexName } = (themeConfig as { algolia?: { appId: string; apiKey: string; indexName: string } }).algolia ?? {};
+  const client = useMemo(() => (appId && apiKey ? algoliasearch(appId, apiKey) : null), [appId, apiKey]);
   const history = useHistory();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const [query, setQuery] = useState(initialQuery);
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [product, setProduct] = useState('all');
+  const [results, setResults] = useState<AlgoliaHit[]>([]);
+  const [productCounts, setProductCounts] = useState<Record<string, number>>({});
+  const [totalCount, setTotalCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
-  const isProd = process.env.NODE_ENV === 'production';
 
   useEffect(() => {
     inputRef.current?.focus();
-    fetchIndexesByWorker(versionUrl, '');
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = previous;
     };
-  }, [versionUrl]);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: globalThis.KeyboardEvent) => {
@@ -156,33 +203,89 @@ export default function SearchModal({
 
   useEffect(() => {
     const q = query.trim();
-    if (!q) {
+    if (!q || !client || !indexName) {
       setResults([]);
+      setProductCounts({});
+      setTotalCount(null);
       setLoading(false);
       return undefined;
     }
     setLoading(true);
     let cancelled = false;
     const timer = window.setTimeout(async () => {
-      const found: SearchResult[] = await searchByWorker(versionUrl, '', q, RESULT_LIMIT);
-      if (cancelled) return;
-      setResults((found ?? []).filter((r) => r.type !== TYPE_ASK_AI));
-      setActive(0);
-      setLoading(false);
+      const baseRequest = {
+        indexName,
+        query: q,
+        hitsPerPage: RESULT_LIMIT,
+        attributesToSnippet: ['content:20'],
+        attributesToHighlight: ['hierarchy', 'content'],
+      };
+      // Always excludes non-current versions (wso2-integrator's `next`
+      // and older pinned releases), regardless of which product tab is
+      // selected -- otherwise the same page shows up once per version,
+      // which reads as "the same result over and over" rather than
+      // the near-duplicates they actually are. No "all versions" UI
+      // yet -- see this file's own docstring if that's ever wanted.
+      const filters = ['version:current', ...(product !== 'all' ? [`product:${product}`] : [])];
+      // A second, parallel request -- same query and version filter, no
+      // product filter, zero hits returned -- just for each product's
+      // count (shown on its pill). Always unfiltered by `product`
+      // regardless of which tab is selected, so switching tabs doesn't
+      // change the OTHER pills' counts.
+      const countsRequest = { indexName, query: q, hitsPerPage: 0, facets: ['product'], facetFilters: ['version:current'] };
+      try {
+        let responses;
+        try {
+          ({ results: responses } = await client.search<AlgoliaHit>({
+            requests: [{ ...baseRequest, facetFilters: filters }, countsRequest],
+          }));
+        } catch {
+          responses = undefined;
+        }
+        // Filtering/faceting on `product`/`version` fails until both are
+        // declared in the index's own attributesForFaceting setting
+        // (Algolia dashboard -- Configuration -> Facets; NOT something a
+        // crawler re-run reliably applies to an index that already
+        // existed before the facet was added to its config, confirmed
+        // the hard way once). v5's client doesn't always throw for this
+        // -- a per-request error can come back as an object with no
+        // `hits` property instead, which silently read as "zero hits"
+        // here before this check existed, with no visible sign anything
+        // was wrong. Falls back to a fully unfiltered request (and skips
+        // counts, rather than guessing at them) so a misconfigured facet
+        // degrades to "filter/counts don't work" rather than a false
+        // "no results".
+        if (!(responses?.[0] && 'hits' in responses[0])) {
+          if (typeof console !== 'undefined') {
+            console.warn(`[search] facetFilters/facets on "product"/"version" returned no usable response -- are both declared in the index's attributesForFaceting? Falling back to unfiltered results with no counts.`);
+          }
+          const fallback = await client.search<AlgoliaHit>({ requests: [baseRequest] });
+          responses = fallback.results;
+        }
+        if (cancelled) return;
+        const hits = (responses?.[0] && 'hits' in responses[0] ? responses[0].hits : []) as AlgoliaHit[];
+        const countsResponse = responses?.[1] as { facets?: { product?: Record<string, number> }; nbHits?: number } | undefined;
+        setResults(hits);
+        setProductCounts(countsResponse?.facets?.product ?? {});
+        setTotalCount(countsResponse?.nbHits ?? null);
+        setActive(0);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     }, 120);
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, [query, versionUrl]);
+  }, [query, product, client, indexName]);
 
   useEffect(() => {
     listRef.current?.querySelector<HTMLElement>('[data-active="true"]')?.scrollIntoView({ block: 'nearest' });
   }, [active, results]);
 
   const open = useCallback(
-    (r: SearchResult) => {
-      history.push(r.document.u + (r.document.h ?? ''));
+    (hit: AlgoliaHit) => {
+      history.push(hit.url.replace(/^https?:\/\/[^/]+/, ''));
       onClose();
     },
     [history, onClose],
@@ -238,6 +341,29 @@ export default function SearchModal({
           </button>
         </div>
 
+        <div className={styles.tabs} role="tablist" aria-label="Filter by product">
+          {PRODUCTS.map((p) => {
+            const count = p.key === 'all' ? totalCount : productCounts[p.key];
+            return (
+              <button
+                key={p.key}
+                type="button"
+                role="tab"
+                aria-selected={product === p.key}
+                className={styles.tab}
+                data-active={product === p.key}
+                onClick={() => setProduct(p.key)}>
+                {p.label}
+                {/* Omitted (not "(0)") when there's no query yet, or the
+                    counts request fell back to unfiltered-with-no-counts
+                    (see this file's own docstring) -- a missing number
+                    reads as "not computed", not "zero results". */}
+                {typeof count === 'number' && <span className={styles.tabCount}>{count}</span>}
+              </button>
+            );
+          })}
+        </div>
+
         {hasQuery && (
           <div className={styles.body}>
             {results.length > 0 ? (
@@ -251,22 +377,25 @@ export default function SearchModal({
                       </span>
                     </span>
                     <ul className={styles.groupList}>
-                      {group.results.map((r) => {
-                        const i = results.indexOf(r);
+                      {group.results.map((hit) => {
+                        const i = results.indexOf(hit);
+                        const detail = hitDetailHtml(hit);
+                        const path = hitPath(hit);
                         return (
-                          <li key={`${r.document.i}-${r.type}`}>
+                          <li key={hit.objectID}>
                             <Link
-                              to={r.document.u + (r.document.h ?? '')}
+                              to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
                               className={styles.hit}
                               data-active={i === active}
                               onMouseMove={() => setActive(i)}
                               onClick={onClose}>
                               <span className={styles.hitIcon}>
-                                <HitIcon heading={r.type === TYPE_HEADING} />
+                                <HitIcon heading={hit.type !== 'content'} />
                               </span>
                               <span className={styles.hitText}>
-                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(r) }} />
-                                <span className={styles.hitPath}>{hitPath(r)}</span>
+                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(hit) }} />
+                                {detail && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: detail }} />}
+                                {!detail && path && <span className={styles.hitPath}>{path}</span>}
                               </span>
                               <span className={styles.hitOpen} aria-hidden="true">
                                 Open <kbd>↵</kbd>
@@ -280,13 +409,7 @@ export default function SearchModal({
                 ))}
               </ul>
             ) : (
-              <p className={styles.empty}>
-                {loading
-                  ? 'Searching…'
-                  : isProd
-                    ? `No results for “${query.trim()}”`
-                    : 'Search only works in a production build (npm run build, then npm run serve).'}
-              </p>
+              <p className={styles.empty}>{loading ? 'Searching…' : `No results for “${query.trim()}”`}</p>
             )}
           </div>
         )}
@@ -302,7 +425,7 @@ export default function SearchModal({
             to open
           </span>
           <span className={styles.footerSpacer} />
-          <span>Results are scoped to the product and version you&apos;re on</span>
+          <span>Searching across every WSO2 Integration Platform product</span>
         </div>
       </div>
     </div>,
