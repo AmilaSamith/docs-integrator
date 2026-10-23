@@ -12,6 +12,7 @@ import {
   sharedPrism,
   sharedImage,
   sharedAlgoliaSearch,
+  sharedHeadTags,
   CROSS_PRODUCT_BASE,
 } from './src/theme-shared/themeConfig';
 
@@ -40,6 +41,11 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
+
+  // Google Tag Manager + CookiePro -- see themeConfig.ts's sharedHeadTags
+  // docstring for the full explanation (same snippet on every product
+  // branch, and why there is deliberately no GTM <noscript> snippet).
+  headTags: sharedHeadTags,
 
   markdown: {
     mermaid: true,
@@ -92,7 +98,19 @@ const config: Config = {
           // visitors landed on unreleased Next docs by default instead
           // of the stable release. Bump this to the new latest release's
           // version id each time one is cut.
-          lastVersion: '5.1.0',
+          //
+          // CHOREO_BUILD overrides this to 'current' (paired with
+          // onlyIncludeVersions below): the Choreo-hosted staging preview
+          // only ever needs to show in-progress ("Next") content, and
+          // building 5.1.0 + 5.0.0's full versioned_docs snapshots on top
+          // of it is what was driving the EMFILE failures there -- 3x the
+          // concurrent file writes of an unversioned branch for a preview
+          // that doesn't need the old releases at all. The real
+          // production/GitHub Pages pipeline (staging_sync.yaml,
+          // promote_to_production.yaml) runs plain `npm run build`, so it
+          // never sets CHOREO_BUILD and keeps building every version.
+          lastVersion: process.env.CHOREO_BUILD === 'true' ? 'current' : '5.1.0',
+          onlyIncludeVersions: process.env.CHOREO_BUILD === 'true' ? ['current'] : undefined,
           versions: {
             current: {
               label: 'Next',
@@ -153,6 +171,7 @@ const config: Config = {
         {
           href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
           html: 'Connectors',
+          autoAddBaseUrl: false,
           target: '_self',
           position: 'left' as const,
         },
