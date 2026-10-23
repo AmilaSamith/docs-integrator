@@ -334,11 +334,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Same as .navbar-icon-link above: its `display: flex !important` would
-   otherwise keep the button in the mobile top bar; it stays in the drawer. */
+   otherwise keep the button in the mobile top bar. */
 @media (max-width: 996px) {
   .navbar__items--right a.navbar-download-btn {
     display: none !important;
   }
+}
+
+/* Not in the mobile drawer either -- hides the whole row (<li>), so no
+   empty gap is left where the button was. */
+.navbar-sidebar li:has(> a.navbar-download-btn) {
+  display: none;
 }
 
 /* The mobile drawer (.navbar-sidebar) reuses --ifm-navbar-background-color
@@ -363,6 +369,21 @@ h1, h2, h3, h4, h5, h6 {
    already-clip-matched width instead of adding to it. */
 .navbar-sidebar__item {
   box-sizing: border-box;
+}
+
+/* Mobile drawer header (stock NavbarMobileSidebar/Header: logo, color-mode
+   toggle, close button). The toggle is hidden here because the main
+   header already shows one at every width (theme/Navbar/Content), and the
+   close "x" is scaled down from the stock 21px to sit in proportion with
+   the drawer's logo. `> .margin-right--md` is the toggle's own wrapper --
+   stock passes that class to it and to nothing else in this header. */
+.navbar-sidebar__brand > .margin-right--md {
+  display: none;
+}
+
+.navbar-sidebar__close svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* Infima's default .navbar__logo container is a fixed 2rem (32px) tall,
@@ -445,22 +466,40 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* In the mobile hamburger drawer, every navbar item (desktop 'left'
-   AND 'right' alike) renders as its own full-width stacked row --
-   there's no left/right split there (see
-   @docusaurus/theme-classic's NavbarMobilePrimaryMenu, which just maps
-   the config array in order into one flat <ul>). That's right for
-   plain text links, but the icon-only items (GitHub, Discord,
-   LinkedIn, YouTube, X) should sit together as one row of icons
-   instead of five separate full-width rows. Their <li> itself carries
-   no distinguishing class (DefaultNavbarItemMobile only classes the
-   inner <a>), so select on the <a class="navbar-icon-link"> child
-   instead -- :has() is already used elsewhere in this file for the
-   same "style the row by what it contains" reason (see the
-   `.menu__list-item-collapsible:has(> .menu__link--active)` fix
-   further down). */
-.navbar-sidebar li.menu__list-item:has(> a.navbar-icon-link) {
-  display: inline-block;
+/* In the mobile hamburger drawer, every navbar item renders as its own
+   stacked row (theme-classic's NavbarMobilePrimaryMenu maps the config
+   array into one flat <ul>). A bare brand icon there reads as a stray
+   glyph next to the text links, so the icon-only items (GitHub, and
+   Discord/LinkedIn/YouTube/X where a branch adds them) render as a text
+   row instead: the icon is hidden and the link's own aria-label
+   ("GitHub") is shown as its label, followed by the same external-link
+   arrow Docusaurus puts on "Learn Hub". The header bar keeps the icon --
+   these rules only match inside .navbar-sidebar. */
+.navbar-sidebar .navbar-icon-link {
+  justify-content: flex-start;
+  gap: 0.3rem;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal) !important;
+  border-radius: 0.25rem;
+}
+
+.navbar-sidebar .navbar-icon-link svg {
+  display: none;
+}
+
+.navbar-sidebar .navbar-icon-link::before {
+  content: attr(aria-label);
+}
+
+.navbar-sidebar .navbar-icon-link::after {
+  content: '';
+  width: 13.5px;
+  height: 13.5px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>') no-repeat center / contain;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>') no-repeat center / contain;
 }
 
 /* The "?" icon inlined before the FAQ navbar link's text (see

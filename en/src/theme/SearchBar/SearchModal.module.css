@@ -350,3 +350,36 @@
 .footerSpacer {
   flex: 1;
 }
+
+/* Mobile (same 996px breakpoint as the rest of the site's navbar): the
+   dialog fills the whole screen instead of floating as a card, so the
+   results get the full height and the on-screen keyboard doesn't squeeze
+   them into a sliver. */
+@media (max-width: 996px) {
+  .backdrop {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .dialog {
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .body {
+    flex: 1;
+  }
+
+  /* The footer (key hints + scope note) is dropped on mobile: there's no
+     keyboard for the hints, and a footer pinned to the bottom of a
+     full-screen dialog ends up under the mobile browser's own bottom
+     toolbar, which overlaps the page there. */
+  .footer {
+    display: none;
+  }
+}

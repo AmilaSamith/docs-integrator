@@ -10,7 +10,10 @@
  *    left instead of a hardcoded 75%.
  *
  * 2. `<DocBreadcrumbs />` is wrapped in a row (.topRow) that also carries
- *    "Edit this page" and "Copy page", right-aligned -- `#wso2-edit-page-
+ *    "Edit this page" and "Copy page", right-aligned, whenever the desktop
+ *    "On this page" column isn't shown (mobile, pages without a TOC, the
+ *    connector catalog); otherwise theme/TOC renders them at the top of
+ *    that column instead (`actionsInToc` below) -- `#wso2-edit-page-
  *    slot` (an empty portal TARGET, not a component) plus `<CopyPageButton
  *    />`. The actual "Edit this page" link only exists deep in DocItem's
  *    own tree (stock EditThisPage, reading `editUrl` from useDoc(), a hook
@@ -80,6 +83,11 @@ export default function DocItemLayout({ children }: Props): ReactNode {
   // (article's global max-width: 820px in custom.css), so a .palette-grid
   // can lay out more columns instead of leaving that space empty.
   const isWideLayout = Boolean((frontMatter as { wide_layout?: boolean }).wide_layout);
+  // When the desktop "On this page" column renders, theme/TOC carries
+  // "Edit this page" + "Copy page" at its top instead. The connector
+  // catalog is the exception: theme/TOC swaps that column for the filter
+  // rail there, so the buttons stay in the breadcrumb row.
+  const actionsInToc = Boolean(docTOC.desktop) && !isConnectorCatalog;
 
   return (
     <div className="row">
@@ -94,10 +102,12 @@ export default function DocItemLayout({ children }: Props): ReactNode {
           <article className={clsx(isWideLayout && styles.articleWide, !isWideLayout && !isConnectorCatalog && styles.articleCentered)}>
             <div className={styles.topRow}>
               <DocBreadcrumbs />
-              <div className={styles.topRowActions}>
-                <div id="wso2-edit-page-slot" />
-                <CopyPageButton />
-              </div>
+              {!actionsInToc && (
+                <div className={styles.topRowActions}>
+                  <div id="wso2-edit-page-slot" />
+                  <CopyPageButton />
+                </div>
+              )}
             </div>
             <div className={styles.versionRow}>
               {isICP ? (
