@@ -12,6 +12,7 @@ import {
   sharedPrism,
   sharedImage,
   sharedAlgoliaSearch,
+  sharedHeadTags,
   CROSS_PRODUCT_BASE,
 } from './src/theme-shared/themeConfig';
 
@@ -41,6 +42,11 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
   onBrokenAnchors: 'warn',
+
+  // Google Tag Manager + CookiePro -- see themeConfig.ts's sharedHeadTags
+  // docstring for the full explanation (same snippet on every product
+  // branch, and why there is deliberately no GTM <noscript> snippet).
+  headTags: sharedHeadTags,
 
   markdown: {
     mermaid: true,
@@ -116,6 +122,7 @@ const config: Config = {
         {
           href: `pathname://${CROSS_PRODUCT_BASE}connectors/catalog`,
           html: 'Connectors',
+          autoAddBaseUrl: false,
           target: '_self',
           position: 'left' as const,
         },

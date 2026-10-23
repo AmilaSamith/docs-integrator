@@ -1,7 +1,8 @@
 ---
+sidebar_position: 1
 title: High Availability and Coordination
 description: Coordinate multiple FTP/SFTP listener instances so that only one actively polls while others act as warm standby nodes, preventing duplicate file processing.
-slug: /develop-and-test/integration-artifacts/file-driven-integration/high-availability-and-coordination
+slug: /develop-and-test/integration-artifacts/file-driven-integration/ftp-sftp/high-availability-and-coordination
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -169,4 +170,4 @@ The coordination database sits on the file-processing data path: its availabilit
 ## What's next
 
 - [FTP / SFTP](ftp-sftp.md) — service, listener, and file-handler reference
-- [Scaling and high availability](../../../deploy-and-run/scaling-high-availability.md) — deployment-level scaling and HA strategies
+- [Scaling and high availability](../../../../deploy-and-run/scaling-high-availability.md) — deployment-level scaling and HA strategies
