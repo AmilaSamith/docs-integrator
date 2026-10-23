@@ -112,10 +112,42 @@ interface AlgoliaHit {
   _snippetResult?: { content?: HighlightField };
 }
 
+/** Sentinel markers requested via highlightPreTag/highlightPostTag below,
+ * instead of trusting whatever Algolia's own default tag is -- lets
+ * renderHighlighted find exactly these two byte sequences and nothing
+ * else. Control characters, not real markup or even plain-text
+ * punctuation, specifically so they can't collide with (and so get
+ * escaped identically to) actual indexed content -- unlike a
+ * human-readable placeholder like "__hl__", which a doc could
+ * legitimately contain. */
+const HL_OPEN = '\u0001';
+const HL_CLOSE = '\u0002';
+
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/** The ONLY place a hit/page value becomes `dangerouslySetInnerHTML`
+ * content. Every candidate string here -- Algolia's own
+ * _highlightResult/_snippetResult values as much as the plain
+ * hierarchy/url fallbacks -- is untrusted: it's indexed page content,
+ * and these docs legitimately contain literal markup in prose (XML
+ * payloads, HTML code samples) that must render as text, not be parsed
+ * as markup. Algolia wraps matches in HL_OPEN/HL_CLOSE (requested via
+ * highlightPreTag/highlightPostTag) but does NOT escape the rest of the
+ * string -- so this escapes the whole value first, THEN turns only the
+ * sentinel markers (which escaping leaves untouched, being control
+ * characters) into real `<mark>` tags. Skipping the escape step here
+ * was a real XSS hole: a crawled page containing `<img onerror=...>` as
+ * literal text, matched by a search snippet, would have executed it. */
+function renderHighlighted(value: string): string {
+  return escapeHtml(value).split(HL_OPEN).join('<mark>').split(HL_CLOSE).join('</mark>');
+}
+
 /** The page's own title (hierarchy.lvl1) -- always present, always the
  * result's heading, regardless of which level actually matched. */
 function hitTitleHtml(hit: AlgoliaHit): string {
-  return hit._highlightResult?.hierarchy?.lvl1?.value ?? hit.hierarchy.lvl1 ?? hit.url;
+  return renderHighlighted(hit._highlightResult?.hierarchy?.lvl1?.value ?? hit.hierarchy.lvl1 ?? hit.url);
 }
 
 /** What actually matched within the page: the specific heading (for a
@@ -124,8 +156,12 @@ function hitTitleHtml(hit: AlgoliaHit): string {
  * showing it twice would be redundant. */
 function hitDetailHtml(hit: AlgoliaHit): string | null {
   if (hit.type === 'lvl1') return null;
-  if (hit.type === 'content') return hit._snippetResult?.content?.value ?? null;
-  return hit._highlightResult?.hierarchy?.[hit.type]?.value ?? hit.hierarchy[hit.type as (typeof HEADING_LEVELS)[number]] ?? null;
+  if (hit.type === 'content') {
+    const snippet = hit._snippetResult?.content?.value;
+    return snippet ? renderHighlighted(snippet) : null;
+  }
+  const value = hit._highlightResult?.hierarchy?.[hit.type]?.value ?? hit.hierarchy[hit.type as (typeof HEADING_LEVELS)[number]];
+  return value ? renderHighlighted(value) : null;
 }
 
 /** Breadcrumb of intermediate heading levels between the page title and
@@ -245,13 +281,13 @@ function groupByPage(hits: AlgoliaHit[]): PageGroup[] {
  * content hit is picked as the page's own intro by groupByPage instead,
  * never left as a child). */
 function childTitleHtml(hit: AlgoliaHit): string {
-  if (hit.type !== 'content') return hitDetailHtml(hit) ?? hit.hierarchy.lvl1 ?? hit.url;
+  if (hit.type !== 'content') return hitDetailHtml(hit) ?? renderHighlighted(hit.hierarchy.lvl1 ?? hit.url);
   for (let i = HEADING_LEVELS.length - 1; i >= 1; i -= 1) {
     const lvl = HEADING_LEVELS[i];
     const value = hit._highlightResult?.hierarchy?.[lvl]?.value ?? hit.hierarchy[lvl];
-    if (value) return value;
+    if (value) return renderHighlighted(value);
   }
-  return hit._snippetResult?.content?.value ?? hit.hierarchy.lvl1 ?? hit.url;
+  return renderHighlighted(hit._snippetResult?.content?.value ?? hit.hierarchy.lvl1 ?? hit.url);
 }
 
 function SearchIcon(): ReactNode {
@@ -401,6 +437,14 @@ export default function SearchModal({
         hitsPerPage: RESULT_LIMIT,
         attributesToSnippet: ['content:20'],
         attributesToHighlight: ['hierarchy', 'content'],
+        // Requested explicitly rather than trusting Algolia's own default
+        // tag (reportedly `<em>`, but not relied on here) -- renderHighlighted
+        // (this file's single dangerouslySetInnerHTML sink) looks for
+        // exactly these two sentinels after escaping the rest of the
+        // string, so it needs to know precisely what Algolia will wrap
+        // a match in.
+        highlightPreTag: HL_OPEN,
+        highlightPostTag: HL_CLOSE,
         // Raises the index's own defaults (minWordSizefor1Typo: 3,
         // minWordSizefor2Typos: 7 -- see the crawler config) specifically
         // for this product's docs, which lean on short, acronym-heavy
