@@ -47,6 +47,13 @@
  * already existed before the facet was added to its config, confirmed
  * the hard way too. See the `console.warn` below for the fallback this
  * degrades to when that's not (yet) the case.
+ *
+ * Within each section, hits are nested one level further by page
+ * (groupByPage): multiple headings matching on the same page collapse
+ * under one page-level parent row instead of repeating that page's
+ * title on every row (the docsearch-style "page > matched headings"
+ * layout). See groupByPage's own docstring for how the parent hit is
+ * chosen/synthesized.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
@@ -64,10 +71,12 @@ import styles from './SearchModal.module.css';
 // off-screen, genuinely never fetched. GROUP_PREVIEW_LIMIT below keeps
 // the initial render just as compact despite fetching more.
 const RESULT_LIMIT = 50;
-// Each sidebar-section group shows at most this many hits up front, with
-// a "Show more" button revealing the rest of that group's already-fetched
-// hits -- so the first screenful represents every matching section
-// instead of one section's results crowding the others out entirely.
+// Each sidebar-section group shows at most this many PAGES up front
+// (not raw hits -- a page with several matched headings still counts as
+// one), with a "Show more" button revealing the rest of that group's
+// already-fetched pages -- so the first screenful represents every
+// matching section instead of one section's results crowding the
+// others out entirely.
 const GROUP_PREVIEW_LIMIT = 4;
 const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
@@ -130,7 +139,22 @@ function hitPath(hit: AlgoliaHit): string {
     .join(' › ');
 }
 
-type ResultGroup = { category: string; results: AlgoliaHit[] };
+/** One page's worth of hits, nested one level under a section: `headHit`
+ * is what the parent row links to/displays, `children` are the other
+ * matches on that same page, rendered indented underneath it. */
+type PageGroup = {
+  url: string;
+  title: string;
+  headHit: AlgoliaHit;
+  /** True when no hit in this page's group was actually a page-title or
+   * page-intro match -- `headHit` was synthesized purely to carry the
+   * page's own title/link, and every real hit is a child. See
+   * groupByPage's own docstring. */
+  syntheticHead: boolean;
+  children: AlgoliaHit[];
+};
+
+type ResultGroup = { category: string; pages: PageGroup[] };
 
 const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(PRODUCTS.filter((p) => p.key !== 'all').map((p) => [p.key, p.label]));
 
@@ -156,7 +180,7 @@ function hitSection(hit: AlgoliaHit): string {
  * silently merge into one group. Preserves each hit's original rank
  * (first appearance order) -- Algolia's own relevance ordering stays
  * intact within and across groups. */
-function groupResults(hits: AlgoliaHit[], disambiguateByProduct: boolean): ResultGroup[] {
+function groupBySection(hits: AlgoliaHit[], disambiguateByProduct: boolean): { category: string; results: AlgoliaHit[] }[] {
   const order: string[] = [];
   const byCategory = new Map<string, AlgoliaHit[]>();
   for (const hit of hits) {
@@ -170,6 +194,64 @@ function groupResults(hits: AlgoliaHit[], disambiguateByProduct: boolean): Resul
     byCategory.get(cat)!.push(hit);
   }
   return order.map((category) => ({ category, results: byCategory.get(category)! }));
+}
+
+/** Nests a section's hits one level further, by page (URL with any
+ * `#anchor` stripped) -- multiple headings matching on the same page
+ * collapse under one parent row instead of repeating that page's title
+ * on every row.
+ *
+ * The parent row's hit is whichever of the page's own hits represents
+ * "the page itself": a literal title match (`type === 'lvl1'`), or
+ * failing that its intro paragraph (`type === 'content'` with no
+ * heading ancestor -- `hitPath` empty). Everything else on the page
+ * becomes a child row underneath it.
+ *
+ * When NEITHER exists -- every match on the page is under some heading,
+ * nothing matched the title or intro directly -- there's no real hit to
+ * use as the parent, so one is synthesized purely to carry the page's
+ * own title and link (to the bare page, not any one heading); every
+ * actual hit then renders as a child, same as the explicit-head case,
+ * so a single mid-page heading match isn't silently swallowed into an
+ * un-labelled parent row. */
+function groupByPage(hits: AlgoliaHit[]): PageGroup[] {
+  const order: string[] = [];
+  const byUrl = new Map<string, AlgoliaHit[]>();
+  for (const hit of hits) {
+    const url = hit.url.split('#')[0];
+    if (!byUrl.has(url)) {
+      byUrl.set(url, []);
+      order.push(url);
+    }
+    byUrl.get(url)!.push(hit);
+  }
+  return order.map((url) => {
+    const pageHits = byUrl.get(url)!;
+    const title = pageHits[0].hierarchy.lvl1 ?? pageHits[0].url;
+    const explicitHead = pageHits.find((h) => h.type === 'lvl1') ?? pageHits.find((h) => h.type === 'content' && hitPath(h) === '');
+    if (explicitHead) {
+      return { url, title, headHit: explicitHead, syntheticHead: false, children: pageHits.filter((h) => h !== explicitHead) };
+    }
+    const syntheticHead: AlgoliaHit = { objectID: `${url}::page`, url, hierarchy: { lvl1: title }, type: 'lvl1' };
+    return { url, title, headHit: syntheticHead, syntheticHead: true, children: pageHits };
+  });
+}
+
+/** A child row's title: for a heading-level hit, the matched heading
+ * itself (same as hitDetailHtml); for a content/body-text hit, the
+ * nearest ancestor heading above the matched text (deepest first),
+ * falling back to the content snippet only when the hit has no heading
+ * ancestor at all (shouldn't happen for an actual child -- a childless
+ * content hit is picked as the page's own intro by groupByPage instead,
+ * never left as a child). */
+function childTitleHtml(hit: AlgoliaHit): string {
+  if (hit.type !== 'content') return hitDetailHtml(hit) ?? hit.hierarchy.lvl1 ?? hit.url;
+  for (let i = HEADING_LEVELS.length - 1; i >= 1; i -= 1) {
+    const lvl = HEADING_LEVELS[i];
+    const value = hit._highlightResult?.hierarchy?.[lvl]?.value ?? hit.hierarchy[lvl];
+    if (value) return value;
+  }
+  return hit._snippetResult?.content?.value ?? hit.hierarchy.lvl1 ?? hit.url;
 }
 
 function SearchIcon(): ReactNode {
@@ -244,14 +326,22 @@ export default function SearchModal({
   // Recomputed here (not inline in the JSX below) so the keyboard-nav
   // effect and the render can both work off the same grouping/expand
   // state -- `visibleResults` specifically exists so `active` indexes
-  // into what's actually ON SCREEN. Indexing into the full `results`
-  // array instead would let ArrowDown move `active` past a collapsed
-  // group's GROUP_PREVIEW_LIMIT cutoff, highlighting a hit hidden behind
-  // its own "Show more" button -- nothing visibly selected, arrow keys
-  // apparently doing nothing.
-  const grouped = useMemo(() => groupResults(results, product === 'all'), [results, product]);
+  // into what's actually ON SCREEN, both the page-parent rows and their
+  // child rows, flattened back into one list in render order. Indexing
+  // into the full `results` array instead would let ArrowDown move
+  // `active` past a collapsed group's GROUP_PREVIEW_LIMIT cutoff,
+  // highlighting a hit hidden behind its own "Show more" button --
+  // nothing visibly selected, arrow keys apparently doing nothing.
+  const grouped = useMemo(
+    () => groupBySection(results, product === 'all').map((g) => ({ category: g.category, pages: groupByPage(g.results) })),
+    [results, product],
+  );
   const visibleResults = useMemo(
-    () => grouped.flatMap((g) => (expandedGroups.has(g.category) ? g.results : g.results.slice(0, GROUP_PREVIEW_LIMIT))),
+    () =>
+      grouped.flatMap((g) => {
+        const pages = expandedGroups.has(g.category) ? g.pages : g.pages.slice(0, GROUP_PREVIEW_LIMIT);
+        return pages.flatMap((p) => [p.headHit, ...p.children]);
+      }),
     [grouped, expandedGroups],
   );
 
@@ -463,46 +553,73 @@ export default function SearchModal({
               <ul ref={listRef} className={styles.results}>
                 {grouped.map((group) => {
                   const isExpanded = expandedGroups.has(group.category);
-                  const shown = isExpanded ? group.results : group.results.slice(0, GROUP_PREVIEW_LIMIT);
-                  const remaining = group.results.length - shown.length;
+                  const shownPages = isExpanded ? group.pages : group.pages.slice(0, GROUP_PREVIEW_LIMIT);
+                  const remainingPages = group.pages.length - shownPages.length;
+                  const totalHits = group.pages.reduce((n, p) => n + 1 + p.children.length, 0);
                   return (
                     <li key={group.category} className={styles.group}>
                       <span className={styles.groupHeader}>
                         {group.category}
                         <span className={styles.groupCount}>
-                          {group.results.length} {group.results.length === 1 ? 'result' : 'results'}
+                          {totalHits} {totalHits === 1 ? 'result' : 'results'}
                         </span>
                       </span>
                       <ul className={styles.groupList}>
-                        {shown.map((hit) => {
-                          const i = visibleResults.indexOf(hit);
-                          const detail = hitDetailHtml(hit);
-                          const path = hitPath(hit);
+                        {shownPages.map((page) => {
+                          const headIndex = visibleResults.indexOf(page.headHit);
+                          const description = !page.syntheticHead && page.headHit.type === 'content' ? hitDetailHtml(page.headHit) : null;
                           return (
-                            <li key={hit.objectID}>
+                            <li key={page.url} className={styles.page}>
                               <Link
-                                to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
+                                to={page.headHit.url.replace(/^https?:\/\/[^/]+/, '')}
                                 className={styles.hit}
-                                data-active={i === active}
-                                onMouseMove={() => setActive(i)}
+                                data-active={headIndex === active}
+                                onMouseMove={() => setActive(headIndex)}
                                 onClick={onClose}>
                                 <span className={styles.hitIcon}>
-                                  <HitIcon heading={hit.type !== 'content'} />
+                                  <HitIcon heading={false} />
                                 </span>
                                 <span className={styles.hitText}>
-                                  <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(hit) }} />
-                                  {detail && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: detail }} />}
-                                  {!detail && path && <span className={styles.hitPath}>{path}</span>}
+                                  <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(page.headHit) }} />
+                                  {description && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: description }} />}
                                 </span>
                                 <span className={styles.hitOpen} aria-hidden="true">
                                   Open <kbd>↵</kbd>
                                 </span>
                               </Link>
+                              {page.children.length > 0 && (
+                                <ul className={styles.children}>
+                                  {page.children.map((hit) => {
+                                    const i = visibleResults.indexOf(hit);
+                                    return (
+                                      <li key={hit.objectID}>
+                                        <Link
+                                          to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
+                                          className={styles.childHit}
+                                          data-active={i === active}
+                                          onMouseMove={() => setActive(i)}
+                                          onClick={onClose}>
+                                          <span className={styles.childIcon}>
+                                            <HitIcon heading={true} />
+                                          </span>
+                                          <span className={styles.hitText}>
+                                            <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: childTitleHtml(hit) }} />
+                                            <span className={styles.childPageLabel}>{page.title}</span>
+                                          </span>
+                                          <span className={styles.hitOpen} aria-hidden="true">
+                                            Open <kbd>↵</kbd>
+                                          </span>
+                                        </Link>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              )}
                             </li>
                           );
                         })}
                       </ul>
-                      {remaining > 0 && (
+                      {remainingPages > 0 && (
                         <button
                           type="button"
                           className={styles.showMore}
@@ -513,7 +630,7 @@ export default function SearchModal({
                               return next;
                             })
                           }>
-                          Show {remaining} more
+                          Show {remainingPages} more {remainingPages === 1 ? 'page' : 'pages'}
                         </button>
                       )}
                     </li>
