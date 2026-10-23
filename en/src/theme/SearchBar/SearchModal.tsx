@@ -15,13 +15,27 @@
  * the crawler's recordExtractor) regardless of which heading/paragraph
  * on that page actually matched, so results read as "which page",
  * consistently -- the matched location (a specific heading, or a
- * content snippet) renders underneath as the path/detail line. Grouping
- * is by `hierarchy.lvl0`, which the crawler currently hardcodes to the
- * literal string "Documentation" for every record (not derived from
- * which product a page belongs to) -- so today this produces one
- * undifferentiated group. That's a crawler-config fix (Algolia
- * dashboard, not this file); the grouping code is kept so results
- * self-organize by product for free once lvl0 is made product-aware.
+ * content snippet) renders underneath as the path/detail line.
+ *
+ * Grouping and the product tabs both key off a `product` facet
+ * (`saas` | `integrator` | `connectors` | `agent-builder`, see PRODUCTS
+ * below) the crawler's recordExtractor stamps on every record from its
+ * URL. `version` is a second facet, wso2-integrator-specific (the only
+ * versioned product) -- `next` for unreleased docs, an explicit X.Y.Z
+ * for an older pinned release, `current` for the default/latest release
+ * served at the bare path. Search always filters to `version:current`,
+ * with no UI to see other versions yet -- otherwise the same page shows
+ * up once per version it exists at, which reads as "the same result
+ * over and over" rather than the near-duplicates they actually are
+ * (confirmed the hard way: `distinct`/`attributeForDistinct: url`
+ * doesn't help here, since each version is a genuinely different URL).
+ *
+ * Both facets need to exist in the index's own attributesForFaceting
+ * setting (Algolia dashboard, not this file) for any of this to work --
+ * a crawler re-run alone doesn't reliably apply that to an index that
+ * already existed before the facet was added to its config, confirmed
+ * the hard way too. See the `console.warn` below for the fallback this
+ * degrades to when that's not (yet) the case.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
@@ -36,6 +50,23 @@ import styles from './SearchModal.module.css';
 const RESULT_LIMIT = 20;
 const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
+/** `key: 'all'` applies no facet filter; every other key maps straight
+ * to the `product` facet value the crawler patch assigns (see this
+ * file's own docstring). Add a product here the moment it's live on a
+ * real branch -- wso2-agent-builder isn't yet (see MEMORY.md's own
+ * "Agent Builder not live" note), so it's deliberately left out until
+ * then, not because the facet scheme couldn't support it today. When
+ * it's added, its key stays `agent-builder` (must match the real URL
+ * path segment the crawler derives `product` from), but its label
+ * should be `'AB'`, not `'Agent Builder'` -- the other labels are full
+ * words today, but that was this product's own call once it's live. */
+const PRODUCTS: { key: string; label: string }[] = [
+  { key: 'all', label: 'All products' },
+  { key: 'saas', label: 'WSO2 Cloud' },
+  { key: 'integrator', label: 'WSO2 Integrator' },
+  { key: 'connectors', label: 'Connectors' },
+];
+
 interface HighlightField {
   value: string;
 }
@@ -45,6 +76,8 @@ interface AlgoliaHit {
   url: string;
   hierarchy: Partial<Record<(typeof HEADING_LEVELS)[number] | 'lvl0', string | null>>;
   type: string; // 'lvl1'..'lvl6' | 'content'
+  /** Not emitted by the crawler yet -- see this file's own docstring. */
+  product?: string;
   _highlightResult?: { hierarchy?: Partial<Record<string, HighlightField>> };
   _snippetResult?: { content?: HighlightField };
 }
@@ -78,16 +111,19 @@ function hitPath(hit: AlgoliaHit): string {
 
 type ResultGroup = { category: string; results: AlgoliaHit[] };
 
-/** Groups by hierarchy.lvl0 while preserving each hit's original rank
- * (first appearance order) -- Algolia's own relevance ordering stays
- * intact within and across groups. Currently produces one group (see
- * this file's own docstring for why); kept so it self-organizes by
- * product for free once the crawler's lvl0 is product-aware. */
+const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(PRODUCTS.filter((p) => p.key !== 'all').map((p) => [p.key, p.label]));
+
+/** Groups by the `product` facet (falling back to hierarchy.lvl0, then
+ * a generic label, for a hit that has neither -- see this file's own
+ * docstring for why that's the current reality for every hit) while
+ * preserving each hit's original rank (first appearance order) --
+ * Algolia's own relevance ordering stays intact within and across
+ * groups. */
 function groupResults(hits: AlgoliaHit[]): ResultGroup[] {
   const order: string[] = [];
   const byCategory = new Map<string, AlgoliaHit[]>();
   for (const hit of hits) {
-    const cat = hit.hierarchy.lvl0 ?? 'Results';
+    const cat = (hit.product && PRODUCT_LABELS[hit.product]) || hit.hierarchy.lvl0 || 'Results';
     if (!byCategory.has(cat)) {
       byCategory.set(cat, []);
       order.push(cat);
@@ -141,7 +177,10 @@ export default function SearchModal({
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const [query, setQuery] = useState(initialQuery);
+  const [product, setProduct] = useState('all');
   const [results, setResults] = useState<AlgoliaHit[]>([]);
+  const [productCounts, setProductCounts] = useState<Record<string, number>>({});
+  const [totalCount, setTotalCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
 
@@ -166,27 +205,69 @@ export default function SearchModal({
     const q = query.trim();
     if (!q || !client || !indexName) {
       setResults([]);
+      setProductCounts({});
+      setTotalCount(null);
       setLoading(false);
       return undefined;
     }
     setLoading(true);
     let cancelled = false;
     const timer = window.setTimeout(async () => {
+      const baseRequest = {
+        indexName,
+        query: q,
+        hitsPerPage: RESULT_LIMIT,
+        attributesToSnippet: ['content:20'],
+        attributesToHighlight: ['hierarchy', 'content'],
+      };
+      // Always excludes non-current versions (wso2-integrator's `next`
+      // and older pinned releases), regardless of which product tab is
+      // selected -- otherwise the same page shows up once per version,
+      // which reads as "the same result over and over" rather than
+      // the near-duplicates they actually are. No "all versions" UI
+      // yet -- see this file's own docstring if that's ever wanted.
+      const filters = ['version:current', ...(product !== 'all' ? [`product:${product}`] : [])];
+      // A second, parallel request -- same query and version filter, no
+      // product filter, zero hits returned -- just for each product's
+      // count (shown on its pill). Always unfiltered by `product`
+      // regardless of which tab is selected, so switching tabs doesn't
+      // change the OTHER pills' counts.
+      const countsRequest = { indexName, query: q, hitsPerPage: 0, facets: ['product'], facetFilters: ['version:current'] };
       try {
-        const { results: responses } = await client.search<AlgoliaHit>({
-          requests: [
-            {
-              indexName,
-              query: q,
-              hitsPerPage: RESULT_LIMIT,
-              attributesToSnippet: ['content:20'],
-              attributesToHighlight: ['hierarchy', 'content'],
-            },
-          ],
-        });
+        let responses;
+        try {
+          ({ results: responses } = await client.search<AlgoliaHit>({
+            requests: [{ ...baseRequest, facetFilters: filters }, countsRequest],
+          }));
+        } catch {
+          responses = undefined;
+        }
+        // Filtering/faceting on `product`/`version` fails until both are
+        // declared in the index's own attributesForFaceting setting
+        // (Algolia dashboard -- Configuration -> Facets; NOT something a
+        // crawler re-run reliably applies to an index that already
+        // existed before the facet was added to its config, confirmed
+        // the hard way once). v5's client doesn't always throw for this
+        // -- a per-request error can come back as an object with no
+        // `hits` property instead, which silently read as "zero hits"
+        // here before this check existed, with no visible sign anything
+        // was wrong. Falls back to a fully unfiltered request (and skips
+        // counts, rather than guessing at them) so a misconfigured facet
+        // degrades to "filter/counts don't work" rather than a false
+        // "no results".
+        if (!(responses?.[0] && 'hits' in responses[0])) {
+          if (typeof console !== 'undefined') {
+            console.warn(`[search] facetFilters/facets on "product"/"version" returned no usable response -- are both declared in the index's attributesForFaceting? Falling back to unfiltered results with no counts.`);
+          }
+          const fallback = await client.search<AlgoliaHit>({ requests: [baseRequest] });
+          responses = fallback.results;
+        }
         if (cancelled) return;
-        const hits = (responses[0] && 'hits' in responses[0] ? responses[0].hits : []) as AlgoliaHit[];
+        const hits = (responses?.[0] && 'hits' in responses[0] ? responses[0].hits : []) as AlgoliaHit[];
+        const countsResponse = responses?.[1] as { facets?: { product?: Record<string, number> }; nbHits?: number } | undefined;
         setResults(hits);
+        setProductCounts(countsResponse?.facets?.product ?? {});
+        setTotalCount(countsResponse?.nbHits ?? null);
         setActive(0);
       } finally {
         if (!cancelled) setLoading(false);
@@ -196,7 +277,7 @@ export default function SearchModal({
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, [query, client, indexName]);
+  }, [query, product, client, indexName]);
 
   useEffect(() => {
     listRef.current?.querySelector<HTMLElement>('[data-active="true"]')?.scrollIntoView({ block: 'nearest' });
@@ -258,6 +339,29 @@ export default function SearchModal({
           <button type="button" className={styles.close} onClick={onClose} aria-label="Close search">
             Esc
           </button>
+        </div>
+
+        <div className={styles.tabs} role="tablist" aria-label="Filter by product">
+          {PRODUCTS.map((p) => {
+            const count = p.key === 'all' ? totalCount : productCounts[p.key];
+            return (
+              <button
+                key={p.key}
+                type="button"
+                role="tab"
+                aria-selected={product === p.key}
+                className={styles.tab}
+                data-active={product === p.key}
+                onClick={() => setProduct(p.key)}>
+                {p.label}
+                {/* Omitted (not "(0)") when there's no query yet, or the
+                    counts request fell back to unfiltered-with-no-counts
+                    (see this file's own docstring) -- a missing number
+                    reads as "not computed", not "zero results". */}
+                {typeof count === 'number' && <span className={styles.tabCount}>{count}</span>}
+              </button>
+            );
+          })}
         </div>
 
         {hasQuery && (
