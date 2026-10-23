@@ -17,18 +17,29 @@
  * consistently -- the matched location (a specific heading, or a
  * content snippet) renders underneath as the path/detail line.
  *
- * Grouping and the product tabs both key off a `product` facet
- * (`saas` | `integrator` | `connectors` | `agent-builder`, see PRODUCTS
- * below) the crawler's recordExtractor stamps on every record from its
- * URL. `version` is a second facet, wso2-integrator-specific (the only
- * versioned product) -- `next` for unreleased docs, an explicit X.Y.Z
- * for an older pinned release, `current` for the default/latest release
- * served at the bare path. Search always filters to `version:current`,
- * with no UI to see other versions yet -- otherwise the same page shows
- * up once per version it exists at, which reads as "the same result
- * over and over" rather than the near-duplicates they actually are
- * (confirmed the hard way: `distinct`/`attributeForDistinct: url`
- * doesn't help here, since each version is a genuinely different URL).
+ * The product tabs key off a `product` facet (`saas` | `integrator` |
+ * `connectors` | `agent-builder`, see PRODUCTS below) the crawler's
+ * recordExtractor stamps on every record from its URL. `version` is a
+ * second facet, wso2-integrator-specific (the only versioned product)
+ * -- `next` for unreleased docs, an explicit X.Y.Z for an older pinned
+ * release, `current` for the default/latest release served at the bare
+ * path. Search always filters to `version:current`, with no UI to see
+ * other versions yet -- otherwise the same page shows up once per
+ * version it exists at, which reads as "the same result over and over"
+ * rather than the near-duplicates they actually are (confirmed the hard
+ * way: `distinct`/`attributeForDistinct: url` doesn't help here, since
+ * each version is a genuinely different URL).
+ *
+ * Result grouping, unlike the tabs, does NOT use the `product` facet --
+ * it groups by sidebar section instead (see hitSection's own docstring),
+ * matching the old local-search-based SearchModal's own grouping, which
+ * this rewrite initially dropped (grouping by product instead) before
+ * that turned out to be a real regression: once a product tab narrows
+ * results to one product, every group would share the same header,
+ * making the grouping pointless. The crawler has no equivalent to
+ * Docusaurus's own sidebar category tree (it only sees a page's own
+ * heading structure), so the section is derived from the hit's own URL
+ * client-side instead, with no crawler involvement at all.
  *
  * Both facets need to exist in the index's own attributesForFaceting
  * setting (Algolia dashboard, not this file) for any of this to work --
@@ -37,7 +48,7 @@
  * the hard way too. See the `console.warn` below for the fallback this
  * degrades to when that's not (yet) the case.
  */
-import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useHistory } from '@docusaurus/router';
@@ -47,7 +58,17 @@ import { liteClient as algoliasearch } from 'algoliasearch/lite';
 
 import styles from './SearchModal.module.css';
 
-const RESULT_LIMIT = 20;
+// Raised from 20: at 20, one heavily-matched section (e.g. "Observe" for
+// a monitoring-tool query) could fill the entire fetched set, pushing
+// every other relevant section out of the results entirely -- not just
+// off-screen, genuinely never fetched. GROUP_PREVIEW_LIMIT below keeps
+// the initial render just as compact despite fetching more.
+const RESULT_LIMIT = 50;
+// Each sidebar-section group shows at most this many hits up front, with
+// a "Show more" button revealing the rest of that group's already-fetched
+// hits -- so the first screenful represents every matching section
+// instead of one section's results crowding the others out entirely.
+const GROUP_PREVIEW_LIMIT = 4;
 const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
 /** `key: 'all'` applies no facet filter; every other key maps straight
@@ -113,17 +134,35 @@ type ResultGroup = { category: string; results: AlgoliaHit[] };
 
 const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(PRODUCTS.filter((p) => p.key !== 'all').map((p) => [p.key, p.label]));
 
-/** Groups by the `product` facet (falling back to hierarchy.lvl0, then
- * a generic label, for a hit that has neither -- see this file's own
- * docstring for why that's the current reality for every hit) while
- * preserving each hit's original rank (first appearance order) --
- * Algolia's own relevance ordering stays intact within and across
- * groups. */
-function groupResults(hits: AlgoliaHit[]): ResultGroup[] {
+/** Derives the sidebar section a hit belongs to from its own URL -- the
+ * path segment right after the product (and, for wso2-integrator, after
+ * an optional version prefix) -- e.g. ".../integrator/develop-and-test/..."
+ * -> "develop and test". Mirrors the crawler's own product/version
+ * URL-parsing (see sharedAlgoliaSearch's docstring in themeConfig.ts),
+ * done here client-side instead since there's no crawler-side
+ * equivalent: the crawler only sees a page's own heading structure, not
+ * Docusaurus's sidebar category tree, which is what the old
+ * local-search-based grouping actually used (see this file's own
+ * docstring for the full "why did grouping change" explanation). */
+function hitSection(hit: AlgoliaHit): string {
+  const match = hit.url.match(/^https?:\/\/[^/]+\/integration-platform\/docs\/[^/]+\/(?:(?:next|\d+\.\d+\.\d+)\/)?([^/]+)/);
+  const slug = match?.[1];
+  return slug ? slug.replace(/-/g, ' ') : 'Overview';
+}
+
+/** Groups by hitSection (see its own docstring), qualified by product
+ * label when results span more than one product (the "All products"
+ * tab) -- otherwise, say, "Guides" from two different products would
+ * silently merge into one group. Preserves each hit's original rank
+ * (first appearance order) -- Algolia's own relevance ordering stays
+ * intact within and across groups. */
+function groupResults(hits: AlgoliaHit[], disambiguateByProduct: boolean): ResultGroup[] {
   const order: string[] = [];
   const byCategory = new Map<string, AlgoliaHit[]>();
   for (const hit of hits) {
-    const cat = (hit.product && PRODUCT_LABELS[hit.product]) || hit.hierarchy.lvl0 || 'Results';
+    const section = hitSection(hit);
+    const productLabel = hit.product && PRODUCT_LABELS[hit.product];
+    const cat = disambiguateByProduct && productLabel ? `${productLabel} · ${section}` : section;
     if (!byCategory.has(cat)) {
       byCategory.set(cat, []);
       order.push(cat);
@@ -181,8 +220,40 @@ export default function SearchModal({
   const [results, setResults] = useState<AlgoliaHit[]>([]);
   const [productCounts, setProductCounts] = useState<Record<string, number>>({});
   const [totalCount, setTotalCount] = useState<number | null>(null);
+  /** The *true* match count for the current query + active filters (not
+   * capped at RESULT_LIMIT, unlike `results.length`) -- lets the UI say
+   * "Showing 20 of 54" instead of silently truncating with no
+   * indication there's more than what's displayed. */
+  const [filteredTotal, setFilteredTotal] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
+  /** Group categories (see groupResults) the user has clicked "Show
+   * more" on -- reset per query/product change below, so expanding one
+   * group for "icp" doesn't carry over and surprise-expand a
+   * same-named group for the next search. */
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
+
+  const open = useCallback(
+    (hit: AlgoliaHit) => {
+      history.push(hit.url.replace(/^https?:\/\/[^/]+/, ''));
+      onClose();
+    },
+    [history, onClose],
+  );
+
+  // Recomputed here (not inline in the JSX below) so the keyboard-nav
+  // effect and the render can both work off the same grouping/expand
+  // state -- `visibleResults` specifically exists so `active` indexes
+  // into what's actually ON SCREEN. Indexing into the full `results`
+  // array instead would let ArrowDown move `active` past a collapsed
+  // group's GROUP_PREVIEW_LIMIT cutoff, highlighting a hit hidden behind
+  // its own "Show more" button -- nothing visibly selected, arrow keys
+  // apparently doing nothing.
+  const grouped = useMemo(() => groupResults(results, product === 'all'), [results, product]);
+  const visibleResults = useMemo(
+    () => grouped.flatMap((g) => (expandedGroups.has(g.category) ? g.results : g.results.slice(0, GROUP_PREVIEW_LIMIT))),
+    [grouped, expandedGroups],
+  );
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -193,13 +264,32 @@ export default function SearchModal({
     };
   }, []);
 
+  // Document-level, not scoped to the input's own onKeyDown -- clicking
+  // a product pill (a <button>) moves keyboard focus there, and an
+  // input-scoped handler would stop receiving these keys entirely once
+  // that happens (confirmed: that's exactly what broke arrow/Enter nav
+  // here before this). Escape already worked for this same reason;
+  // ArrowUp/ArrowDown/Enter now share the same document listener so all
+  // four behave consistently regardless of which element currently has
+  // focus, matching a command-palette's usual keyboard model.
   useEffect(() => {
     const onKey = (e: globalThis.KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        onClose();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActive((a) => Math.min(a + 1, visibleResults.length - 1));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActive((a) => Math.max(a - 1, 0));
+      } else if (e.key === 'Enter' && visibleResults[active]) {
+        e.preventDefault();
+        open(visibleResults[active]);
+      }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [onClose]);
+  }, [onClose, visibleResults, active, open]);
 
   useEffect(() => {
     const q = query.trim();
@@ -207,6 +297,8 @@ export default function SearchModal({
       setResults([]);
       setProductCounts({});
       setTotalCount(null);
+      setFilteredTotal(null);
+      setExpandedGroups(new Set());
       setLoading(false);
       return undefined;
     }
@@ -219,6 +311,18 @@ export default function SearchModal({
         hitsPerPage: RESULT_LIMIT,
         attributesToSnippet: ['content:20'],
         attributesToHighlight: ['hierarchy', 'content'],
+        // Raises the index's own defaults (minWordSizefor1Typo: 3,
+        // minWordSizefor2Typos: 7 -- see the crawler config) specifically
+        // for this product's docs, which lean on short, acronym-heavy
+        // technical terms (ICP, MCP, API, AI). At the default threshold,
+        // a 3-letter query like "icp" is already eligible for 1-typo
+        // fuzzy matching, which surfaced unrelated pages whose text was
+        // one character off -- not a real mention of "ICP" at all,
+        // confirmed by checking the actual matched snippet. Per-query
+        // override, not an index setting, so it only affects requests
+        // from this file.
+        minWordSizefor1Typo: 5,
+        minWordSizefor2Typos: 9,
       };
       // Always excludes non-current versions (wso2-integrator's `next`
       // and older pinned releases), regardless of which product tab is
@@ -232,7 +336,15 @@ export default function SearchModal({
       // count (shown on its pill). Always unfiltered by `product`
       // regardless of which tab is selected, so switching tabs doesn't
       // change the OTHER pills' counts.
-      const countsRequest = { indexName, query: q, hitsPerPage: 0, facets: ['product'], facetFilters: ['version:current'] };
+      const countsRequest = {
+        indexName,
+        query: q,
+        hitsPerPage: 0,
+        facets: ['product'],
+        facetFilters: ['version:current'],
+        minWordSizefor1Typo: 5,
+        minWordSizefor2Typos: 9,
+      };
       try {
         let responses;
         try {
@@ -263,11 +375,14 @@ export default function SearchModal({
           responses = fallback.results;
         }
         if (cancelled) return;
-        const hits = (responses?.[0] && 'hits' in responses[0] ? responses[0].hits : []) as AlgoliaHit[];
+        const mainResponse = responses?.[0] as { hits?: AlgoliaHit[]; nbHits?: number } | undefined;
+        const hits = mainResponse?.hits ?? [];
         const countsResponse = responses?.[1] as { facets?: { product?: Record<string, number> }; nbHits?: number } | undefined;
         setResults(hits);
         setProductCounts(countsResponse?.facets?.product ?? {});
         setTotalCount(countsResponse?.nbHits ?? null);
+        setFilteredTotal(mainResponse?.nbHits ?? null);
+        setExpandedGroups(new Set());
         setActive(0);
       } finally {
         if (!cancelled) setLoading(false);
@@ -281,28 +396,7 @@ export default function SearchModal({
 
   useEffect(() => {
     listRef.current?.querySelector<HTMLElement>('[data-active="true"]')?.scrollIntoView({ block: 'nearest' });
-  }, [active, results]);
-
-  const open = useCallback(
-    (hit: AlgoliaHit) => {
-      history.push(hit.url.replace(/^https?:\/\/[^/]+/, ''));
-      onClose();
-    },
-    [history, onClose],
-  );
-
-  const onInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActive((a) => Math.min(a + 1, results.length - 1));
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActive((a) => Math.max(a - 1, 0));
-    } else if (e.key === 'Enter' && results[active]) {
-      e.preventDefault();
-      open(results[active]);
-    }
-  };
+  }, [active, visibleResults]);
 
   const placeholder = translate({ id: 'wso2.search.placeholder', message: 'Search documentation' });
   const hasQuery = query.trim().length > 0;
@@ -323,7 +417,6 @@ export default function SearchModal({
             autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={onInputKeyDown}
           />
           {hasQuery && (
             <button
@@ -368,48 +461,77 @@ export default function SearchModal({
           <div className={styles.body}>
             {results.length > 0 ? (
               <ul ref={listRef} className={styles.results}>
-                {groupResults(results).map((group) => (
-                  <li key={group.category} className={styles.group}>
-                    <span className={styles.groupHeader}>
-                      {group.category}
-                      <span className={styles.groupCount}>
-                        {group.results.length} {group.results.length === 1 ? 'result' : 'results'}
+                {grouped.map((group) => {
+                  const isExpanded = expandedGroups.has(group.category);
+                  const shown = isExpanded ? group.results : group.results.slice(0, GROUP_PREVIEW_LIMIT);
+                  const remaining = group.results.length - shown.length;
+                  return (
+                    <li key={group.category} className={styles.group}>
+                      <span className={styles.groupHeader}>
+                        {group.category}
+                        <span className={styles.groupCount}>
+                          {group.results.length} {group.results.length === 1 ? 'result' : 'results'}
+                        </span>
                       </span>
-                    </span>
-                    <ul className={styles.groupList}>
-                      {group.results.map((hit) => {
-                        const i = results.indexOf(hit);
-                        const detail = hitDetailHtml(hit);
-                        const path = hitPath(hit);
-                        return (
-                          <li key={hit.objectID}>
-                            <Link
-                              to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
-                              className={styles.hit}
-                              data-active={i === active}
-                              onMouseMove={() => setActive(i)}
-                              onClick={onClose}>
-                              <span className={styles.hitIcon}>
-                                <HitIcon heading={hit.type !== 'content'} />
-                              </span>
-                              <span className={styles.hitText}>
-                                <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(hit) }} />
-                                {detail && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: detail }} />}
-                                {!detail && path && <span className={styles.hitPath}>{path}</span>}
-                              </span>
-                              <span className={styles.hitOpen} aria-hidden="true">
-                                Open <kbd>↵</kbd>
-                              </span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </li>
-                ))}
+                      <ul className={styles.groupList}>
+                        {shown.map((hit) => {
+                          const i = visibleResults.indexOf(hit);
+                          const detail = hitDetailHtml(hit);
+                          const path = hitPath(hit);
+                          return (
+                            <li key={hit.objectID}>
+                              <Link
+                                to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
+                                className={styles.hit}
+                                data-active={i === active}
+                                onMouseMove={() => setActive(i)}
+                                onClick={onClose}>
+                                <span className={styles.hitIcon}>
+                                  <HitIcon heading={hit.type !== 'content'} />
+                                </span>
+                                <span className={styles.hitText}>
+                                  <span className={styles.hitTitle} dangerouslySetInnerHTML={{ __html: hitTitleHtml(hit) }} />
+                                  {detail && <span className={styles.hitPath} dangerouslySetInnerHTML={{ __html: detail }} />}
+                                  {!detail && path && <span className={styles.hitPath}>{path}</span>}
+                                </span>
+                                <span className={styles.hitOpen} aria-hidden="true">
+                                  Open <kbd>↵</kbd>
+                                </span>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {remaining > 0 && (
+                        <button
+                          type="button"
+                          className={styles.showMore}
+                          onClick={() =>
+                            setExpandedGroups((prev) => {
+                              const next = new Set(prev);
+                              next.add(group.category);
+                              return next;
+                            })
+                          }>
+                          Show {remaining} more
+                        </button>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p className={styles.empty}>{loading ? 'Searching…' : `No results for “${query.trim()}”`}</p>
+            )}
+            {/* filteredTotal is the TRUE match count (uncapped, from
+                Algolia's own nbHits), while results.length never
+                exceeds RESULT_LIMIT -- without this, hitting that cap
+                looks like results silently stopped rather than "there's
+                more, narrow your search to see it". */}
+            {filteredTotal !== null && filteredTotal > results.length && (
+              <p className={styles.resultsTruncated}>
+                Showing {results.length} of {filteredTotal} results -- refine your search to narrow it down.
+              </p>
             )}
           </div>
         )}

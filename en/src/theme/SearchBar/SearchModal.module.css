@@ -232,6 +232,39 @@
   list-style: none;
 }
 
+/* Per-group "show more" -- only appears once a group's results exceed
+   GROUP_PREVIEW_LIMIT (SearchModal.tsx), so no single matching section
+   can crowd every other section out of the initial view. */
+.showMore {
+  display: block;
+  width: calc(100% - 12px);
+  margin: 2px 6px 6px;
+  padding: 7px 0;
+  border: 1px dashed #DADAE0;
+  border-radius: 9px;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #8A3A08;
+  cursor: pointer;
+  text-align: center;
+}
+
+.showMore:hover {
+  border-color: #C94F0A;
+  background: #FFF6EF;
+}
+
+[data-theme='dark'] .showMore {
+  border-color: #4A423D;
+  color: #F5A06A;
+}
+
+[data-theme='dark'] .showMore:hover {
+  border-color: #F5A06A;
+  background: rgba(226, 86, 11, 0.12);
+}
+
 .hit {
   display: flex;
   align-items: flex-start;
@@ -358,6 +391,14 @@
   padding: 1.5rem 0.75rem;
   text-align: center;
   font-size: 0.9rem;
+  color: var(--wso2-text-muted);
+}
+
+.resultsTruncated {
+  margin: 4px 4px 2px;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 12.5px;
   color: var(--wso2-text-muted);
 }
 
