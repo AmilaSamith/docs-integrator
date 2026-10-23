@@ -27,6 +27,7 @@ import TOC from '@theme-original/TOC';
 import ConnectorCatalogFilters from '@site/src/components/ConnectorCatalog/Filters';
 import { openAIAssistant } from '@site/src/components/AIAssistantSidePanel/Launcher';
 import DocFeedback from '@site/src/components/DocFeedback';
+import CopyPageButton from '@site/src/theme/Navbar/CopyPageButton';
 
 import styles from './styles.module.css';
 
@@ -67,15 +68,26 @@ export default function TOCWrapper(props: Props): ReactNode {
     return <ConnectorCatalogFilters />;
   }
 
+  // "Edit this page" + "Copy page" sit at the top of this column whenever
+  // it renders (theme/DocItem/Layout drops them from the breadcrumb row
+  // in that case, so there's only ever one #wso2-edit-page-slot). They
+  // live outside .tocScroll -- that box scrolls, which would clip the
+  // Copy page dropdown menu opening below the button.
   return (
     <div className={styles.tocWrapper}>
-      <div className={styles.tocTitle}>On this page</div>
-      <TOC {...props} />
-      <StuckOnAStep />
-      {/* Last item in the column -- "Edit this page" already has its own
-          button next to the breadcrumb (theme/EditThisPage), so this box
-          is just Yes/No + "Report an issue", not a second edit link. */}
-      <DocFeedback />
+      <div className={styles.tocActions}>
+        <div id="wso2-edit-page-slot" />
+        <CopyPageButton />
+      </div>
+      <div className={styles.tocScroll}>
+        <div className={styles.tocTitle}>On this page</div>
+        <TOC {...props} />
+        <StuckOnAStep />
+        {/* Last item in the column -- "Edit this page" already has its
+            own button above (theme/EditThisPage), so this box is just
+            Yes/No + "Report an issue", not a second edit link. */}
+        <DocFeedback />
+      </div>
     </div>
   );
 }

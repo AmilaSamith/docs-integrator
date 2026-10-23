@@ -47,8 +47,19 @@ function EditIcon(): ReactNode {
 export default function EditThisPage({ editUrl }: Props): ReactNode {
   const [slot, setSlot] = useState<HTMLElement | null>(null);
 
+  // The slot moves between the breadcrumb row and the top of the desktop
+  // TOC column when the layout switches between mobile and desktop widths
+  // (see theme/DocItem/Layout's `actionsInToc`) -- e.g. a tablet rotating.
+  // Watch the DOM and follow the slot whenever it's replaced; a one-time
+  // lookup leaves the link in the old, removed node, and keying off
+  // useWindowSize() wasn't enough either (it can update before the layout
+  // has moved the slot).
   useEffect(() => {
-    setSlot(document.getElementById('wso2-edit-page-slot'));
+    const find = () => setSlot(document.getElementById('wso2-edit-page-slot'));
+    find();
+    const observer = new MutationObserver(find);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, []);
 
   if (!slot) {
