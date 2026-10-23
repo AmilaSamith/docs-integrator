@@ -37,41 +37,31 @@
   margin: 0 0.0625rem;
   padding: 0;
   border-radius: 50%;
-  background-position: center !important;
-  color: var(--ifm-navbar-search-input-placeholder-color) !important;
+  background: transparent;
+  color: var(--ifm-navbar-link-color) !important;
   text-decoration: none !important;
   border: 0;
   appearance: none;
   cursor: pointer;
+}
+
+/* Docusaurus's own search icon (Infima's --ifm-navbar-search-input-icon),
+   drawn as a mask instead of the stock background image. An SVG in a CSS
+   background can't pick up the page's text colour -- its fill="currentColor"
+   always resolves to black there, so the icon nearly vanished in dark
+   mode. As a mask, the shape is painted with `currentColor`, the same
+   --ifm-navbar-link-color as the GitHub and color-mode icons beside it. */
+.trigger::before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: var(--ifm-navbar-search-input-icon) no-repeat center / contain;
+  mask: var(--ifm-navbar-search-input-icon) no-repeat center / contain;
 }
 
 .trigger:hover {
   background-color: var(--ifm-color-emphasis-200);
-  color: var(--ifm-navbar-search-input-placeholder-color) !important;
+  color: var(--ifm-navbar-link-color) !important;
   text-decoration: none !important;
-}
-
-/* Wide form (1800px+): an input-shaped button carrying the placeholder
-   text. Keeps Infima's own `.navbar__search-input` look (icon drawn as a
-   left background image, pill radius, tinted fill) -- only what a button
-   needs on top: no border, left-aligned muted text, pointer cursor. */
-:global(.navbar__search-input).triggerWide {
-  display: flex;
-  align-items: center;
-  width: 14rem;
-  height: 2.25rem;
-  margin: 0 0.25rem;
-  border: 0;
-  appearance: none;
-  text-align: left;
-  color: var(--ifm-navbar-search-input-placeholder-color);
-  cursor: pointer;
-}
-
-.triggerText {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 0.875rem;
-  color: var(--wso2-text-muted);
 }

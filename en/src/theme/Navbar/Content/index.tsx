@@ -10,11 +10,13 @@
  *                  theme/Navbar/index.tsx)
  *   center zone -- the `position: 'left'` items in docusaurus.config.ts
  *                  (today: Learn Hub, Community, Contribute, FAQ)
- *   right zone  -- color-mode toggle, then the `position: 'right'` items in
- *                  config order (today: GitHub, Download). No search box:
- *                  the design has none in the header (the landing page has
- *                  its own hero search). Keep new right-side items appended
- *                  to the config array to preserve this order.
+ *   right zone  -- after the vertical rule: the search icon (theme/SearchBar,
+ *                  which owns the search dialog and the Ctrl/Cmd+K
+ *                  shortcut), the color-mode toggle, then the
+ *                  `position: 'right'` items in
+ *                  config order (today: GitHub, Download). Keep new
+ *                  right-side items appended to the config array to
+ *                  preserve this order.
  *
  * Layout (styles.module.css): only the logo zone grows, so the links sit
  * right next to the right zone, which is set off by a vertical rule --
@@ -35,6 +37,7 @@ import NavbarItem, { type Props as NavbarItemConfig } from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
+import SearchBar from '@theme/SearchBar';
 import SidebarProductHeader from '@site/src/components/SidebarProductHeader';
 
 import styles from './styles.module.css';
@@ -112,6 +115,7 @@ export default function NavbarContent(): ReactNode {
       center={<NavbarItems items={leftItems} />}
       right={
         <>
+          <SearchBar />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={rightItems} />
         </>
