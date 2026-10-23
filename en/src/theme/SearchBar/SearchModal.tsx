@@ -408,7 +408,19 @@ export default function SearchModal({
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         setActive((a) => Math.max(a - 1, 0));
-      } else if (e.key === 'Enter' && visibleResults[active]) {
+      } else if (
+        e.key === 'Enter' &&
+        visibleResults[active] &&
+        // Only when focus is on the input or a product tab -- the two
+        // places Enter is meant to jump to the active result. Taking
+        // over Enter unconditionally would also fire while focus is on
+        // "Show more" (which should expand its group, not navigate
+        // away), Clear/Esc (whose own Enter-activation this would
+        // cancel via preventDefault), or a tabbed-to result Link (whose
+        // own href this might not even match, since `active` follows
+        // mouse hover, not DOM focus).
+        (e.target === inputRef.current || (e.target as HTMLElement | null)?.getAttribute('role') === 'tab')
+      ) {
         e.preventDefault();
         open(visibleResults[active]);
       }
@@ -518,6 +530,21 @@ export default function SearchModal({
         setFilteredTotal(mainResponse?.nbHits ?? null);
         setExpandedGroups(new Set());
         setActive(0);
+      } catch (err) {
+        // Covers the fallback request itself failing (e.g. a genuine
+        // network/outage error, not just the facet-misconfiguration
+        // case above, which already recovers on its own) -- without
+        // this, results/counts silently kept their PREVIOUS query's
+        // values, showing stale hits under the new query with nothing
+        // telling the user the search actually failed.
+        if (cancelled) return;
+        if (typeof console !== 'undefined') {
+          console.warn('[search] Algolia request failed', err);
+        }
+        setResults([]);
+        setProductCounts({});
+        setTotalCount(null);
+        setFilteredTotal(null);
       } finally {
         if (!cancelled) setLoading(false);
       }
