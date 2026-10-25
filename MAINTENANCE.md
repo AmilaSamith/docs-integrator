@@ -62,9 +62,7 @@ branch — but only via automation, never by hand:
   `ExploreDropdown`, the shared component library (`PaletteCard`/`PaletteIcon`,
   `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `AIAssistantSidePanel`, `ArtifactPicker`,
   `QuickstartHeader`/`Prerequisites`/`Steps` (globally registered on every doc via
-  the shared `theme/MDXComponents`), `DocFeedback` (rendered by the shared `theme/TOC`),
-  `CookieConsent` (mounted by the shared `theme/Root.js`, reopened from the shared
-  `theme/Footer`)),
+  the shared `theme/MDXComponents`), `DocFeedback` (rendered by the shared `theme/TOC`)),
   ConnectorCatalog's styling/filtering (not its own `index.tsx`, which stays
   per-branch), the markdown-export plugin) and governance docs (this file,
   `CONTRIBUTING.md`, `HOW_TO_WRITE_A_GUIDE.md`, `UI_UX_GUIDELINES.md`,
@@ -183,6 +181,7 @@ workflow against an older tag.
 | This file's branch table, and `CONTRIBUTING.md`'s branch table + Section Ownership | Add the row |
 | `.github/workflows/shared-content-guard.yaml` | Add if the product will also consume synced shared content from `wso2-integrator` |
 | Versioning | If the new product needs release-versioned docs (most self-hosted/on-prem products do; SaaS-style continuously-deployed ones usually don't) -- set it up the same way `wso2-integrator` already is: mark it `Yes` in this file's and `CONTRIBUTING.md`'s branch tables, then once there's a real first release, run `npm run docusaurus docs:version X.Y.Z` (from `en/`) to freeze `docs/` into `versioned_docs/version-X.Y.Z/` + `versioned_sidebars/` and generate `versions.json` -- see "I'm cutting a new wso2-integrator release version" in `CONTRIBUTING.md` for the full step-by-step. The version pill above the sidebar and the `/versions` page pick this up automatically once `versions.json` exists, no further theme/config changes needed. |
+| Versioning + Choreo build | If the branch also builds on Choreo (`build:choreo` script) and the docs are versioned (per the row above): gate the build to only `current` for the Choreo staging preview, so it doesn't build every version there. In `docusaurus.config.ts`'s `docs` block, set `lastVersion: process.env.CHOREO_BUILD === 'true' ? 'current' : '<real lastVersion>'` and `onlyIncludeVersions: process.env.CHOREO_BUILD === 'true' ? ['current'] : undefined`, then set `CHOREO_BUILD=true` in `package.json`'s `build:choreo` script. The real production/GitHub Pages pipeline (`staging_sync.yaml`, `promote_to_production.yaml`) runs plain `npm run build`, never sets `CHOREO_BUILD`, and keeps building every version as usual. Only applicable once the branch's docs are actually versioned -- not needed before that. |
 
 `sync-theme.yaml`'s own header comment already anticipated this exact
 addition (*"e.g. wso2-agent-builder once un-parked"*) — this checklist

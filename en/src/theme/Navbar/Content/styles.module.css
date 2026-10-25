@@ -1,14 +1,8 @@
-/*
-Hide color mode toggle in small viewports
- */
+/* Shown at every width, mobile included, next to the search icon -- the
+   stock theme hides it below 996px and leaves it only in the hamburger
+   drawer's header. */
 .colorModeToggle {
   flex-shrink: 0;
-}
-
-@media (max-width: 996px) {
-  .colorModeToggle {
-    display: none;
-  }
 }
 
 /* Desktop layout (matches the landing-page header mockup): logo +
@@ -83,6 +77,25 @@ Hide color mode toggle in small viewports
   font-size: 17px;
   font-weight: 700;
   color: var(--wso2-heading-color);
+}
+
+/* Narrow phones: menu button + logo + "Docs" + the search and color-mode
+   icons don't fit at full size below ~410px (the icons overlapped
+   "Docs"). Scale the logo and label down a little instead of hiding
+   anything. */
+@media (max-width: 420px) {
+  .logoZone :global(.navbar__brand) {
+    margin-right: 0.5rem;
+  }
+
+  .logoZone :global(.navbar__logo),
+  .logoZone :global(.navbar__logo) img {
+    height: 28px;
+  }
+
+  .docsLabel {
+    font-size: 15px;
+  }
 }
 
 /* Product + version segment after the logo (single-header layout). No

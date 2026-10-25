@@ -214,6 +214,19 @@ A maintainer task, not a typical content PR:
 3. The version pill above the sidebar and the `/versions` page pick up
    the new entry automatically — no further config needed.
 
+## Site search
+
+Search (`en/src/theme/SearchBar/SearchModal.tsx`) is Algolia, crawled
+across every product from one index (`en/src/theme-shared/themeConfig.ts`'s
+`sharedAlgoliaSearch`) — not run or configured from this repo. Product
+filtering, version deduplication, and the per-product result counts all
+depend on `product`/`version` being declared in the index's own
+**Configuration → Facets** (Algolia dashboard); a crawler re-run alone
+doesn't apply a newly-added facet to an index that already existed.
+That dashboard access, and the crawler's own `recordExtractor` config,
+are held outside this repo — ask in the team's usual DevRel channel if
+search filtering/counts stop working and you don't have access.
+
 ## Reviews and checks
 
 - **Fill in the PR template** (`pull_request_template.md`) — at least
