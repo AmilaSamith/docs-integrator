@@ -1,59 +1,16 @@
 /**
- * Command-palette style search dialog opened by the navbar's search icon:
- * a blurred backdrop, one input (search icon + "Search documentation"
- * placeholder, no title), live results, and a keyboard-hint footer.
+ * Command-palette search dialog (navbar icon). Queries Algolia directly
+ * (see sharedAlgoliaSearch in themeConfig.ts) -- one index across every
+ * product instead of each build's own local search.
  *
- * Queries Algolia directly (via themeConfig.algolia -- see
- * sharedAlgoliaSearch's own docstring in themeConfig.ts for why this
- * replaced @easyops-cn/docusaurus-search-local: one index crawled across
- * every product, instead of each product's build only ever seeing its
- * own pages). Unlike the local-search worker this replaced, Algolia's
- * API works identically in `docusaurus start` and a production build --
- * no more dev-only "search doesn't work here" notice.
+ * Hit titles are always the page's own h1; the matched heading/snippet
+ * shows as a detail line underneath. Results group by sidebar section,
+ * then by page within each section (groupByPage), so repeat headings on
+ * one page don't repeat that page's title.
  *
- * Each hit's title is always its page's own h1 (`hierarchy.lvl1`, set by
- * the crawler's recordExtractor) regardless of which heading/paragraph
- * on that page actually matched, so results read as "which page",
- * consistently -- the matched location (a specific heading, or a
- * content snippet) renders underneath as the path/detail line.
- *
- * The product tabs key off a `product` facet (`saas` | `integrator` |
- * `connectors` | `agent-builder`, see PRODUCTS below) the crawler's
- * recordExtractor stamps on every record from its URL. `version` is a
- * second facet, wso2-integrator-specific (the only versioned product)
- * -- `next` for unreleased docs, an explicit X.Y.Z for an older pinned
- * release, `current` for the default/latest release served at the bare
- * path. Search always filters to `version:current`, with no UI to see
- * other versions yet -- otherwise the same page shows up once per
- * version it exists at, which reads as "the same result over and over"
- * rather than the near-duplicates they actually are (confirmed the hard
- * way: `distinct`/`attributeForDistinct: url` doesn't help here, since
- * each version is a genuinely different URL).
- *
- * Result grouping, unlike the tabs, does NOT use the `product` facet --
- * it groups by sidebar section instead (see hitSection's own docstring),
- * matching the old local-search-based SearchModal's own grouping, which
- * this rewrite initially dropped (grouping by product instead) before
- * that turned out to be a real regression: once a product tab narrows
- * results to one product, every group would share the same header,
- * making the grouping pointless. The crawler has no equivalent to
- * Docusaurus's own sidebar category tree (it only sees a page's own
- * heading structure), so the section is derived from the hit's own URL
- * client-side instead, with no crawler involvement at all.
- *
- * Both facets need to exist in the index's own attributesForFaceting
- * setting (Algolia dashboard, not this file) for any of this to work --
- * a crawler re-run alone doesn't reliably apply that to an index that
- * already existed before the facet was added to its config, confirmed
- * the hard way too. See the `console.warn` below for the fallback this
- * degrades to when that's not (yet) the case.
- *
- * Within each section, hits are nested one level further by page
- * (groupByPage): multiple headings matching on the same page collapse
- * under one page-level parent row instead of repeating that page's
- * title on every row (the docsearch-style "page > matched headings"
- * layout). See groupByPage's own docstring for how the parent hit is
- * chosen/synthesized.
+ * `product`/`version` facets must be declared in the index's own
+ * attributesForFaceting (Algolia dashboard) -- a crawler re-run alone
+ * doesn't apply that retroactively. See the console.warn fallback below.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
@@ -65,31 +22,17 @@ import { liteClient as algoliasearch } from 'algoliasearch/lite';
 
 import styles from './SearchModal.module.css';
 
-// Raised from 20: at 20, one heavily-matched section (e.g. "Observe" for
-// a monitoring-tool query) could fill the entire fetched set, pushing
-// every other relevant section out of the results entirely -- not just
-// off-screen, genuinely never fetched. GROUP_PREVIEW_LIMIT below keeps
-// the initial render just as compact despite fetching more.
+// Raised from 20 so one heavily-matched section can't crowd out every
+// other section before GROUP_PREVIEW_LIMIT gets a chance to cap it.
 const RESULT_LIMIT = 50;
-// Each sidebar-section group shows at most this many PAGES up front
-// (not raw hits -- a page with several matched headings still counts as
-// one), with a "Show more" button revealing the rest of that group's
-// already-fetched pages -- so the first screenful represents every
-// matching section instead of one section's results crowding the
-// others out entirely.
+// Pages (not raw hits) shown per section before a "Show more" button.
 const GROUP_PREVIEW_LIMIT = 4;
 const HEADING_LEVELS = ['lvl1', 'lvl2', 'lvl3', 'lvl4', 'lvl5', 'lvl6'] as const;
 
-/** `key: 'all'` applies no facet filter; every other key maps straight
- * to the `product` facet value the crawler patch assigns (see this
- * file's own docstring). Add a product here the moment it's live on a
- * real branch -- wso2-agent-builder isn't yet (see MEMORY.md's own
- * "Agent Builder not live" note), so it's deliberately left out until
- * then, not because the facet scheme couldn't support it today. When
- * it's added, its key stays `agent-builder` (must match the real URL
- * path segment the crawler derives `product` from), but its label
- * should be `'AB'`, not `'Agent Builder'` -- the other labels are full
- * words today, but that was this product's own call once it's live. */
+/** 'all' applies no facet filter; every other key maps to the `product`
+ * facet value the crawler stamps on each record. wso2-agent-builder
+ * isn't listed yet (not live -- see MEMORY.md); add it with key
+ * `agent-builder` and label `'AB'` once it is. */
 const PRODUCTS: { key: string; label: string }[] = [
   { key: 'all', label: 'All products' },
   { key: 'saas', label: 'WSO2 Cloud' },
@@ -106,20 +49,14 @@ interface AlgoliaHit {
   url: string;
   hierarchy: Partial<Record<(typeof HEADING_LEVELS)[number] | 'lvl0', string | null>>;
   type: string; // 'lvl1'..'lvl6' | 'content'
-  /** Not emitted by the crawler yet -- see this file's own docstring. */
   product?: string;
   _highlightResult?: { hierarchy?: Partial<Record<string, HighlightField>> };
   _snippetResult?: { content?: HighlightField };
 }
 
-/** Sentinel markers requested via highlightPreTag/highlightPostTag below,
- * instead of trusting whatever Algolia's own default tag is -- lets
- * renderHighlighted find exactly these two byte sequences and nothing
- * else. Control characters, not real markup or even plain-text
- * punctuation, specifically so they can't collide with (and so get
- * escaped identically to) actual indexed content -- unlike a
- * human-readable placeholder like "__hl__", which a doc could
- * legitimately contain. */
+/** Sentinel highlight markers -- control characters, so they can't
+ * collide with real indexed text -- requested via highlightPreTag/
+ * highlightPostTag below instead of trusting Algolia's own default. */
 const HL_OPEN = '\u0001';
 const HL_CLOSE = '\u0002';
 
@@ -127,33 +64,22 @@ function escapeHtml(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-/** The ONLY place a hit/page value becomes `dangerouslySetInnerHTML`
- * content. Every candidate string here -- Algolia's own
- * _highlightResult/_snippetResult values as much as the plain
- * hierarchy/url fallbacks -- is untrusted: it's indexed page content,
- * and these docs legitimately contain literal markup in prose (XML
- * payloads, HTML code samples) that must render as text, not be parsed
- * as markup. Algolia wraps matches in HL_OPEN/HL_CLOSE (requested via
- * highlightPreTag/highlightPostTag) but does NOT escape the rest of the
- * string -- so this escapes the whole value first, THEN turns only the
- * sentinel markers (which escaping leaves untouched, being control
- * characters) into real `<mark>` tags. Skipping the escape step here
- * was a real XSS hole: a crawled page containing `<img onerror=...>` as
- * literal text, matched by a search snippet, would have executed it. */
+/** The only place a hit value becomes dangerouslySetInnerHTML content.
+ * Escapes the whole string first, then turns just the HL sentinels into
+ * real `<mark>` tags -- skipping the escape step let indexed text with
+ * literal markup (e.g. an `<img onerror=...>` code sample) execute as
+ * real HTML. */
 function renderHighlighted(value: string): string {
   return escapeHtml(value).split(HL_OPEN).join('<mark>').split(HL_CLOSE).join('</mark>');
 }
 
-/** The page's own title (hierarchy.lvl1) -- always present, always the
- * result's heading, regardless of which level actually matched. */
+/** Always the page's own h1, regardless of what actually matched. */
 function hitTitleHtml(hit: AlgoliaHit): string {
   return renderHighlighted(hit._highlightResult?.hierarchy?.lvl1?.value ?? hit.hierarchy.lvl1 ?? hit.url);
 }
 
-/** What actually matched within the page: the specific heading (for a
- * heading-level hit) or a content snippet (for a body-text hit) -- null
- * when the match IS the page title itself (type === 'lvl1'), since
- * showing it twice would be redundant. */
+/** What matched: a heading or a content snippet; null for a page-title
+ * hit, where showing it again would be redundant. */
 function hitDetailHtml(hit: AlgoliaHit): string | null {
   if (hit.type === 'lvl1') return null;
   if (hit.type === 'content') {
@@ -164,8 +90,51 @@ function hitDetailHtml(hit: AlgoliaHit): string | null {
   return value ? renderHighlighted(value) : null;
 }
 
-/** Breadcrumb of intermediate heading levels between the page title and
- * whatever matched, e.g. "Develop and Test > Create an Agent". */
+/** Rewrites a hit's crawled (always production) URL onto this build's
+ * own crossProductBase, so a cross-product path resolves correctly on
+ * production, staging, or a fork preview alike. */
+function hitTargetPath(hit: AlgoliaHit, crossProductBase: string): string {
+  const rawPath = hit.url.replace(/^https?:\/\/[^/]+/, '');
+  const match = rawPath.match(/^\/integration-platform\/docs\/([^/]+)\/(.*)$/);
+  return match ? `${crossProductBase}${match[1]}/${match[2]}` : rawPath;
+}
+
+/** A normal `<Link>` (SPA nav) for a hit within this build; a real
+ * `<a>` otherwise -- a cross-product hit has no route in this build, so
+ * Docusaurus's own client-side navigation would silently 404. Same
+ * escape hatch SidebarProductHeader already uses. */
+function ResultLink({
+  target,
+  baseUrl,
+  className,
+  active,
+  onMouseMove,
+  onClick,
+  children,
+}: {
+  target: string;
+  baseUrl: string;
+  className: string;
+  active: boolean;
+  onMouseMove: () => void;
+  onClick: () => void;
+  children: ReactNode;
+}): ReactNode {
+  if (target.startsWith(baseUrl)) {
+    return (
+      <Link to={target} className={className} data-active={active} onMouseMove={onMouseMove} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={target} className={className} data-active={active} onMouseMove={onMouseMove} onClick={onClick}>
+      {children}
+    </a>
+  );
+}
+
+/** Breadcrumb of intermediate headings, e.g. "Develop and Test > Create an Agent". */
 function hitPath(hit: AlgoliaHit): string {
   const matchedLevel = hit.type === 'content' ? undefined : hit.type;
   return HEADING_LEVELS.slice(1)
@@ -175,17 +144,14 @@ function hitPath(hit: AlgoliaHit): string {
     .join(' › ');
 }
 
-/** One page's worth of hits, nested one level under a section: `headHit`
- * is what the parent row links to/displays, `children` are the other
- * matches on that same page, rendered indented underneath it. */
+/** One page's hits nested under a section: `headHit` is the parent row,
+ * `children` render indented underneath it. */
 type PageGroup = {
   url: string;
   title: string;
   headHit: AlgoliaHit;
-  /** True when no hit in this page's group was actually a page-title or
-   * page-intro match -- `headHit` was synthesized purely to carry the
-   * page's own title/link, and every real hit is a child. See
-   * groupByPage's own docstring. */
+  /** True when headHit was synthesized -- no real hit on this page was
+   * a title/intro match, so every actual hit is a child. */
   syntheticHead: boolean;
   children: AlgoliaHit[];
 };
@@ -194,28 +160,18 @@ type ResultGroup = { category: string; pages: PageGroup[] };
 
 const PRODUCT_LABELS: Record<string, string> = Object.fromEntries(PRODUCTS.filter((p) => p.key !== 'all').map((p) => [p.key, p.label]));
 
-/** Derives the sidebar section a hit belongs to from its own URL -- the
- * path segment right after the product (and, for wso2-integrator, after
- * an optional version prefix) -- e.g. ".../integrator/develop-and-test/..."
- * -> "develop and test". Mirrors the crawler's own product/version
- * URL-parsing (see sharedAlgoliaSearch's docstring in themeConfig.ts),
- * done here client-side instead since there's no crawler-side
- * equivalent: the crawler only sees a page's own heading structure, not
- * Docusaurus's sidebar category tree, which is what the old
- * local-search-based grouping actually used (see this file's own
- * docstring for the full "why did grouping change" explanation). */
+/** Sidebar section from the hit's own URL -- the crawler has no
+ * equivalent to Docusaurus's sidebar category tree to derive this from
+ * server-side. */
 function hitSection(hit: AlgoliaHit): string {
   const match = hit.url.match(/^https?:\/\/[^/]+\/integration-platform\/docs\/[^/]+\/(?:(?:next|\d+\.\d+\.\d+)\/)?([^/]+)/);
   const slug = match?.[1];
   return slug ? slug.replace(/-/g, ' ') : 'Overview';
 }
 
-/** Groups by hitSection (see its own docstring), qualified by product
- * label when results span more than one product (the "All products"
- * tab) -- otherwise, say, "Guides" from two different products would
- * silently merge into one group. Preserves each hit's original rank
- * (first appearance order) -- Algolia's own relevance ordering stays
- * intact within and across groups. */
+/** Groups by hitSection, qualified by product label when showing more
+ * than one product -- otherwise same-named sections from different
+ * products would silently merge. Preserves Algolia's own rank order. */
 function groupBySection(hits: AlgoliaHit[], disambiguateByProduct: boolean): { category: string; results: AlgoliaHit[] }[] {
   const order: string[] = [];
   const byCategory = new Map<string, AlgoliaHit[]>();
@@ -232,24 +188,12 @@ function groupBySection(hits: AlgoliaHit[], disambiguateByProduct: boolean): { c
   return order.map((category) => ({ category, results: byCategory.get(category)! }));
 }
 
-/** Nests a section's hits one level further, by page (URL with any
- * `#anchor` stripped) -- multiple headings matching on the same page
- * collapse under one parent row instead of repeating that page's title
- * on every row.
- *
- * The parent row's hit is whichever of the page's own hits represents
- * "the page itself": a literal title match (`type === 'lvl1'`), or
- * failing that its intro paragraph (`type === 'content'` with no
- * heading ancestor -- `hitPath` empty). Everything else on the page
- * becomes a child row underneath it.
- *
- * When NEITHER exists -- every match on the page is under some heading,
- * nothing matched the title or intro directly -- there's no real hit to
- * use as the parent, so one is synthesized purely to carry the page's
- * own title and link (to the bare page, not any one heading); every
- * actual hit then renders as a child, same as the explicit-head case,
- * so a single mid-page heading match isn't silently swallowed into an
- * un-labelled parent row. */
+/** Nests a section's hits by page (URL with any `#anchor` stripped), so
+ * several matched headings on one page collapse under one parent row
+ * instead of repeating that page's title. The parent hit is a title or
+ * intro-paragraph match if one exists; otherwise one is synthesized
+ * (just the page's title/link) so a single mid-page heading match isn't
+ * swallowed into an unlabeled parent. */
 function groupByPage(hits: AlgoliaHit[]): PageGroup[] {
   const order: string[] = [];
   const byUrl = new Map<string, AlgoliaHit[]>();
@@ -273,13 +217,8 @@ function groupByPage(hits: AlgoliaHit[]): PageGroup[] {
   });
 }
 
-/** A child row's title: for a heading-level hit, the matched heading
- * itself (same as hitDetailHtml); for a content/body-text hit, the
- * nearest ancestor heading above the matched text (deepest first),
- * falling back to the content snippet only when the hit has no heading
- * ancestor at all (shouldn't happen for an actual child -- a childless
- * content hit is picked as the page's own intro by groupByPage instead,
- * never left as a child). */
+/** A child row's title: the matched heading, or for a content hit, its
+ * nearest ancestor heading (falling back to the snippet). */
 function childTitleHtml(hit: AlgoliaHit): string {
   if (hit.type !== 'content') return hitDetailHtml(hit) ?? renderHighlighted(hit.hierarchy.lvl1 ?? hit.url);
   for (let i = HEADING_LEVELS.length - 1; i >= 1; i -= 1) {
@@ -319,17 +258,18 @@ export default function SearchModal({
   initialQuery = '',
 }: {
   onClose: () => void;
-  /** Pre-fills the query (e.g. from the landing page's HeroSearch, which
-   * lets someone type before the modal even opens) and runs it
-   * immediately -- same box, same results, wherever it was opened from. */
+  /** Pre-fills and runs the query immediately (e.g. from HeroSearch, so
+   * someone can type before the modal even opens). */
   initialQuery?: string;
 }): ReactNode {
   const {
-    siteConfig: { themeConfig },
+    siteConfig: { themeConfig, baseUrl, customFields },
   } = useDocusaurusContext();
   const { appId, apiKey, indexName } = (themeConfig as { algolia?: { appId: string; apiKey: string; indexName: string } }).algolia ?? {};
   const client = useMemo(() => (appId && apiKey ? algoliasearch(appId, apiKey) : null), [appId, apiKey]);
   const history = useHistory();
+  // Same source/fallback SidebarProductHeader reads this from.
+  const crossProductBase = (customFields?.crossProductBase as string) || '/integration-platform/docs/';
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -338,36 +278,33 @@ export default function SearchModal({
   const [results, setResults] = useState<AlgoliaHit[]>([]);
   const [productCounts, setProductCounts] = useState<Record<string, number>>({});
   const [totalCount, setTotalCount] = useState<number | null>(null);
-  /** The *true* match count for the current query + active filters (not
-   * capped at RESULT_LIMIT, unlike `results.length`) -- lets the UI say
-   * "Showing 20 of 54" instead of silently truncating with no
-   * indication there's more than what's displayed. */
+  /** The true match count (uncapped), unlike `results.length` which is
+   * capped at RESULT_LIMIT -- lets the UI say "Showing 20 of 54". */
   const [filteredTotal, setFilteredTotal] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(0);
-  /** Group categories (see groupResults) the user has clicked "Show
-   * more" on -- reset per query/product change below, so expanding one
-   * group for "icp" doesn't carry over and surprise-expand a
-   * same-named group for the next search. */
+  /** Group categories expanded via "Show more" -- reset per query/
+   * product change so it doesn't carry over to the next search. */
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
 
   const open = useCallback(
     (hit: AlgoliaHit) => {
-      history.push(hit.url.replace(/^https?:\/\/[^/]+/, ''));
+      const target = hitTargetPath(hit, crossProductBase);
+      // Cross-product hit: real navigation, not history.push -- see
+      // ResultLink's own docstring.
+      if (target.startsWith(baseUrl)) {
+        history.push(target);
+      } else {
+        window.location.assign(target);
+      }
       onClose();
     },
-    [history, onClose],
+    [history, onClose, baseUrl, crossProductBase],
   );
 
-  // Recomputed here (not inline in the JSX below) so the keyboard-nav
-  // effect and the render can both work off the same grouping/expand
-  // state -- `visibleResults` specifically exists so `active` indexes
-  // into what's actually ON SCREEN, both the page-parent rows and their
-  // child rows, flattened back into one list in render order. Indexing
-  // into the full `results` array instead would let ArrowDown move
-  // `active` past a collapsed group's GROUP_PREVIEW_LIMIT cutoff,
-  // highlighting a hit hidden behind its own "Show more" button --
-  // nothing visibly selected, arrow keys apparently doing nothing.
+  // visibleResults flattens only the pages actually shown (respecting
+  // "Show more"), so `active`/arrow keys never land on a hit hidden
+  // behind a collapsed group.
   const grouped = useMemo(
     () => groupBySection(results, product === 'all').map((g) => ({ category: g.category, pages: groupByPage(g.results) })),
     [results, product],
@@ -390,14 +327,8 @@ export default function SearchModal({
     };
   }, []);
 
-  // Document-level, not scoped to the input's own onKeyDown -- clicking
-  // a product pill (a <button>) moves keyboard focus there, and an
-  // input-scoped handler would stop receiving these keys entirely once
-  // that happens (confirmed: that's exactly what broke arrow/Enter nav
-  // here before this). Escape already worked for this same reason;
-  // ArrowUp/ArrowDown/Enter now share the same document listener so all
-  // four behave consistently regardless of which element currently has
-  // focus, matching a command-palette's usual keyboard model.
+  // Document-level: a focused product pill would otherwise stop
+  // receiving these keys if the handler were scoped to the input.
   useEffect(() => {
     const onKey = (e: globalThis.KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -411,14 +342,8 @@ export default function SearchModal({
       } else if (
         e.key === 'Enter' &&
         visibleResults[active] &&
-        // Only when focus is on the input or a product tab -- the two
-        // places Enter is meant to jump to the active result. Taking
-        // over Enter unconditionally would also fire while focus is on
-        // "Show more" (which should expand its group, not navigate
-        // away), Clear/Esc (whose own Enter-activation this would
-        // cancel via preventDefault), or a tabbed-to result Link (whose
-        // own href this might not even match, since `active` follows
-        // mouse hover, not DOM focus).
+        // Only from the input/tabs -- elsewhere Enter should do its own
+        // thing (expand "Show more", activate Clear/Esc).
         (e.target === inputRef.current || (e.target as HTMLElement | null)?.getAttribute('role') === 'tab')
       ) {
         e.preventDefault();
@@ -449,39 +374,20 @@ export default function SearchModal({
         hitsPerPage: RESULT_LIMIT,
         attributesToSnippet: ['content:20'],
         attributesToHighlight: ['hierarchy', 'content'],
-        // Requested explicitly rather than trusting Algolia's own default
-        // tag (reportedly `<em>`, but not relied on here) -- renderHighlighted
-        // (this file's single dangerouslySetInnerHTML sink) looks for
-        // exactly these two sentinels after escaping the rest of the
-        // string, so it needs to know precisely what Algolia will wrap
-        // a match in.
+        // Matches HL_OPEN/HL_CLOSE so renderHighlighted knows exactly
+        // what to convert.
         highlightPreTag: HL_OPEN,
         highlightPostTag: HL_CLOSE,
-        // Raises the index's own defaults (minWordSizefor1Typo: 3,
-        // minWordSizefor2Typos: 7 -- see the crawler config) specifically
-        // for this product's docs, which lean on short, acronym-heavy
-        // technical terms (ICP, MCP, API, AI). At the default threshold,
-        // a 3-letter query like "icp" is already eligible for 1-typo
-        // fuzzy matching, which surfaced unrelated pages whose text was
-        // one character off -- not a real mention of "ICP" at all,
-        // confirmed by checking the actual matched snippet. Per-query
-        // override, not an index setting, so it only affects requests
-        // from this file.
+        // Raises the index's own defaults (3/7) -- short acronyms
+        // (ICP, MCP, API) were fuzzy-matching 1-typo-off unrelated text.
         minWordSizefor1Typo: 5,
         minWordSizefor2Typos: 9,
       };
-      // Always excludes non-current versions (wso2-integrator's `next`
-      // and older pinned releases), regardless of which product tab is
-      // selected -- otherwise the same page shows up once per version,
-      // which reads as "the same result over and over" rather than
-      // the near-duplicates they actually are. No "all versions" UI
-      // yet -- see this file's own docstring if that's ever wanted.
+      // Current-version only, across every product tab -- otherwise a
+      // versioned wso2-integrator page appears once per version.
       const filters = ['version:current', ...(product !== 'all' ? [`product:${product}`] : [])];
-      // A second, parallel request -- same query and version filter, no
-      // product filter, zero hits returned -- just for each product's
-      // count (shown on its pill). Always unfiltered by `product`
-      // regardless of which tab is selected, so switching tabs doesn't
-      // change the OTHER pills' counts.
+      // Same query/version, no product filter -- just for each pill's
+      // own count, independent of which tab is selected.
       const countsRequest = {
         indexName,
         query: q,
@@ -500,23 +406,14 @@ export default function SearchModal({
         } catch {
           responses = undefined;
         }
-        // Filtering/faceting on `product`/`version` fails until both are
-        // declared in the index's own attributesForFaceting setting
-        // (Algolia dashboard -- Configuration -> Facets; NOT something a
-        // crawler re-run reliably applies to an index that already
-        // existed before the facet was added to its config, confirmed
-        // the hard way once). v5's client doesn't always throw for this
-        // -- a per-request error can come back as an object with no
-        // `hits` property instead, which silently read as "zero hits"
-        // here before this check existed, with no visible sign anything
-        // was wrong. Falls back to a fully unfiltered request (and skips
-        // counts, rather than guessing at them) so a misconfigured facet
-        // degrades to "filter/counts don't work" rather than a false
-        // "no results".
+        // product/version need attributesForFaceting set in the Algolia
+        // dashboard; a crawler re-run doesn't apply that retroactively,
+        // and v5's client doesn't always throw for a missing facet --
+        // it can come back as an object with no `hits`. Falls back to
+        // an unfiltered request (no counts) instead of a false "no
+        // results".
         if (!(responses?.[0] && 'hits' in responses[0])) {
-          if (typeof console !== 'undefined') {
-            console.warn(`[search] facetFilters/facets on "product"/"version" returned no usable response -- are both declared in the index's attributesForFaceting? Falling back to unfiltered results with no counts.`);
-          }
+          console.warn(`[search] facetFilters/facets on "product"/"version" returned no usable response -- are both declared in the index's attributesForFaceting? Falling back to unfiltered results with no counts.`);
           const fallback = await client.search<AlgoliaHit>({ requests: [baseRequest] });
           responses = fallback.results;
         }
@@ -531,16 +428,11 @@ export default function SearchModal({
         setExpandedGroups(new Set());
         setActive(0);
       } catch (err) {
-        // Covers the fallback request itself failing (e.g. a genuine
-        // network/outage error, not just the facet-misconfiguration
-        // case above, which already recovers on its own) -- without
-        // this, results/counts silently kept their PREVIOUS query's
-        // values, showing stale hits under the new query with nothing
-        // telling the user the search actually failed.
+        // The fallback request itself failing (a real outage, not the
+        // facet case above, which already recovers) -- clear results
+        // instead of leaving the previous query's stale ones on screen.
         if (cancelled) return;
-        if (typeof console !== 'undefined') {
-          console.warn('[search] Algolia request failed', err);
-        }
+        console.warn('[search] Algolia request failed', err);
         setResults([]);
         setProductCounts({});
         setTotalCount(null);
@@ -608,10 +500,7 @@ export default function SearchModal({
                 data-active={product === p.key}
                 onClick={() => setProduct(p.key)}>
                 {p.label}
-                {/* Omitted (not "(0)") when there's no query yet, or the
-                    counts request fell back to unfiltered-with-no-counts
-                    (see this file's own docstring) -- a missing number
-                    reads as "not computed", not "zero results". */}
+                {/* Omitted, not "(0)", when not yet computed. */}
                 {typeof count === 'number' && <span className={styles.tabCount}>{count}</span>}
               </button>
             );
@@ -641,10 +530,11 @@ export default function SearchModal({
                           const description = !page.syntheticHead && page.headHit.type === 'content' ? hitDetailHtml(page.headHit) : null;
                           return (
                             <li key={page.url} className={styles.page}>
-                              <Link
-                                to={page.headHit.url.replace(/^https?:\/\/[^/]+/, '')}
+                              <ResultLink
+                                target={hitTargetPath(page.headHit, crossProductBase)}
+                                baseUrl={baseUrl}
                                 className={styles.hit}
-                                data-active={headIndex === active}
+                                active={headIndex === active}
                                 onMouseMove={() => setActive(headIndex)}
                                 onClick={onClose}>
                                 <span className={styles.hitIcon}>
@@ -657,17 +547,18 @@ export default function SearchModal({
                                 <span className={styles.hitOpen} aria-hidden="true">
                                   Open <kbd>↵</kbd>
                                 </span>
-                              </Link>
+                              </ResultLink>
                               {page.children.length > 0 && (
                                 <ul className={styles.children}>
                                   {page.children.map((hit) => {
                                     const i = visibleResults.indexOf(hit);
                                     return (
                                       <li key={hit.objectID}>
-                                        <Link
-                                          to={hit.url.replace(/^https?:\/\/[^/]+/, '')}
+                                        <ResultLink
+                                          target={hitTargetPath(hit, crossProductBase)}
+                                          baseUrl={baseUrl}
                                           className={styles.childHit}
-                                          data-active={i === active}
+                                          active={i === active}
                                           onMouseMove={() => setActive(i)}
                                           onClick={onClose}>
                                           <span className={styles.childIcon}>
@@ -680,7 +571,7 @@ export default function SearchModal({
                                           <span className={styles.hitOpen} aria-hidden="true">
                                             Open <kbd>↵</kbd>
                                           </span>
-                                        </Link>
+                                        </ResultLink>
                                       </li>
                                     );
                                   })}
@@ -711,11 +602,7 @@ export default function SearchModal({
             ) : (
               <p className={styles.empty}>{loading ? 'Searching…' : `No results for “${query.trim()}”`}</p>
             )}
-            {/* filteredTotal is the TRUE match count (uncapped, from
-                Algolia's own nbHits), while results.length never
-                exceeds RESULT_LIMIT -- without this, hitting that cap
-                looks like results silently stopped rather than "there's
-                more, narrow your search to see it". */}
+            {/* True match count vs. the capped `results.length`. */}
             {filteredTotal !== null && filteredTotal > results.length && (
               <p className={styles.resultsTruncated}>
                 Showing {results.length} of {filteredTotal} results -- refine your search to narrow it down.
