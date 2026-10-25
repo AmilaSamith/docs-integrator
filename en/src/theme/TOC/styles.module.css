@@ -12,6 +12,56 @@
   position: sticky;
   top: calc(var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 1rem);
   max-height: calc(100vh - (var(--ifm-navbar-height) + var(--wso2-secondary-row-height) + 2rem));
+  display: flex;
+  flex-direction: column;
+}
+
+/* "Edit this page" + "Copy page" (see index.tsx). Not inside .tocScroll,
+   so the Copy page dropdown can open over the list below without being
+   clipped by that box's overflow. */
+.tocActions {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.4rem;
+  flex: none;
+  margin-bottom: 20px;
+}
+
+/* Keeps both buttons on one line in this narrow column: slightly less
+   side padding than in the breadcrumb row. Direct-child selectors (the
+   slot div > its <a>, the dropdown container > its trigger <button>) so
+   the Copy page menu's own item buttons, nested deeper, are untouched. */
+.tocActions > div > a,
+.tocActions > div > button {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+
+/* The column is only 200-270px wide depending on the screen, and the two
+   labelled buttons need ~250px side by side. When it's narrower than
+   that, "Edit this page" drops to its pencil icon -- the same icon-only
+   form EditThisPage already uses on narrow phones; its aria-label keeps
+   the accessible name -- so "Copy page" still fits on the same line. */
+.tocActions {
+  container-type: inline-size;
+}
+
+@container (max-width: 255px) {
+  .tocActions > div > a {
+    gap: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .tocActions > div > a > span {
+    display: none;
+  }
+}
+
+/* The scrolling part of the column: everything below the actions. */
+.tocScroll {
+  min-height: 0;
   overflow-y: auto;
 }
 
