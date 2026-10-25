@@ -62,9 +62,7 @@ branch — but only via automation, never by hand:
   `ExploreDropdown`, the shared component library (`PaletteCard`/`PaletteIcon`,
   `GuidesCatalog` + `guidesCatalogPlugin.js`, `AiAssistantPanel`, `AIAssistantSidePanel`, `ArtifactPicker`,
   `QuickstartHeader`/`Prerequisites`/`Steps` (globally registered on every doc via
-  the shared `theme/MDXComponents`), `DocFeedback` (rendered by the shared `theme/TOC`),
-  `CookieConsent` (mounted by the shared `theme/Root.js`, reopened from the shared
-  `theme/Footer`)),
+  the shared `theme/MDXComponents`), `DocFeedback` (rendered by the shared `theme/TOC`)),
   ConnectorCatalog's styling/filtering (not its own `index.tsx`, which stays
   per-branch), the markdown-export plugin) and governance docs (this file,
   `CONTRIBUTING.md`, `HOW_TO_WRITE_A_GUIDE.md`, `UI_UX_GUIDELINES.md`,
