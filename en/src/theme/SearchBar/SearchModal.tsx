@@ -273,6 +273,7 @@ export default function SearchModal({
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState(initialQuery);
   const [product, setProduct] = useState('all');
   const [results, setResults] = useState<AlgoliaHit[]>([]);
@@ -344,7 +345,7 @@ export default function SearchModal({
         visibleResults[active] &&
         // Only from the input/tabs -- elsewhere Enter should do its own
         // thing (expand "Show more", activate Clear/Esc).
-        (e.target === inputRef.current || (e.target as HTMLElement | null)?.getAttribute('role') === 'tab')
+        (e.target === inputRef.current || tabsRef.current?.contains(e.target as Node))
       ) {
         e.preventDefault();
         open(visibleResults[active]);
@@ -398,14 +399,13 @@ export default function SearchModal({
         minWordSizefor2Typos: 9,
       };
       try {
-        let responses;
-        try {
-          ({ results: responses } = await client.search<AlgoliaHit>({
-            requests: [{ ...baseRequest, facetFilters: filters }, countsRequest],
-          }));
-        } catch {
-          responses = undefined;
-        }
+        // A genuine failure (network, rate limit) throws here and skips
+        // straight to the outer catch -- the fallback below is only for
+        // a response that came back malformed, not one that never came
+        // back at all (retrying it would likely fail the same way).
+        let { results: responses } = await client.search<AlgoliaHit>({
+          requests: [{ ...baseRequest, facetFilters: filters }, countsRequest],
+        });
         // product/version need attributesForFaceting set in the Algolia
         // dashboard; a crawler re-run doesn't apply that retroactively,
         // and v5's client doesn't always throw for a missing facet --
@@ -440,7 +440,7 @@ export default function SearchModal({
       } finally {
         if (!cancelled) setLoading(false);
       }
-    }, 120);
+    }, 200);
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
@@ -487,15 +487,14 @@ export default function SearchModal({
           </button>
         </div>
 
-        <div className={styles.tabs} role="tablist" aria-label="Filter by product">
+        <div className={styles.tabs} ref={tabsRef} aria-label="Filter by product">
           {PRODUCTS.map((p) => {
             const count = p.key === 'all' ? totalCount : productCounts[p.key];
             return (
               <button
                 key={p.key}
                 type="button"
-                role="tab"
-                aria-selected={product === p.key}
+                aria-pressed={product === p.key}
                 className={styles.tab}
                 data-active={product === p.key}
                 onClick={() => setProduct(p.key)}>
@@ -605,7 +604,7 @@ export default function SearchModal({
             {/* True match count vs. the capped `results.length`. */}
             {filteredTotal !== null && filteredTotal > results.length && (
               <p className={styles.resultsTruncated}>
-                Showing {results.length} of {filteredTotal} results -- refine your search to narrow it down.
+                Showing {results.length} of {filteredTotal} results. Refine your search to narrow it down.
               </p>
             )}
           </div>
