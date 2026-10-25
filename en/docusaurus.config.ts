@@ -66,10 +66,7 @@ const config: Config = {
     './src/plugins/guidesCatalogPlugin',
   ],
 
-  // @easyops-cn/docusaurus-search-local used to live here -- replaced by
-  // Algolia (themeConfig.algolia below), which is site-wide across every
-  // product instead of scoped to just this build. See sharedAlgoliaSearch's
-  // own docstring in themeConfig.ts for the full explanation.
+  // Search is Algolia (themeConfig.algolia), shared across products.
   themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
