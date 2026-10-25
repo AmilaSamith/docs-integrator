@@ -27,6 +27,30 @@ import type { HtmlTagObject } from '@docusaurus/types';
  * real production/staging never set this, so they're unaffected. */
 export const CROSS_PRODUCT_BASE = process.env.CROSS_PRODUCT_BASE || '/integration-platform/docs/';
 
+/** Site-wide Algolia search -- one index crawled across every product
+ * under /integration-platform/docs/**, so searching from any one
+ * product surfaces results from the others too (replaces each branch's
+ * old, build-scoped @easyops-cn/docusaurus-search-local instance).
+ *
+ * `apiKey` is the Algolia SEARCH-ONLY key (read-only, safe to commit).
+ *
+ * `contextualSearch` is off -- Docusaurus's default auto-scopes results
+ * to one site's own docs-plugin/version context, which would silently
+ * filter the other three products back out here.
+ *
+ * `searchPagePath: false` -- without it, Docusaurus adds its own
+ * built-in `/search` route (a different UI than the custom modal in
+ * SearchModal.tsx, which is the only entry point this site wants). */
+export const sharedAlgoliaSearch = {
+  appId: '8LWM72S9RU',
+  apiKey: 'f6a71bd87c46d1b686d3f89fbfbe176b',
+  // NOT a typo to fix -- this must match the real Algolia index name
+  // exactly, typo included.
+  indexName: 'Integration Documenation',
+  contextualSearch: false,
+  searchPagePath: false as const,
+};
+
 /** Production's real custom domain -- the one signal that reliably tells
  * apart the gh-pages promotion (served from here) from everywhere else
  * this exact same build output also runs (Choreo staging, a fork's own
