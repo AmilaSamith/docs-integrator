@@ -180,7 +180,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [saas, wso2-integrator, wso2-connectors]
+        target: [saas, wso2-integrator, wso2-connectors, wso2-agent-builder]
 
     steps:
       - uses: actions/checkout@v4
