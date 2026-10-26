@@ -1,0 +1,104 @@
+.row {
+  display: flex;
+  gap: 8px;
+  /* Top padding (there was none) -- this row is the first thing in the
+     sidebar's content area, which starts right where the navbar/
+     secondary row ends (DocSidebar/Desktop/styles.module.css's own
+     `padding-top: navbar-height + secondary-row-height`), so with no
+     top padding here the search box touched that boundary directly,
+     with no breathing room before the navbar's bottom border. */
+  padding: 14px 14px 14px;
+}
+
+/* Border/background are the mockup's own literal values (#E3DCD5 /
+   #FBF8F5), not --wso2-border-subtle/--wso2-sidebar-bg -- those tokens
+   are close but not identical (a slightly less saturated cream, chosen
+   so the sidebar as a whole doesn't read as "accented" vs. the page),
+   and this one control is meant to match the sample exactly. */
+.searchBtn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 8px 0 12px;
+  border: 1px solid #E3DCD5;
+  border-radius: 11px;
+  background: #FBF8F5;
+  color: var(--wso2-text-muted);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+[data-theme='dark'] .searchBtn {
+  border-color: #3B3532;
+  background: #1A1715;
+}
+
+.searchBtn:hover {
+  border-color: #D9D2CB;
+}
+
+[data-theme='dark'] .searchBtn:hover {
+  border-color: #4A423D;
+}
+
+.searchLabel {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kbdGroup {
+  display: flex;
+  gap: 3px;
+}
+
+.kbdGroup kbd {
+  font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace;
+  font-size: 11px;
+  padding: 2px 5px;
+  border: 1px solid #DADAE0;
+  border-radius: 5px;
+  background: #FFFFFF;
+  color: #3A3A44;
+}
+
+[data-theme='dark'] .kbdGroup kbd {
+  border-color: #4A423D;
+  background: #1E1B19;
+  color: #D8CFC8;
+}
+
+@media (max-width: 1280px) {
+  .kbdGroup {
+    display: none;
+  }
+}
+
+.aiBtn {
+  width: 44px;
+  height: 42px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #F1CDB2;
+  border-radius: 11px;
+  background: #FFF6EF;
+  color: var(--wso2-accent-text);
+  cursor: pointer;
+}
+
+[data-theme='dark'] .aiBtn {
+  background: rgba(226, 86, 11, 0.14);
+  border-color: #4A2E1A;
+}
+
+.aiBtn:hover {
+  filter: brightness(0.97);
+}
