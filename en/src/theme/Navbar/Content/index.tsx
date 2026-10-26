@@ -12,7 +12,9 @@
  *                  (today: Learn Hub, Community, Contribute, FAQ)
  *   right zone  -- after the vertical rule: the search icon (theme/SearchBar,
  *                  which owns the search dialog and the Ctrl/Cmd+K
- *                  shortcut), the color-mode toggle, then the
+ *                  shortcut; the icon shows only on mobile, desktop
+ *                  search is in the doc sidebar), the color-mode toggle,
+ *                  then the
  *                  `position: 'right'` items in
  *                  config order (today: GitHub, Download). Keep new
  *                  right-side items appended to the config array to
