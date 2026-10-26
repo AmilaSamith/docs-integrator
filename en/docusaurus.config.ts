@@ -11,6 +11,7 @@ import {
   sharedBlogNavbarItem,
   sharedPrism,
   sharedImage,
+  sharedAlgoliaSearch,
   sharedHeadTags,
   CROSS_PRODUCT_BASE,
 } from './src/theme-shared/themeConfig';
@@ -65,23 +66,8 @@ const config: Config = {
     './src/plugins/guidesCatalogPlugin',
   ],
 
-  themes: [
-    '@docusaurus/theme-mermaid',
-    [
-      '@easyops-cn/docusaurus-search-local',
-      {
-        hashed: true,
-        language: ['en'],
-        // See saas's docusaurus.config.ts for why this is off.
-        highlightSearchTermsOnTargetPage: false,
-        explicitSearchResultPath: true,
-        docsRouteBasePath: '/',
-        indexBlog: false,
-        indexPages: true,
-        searchBarShortcutHint: false,
-      },
-    ],
-  ],
+  // Search is Algolia (themeConfig.algolia), shared across products.
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -159,6 +145,7 @@ const config: Config = {
     image: sharedImage,
     colorMode: sharedColorMode,
     docs: sharedDocsSidebar,
+    algolia: sharedAlgoliaSearch,
     // "On this page" shows H2/H3 only (the "Nesting depth" design
     // reference's own rule) -- a doc with real content below H3 uses a
     // bold lead-in or a list instead, per that same reference ("H5/H6
