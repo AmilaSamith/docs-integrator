@@ -65,3 +65,13 @@
   color: var(--ifm-navbar-link-color) !important;
   text-decoration: none !important;
 }
+
+/* Desktop: search lives in the doc sidebar (its search box, or the icon
+   on the collapsed rail), not the navbar -- see index.tsx's docstring.
+   Only the icon is hidden; SearchBar stays mounted so it still owns the
+   dialog and the Ctrl/Cmd+K shortcut. */
+@media (min-width: 997px) {
+  :global(.navbar__search-input).trigger {
+    display: none;
+  }
+}
