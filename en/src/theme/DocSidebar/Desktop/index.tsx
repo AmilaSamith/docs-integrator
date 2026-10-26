@@ -31,7 +31,7 @@ import Logo from '@theme/Logo';
 import Content from '@theme/DocSidebar/Desktop/Content';
 import type { Props } from '@theme/DocSidebar';
 import { useHistory } from '@docusaurus/router';
-import { findFirstSidebarItemLink } from '@docusaurus/plugin-content-docs/client';
+import isInternalUrl from '@docusaurus/isInternalUrl';
 
 import ProductDocsLinks from '@site/src/components/ProductDocsLinks';
 import { openDocsSearch } from '@site/src/theme/SearchBar';
@@ -81,18 +81,33 @@ function RailSearchIcon(): ReactNode {
   );
 }
 
+/** The first page on this site that a sidebar item leads to, in sidebar
+ * order: a category's own index page if it has one, otherwise the first
+ * internal page inside it. External links are skipped, so a section whose
+ * first entry links off-site still opens its first real page. */
+function firstInternalPage(item: Props['sidebar'][number]): string | undefined {
+  if (item.type === 'link') return isInternalUrl(item.href) ? item.href : undefined;
+  if (item.type !== 'category') return undefined;
+  if (item.href && isInternalUrl(item.href)) return item.href;
+  for (const child of item.items) {
+    const href = firstInternalPage(child);
+    if (href) return href;
+  }
+  return undefined;
+}
+
 /** Collapsed state: a 64px icon-only rail -- an expand button, a divider,
  * a search button, then one icon per top-level sidebar category. A
- * category icon opens that section's first page (findFirstSidebarItemLink:
- * the category's own index page if it has one) and re-expands the
- * sidebar; an item with no internal page to open only re-expands it. The
+ * category icon opens that section's first page (firstInternalPage: the
+ * category's own index page if it has one) and re-expands the sidebar; an
+ * item with no internal page to open only re-expands it. The
  * search button opens the search dialog without expanding the sidebar. */
 function IconRail({ sidebar, onExpand }: { sidebar: Props['sidebar']; onExpand: () => void }): ReactNode {
   const history = useHistory();
   const openSection = (item: Props['sidebar'][number]) => {
-    const href = findFirstSidebarItemLink(item);
+    const href = firstInternalPage(item);
     onExpand();
-    if (href?.startsWith('/')) history.push(href);
+    if (href) history.push(href);
   };
 
   return (
