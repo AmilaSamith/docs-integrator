@@ -7,9 +7,19 @@
    the row immediately before THIS element never draws a second,
    redundant line of its own, so there's exactly one hairline at this
    boundary, from whichever content actually sits above it, not two close
-   together. Margin alone creates the section break's spacing. */
+   together. Margin alone creates the section break's spacing.
+   The label sits on a neutral grey band (--wso2-border-subtle) so it
+   reads as a group heading rather than loose text. Grey, not orange:
+   orange marks the active row, and the label is neither active nor
+   clickable (UI_UX_GUIDELINES.md: neutral greys for structure, colour
+   only for interactive/active elements). Horizontal padding plus margin
+   still add up to the original 0.75rem, so the text stays lined up with
+   the pages below it. */
 .separator {
-  margin: 0.9rem 0.75rem 0.4rem;
+  margin: 0.9rem 0.25rem 0.4rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+  background: var(--wso2-border-subtle);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -17,6 +27,16 @@
   color: var(--wso2-text-muted);
 }
 
+/* Dark mode: muted text on the grey band falls under 4.5:1 contrast, so
+   use the body text colour there (about 6.9:1). */
+[data-theme='dark'] .separator {
+  color: var(--ifm-font-color-base);
+}
+
+/* First in a section's list (e.g. "Create Integration Workspace" right
+   under "Develop and Test"): a link in that spot gets its gap from its own
+   11px padding, so the label needs this extra top margin for its text to
+   start at about the same height instead of hugging the row above. */
 .separator:first-child {
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }

@@ -1620,6 +1620,15 @@ table th {
   top: 100%;
 }
 
+/* The row right after the pinned one starts below the full 0.5rem
+   ::after strip, the same gap DocSidebar/Desktop's PINNED_GAP scrolls
+   sections to. With only the 0.125rem sibling gap, the strip covered the
+   top of that row, cutting the rounded top corners off its active peach
+   fill (e.g. "Get Started" when it is the current section). */
+.theme-doc-sidebar-menu>.menu__list-item[data-pinned] + .menu__list-item {
+  margin-top: 0.5rem;
+}
+
 /* When the pinned row itself is the active page, its own bottom border
    is transparent (the active-row rounding fix above) -- but this ::after
    sits exactly on that seam (same `top: 100%` edge) and paints over
