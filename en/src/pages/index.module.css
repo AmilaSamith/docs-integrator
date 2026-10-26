@@ -617,6 +617,292 @@
   color: var(--lp-link);
 }
 
+/* ================================================================
+   AWS announcement pill (hero) -- rendered above <HomepageHeader />
+   in index.tsx, not inside the shared LandingHero component (that
+   component is synced from main; see index.tsx's own comment).
+   ================================================================ */
+.awsPillWrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+}
+
+.page a.awsPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 14px 0 5px;
+  border-radius: 999px;
+  border: 1px solid var(--lp-border-cream);
+  background: var(--lp-card);
+  box-shadow: 0 4px 14px -8px rgba(150, 60, 10, 0.35);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lp-text-3);
+  animation: awsPillPulse 2.2s ease-in-out infinite;
+}
+
+.page a.awsPill:hover {
+  color: var(--lp-text-3);
+  text-decoration: none;
+  border-color: #E8B79A;
+}
+
+.awsPillBadge {
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--lp-accent);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+}
+
+@keyframes awsPillPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px -8px rgba(150, 60, 10, 0.35), 0 0 0 0 rgba(201, 79, 10, 0.35);
+  }
+  50% {
+    box-shadow: 0 4px 14px -8px rgba(150, 60, 10, 0.35), 0 0 0 6px rgba(201, 79, 10, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page a.awsPill {
+    animation: none;
+  }
+}
+
+/* ================================================================
+   BUSINESS USE CASES
+   ================================================================ */
+.useCases {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ucGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 20px;
+}
+
+.page a.ucCard {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border: 1px solid var(--lp-border-cream);
+  border-radius: 20px;
+  background: var(--lp-card);
+  color: var(--lp-text);
+  transition: border-color 0.14s ease, box-shadow 0.14s ease, transform 0.14s ease;
+}
+
+.page a.ucCard:hover {
+  color: var(--lp-text);
+  text-decoration: none;
+  border-color: #E8B79A;
+  box-shadow: 0 18px 40px -22px rgba(150, 60, 10, 0.45);
+  transform: translateY(-2px);
+}
+
+.ucDept {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ucDeptIcon {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--lp-step-active-bg);
+  border: 1px solid #F6DCC8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lp-accent);
+}
+
+[data-theme='dark'] .ucDeptIcon {
+  border-color: #4A2E1A;
+}
+
+.ucDeptLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lp-text-4);
+}
+
+.ucHook {
+  min-height: 3.96em;
+  font-size: 22px;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.ucFooter {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--lp-border-warm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ucTitle {
+  font-size: 14px;
+  color: var(--lp-text-2);
+}
+
+.ucSeeHow {
+  flex: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lp-link);
+  white-space: nowrap;
+}
+
+.ucSeeAllWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.page a.ucSeeAll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 22px;
+  border: 1px solid var(--lp-border-cream);
+  border-radius: 12px;
+  background: var(--lp-card);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lp-link);
+}
+
+/* ================================================================
+   AWS SPOTLIGHT -- the same dark gradient language as .banner,
+   single slim row instead of a 2-column grid.
+   ================================================================ */
+.awsSpotlightWrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+.awsBand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  padding: 28px 32px;
+  border-radius: 24px;
+  background-color: var(--lp-banner-bg);
+  background-image:
+    radial-gradient(ellipse 50% 140% at 100% 50%, rgba(255, 115, 0, 0.18), transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
+  color: #FFFFFF;
+  box-shadow: 0 30px 60px -36px rgba(40, 20, 5, 0.6);
+}
+
+.awsBandHead {
+  flex: 1 1 320px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.awsBandIcon {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 16px;
+  background: rgba(255, 115, 0, 0.14);
+  border: 1px solid rgba(255, 115, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awsBandText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.awsBandText strong {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.awsBandText span {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #C2B8B0;
+}
+
+.awsBandPills {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.awsBandPills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid #4A423D;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #EDE7E2;
+}
+
+.page a.awsBandCta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  padding: 0 22px;
+  border-radius: 12px;
+  background: var(--lp-accent);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.page a.awsBandCta:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
 @media (max-width: 640px) {
   .getStarted {
     padding: 56px 20px 48px;
@@ -624,6 +910,18 @@
 
   .exploreInner {
     padding: 56px 20px;
+  }
+
+  .useCases {
+    padding: 0 20px 56px;
+  }
+
+  .awsSpotlightWrap {
+    padding: 0 20px 56px;
+  }
+
+  .awsBand {
+    padding: 24px;
   }
 
   .page h2.h2Large {
