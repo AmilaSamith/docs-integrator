@@ -127,7 +127,7 @@ Structure:
       - Required fields: Default = "Required" (plain text, no code wrapping)
       - Fields with a default value (`T field = value;`): Default = <code>value</code>
       - Optional fields without a default (`T field?;`): Default = "Optional" (plain text, no code wrapping).
-        Never write <code>()</code> for these: they are absent when not set and don't accept `()`
+        Never use <code>()</code> as their default: they are absent when not set
       - Use <code>()</code> only when the source declares `()` as the default (`T? field = ();`)
       - Take each field's default from the record definition in the connector source, not from the type
       - Type column: always <code>TypeName</code> (not backticks)
