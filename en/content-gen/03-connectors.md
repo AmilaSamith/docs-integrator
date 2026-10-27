@@ -125,7 +125,11 @@ Structure:
    a. "### Configuration" — config record name + table:
       | Field | Type | Default | Description |
       - Required fields: Default = "Required" (plain text, no code wrapping)
-      - Optional fields: Default = <code>value</code>
+      - Fields with a default value (`T field = value;`): Default = <code>value</code>
+      - Optional fields without a default (`T field?;`): Default = "Optional" (plain text, no code wrapping).
+        Never use <code>()</code> as their default: they are absent when not set
+      - Use <code>()</code> only when the source declares `()` as the default (`T? field = ();`)
+      - Take each field's default from the record definition in the connector source, not from the type
       - Type column: always <code>TypeName</code> (not backticks)
    b. "### Initializing the client" — import + init code block
    c. "### Operations" — grouped into #### subsections by entity/capability area:
@@ -181,6 +185,9 @@ Rules:
 - Use exact callback signatures from the source code
 - Use real examples from the repo's examples/ folder, not invented ones
 - Type values in table cells: use <code>TypeName</code>, not backticks
+- Default column in config fields tables: same rules as the action reference ("Required" for required
+  fields, <code>value</code> for fields with a default, "Optional" for `T field?;` fields without a
+  default, and <code>()</code> only when the source declares `()` as the default)
 ```
 
 ---
