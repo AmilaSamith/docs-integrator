@@ -161,6 +161,85 @@ const lifecycle: LifecycleCard[] = [
   },
 ];
 
+type UseCase = { dept: string; hook: string; title: string; to: string; icon: ReactNode };
+
+/* Real guide docs already in this repo (en/docs/guides/business-use-cases/)
+ * -- not placeholders. Curated subset (3 of 6 real use-case guides, the
+ * same ones the design mockup marks `featured`) for a homepage teaser;
+ * "See all business use cases" links to the full set. */
+const useCases: UseCase[] = [
+  {
+    dept: 'Customer support',
+    hook: "What if your support agent could check a customer's live order before replying?",
+    title: 'Build a Customer Care Agent with MCP',
+    to: '/guides/business-use-cases/building-a-customer-care-agent-mcp',
+    icon: (
+      <svg {...svgProps} width={20} height={20}>
+        <path d="M4 5h16v11H8l-4 4zM8 9h8M8 12h5" />
+      </svg>
+    ),
+  },
+  {
+    dept: 'Human resources',
+    hook: 'What if every HR policy question got a sourced answer in seconds?',
+    title: 'Building an HR Knowledge Base with RAG',
+    to: '/guides/business-use-cases/building-hr-knowledge-base-rag',
+    icon: (
+      <svg {...svgProps} width={20} height={20}>
+        <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11M9 8h6" />
+      </svg>
+    ),
+  },
+  {
+    dept: 'Procurement',
+    hook: 'What if purchase requests raised themselves before stock runs out?',
+    title: 'Raise SAP Business One Purchase Requests for Low-Stock Items',
+    to: '/guides/business-use-cases/sap-b1-low-stock-purchase-automation',
+    icon: (
+      <svg {...svgProps} width={20} height={20}>
+        <path d="M3 7l9-4 9 4-9 4zM3 7v10l9 4 9-4V7M12 11v10" />
+      </svg>
+    ),
+  },
+];
+
+/* AWS spotlight pills -- icon paths lifted from the design mockup
+ * (landing-aws-business/LandingOneBar.dc.html). */
+const awsPills: { label: string; icon: ReactNode }[] = [
+  {
+    label: 'Build',
+    icon: (
+      <svg {...svgProps} width={15} height={15} strokeWidth={1.9}>
+        <path d="M14.5 4.5 19 9l-9.5 9.5H5V14z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Deploy',
+    icon: (
+      <svg {...svgProps} width={15} height={15} strokeWidth={1.9}>
+        <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Secure',
+    icon: (
+      <svg {...svgProps} width={15} height={15} strokeWidth={1.9}>
+        <path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Observe',
+    icon: (
+      <svg {...svgProps} width={15} height={15} strokeWidth={1.9}>
+        <path d="M3 12h4l3-7 4 14 3-7h4" />
+      </svg>
+    ),
+  },
+];
+
 type WideTile = { title: string; description: string; to: string; tags: string[]; tone: string; icon: ReactNode };
 
 const wideTiles: WideTile[] = [
@@ -214,6 +293,26 @@ function HomepageHeader(): ReactNode {
 }
 
 /* ------------------------------------------------------------------ */
+/*  AWS announcement pill -- rendered above the hero, NOT inside        */
+/*  LandingHero itself: that component is wholesale-shared (synced      */
+/*  from main via sync-theme.yaml), and its eyebrow prop is a plain     */
+/*  string with no slot for a clickable badge. Adding one here keeps    */
+/*  this entirely a per-branch change instead of needing a `main` PR    */
+/*  just to add a temporary launch pill.                                */
+/* ------------------------------------------------------------------ */
+function AwsAnnouncementPill(): ReactNode {
+  return (
+    <div className={styles.awsPillWrap}>
+      <Link to="/cloud-providers/aws" className={styles.awsPill}>
+        <span className={styles.awsPillBadge}>NEW</span>
+        Improved AWS support
+        <span aria-hidden="true">→</span>
+      </Link>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  New to WSO2 Integrator? — step strip + quickstart tiles            */
 /* ------------------------------------------------------------------ */
 function GetStarted(): ReactNode {
@@ -259,6 +358,86 @@ function GetStarted(): ReactNode {
             </span>
           </Link>
         ))}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Business use cases -- a 3-card teaser; "See all" links to the full */
+/*  guide listing.                                                     */
+/* ------------------------------------------------------------------ */
+function BusinessUseCases(): ReactNode {
+  return (
+    <section className={styles.useCases} aria-labelledby="uc-title">
+      <div>
+        <span className={styles.eyebrow}>
+          <span className={styles.eyebrowDash} />
+          Business use cases
+        </span>
+        <Heading as="h2" id="uc-title" className={styles.h2Large}>
+          Solve real business problems, end to end
+        </Heading>
+        <p className={styles.lead}>
+          Step-by-step guides that take a real scenario from idea to a running integration, with AI agents, RAG and no-code automations.
+        </p>
+      </div>
+      <div className={styles.ucGrid}>
+        {useCases.map((u) => (
+          <Link key={u.to} to={u.to} className={styles.ucCard}>
+            <span className={styles.ucDept}>
+              <span className={styles.ucDeptIcon}>{u.icon}</span>
+              <span className={styles.ucDeptLabel}>{u.dept}</span>
+            </span>
+            <span className={styles.ucHook}>{u.hook}</span>
+            <span className={styles.ucFooter}>
+              <span className={styles.ucTitle}>{u.title}</span>
+              <span className={styles.ucSeeHow}>
+                See how <span aria-hidden="true">→</span>
+              </span>
+            </span>
+          </Link>
+        ))}
+      </div>
+      <div className={styles.ucSeeAllWrap}>
+        <Link to="/guides/business-use-cases" className={styles.ucSeeAll}>
+          See all business use cases <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  WSO2 Integrator on AWS -- slim dark spotlight band, links to the   */
+/*  new /aws doc page.                                                 */
+/* ------------------------------------------------------------------ */
+function AwsSpotlight(): ReactNode {
+  return (
+    <section className={styles.awsSpotlightWrap} aria-labelledby="aws-title">
+      <div className={styles.awsBand}>
+        <div className={styles.awsBandHead}>
+          <span className={styles.awsBandIcon} aria-hidden="true">
+            <svg {...svgProps} width={28} height={28} stroke="#FF9A4D">
+              <path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.8 4.8 0 0 1-.5 9.5z" />
+            </svg>
+          </span>
+          <span className={styles.awsBandText}>
+            <strong id="aws-title">WSO2 Integrator on AWS</strong>
+            <span>Connect to AWS services, build AI on Bedrock, deploy to ECS, EKS or Lambda, secure it all with IAM roles, and observe how it runs.</span>
+          </span>
+        </div>
+        <div className={styles.awsBandPills} aria-label="What's covered">
+          {awsPills.map((p) => (
+            <span key={p.label}>
+              {p.icon}
+              {p.label}
+            </span>
+          ))}
+        </div>
+        <Link to="/cloud-providers/aws" className={styles.awsBandCta}>
+          Explore AWS support <span aria-hidden="true">→</span>
+        </Link>
       </div>
     </section>
   );
@@ -373,8 +552,11 @@ export default function Home(): ReactNode {
       description="Build, connect, and run integrations, long-running workflows, MCP servers, and AI agents with built-in governance, and architectural freedom.">
       <div className={styles.page}>
         <main>
+          <AwsAnnouncementPill />
           <HomepageHeader />
           <GetStarted />
+          <BusinessUseCases />
+          <AwsSpotlight />
           <Explore />
         </main>
       </div>

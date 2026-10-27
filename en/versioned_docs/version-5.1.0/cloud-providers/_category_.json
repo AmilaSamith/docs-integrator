@@ -1,0 +1,12 @@
+{
+  "label": "Cloud Providers",
+  "position": 11,
+  "link": null,
+  "customProps": {
+    "landOnFirst": true,
+    "lockedSiblings": [
+      { "label": "WSO2 Integrator on Azure", "badge": "Soon" },
+      { "label": "WSO2 Integrator on GCP", "badge": "Soon" }
+    ]
+  }
+}
