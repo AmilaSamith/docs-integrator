@@ -147,7 +147,7 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-3. Select **printInfo** under **log**.
+3. In the functions panel, type `printInfo` in the search box, then select **printInfo** under **log** in the **Standard Library** section.
 
    <ThemedImage
       alt="Functions list with printInfo highlighted under log"
