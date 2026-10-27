@@ -121,7 +121,7 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-3. Select **Print** under **io** from the functions list.
+3. In the functions panel, type `print` in the search box, then select **print** under **io** in the **Standard Library** section.
 
    <ThemedImage
       alt="Functions list with print highlighted under io"
