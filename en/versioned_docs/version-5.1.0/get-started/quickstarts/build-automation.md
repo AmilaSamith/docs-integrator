@@ -121,7 +121,9 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-3. In the functions panel, type `print` in the search box, then select **print** under **io** in the **Standard Library** section.
+3. Search for `print` in the functions panel.
+
+4. In the search results, go to the **Standard Library** section and select the **print** function under **io**.
 
    <ThemedImage
       alt="Functions list with print highlighted under io"
@@ -131,7 +133,7 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-4. Click **Initialize Array** for the **Values** parameter.
+5. Click **Initialize Array** for the **Values** parameter.
 
    <ThemedImage
       alt="io:print panel with the Initialize Array button highlighted under Values"
@@ -141,7 +143,7 @@ If you're using the cloud editor, a project is already open, so you can skip thi
       }}
    />
 
-5. Set **Values** to `"Hello World"` and select **Save**.
+6. Set **Values** to `"Hello World"` and select **Save**.
 
    <ThemedImage
       alt="io:print panel with Values set to Hello World"
