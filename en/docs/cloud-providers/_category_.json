@@ -5,8 +5,8 @@
   "customProps": {
     "landOnFirst": true,
     "lockedSiblings": [
-      { "label": "WSO2 Integrator on Azure", "badge": "Soon" },
-      { "label": "WSO2 Integrator on GCP", "badge": "Soon" }
+      { "label": "Microsoft Azure", "badge": "Soon" },
+      { "label": "Google Cloud Platform (GCP)", "badge": "Soon" }
     ]
   }
 }

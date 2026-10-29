@@ -625,23 +625,32 @@
 .awsPillWrap {
   max-width: 1360px;
   margin: 0 auto;
-  padding: 28px 32px 0;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
 }
 
 .page a.awsPill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  height: 36px;
-  padding: 0 14px 0 5px;
+  padding: 5px 14px 5px 5px;
   border-radius: 999px;
   border: 1px solid var(--lp-border-cream);
   background: var(--lp-card);
   box-shadow: 0 4px 14px -8px rgba(150, 60, 10, 0.35);
   font-size: 14px;
   font-weight: 600;
+  line-height: 1;
   color: var(--lp-text-3);
   animation: awsPillPulse 2.2s ease-in-out infinite;
+}
+
+.awsPillArrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  line-height: 1;
 }
 
 .page a.awsPill:hover {

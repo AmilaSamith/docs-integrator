@@ -424,7 +424,7 @@ function AwsSpotlight(): ReactNode {
           </span>
           <span className={styles.awsBandText}>
             <strong id="aws-title">WSO2 Integrator on AWS</strong>
-            <span>Connect to AWS services, build AI on Bedrock, deploy to ECS, EKS or Lambda, secure it all with IAM roles, and observe how it runs.</span>
+            <span>Connect to AWS services, build AI applications with Bedrock, deploy to ECS, EKS or Lambda, secure it all with IAM roles, and observe how it runs.</span>
           </span>
         </div>
         <div className={styles.awsBandPills} aria-label="What's covered">
