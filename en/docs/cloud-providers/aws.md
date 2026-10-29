@@ -25,8 +25,8 @@ everything in one place, in the order you'll need it.
 <ThemedImage
     alt="Architecture diagram: an event in AWS (SQS or Lambda) triggers WSO2 Integrator, which runs on ECS, EKS, EC2 or Lambda, optionally calls Amazon Bedrock for AI, and talks to AWS services like S3, DynamoDB, SNS, SES and Redshift -- secured by IAM roles and watched with CloudWatch, X-Ray and Prometheus."
     sources={{
-        light: useBaseUrl('/img/aws/architecture-light.png'),
-        dark: useBaseUrl('/img/aws/architecture-dark.png'),
+        light: useBaseUrl('/img/aws/architecture-light-v5.2.png'),
+        dark: useBaseUrl('/img/aws/architecture-dark-v5.2.png'),
     }}
 />
 
